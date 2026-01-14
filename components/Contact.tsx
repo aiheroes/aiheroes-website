@@ -9,27 +9,42 @@ interface ContactProps {
 export const Contact: React.FC<ContactProps> = ({ content }) => {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    // Add selected topics to form data
-    formData.set('topics', selectedTopics.join(', '));
+    const submitData = new URLSearchParams({
+      'form-name': 'contact',
+      name: formData.name,
+      email: formData.email,
+      organization: formData.organization,
+      topics: selectedTopics.join(', '),
+      message: formData.message
+    });
 
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: submitData.toString(),
       });
 
       if (response.ok) {
         setFormState('success');
-        form.reset();
+        setFormData({ name: '', email: '', organization: '', message: '' });
+        setSelectedTopics([]);
       } else {
         setFormState('error');
       }
@@ -45,20 +60,6 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
         : [...prev, topic]
     );
   };
-
-  const InputField = ({ label, name, type = "text", ...props }: any) => (
-    <div className="group">
-      <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
-        {label}
-      </label>
-      <input
-        type={type}
-        name={name}
-        className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors rounded-none"
-        {...props}
-      />
-    </div>
-  );
 
   return (
     <div id="contact" className="w-full flex-grow flex flex-col justify-center pt-24 pb-12 md:pt-40 md:pb-24">
@@ -88,7 +89,7 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                 </div>
                 <h3 className="text-xl md:text-2xl font-serif text-brand-dark mb-1 md:mb-2">{content.success.title}</h3>
                 <p className="text-stone-500 mb-4 md:mb-6 text-sm md:text-base">{content.success.message}</p>
-                <button onClick={() => { setFormState('idle'); setSelectedTopics([]); }} className="text-brand-dark font-bold hover:underline underline-offset-4 text-xs md:text-base">
+                <button onClick={() => setFormState('idle')} className="text-brand-dark font-bold hover:underline underline-offset-4 text-xs md:text-base">
                   {content.success.sendAnother}
                 </button>
               </div>
@@ -96,20 +97,50 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
               <form
                 name="contact"
                 method="POST"
-                data-netlify="true"
                 onSubmit={handleSubmit}
                 className="space-y-3 md:space-y-8"
               >
-                {/* Hidden field for Netlify form detection */}
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="topics" value="" />
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8">
-                  <InputField label={content.form.name} name="name" required />
-                  <InputField label={content.form.email} name="email" required type="email" />
+                  <div className="group">
+                    <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                      {content.form.name}
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors rounded-none"
+                    />
+                  </div>
+                  <div className="group">
+                    <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                      {content.form.email}
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors rounded-none"
+                    />
+                  </div>
                 </div>
 
-                <InputField label={content.form.org} name="organization" />
+                <div className="group">
+                  <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                    {content.form.org}
+                  </label>
+                  <input
+                    type="text"
+                    name="organization"
+                    value={formData.organization}
+                    onChange={handleInputChange}
+                    className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors rounded-none"
+                  />
+                </div>
 
                 {/* Topic Chips */}
                 <div>
@@ -144,6 +175,8 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                   </label>
                   <textarea
                     name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     rows={2}
                     className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors resize-none rounded-none"
                   />
