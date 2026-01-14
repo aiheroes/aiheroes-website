@@ -1,0 +1,184 @@
+---
+title: "AI Strategy"
+date: "2024-06-19"
+author: "Kyriakos Hjikakou"
+rank_math_internal_links_processed: "1"
+_wpb_shortcodes_custom_css: ".vc_custom_1713183644635{border-bottom-width: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;border-bottom-color: #f9d949 !important;}.vc_custom_1718790508421{background-image: url(https://aiheroes.io/wp-content/uploads/2024/06/Untitled-design-3.png?id=244948) !important;}"
+_wpb_shortcodes_custom_css_updated: "1"
+_edit_lock: "1732381753:13"
+passster_area_shortcode: 
+_edit_last: "7"
+rank_math_seo_score: "53"
+_wp_page_template: default
+page_header_logo_style: inherit
+_page_header_logo_style: field_59391a16302be
+page_preloader_visibility: inherit
+_page_preloader_visibility: field_5937afa621s71eqfa4
+page_dark_mode: inherit
+_page_dark_mode: field_591ac509d3se51781624591h
+page_dark_mode_switcher: inherit
+_page_dark_mode_switcher: field_591ac509d3se51781624593t
+page_dark_mode_switcher_typo: inherit
+_page_dark_mode_switcher_typo: field_591234509d332523
+page_dark_mode_switcher_position: inherit
+_page_dark_mode_switcher_position: field_591ac509d3se517812
+page_header_menu_type: inherit
+_page_header_menu_type: field_59390deaefde5
+page_hamburger_menu_caption: inherit
+_page_hamburger_menu_caption: field_59390de2350897
+page_header_search_visibility: inherit
+_page_header_search_visibility: field_592d43df9e26cs
+page_header_visibility: inherit
+_page_header_visibility: field_59390deaef9efdd
+page_header_menu_style: inherit
+_page_header_menu_style: field_59390deaefzxf
+page_header_fixed_position: "1"
+_page_header_fixed_position: field_59229b3463432b
+page_header_add_cap: "0"
+_page_header_add_cap: field_59390deaef9ea
+page_header_menu_use_wrapper: "1"
+_page_header_menu_use_wrapper: field_59390deaef614
+page_header_menu_style_settings: custom
+_page_header_menu_style_settings: field_59411fcf0048f
+page_header_dynamic_typography_color: inherit
+_page_header_dynamic_typography_color: field_59390deaf1978asf32fadsgas
+page_header_menu_fixed: inherit
+_page_header_menu_fixed: field_59390deaf1978
+page_subheader_visibility: "0"
+_page_subheader_visibility: field_59390deaf0da4
+page_subheader_style: inherit
+_page_subheader_style: field_5941030b7ce5d
+page_add_wrapper: inherit
+_page_add_wrapper: field_59390deb03b1b
+page_content_wrapper_width: 
+_page_content_wrapper_width: field_591b10dbb4a82342342345623
+page_full_width_margins_size: 
+_page_full_width_margins_size: field_591b10dbb4a85_fwgaps_local
+page_add_top_padding: inherit
+_page_add_top_padding: field_59390deb03f38
+page_use_boxed_wrapper: inherit
+_page_use_boxed_wrapper: field_59390deb03738
+page_boxed_wrapper_margins_size: 
+_page_boxed_wrapper_margins_size: field_59381c77504bfasfeas
+page_background_type: inherit
+_page_background_type: field_46c28bded161ea112fa99f2ef41c857cb5c6db3b
+page_: 
+_page_: field_59390deb0171egrp
+page_header_title_visibility: "0"
+_page_header_title_visibility: field_59390deb00ef1
+page_header_title_fullscreen: "0"
+_page_header_title_fullscreen: field_59390deb00733
+page_header_title_height: 
+_page_header_title_height: field_59390deb00b09
+page_header_title_author_visibility: "0"
+_page_header_title_author_visibility: field_59390deb00ef1s
+page_header_title_date_visibility: "0"
+_page_header_title_date_visibility: field_59390deb00ef1s2
+page_header_title_comments_visibility: "0"
+_page_header_title_comments_visibility: field_59390deb00ef1s3
+page_header_title_custom_subtitle_text: 
+_page_header_title_custom_subtitle_text: field_593ddebba2fcb
+page_header_title_align: inherit
+_page_header_title_align: field_59390deb0034e
+page_header_title_background_type: inherit
+_page_header_title_background_type: field_46c28bded161ea112fa99f2ef41c857cb5c6db3b
+page_header_title: 
+_page_header_title: field_59390deaf218agrp
+page_header_title_use_overlay: inherit
+_page_header_title_use_overlay: field_59390deaf3961
+page_header_title_use_parallax: inherit
+_page_header_title_use_parallax: field_59229bwjeofwnheof3921
+page_typography_settings: inherit
+_page_typography_settings: field_593a55746376f
+page_sidebar_position: inherit
+_page_sidebar_position: field_59390deaf218b
+page_sidebar_layout: inherit
+_page_sidebar_layout: field_592345234958934
+page_breadcrumbs_visibility: inherit
+_page_breadcrumbs_visibility: field_59390deb03328
+page_breadcrumbs_text_typo: inherit
+_page_breadcrumbs_text_typo: field_593db13395d12
+page_show_arrow: inherit
+_page_show_arrow: field_591ac509d4234s
+page_arrow_position: inherit
+_page_arrow_position: field_591ac509d4234234
+page_footer_visibility: inherit
+_page_footer_visibility: field_59390deb06b99
+page_footer_is_wrapped: inherit
+_page_footer_is_wrapped: field_59390deb06fd1
+page_footer_text_typo: inherit
+_page_footer_text_typo: field_5940ec917da19
+page_footer_background_type: inherit
+_page_footer_background_type: field_46c28bded161ea112fa99f2ef41c857cb5c6db3b
+page_footer: 
+_page_footer: field_59390deb057c5grp
+page_footer_is_sticky: inherit
+_page_footer_is_sticky: field_59391743def2b
+page_footer_copyright_visibility: inherit
+_page_footer_copyright_visibility: field_59390dsb07397
+page_footer_copyright_section_background_type: inherit
+_page_footer_copyright_section_background_type: field_46c28bded161ea112fa99f2ef41c857cb5c6db3b
+page_footer_copyright_section: 
+_page_footer_copyright_section: field_592fd8901f63agrppg
+page_footer_copyright_section_text_typo: inherit
+_page_footer_copyright_section_text_typo: field_59390deb07b67
+page_footer_copyright_section_links_color: 
+_page_footer_copyright_section_links_color: field_59390deb07b68
+page_footer_logo_widget_type: inherit
+_page_footer_logo_widget_type: field_59390deb04788
+page_custom_css: "/* Tablet layout */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .row {
+    flex-direction: column;
+  }
+  .col {
+    width: 100%;
+  }
+}"
+_page_custom_css: field_59390deb083b5
+page_social_links_visibility: inherit
+_page_social_links_visibility: field_l03249323443247
+page_social_networks_typo: inherit
+_page_social_networks_typo: field_l05mnk93kid43naf2l
+page_icon_preloading_fontawesome: inherit
+_page_icon_preloading_fontawesome: field_592s32431235
+page_icon_preloading_ionicons: inherit
+_page_icon_preloading_ionicons: field_592s32431236
+page_icon_preloading_bootstrap: inherit
+_page_icon_preloading_bootstrap: field_592s32431237
+page_icon_preloading_linea: inherit
+_page_icon_preloading_linea: field_592s32431238
+page: 
+_page: field_591ac509d1208gbgclrlcfpag
+inline_featured_image: "0"
+_wpb_vc_js_status: true
+rank_math_analytic_object_id: "270"
+_wpb_post_custom_layout: default
+page_header_title_dynamic_typo: inherit
+_page_header_title_dynamic_typo: field_59229bda382345s
+page_header_menu_height: "120-120-120"
+_page_header_menu_height: field_5941276d0b89b
+page_header_menu_background_type: color
+_page_header_menu_background_type: field_46c28bded161ea112fa99f2ef41c857cb5c6db3b
+page_header_menu_background_color: "#1e1e1e"
+_page_header_menu_background_color: field_f71a874d1a29e0813d847089334dc06aacb34ac2
+page_header_menu: 
+_page_header_menu: field_591ac509d1208gbgclrlcfpagbgmn
+page_header_menu_text_typo: inherit
+_page_header_menu_text_typo: field_59390deaf05bd
+page_header_menu_border_visibility: "1"
+_page_header_menu_border_visibility: field_5941261c69959
+page_header_menu_border_type: solid
+_page_header_menu_border_type: field_594126ed0b898
+page_header_menu_border_color: "#f45050"
+_page_header_menu_border_color: field_594127340b89a
+rank_math_focus_keyword: AI
+_wpb_post_custom_css: "/* Mobile screens */
+@media only screen and (max-width: 767px) {
+  .box {
+    padding-bottom: 60px;
+  }
+}"
+---
+
+<p>[vc_section full_width="stretch_row_content" full_height="yes" content_placement="bottom" css=".vc_custom_1713183644635{border-bottom-width: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;border-bottom-color: #f9d949 !important;}" el_id="header"][vc_row full_width="stretch_row" full_height="yes" content_placement="top" bg_type="image" css=".vc_custom_1718790508421{background-image: url(https://aiheroes.io/wp-content/uploads/2024/06/Untitled-design-3.png?id=244948) !important;}" title_typo="null"][vc_column width="1/4"][/vc_column][vc_column width="1/2"][ohio_heading module_type_layout="on_left" subtitle_type_layout="without_subtitle" title="QXNzZXNzJTIwWW91ciUyMENvbXBhbnklMjdzJTIwQUklMjBSZWFkaW5lc3M=" title_typo="null"][ultimate_spacer height="30"][vc_raw_html]JTNDaWZyYW1lJTIwZGF0YS10YWxseS1zcmMlM0QlMjJodHRwcyUzQSUyRiUyRnRhbGx5LnNvJTJGZW1iZWQlMkZ3NWtENGQlM0ZhbGlnbkxlZnQlM0QxJTI2aGlkZVRpdGxlJTNEMSUyNnRyYW5zcGFyZW50QmFja2dyb3VuZCUzRDElMjZkeW5hbWljSGVpZ2h0JTNEMSUyMiUyMGxvYWRpbmclM0QlMjJsYXp5JTIyJTIwd2lkdGglM0QlMjIxMDAlMjUlMjIlMjBoZWlnaHQlM0QlMjI3MTIlMjIlMjBmcmFtZWJvcmRlciUzRCUyMjAlMjIlMjBtYXJnaW5oZWlnaHQlM0QlMjIwJTIyJTIwbWFyZ2lud2lkdGglM0QlMjIwJTIyJTIwdGl0bGUlM0QlMjJBc3Nlc3MlMjBZb3VyJTIwQ29tcGFueSUyN3MlMjBBSSUyMFJlYWRpbmVzcyUyMiUzRSUzQyUyRmlmcmFtZSUzRSUzQ3NjcmlwdCUzRXZhciUyMGQlM0Rkb2N1bWVudCUyQ3clM0QlMjJodHRwcyUzQSUyRiUyRnRhbGx5LnNvJTJGd2lkZ2V0cyUyRmVtYmVkLmpzJTIyJTJDdiUzRGZ1bmN0aW9uJTI4JTI5JTdCJTIydW5kZWZpbmVkJTIyJTIxJTNEdHlwZW9mJTIwVGFsbHklM0ZUYWxseS5sb2FkRW1iZWRzJTI4JTI5JTNBZC5xdWVyeVNlbGVjdG9yQWxsJTI4JTIyaWZyYW1lJTVCZGF0YS10YWxseS1zcmMlNUQlM0Fub3QlMjglNUJzcmMlNUQlMjklMjIlMjkuZm9yRWFjaCUyOCUyOGZ1bmN0aW9uJTI4ZSUyOSU3QmUuc3JjJTNEZS5kYXRhc2V0LnRhbGx5U3JjJTdEJTI5JTI5JTdEJTNCaWYlMjglMjJ1bmRlZmluZWQlMjIlMjElM0R0eXBlb2YlMjBUYWxseSUyOXYlMjglMjklM0JlbHNlJTIwaWYlMjhkLnF1ZXJ5U2VsZWN0b3IlMjglMjdzY3JpcHQlNUJzcmMlM0QlMjIlMjclMkJ3JTJCJTI3JTIyJTVEJTI3JTI5JTNEJTNEbnVsbCUyOSU3QnZhciUyMHMlM0RkLmNyZWF0ZUVsZW1lbnQlMjglMjJzY3JpcHQlMjIlMjklM0JzLnNyYyUzRHclMkNzLm9ubG9hZCUzRHYlMkNzLm9uZXJyb3IlM0R2JTJDZC5ib2R5LmFwcGVuZENoaWxkJTI4cyUyOSUzQiU3RCUzQyUyRnNjcmlwdCUzRSUwQQ==[/vc_raw_html][/vc_column][vc_column width="1/4"][/vc_column][/vc_row][/vc_section]</p>

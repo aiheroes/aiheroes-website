@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Content, Language } from '../types';
 
 interface ServicesProps {
@@ -12,6 +13,20 @@ const SERVICE_BACKGROUNDS = {
   specialized: "https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?auto=format&fit=crop&q=80&w=1200"
 };
 
+// Service page URLs per language
+const SERVICE_URLS = {
+  nl: {
+    foundations: '/nl/diensten/ai-foundations',
+    scouting: '/nl/diensten/opportunity-scouting',
+    specialized: '/nl/diensten/chatgpt-basics' // Links to ChatGPT Basics as the "specialized" entry point
+  },
+  en: {
+    foundations: '/en/services/ai-foundations',
+    scouting: '/en/services/opportunity-scouting',
+    specialized: '/en/services/chatgpt-basics'
+  }
+};
+
 export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
   const servicesList = [
     { key: 'foundations' as const, accentColor: 'border-brand-red', chipColor: 'red', topicIndex: 0 },
@@ -20,16 +35,6 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
   ];
 
   const ctaText = lang === 'nl' ? 'Meer info' : 'Learn more';
-
-  const scrollToContact = (topicIndex: number, chipColor: 'red' | 'blue') => {
-    // Dispatch custom event with topic index and color
-    window.dispatchEvent(new CustomEvent('selectTopic', { detail: { topicIndex, chipColor } }));
-
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="services" className="w-full min-h-screen py-24 bg-brand-light relative flex flex-col justify-center">
@@ -47,10 +52,11 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
           {servicesList.map((item) => {
             const serviceData = content.items[item.key];
             const bgImage = SERVICE_BACKGROUNDS[item.key];
+            const serviceUrl = SERVICE_URLS[lang][item.key];
             return (
-              <div
+              <Link
                 key={item.key}
-                onClick={() => scrollToContact(item.topicIndex, item.chipColor)}
+                to={serviceUrl}
                 className={`
                   relative overflow-hidden
                   h-[220px] md:h-[320px]
@@ -59,6 +65,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                   transition-all duration-500
                   md:hover:-translate-y-1
                   group cursor-pointer
+                  block
                 `}
               >
                 {/* Background Image */}
@@ -91,7 +98,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
