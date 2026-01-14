@@ -72,12 +72,21 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <span className={`h-4 w-px ${textColor === 'white' ? 'bg-white/50' : 'bg-brand-dark/20'}`}></span>
 
-            <button
-              onClick={() => setLang(lang === 'nl' ? 'en' : 'nl')}
-              className="text-xs font-bold uppercase tracking-wider hover:text-brand-red transition-colors"
-            >
-              {lang}
-            </button>
+            <div className="flex gap-2 text-xs font-bold uppercase tracking-wider">
+              <button
+                onClick={() => setLang('nl')}
+                className={`transition-colors ${lang === 'nl' ? 'text-brand-red' : 'opacity-50 hover:opacity-100'}`}
+              >
+                NL
+              </button>
+              <span className={textColor === 'white' ? 'text-white/30' : 'text-brand-dark/30'}>/</span>
+              <button
+                onClick={() => setLang('en')}
+                className={`transition-colors ${lang === 'en' ? 'text-brand-red' : 'opacity-50 hover:opacity-100'}`}
+              >
+                EN
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
