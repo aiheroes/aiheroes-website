@@ -7,10 +7,11 @@ interface FooterProps {
   content: Content['footer'];
   nav: Content['nav'];
   lang: Language;
-  setLang: (lang: Language) => void;
+  setLang?: (lang: Language) => void;
+  alternateUrl?: string; // For subpages: URL to switch language
 }
 
-export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang }) => {
+export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alternateUrl }) => {
   const scrollTo = (href: string) => {
     if (href.startsWith('#')) {
        const element = document.getElementById(href.substring(1));
@@ -111,12 +112,32 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang }) =
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-xs text-stone-500 gap-4">
           <p>{content.copyright} {content.madeIn}</p>
-          
+
           <div className="flex items-center gap-6">
               <div className="flex gap-3">
-                <button onClick={() => setLang('nl')} className={`hover:text-white transition-colors ${lang === 'nl' ? 'text-white font-bold' : ''}`}>NL</button>
-                <span className="text-stone-700">|</span>
-                <button onClick={() => setLang('en')} className={`hover:text-white transition-colors ${lang === 'en' ? 'text-white font-bold' : ''}`}>EN</button>
+                {alternateUrl ? (
+                  // Link-based language switch for subpages
+                  <>
+                    {lang === 'nl' ? (
+                      <span className="text-white font-bold">NL</span>
+                    ) : (
+                      <Link to={alternateUrl} className="hover:text-white transition-colors">NL</Link>
+                    )}
+                    <span className="text-stone-700">|</span>
+                    {lang === 'en' ? (
+                      <span className="text-white font-bold">EN</span>
+                    ) : (
+                      <Link to={alternateUrl} className="hover:text-white transition-colors">EN</Link>
+                    )}
+                  </>
+                ) : (
+                  // Button-based language switch for homepage
+                  <>
+                    <button onClick={() => setLang?.('nl')} className={`hover:text-white transition-colors ${lang === 'nl' ? 'text-white font-bold' : ''}`}>NL</button>
+                    <span className="text-stone-700">|</span>
+                    <button onClick={() => setLang?.('en')} className={`hover:text-white transition-colors ${lang === 'en' ? 'text-white font-bold' : ''}`}>EN</button>
+                  </>
+                )}
               </div>
           </div>
         </div>

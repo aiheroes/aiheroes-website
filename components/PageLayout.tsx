@@ -5,6 +5,7 @@ import { Language } from '../types';
 import { Menu, X, ArrowLeft } from 'lucide-react';
 import { CONTENT } from '../constants';
 import { PageContactForm } from './PageContactForm';
+import { Footer } from './Footer';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -160,19 +161,12 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       )}
 
       {/* Footer */}
-      <footer className="bg-brand-dark text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div className="flex items-center">
-              <Logo className="h-8 w-8 mr-3" variant="square" />
-              <span className="font-bold">AI Heroes</span>
-            </div>
-            <div className="text-sm text-white/60">
-              {content.footer.copyright} {content.footer.madeIn}
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer
+        content={content.footer}
+        nav={content.nav}
+        lang={lang}
+        alternateUrl={getAlternateUrl()}
+      />
     </div>
   );
 };
