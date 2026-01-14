@@ -9,6 +9,7 @@ interface ContactProps {
 export const Contact: React.FC<ContactProps> = ({ content }) => {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [topicColors, setTopicColors] = useState<Record<string, 'red' | 'blue'>>({});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,16 +19,17 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
 
   // Listen for topic selection from Services
   useEffect(() => {
-    const handleSelectTopic = (e: CustomEvent<{ topicIndex: number }>) => {
+    const handleSelectTopic = (e: CustomEvent<{ topicIndex: number; chipColor: 'red' | 'blue' }>) => {
       const topic = content.form.topicOptions[e.detail.topicIndex];
-      if (topic && !selectedTopics.includes(topic)) {
+      if (topic) {
         setSelectedTopics([topic]);
+        setTopicColors({ [topic]: e.detail.chipColor });
       }
     };
 
     window.addEventListener('selectTopic', handleSelectTopic as EventListener);
     return () => window.removeEventListener('selectTopic', handleSelectTopic as EventListener);
-  }, [content.form.topicOptions, selectedTopics]);
+  }, [content.form.topicOptions]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -58,6 +60,7 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
         setFormState('success');
         setFormData({ name: '', email: '', organization: '', message: '' });
         setSelectedTopics([]);
+        setTopicColors({});
       } else {
         setFormState('error');
       }
@@ -66,12 +69,25 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
     }
   };
 
+  // Map topic index to color (matches Services order)
+  const getTopicColor = (topic: string): 'red' | 'blue' => {
+    const index = content.form.topicOptions.indexOf(topic);
+    // Index 0 and 1 are red (Workshop, Scouting), index 2 is blue (Something else/Specialized)
+    return index === 2 ? 'blue' : 'red';
+  };
+
   const toggleTopic = (topic: string) => {
-    setSelectedTopics(prev =>
-      prev.includes(topic)
-        ? prev.filter(t => t !== topic)
-        : [...prev, topic]
-    );
+    if (selectedTopics.includes(topic)) {
+      setSelectedTopics(prev => prev.filter(t => t !== topic));
+      setTopicColors(prev => {
+        const next = { ...prev };
+        delete next[topic];
+        return next;
+      });
+    } else {
+      setSelectedTopics(prev => [...prev, topic]);
+      setTopicColors(prev => ({ ...prev, [topic]: getTopicColor(topic) }));
+    }
   };
 
   return (
@@ -161,24 +177,35 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                     {content.form.topic}
                   </label>
                   <div className="flex flex-wrap gap-2 md:gap-3">
-                    {content.form.topicOptions.map((topic) => (
-                      <button
-                        key={topic}
-                        type="button"
-                        onClick={() => toggleTopic(topic)}
-                        className={`
-                          px-4 py-2 md:px-5 md:py-2.5
-                          text-xs md:text-sm font-medium
-                          rounded-full border-2 transition-all duration-200
-                          ${selectedTopics.includes(topic)
-                            ? 'bg-brand-blue border-brand-blue text-white'
-                            : 'bg-transparent border-stone-300 text-stone-600 hover:border-brand-blue hover:text-brand-blue'
-                          }
-                        `}
-                      >
-                        {topic}
-                      </button>
-                    ))}
+                    {content.form.topicOptions.map((topic) => {
+                      const isSelected = selectedTopics.includes(topic);
+                      const color = topicColors[topic] || getTopicColor(topic);
+                      const colorClasses = color === 'red'
+                        ? 'bg-brand-red border-brand-red'
+                        : 'bg-brand-blue border-brand-blue';
+                      const hoverColor = color === 'red'
+                        ? 'hover:border-brand-red hover:text-brand-red'
+                        : 'hover:border-brand-blue hover:text-brand-blue';
+
+                      return (
+                        <button
+                          key={topic}
+                          type="button"
+                          onClick={() => toggleTopic(topic)}
+                          className={`
+                            px-4 py-2 md:px-5 md:py-2.5
+                            text-xs md:text-sm font-medium
+                            rounded-full border-2 transition-all duration-200
+                            ${isSelected
+                              ? `${colorClasses} text-white`
+                              : `bg-transparent border-stone-300 text-stone-600 ${hoverColor}`
+                            }
+                          `}
+                        >
+                          {topic}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 

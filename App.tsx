@@ -87,7 +87,7 @@ function App() {
     <div
       ref={scrollRef}
       onScroll={handleScroll}
-      className="h-screen w-full overflow-y-scroll md:snap-y md:snap-mandatory scroll-smooth snap-container bg-brand-light text-brand-dark"
+      className="h-screen w-full overflow-y-scroll md:snap-y md:snap-proximity scroll-smooth snap-container bg-brand-light text-brand-dark"
     >
       <Navbar
         lang={lang}

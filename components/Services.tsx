@@ -14,16 +14,16 @@ const SERVICE_BACKGROUNDS = {
 
 export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
   const servicesList = [
-    { key: 'foundations' as const, accentColor: 'border-brand-red', topicIndex: 0 },
-    { key: 'scouting' as const, accentColor: 'border-brand-red', topicIndex: 1 },
-    { key: 'specialized' as const, accentColor: 'border-brand-blue', topicIndex: 2 }
+    { key: 'foundations' as const, accentColor: 'border-brand-red', chipColor: 'red', topicIndex: 0 },
+    { key: 'scouting' as const, accentColor: 'border-brand-red', chipColor: 'red', topicIndex: 1 },
+    { key: 'specialized' as const, accentColor: 'border-brand-blue', chipColor: 'blue', topicIndex: 2 }
   ];
 
   const ctaText = lang === 'nl' ? 'Meer info' : 'Learn more';
 
-  const scrollToContact = (topicIndex: number) => {
-    // Dispatch custom event with topic index
-    window.dispatchEvent(new CustomEvent('selectTopic', { detail: { topicIndex } }));
+  const scrollToContact = (topicIndex: number, chipColor: 'red' | 'blue') => {
+    // Dispatch custom event with topic index and color
+    window.dispatchEvent(new CustomEvent('selectTopic', { detail: { topicIndex, chipColor } }));
 
     const element = document.getElementById('contact');
     if (element) {
@@ -50,7 +50,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
             return (
               <div
                 key={item.key}
-                onClick={() => scrollToContact(item.topicIndex)}
+                onClick={() => scrollToContact(item.topicIndex, item.chipColor)}
                 className={`
                   relative overflow-hidden
                   h-[220px] md:h-[320px]
