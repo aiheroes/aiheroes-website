@@ -7,15 +7,35 @@ interface ContactProps {
 }
 
 export const Contact: React.FC<ContactProps> = ({ content }) => {
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
-    setTimeout(() => {
-      setFormState('success');
-    }, 1500);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Add selected topics to form data
+    formData.set('topics', selectedTopics.join(', '));
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        setFormState('success');
+        form.reset();
+      } else {
+        setFormState('error');
+      }
+    } catch (error) {
+      setFormState('error');
+    }
   };
 
   const toggleTopic = (topic: string) => {
@@ -26,13 +46,14 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
     );
   };
 
-  const InputField = ({ label, type = "text", ...props }: any) => (
+  const InputField = ({ label, name, type = "text", ...props }: any) => (
     <div className="group">
       <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
         {label}
       </label>
       <input
         type={type}
+        name={name}
         className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors rounded-none"
         {...props}
       />
@@ -72,13 +93,23 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-8">
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                onSubmit={handleSubmit}
+                className="space-y-3 md:space-y-8"
+              >
+                {/* Hidden field for Netlify form detection */}
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="topics" value="" />
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8">
-                  <InputField label={content.form.name} required id="name" />
-                  <InputField label={content.form.email} required type="email" id="email" />
+                  <InputField label={content.form.name} name="name" required />
+                  <InputField label={content.form.email} name="email" required type="email" />
                 </div>
 
-                <InputField label={content.form.org} id="org" />
+                <InputField label={content.form.org} name="organization" />
 
                 {/* Topic Chips */}
                 <div>
@@ -112,17 +143,25 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                     {content.form.message}
                   </label>
                   <textarea
+                    name="message"
                     rows={2}
                     className="w-full bg-transparent border-b border-stone-300 py-0.5 md:py-2 text-sm md:text-lg font-serif text-brand-dark focus:border-brand-blue focus:outline-none transition-colors resize-none rounded-none"
-                    id="message"
                   />
                 </div>
+
+                {formState === 'error' && (
+                  <p className="text-brand-red text-sm">Something went wrong. Please try again or email us directly.</p>
+                )}
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
                   <span className="text-[8px] md:text-[10px] text-stone-400">
                      {content.educationNote}
                   </span>
-                  <button disabled={formState === 'submitting'} type="submit" className="w-full sm:w-auto bg-brand-dark text-white px-6 py-2 md:px-8 md:py-3 uppercase tracking-widest text-[10px] md:text-xs font-bold hover:bg-brand-red transition-colors duration-300">
+                  <button
+                    disabled={formState === 'submitting'}
+                    type="submit"
+                    className="w-full sm:w-auto bg-brand-dark text-white px-6 py-2 md:px-8 md:py-3 uppercase tracking-widest text-[10px] md:text-xs font-bold hover:bg-brand-red transition-colors duration-300 disabled:opacity-50"
+                  >
                      {formState === 'submitting' ? '...' : content.form.submit}
                   </button>
                 </div>
