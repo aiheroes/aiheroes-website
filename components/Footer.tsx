@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Content, Language } from '../types';
 import { Logo } from './Logo';
 
@@ -43,9 +44,9 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang }) =
             <ul className="space-y-2">
               {nav.services.children?.map((item, idx) => (
                 <li key={idx}>
-                  <a href={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -57,16 +58,18 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang }) =
             <ul className="space-y-2">
               {nav.about.children?.map((item, idx) => (
                 <li key={idx}>
-                  <a href={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
-              <li>
-                <a href={nav.resources.href} className="text-stone-400 hover:text-white transition-colors text-sm">
-                   {nav.resources.label}
-                </a>
-              </li>
+              {nav.resources.children?.map((item, idx) => (
+                <li key={`resource-${idx}`}>
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <button onClick={() => scrollTo('#contact')} className="text-stone-400 hover:text-white transition-colors text-sm text-left">
                    {nav.contact.label}
@@ -75,25 +78,31 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang }) =
             </ul>
           </div>
 
-          {/* Legal & Social */}
+          {/* Case Studies & Legal */}
           <div>
-            <h4 className="font-serif text-lg mb-4 text-white">Connect</h4>
+            <h4 className="font-serif text-lg mb-4 text-white">{content.caseStudies.title}</h4>
             <ul className="space-y-2 mb-6">
               <li>
-                 <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white transition-colors text-sm">LinkedIn</a>
+                <Link to={`/${lang}/cases/medux`} className="text-stone-400 hover:text-white transition-colors text-sm">Medux</Link>
               </li>
               <li>
-                 <a href="mailto:hello@aiheroes.io" className="text-stone-400 hover:text-white transition-colors text-sm">hello@aiheroes.io</a>
+                <Link to={`/${lang}/cases/olx`} className="text-stone-400 hover:text-white transition-colors text-sm">OLX</Link>
+              </li>
+              <li>
+                <Link to={`/${lang}/cases/trabu`} className="text-stone-400 hover:text-white transition-colors text-sm">Trabu</Link>
+              </li>
+              <li>
+                <Link to={`/${lang}/cases/innoenergy`} className="text-stone-400 hover:text-white transition-colors text-sm">InnoEnergy</Link>
               </li>
             </ul>
 
             <h4 className="font-serif text-lg mb-4 text-white">Legal</h4>
              <ul className="space-y-2">
               <li>
-                <a href="#" className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.privacy}</a>
+                <Link to={`/${lang}/legal/privacy`} className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.privacy}</Link>
               </li>
               <li>
-                <a href="#" className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.terms}</a>
+                <Link to={lang === 'nl' ? '/nl/legal/voorwaarden' : '/en/legal/terms'} className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.terms}</Link>
               </li>
             </ul>
           </div>

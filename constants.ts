@@ -150,8 +150,8 @@ export const CONTENT: Record<Language, Content> = {
         label: "Resources",
         href: "/en/resources",
         children: [
-          { label: "Why AI Literacy Matters", href: "/en/resources/why-ai-literacy-matters" },
-          { label: "Getting Started with AI Strategy", href: "/en/resources/getting-started" }
+          { label: "AI Literacy", href: "/en/resources/ai-literacy" },
+          { label: "AI Strategy Guide", href: "/en/resources/ai-strategy-guide" }
         ]
       },
       contact: {

@@ -29,13 +29,29 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
 
   // Generate the alternate language URL
   const getAlternateUrl = (): string => {
-    const path = location.pathname;
+    let path = location.pathname;
     if (lang === 'nl') {
       // Convert /nl/... to /en/...
-      return path.replace(/^\/nl\//, '/en/').replace('/diensten/', '/services/').replace('/over-ons/', '/about/').replace('/resources/', '/resources/');
+      path = path.replace(/^\/nl\//, '/en/')
+        .replace('/diensten/', '/services/')
+        .replace('/over-ons/', '/about/')
+        .replace('/ai-voor-developers', '/ai-for-developers')
+        .replace('/aanpak', '/approach')
+        .replace('/ai-geletterdheid', '/ai-literacy')
+        .replace('/ai-strategie-gids', '/ai-strategy-guide')
+        .replace('/voorwaarden', '/terms');
+      return path;
     } else {
       // Convert /en/... to /nl/...
-      return path.replace(/^\/en\//, '/nl/').replace('/services/', '/diensten/').replace('/about/', '/over-ons/');
+      path = path.replace(/^\/en\//, '/nl/')
+        .replace('/services/', '/diensten/')
+        .replace('/about/', '/over-ons/')
+        .replace('/ai-for-developers', '/ai-voor-developers')
+        .replace('/approach', '/aanpak')
+        .replace('/ai-literacy', '/ai-geletterdheid')
+        .replace('/ai-strategy-guide', '/ai-strategie-gids')
+        .replace('/terms', '/voorwaarden');
+      return path;
     }
   };
 
