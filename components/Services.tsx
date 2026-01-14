@@ -14,14 +14,17 @@ const SERVICE_BACKGROUNDS = {
 
 export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
   const servicesList = [
-    { key: 'foundations' as const, accentColor: 'border-brand-blue' },
-    { key: 'scouting' as const, accentColor: 'border-brand-red' },
-    { key: 'specialized' as const, accentColor: 'border-brand-red' }
+    { key: 'foundations' as const, accentColor: 'border-brand-red', topicIndex: 0 },
+    { key: 'scouting' as const, accentColor: 'border-brand-red', topicIndex: 1 },
+    { key: 'specialized' as const, accentColor: 'border-brand-blue', topicIndex: 2 }
   ];
 
   const ctaText = lang === 'nl' ? 'Meer info' : 'Learn more';
 
-  const scrollToContact = () => {
+  const scrollToContact = (topicIndex: number) => {
+    // Dispatch custom event with topic index
+    window.dispatchEvent(new CustomEvent('selectTopic', { detail: { topicIndex } }));
+
     const element = document.getElementById('contact');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -47,10 +50,10 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
             return (
               <div
                 key={item.key}
-                onClick={scrollToContact}
+                onClick={() => scrollToContact(item.topicIndex)}
                 className={`
                   relative overflow-hidden
-                  h-[180px] md:h-[280px]
+                  h-[220px] md:h-[320px]
                   border-b-4 md:border-b-8 ${item.accentColor}
                   shadow-lg hover:shadow-xl
                   transition-all duration-500
@@ -65,7 +68,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                     alt=""
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/20"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
                 </div>
 
                 {/* Content - flex column with justify-between for top/bottom alignment */}
@@ -77,11 +80,16 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                     </h3>
                   </div>
 
-                  {/* Bottom: CTA */}
-                  <span className="text-xs font-bold uppercase tracking-widest text-white group-hover:text-white transition-colors duration-300 flex items-center gap-2">
-                    {ctaText}
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
-                  </span>
+                  {/* Bottom: Description + CTA */}
+                  <div>
+                    <p className="text-white/80 text-sm md:text-base font-light leading-relaxed mb-4 line-clamp-3">
+                      {serviceData.description}
+                    </p>
+                    <span className="text-xs font-bold uppercase tracking-widest text-white group-hover:text-white transition-colors duration-300 flex items-center gap-2">
+                      {ctaText}
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             );

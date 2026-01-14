@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Content } from '../types';
 import { Check } from 'lucide-react';
 
@@ -15,6 +15,19 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
     organization: '',
     message: ''
   });
+
+  // Listen for topic selection from Services
+  useEffect(() => {
+    const handleSelectTopic = (e: CustomEvent<{ topicIndex: number }>) => {
+      const topic = content.form.topicOptions[e.detail.topicIndex];
+      if (topic && !selectedTopics.includes(topic)) {
+        setSelectedTopics([topic]);
+      }
+    };
+
+    window.addEventListener('selectTopic', handleSelectTopic as EventListener);
+    return () => window.removeEventListener('selectTopic', handleSelectTopic as EventListener);
+  }, [content.form.topicOptions, selectedTopics]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

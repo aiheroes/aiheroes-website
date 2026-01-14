@@ -65,24 +65,16 @@ export const CONTENT: Record<Language, Content> = {
       p2: "Elke organisatie is anders.\nEen marketingteam zit met andere vragen dan een IT-afdeling.\nEen startup werkt anders dan een gemeente. Daar houden we rekening mee."
     },
     team: {
-      title: "Wie we zijn",
-      intro: "Wij zijn Frans, Jan en David.\nWe helpen je verder als je vastloopt met AI.",
+      title: "Wij zijn Frans, Jan en David",
+      intro: "Sinds 2019 helpen we bedrijven verder waar ze vastlopen met AI.",
       slides: [
         {
           image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=2000",
           alt: "Workshop presentatie"
         },
         {
-          image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=2000",
-          alt: "Spreker op podium"
-        },
-        {
           image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&q=80&w=2000",
           alt: "Team workshop"
-        },
-        {
-          image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2000",
-          alt: "Groepssessie"
         }
       ]
     },
@@ -196,24 +188,16 @@ export const CONTENT: Record<Language, Content> = {
       p2: "Every organization is different.\nA marketing team has different questions than an IT department.\nA startup works differently than a municipality. We take that into account."
     },
     team: {
-      title: "Who we are",
-      intro: "We are Frans, Jan and David.\nWe help you move forward when you get stuck with AI.",
+      title: "We are Frans, Jan and David",
+      intro: "Since 2019 we help companies move forward where they get stuck with AI.",
       slides: [
         {
           image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=2000",
           alt: "Workshop presentation"
         },
         {
-          image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=2000",
-          alt: "Speaker on stage"
-        },
-        {
           image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&q=80&w=2000",
           alt: "Team workshop"
-        },
-        {
-          image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2000",
-          alt: "Group session"
         }
       ]
     },
