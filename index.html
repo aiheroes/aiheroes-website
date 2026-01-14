@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Heroes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              display: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              brand: {
+                red: '#D9534F',
+                blue: '#2563EB', // Restored a true Blue
+                taupe: '#A47E68', // The warm brown moved to its own name
+                light: '#FDFCF8',
+                dark: '#1C1917',
+                stone: '#E7E5E4',
+                sand: '#F5F5F4',
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1)',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(40px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #FDFCF8;
+      }
+      /* Hide scrollbar for clean presentation but allow functionality */
+      .snap-container {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE 10+ */
+      }
+      .snap-container::-webkit-scrollbar { 
+        display: none;  /* Chrome/Safari */
+      }
+    </style>
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
