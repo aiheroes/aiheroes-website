@@ -32,8 +32,8 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
     <section id="services" className="w-full min-h-screen py-24 bg-brand-light relative flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 w-full flex flex-col justify-center">
 
-        {/* Header */}
-        <div className="mb-8 md:mb-16">
+        {/* Header - centered on desktop */}
+        <div className="mb-8 md:mb-16 md:text-center">
           <h2 className="text-3xl md:text-6xl font-serif text-brand-dark mb-1 md:mb-2">
             {content.title}
           </h2>
@@ -41,7 +41,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {servicesList.map((item, idx) => {
+          {servicesList.map((item) => {
             const serviceData = content.items[item.key];
             const bgImage = SERVICE_BACKGROUNDS[item.key];
             return (
@@ -55,7 +55,6 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                   shadow-lg hover:shadow-xl
                   transition-all duration-500
                   md:hover:-translate-y-1
-                  flex flex-col justify-start
                   group cursor-pointer
                 `}
               >
@@ -69,20 +68,16 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/20"></div>
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 p-5 md:p-8">
-                  <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white/60 mb-2 block">
-                    0{idx + 1}
-                  </span>
+                {/* Content - flex column with justify-between for top/bottom alignment */}
+                <div className="relative z-10 p-5 md:p-8 h-full flex flex-col justify-between">
+                  {/* Top: Title */}
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-serif text-white leading-tight">
+                      {serviceData.title}
+                    </h3>
+                  </div>
 
-                  <h3 className="text-2xl md:text-3xl font-serif text-white mb-2 md:mb-3 leading-tight">
-                    {serviceData.title}
-                  </h3>
-
-                  <p className="text-white/80 text-sm md:text-base font-light leading-relaxed mb-4 line-clamp-3 md:line-clamp-none">
-                    {serviceData.description}
-                  </p>
-
+                  {/* Bottom: CTA */}
                   <span className="text-xs font-bold uppercase tracking-widest text-white group-hover:text-white transition-colors duration-300 flex items-center gap-2">
                     {ctaText}
                     <span className="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
