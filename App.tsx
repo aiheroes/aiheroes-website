@@ -1,11 +1,32 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // If there's a hash, scroll to that element
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Otherwise scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
 import { HomePage } from './pages/HomePage';
 
 // Dutch Service Pages
 import { AIFoundationsNL } from './pages/nl/diensten/AIFoundations';
 import { OpportunityScoutingNL } from './pages/nl/diensten/OpportunityScouting';
-import { ChatGPTBasicsNL } from './pages/nl/diensten/ChatGPTBasics';
+import { CopilotBasicsNL } from './pages/nl/diensten/CopilotBasics';
 import { AIVoorDevelopersNL } from './pages/nl/diensten/AIVoorDevelopers';
 import { AIPrivacySecurityNL } from './pages/nl/diensten/AIPrivacySecurity';
 import { AIMediaLiteracyNL } from './pages/nl/diensten/AIMediaLiteracy';
@@ -13,7 +34,7 @@ import { AIMediaLiteracyNL } from './pages/nl/diensten/AIMediaLiteracy';
 // English Service Pages
 import { AIFoundationsEN } from './pages/en/services/AIFoundations';
 import { OpportunityScoutingEN } from './pages/en/services/OpportunityScouting';
-import { ChatGPTBasicsEN } from './pages/en/services/ChatGPTBasics';
+import { CopilotBasicsEN } from './pages/en/services/CopilotBasics';
 import { AIForDevelopersEN } from './pages/en/services/AIForDevelopers';
 import { AIPrivacySecurityEN } from './pages/en/services/AIPrivacySecurity';
 import { AIMediaLiteracyEN } from './pages/en/services/AIMediaLiteracy';
@@ -54,9 +75,17 @@ import { VoorwaardenNL } from './pages/nl/legal/Voorwaarden';
 import { PrivacyEN } from './pages/en/legal/Privacy';
 import { TermsEN } from './pages/en/legal/Terms';
 
+// Press/Media Pages
+import { PersNL } from './pages/nl/Pers';
+import { PressEN } from './pages/en/Press';
+
+// Internal Pages (hidden from public navigation)
+import { LinkedInPosts } from './pages/internal/LinkedInPosts';
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Homepage with dynamic language switching */}
         <Route path="/" element={<HomePage />} />
@@ -64,7 +93,7 @@ function App() {
         {/* Dutch Service Pages */}
         <Route path="/nl/diensten/ai-foundations" element={<AIFoundationsNL />} />
         <Route path="/nl/diensten/opportunity-scouting" element={<OpportunityScoutingNL />} />
-        <Route path="/nl/diensten/chatgpt-basics" element={<ChatGPTBasicsNL />} />
+        <Route path="/nl/diensten/copilot-basics" element={<CopilotBasicsNL />} />
         <Route path="/nl/diensten/ai-voor-developers" element={<AIVoorDevelopersNL />} />
         <Route path="/nl/diensten/ai-privacy-security" element={<AIPrivacySecurityNL />} />
         <Route path="/nl/diensten/ai-media-literacy" element={<AIMediaLiteracyNL />} />
@@ -72,7 +101,7 @@ function App() {
         {/* English Service Pages */}
         <Route path="/en/services/ai-foundations" element={<AIFoundationsEN />} />
         <Route path="/en/services/opportunity-scouting" element={<OpportunityScoutingEN />} />
-        <Route path="/en/services/chatgpt-basics" element={<ChatGPTBasicsEN />} />
+        <Route path="/en/services/copilot-basics" element={<CopilotBasicsEN />} />
         <Route path="/en/services/ai-for-developers" element={<AIForDevelopersEN />} />
         <Route path="/en/services/ai-privacy-security" element={<AIPrivacySecurityEN />} />
         <Route path="/en/services/ai-media-literacy" element={<AIMediaLiteracyEN />} />
@@ -112,6 +141,13 @@ function App() {
         {/* English Legal Pages */}
         <Route path="/en/legal/privacy" element={<PrivacyEN />} />
         <Route path="/en/legal/terms" element={<TermsEN />} />
+
+        {/* Press/Media Pages */}
+        <Route path="/nl/pers" element={<PersNL />} />
+        <Route path="/en/press" element={<PressEN />} />
+
+        {/* Internal Pages (hidden from public navigation) */}
+        <Route path="/internal/linkedin-posts" element={<LinkedInPosts />} />
 
         {/* Fallback to homepage */}
         <Route path="*" element={<HomePage />} />

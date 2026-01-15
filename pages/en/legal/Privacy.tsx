@@ -6,7 +6,7 @@ export const PrivacyEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Privacy Policy"
-      subtitle="How we handle your data. Last updated: January 2025."
+      subtitle="How we handle your data. Last updated: January 2026."
       accentColor="blue"
       showContactForm={false}
     >
@@ -110,13 +110,13 @@ export const PrivacyEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Have questions about your privacy or want to exercise one of your rights? Contact us at privacy@aiheroes.io.
+          Have questions about your privacy or want to exercise one of your rights? Contact us at hello@aiheroes.io.
         </p>
 
         <div className="bg-brand-dark text-white p-6 md:p-8">
           <h3 className="text-xl font-serif mb-3">Data Controller</h3>
           <p className="text-white/80 leading-relaxed">
-            AI Heroes B.V. is responsible for the processing of personal data as described in this privacy policy. We are based in the Netherlands and fall under Dutch and European privacy legislation.
+            AI Heroes is responsible for the processing of personal data as described in this privacy policy. We are based in the Netherlands and fall under Dutch and European privacy legislation.
           </p>
         </div>
       </div>

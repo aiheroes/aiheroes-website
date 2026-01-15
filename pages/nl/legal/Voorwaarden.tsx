@@ -6,7 +6,7 @@ export const VoorwaardenNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Algemene Voorwaarden"
-      subtitle="De spelregels voor onze samenwerking. Laatst bijgewerkt: januari 2025."
+      subtitle="De spelregels voor onze samenwerking. Laatst bijgewerkt: januari 2026."
       accentColor="red"
       showContactForm={false}
     >
@@ -20,7 +20,7 @@ export const VoorwaardenNL: React.FC = () => {
         </p>
 
         <ul className="text-stone-600 leading-relaxed mb-8 space-y-2">
-          <li><strong>AI Heroes:</strong> AI Heroes B.V., gevestigd te Nederland, KvK-nummer [nummer]</li>
+          <li><strong>AI Heroes:</strong> AI Heroes, handelsnaam van Lucidium, gevestigd te Nederland, KvK-nummer 78738105</li>
           <li><strong>Opdrachtgever:</strong> De natuurlijke of rechtspersoon die met AI Heroes een overeenkomst aangaat</li>
           <li><strong>Diensten:</strong> Alle werkzaamheden die AI Heroes voor opdrachtgever verricht, waaronder workshops, trainingen, advies en softwareontwikkeling</li>
         </ul>

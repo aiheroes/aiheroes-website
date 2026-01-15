@@ -6,7 +6,7 @@ export const PrivacyNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Privacybeleid"
-      subtitle="Hoe wij omgaan met je gegevens. Laatst bijgewerkt: januari 2025."
+      subtitle="Hoe wij omgaan met je gegevens. Laatst bijgewerkt: januari 2026."
       accentColor="blue"
       showContactForm={false}
     >
@@ -110,13 +110,13 @@ export const PrivacyNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via privacy@aiheroes.io.
+          Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via hello@aiheroes.io.
         </p>
 
         <div className="bg-brand-dark text-white p-6 md:p-8">
           <h3 className="text-xl font-serif mb-3">Verantwoordelijke</h3>
           <p className="text-white/80 leading-relaxed">
-            AI Heroes B.V. is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. We zijn gevestigd in Nederland en vallen onder de Nederlandse en Europese privacywetgeving.
+            AI Heroes is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. We zijn gevestigd in Nederland en vallen onder de Nederlandse en Europese privacywetgeving.
           </p>
         </div>
       </div>

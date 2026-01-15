@@ -9,7 +9,7 @@ export const CONTENT: Record<Language, Content> = {
         children: [
           { label: "AI Foundations", href: "/nl/diensten/ai-foundations" },
           { label: "Opportunity Scouting", href: "/nl/diensten/opportunity-scouting" },
-          { label: "ChatGPT Basics", href: "/nl/diensten/chatgpt-basics" },
+          { label: "Copilot Basics", href: "/nl/diensten/copilot-basics" },
           { label: "AI voor Developers", href: "/nl/diensten/ai-voor-developers" },
           { label: "AI Privacy & Security", href: "/nl/diensten/ai-privacy-security" },
           { label: "AI Media Literacy", href: "/nl/diensten/ai-media-literacy" }
@@ -47,11 +47,11 @@ export const CONTENT: Record<Language, Content> = {
       items: {
         foundations: {
           title: "AI Foundations",
-          description: "Onze kernworkshop. We komen langs en werken met je team tot iedereen het snapt. Geen zweverig gedoe, maar concrete tools."
+          description: "Onze kernworkshop. We komen bij je langs en werken met je team tot iedereen het snapt. Zo maak je snel stappen met AI."
         },
         scouting: {
           title: "Opportunity Scouting",
-          description: "Waar laat je geld liggen? We analyseren je processen en komen terug met een roadmap voor AI-implementatie die direct rendeert."
+          description: "Waar laat je geld liggen? We analyseren je processen en komen terug met een roadmap voor AI-implementatie."
         },
         specialized: {
           title: "Specialistische Tracks",
@@ -120,7 +120,7 @@ export const CONTENT: Record<Language, Content> = {
         privacy: "Privacy Policy",
         terms: "Algemene Voorwaarden"
       },
-      copyright: "© 2025 AI Heroes",
+      copyright: "© 2026 AI Heroes",
       madeIn: "| Met trots gemaakt in Groningen"
     }
   },
@@ -132,7 +132,7 @@ export const CONTENT: Record<Language, Content> = {
         children: [
           { label: "AI Foundations", href: "/en/services/ai-foundations" },
           { label: "Opportunity Scouting", href: "/en/services/opportunity-scouting" },
-          { label: "ChatGPT Basics", href: "/en/services/chatgpt-basics" },
+          { label: "Copilot Basics", href: "/en/services/copilot-basics" },
           { label: "AI for Developers", href: "/en/services/ai-for-developers" },
           { label: "AI Privacy & Security", href: "/en/services/ai-privacy-security" },
           { label: "AI Media Literacy", href: "/en/services/ai-media-literacy" }
@@ -161,7 +161,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       headline: "AI <red>works</red> if you\nknow <blue>how</blue>",
-      subhead: "We give workshops.\nPractical ones, where people actually learn something.\nSkills that work for you.",
+      subhead: "We give practical workshops that actually help.\nSkills to work for you.",
       primaryBtn: "Let's talk",
       secondaryBtn: "What we do"
     },
@@ -243,7 +243,7 @@ export const CONTENT: Record<Language, Content> = {
         privacy: "Privacy Policy",
         terms: "Terms & Conditions"
       },
-      copyright: "© 2025 AI Heroes",
+      copyright: "© 2026 AI Heroes",
       madeIn: "| Proudly made in Groningen, The Netherlands"
     }
   }

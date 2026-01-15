@@ -15,7 +15,7 @@ export const TeamEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          AI Heroes started as an idea between friends: what if we shared our AI knowledge with organizations wanting to get started? Today, we help dozens of companies with workshops, training and development.
+          Since 2019, we've trained teams at organizations like Postcodeloterij, Prosus and Banijay Benelux. Practical AI knowledge, immediately applicable.
         </p>
 
         {/* Team Members */}
@@ -23,27 +23,13 @@ export const TeamEN: React.FC = () => {
           {/* Frans */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-stone-400 text-3xl font-serif">F</div>
+              <img src="/team/frans.jpg" alt="Frans Hoorn" className="w-full h-full object-cover grayscale" />
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Jorden Hoorn</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner</p>
+              <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · AI Strategy</p>
               <p className="text-stone-600 leading-relaxed">
-                Frans combines technical depth with the ability to explain complex matters simply. He delivers most workshops and is often the first point of contact for new clients. Previously, he worked as a software engineer and product manager at various tech startups.
-              </p>
-            </div>
-          </div>
-
-          {/* Jan */}
-          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-            <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-stone-400 text-3xl font-serif">J</div>
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner</p>
-              <p className="text-stone-600 leading-relaxed">
-                Jan is our technical deep-diver. When something needs to be built, he's the one designing the architecture and writing the code. He delivers the developer-focused workshops and leads our development projects. His background is in machine learning and data engineering.
+                Background in UX/UI Design. Specializes in AI strategy, prompt engineering and translating complex technology into practical applications.
               </p>
             </div>
           </div>
@@ -51,46 +37,52 @@ export const TeamEN: React.FC = () => {
           {/* David */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-stone-400 text-3xl font-serif">D</div>
+              <img src="/team/david.jpg" alt="David Homan" className="w-full h-full object-cover grayscale" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · Future of Work</p>
               <p className="text-stone-600 leading-relaxed">
-                David brings the business perspective. He helps organizations determine where AI truly adds value and where it's mostly hype. With his experience in strategy and operations, he ensures our solutions actually get implemented.
+                Studied AI and Philosophy. Specializes in how AI transforms the way we work, low-code/no-code solutions and AI-assisted development.
+              </p>
+            </div>
+          </div>
+
+          {/* Jan */}
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+            <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
+              <img src="/team/jan.png" alt="Jan Brusse" className="w-full h-full object-cover grayscale -scale-x-100" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · Technical AI</p>
+              <p className="text-stone-600 leading-relaxed">
+                Experienced AI Trainer. Specializes in technical implementations: building agents, training models and custom AI integrations.
               </p>
             </div>
           </div>
         </div>
 
         {/* Advisor */}
-        <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
-          <h3 className="text-xl font-serif text-brand-dark mb-4">Industry Advisor</h3>
+        <div className="border-t border-stone-200 pt-8 mb-12">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-20 h-20 bg-stone-200 rounded-full overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center text-stone-400 text-2xl font-serif">J</div>
+              <img src="/team/joseph.png" alt="Joseph Groot Kormelink" className="w-full h-full object-cover grayscale" />
             </div>
             <div className="flex-1">
-              <h4 className="text-lg font-serif text-brand-dark mb-1">Joseph Groot Kormelink</h4>
-              <p className="text-stone-600 leading-relaxed">
-                Joseph advises us from his experience in the corporate world. He helps us speak the language of large organizations and ensures our solutions fit enterprise requirements.
+              <h3 className="text-lg font-serif text-brand-dark mb-1">Joseph Groot Kormelink</h3>
+              <p className="text-brand-blue font-medium mb-2 text-sm">Industry Advisor</p>
+              <p className="text-stone-600 leading-relaxed text-sm">
+                Well-known in Amsterdam's AI and startup scene. Advises on enterprise matters.
               </p>
             </div>
           </div>
         </div>
 
-        <h3 className="text-xl font-serif text-brand-dark mb-4">Our clients</h3>
-        <p className="text-stone-600 leading-relaxed mb-6">
-          We work with organizations of all sizes, from startups to multinationals. Some of our clients:
-        </p>
-        <p className="text-stone-600 leading-relaxed mb-8">
-          Postcodeloterij, Banijay Benelux, Locatiqs, Prosus, Medux, Hanze University of Applied Sciences
-        </p>
-
         <div className="bg-brand-dark text-white p-6 md:p-8">
-          <h3 className="text-xl font-serif mb-3">Work with us?</h3>
+          <h3 className="text-xl font-serif mb-3">Work together?</h3>
           <p className="text-white/80 leading-relaxed">
-            We're always looking for interesting projects and collaborations. Whether you want to book a workshop, build an AI solution, or just brainstorm about possibilities - get in touch.
+            Whether you want to book a workshop or explore possibilities — get in touch.
           </p>
         </div>
       </div>

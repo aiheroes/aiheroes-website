@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Content, Language } from '../types';
 import { Logo } from './Logo';
 
@@ -12,6 +12,9 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alternateUrl }) => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const scrollTo = (href: string) => {
     if (href.startsWith('#')) {
        const element = document.getElementById(href.substring(1));
@@ -20,6 +23,9 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
        }
     }
   };
+
+  const pressUrl = lang === 'nl' ? '/nl/pers' : '/en/press';
+  const pressLabel = lang === 'nl' ? 'Pers' : 'Press';
 
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-8 mt-auto border-t border-stone-800">
@@ -50,6 +56,13 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                   </Link>
                 </li>
               ))}
+              {nav.resources.children?.map((item, idx) => (
+                <li key={`resource-${idx}`}>
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -64,17 +77,21 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                   </Link>
                 </li>
               ))}
-              {nav.resources.children?.map((item, idx) => (
-                <li key={`resource-${idx}`}>
-                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
               <li>
-                <button onClick={() => scrollTo('#contact')} className="text-stone-400 hover:text-white transition-colors text-sm text-left">
-                   {nav.contact.label}
-                </button>
+                <Link to={pressUrl} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {pressLabel}
+                </Link>
+              </li>
+              <li>
+                {isHomePage ? (
+                  <button onClick={() => scrollTo('#contact')} className="text-stone-400 hover:text-white transition-colors text-sm text-left">
+                    {nav.contact.label}
+                  </button>
+                ) : (
+                  <Link to="/#contact" className="text-stone-400 hover:text-white transition-colors text-sm">
+                    {nav.contact.label}
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

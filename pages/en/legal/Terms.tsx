@@ -6,7 +6,7 @@ export const TermsEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Terms of Service"
-      subtitle="The ground rules for our collaboration. Last updated: January 2025."
+      subtitle="The ground rules for our collaboration. Last updated: January 2026."
       accentColor="red"
       showContactForm={false}
     >
@@ -20,7 +20,7 @@ export const TermsEN: React.FC = () => {
         </p>
 
         <ul className="text-stone-600 leading-relaxed mb-8 space-y-2">
-          <li><strong>AI Heroes:</strong> AI Heroes B.V., registered in the Netherlands</li>
+          <li><strong>AI Heroes:</strong> AI Heroes, a trade name of Lucidium, registered in the Netherlands, Chamber of Commerce number 78738105</li>
           <li><strong>Client:</strong> The natural or legal person entering into an agreement with AI Heroes</li>
           <li><strong>Services:</strong> All work performed by AI Heroes for the client, including workshops, training, consulting, and software development</li>
         </ul>
