@@ -11,7 +11,7 @@ export const CONTENT: Record<Language, Content> = {
           { label: "Opportunity Scouting", href: "/nl/diensten/opportunity-scouting", description: "Vind waar AI waarde creëert", category: "strategy" },
           { label: "Copilot Basics", href: "/nl/diensten/copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
           { label: "AI voor Developers", href: "/nl/diensten/ai-voor-developers", description: "Technische implementatie", category: "training" },
-          { label: "Specialistische Tracks", href: "/#services", description: "Advanced prompting & LLM-integraties", category: "training" },
+          { label: "Specialistische Tracks", href: "/#services", description: "Advanced prompting & LLM-integraties", category: "bespoke" },
           { label: "AI Privacy & Security", href: "/nl/diensten/ai-privacy-security", description: "Governance & risicobeheer", category: "awareness" },
           { label: "AI Media Literacy", href: "/nl/diensten/ai-media-literacy", description: "Deepfakes & desinformatie", category: "awareness" }
         ]
@@ -28,8 +28,8 @@ export const CONTENT: Record<Language, Content> = {
         label: "Resources",
         href: "/nl/resources",
         children: [
-          { label: "Waarom AI Geletterdheid Ertoe Doet", href: "/nl/resources/ai-geletterdheid", description: "Het belang van organisatiebrede AI-kennis" },
-          { label: "AI Strategie Starter Gids", href: "/nl/resources/ai-strategie-gids", description: "Aan de slag met strategische AI-planning" }
+          { label: "AI Geletterdheid", href: "/nl/resources/ai-geletterdheid", description: "Waarom het ertoe doet" },
+          { label: "AI Strategie Gids", href: "/nl/resources/ai-strategie-gids", description: "Aan de slag met AI-planning" }
         ]
       },
       contact: {
@@ -135,7 +135,7 @@ export const CONTENT: Record<Language, Content> = {
           { label: "Opportunity Scouting", href: "/en/services/opportunity-scouting", description: "Find where AI creates value", category: "strategy" },
           { label: "Copilot Basics", href: "/en/services/copilot-basics", description: "Microsoft 365 productivity", category: "training" },
           { label: "AI for Developers", href: "/en/services/ai-for-developers", description: "Technical implementation", category: "training" },
-          { label: "Specialized Tracks", href: "/#services", description: "Advanced prompting & LLM integrations", category: "training" },
+          { label: "Specialized Tracks", href: "/#services", description: "Advanced prompting & LLM integrations", category: "bespoke" },
           { label: "AI Privacy & Security", href: "/en/services/ai-privacy-security", description: "Governance & risk management", category: "awareness" },
           { label: "AI Media Literacy", href: "/en/services/ai-media-literacy", description: "Deepfakes & misinformation", category: "awareness" }
         ]

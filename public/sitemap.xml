@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://aiheroes.io/</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiheroes.io/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Services - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-foundations</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-foundations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-foundations"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/opportunity-scouting</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/opportunity-scouting"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/opportunity-scouting"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/copilot-basics</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/copilot-basics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/copilot-basics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-voor-developers</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-voor-developers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-for-developers"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-privacy-security</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-privacy-security"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-privacy-security"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-media-literacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-media-literacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-media-literacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Services - English -->
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-foundations</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-foundations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-foundations"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/opportunity-scouting</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/opportunity-scouting"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/opportunity-scouting"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/copilot-basics</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/copilot-basics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/copilot-basics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-for-developers</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-voor-developers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-for-developers"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-privacy-security</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-privacy-security"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-privacy-security"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-media-literacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-media-literacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-media-literacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/over-ons/aanpak</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/over-ons/aanpak"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/about/approach"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/over-ons/team</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/over-ons/team"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/about/team"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- About - English -->
+  <url>
+    <loc>https://aiheroes.io/en/about/approach</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/over-ons/aanpak"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/about/approach"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/about/team</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/over-ons/team"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/about/team"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Resources - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/resources/ai-geletterdheid</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/resources/ai-geletterdheid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/resources/ai-literacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/resources/ai-strategie-gids</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/resources/ai-strategie-gids"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/resources/ai-strategy-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Resources - English -->
+  <url>
+    <loc>https://aiheroes.io/en/resources/ai-literacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/resources/ai-geletterdheid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/resources/ai-literacy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/resources/ai-strategy-guide</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/resources/ai-strategie-gids"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/resources/ai-strategy-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Case Studies - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/cases/medux</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/medux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/medux"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/cases/olx</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/olx"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/olx"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/cases/trabu</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/trabu"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/trabu"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/cases/innoenergy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/innoenergy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/innoenergy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Case Studies - English -->
+  <url>
+    <loc>https://aiheroes.io/en/cases/medux</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/medux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/medux"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/cases/olx</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/olx"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/olx"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/cases/trabu</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/trabu"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/trabu"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/cases/innoenergy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/cases/innoenergy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/cases/innoenergy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Press -->
+  <url>
+    <loc>https://aiheroes.io/nl/pers</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/pers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/press"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/press</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/pers"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/press"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Legal - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/legal/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/legal/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/legal/privacy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/legal/voorwaarden</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/legal/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/legal/terms"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Legal - English -->
+  <url>
+    <loc>https://aiheroes.io/en/legal/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/legal/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/legal/privacy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/legal/terms</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/legal/voorwaarden"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/legal/terms"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

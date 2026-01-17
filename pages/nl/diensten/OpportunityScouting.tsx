@@ -7,6 +7,7 @@ export const OpportunityScoutingNL: React.FC = () => {
       lang="nl"
       title="Opportunity Scouting"
       subtitle="Waar laat je geld liggen? We analyseren je processen en komen terug met een roadmap die direct rendeert."
+      seoDescription="AI Opportunity Scouting: ontdek waar AI waarde toevoegt in jouw organisatie. Strategische analyse met concrete roadmap en ROI-berekening. 2-3 weken traject door AI Heroes."
       accentColor="red"
     >
       <div className="prose prose-lg max-w-none">

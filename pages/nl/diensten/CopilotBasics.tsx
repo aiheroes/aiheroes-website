@@ -7,6 +7,7 @@ export const CopilotBasicsNL: React.FC = () => {
       lang="nl"
       title="Copilot Basics"
       subtitle="De snelste manier om productief te worden met Microsoft Copilot. Van beginner naar power user in een middag."
+      seoDescription="Microsoft Copilot training: leer effectief werken met Copilot in Word, Excel, Teams en Outlook. Halve dag workshop voor direct resultaat. Boek bij AI Heroes."
       accentColor="red"
     >
       <div className="prose prose-lg max-w-none">

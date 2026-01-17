@@ -5,12 +5,14 @@ import { CONTENT } from '../constants';
 import { PageContactForm } from './PageContactForm';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
+import { useSEO } from '../hooks/useSEO';
 
 interface PageLayoutProps {
   children: React.ReactNode;
   lang: Language;
   title: string;
   subtitle?: string;
+  seoDescription?: string;
   accentColor?: 'red' | 'blue';
   showContactForm?: boolean;
 }
@@ -20,10 +22,20 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   lang,
   title,
   subtitle,
+  seoDescription,
   accentColor = 'red',
   showContactForm = true
 }) => {
   const location = useLocation();
+
+  // SEO - use provided description or fall back to subtitle or generic
+  const description = seoDescription || subtitle || `${title} - AI Heroes`;
+  useSEO({
+    title,
+    description,
+    lang,
+    path: location.pathname
+  });
   const content = CONTENT[lang];
   const heroRef = useRef<HTMLElement>(null);
   const footerRef = useRef<HTMLElement>(null);

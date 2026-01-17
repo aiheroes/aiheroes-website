@@ -1,0 +1,9 @@
+# AI Heroes - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://aiheroes.io/sitemap.xml
+
+# Disallow internal/admin pages
+Disallow: /internal/

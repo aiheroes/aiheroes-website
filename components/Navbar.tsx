@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Language, Content, NavChild } from '../types';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -34,7 +34,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileExpanded, setMobileExpanded] = useState<DropdownType>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
+
+  // Handle hash navigation after arriving at homepage
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash === '#contact') {
+      setTimeout(() => {
+        const element = document.getElementById('contact');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -62,21 +75,22 @@ export const Navbar: React.FC<NavbarProps> = ({
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      window.location.href = '/#contact';
+      navigate('/#contact');
     }
   };
 
   // Category labels for mega-menu
   const categoryLabels = lang === 'nl'
-    ? { training: 'Training', strategy: 'Strategie', awareness: 'Bewustwording & Compliance' }
-    : { training: 'Training', strategy: 'Strategy', awareness: 'Awareness & Compliance' };
+    ? { training: 'Training', strategy: 'Strategie', awareness: 'Bewustwording & Compliance', bespoke: 'Maatwerk' }
+    : { training: 'Training', strategy: 'Strategy', awareness: 'Awareness & Compliance', bespoke: 'Bespoke' };
 
   // Group services by category
   const groupServicesByCategory = (services: NavChild[]) => {
     const training = services.filter(s => s.category === 'training');
     const strategy = services.filter(s => s.category === 'strategy');
     const awareness = services.filter(s => s.category === 'awareness');
-    return { training, strategy, awareness };
+    const bespoke = services.filter(s => s.category === 'bespoke');
+    return { training, strategy, awareness, bespoke };
   };
 
   // Background styles based on theme
@@ -107,13 +121,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const bottomClipPath = splitPosition !== null ? `inset(${splitPosition}% 0 0 0)` : undefined;
 
   // Dropdown item component
-  const DropdownItem: React.FC<{ item: NavChild; onClick?: () => void }> = ({ item, onClick }) => (
+  const DropdownItem: React.FC<{ item: NavChild; onClick?: () => void; hoverColor?: 'red' | 'blue' }> = ({ item, onClick, hoverColor = 'red' }) => (
     <Link
       to={item.href}
       onClick={onClick}
       className="block px-3 py-2 hover:bg-stone-100 rounded transition-colors group"
     >
-      <span className="font-medium text-sm text-brand-dark group-hover:text-brand-red transition-colors">
+      <span className={`font-medium text-sm text-brand-dark transition-colors ${hoverColor === 'blue' ? 'group-hover:text-brand-blue' : 'group-hover:text-brand-red'}`}>
         {item.label}
       </span>
       {item.description && (
@@ -130,7 +144,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     const grouped = groupServicesByCategory(services);
 
     return (
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-lg shadow-xl border border-stone-200 w-[500px] p-5 z-50">
+      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+        <div className="bg-white rounded-lg shadow-xl border border-stone-200 w-[500px] p-5">
         <div className="grid grid-cols-2 gap-4">
           {/* Training Column */}
           <div>
@@ -144,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Strategy Column */}
+          {/* Strategy & Bespoke Column */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 px-3">
               {categoryLabels.strategy}
@@ -153,6 +168,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               {grouped.strategy.map((item, idx) => (
                 <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
               ))}
+            </div>
+
+            {/* Bespoke - below strategy with blue hover */}
+            <div className="border-t border-stone-200 mt-4 pt-4">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 px-3">
+                {categoryLabels.bespoke}
+              </h3>
+              <div className="space-y-0.5">
+                {grouped.bespoke.map((item, idx) => (
+                  <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} hoverColor="blue" />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -168,20 +195,23 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
         </div>
+        </div>
       </div>
     );
   };
 
   // Simple dropdown for About and Resources
   const SimpleDropdown: React.FC<{ items: NavChild[] }> = ({ items }) => (
-    <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-stone-200 min-w-[280px] py-2 z-50">
-      {items.map((item, idx) => (
-        <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
-      ))}
+    <div className="absolute top-full left-0 pt-2 z-50">
+      <div className="bg-white rounded-lg shadow-xl border border-stone-200 min-w-[280px] py-2">
+        {items.map((item, idx) => (
+          <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
+        ))}
+      </div>
     </div>
   );
 
-  // Desktop nav button with dropdown
+  // Desktop nav button with dropdown (hover to open)
   const NavDropdownButton: React.FC<{
     label: string;
     type: DropdownType;
@@ -191,9 +221,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     const textColorClass = theme === 'dark' ? 'text-white' : 'text-brand-dark';
 
     return (
-      <div className="relative">
+      <div
+        className="relative"
+        onMouseEnter={() => setOpenDropdown(type)}
+        onMouseLeave={() => setOpenDropdown(null)}
+      >
         <button
-          onClick={() => setOpenDropdown(isOpen ? null : type)}
           className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
         >
           {label}
@@ -303,6 +336,105 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
+  // Mobile services accordion with categories
+  const MobileServicesAccordion: React.FC = () => {
+    const isExpanded = mobileExpanded === 'services';
+    const services = content.services.children || [];
+    const grouped = groupServicesByCategory(services);
+
+    return (
+      <div className="border-b border-stone-200">
+        <button
+          onClick={() => setMobileExpanded(isExpanded ? null : 'services')}
+          className="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark"
+        >
+          {content.services.label}
+          <ChevronDown className={`w-6 h-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+        </button>
+
+        {isExpanded && (
+          <div className="pb-4 pl-4 space-y-4">
+            {/* Training */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+                {categoryLabels.training}
+              </h4>
+              <div className="space-y-2">
+                {grouped.training.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={item.href}
+                    className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Strategy */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+                {categoryLabels.strategy}
+              </h4>
+              <div className="space-y-2">
+                {grouped.strategy.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={item.href}
+                    className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Awareness & Compliance */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+                {categoryLabels.awareness}
+              </h4>
+              <div className="space-y-2">
+                {grouped.awareness.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={item.href}
+                    className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Bespoke - blue hover */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+                {categoryLabels.bespoke}
+              </h4>
+              <div className="space-y-2">
+                {grouped.bespoke.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={item.href}
+                    className="block text-lg text-stone-600 hover:text-brand-blue transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   // Determine the single-layer theme
   const singleLayerTheme: 'dark' | 'light' = textColor === 'white' ? 'dark' : 'light';
 
@@ -347,11 +479,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-24 px-6 overflow-y-auto`}>
         <div className="max-w-md mx-auto">
           {/* Accordion Sections */}
-          <MobileAccordion
-            label={content.services.label}
-            type="services"
-            items={content.services.children || []}
-          />
+          <MobileServicesAccordion />
           <MobileAccordion
             label={content.about.label}
             type="about"

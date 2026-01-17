@@ -9,6 +9,7 @@ import { Team } from '../components/Team';
 import { SocialProof } from '../components/SocialProof';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
+import { useSEO } from '../hooks/useSEO';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 
@@ -35,6 +36,18 @@ const SECTIONS: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'footer', theme: 'dark' },
 ];
 
+// SEO content per language
+const SEO_CONTENT = {
+  nl: {
+    title: 'Praktische AI Workshops & Training',
+    description: 'Wij geven praktische AI workshops waar je iets aan hebt. Van AI Foundations tot Copilot training - skills die voor je werken. Sinds 2019 trainen we teams bij Postcodeloterij, Prosus en meer.'
+  },
+  en: {
+    title: 'Practical AI Workshops & Training',
+    description: 'We give practical AI workshops that actually help. From AI Foundations to Copilot training - skills that work for you. Since 2019 we have trained teams at Postcodeloterij, Prosus and more.'
+  }
+};
+
 export function HomePage() {
   const [lang, setLang] = useState<Language>(getInitialLanguage);
   const [navColor, setNavColor] = useState<'white' | 'dark'>('white');
@@ -46,6 +59,15 @@ export function HomePage() {
   const content = CONTENT[lang];
   const scrollRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
+
+  // SEO for homepage
+  useSEO({
+    title: SEO_CONTENT[lang].title,
+    description: SEO_CONTENT[lang].description,
+    lang,
+    path: lang === 'nl' ? '/' : '/en',
+    alternatePath: lang === 'nl' ? '/en' : '/'
+  });
 
   useEffect(() => {
     localStorage.setItem(LANG_STORAGE_KEY, lang);

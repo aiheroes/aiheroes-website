@@ -4,7 +4,7 @@ export interface NavChild {
   label: string;
   href: string;
   description?: string;
-  category?: 'training' | 'strategy' | 'awareness';
+  category?: 'training' | 'strategy' | 'awareness' | 'bespoke';
 }
 
 export interface NavItem {

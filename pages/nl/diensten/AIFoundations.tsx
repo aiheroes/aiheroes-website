@@ -7,6 +7,7 @@ export const AIFoundationsNL: React.FC = () => {
       lang="nl"
       title="AI Foundations"
       subtitle="Onze kernworkshop. We komen langs en werken met je team tot iedereen het snapt."
+      seoDescription="AI Foundations workshop: leer je team effectief werken met ChatGPT, Claude en andere AI-tools. Praktische 1-dag training met direct toepasbare technieken. Boek nu bij AI Heroes."
       accentColor="red"
     >
       <div className="prose prose-lg max-w-none">
