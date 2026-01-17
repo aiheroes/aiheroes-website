@@ -25,7 +25,7 @@ function getInitialLanguage(): Language {
 }
 
 // Section config: id, theme (dark bg = white text, light bg = dark text)
-const SECTIONS = [
+const SECTIONS: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
   { id: 'approach', theme: 'dark' },
@@ -40,6 +40,9 @@ export function HomePage() {
   const [navColor, setNavColor] = useState<'white' | 'dark'>('white');
   const [useBlur, setUseBlur] = useState(false);
   const [hideNav, setHideNav] = useState(false);
+  const [splitPosition, setSplitPosition] = useState<number | null>(null);
+  const [topTheme, setTopTheme] = useState<'dark' | 'light'>('dark');
+  const [bottomTheme, setBottomTheme] = useState<'dark' | 'light'>('dark');
   const content = CONTENT[lang];
   const scrollRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
@@ -52,25 +55,45 @@ export function HomePage() {
   const handleScroll = () => {
     if (!scrollRef.current) return;
 
-    const scrollTop = scrollRef.current.scrollTop;
     const navHeight = 80;
 
-    // Find which section is currently under the navbar
-    let currentTheme = 'dark';
+    // Find which section is currently under the navbar and check for splits
+    let currentTheme: 'dark' | 'light' = 'dark';
     let needsBlur = false;
+    let foundSplit = false;
 
-    for (const section of SECTIONS) {
+    for (let i = 0; i < SECTIONS.length; i++) {
+      const section = SECTIONS[i];
       const element = document.getElementById(section.id);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        // Check if this section is under the navbar area
-        if (rect.top <= navHeight && rect.bottom > navHeight) {
-          currentTheme = section.theme;
-          // Enable blur when not at the very top of a section (content is scrolled under nav)
-          needsBlur = rect.top < 0;
-          break;
-        }
+      if (!element) continue;
+
+      const rect = element.getBoundingClientRect();
+
+      // Check if this section's bottom edge is within the navbar (creates a split)
+      if (rect.bottom > 0 && rect.bottom < navHeight) {
+        const position = (rect.bottom / navHeight) * 100;
+        setSplitPosition(position);
+        setTopTheme(section.theme);
+        setBottomTheme(SECTIONS[i + 1]?.theme || section.theme);
+        foundSplit = true;
+        // Use the dominant section for blur/color (the one covering more of the navbar)
+        currentTheme = position > 50 ? section.theme : (SECTIONS[i + 1]?.theme || section.theme);
+        needsBlur = true; // Always blur during transition
+        break;
       }
+
+      // Check if this section fully covers the navbar
+      if (rect.top <= 0 && rect.bottom >= navHeight) {
+        currentTheme = section.theme;
+        needsBlur = rect.top < 0;
+        break;
+      }
+    }
+
+    if (!foundSplit) {
+      setSplitPosition(null);
+      setTopTheme(currentTheme);
+      setBottomTheme(currentTheme);
     }
 
     setNavColor(currentTheme === 'dark' ? 'white' : 'dark');
@@ -96,6 +119,9 @@ export function HomePage() {
         textColor={navColor}
         hidden={hideNav}
         useBlur={useBlur}
+        splitPosition={splitPosition}
+        topTheme={topTheme}
+        bottomTheme={bottomTheme}
       />
 
       <main className="w-full">
