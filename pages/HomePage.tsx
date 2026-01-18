@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CONTENT } from '../constants';
 import { Language } from '../types';
 import { Navbar } from '../components/Navbar';
@@ -13,7 +14,11 @@ import { useSEO } from '../hooks/useSEO';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 
-function getInitialLanguage(): Language {
+function getInitialLanguage(forcedLang?: Language): Language {
+  // If a language is forced (e.g., from /en route), use that
+  if (forcedLang) {
+    return forcedLang;
+  }
   const stored = localStorage.getItem(LANG_STORAGE_KEY);
   if (stored === 'nl' || stored === 'en') {
     return stored;
@@ -23,6 +28,10 @@ function getInitialLanguage(): Language {
     return 'nl';
   }
   return 'en';
+}
+
+interface HomePageProps {
+  defaultLang?: Language;
 }
 
 // Section config: id, theme (dark bg = white text, light bg = dark text)
@@ -48,8 +57,9 @@ const SEO_CONTENT = {
   }
 };
 
-export function HomePage() {
-  const [lang, setLang] = useState<Language>(getInitialLanguage);
+export function HomePage({ defaultLang }: HomePageProps = {}) {
+  const navigate = useNavigate();
+  const [lang, setLang] = useState<Language>(() => getInitialLanguage(defaultLang));
   const [navColor, setNavColor] = useState<'white' | 'dark'>('white');
   const [useBlur, setUseBlur] = useState(false);
   const [hideNav, setHideNav] = useState(false);
@@ -59,6 +69,14 @@ export function HomePage() {
   const content = CONTENT[lang];
   const scrollRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
+
+  // Handle language change - navigate to correct URL
+  const handleLangChange = (newLang: Language) => {
+    if (newLang !== lang) {
+      localStorage.setItem(LANG_STORAGE_KEY, newLang);
+      navigate(newLang === 'nl' ? '/' : '/en');
+    }
+  };
 
   // SEO for homepage
   useSEO({
@@ -121,10 +139,15 @@ export function HomePage() {
     setNavColor(currentTheme === 'dark' ? 'white' : 'dark');
     setUseBlur(needsBlur);
 
-    // Hide nav on footer
+    // Hide nav on footer with hysteresis to prevent flickering
     if (footerRef.current) {
       const footerRect = footerRef.current.getBoundingClientRect();
-      setHideNav(footerRect.top < 80);
+      // Hide when footer top enters navbar area, show when it's clearly below
+      if (footerRect.top < 60) {
+        setHideNav(true);
+      } else if (footerRect.top > 100) {
+        setHideNav(false);
+      }
     }
   };
 
@@ -136,7 +159,7 @@ export function HomePage() {
     >
       <Navbar
         lang={lang}
-        setLang={setLang}
+        setLang={handleLangChange}
         content={content.nav}
         textColor={navColor}
         hidden={hideNav}
@@ -179,7 +202,7 @@ export function HomePage() {
 
         {/* Footer (Dark) */}
         <section id="footer" ref={footerRef} className="md:snap-end w-full relative z-20">
-          <Footer content={content.footer} nav={content.nav} lang={lang} setLang={setLang} />
+          <Footer content={content.footer} nav={content.nav} lang={lang} setLang={handleLangChange} />
         </section>
       </main>
     </div>

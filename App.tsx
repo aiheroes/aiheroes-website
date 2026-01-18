@@ -81,14 +81,20 @@ import { PressEN } from './pages/en/Press';
 
 // Internal Pages (hidden from public navigation)
 import { LinkedInPosts } from './pages/internal/LinkedInPosts';
+import { EmailSignature } from './pages/internal/EmailSignature';
+
+// 404 Page
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        {/* Homepage with dynamic language switching */}
-        <Route path="/" element={<HomePage />} />
+        {/* Homepage - Dutch default */}
+        <Route path="/" element={<HomePage defaultLang="nl" />} />
+        {/* Homepage - English */}
+        <Route path="/en" element={<HomePage defaultLang="en" />} />
 
         {/* Dutch Service Pages */}
         <Route path="/nl/diensten/ai-foundations" element={<AIFoundationsNL />} />
@@ -148,9 +154,10 @@ function App() {
 
         {/* Internal Pages (hidden from public navigation) */}
         <Route path="/internal/linkedin-posts" element={<LinkedInPosts />} />
+        <Route path="/internal/email-signature" element={<EmailSignature />} />
 
-        {/* Fallback to homepage */}
-        <Route path="*" element={<HomePage />} />
+        {/* 404 Page */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

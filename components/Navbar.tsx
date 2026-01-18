@@ -79,6 +79,30 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
+  // Get language-aware home URL
+  const homeUrl = lang === 'en' ? '/en' : '/';
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setOpenDropdown(null);
+
+    // If already on homepage, scroll to top (hero section)
+    if (isHomePage || location.pathname === '/en') {
+      const hero = document.getElementById('hero');
+      if (hero) {
+        hero.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Fallback: try both window and any scroll container
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.querySelector('.snap-container')?.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to homepage
+      navigate(homeUrl);
+    }
+  };
+
   // Category labels for mega-menu
   const categoryLabels = lang === 'nl'
     ? { training: 'Training', strategy: 'Strategie', awareness: 'Bewustwording & Compliance', bespoke: 'Maatwerk' }
@@ -249,14 +273,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     return (
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center cursor-pointer">
+        <a href={homeUrl} onClick={handleLogoClick} className="flex items-center cursor-pointer">
           <div className="mr-3">
             <Logo className="h-10 w-10" variant={logoVariant} />
           </div>
           <span className={`text-xl font-sans font-bold tracking-tight ${logoTextClass}`}>
             AI Heroes
           </span>
-        </Link>
+        </a>
 
         {/* Desktop Nav - Mega Menu */}
         <div ref={dropdownRef} className={`hidden md:flex items-center space-x-8 ${navTextClass}`}>
@@ -298,7 +322,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
-  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 ${hidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`;
+  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ease-out ${hidden ? '-translate-y-full' : 'translate-y-0'}`;
 
   // Mobile accordion section
   const MobileAccordion: React.FC<{
@@ -469,7 +493,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       ) : (
         /* Single layer mode (no split) */
         <nav
-          className={`${baseNavClass} transition-all duration-300 ${getBackgroundClass(singleLayerTheme, useBlur)} ${textClass}`}
+          className={`${baseNavClass} ${getBackgroundClass(singleLayerTheme, useBlur)} ${textClass}`}
         >
           {renderNavContent(singleLayerTheme)}
         </nav>
