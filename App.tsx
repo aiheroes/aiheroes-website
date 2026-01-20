@@ -30,6 +30,7 @@ import { CopilotBasicsNL } from './pages/nl/diensten/CopilotBasics';
 import { AIVoorDevelopersNL } from './pages/nl/diensten/AIVoorDevelopers';
 import { AIPrivacySecurityNL } from './pages/nl/diensten/AIPrivacySecurity';
 import { AIMediaLiteracyNL } from './pages/nl/diensten/AIMediaLiteracy';
+import { SpecialistischeTracksNL } from './pages/nl/diensten/SpecialistischeTracks';
 
 // English Service Pages
 import { AIFoundationsEN } from './pages/en/services/AIFoundations';
@@ -38,6 +39,7 @@ import { CopilotBasicsEN } from './pages/en/services/CopilotBasics';
 import { AIForDevelopersEN } from './pages/en/services/AIForDevelopers';
 import { AIPrivacySecurityEN } from './pages/en/services/AIPrivacySecurity';
 import { AIMediaLiteracyEN } from './pages/en/services/AIMediaLiteracy';
+import { SpecializedTracksEN } from './pages/en/services/SpecializedTracks';
 
 // Dutch About Pages
 import { AanpakNL } from './pages/nl/over-ons/Aanpak';
@@ -103,6 +105,7 @@ function App() {
         <Route path="/nl/diensten/ai-voor-developers" element={<AIVoorDevelopersNL />} />
         <Route path="/nl/diensten/ai-privacy-security" element={<AIPrivacySecurityNL />} />
         <Route path="/nl/diensten/ai-media-literacy" element={<AIMediaLiteracyNL />} />
+        <Route path="/nl/diensten/specialistische-tracks" element={<SpecialistischeTracksNL />} />
 
         {/* English Service Pages */}
         <Route path="/en/services/ai-foundations" element={<AIFoundationsEN />} />
@@ -111,6 +114,7 @@ function App() {
         <Route path="/en/services/ai-for-developers" element={<AIForDevelopersEN />} />
         <Route path="/en/services/ai-privacy-security" element={<AIPrivacySecurityEN />} />
         <Route path="/en/services/ai-media-literacy" element={<AIMediaLiteracyEN />} />
+        <Route path="/en/services/specialized-tracks" element={<SpecializedTracksEN />} />
 
         {/* Dutch About Pages */}
         <Route path="/nl/over-ons/aanpak" element={<AanpakNL />} />

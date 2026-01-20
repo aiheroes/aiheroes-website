@@ -70,6 +70,13 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
 
+  // Sync language state when defaultLang prop changes (e.g., navigating between / and /en)
+  useEffect(() => {
+    if (defaultLang && defaultLang !== lang) {
+      setLang(defaultLang);
+    }
+  }, [defaultLang]);
+
   // Handle language change - navigate to correct URL
   const handleLangChange = (newLang: Language) => {
     if (newLang !== lang) {
