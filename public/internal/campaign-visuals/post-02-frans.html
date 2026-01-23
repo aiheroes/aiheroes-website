@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post 3 - Groningen</title>
+  <title>Post 2 - Frans</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -21,30 +21,63 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center 15%;
     }
 
     .overlay {
       position: absolute;
-      inset: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background: linear-gradient(to top,
-        rgba(28, 25, 23, 0.95) 0%,
-        rgba(28, 25, 23, 0.85) 35%,
-        rgba(28, 25, 23, 0.4) 70%,
-        rgba(28, 25, 23, 0.2) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 100px;
-      text-align: center;
+        rgba(28, 25, 23, 0.98) 0%,
+        rgba(28, 25, 23, 0.9) 30%,
+        rgba(28, 25, 23, 0.4) 50%,
+        transparent 65%);
+      padding: 60px 80px;
+      padding-top: 120px;
+    }
+
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .role {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #D9534F;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+    }
+
+    .description {
+      font-family: 'Inter', sans-serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #D6D3D1;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    .accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background-color: #D9534F;
     }
 
     .logo {
       position: absolute;
       top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 50px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -60,71 +93,13 @@
       font-family: 'Inter', sans-serif;
       font-size: 24px;
       font-weight: 600;
-      color: #FDFCF8;
-    }
-
-    .location-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: #D9534F;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      margin-bottom: 24px;
-    }
-
-    .headline {
-      font-family: 'Playfair Display', serif;
-      font-size: 140px;
-      font-weight: 600;
-      color: #FDFCF8;
-      line-height: 1;
-      margin-bottom: 40px;
-      text-decoration: underline;
-      text-decoration-color: #D9534F;
-      text-decoration-thickness: 8px;
-      text-underline-offset: 20px;
-    }
-
-    .subline {
-      font-family: 'Inter', sans-serif;
-      font-size: 28px;
-      font-weight: 400;
-      color: #D6D3D1;
-      line-height: 1.6;
-      max-width: 600px;
-    }
-
-    .coordinates {
-      position: absolute;
-      bottom: 80px;
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 3px;
-    }
-
-    .accent-line {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 10px;
-      background-color: #D9534F;
+      color: white;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Replace with a photo of Groningen (e.g., Martinitoren, canals, or city center) -->
-    <img src="../../../campaign-photos/groningen.jpg" alt="Groningen" class="photo">
-
-    <div class="overlay">
-      <p class="location-label">Gevestigd in</p>
-      <h1 class="headline">Groningen</h1>
-      <p class="subline">Gefocust, nuchter, zonder te veel poespas.<br>Hier maken we onze plannen.</p>
-    </div>
+    <img src="../../campaign-photos/Ai Heroes-02.jpg" alt="Frans" class="photo">
 
     <div class="logo">
       <svg class="logo-icon" viewBox="0 0 604 604" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +113,12 @@
       <span class="logo-text">AI Heroes</span>
     </div>
 
-    <p class="coordinates">53.2194° N, 6.5665° E</p>
+    <div class="overlay">
+      <h2 class="name">Frans</h2>
+      <p class="role">AI Strategy</p>
+      <p class="description">Strategie en prompt engineering.<br>Achtergrond in UX en design.</p>
+    </div>
+
     <div class="accent-line"></div>
   </div>
 </body>

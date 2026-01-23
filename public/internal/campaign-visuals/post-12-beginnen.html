@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post 5 - David</title>
+  <title>Post 12 - Waar beginnen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -26,34 +26,32 @@
 
     .overlay {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      inset: 0;
       background: linear-gradient(to top,
         rgba(28, 25, 23, 0.98) 0%,
-        rgba(28, 25, 23, 0.9) 30%,
-        rgba(28, 25, 23, 0.4) 50%,
-        transparent 65%);
+        rgba(28, 25, 23, 0.85) 30%,
+        rgba(28, 25, 23, 0.3) 55%,
+        rgba(28, 25, 23, 0.1) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       padding: 60px 80px;
-      padding-top: 120px;
     }
 
-    .name {
+    .headline {
       font-family: 'Playfair Display', serif;
       font-size: 72px;
       font-weight: 600;
-      color: white;
-      margin-bottom: 12px;
+      color: #FDFCF8;
+      line-height: 1.1;
+      margin-bottom: 28px;
     }
 
-    .role {
-      font-family: 'Inter', sans-serif;
-      font-size: 22px;
-      font-weight: 500;
-      color: #D9534F;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 24px;
+    .headline .underline {
+      text-decoration: underline;
+      text-decoration-color: #D9534F;
+      text-decoration-thickness: 6px;
+      text-underline-offset: 14px;
     }
 
     .description {
@@ -62,16 +60,26 @@
       font-weight: 400;
       color: #D6D3D1;
       line-height: 1.5;
-      max-width: 600px;
+      max-width: 700px;
+      margin-bottom: 40px;
     }
 
-    .accent-line {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 10px;
-      background-color: #D9534F;
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #D9534F;
+    }
+
+    .cta svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
     }
 
     .logo {
@@ -95,11 +103,31 @@
       font-weight: 600;
       color: white;
     }
+
+    .accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background-color: #D9534F;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="../../../campaign-photos/Ai Heroes-05.jpg" alt="David" class="photo">
+    <img src="../../campaign-photos/Ai Heroes-12.jpg" alt="AI Heroes Team" class="photo">
+
+    <div class="overlay">
+      <h1 class="headline">Waar begin je<br>met <span class="underline">AI</span>?</h1>
+      <p class="description">Soms is een brede introductie de beste eerste stap.<br>Soms is het slimmer om eerst te kijken waar<br>de grootste kansen liggen. Wij helpen bij beide.</p>
+      <div class="cta">
+        <span>hello@aiheroes.io</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+    </div>
 
     <div class="logo">
       <svg class="logo-icon" viewBox="0 0 604 604" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,12 +139,6 @@
         </g>
       </svg>
       <span class="logo-text">AI Heroes</span>
-    </div>
-
-    <div class="overlay">
-      <h2 class="name">David</h2>
-      <p class="role">Future of Work</p>
-      <p class="description">Achtergrond in AI en filosofie.<br>Kijkt naar hoe AI de manier van werken verandert.</p>
     </div>
 
     <div class="accent-line"></div>
