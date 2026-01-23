@@ -346,6 +346,92 @@
     .tone-of-voice .copy-btn:hover {
       background: #1d4ed8;
     }
+
+    /* LinkedIn Banners Section */
+    .banners-section {
+      max-width: 900px;
+      margin: 48px auto;
+    }
+
+    .banners-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .banners-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #1C1917;
+      margin-bottom: 8px;
+    }
+
+    .banners-header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .banner-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .banner-card-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e7e5e4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .banner-card-title {
+      font-weight: 600;
+      font-size: 14px;
+      color: #1C1917;
+    }
+
+    .banner-card-size {
+      font-size: 12px;
+      color: #78716C;
+    }
+
+    .banner-preview {
+      width: 100%;
+      aspect-ratio: 1584 / 396;
+      position: relative;
+      background: #f5f5f4;
+      overflow: hidden;
+    }
+
+    .banner-preview iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 176%;
+      height: 176%;
+      transform: scale(0.568);
+      transform-origin: top left;
+      border: none;
+      pointer-events: none;
+    }
+
+    .banner-open-link {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      background: #f9f9f9;
+      color: #666;
+      font-size: 12px;
+      text-decoration: none;
+      border-top: 1px solid #eee;
+    }
+
+    .banner-open-link:hover {
+      background: #f0f0f0;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -716,12 +802,69 @@ Wij helpen bij alle drie. Benieuwd wat voor jullie past? Stuur een bericht naar 
     </div>
   </article>
 
+  <!-- LINKEDIN BANNERS -->
+  <div class="banners-section">
+    <div class="banners-header">
+      <h2>LinkedIn Banners</h2>
+      <p>Profielbanners voor team en bedrijfspagina · 1584 × 396 pixels</p>
+    </div>
+
+    <div class="banner-card">
+      <div class="banner-card-header">
+        <span class="banner-card-title">AI Heroes (Bedrijfspagina)</span>
+        <span class="banner-card-size">1584 × 396</span>
+      </div>
+      <div class="banner-preview">
+        <iframe src="banner-aiheroes.html"></iframe>
+      </div>
+      <a href="banner-aiheroes.html" target="_blank" class="banner-open-link">↗ Open banner in nieuw tabblad</a>
+    </div>
+
+    <div class="banner-card">
+      <div class="banner-card-header">
+        <span class="banner-card-title">Frans Hoorn</span>
+        <span class="banner-card-size">1584 × 396</span>
+      </div>
+      <div class="banner-preview">
+        <iframe src="banner-frans.html"></iframe>
+      </div>
+      <a href="banner-frans.html" target="_blank" class="banner-open-link">↗ Open banner in nieuw tabblad</a>
+    </div>
+
+    <div class="banner-card">
+      <div class="banner-card-header">
+        <span class="banner-card-title">Jan Brusse</span>
+        <span class="banner-card-size">1584 × 396</span>
+      </div>
+      <div class="banner-preview">
+        <iframe src="banner-jan.html"></iframe>
+      </div>
+      <a href="banner-jan.html" target="_blank" class="banner-open-link">↗ Open banner in nieuw tabblad</a>
+    </div>
+
+    <div class="banner-card">
+      <div class="banner-card-header">
+        <span class="banner-card-title">David Homan</span>
+        <span class="banner-card-size">1584 × 396</span>
+      </div>
+      <div class="banner-preview">
+        <iframe src="banner-david.html"></iframe>
+      </div>
+      <a href="banner-david.html" target="_blank" class="banner-open-link">↗ Open banner in nieuw tabblad</a>
+    </div>
+  </div>
+
   <div class="instructions">
     <h2>Screenshots maken</h2>
     <ol>
       <li>Klik op "↗ Open visual in nieuw tabblad"</li>
       <li>Open DevTools (F12) → Toggle device toolbar (Ctrl+Shift+M)</li>
-      <li>Stel in op <code>1080 × 1080</code></li>
+      <li>Stel de afmetingen in:
+        <ul style="margin-top: 8px; list-style-type: disc;">
+          <li>Posts: <code>1080 × 1080</code></li>
+          <li>Banners: <code>1584 × 396</code></li>
+        </ul>
+      </li>
       <li>Rechtermuisknop → "Capture screenshot"</li>
     </ol>
   </div>
