@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Heroes LinkedIn Campaign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f3f2ef;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .header {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: #1C1917;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .week-header {
+      max-width: 560px;
+      margin: 48px auto 24px;
+      padding: 12px 20px;
+      background: #D9534F;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 8px;
+    }
+
+    .linkedin-post {
+      max-width: 560px;
+      margin: 0 auto 32px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .post-header {
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #e7e5e4;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-company {
+      border-radius: 4px;
+    }
+
+    .avatar-company img {
+      padding: 8px;
+      background: white;
+    }
+
+    .post-meta {
+      flex: 1;
+    }
+
+    .post-author {
+      font-weight: 600;
+      color: #000;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .post-author span {
+      font-weight: 400;
+      color: #666;
+    }
+
+    .post-info {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .post-content {
+      padding: 0 16px 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #000;
+      white-space: pre-line;
+    }
+
+    .post-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #f5f5f4;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .post-image iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+      transform-origin: top left;
+    }
+
+    .post-image-container {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-image-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 192.8%;
+      height: 192.8%;
+      transform: scale(0.5185);
+      transform-origin: top left;
+    }
+
+    .post-actions {
+      padding: 8px 16px;
+      border-top: 1px solid #e7e5e4;
+      display: flex;
+      gap: 4px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: none;
+      color: #666;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .action-btn:hover {
+      background: #f3f2ef;
+    }
+
+    .action-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .open-visual {
+      display: block;
+      text-align: center;
+      padding: 8px;
+      background: #f9f9f9;
+      color: #666;
+      font-size: 12px;
+      text-decoration: none;
+      border-top: 1px solid #eee;
+    }
+
+    .open-visual:hover {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .instructions {
+      max-width: 560px;
+      margin: 48px auto;
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    }
+
+    .instructions h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .instructions code {
+      background: #f5f5f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>LinkedIn Campaign</h1>
+    <p>12 posts over 4 weken · AI Heroes relaunch</p>
+  </div>
+
+  <!-- WEEK 1 -->
+  <div class="week-header">Week 1 · De Herstart</div>
+
+  <!-- Post 1 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 1u</div>
+      </div>
+    </div>
+    <div class="post-content">AI Heroes is vernieuwd. We zijn nu een team van drie, we werken vanuit Groningen, en we focussen volledig op trainingen en workshops.
+
+Sinds 2019 helpen we organisaties om AI te begrijpen en toe te passen. Dat doen we met hands-on sessies waarin teams zelf aan de slag gaan. De komende weken laten we zien wie we zijn en wat we te bieden hebben.
+
+→ aiheroes.io</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-01-announcement.html"></iframe>
+      </div>
+    </div>
+    <a href="post-01-announcement.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 2 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar">
+        <img src="../campaign-photos/Ai Heroes-02.jpg" alt="Frans">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">Frans Hoorn <span>· AI Strategy @ AI Heroes</span></div>
+        <div class="post-info">500+ connecties · 2u</div>
+      </div>
+    </div>
+    <div class="post-content">Ik ben Frans, en ik hou me bij AI Heroes bezig met strategie en prompt engineering. Mijn achtergrond ligt in UX en design, en de afgelopen jaren is daar AI bijgekomen.
+
+Ik vind het leuk om uit te zoeken waar AI echt waarde toevoegt voor een organisatie, en dat dan concreet te maken. Samen met Jan en David vorm ik het nieuwe AI Heroes team.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-02-frans.html"></iframe>
+      </div>
+    </div>
+    <a href="post-02-frans.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 3 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 3u</div>
+      </div>
+    </div>
+    <div class="post-content">We werken vanuit Groningen. Dat past bij hoe we willen werken: gefocust, nuchter, zonder te veel poespas.
+
+We komen ook gewoon naar jullie toe voor trainingen en workshops. Maar hier zitten we, en hier maken we onze plannen.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-03-groningen.html"></iframe>
+      </div>
+    </div>
+    <a href="post-03-groningen.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- WEEK 2 -->
+  <div class="week-header">Week 2 · Het Team & Onze Aanpak</div>
+
+  <!-- Post 4 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar">
+        <img src="../campaign-photos/Ai Heroes-03.jpg" alt="Jan">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">Jan Brusse <span>· Technical AI @ AI Heroes</span></div>
+        <div class="post-info">500+ connecties · 1u</div>
+      </div>
+    </div>
+    <div class="post-content">Ik ben Jan, en ik doe de technische kant bij AI Heroes. Ik bouw AI-toepassingen, train modellen, en help teams om dit soort dingen zelf werkend te krijgen.
+
+Veel bedrijven willen iets met AI en weten niet goed waar te beginnen. Of ze hebben iets geprobeerd dat niet werkte zoals gehoopt. Dat is precies waar ik graag mee help.
+
+Binnenkort meer over David en wat hij doet.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-04-jan.html"></iframe>
+      </div>
+    </div>
+    <a href="post-04-jan.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 5 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar">
+        <img src="../campaign-photos/Ai Heroes-05.jpg" alt="David">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">David Homan <span>· Future of Work @ AI Heroes</span></div>
+        <div class="post-info">500+ connecties · 2u</div>
+      </div>
+    </div>
+    <div class="post-content">Ik ben David. Mijn achtergrond is AI en filosofie, en bij AI Heroes kijk ik naar hoe AI de manier van werken verandert.
+
+Dat gaat over praktische vragen: welke taken kunnen anders, waar zitten mensen vast, hoe zorg je dat een team AI ook echt blijft gebruiken na een training. Met Frans en Jan erbij vullen we elkaar goed aan.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-05-david.html"></iframe>
+      </div>
+    </div>
+    <a href="post-05-david.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 6 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 3u</div>
+      </div>
+    </div>
+    <div class="post-content">Onze trainingen zijn voor minstens de helft hands-on. We stemmen vooraf af wat er speelt zodat de voorbeelden relevant zijn, en achteraf krijgen deelnemers materialen om mee verder te werken.
+
+Die aanpak werkt. Teams passen toe wat ze leren, en dat is waar het om gaat.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-06-aanpak.html"></iframe>
+      </div>
+    </div>
+    <a href="post-06-aanpak.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- WEEK 3 -->
+  <div class="week-header">Week 3 · Wat We Doen</div>
+
+  <!-- Post 7 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 1u</div>
+      </div>
+    </div>
+    <div class="post-content">De training die we het vaakst geven is AI Foundations. Een dagworkshop voor teams die willen snappen hoe AI werkt en wat je ermee kunt.
+
+We behandelen hoe generatieve AI werkt, hoe je goede prompts schrijft, welke tools er zijn, en waar je op moet letten qua privacy en betrouwbaarheid. Geschikt voor teams zonder technische achtergrond.
+
+→ aiheroes.io</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-07-ai-foundations.html"></iframe>
+      </div>
+    </div>
+    <a href="post-07-ai-foundations.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 8 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar">
+        <img src="../campaign-photos/Ai Heroes-02.jpg" alt="Frans">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">Frans Hoorn <span>· AI Strategy @ AI Heroes</span></div>
+        <div class="post-info">500+ connecties · 2u</div>
+      </div>
+    </div>
+    <div class="post-content">Soms weten organisaties dat ze iets met AI willen en niet waar te beginnen. Daar hebben we Opportunity Scouting voor.
+
+We kijken naar processen, praten met mensen uit verschillende afdelingen, en zoeken uit waar AI het meeste oplevert. Dat leveren we op als een overzicht met concrete business cases. En als we niks waardevols vinden, betaal je niks.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-08-opportunity-scouting.html"></iframe>
+      </div>
+    </div>
+    <a href="post-08-opportunity-scouting.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 9 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 3u</div>
+      </div>
+    </div>
+    <div class="post-content">Voor developers hebben we een technische workshop: werken met API's van OpenAI en Anthropic, RAG-systemen bouwen, agents maken. Hands-on, code schrijven.
+
+Voor teams die Microsoft 365 Copilot gebruiken hebben we Copilot Basics. In een halve dag leer je hoe je er het meeste uithaalt.
+
+→ aiheroes.io/diensten</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-09-dev-copilot.html"></iframe>
+      </div>
+    </div>
+    <a href="post-09-dev-copilot.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- WEEK 4 -->
+  <div class="week-header">Week 4 · Resultaten & Uitnodiging</div>
+
+  <!-- Post 10 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 1u</div>
+      </div>
+    </div>
+    <div class="post-content">Medux is een zorgorganisatie waar oudere patiënten het liefst bellen. Dat kost veel tijd en schaalt niet.
+
+We hebben samen een voice AI gebouwd die gesprekken voert, vragen beantwoordt, en waar nodig doorverbindt. Nu wordt 80% van de telefoontjes door AI afgehandeld, de kosten zijn 70% lager, en patiënten geven het een 7,8.
+
+Dit is het soort project waar we energie van krijgen.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-10-medux.html"></iframe>
+      </div>
+    </div>
+    <a href="post-10-medux.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 11 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar">
+        <img src="../campaign-photos/Ai Heroes-03.jpg" alt="Jan">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">Jan Brusse <span>· Technical AI @ AI Heroes</span></div>
+        <div class="post-info">500+ connecties · 2u</div>
+      </div>
+    </div>
+    <div class="post-content">AI brengt ook risico's met zich mee. Daar hebben we twee trainingen voor.
+
+AI Privacy & Security gaat over veilige inzet van AI: GDPR, de AI Act, wat je wel en niet met data mag doen. Vooral nuttig voor IT-managers en privacy officers.
+
+AI Media Literacy gaat over deepfakes en desinformatie herkennen. Inclusief live demo's. Relevant voor communicatie- en HR-teams.</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-11-privacy-literacy.html"></iframe>
+      </div>
+    </div>
+    <a href="post-11-privacy-literacy.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <!-- Post 12 -->
+  <article class="linkedin-post">
+    <div class="post-header">
+      <div class="avatar avatar-company">
+        <img src="logo.svg" alt="AI Heroes">
+      </div>
+      <div class="post-meta">
+        <div class="post-author">AI Heroes</div>
+        <div class="post-info">1.234 volgers · 3u</div>
+      </div>
+    </div>
+    <div class="post-content">We krijgen vaak de vraag waar je het beste kunt beginnen met AI. Het eerlijke antwoord: dat hangt af van je situatie.
+
+Soms is een brede introductie voor het hele team de beste eerste stap. Soms is het slimmer om eerst te kijken waar de grootste kansen liggen. En soms weet een team al precies wat ze willen en hebben ze alleen begeleiding nodig bij de uitvoering.
+
+Wij helpen bij alle drie. Benieuwd wat voor jullie past? Stuur een bericht naar hello@aiheroes.io</div>
+    <div class="post-image">
+      <div class="post-image-container">
+        <iframe src="post-12-beginnen.html"></iframe>
+      </div>
+    </div>
+    <a href="post-12-beginnen.html" target="_blank" class="open-visual">↗ Open visual in nieuw tabblad</a>
+    <div class="post-actions">
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.87V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"/></svg>Vind ik leuk</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v1H7zm0 4h7v-1H7zm16-2a6.78 6.78 0 01-2.84 5.61L12 22v-4H8A7 7 0 018 4h8a7 7 0 017 7zm-2 0a5 5 0 00-5-5H8a5 5 0 000 10h6v2.28L19 15a4.79 4.79 0 002-4z"/></svg>Reageren</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12l-4.61 7H16l4-6H8a3.92 3.92 0 01-4-3.84V9a3.92 3.92 0 014-3.84h14l-3 4h1.68zM8 7a2 2 0 00-2 2.16V9a2 2 0 002 2h14l-1.68-2H8V7z"/></svg>Reposten</button>
+      <button class="action-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"/></svg>Verzenden</button>
+    </div>
+  </article>
+
+  <div class="instructions">
+    <h2>Screenshots maken</h2>
+    <ol>
+      <li>Klik op "↗ Open visual in nieuw tabblad"</li>
+      <li>Open DevTools (F12) → Toggle device toolbar (Ctrl+Shift+M)</li>
+      <li>Stel in op <code>1080 × 1080</code></li>
+      <li>Rechtermuisknop → "Capture screenshot"</li>
+    </ol>
+  </div>
+
+</body>
+</html>
