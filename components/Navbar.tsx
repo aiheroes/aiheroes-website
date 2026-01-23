@@ -322,7 +322,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
-  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ease-out ${hidden ? '-translate-y-full' : 'translate-y-0'}`;
+  // When mobile menu is open, never hide the navbar (so the X button is always visible)
+  const shouldHide = hidden && !isOpen;
+  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ease-out ${shouldHide ? '-translate-y-full' : 'translate-y-0'}`;
 
   // Mobile accordion section
   const MobileAccordion: React.FC<{
