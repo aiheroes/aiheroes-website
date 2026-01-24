@@ -35,7 +35,18 @@ interface HomePageProps {
 }
 
 // Section config: id, theme (dark bg = white text, light bg = dark text)
-const SECTIONS: { id: string; theme: 'dark' | 'light' }[] = [
+// team-image is only used on mobile (stacked layout), on desktop we skip it
+const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
+  { id: 'hero', theme: 'dark' },
+  { id: 'services', theme: 'light' },
+  { id: 'approach', theme: 'dark' },
+  { id: 'team-content', theme: 'light' }, // On desktop, whole team section is light
+  { id: 'social-proof', theme: 'dark' },
+  { id: 'contact', theme: 'light' },
+  { id: 'footer', theme: 'dark' },
+];
+
+const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
   { id: 'approach', theme: 'dark' },
@@ -104,6 +115,8 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
     if (!scrollRef.current) return;
 
     const navHeight = 80;
+    // Use mobile sections (with team-image) on screens < 1024px (lg breakpoint)
+    const SECTIONS = window.innerWidth < 1024 ? SECTIONS_MOBILE : SECTIONS_DESKTOP;
 
     // Find which section is currently under the navbar and check for splits
     let currentTheme: 'dark' | 'light' = 'dark';
