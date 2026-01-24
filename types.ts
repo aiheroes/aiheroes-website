@@ -47,15 +47,18 @@ export interface ApproachContent {
   p2: string; // The highlighted block
 }
 
-export interface TeamSlide {
-  image: string;
-  alt: string;
-}
-
 export interface TeamContent {
   title: string;
-  intro: string;
-  slides: TeamSlide[];
+  location: string;
+  body: string;
+  cta: {
+    text: string;
+    href: string;
+  };
+  image: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface SocialProofContent {

@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
               <Logo className="h-8 w-8" variant="white" />
               <span className="font-sans font-bold tracking-tight uppercase text-white text-lg">AI Heroes</span>
             </div>
-            <p className="text-stone-400 text-sm leading-relaxed mb-6">
+            <p className="text-stone-400 text-sm leading-relaxed mb-6 text-pretty">
               {content.tagline}
             </p>
           </div>

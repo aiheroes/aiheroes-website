@@ -39,7 +39,8 @@ const SECTIONS: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
   { id: 'approach', theme: 'dark' },
-  { id: 'team', theme: 'dark' },
+  { id: 'team-image', theme: 'dark' },   // Team image needs dark navbar (mobile stacked)
+  { id: 'team-content', theme: 'light' }, // Team text needs light navbar
   { id: 'social-proof', theme: 'dark' },
   { id: 'contact', theme: 'light' },
   { id: 'footer', theme: 'dark' },
@@ -192,8 +193,8 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
            <Approach content={content.approach} />
         </section>
 
-        {/* Team (Dark - has its own dark panel) */}
-        <section id="team" className="md:snap-start md:h-screen w-full flex items-center overflow-hidden">
+        {/* Team (Light) */}
+        <section id="team" className="md:snap-start md:h-screen w-full flex items-center bg-brand-light overflow-hidden">
            <Team content={content.team} />
         </section>
 

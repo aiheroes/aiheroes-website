@@ -19,7 +19,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
            <span className="text-7xl md:text-9xl text-stone-800 absolute -top-8 left-1/2 -translate-x-1/2 font-serif z-0">
              &ldquo;
            </span>
-           <h3 className="relative z-10 text-2xl md:text-5xl lg:text-6xl font-serif italic text-white leading-[1.3] tracking-tight">
+           <h3 className="relative z-10 text-2xl md:text-5xl lg:text-6xl font-serif italic text-white leading-[1.3] tracking-tight text-balance">
              {content.testimonial.text}
            </h3>
            <div className="mt-6 md:mt-10 relative z-10">

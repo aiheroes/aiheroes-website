@@ -120,13 +120,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   // Background styles based on theme
   const getBackgroundClass = (theme: 'dark' | 'light', blur: boolean) => {
     if (blur) {
+      // Frosted glass effect when scrolled
       return theme === 'dark'
-        ? 'backdrop-blur-md bg-brand-dark/60'
-        : 'backdrop-blur-md bg-white/70';
+        ? 'navbar-blur navbar-blur-dark'
+        : 'navbar-blur navbar-blur-light';
     }
+    // Subtle gradient at top for text legibility, no blur
     return theme === 'dark'
-      ? 'bg-gradient-to-b from-black/60 to-transparent'
-      : 'bg-transparent';
+      ? 'navbar-clear navbar-clear-dark'
+      : 'navbar-clear navbar-clear-light';
   };
 
   const getTextClass = (theme: 'dark' | 'light') => {

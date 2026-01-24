@@ -142,11 +142,16 @@
             },
             animation: {
               'fade-in-up': 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both',
+              'ken-burns': 'kenBurns 20s ease-out infinite alternate',
             },
             keyframes: {
               fadeInUp: {
                 '0%': { opacity: '0', transform: 'translateY(40px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              kenBurns: {
+                '0%': { transform: 'scale(1)' },
+                '100%': { transform: 'scale(1.05)' },
               }
             }
           }
@@ -164,8 +169,42 @@
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none;  /* IE 10+ */
       }
-      .snap-container::-webkit-scrollbar { 
+      .snap-container::-webkit-scrollbar {
         display: none;  /* Chrome/Safari */
+      }
+      /* Text wrap utilities for preventing orphans */
+      .text-balance {
+        text-wrap: balance;
+      }
+      .text-pretty {
+        text-wrap: pretty;
+      }
+      /* Navbar blur transition styles */
+      .navbar-blur,
+      .navbar-clear {
+        -webkit-transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
+        transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
+      }
+      .navbar-blur {
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+      .navbar-blur-dark {
+        background-color: rgba(28, 25, 23, 0.75);
+      }
+      .navbar-blur-light {
+        background-color: rgba(255, 255, 255, 0.85);
+      }
+      .navbar-clear {
+        -webkit-backdrop-filter: blur(0px);
+        backdrop-filter: blur(0px);
+      }
+      .navbar-clear-dark {
+        /* Use solid with transparency instead of gradient for smooth transition */
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+      .navbar-clear-light {
+        background-color: transparent;
       }
     </style>
 </head>

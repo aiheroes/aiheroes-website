@@ -67,17 +67,16 @@ export const CONTENT: Record<Language, Content> = {
     },
     team: {
       title: "Wij zijn Frans, Jan en David",
-      intro: "Sinds 2019 helpen we bedrijven verder waar ze vastlopen met AI.",
-      slides: [
-        {
-          image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=2000",
-          alt: "Workshop presentatie"
-        },
-        {
-          image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&q=80&w=2000",
-          alt: "Team workshop"
-        }
-      ]
+      location: "Gevestigd in Groningen",
+      body: "Sinds 2019. Groningen als thuisbasis, de wereld als werkterrein. Drie achtergronden, een missie: AI praktisch maken.",
+      cta: {
+        text: "Leer ons kennen",
+        href: "/nl/over-ons/team"
+      },
+      image: {
+        src: "/campaign-photos/groningen.jpg",
+        alt: "Groningen - onze thuisbasis"
+      }
     },
     socialProof: {
       title: "Een greep uit de organisaties waar we mee gewerkt hebben",
@@ -191,17 +190,16 @@ export const CONTENT: Record<Language, Content> = {
     },
     team: {
       title: "We are Frans, Jan and David",
-      intro: "Since 2019 we help companies move forward where they get stuck with AI.",
-      slides: [
-        {
-          image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=2000",
-          alt: "Workshop presentation"
-        },
-        {
-          image: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&q=80&w=2000",
-          alt: "Team workshop"
-        }
-      ]
+      location: "Based in Groningen",
+      body: "Since 2019. Groningen as home base, the world as our workspace. Three backgrounds, one mission: making AI practical.",
+      cta: {
+        text: "Meet the team",
+        href: "/en/about/team"
+      },
+      image: {
+        src: "/campaign-photos/groningen.jpg",
+        alt: "Groningen - our home base"
+      }
     },
     socialProof: {
       title: "Some of the organizations we've worked with",

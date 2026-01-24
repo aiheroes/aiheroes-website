@@ -64,7 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ content }) => {
             {renderHeadline(content.headline)}
           </h1>
 
-          <p className="text-xl md:text-2xl text-stone-200 mb-12 leading-relaxed max-w-2xl font-light animate-fade-in-up [animation-delay:200ms] whitespace-pre-line drop-shadow-md">
+          <p className="text-xl md:text-2xl text-stone-200 mb-12 leading-relaxed max-w-2xl font-light animate-fade-in-up [animation-delay:200ms] whitespace-pre-line drop-shadow-md text-pretty">
             {content.subhead}
           </p>
 

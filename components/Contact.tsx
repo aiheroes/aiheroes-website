@@ -97,7 +97,7 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
           {/* Left Column - Info */}
           <div className="lg:col-span-5">
              <h2 className="text-3xl md:text-6xl font-serif text-brand-dark mb-2 md:mb-6">{content.title}</h2>
-             <p className="text-sm md:text-xl text-stone-600 leading-relaxed mb-4 md:mb-8">
+             <p className="text-sm md:text-xl text-stone-600 leading-relaxed mb-4 md:mb-8 text-pretty">
                {content.subtitle}{' '}
                <a
                  href="mailto:hello@aiheroes.io"

@@ -84,7 +84,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
 
                   {/* Bottom: Description + CTA */}
                   <div>
-                    <p className="text-white/80 text-sm md:text-base font-light leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-white/80 text-sm md:text-base font-light leading-relaxed mb-4 line-clamp-3 text-pretty">
                       {serviceData.description}
                     </p>
                     <span className="text-xs font-bold uppercase tracking-widest text-white group-hover:text-white transition-colors duration-300 flex items-center gap-2">

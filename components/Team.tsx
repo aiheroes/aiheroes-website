@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Content } from '../types';
 
 interface TeamProps {
@@ -6,60 +7,62 @@ interface TeamProps {
 }
 
 export const Team: React.FC<TeamProps> = ({ content }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % content.slides.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [content.slides.length]);
-
   return (
-    <section id="team" className="w-full h-screen relative overflow-hidden bg-brand-dark">
-      {/* Background Slideshow */}
-      <div className="absolute inset-0">
-        {content.slides.map((slide, idx) => (
-          <img
-            key={idx}
-            src={slide.image}
-            alt={slide.alt}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              idx === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-        ))}
-      </div>
+    <section id="team" className="w-full bg-brand-light overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Desktop: Side-by-side | Mobile: Stacked */}
+        <div className="flex flex-col lg:flex-row">
+          {/* Image Column - has its own ID for navbar theme detection on mobile */}
+          <div id="team-image" className="relative w-full lg:w-[45%] h-[50vh] lg:h-[80vh] overflow-hidden">
+            <img
+              src={content.image.src}
+              alt={content.image.alt}
+              className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+            />
+            {/* Gradient overlay for navbar legibility on mobile */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent lg:hidden" />
+          </div>
 
-      {/* Content Panel - Frosted glass effect at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-10">
-        <div className="backdrop-blur-md bg-brand-dark/70 border-t border-white/10">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 md:py-12">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-              <div className="max-w-xl">
-                <h2 className="text-2xl md:text-4xl font-serif text-white mb-3">
-                  {content.title}
-                </h2>
-                <p className="text-base md:text-lg text-white/80 font-light leading-relaxed whitespace-pre-line">
-                  {content.intro}
-                </p>
-              </div>
+          {/* Content Column - has its own ID for navbar theme detection */}
+          <div id="team-content" className="w-full lg:w-[55%] flex items-center bg-brand-light">
+            <div className="px-6 lg:px-16 py-12 lg:py-0">
+              {/* Location Label */}
+              <p className="text-brand-red text-xs font-medium tracking-[0.2em] uppercase mb-4">
+                {content.location}
+              </p>
 
-              {/* Slide indicators */}
-              <div className="flex items-center gap-2">
-                {content.slides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentSlide(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      idx === currentSlide
-                        ? 'bg-white w-8'
-                        : 'bg-white/30 w-3 hover:bg-white/50'
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
+              {/* Title */}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-dark mb-6 leading-tight">
+                {content.title}
+              </h2>
+
+              {/* Body */}
+              <p className="text-lg md:text-xl text-brand-dark/70 font-light leading-relaxed mb-8 max-w-lg text-pretty">
+                {content.body}
+              </p>
+
+              {/* CTA Link */}
+              <Link
+                to={content.cta.href}
+                className="inline-flex items-center text-brand-dark font-medium group"
+              >
+                <span className="border-b border-brand-dark/30 group-hover:border-brand-dark transition-colors duration-300">
+                  {content.cta.text}
+                </span>
+                <svg
+                  className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
-                ))}
-              </div>
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
