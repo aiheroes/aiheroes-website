@@ -35,12 +35,12 @@ interface HomePageProps {
 }
 
 // Section config: id, theme (dark bg = white text, light bg = dark text)
-// team-image is only used on mobile (stacked layout), on desktop we skip it
+// Desktop uses 'team' (full section), mobile uses split 'team-image'/'team-content'
 const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
   { id: 'approach', theme: 'dark' },
-  { id: 'team-content', theme: 'light' }, // On desktop, whole team section is light
+  { id: 'team', theme: 'light' }, // On desktop, whole team section is light
   { id: 'social-proof', theme: 'dark' },
   { id: 'contact', theme: 'light' },
   { id: 'footer', theme: 'dark' },
