@@ -23,7 +23,7 @@ export const TeamEN: React.FC = () => {
           {/* Frans */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/frans.jpeg" alt="Frans Hoorn" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="/team/frans.webp" alt="Frans Hoorn" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
@@ -37,7 +37,7 @@ export const TeamEN: React.FC = () => {
           {/* David */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/david.jpeg" alt="David Homan" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="/team/david.webp" alt="David Homan" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
@@ -51,7 +51,7 @@ export const TeamEN: React.FC = () => {
           {/* Jan */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/jan.jpeg" alt="Jan Brusse" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
+              <img src="/team/jan.webp" alt="Jan Brusse" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>

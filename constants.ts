@@ -74,7 +74,7 @@ export const CONTENT: Record<Language, Content> = {
         href: "/nl/over-ons/team"
       },
       image: {
-        src: "/campaign-photos/groningen.jpg",
+        src: "/campaign-photos/groningen.webp",
         alt: "Groningen - onze thuisbasis"
       }
     },
@@ -197,7 +197,7 @@ export const CONTENT: Record<Language, Content> = {
         href: "/en/about/team"
       },
       image: {
-        src: "/campaign-photos/groningen.jpg",
+        src: "/campaign-photos/groningen.webp",
         alt: "Groningen - our home base"
       }
     },
