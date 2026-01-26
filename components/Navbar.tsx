@@ -316,7 +316,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Mobile Menu Button */}
         <div className={`md:hidden flex items-center ${navTextClass}`}>
-          <button onClick={() => setIsOpen(!isOpen)}>
+          <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Close menu" : "Open menu"}>
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -384,9 +384,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="pb-4 pl-4 space-y-4">
             {/* Training */}
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
                 {categoryLabels.training}
-              </h4>
+              </span>
               <div className="space-y-2">
                 {grouped.training.map((item, idx) => (
                   <Link
@@ -403,9 +403,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Strategy */}
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
                 {categoryLabels.strategy}
-              </h4>
+              </span>
               <div className="space-y-2">
                 {grouped.strategy.map((item, idx) => (
                   <Link
@@ -422,9 +422,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Awareness & Compliance */}
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
                 {categoryLabels.awareness}
-              </h4>
+              </span>
               <div className="space-y-2">
                 {grouped.awareness.map((item, idx) => (
                   <Link
@@ -441,9 +441,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Bespoke - blue hover */}
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
+              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
                 {categoryLabels.bespoke}
-              </h4>
+              </span>
               <div className="space-y-2">
                 {grouped.bespoke.map((item, idx) => (
                   <Link

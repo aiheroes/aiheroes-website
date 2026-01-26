@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Services Column */}
           <div>
-            <h4 className="font-serif text-lg mb-4 text-white">{nav.services.label}</h4>
+            <h3 className="font-serif text-lg mb-4 text-white">{nav.services.label}</h3>
             <ul className="space-y-2">
               {nav.services.children?.map((item, idx) => (
                 <li key={idx}>
@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Case Studies Column */}
           <div>
-            <h4 className="font-serif text-lg mb-4 text-white">{content.caseStudies.title}</h4>
+            <h3 className="font-serif text-lg mb-4 text-white">{content.caseStudies.title}</h3>
             <ul className="space-y-2">
               <li>
                 <Link to={`/${lang}/cases/medux`} className="text-stone-400 hover:text-white transition-colors text-sm">Medux</Link>
@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Company Column */}
           <div>
-            <h4 className="font-serif text-lg mb-4 text-white">{companyLabel}</h4>
+            <h3 className="font-serif text-lg mb-4 text-white">{companyLabel}</h3>
             <ul className="space-y-2">
               {nav.about.children?.map((item, idx) => (
                 <li key={idx}>
@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Resources Column */}
           <div>
-            <h4 className="font-serif text-lg mb-4 text-white">{nav.resources.label}</h4>
+            <h3 className="font-serif text-lg mb-4 text-white">{nav.resources.label}</h3>
             <ul className="space-y-2">
               {nav.resources.children?.map((item, idx) => (
                 <li key={idx}>
@@ -125,7 +125,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Legal Column */}
           <div>
-            <h4 className="font-serif text-lg mb-4 text-white">Legal</h4>
+            <h3 className="font-serif text-lg mb-4 text-white">Legal</h3>
             <ul className="space-y-2">
               <li>
                 <Link to={`/${lang}/legal/privacy`} className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.privacy}</Link>

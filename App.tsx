@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
@@ -21,148 +21,138 @@ function ScrollToTop() {
 
   return null;
 }
+
+// HomePage is eagerly loaded (critical for initial render)
 import { HomePage } from './pages/HomePage';
 
-// Dutch Service Pages
-import { AIFoundationsNL } from './pages/nl/diensten/AIFoundations';
-import { OpportunityScoutingNL } from './pages/nl/diensten/OpportunityScouting';
-import { CopilotBasicsNL } from './pages/nl/diensten/CopilotBasics';
-import { AIVoorDevelopersNL } from './pages/nl/diensten/AIVoorDevelopers';
-import { AIPrivacySecurityNL } from './pages/nl/diensten/AIPrivacySecurity';
-import { AIMediaLiteracyNL } from './pages/nl/diensten/AIMediaLiteracy';
-import { SpecialistischeTracksNL } from './pages/nl/diensten/SpecialistischeTracks';
+// All other pages are lazily loaded
+const AIFoundationsNL = React.lazy(() => import('./pages/nl/diensten/AIFoundations').then(m => ({ default: m.AIFoundationsNL })));
+const OpportunityScoutingNL = React.lazy(() => import('./pages/nl/diensten/OpportunityScouting').then(m => ({ default: m.OpportunityScoutingNL })));
+const CopilotBasicsNL = React.lazy(() => import('./pages/nl/diensten/CopilotBasics').then(m => ({ default: m.CopilotBasicsNL })));
+const AIVoorDevelopersNL = React.lazy(() => import('./pages/nl/diensten/AIVoorDevelopers').then(m => ({ default: m.AIVoorDevelopersNL })));
+const AIPrivacySecurityNL = React.lazy(() => import('./pages/nl/diensten/AIPrivacySecurity').then(m => ({ default: m.AIPrivacySecurityNL })));
+const AIMediaLiteracyNL = React.lazy(() => import('./pages/nl/diensten/AIMediaLiteracy').then(m => ({ default: m.AIMediaLiteracyNL })));
+const SpecialistischeTracksNL = React.lazy(() => import('./pages/nl/diensten/SpecialistischeTracks').then(m => ({ default: m.SpecialistischeTracksNL })));
 
-// English Service Pages
-import { AIFoundationsEN } from './pages/en/services/AIFoundations';
-import { OpportunityScoutingEN } from './pages/en/services/OpportunityScouting';
-import { CopilotBasicsEN } from './pages/en/services/CopilotBasics';
-import { AIForDevelopersEN } from './pages/en/services/AIForDevelopers';
-import { AIPrivacySecurityEN } from './pages/en/services/AIPrivacySecurity';
-import { AIMediaLiteracyEN } from './pages/en/services/AIMediaLiteracy';
-import { SpecializedTracksEN } from './pages/en/services/SpecializedTracks';
+const AIFoundationsEN = React.lazy(() => import('./pages/en/services/AIFoundations').then(m => ({ default: m.AIFoundationsEN })));
+const OpportunityScoutingEN = React.lazy(() => import('./pages/en/services/OpportunityScouting').then(m => ({ default: m.OpportunityScoutingEN })));
+const CopilotBasicsEN = React.lazy(() => import('./pages/en/services/CopilotBasics').then(m => ({ default: m.CopilotBasicsEN })));
+const AIForDevelopersEN = React.lazy(() => import('./pages/en/services/AIForDevelopers').then(m => ({ default: m.AIForDevelopersEN })));
+const AIPrivacySecurityEN = React.lazy(() => import('./pages/en/services/AIPrivacySecurity').then(m => ({ default: m.AIPrivacySecurityEN })));
+const AIMediaLiteracyEN = React.lazy(() => import('./pages/en/services/AIMediaLiteracy').then(m => ({ default: m.AIMediaLiteracyEN })));
+const SpecializedTracksEN = React.lazy(() => import('./pages/en/services/SpecializedTracks').then(m => ({ default: m.SpecializedTracksEN })));
 
-// Dutch About Pages
-import { AanpakNL } from './pages/nl/over-ons/Aanpak';
-import { TeamNL } from './pages/nl/over-ons/Team';
+const AanpakNL = React.lazy(() => import('./pages/nl/over-ons/Aanpak').then(m => ({ default: m.AanpakNL })));
+const TeamNL = React.lazy(() => import('./pages/nl/over-ons/Team').then(m => ({ default: m.TeamNL })));
 
-// English About Pages
-import { ApproachEN } from './pages/en/about/Approach';
-import { TeamEN } from './pages/en/about/Team';
+const ApproachEN = React.lazy(() => import('./pages/en/about/Approach').then(m => ({ default: m.ApproachEN })));
+const TeamEN = React.lazy(() => import('./pages/en/about/Team').then(m => ({ default: m.TeamEN })));
 
-// Dutch Resource Pages
-import { AIGeletterdheidNL } from './pages/nl/resources/AIGeletterdheid';
-import { AIStrategieGidsNL } from './pages/nl/resources/AIStrategieGids';
+const AIGeletterdheidNL = React.lazy(() => import('./pages/nl/resources/AIGeletterdheid').then(m => ({ default: m.AIGeletterdheidNL })));
+const AIStrategieGidsNL = React.lazy(() => import('./pages/nl/resources/AIStrategieGids').then(m => ({ default: m.AIStrategieGidsNL })));
 
-// English Resource Pages
-import { AILiteracyEN } from './pages/en/resources/AILiteracy';
-import { AIStrategyGuideEN } from './pages/en/resources/AIStrategyGuide';
+const AILiteracyEN = React.lazy(() => import('./pages/en/resources/AILiteracy').then(m => ({ default: m.AILiteracyEN })));
+const AIStrategyGuideEN = React.lazy(() => import('./pages/en/resources/AIStrategyGuide').then(m => ({ default: m.AIStrategyGuideEN })));
 
-// Dutch Case Study Pages
-import { MeduxNL } from './pages/nl/cases/Medux';
-import { OLXNL } from './pages/nl/cases/OLX';
-import { TrabuNL } from './pages/nl/cases/Trabu';
-import { InnoEnergyNL } from './pages/nl/cases/InnoEnergy';
+const MeduxNL = React.lazy(() => import('./pages/nl/cases/Medux').then(m => ({ default: m.MeduxNL })));
+const OLXNL = React.lazy(() => import('./pages/nl/cases/OLX').then(m => ({ default: m.OLXNL })));
+const TrabuNL = React.lazy(() => import('./pages/nl/cases/Trabu').then(m => ({ default: m.TrabuNL })));
+const InnoEnergyNL = React.lazy(() => import('./pages/nl/cases/InnoEnergy').then(m => ({ default: m.InnoEnergyNL })));
 
-// English Case Study Pages
-import { MeduxEN } from './pages/en/cases/Medux';
-import { OLXEN } from './pages/en/cases/OLX';
-import { TrabuEN } from './pages/en/cases/Trabu';
-import { InnoEnergyEN } from './pages/en/cases/InnoEnergy';
+const MeduxEN = React.lazy(() => import('./pages/en/cases/Medux').then(m => ({ default: m.MeduxEN })));
+const OLXEN = React.lazy(() => import('./pages/en/cases/OLX').then(m => ({ default: m.OLXEN })));
+const TrabuEN = React.lazy(() => import('./pages/en/cases/Trabu').then(m => ({ default: m.TrabuEN })));
+const InnoEnergyEN = React.lazy(() => import('./pages/en/cases/InnoEnergy').then(m => ({ default: m.InnoEnergyEN })));
 
-// Dutch Legal Pages
-import { PrivacyNL } from './pages/nl/legal/Privacy';
-import { VoorwaardenNL } from './pages/nl/legal/Voorwaarden';
+const PrivacyNL = React.lazy(() => import('./pages/nl/legal/Privacy').then(m => ({ default: m.PrivacyNL })));
+const VoorwaardenNL = React.lazy(() => import('./pages/nl/legal/Voorwaarden').then(m => ({ default: m.VoorwaardenNL })));
 
-// English Legal Pages
-import { PrivacyEN } from './pages/en/legal/Privacy';
-import { TermsEN } from './pages/en/legal/Terms';
+const PrivacyEN = React.lazy(() => import('./pages/en/legal/Privacy').then(m => ({ default: m.PrivacyEN })));
+const TermsEN = React.lazy(() => import('./pages/en/legal/Terms').then(m => ({ default: m.TermsEN })));
 
-// Press/Media Pages
-import { PersNL } from './pages/nl/Pers';
-import { PressEN } from './pages/en/Press';
+const PersNL = React.lazy(() => import('./pages/nl/Pers').then(m => ({ default: m.PersNL })));
+const PressEN = React.lazy(() => import('./pages/en/Press').then(m => ({ default: m.PressEN })));
 
-// Internal Pages (hidden from public navigation)
-import { LinkedInPosts } from './pages/internal/LinkedInPosts';
-import { EmailSignature } from './pages/internal/EmailSignature';
+const EmailSignature = React.lazy(() => import('./pages/internal/EmailSignature').then(m => ({ default: m.EmailSignature })));
 
-// 404 Page
-import { NotFound } from './pages/NotFound';
+const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        {/* Homepage - Dutch default */}
-        <Route path="/" element={<HomePage defaultLang="nl" />} />
-        {/* Homepage - English */}
-        <Route path="/en" element={<HomePage defaultLang="en" />} />
+      <Suspense fallback={null}>
+        <Routes>
+          {/* Homepage - Dutch default */}
+          <Route path="/" element={<HomePage defaultLang="nl" />} />
+          {/* Homepage - English */}
+          <Route path="/en" element={<HomePage defaultLang="en" />} />
 
-        {/* Dutch Service Pages */}
-        <Route path="/nl/diensten/ai-foundations" element={<AIFoundationsNL />} />
-        <Route path="/nl/diensten/opportunity-scouting" element={<OpportunityScoutingNL />} />
-        <Route path="/nl/diensten/copilot-basics" element={<CopilotBasicsNL />} />
-        <Route path="/nl/diensten/ai-voor-developers" element={<AIVoorDevelopersNL />} />
-        <Route path="/nl/diensten/ai-privacy-security" element={<AIPrivacySecurityNL />} />
-        <Route path="/nl/diensten/ai-media-literacy" element={<AIMediaLiteracyNL />} />
-        <Route path="/nl/diensten/specialistische-tracks" element={<SpecialistischeTracksNL />} />
+          {/* Dutch Service Pages */}
+          <Route path="/nl/diensten/ai-foundations" element={<AIFoundationsNL />} />
+          <Route path="/nl/diensten/opportunity-scouting" element={<OpportunityScoutingNL />} />
+          <Route path="/nl/diensten/copilot-basics" element={<CopilotBasicsNL />} />
+          <Route path="/nl/diensten/ai-voor-developers" element={<AIVoorDevelopersNL />} />
+          <Route path="/nl/diensten/ai-privacy-security" element={<AIPrivacySecurityNL />} />
+          <Route path="/nl/diensten/ai-media-literacy" element={<AIMediaLiteracyNL />} />
+          <Route path="/nl/diensten/specialistische-tracks" element={<SpecialistischeTracksNL />} />
 
-        {/* English Service Pages */}
-        <Route path="/en/services/ai-foundations" element={<AIFoundationsEN />} />
-        <Route path="/en/services/opportunity-scouting" element={<OpportunityScoutingEN />} />
-        <Route path="/en/services/copilot-basics" element={<CopilotBasicsEN />} />
-        <Route path="/en/services/ai-for-developers" element={<AIForDevelopersEN />} />
-        <Route path="/en/services/ai-privacy-security" element={<AIPrivacySecurityEN />} />
-        <Route path="/en/services/ai-media-literacy" element={<AIMediaLiteracyEN />} />
-        <Route path="/en/services/specialized-tracks" element={<SpecializedTracksEN />} />
+          {/* English Service Pages */}
+          <Route path="/en/services/ai-foundations" element={<AIFoundationsEN />} />
+          <Route path="/en/services/opportunity-scouting" element={<OpportunityScoutingEN />} />
+          <Route path="/en/services/copilot-basics" element={<CopilotBasicsEN />} />
+          <Route path="/en/services/ai-for-developers" element={<AIForDevelopersEN />} />
+          <Route path="/en/services/ai-privacy-security" element={<AIPrivacySecurityEN />} />
+          <Route path="/en/services/ai-media-literacy" element={<AIMediaLiteracyEN />} />
+          <Route path="/en/services/specialized-tracks" element={<SpecializedTracksEN />} />
 
-        {/* Dutch About Pages */}
-        <Route path="/nl/over-ons/aanpak" element={<AanpakNL />} />
-        <Route path="/nl/over-ons/team" element={<TeamNL />} />
+          {/* Dutch About Pages */}
+          <Route path="/nl/over-ons/aanpak" element={<AanpakNL />} />
+          <Route path="/nl/over-ons/team" element={<TeamNL />} />
 
-        {/* English About Pages */}
-        <Route path="/en/about/approach" element={<ApproachEN />} />
-        <Route path="/en/about/team" element={<TeamEN />} />
+          {/* English About Pages */}
+          <Route path="/en/about/approach" element={<ApproachEN />} />
+          <Route path="/en/about/team" element={<TeamEN />} />
 
-        {/* Dutch Resource Pages */}
-        <Route path="/nl/resources/ai-geletterdheid" element={<AIGeletterdheidNL />} />
-        <Route path="/nl/resources/ai-strategie-gids" element={<AIStrategieGidsNL />} />
+          {/* Dutch Resource Pages */}
+          <Route path="/nl/resources/ai-geletterdheid" element={<AIGeletterdheidNL />} />
+          <Route path="/nl/resources/ai-strategie-gids" element={<AIStrategieGidsNL />} />
 
-        {/* English Resource Pages */}
-        <Route path="/en/resources/ai-literacy" element={<AILiteracyEN />} />
-        <Route path="/en/resources/ai-strategy-guide" element={<AIStrategyGuideEN />} />
+          {/* English Resource Pages */}
+          <Route path="/en/resources/ai-literacy" element={<AILiteracyEN />} />
+          <Route path="/en/resources/ai-strategy-guide" element={<AIStrategyGuideEN />} />
 
-        {/* Dutch Case Study Pages */}
-        <Route path="/nl/cases/medux" element={<MeduxNL />} />
-        <Route path="/nl/cases/olx" element={<OLXNL />} />
-        <Route path="/nl/cases/trabu" element={<TrabuNL />} />
-        <Route path="/nl/cases/innoenergy" element={<InnoEnergyNL />} />
+          {/* Dutch Case Study Pages */}
+          <Route path="/nl/cases/medux" element={<MeduxNL />} />
+          <Route path="/nl/cases/olx" element={<OLXNL />} />
+          <Route path="/nl/cases/trabu" element={<TrabuNL />} />
+          <Route path="/nl/cases/innoenergy" element={<InnoEnergyNL />} />
 
-        {/* English Case Study Pages */}
-        <Route path="/en/cases/medux" element={<MeduxEN />} />
-        <Route path="/en/cases/olx" element={<OLXEN />} />
-        <Route path="/en/cases/trabu" element={<TrabuEN />} />
-        <Route path="/en/cases/innoenergy" element={<InnoEnergyEN />} />
+          {/* English Case Study Pages */}
+          <Route path="/en/cases/medux" element={<MeduxEN />} />
+          <Route path="/en/cases/olx" element={<OLXEN />} />
+          <Route path="/en/cases/trabu" element={<TrabuEN />} />
+          <Route path="/en/cases/innoenergy" element={<InnoEnergyEN />} />
 
-        {/* Dutch Legal Pages */}
-        <Route path="/nl/legal/privacy" element={<PrivacyNL />} />
-        <Route path="/nl/legal/voorwaarden" element={<VoorwaardenNL />} />
+          {/* Dutch Legal Pages */}
+          <Route path="/nl/legal/privacy" element={<PrivacyNL />} />
+          <Route path="/nl/legal/voorwaarden" element={<VoorwaardenNL />} />
 
-        {/* English Legal Pages */}
-        <Route path="/en/legal/privacy" element={<PrivacyEN />} />
-        <Route path="/en/legal/terms" element={<TermsEN />} />
+          {/* English Legal Pages */}
+          <Route path="/en/legal/privacy" element={<PrivacyEN />} />
+          <Route path="/en/legal/terms" element={<TermsEN />} />
 
-        {/* Press/Media Pages */}
-        <Route path="/nl/pers" element={<PersNL />} />
-        <Route path="/en/press" element={<PressEN />} />
+          {/* Press/Media Pages */}
+          <Route path="/nl/pers" element={<PersNL />} />
+          <Route path="/en/press" element={<PressEN />} />
 
-        {/* Internal Pages (hidden from public navigation) */}
-        <Route path="/internal/linkedin-posts" element={<LinkedInPosts />} />
-        <Route path="/internal/email-signature" element={<EmailSignature />} />
+          {/* Internal Pages (hidden from public navigation) */}
+          <Route path="/internal/email-signature" element={<EmailSignature />} />
 
-        {/* 404 Page */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          {/* 404 Page */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

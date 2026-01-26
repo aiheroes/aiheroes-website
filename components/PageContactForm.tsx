@@ -119,10 +119,11 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
       <form name="contact" method="POST" onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+            <label htmlFor="page-contact-name" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
               {content.name}
             </label>
             <input
+              id="page-contact-name"
               type="text"
               name="name"
               value={formData.name}
@@ -132,10 +133,11 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
             />
           </div>
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+            <label htmlFor="page-contact-email" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
               {content.email}
             </label>
             <input
+              id="page-contact-email"
               type="email"
               name="email"
               value={formData.email}
@@ -147,10 +149,11 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+          <label htmlFor="page-contact-org" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
             {content.org}
           </label>
           <input
+            id="page-contact-org"
             type="text"
             name="organization"
             value={formData.organization}
@@ -160,10 +163,11 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
+          <label htmlFor="page-contact-message" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
             {content.message}
           </label>
           <textarea
+            id="page-contact-message"
             name="message"
             value={formData.message}
             onChange={handleInputChange}

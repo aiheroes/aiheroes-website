@@ -7,9 +7,9 @@ interface ServicesProps {
 }
 
 const SERVICE_BACKGROUNDS = {
-  foundations: "https://images.pexels.com/photos/11941918/pexels-photo-11941918.jpeg?auto=compress&cs=tinysrgb&w=1200",
-  scouting: "https://images.unsplash.com/photo-1554755229-ca4470e07232?auto=format&fit=crop&q=80&w=1200",
-  specialized: "https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?auto=format&fit=crop&q=80&w=1200"
+  foundations: "/services/foundations.webp",
+  scouting: "/services/scouting.webp",
+  specialized: "/services/specialized.webp"
 };
 
 export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
@@ -52,7 +52,10 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
             return (
               <div
                 key={item.key}
+                role="button"
+                tabIndex={0}
                 onClick={() => handleServiceClick(item.topicIndex, item.chipColor)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleServiceClick(item.topicIndex, item.chipColor); } }}
                 className={`
                   relative overflow-hidden
                   h-[220px] md:h-[320px]
@@ -68,6 +71,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                   <img
                     src={bgImage}
                     alt=""
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>

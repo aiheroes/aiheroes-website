@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* Custom theme extending Tailwind defaults */
+@theme {
+  /* Font families */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-display: 'Playfair Display', serif;
+
+  /* Brand colors */
+  --color-brand-red: #D9534F;
+  --color-brand-blue: #2563EB;
+  --color-brand-taupe: #A47E68;
+  --color-brand-light: #FDFCF8;
+  --color-brand-dark: #1C1917;
+  --color-brand-stone: #E7E5E4;
+  --color-brand-sand: #F5F5F4;
+
+  /* Animations */
+  --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-ken-burns: ken-burns 20s ease-out infinite alternate;
+
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ken-burns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+}
+
+/* Base styles */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FDFCF8;
+}
+
+/* Hide scrollbar for clean presentation but allow functionality */
+.snap-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.snap-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Text wrap utilities for preventing orphans */
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Navbar blur transition styles */
+.navbar-blur,
+.navbar-clear {
+  -webkit-transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
+  transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
+}
+.navbar-blur {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.navbar-blur-dark {
+  background-color: rgba(28, 25, 23, 0.75);
+}
+.navbar-blur-light {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+.navbar-clear {
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+}
+.navbar-clear-dark {
+  /* Use solid with transparency instead of gradient for smooth transition */
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.navbar-clear-light {
+  background-color: transparent;
+}

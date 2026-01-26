@@ -131,10 +131,11 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8">
                   <div className="group">
-                    <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                    <label htmlFor="contact-name" className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
                       {content.form.name}
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       value={formData.name}
@@ -144,10 +145,11 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                    <label htmlFor="contact-email" className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
                       {content.form.email}
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -159,10 +161,11 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                 </div>
 
                 <div className="group">
-                  <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                  <label htmlFor="contact-org" className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
                     {content.form.org}
                   </label>
                   <input
+                    id="contact-org"
                     type="text"
                     name="organization"
                     value={formData.organization}
@@ -210,10 +213,11 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
                 </div>
 
                 <div className="group">
-                  <label className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
+                  <label htmlFor="contact-message" className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">
                     {content.form.message}
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}

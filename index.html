@@ -117,97 +117,9 @@
       }
     }
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-              display: ['Playfair Display', 'serif'],
-            },
-            colors: {
-              brand: {
-                red: '#D9534F',
-                blue: '#2563EB', // Restored a true Blue
-                taupe: '#A47E68', // The warm brown moved to its own name
-                light: '#FDFCF8',
-                dark: '#1C1917',
-                stone: '#E7E5E4',
-                sand: '#F5F5F4',
-              }
-            },
-            animation: {
-              'fade-in-up': 'fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) both',
-              'ken-burns': 'kenBurns 20s ease-out infinite alternate',
-            },
-            keyframes: {
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(40px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              kenBurns: {
-                '0%': { transform: 'scale(1)' },
-                '100%': { transform: 'scale(1.05)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background-color: #FDFCF8;
-      }
-      /* Hide scrollbar for clean presentation but allow functionality */
-      .snap-container {
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* IE 10+ */
-      }
-      .snap-container::-webkit-scrollbar {
-        display: none;  /* Chrome/Safari */
-      }
-      /* Text wrap utilities for preventing orphans */
-      .text-balance {
-        text-wrap: balance;
-      }
-      .text-pretty {
-        text-wrap: pretty;
-      }
-      /* Navbar blur transition styles */
-      .navbar-blur,
-      .navbar-clear {
-        -webkit-transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
-        transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
-      }
-      .navbar-blur {
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-      }
-      .navbar-blur-dark {
-        background-color: rgba(28, 25, 23, 0.75);
-      }
-      .navbar-blur-light {
-        background-color: rgba(255, 255, 255, 0.85);
-      }
-      .navbar-clear {
-        -webkit-backdrop-filter: blur(0px);
-        backdrop-filter: blur(0px);
-      }
-      .navbar-clear-dark {
-        /* Use solid with transparency instead of gradient for smooth transition */
-        background-color: rgba(0, 0, 0, 0.25);
-      }
-      .navbar-clear-light {
-        background-color: transparent;
-      }
-    </style>
 </head>
   <body>
     <!-- Hidden form for Netlify to detect at build time -->
