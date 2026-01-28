@@ -76,6 +76,7 @@ const PressEN = React.lazy(() => import('./pages/en/Press').then(m => ({ default
 
 const EmailSignature = React.lazy(() => import('./pages/internal/EmailSignature').then(m => ({ default: m.EmailSignature })));
 const DemoPresentation = React.lazy(() => import('./presentations/examples/DemoPresentation').then(m => ({ default: m.default })));
+const HanzeWorkshop = React.lazy(() => import('./presentations/examples/HanzeWorkshop').then(m => ({ default: m.HanzeWorkshop })));
 
 const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
@@ -151,6 +152,7 @@ function App() {
           {/* Internal Pages (hidden from public navigation) */}
           <Route path="/internal/email-signature" element={<EmailSignature />} />
           <Route path="/internal/demo-presentation" element={<DemoPresentation />} />
+          <Route path="/internal/hanze-workshop" element={<HanzeWorkshop />} />
 
           {/* Hanze Workshop Page */}
           <Route path="/hanze" element={<Hanze />} />
