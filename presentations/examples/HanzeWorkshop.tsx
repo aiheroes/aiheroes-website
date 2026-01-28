@@ -14,10 +14,22 @@ import { HexagonFlow } from './components/HexagonFlow';
 import { AIJourneyTimeline } from './components/AIJourneyTimeline';
 import { ProcessTimeline } from './components/ProcessTimeline';
 import { Brain, Zap, Search, MessageSquare, Code2, Lightbulb, Shield, AlertTriangle, Building, CheckSquare } from 'lucide-react';
+import { PresentationConfig } from '../types';
+
+const config: PresentationConfig = {
+  title: 'Hanze Workshop: AI in Education',
+  author: 'Jan Brusse',
+  date: new Date().toLocaleDateString('nl-NL', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }),
+  lang: 'nl',
+};
 
 export const HanzeWorkshop: React.FC = () => {
   return (
-    <PresentationContainer title="Hanze Workshop: AI in Education">
+    <PresentationContainer config={config}>
       {/* Slide 1: Title */}
       <Slide>
         <div className="flex flex-col items-center justify-center h-full bg-brand-dark text-white p-12">
