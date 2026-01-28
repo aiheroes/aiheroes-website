@@ -24,6 +24,7 @@ function ScrollToTop() {
 
 // HomePage is eagerly loaded (critical for initial render)
 import { HomePage } from './pages/HomePage';
+import { Hanze } from './pages/Hanze';
 
 // All other pages are lazily loaded
 const AIFoundationsNL = React.lazy(() => import('./pages/nl/diensten/AIFoundations').then(m => ({ default: m.AIFoundationsNL })));
@@ -74,6 +75,7 @@ const PersNL = React.lazy(() => import('./pages/nl/Pers').then(m => ({ default: 
 const PressEN = React.lazy(() => import('./pages/en/Press').then(m => ({ default: m.PressEN })));
 
 const EmailSignature = React.lazy(() => import('./pages/internal/EmailSignature').then(m => ({ default: m.EmailSignature })));
+const DemoPresentation = React.lazy(() => import('./presentations/examples/DemoPresentation').then(m => ({ default: m.default })));
 
 const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
@@ -148,6 +150,10 @@ function App() {
 
           {/* Internal Pages (hidden from public navigation) */}
           <Route path="/internal/email-signature" element={<EmailSignature />} />
+          <Route path="/internal/demo-presentation" element={<DemoPresentation />} />
+
+          {/* Hanze Workshop Page */}
+          <Route path="/hanze" element={<Hanze />} />
 
           {/* 404 Page */}
           <Route path="*" element={<NotFound />} />

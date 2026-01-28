@@ -19,6 +19,7 @@
   /* Animations */
   --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-ken-burns: ken-burns 20s ease-out infinite alternate;
+  --animate-fadeIn: fadeIn 0.4s ease-out both;
 
   @keyframes fade-in-up {
     0% { opacity: 0; transform: translateY(40px); }
@@ -28,6 +29,11 @@
   @keyframes ken-burns {
     0% { transform: scale(1); }
     100% { transform: scale(1.05); }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 }
 
@@ -81,4 +87,126 @@ body {
 }
 .navbar-clear-light {
   background-color: transparent;
+}
+
+/* Hanze Workshop specific styles */
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-brand-dark);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #334155;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  color: #475569;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.prose ul {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose strong {
+  color: #334155;
+  font-weight: 600;
+}
+
+.example-badge {
+  display: inline-block;
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #dcfce7;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.example-callout {
+  background: #f1f5f9;
+  border-left: 5px solid #2563eb;
+  padding: 18px 20px;
+  border-radius: 8px;
+  margin: 16px 0 22px;
+}
+
+.example-callout h3 {
+  color: #1e293b;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.example-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 14px 0 22px;
+}
+
+@media(min-width: 860px) {
+  .example-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.example-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 18px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.example-card.level1 {
+  background: #fff1f2;
+  border-color: #ffe4e6;
+}
+
+.example-card.level1 h3 {
+  color: #be123c;
+}
+
+.example-card.level2 {
+  background: #fff7ed;
+  border-color: #ffedd5;
+}
+
+.example-card.level4 {
+  background: #f0fdf4;
+  border-color: #dcfce7;
+}
+
+.example-card h3 {
+  color: #1e293b;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.example-card ul {
+  margin-left: 1.25rem;
+  color: #475569;
+}
+
+.example-card li {
+  margin-bottom: 0.5rem;
 }
