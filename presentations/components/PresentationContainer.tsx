@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
 import { NavigationState, PresentationConfig } from '../types';
-import Controls from './Controls';
-import SpeakerNotes from './SpeakerNotes';
+import { Controls } from './Controls';
+import { SpeakerNotes } from './SpeakerNotes';
 
 interface PresentationContextValue extends NavigationState {
   goToSlide: (index: number) => void;
@@ -28,7 +28,7 @@ interface Props {
   children: ReactNode[];
 }
 
-export default function PresentationContainer({ config, children }: Props) {
+export function PresentationContainer({ config, children }: Props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showNotes, setShowNotes] = useState(false);

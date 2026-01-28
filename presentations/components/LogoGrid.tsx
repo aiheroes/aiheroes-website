@@ -26,7 +26,7 @@ const sizeClasses = {
   lg: 'h-24',
 };
 
-export default function LogoGrid({
+export function LogoGrid({
   logos,
   columns = 4,
   size = 'md',

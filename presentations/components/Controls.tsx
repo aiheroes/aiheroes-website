@@ -1,6 +1,6 @@
 import { usePresentation } from './PresentationContainer';
 
-export default function Controls() {
+export function Controls() {
   const {
     currentSlide,
     totalSlides,

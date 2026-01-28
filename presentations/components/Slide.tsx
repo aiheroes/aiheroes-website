@@ -19,7 +19,7 @@ const paddingClasses = {
   xl: 'p-24',
 };
 
-export default function Slide({
+export function Slide({
   children,
   className = '',
   background = 'bg-brand-light',

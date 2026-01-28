@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Slide from '../components/Slide';
+import { Slide } from '../components/Slide';
 import { SlideProps } from '../types';
 
 interface Props extends SlideProps {
@@ -33,7 +33,7 @@ const gapClasses = {
   xl: 'gap-24',
 };
 
-export default function TwoColumnSlide({
+export function TwoColumnSlide({
   title,
   left,
   right,

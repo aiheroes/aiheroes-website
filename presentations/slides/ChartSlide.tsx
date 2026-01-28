@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Slide from '../components/Slide';
+import { Slide } from '../components/Slide';
 import { SlideProps } from '../types';
 
 interface Props extends SlideProps {
@@ -11,7 +11,7 @@ interface Props extends SlideProps {
   caption?: string;
 }
 
-export default function ChartSlide({
+export function ChartSlide({
   title,
   subtitle,
   chart,

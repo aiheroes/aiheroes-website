@@ -1,4 +1,4 @@
-import Slide from '../components/Slide';
+import { Slide } from '../components/Slide';
 import { SlideProps } from '../types';
 
 interface Props extends SlideProps {
@@ -14,7 +14,7 @@ const accentColors = {
   taupe: 'text-brand-taupe',
 };
 
-export default function SectionSlide({
+export function SectionSlide({
   title,
   subtitle,
   number,

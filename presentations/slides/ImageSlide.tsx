@@ -30,7 +30,7 @@ const overlayBgClasses = {
   none: '',
 };
 
-export default function ImageSlide({
+export function ImageSlide({
   src,
   alt = '',
   overlay,

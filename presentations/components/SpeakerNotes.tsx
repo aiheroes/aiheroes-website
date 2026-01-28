@@ -2,7 +2,7 @@ interface Props {
   notes: string;
 }
 
-export default function SpeakerNotes({ notes }: Props) {
+export function SpeakerNotes({ notes }: Props) {
   if (!notes) {
     return (
       <div className="h-1/3 bg-brand-dark border-t border-white/10 p-8 overflow-auto">

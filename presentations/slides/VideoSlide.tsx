@@ -1,4 +1,4 @@
-import Slide from '../components/Slide';
+import { Slide } from '../components/Slide';
 import { SlideProps } from '../types';
 
 interface Props extends SlideProps {
@@ -31,7 +31,7 @@ function getEmbedUrl(src: string, type: string): string {
   return src;
 }
 
-export default function VideoSlide({
+export function VideoSlide({
   title,
   src,
   type = 'local',

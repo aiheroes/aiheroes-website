@@ -1,4 +1,4 @@
-import Slide from '../components/Slide';
+import { Slide } from '../components/Slide';
 import { SlideProps } from '../types';
 
 interface Props extends SlideProps {
@@ -9,7 +9,7 @@ interface Props extends SlideProps {
   logo?: string;
 }
 
-export default function TitleSlide({
+export function TitleSlide({
   title,
   subtitle,
   author,

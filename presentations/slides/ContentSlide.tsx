@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Slide from '../components/Slide';
+import { Slide } from '../components/Slide';
 import { SlideProps } from '../types';
 
 interface Props extends SlideProps {
@@ -18,7 +18,7 @@ const accentColors = {
   taupe: 'bg-brand-taupe',
 };
 
-export default function ContentSlide({
+export function ContentSlide({
   title,
   subtitle,
   items = [],
