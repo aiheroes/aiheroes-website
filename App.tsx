@@ -35,6 +35,9 @@ const AIPrivacySecurityNL = React.lazy(() => import('./pages/nl/diensten/AIPriva
 const AIMediaLiteracyNL = React.lazy(() => import('./pages/nl/diensten/AIMediaLiteracy').then(m => ({ default: m.AIMediaLiteracyNL })));
 const SpecialistischeTracksNL = React.lazy(() => import('./pages/nl/diensten/SpecialistischeTracks').then(m => ({ default: m.SpecialistischeTracksNL })));
 
+const DienstenNL = React.lazy(() => import('./pages/nl/Diensten').then(m => ({ default: m.DienstenNL })));
+const ServicesEN = React.lazy(() => import('./pages/en/Services').then(m => ({ default: m.ServicesEN })));
+
 const AIFoundationsEN = React.lazy(() => import('./pages/en/services/AIFoundations').then(m => ({ default: m.AIFoundationsEN })));
 const OpportunityScoutingEN = React.lazy(() => import('./pages/en/services/OpportunityScouting').then(m => ({ default: m.OpportunityScoutingEN })));
 const CopilotBasicsEN = React.lazy(() => import('./pages/en/services/CopilotBasics').then(m => ({ default: m.CopilotBasicsEN })));
@@ -90,6 +93,10 @@ function App() {
           <Route path="/" element={<HomePage defaultLang="nl" />} />
           {/* Homepage - English */}
           <Route path="/en" element={<HomePage defaultLang="en" />} />
+
+          {/* Services Overview Pages */}
+          <Route path="/nl/diensten" element={<DienstenNL />} />
+          <Route path="/en/services" element={<ServicesEN />} />
 
           {/* Dutch Service Pages */}
           <Route path="/nl/diensten/ai-foundations" element={<AIFoundationsNL />} />
