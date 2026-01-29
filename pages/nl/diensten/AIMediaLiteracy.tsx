@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const AIMediaLiteracyNL: React.FC = () => {
   return (
@@ -67,12 +68,12 @@ export const AIMediaLiteracyNL: React.FC = () => {
           AI-gegenereerde content wordt steeds overtuigender. Voor organisaties betekent dit risico's op het gebied van reputatie, fraude en interne communicatie. Voor individuen gaat het om mediawijsheid en het vermogen om geïnformeerde beslissingen te nemen.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
-          <h3 className="text-xl font-serif mb-3">Case: Mark Rutte Deepfake</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red" className="mb-8">
+          <h3>Case: Mark Rutte Deepfake</h3>
+          <p>
             We laten zien hoe we een overtuigende deepfake van Mark Rutte maakten - en welke tekenen je hadden kunnen helpen het te herkennen. Een praktijkvoorbeeld van hoe deze technologie werkt.
           </p>
-        </div>
+        </DarkBox>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <div className="text-center p-6 bg-white border border-stone-200">

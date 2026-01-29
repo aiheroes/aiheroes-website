@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
 import { Image } from '../../../components/Image';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const TeamNL: React.FC = () => {
   return (
@@ -80,12 +81,12 @@ export const TeamNL: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-blue">
-          <h3 className="text-xl font-serif mb-3">Samenwerken?</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="blue">
+          <h3>Samenwerken?</h3>
+          <p>
             Of je nu een workshop wilt boeken of wilt sparren over de mogelijkheden — neem contact op.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const OLXNL: React.FC = () => {
   return (
@@ -108,18 +109,18 @@ export const OLXNL: React.FC = () => {
               Gebruikers vinden sneller wat ze zoeken en blijven langer op het platform.
             </p>
           </div>
-          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
+          <DarkBox accentColor="red" className="p-6">
             <h4 className="font-bold mb-2">Meer conversies</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm">
               Slimme vergelijkingstools leiden tot snellere koopbeslissingen.
             </p>
-          </div>
-          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
+          </DarkBox>
+          <DarkBox accentColor="red" className="p-6">
             <h4 className="font-bold mb-2">Intuïtieve navigatie</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm">
               Visual search en natural language maken het platform toegankelijker.
             </p>
-          </div>
+          </DarkBox>
           <div className="p-6 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Data-gedreven inzichten</h4>
             <p className="text-sm text-white/80">
@@ -128,12 +129,12 @@ export const OLXNL: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">Over OLX</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Over OLX</h3>
+          <p>
             OLX is een toonaangevende wereldwijde marktplaats die miljoenen mensen helpt goederen en diensten te kopen en verkopen. Met innovatieve oplossingen en een gebruikersgerichte aanpak heeft OLX e-commerce opnieuw gedefinieerd.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

@@ -4,6 +4,7 @@ import { Logo } from '../../components/Logo';
 import { Footer } from '../../components/Footer';
 import { CONTENT } from '../../constants';
 import { ArrowLeft } from 'lucide-react';
+import { DarkBox } from '../../src/components/DarkBox';
 
 export const PersNL: React.FC = () => {
   const content = CONTENT['nl'];
@@ -247,17 +248,19 @@ export const PersNL: React.FC = () => {
           </section>
 
           {/* Press Contact */}
-          <section className="not-prose bg-brand-dark text-white/85 p-8 md:p-12 rounded-lg border-l-4 border-brand-red">
-            <h2 className="text-2xl md:text-3xl font-serif mb-4">Perscontact</h2>
-            <p className="text-white/80 leading-relaxed mb-6 max-w-xl">
-              Voor persvragen, interviewverzoeken of aanvullende merkbestanden kun je direct contact met ons opnemen.
-            </p>
-            <a
-              href="mailto:hello@aiheroes.io"
-              className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
-            >
-              Contact Pers
-            </a>
+          <section>
+            <DarkBox accentColor="red" className="p-8 md:p-12">
+              <h2 className="text-2xl md:text-3xl font-serif mb-4">Perscontact</h2>
+              <p className="leading-relaxed mb-6 max-w-xl">
+                Voor persvragen, interviewverzoeken of aanvullende merkbestanden kun je direct contact met ons opnemen.
+              </p>
+              <a
+                href="mailto:hello@aiheroes.io"
+                className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+              >
+                Contact Pers
+              </a>
+            </DarkBox>
           </section>
 
         </div>

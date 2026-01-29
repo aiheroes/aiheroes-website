@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const OpportunityScoutingEN: React.FC = () => {
   return (
@@ -72,12 +73,12 @@ export const OpportunityScoutingEN: React.FC = () => {
           <li>Need an objective outside perspective</li>
         </ul>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
-          <h3 className="text-xl font-serif mb-3">Results guarantee</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Results guarantee</h3>
+          <p>
             We identify AI solutions that earn back at least your investment. If we don't find valuable opportunities, you pay nothing.
           </p>
-        </div>
+        </DarkBox>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">The process</h3>
         <div className="space-y-4 mb-8">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const OpportunityScoutingNL: React.FC = () => {
   return (
@@ -73,12 +74,12 @@ export const OpportunityScoutingNL: React.FC = () => {
           <li>Een objectieve blik van buitenaf nodig hebben</li>
         </ul>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
-          <h3 className="text-xl font-serif mb-3">Resultaatgarantie</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red" className="mb-8">
+          <h3>Resultaatgarantie</h3>
+          <p>
             We identificeren AI-oplossingen die je minimaal het geïnvesteerde bedrag terugverdienen. Vinden we geen waardevolle kansen? Dan betaal je niets.
           </p>
-        </div>
+        </DarkBox>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Het proces</h3>
         <div className="space-y-4 mb-8">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const PrivacyNL: React.FC = () => {
   return (
@@ -113,12 +114,12 @@ export const PrivacyNL: React.FC = () => {
           Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via hello@aiheroes.io.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">Verantwoordelijke</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Verantwoordelijke</h3>
+          <p>
             AI Heroes is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. We zijn gevestigd in Nederland en vallen onder de Nederlandse en Europese privacywetgeving.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

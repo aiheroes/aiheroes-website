@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const AanpakNL: React.FC = () => {
   return (
@@ -65,12 +66,12 @@ export const AanpakNL: React.FC = () => {
           Soms is een workshop niet genoeg en wil je echt iets bouwen. Wij ontwikkelen AI-oplossingen samen met je team. Van proof-of-concept tot productie-waardig systeem. Altijd met kennisoverdracht, zodat je niet afhankelijk van ons blijft.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 mb-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">Waarom kiezen voor AI Heroes?</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red" className="mb-8">
+          <h3>Waarom kiezen voor AI Heroes?</h3>
+          <p>
             Wij zijn zelf practitioners. We bouwen dagelijks met AI, kennen de mogelijkheden én de beperkingen. Geen theoretici die je vertellen wat je moet doen, maar mensen die het zelf gedaan hebben.
           </p>
-        </div>
+        </DarkBox>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Tarieven</h3>
         <p className="text-stone-600 leading-relaxed mb-6">

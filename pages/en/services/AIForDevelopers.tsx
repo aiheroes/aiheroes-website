@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const AIForDevelopersEN: React.FC = () => {
   return (
@@ -83,12 +84,12 @@ export const AIForDevelopersEN: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">Custom tracks available</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Custom tracks available</h3>
+          <p>
             We can customize the workshop to your tech stack and use cases. Whether it's a chatbot for customer service, document processing, or something entirely different - we build it together.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

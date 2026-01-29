@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const ApproachEN: React.FC = () => {
   return (
@@ -65,12 +66,12 @@ export const ApproachEN: React.FC = () => {
           Sometimes a workshop isn't enough and you want to actually build something. We develop AI solutions together with your team. From proof-of-concept to production-ready system. Always with knowledge transfer, so you don't remain dependent on us.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
-          <h3 className="text-xl font-serif mb-3">Why choose AI Heroes?</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Why choose AI Heroes?</h3>
+          <p>
             We are practitioners ourselves. We build with AI daily, know the possibilities and the limitations. Not theorists telling you what to do, but people who've done it themselves.
           </p>
-        </div>
+        </DarkBox>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Pricing</h3>
         <p className="text-stone-600 leading-relaxed mb-6">

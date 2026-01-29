@@ -225,3 +225,35 @@ img {
 img.loaded {
   animation: image-fade 0.6s ease-out both;
 }
+
+/* DarkBox component - override prose styles with specificity */
+.dark-box-content h2,
+.dark-box-content h3,
+.dark-box-content h4 {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-family: var(--font-serif);
+}
+
+.dark-box-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.dark-box-content h4 {
+  margin-bottom: 0.75rem;
+}
+
+.dark-box-content p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.75;
+}
+
+.dark-box-content ul,
+.dark-box-content li {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark-box-content strong {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600;
+}

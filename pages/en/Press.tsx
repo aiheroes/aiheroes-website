@@ -4,6 +4,7 @@ import { Logo } from '../../components/Logo';
 import { Footer } from '../../components/Footer';
 import { CONTENT } from '../../constants';
 import { ArrowLeft, Download } from 'lucide-react';
+import { DarkBox } from '../../src/components/DarkBox';
 
 export const PressEN: React.FC = () => {
   const content = CONTENT['en'];
@@ -248,17 +249,19 @@ export const PressEN: React.FC = () => {
           </section>
 
           {/* Press Contact */}
-          <section className="not-prose bg-brand-dark text-white/85 p-8 md:p-12 rounded-lg border-l-4 border-brand-red">
-            <h2 className="text-2xl md:text-3xl font-serif mb-4">Press Inquiries</h2>
-            <p className="text-white/80 leading-relaxed mb-6 max-w-xl">
-              For press inquiries, interview requests, or additional brand assets, please contact us directly.
-            </p>
-            <a
-              href="mailto:hello@aiheroes.io"
-              className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
-            >
-              Contact Press Team
-            </a>
+          <section className="not-prose">
+            <DarkBox accentColor="red">
+              <h2 className="text-2xl md:text-3xl font-serif mb-4">Press Inquiries</h2>
+              <p className="mb-6 max-w-xl">
+                For press inquiries, interview requests, or additional brand assets, please contact us directly.
+              </p>
+              <a
+                href="mailto:hello@aiheroes.io"
+                className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+              >
+                Contact Press Team
+              </a>
+            </DarkBox>
           </section>
 
         </div>

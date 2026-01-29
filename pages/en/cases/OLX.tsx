@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const OLXEN: React.FC = () => {
   return (
@@ -108,18 +109,18 @@ export const OLXEN: React.FC = () => {
               Users find what they're looking for faster and stay longer on the platform.
             </p>
           </div>
-          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
-            <h4 className="font-bold mb-2">More conversions</h4>
-            <p className="text-sm text-white/80">
+          <DarkBox accentColor="red">
+            <h4>More conversions</h4>
+            <p className="text-sm">
               Smart comparison tools lead to faster purchase decisions.
             </p>
-          </div>
-          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
-            <h4 className="font-bold mb-2">Intuitive navigation</h4>
-            <p className="text-sm text-white/80">
+          </DarkBox>
+          <DarkBox accentColor="red">
+            <h4>Intuitive navigation</h4>
+            <p className="text-sm">
               Visual search and natural language make the platform more accessible.
             </p>
-          </div>
+          </DarkBox>
           <div className="p-6 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Data-driven insights</h4>
             <p className="text-sm text-white/80">
@@ -128,12 +129,12 @@ export const OLXEN: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">About OLX</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>About OLX</h3>
+          <p>
             OLX is a leading global marketplace enabling millions to buy and sell goods and services easily. Committed to simplifying transactions and fostering trust, OLX has redefined e-commerce with innovative solutions and a user-first approach.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

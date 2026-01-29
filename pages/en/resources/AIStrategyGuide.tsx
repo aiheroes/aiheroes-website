@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const AIStrategyGuideEN: React.FC = () => {
   return (
@@ -88,12 +89,12 @@ export const AIStrategyGuideEN: React.FC = () => {
           <p className="text-stone-600 leading-relaxed mb-4">
             With a solid plan, implementation is the next step. You have two options: buy an existing solution or build something custom. In both cases, integration is the challenge.
           </p>
-          <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-            <h4 className="font-serif mb-3">It's about people</h4>
-            <p className="text-white/80 leading-relaxed">
+          <DarkBox accentColor="red">
+            <h4>It's about people</h4>
+            <p>
               Technical integration is one thing. But the real challenge is getting your team on board. People are naturally resistant to change. Involve them early, gather input, make sure they feel supported. This makes the difference between success and failure.
             </p>
-          </div>
+          </DarkBox>
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Need help?</h3>

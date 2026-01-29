@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const SpecializedTracksEN: React.FC = () => {
   return (
@@ -103,12 +104,12 @@ export const SpecializedTracksEN: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">Let's talk</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Let's talk</h3>
+          <p>
             Do you have a specific AI challenge or want an advanced program for your team? Get in touch for a no-obligation conversation about the possibilities.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

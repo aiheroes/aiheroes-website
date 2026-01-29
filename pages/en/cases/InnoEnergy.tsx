@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const InnoEnergyEN: React.FC = () => {
   return (
@@ -77,12 +78,12 @@ export const InnoEnergyEN: React.FC = () => {
               Real-time analytics of industry trends and competitors.
             </p>
           </div>
-          <div className="not-prose p-4 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
-            <h4 className="font-bold mb-2">Financial Health</h4>
-            <p className="text-sm text-white/80">
+          <DarkBox accentColor="red">
+            <h4>Financial Health</h4>
+            <p className="text-sm">
               Cash flow monitoring, burn rate analysis, and runway projections.
             </p>
-          </div>
+          </DarkBox>
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Exit Risk Assessment</h4>
             <p className="text-sm text-white/80">
@@ -99,12 +100,12 @@ export const InnoEnergyEN: React.FC = () => {
           The prototype won enthusiastic board support and laid out a practical roadmap for modernization. We proved that sophisticated portfolio analytics and intelligent decision support can be delivered through an intuitive, user-friendly interface.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
-          <h3 className="text-xl font-serif mb-3">The impact</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>The impact</h3>
+          <p>
             This prototype shows how AI can reshape investment management - making sophisticated portfolio analysis accessible and actionable. Data-driven insights that directly lead to better investment decisions.
           </p>
-        </div>
+        </DarkBox>
 
         <div className="bg-stone-50 p-6 md:p-8">
           <h3 className="text-xl font-serif text-brand-dark mb-3">About InnoEnergy</h3>

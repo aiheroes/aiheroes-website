@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const TermsEN: React.FC = () => {
   return (
@@ -135,12 +136,12 @@ export const TermsEN: React.FC = () => {
           Dutch law applies to all agreements. Disputes are submitted to the competent court in the district where AI Heroes is established.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">Questions?</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>Questions?</h3>
+          <p>
             Have questions about these terms of service? Feel free to contact us. We're happy to explain in plain language.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );

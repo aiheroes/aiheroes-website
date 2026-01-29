@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const TrabuEN: React.FC = () => {
   return (
@@ -92,12 +93,12 @@ export const TrabuEN: React.FC = () => {
           The most important result wasn't just the prototype itself, but the architecture we built. A foundation to build upon, with AI integration that can learn and improve over time.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
-          <h3 className="text-xl font-serif mb-3">About Trabu</h3>
-          <p className="text-white/80 leading-relaxed">
+        <DarkBox accentColor="red">
+          <h3>About Trabu</h3>
+          <p>
             Trabu combines deep travel industry expertise with advanced technology to create something entirely new: AI that truly understands what makes each journey special. Their vision goes beyond simple booking - they're transforming how people plan their adventures.
           </p>
-        </div>
+        </DarkBox>
       </div>
     </PageLayout>
   );
