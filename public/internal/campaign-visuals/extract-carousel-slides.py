@@ -71,39 +71,57 @@ def extract_slides(carousel_file):
 def create_standalone_slide(head_content, slide_html, carousel_name, slide_num, total_slides):
     """Create a standalone HTML document for a single slide."""
 
-    # Update CSS to center the slide
+    # Update CSS for clean 1080x1080 output
     updated_head = f'''  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slide {slide_num}/{total_slides} - {carousel_name}</title>
 {head_content}'''
 
-    # Replace carousel-container styles to center single slide
+    # Remove body padding
+    updated_head = re.sub(
+        r'body\s*\{[^}]*?\}',
+        '''body {
+      font-family: 'Inter', sans-serif;
+      background: #1C1917;
+      margin: 0;
+      padding: 0;
+      width: 1080px;
+      height: 1080px;
+      overflow: hidden;
+    }''',
+        updated_head,
+        flags=re.DOTALL
+    )
+
+    # Replace carousel-container - no centering, just fill
     updated_head = re.sub(
         r'\.carousel-container\s*\{[^}]+\}',
         '''.carousel-container {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #F5F5F4;
+      width: 1080px;
+      height: 1080px;
+      background: #1C1917;
+      margin: 0;
       padding: 0;
     }''',
         updated_head,
         flags=re.DOTALL
     )
 
-    # Update slide width to be fixed 1080x1080
+    # Update slide - remove border-radius and make it fill exactly
     updated_head = re.sub(
-        r'(\.slide\s*\{[^}]*?)width:\s*100%;',
-        r'\1width: 1080px;',
-        updated_head,
-        flags=re.DOTALL
-    )
-
-    updated_head = re.sub(
-        r'(\.slide\s*\{[^}]*?)aspect-ratio:\s*1;',
-        r'\1height: 1080px;',
+        r'\.slide\s*\{[^}]*?\}',
+        '''.slide {
+      width: 1080px;
+      height: 1080px;
+      background: #1C1917;
+      border-radius: 0;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }''',
         updated_head,
         flags=re.DOTALL
     )
