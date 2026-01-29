@@ -58,9 +58,16 @@
       margin-bottom: 40px;
     }
 
-    .headline .underline {
+    .headline .underline-red {
       text-decoration: underline;
       text-decoration-color: #D9534F;
+      text-decoration-thickness: 6px;
+      text-underline-offset: 12px;
+    }
+
+    .headline .underline-blue {
+      text-decoration: underline;
+      text-decoration-color: #2563EB;
       text-decoration-thickness: 6px;
       text-underline-offset: 12px;
     }
@@ -72,6 +79,20 @@
       color: #A8A29E;
       line-height: 1.5;
       max-width: 700px;
+      margin-bottom: 32px;
+    }
+
+    .website-pill {
+      display: inline-block;
+      padding: 12px 24px;
+      background: rgba(253, 252, 248, 0.1);
+      border: 2px solid rgba(253, 252, 248, 0.2);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #FDFCF8;
+      letter-spacing: 0.5px;
     }
 
     .footer-info {
@@ -125,8 +146,9 @@
     </div>
 
     <p class="label">Nieuw hoofdstuk</p>
-    <h1 class="headline">AI Heroes is<br><span class="underline">vernieuwd</span></h1>
-    <p class="subline">Nieuwe website, scherpe focus, een team<br>dat precies weet wat werkt. Praktische workshops,<br>technische trajecten, strategisch advies.</p>
+    <h1 class="headline"><span class="underline-red">AI Heroes</span> is<br><span class="underline-blue">vernieuwd</span></h1>
+    <p class="subline">Een nieuwe website met scherpe focus.<br>Een ervaren team. Praktische workshops,<br>technische trajecten & strategisch advies.</p>
+    <div class="website-pill">aiheroes.io</div>
 
     <div class="footer-info">
       <span class="location">Groningen</span>
