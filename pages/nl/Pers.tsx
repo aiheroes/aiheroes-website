@@ -32,7 +32,7 @@ export const PersNL: React.FC = () => {
       <header className="pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 border-brand-red">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">Pers & Media</h1>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
             Huisstijl, richtlijnen en informatie voor pers en media.
           </p>
         </div>
@@ -249,7 +249,7 @@ export const PersNL: React.FC = () => {
           {/* Press Contact */}
           <section className="bg-brand-dark text-white p-8 md:p-12">
             <h2 className="text-2xl md:text-3xl font-serif mb-4">Perscontact</h2>
-            <p className="text-white/80 leading-relaxed mb-6 max-w-xl">
+            <p className="text-white/90 leading-relaxed mb-6 max-w-xl">
               Voor persvragen, interviewverzoeken of aanvullende merkbestanden kun je direct contact met ons opnemen.
             </p>
             <a

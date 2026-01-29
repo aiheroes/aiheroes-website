@@ -20,7 +20,7 @@ export const AIStrategieGidsNL: React.FC = () => {
 
         {/* Step 1 */}
         <div className="mb-12">
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-4 mb-4 items-center">
             <div className="flex-shrink-0 w-10 h-10 bg-brand-red text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
             <h3 className="text-xl font-serif text-brand-dark">Educatie</h3>
           </div>
@@ -38,7 +38,7 @@ export const AIStrategieGidsNL: React.FC = () => {
 
         {/* Step 2 */}
         <div className="mb-12">
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-4 mb-4 items-center">
             <div className="flex-shrink-0 w-10 h-10 bg-brand-red text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
             <h3 className="text-xl font-serif text-brand-dark">Kansen identificeren</h3>
           </div>
@@ -63,7 +63,7 @@ export const AIStrategieGidsNL: React.FC = () => {
 
         {/* Step 3 */}
         <div className="mb-12">
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-4 mb-4 items-center">
             <div className="flex-shrink-0 w-10 h-10 bg-brand-red text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
             <h3 className="text-xl font-serif text-brand-dark">Kansen analyseren</h3>
           </div>
@@ -81,16 +81,16 @@ export const AIStrategieGidsNL: React.FC = () => {
 
         {/* Step 4 */}
         <div className="mb-12">
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-4 mb-4 items-center">
             <div className="flex-shrink-0 w-10 h-10 bg-brand-red text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
             <h3 className="text-xl font-serif text-brand-dark">Implementeren</h3>
           </div>
           <p className="text-stone-600 leading-relaxed mb-4">
             Met een solide plan is implementatie de volgende stap. Je hebt twee opties: een bestaande oplossing kopen of iets op maat bouwen. In beide gevallen is integratie de uitdaging.
           </p>
-          <div className="bg-brand-dark text-white p-6 md:p-8">
+          <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
             <h4 className="font-serif mb-3">Het draait om mensen</h4>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-white/90 leading-relaxed">
               Technische integratie is één ding. Maar de echte uitdaging is je team meekrijgen. Mensen zijn van nature weerstandig tegen verandering. Betrek ze vroeg, verzamel input, zorg dat ze zich gesteund voelen. Dit maakt het verschil tussen succes en mislukking.
             </p>
           </div>

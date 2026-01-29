@@ -67,7 +67,7 @@ export const AILiteracyEN: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">It's not about replacement</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             AI literacy isn't about replacing human intelligence. It's about amplifying what makes us uniquely human: creativity, intuition, connecting dots that machines can't see.
           </p>
         </div>

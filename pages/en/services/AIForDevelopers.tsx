@@ -83,9 +83,9 @@ export const AIForDevelopersEN: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8">
+        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Custom tracks available</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             We can customize the workshop to your tech stack and use cases. Whether it's a chatbot for customer service, document processing, or something entirely different - we build it together.
           </p>
         </div>

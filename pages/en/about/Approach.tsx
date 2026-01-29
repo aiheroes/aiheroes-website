@@ -67,7 +67,7 @@ export const ApproachEN: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">Why choose AI Heroes?</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             We are practitioners ourselves. We build with AI daily, know the possibilities and the limitations. Not theorists telling you what to do, but people who've done it themselves.
           </p>
         </div>

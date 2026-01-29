@@ -1,6 +1,7 @@
 import React from 'react';
 import { Content } from '../types';
 import { Button } from './Button';
+import { Image } from './Image';
 
 interface HeroProps {
   content: Content['hero'];
@@ -49,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ content }) => {
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/hero-bg.webp"
           alt="Grand Modern Architecture"
           className="w-full h-full object-cover"

@@ -67,7 +67,7 @@ export const AIGeletterdheidNL: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">Het draait niet om vervanging</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             AI-geletterdheid gaat niet over het vervangen van menselijke intelligentie. Het gaat over het versterken van wat ons uniek menselijk maakt: creativiteit, intuïtie, het leggen van verbanden die machines niet kunnen zien.
           </p>
         </div>

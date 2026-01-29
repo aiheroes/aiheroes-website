@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { Image } from '../../../components/Image';
 
 export const TeamEN: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ export const TeamEN: React.FC = () => {
           {/* Frans */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/frans.webp" alt="Frans Hoorn" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
+              <Image src="/team/frans.webp" alt="Frans Hoorn" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
@@ -37,7 +38,7 @@ export const TeamEN: React.FC = () => {
           {/* David */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/david.webp" alt="David Homan" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
+              <Image src="/team/david.webp" alt="David Homan" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
@@ -51,7 +52,7 @@ export const TeamEN: React.FC = () => {
           {/* Jan */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/jan.webp" alt="Jan Brusse" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
+              <Image src="/team/jan.webp" alt="Jan Brusse" loading="lazy" className="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
@@ -67,7 +68,7 @@ export const TeamEN: React.FC = () => {
         <div className="border-t border-stone-200 pt-8 mb-12">
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
             <div className="flex-shrink-0 w-20 h-20 bg-stone-200 rounded-full overflow-hidden">
-              <img src="/team/joseph.png" alt="Joseph Groot Kormelink" className="w-full h-full object-cover grayscale" />
+              <Image src="/team/joseph.png" alt="Joseph Groot Kormelink" className="w-full h-full object-cover grayscale" />
             </div>
             <div className="flex-1">
               <h3 className="text-lg font-serif text-brand-dark mb-1">Joseph Groot Kormelink</h3>
@@ -79,9 +80,9 @@ export const TeamEN: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8">
+        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-blue">
           <h3 className="text-xl font-serif mb-3">Work together?</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             Whether you want to book a workshop or explore possibilities — get in touch.
           </p>
         </div>

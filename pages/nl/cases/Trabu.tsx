@@ -72,7 +72,7 @@ export const TrabuNL: React.FC = () => {
 
         <div className="bg-brand-red text-white p-6 md:p-8 mb-8">
           <div className="text-4xl md:text-5xl font-bold mb-4">6 dagen</div>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             In zes werkdagen bouwden we een werkend prototype dat de volledige potentie van Trabu's visie demonstreerde. Van concept naar tastbaar bewijs.
           </p>
         </div>
@@ -92,9 +92,9 @@ export const TrabuNL: React.FC = () => {
           Het belangrijkste resultaat was niet alleen het prototype zelf, maar de architectuur die we bouwden. Een fundament waarop verder gebouwd kan worden, met een AI-integratie die kan leren en verbeteren over tijd.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8">
+        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Over Trabu</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             Trabu combineert diepgaande reiskennis met geavanceerde technologie om iets volledig nieuws te creëren: AI die echt begrijpt wat elke reis bijzonder maakt. Hun visie gaat verder dan simpele boekingen - ze transformeren hoe mensen hun avonturen plannen.
           </p>
         </div>

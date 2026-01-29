@@ -74,7 +74,7 @@ export const OpportunityScoutingEN: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">Results guarantee</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             We identify AI solutions that earn back at least your investment. If we don't find valuable opportunities, you pay nothing.
           </p>
         </div>

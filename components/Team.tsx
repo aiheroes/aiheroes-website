@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Content } from '../types';
+import { Image } from './Image';
 
 interface TeamProps {
   content: Content['team'];
@@ -14,7 +15,7 @@ export const Team: React.FC<TeamProps> = ({ content }) => {
         <div className="flex flex-col lg:flex-row">
           {/* Image Column - has its own ID for navbar theme detection on mobile */}
           <div id="team-image" className="relative w-full lg:w-[45%] h-[50vh] lg:h-[80vh] overflow-hidden">
-            <img
+            <Image
               src={content.image.src}
               alt={content.image.alt}
               className="absolute inset-0 w-full h-full object-cover animate-ken-burns"

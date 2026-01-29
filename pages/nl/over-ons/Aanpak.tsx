@@ -65,9 +65,9 @@ export const AanpakNL: React.FC = () => {
           Soms is een workshop niet genoeg en wil je echt iets bouwen. Wij ontwikkelen AI-oplossingen samen met je team. Van proof-of-concept tot productie-waardig systeem. Altijd met kennisoverdracht, zodat je niet afhankelijk van ons blijft.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
+        <div className="bg-brand-dark text-white p-6 md:p-8 mb-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Waarom kiezen voor AI Heroes?</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             Wij zijn zelf practitioners. We bouwen dagelijks met AI, kennen de mogelijkheden én de beperkingen. Geen theoretici die je vertellen wat je moet doen, maar mensen die het zelf gedaan hebben.
           </p>
         </div>

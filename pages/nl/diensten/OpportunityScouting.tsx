@@ -75,7 +75,7 @@ export const OpportunityScoutingNL: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">Resultaatgarantie</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             We identificeren AI-oplossingen die je minimaal het geïnvesteerde bedrag terugverdienen. Vinden we geen waardevolle kansen? Dan betaal je niets.
           </p>
         </div>

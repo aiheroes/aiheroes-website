@@ -73,19 +73,19 @@ export const InnoEnergyEN: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Market Intelligence</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/90">
               Real-time analytics of industry trends and competitors.
             </p>
           </div>
           <div className="p-4 bg-brand-dark text-white">
             <h4 className="font-bold mb-2">Financial Health</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/90">
               Cash flow monitoring, burn rate analysis, and runway projections.
             </p>
           </div>
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Exit Risk Assessment</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/90">
               Valuation monitoring and KPI analysis for strategic decisions.
             </p>
           </div>
@@ -101,7 +101,7 @@ export const InnoEnergyEN: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">The impact</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             This prototype shows how AI can reshape investment management - making sophisticated portfolio analysis accessible and actionable. Data-driven insights that directly lead to better investment decisions.
           </p>
         </div>

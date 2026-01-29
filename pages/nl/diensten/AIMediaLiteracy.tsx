@@ -69,7 +69,7 @@ export const AIMediaLiteracyNL: React.FC = () => {
 
         <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif mb-3">Case: Mark Rutte Deepfake</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             We laten zien hoe we een overtuigende deepfake van Mark Rutte maakten - en welke tekenen je hadden kunnen helpen het te herkennen. Een praktijkvoorbeeld van hoe deze technologie werkt.
           </p>
         </div>

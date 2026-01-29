@@ -135,9 +135,9 @@ export const TermsEN: React.FC = () => {
           Dutch law applies to all agreements. Disputes are submitted to the competent court in the district where AI Heroes is established.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8">
+        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Questions?</h3>
-          <p className="text-white/80 leading-relaxed">
+          <p className="text-white/90 leading-relaxed">
             Have questions about these terms of service? Feel free to contact us. We're happy to explain in plain language.
           </p>
         </div>
