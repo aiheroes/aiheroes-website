@@ -19,22 +19,45 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 50px;
+      padding: 0 50px 0 230px;
+    }
+
+    /* Company Logo Mockup */
+    .company-logo-mockup {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      width: 160px;
+      height: 160px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      line-height: 1.4;
+      z-index: 100;
+      border-radius: 4px;
     }
 
     /* Left side - Tagline */
     .left-section {
       flex: 1;
-      max-width: 500px;
+      max-width: 450px;
     }
 
     .tagline {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 600;
       color: #FDFCF8;
       line-height: 1.1;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .tagline .underline-red {
@@ -53,7 +76,7 @@
 
     .subtitle {
       font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 400;
       color: #A8A29E;
       line-height: 1.4;
@@ -140,6 +163,9 @@
 </head>
 <body>
   <div class="container">
+    <!-- Company Logo Mockup -->
+    <div class="company-logo-mockup">COMPANY<br>LOGO<br>(160×160)</div>
+
     <div class="left-section">
       <h1 class="tagline">AI <span class="underline-red">werkt</span> als je weet <span class="underline-blue">hoe</span></h1>
       <p class="subtitle">Praktische workshops waar je team iets aan heeft · Sinds 2019</p>
