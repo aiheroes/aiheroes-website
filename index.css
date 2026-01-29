@@ -226,13 +226,7 @@ img.loaded {
   animation: image-fade 0.6s ease-out both;
 }
 
-/* Override prose styles in dark boxes */
-.not-prose h3,
-.not-prose h4,
-.not-prose p {
-  color: inherit !important;
-}
-
+/* Override prose styles in dark boxes only */
 .bg-brand-dark h3,
 .bg-brand-dark h4,
 .bg-brand-dark p {
