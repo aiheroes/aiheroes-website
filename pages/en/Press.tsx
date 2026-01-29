@@ -32,7 +32,7 @@ export const PressEN: React.FC = () => {
       <header className="pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 border-brand-red">
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">Press & Media</h1>
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl">
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
             Brand assets, guidelines, and information for press and media inquiries.
           </p>
         </div>
@@ -95,7 +95,7 @@ export const PressEN: React.FC = () => {
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
                   <Logo className="h-24 w-24" variant="white" />
                 </div>
-                <span className="text-sm text-white/90">Monochrome White</span>
+                <span className="text-sm text-white/80">Monochrome White</span>
               </div>
             </div>
 
@@ -248,9 +248,9 @@ export const PressEN: React.FC = () => {
           </section>
 
           {/* Press Contact */}
-          <section className="not-prose bg-brand-dark text-white p-8 md:p-12 rounded-lg border-l-4 border-brand-red">
+          <section className="not-prose bg-brand-dark text-white/85 p-8 md:p-12 rounded-lg border-l-4 border-brand-red">
             <h2 className="text-2xl md:text-3xl font-serif mb-4">Press Inquiries</h2>
-            <p className="text-white/90 leading-relaxed mb-6 max-w-xl">
+            <p className="text-white/80 leading-relaxed mb-6 max-w-xl">
               For press inquiries, interview requests, or additional brand assets, please contact us directly.
             </p>
             <a

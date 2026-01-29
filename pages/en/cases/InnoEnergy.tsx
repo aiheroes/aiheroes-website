@@ -73,19 +73,19 @@ export const InnoEnergyEN: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Market Intelligence</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Real-time analytics of industry trends and competitors.
             </p>
           </div>
           <div className="not-prose p-4 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">Financial Health</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Cash flow monitoring, burn rate analysis, and runway projections.
             </p>
           </div>
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Exit Risk Assessment</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Valuation monitoring and KPI analysis for strategic decisions.
             </p>
           </div>
@@ -99,9 +99,9 @@ export const InnoEnergyEN: React.FC = () => {
           The prototype won enthusiastic board support and laid out a practical roadmap for modernization. We proved that sophisticated portfolio analytics and intelligent decision support can be delivered through an intuitive, user-friendly interface.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
           <h3 className="text-xl font-serif mb-3">The impact</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             This prototype shows how AI can reshape investment management - making sophisticated portfolio analysis accessible and actionable. Data-driven insights that directly lead to better investment decisions.
           </p>
         </div>

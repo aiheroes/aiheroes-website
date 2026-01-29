@@ -103,9 +103,9 @@ export const SpecialistischeTracksNL: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Laten we praten</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             Heb je een specifieke AI-uitdaging of wil je een geavanceerd traject voor je team? Neem contact op voor een vrijblijvend gesprek over de mogelijkheden.
           </p>
         </div>

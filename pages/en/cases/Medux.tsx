@@ -73,15 +73,15 @@ export const MeduxEN: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-brand-red text-white p-6 text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">70%</div>
-            <div className="text-sm text-white/90">cost reduction</div>
+            <div className="text-sm text-white/80">cost reduction</div>
           </div>
-          <div className="not-prose bg-brand-dark text-white p-6 rounded-lg border-l-4 border-brand-red text-center">
+          <div className="not-prose bg-brand-dark text-white/85 p-6 rounded-lg border-l-4 border-brand-red text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">80%</div>
-            <div className="text-sm text-white/90">calls via AI</div>
+            <div className="text-sm text-white/80">calls via AI</div>
           </div>
           <div className="bg-brand-red text-white p-6 text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">7.8</div>
-            <div className="text-sm text-white/90">customer satisfaction</div>
+            <div className="text-sm text-white/80">customer satisfaction</div>
           </div>
         </div>
 
@@ -89,9 +89,9 @@ export const MeduxEN: React.FC = () => {
           The AI now handles about 4,000 calls monthly. Customers appreciate shorter wait times and the fact they can be helped outside office hours. Employees now focus on complex cases that truly need human attention.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">About Medux</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             Medux is a leading Dutch healthcare innovation company specializing in medical aids and healthcare technology. As a trusted partner to healthcare institutions and individuals, they make healthcare more accessible and affordable across the Netherlands.
           </p>
         </div>

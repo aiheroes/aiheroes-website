@@ -83,9 +83,9 @@ export const AIVoorDevelopersNL: React.FC = () => {
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Custom tracks beschikbaar</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             We kunnen de workshop aanpassen op jullie tech stack en use cases. Of het nu gaat om een chatbot voor klantenservice, document processing, of iets heel anders - we bouwen het samen.
           </p>
         </div>

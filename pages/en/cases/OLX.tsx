@@ -104,33 +104,33 @@ export const OLXEN: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="p-6 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Higher engagement</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Users find what they're looking for faster and stay longer on the platform.
             </p>
           </div>
           <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">More conversions</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Smart comparison tools lead to faster purchase decisions.
             </p>
           </div>
           <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">Intuitive navigation</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Visual search and natural language make the platform more accessible.
             </p>
           </div>
           <div className="p-6 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Data-driven insights</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Real-time analytics help continuously improve the platform.
             </p>
           </div>
         </div>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">About OLX</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             OLX is a leading global marketplace enabling millions to buy and sell goods and services easily. Committed to simplifying transactions and fostering trust, OLX has redefined e-commerce with innovative solutions and a user-first approach.
           </p>
         </div>

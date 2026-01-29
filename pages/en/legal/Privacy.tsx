@@ -113,9 +113,9 @@ export const PrivacyEN: React.FC = () => {
           Have questions about your privacy or want to exercise one of your rights? Contact us at hello@aiheroes.io.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Data Controller</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             AI Heroes is responsible for the processing of personal data as described in this privacy policy. We are based in the Netherlands and fall under Dutch and European privacy legislation.
           </p>
         </div>

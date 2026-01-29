@@ -65,9 +65,9 @@ export const ApproachEN: React.FC = () => {
           Sometimes a workshop isn't enough and you want to actually build something. We develop AI solutions together with your team. From proof-of-concept to production-ready system. Always with knowledge transfer, so you don't remain dependent on us.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
           <h3 className="text-xl font-serif mb-3">Why choose AI Heroes?</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             We are practitioners ourselves. We build with AI daily, know the possibilities and the limitations. Not theorists telling you what to do, but people who've done it themselves.
           </p>
         </div>

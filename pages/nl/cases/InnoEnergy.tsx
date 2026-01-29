@@ -73,19 +73,19 @@ export const InnoEnergyNL: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Market Intelligence</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Real-time analytics van industrie-trends en concurrenten.
             </p>
           </div>
           <div className="not-prose p-4 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">Financial Health</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Cashflow monitoring, burn rate analyse en runway projecties.
             </p>
           </div>
           <div className="p-4 bg-brand-blue text-white">
             <h4 className="font-bold mb-2">Exit Risk Assessment</h4>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/80">
               Waarderingsmonitoring en KPI-analyse voor strategische beslissingen.
             </p>
           </div>
@@ -99,9 +99,9 @@ export const InnoEnergyNL: React.FC = () => {
           Het prototype won enthousiaste board-support en legde een praktische roadmap voor modernisering neer. We bewezen dat geavanceerde portfolio-analytics en intelligente beslissingsondersteuning geleverd kunnen worden via een intuïtieve, gebruiksvriendelijke interface.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
           <h3 className="text-xl font-serif mb-3">De impact</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             Dit prototype laat zien hoe AI investeringsmanagement kan transformeren - geavanceerde portfolio-analyse toegankelijk en actionable maken. Data-gedreven inzichten die direct leiden tot betere investeringsbeslissingen.
           </p>
         </div>

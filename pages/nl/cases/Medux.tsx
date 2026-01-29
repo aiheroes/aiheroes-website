@@ -73,15 +73,15 @@ export const MeduxNL: React.FC = () => {
         <div className="grid grid-cols-3 gap-4 mb-8">
           <div className="bg-brand-red text-white p-6 text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">70%</div>
-            <div className="text-sm text-white/90">kostenbesparing</div>
+            <div className="text-sm text-white/80">kostenbesparing</div>
           </div>
-          <div className="not-prose bg-brand-dark text-white p-6 rounded-lg border-l-4 border-brand-red text-center">
+          <div className="not-prose bg-brand-dark text-white/85 p-6 rounded-lg border-l-4 border-brand-red text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">80%</div>
-            <div className="text-sm text-white/90">gesprekken via AI</div>
+            <div className="text-sm text-white/80">gesprekken via AI</div>
           </div>
           <div className="bg-brand-red text-white p-6 text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">7.8</div>
-            <div className="text-sm text-white/90">klanttevredenheid</div>
+            <div className="text-sm text-white/80">klanttevredenheid</div>
           </div>
         </div>
 
@@ -89,9 +89,9 @@ export const MeduxNL: React.FC = () => {
           De AI handelt nu maandelijks zo'n 4.000 gesprekken af. Klanten waarderen de kortere wachttijden en het feit dat ze ook buiten kantooruren geholpen worden. Medewerkers richten zich nu op complexe gevallen die echt menselijke aandacht vragen.
         </p>
 
-        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white/85 p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Over Medux</h3>
-          <p className="text-white/90 leading-relaxed">
+          <p className="text-white/80 leading-relaxed">
             Medux is een vooraanstaand Nederlands zorginnovatiebedrijf gespecialiseerd in hulpmiddelen en zorgtechnologie. Als betrouwbare partner voor zorginstellingen en particulieren maken zij zorg toegankelijker en betaalbaarder in heel Nederland.
           </p>
         </div>
