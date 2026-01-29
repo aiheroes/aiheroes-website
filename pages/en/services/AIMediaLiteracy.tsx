@@ -67,7 +67,7 @@ export const AIMediaLiteracyEN: React.FC = () => {
           AI-generated content is becoming increasingly convincing. For organizations, this means risks in reputation, fraud and internal communications. For individuals, it's about media literacy and the ability to make informed decisions.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
           <h3 className="text-xl font-serif mb-3">Case: Mark Rutte Deepfake</h3>
           <p className="text-white/90 leading-relaxed">
             We show you how we created a convincing deepfake of Mark Rutte - and what signs could have helped you recognize it. A practical example of how this technology works.

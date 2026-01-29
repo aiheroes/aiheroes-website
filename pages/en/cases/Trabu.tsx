@@ -92,7 +92,7 @@ export const TrabuEN: React.FC = () => {
           The most important result wasn't just the prototype itself, but the architecture we built. A foundation to build upon, with AI integration that can learn and improve over time.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">About Trabu</h3>
           <p className="text-white/90 leading-relaxed">
             Trabu combines deep travel industry expertise with advanced technology to create something entirely new: AI that truly understands what makes each journey special. Their vision goes beyond simple booking - they're transforming how people plan their adventures.

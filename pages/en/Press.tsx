@@ -248,7 +248,7 @@ export const PressEN: React.FC = () => {
           </section>
 
           {/* Press Contact */}
-          <section className="bg-brand-dark text-white p-8 md:p-12">
+          <section className="not-prose bg-brand-dark text-white p-8 md:p-12 rounded-lg border-l-4 border-brand-red">
             <h2 className="text-2xl md:text-3xl font-serif mb-4">Press Inquiries</h2>
             <p className="text-white/90 leading-relaxed mb-6 max-w-xl">
               For press inquiries, interview requests, or additional brand assets, please contact us directly.

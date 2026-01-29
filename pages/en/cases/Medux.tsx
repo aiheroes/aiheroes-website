@@ -75,7 +75,7 @@ export const MeduxEN: React.FC = () => {
             <div className="text-3xl md:text-4xl font-bold mb-2">70%</div>
             <div className="text-sm text-white/90">cost reduction</div>
           </div>
-          <div className="bg-brand-dark text-white p-6 text-center">
+          <div className="not-prose bg-brand-dark text-white p-6 rounded-lg border-l-4 border-brand-red text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2">80%</div>
             <div className="text-sm text-white/90">calls via AI</div>
           </div>
@@ -89,7 +89,7 @@ export const MeduxEN: React.FC = () => {
           The AI now handles about 4,000 calls monthly. Customers appreciate shorter wait times and the fact they can be helped outside office hours. Employees now focus on complex cases that truly need human attention.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">About Medux</h3>
           <p className="text-white/90 leading-relaxed">
             Medux is a leading Dutch healthcare innovation company specializing in medical aids and healthcare technology. As a trusted partner to healthcare institutions and individuals, they make healthcare more accessible and affordable across the Netherlands.

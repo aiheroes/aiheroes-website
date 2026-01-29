@@ -135,7 +135,7 @@ export const VoorwaardenNL: React.FC = () => {
           Op alle overeenkomsten is Nederlands recht van toepassing. Geschillen worden voorgelegd aan de bevoegde rechter in het arrondissement waar AI Heroes is gevestigd.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Vragen?</h3>
           <p className="text-white/90 leading-relaxed">
             Heb je vragen over deze algemene voorwaarden? Neem gerust contact met ons op. We leggen het graag uit in begrijpelijke taal.

@@ -65,7 +65,7 @@ export const AILiteracyEN: React.FC = () => {
           From 2025, the EU AI Act makes AI literacy mandatory for organizations. Companies getting ahead now aren't just preparing for the future - they're writing it. But beyond legislation: teams that understand AI perform better. Period.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 mb-8">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red mb-8">
           <h3 className="text-xl font-serif mb-3">It's not about replacement</h3>
           <p className="text-white/90 leading-relaxed">
             AI literacy isn't about replacing human intelligence. It's about amplifying what makes us uniquely human: creativity, intuition, connecting dots that machines can't see.

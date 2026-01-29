@@ -88,7 +88,7 @@ export const AIStrategieGidsNL: React.FC = () => {
           <p className="text-stone-600 leading-relaxed mb-4">
             Met een solide plan is implementatie de volgende stap. Je hebt twee opties: een bestaande oplossing kopen of iets op maat bouwen. In beide gevallen is integratie de uitdaging.
           </p>
-          <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+          <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
             <h4 className="font-serif mb-3">Het draait om mensen</h4>
             <p className="text-white/90 leading-relaxed">
               Technische integratie is één ding. Maar de echte uitdaging is je team meekrijgen. Mensen zijn van nature weerstandig tegen verandering. Betrek ze vroeg, verzamel input, zorg dat ze zich gesteund voelen. Dit maakt het verschil tussen succes en mislukking.

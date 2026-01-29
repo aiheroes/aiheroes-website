@@ -80,7 +80,7 @@ export const TeamNL: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-blue">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-blue">
           <h3 className="text-xl font-serif mb-3">Samenwerken?</h3>
           <p className="text-white/90 leading-relaxed">
             Of je nu een workshop wilt boeken of wilt sparren over de mogelijkheden — neem contact op.

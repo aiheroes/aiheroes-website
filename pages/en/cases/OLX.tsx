@@ -108,13 +108,13 @@ export const OLXEN: React.FC = () => {
               Users find what they're looking for faster and stay longer on the platform.
             </p>
           </div>
-          <div className="p-6 bg-brand-dark text-white">
+          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">More conversions</h4>
             <p className="text-sm text-white/90">
               Smart comparison tools lead to faster purchase decisions.
             </p>
           </div>
-          <div className="p-6 bg-brand-dark text-white">
+          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">Intuitive navigation</h4>
             <p className="text-sm text-white/90">
               Visual search and natural language make the platform more accessible.
@@ -128,7 +128,7 @@ export const OLXEN: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">About OLX</h3>
           <p className="text-white/90 leading-relaxed">
             OLX is a leading global marketplace enabling millions to buy and sell goods and services easily. Committed to simplifying transactions and fostering trust, OLX has redefined e-commerce with innovative solutions and a user-first approach.

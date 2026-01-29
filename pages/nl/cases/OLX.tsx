@@ -108,13 +108,13 @@ export const OLXNL: React.FC = () => {
               Gebruikers vinden sneller wat ze zoeken en blijven langer op het platform.
             </p>
           </div>
-          <div className="p-6 bg-brand-dark text-white">
+          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">Meer conversies</h4>
             <p className="text-sm text-white/90">
               Slimme vergelijkingstools leiden tot snellere koopbeslissingen.
             </p>
           </div>
-          <div className="p-6 bg-brand-dark text-white">
+          <div className="not-prose p-6 bg-brand-dark text-white rounded-lg border-l-4 border-brand-red">
             <h4 className="font-bold mb-2">Intuïtieve navigatie</h4>
             <p className="text-sm text-white/90">
               Visual search en natural language maken het platform toegankelijker.
@@ -128,7 +128,7 @@ export const OLXNL: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Over OLX</h3>
           <p className="text-white/90 leading-relaxed">
             OLX is een toonaangevende wereldwijde marktplaats die miljoenen mensen helpt goederen en diensten te kopen en verkopen. Met innovatieve oplossingen en een gebruikersgerichte aanpak heeft OLX e-commerce opnieuw gedefinieerd.

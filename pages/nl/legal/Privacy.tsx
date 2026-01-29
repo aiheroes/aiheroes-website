@@ -113,7 +113,7 @@ export const PrivacyNL: React.FC = () => {
           Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via hello@aiheroes.io.
         </p>
 
-        <div className="bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
+        <div className="not-prose bg-brand-dark text-white p-6 md:p-8 rounded-lg border-l-4 border-brand-red">
           <h3 className="text-xl font-serif mb-3">Verantwoordelijke</h3>
           <p className="text-white/90 leading-relaxed">
             AI Heroes is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. We zijn gevestigd in Nederland en vallen onder de Nederlandse en Europese privacywetgeving.
