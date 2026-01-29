@@ -83,8 +83,10 @@
     }
 
     .website-pill {
-      display: inline-block;
-      padding: 24px 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 40px;
       background: rgba(253, 252, 248, 0.1);
       border: 4px solid rgba(253, 252, 248, 0.2);
       border-radius: 16px;
@@ -93,6 +95,13 @@
       font-weight: 600;
       color: #FDFCF8;
       letter-spacing: 1px;
+      width: fit-content;
+    }
+
+    .website-pill svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
     }
 
     .footer-info {
@@ -148,7 +157,12 @@
     <p class="label">Nieuw hoofdstuk</p>
     <h1 class="headline"><span class="underline-red">AI Heroes</span> is<br><span class="underline-blue">vernieuwd</span></h1>
     <p class="subline">Een nieuwe website met scherpe focus.<br>Een ervaren team. Praktische workshops,<br>technische trajecten & strategisch advies.</p>
-    <div class="website-pill">aiheroes.io</div>
+    <div class="website-pill">
+      <span>aiheroes.io</span>
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
 
     <div class="footer-info">
       <span class="location">Groningen</span>
