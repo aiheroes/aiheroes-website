@@ -45,6 +45,18 @@
       border-radius: 4px;
     }
 
+    /* Hide mockup when saving/printing */
+    @media print {
+      .company-logo-mockup {
+        display: none;
+      }
+    }
+
+    .company-logo-mockup:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
     /* Left side - Tagline */
     .left-section {
       flex: 1;
@@ -164,7 +176,7 @@
 <body>
   <div class="container">
     <!-- Company Logo Mockup -->
-    <div class="company-logo-mockup">COMPANY<br>LOGO<br>(160×160)</div>
+    <div class="company-logo-mockup" onclick="this.style.display='none'">COMPANY<br>LOGO<br>(160×160)</div>
 
     <div class="left-section">
       <h1 class="tagline">AI <span class="underline-red">werkt</span> als je weet <span class="underline-blue">hoe</span></h1>
