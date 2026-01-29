@@ -1,0 +1,183 @@
+{
+  "schedule": [
+    {"week": 1, "weekTitle": "Brand Launch", "day": "Dinsdag", "type": "post", "id": "announcement"},
+    {"week": 1, "weekTitle": "Brand Launch", "day": "Woensdag", "type": "carousel", "id": "what-is-rag"},
+    {"week": 1, "weekTitle": "Brand Launch", "day": "Donderdag", "type": "post", "id": "frans"},
+    {"week": 2, "weekTitle": "Foundation & Strategy", "day": "Dinsdag", "type": "carousel", "id": "ai-literacy"},
+    {"week": 2, "weekTitle": "Foundation & Strategy", "day": "Woensdag", "type": "post", "id": "groningen"},
+    {"week": 2, "weekTitle": "Foundation & Strategy", "day": "Donderdag", "type": "carousel", "id": "ai-strategy"},
+    {"week": 3, "weekTitle": "Team & Methods", "day": "Dinsdag", "type": "post", "id": "jan"},
+    {"week": 3, "weekTitle": "Team & Methods", "day": "Woensdag", "type": "carousel", "id": "prompt-engineering"},
+    {"week": 3, "weekTitle": "Team & Methods", "day": "Donderdag", "type": "post", "id": "david"},
+    {"week": 4, "weekTitle": "Approach & Technical", "day": "Dinsdag", "type": "post", "id": "aanpak"},
+    {"week": 4, "weekTitle": "Approach & Technical", "day": "Woensdag", "type": "carousel", "id": "agents-vs-automation"},
+    {"week": 4, "weekTitle": "Approach & Technical", "day": "Donderdag", "type": "post", "id": "ai-foundations"},
+    {"week": 5, "weekTitle": "Services & Evaluation", "day": "Dinsdag", "type": "post", "id": "opportunity-scouting"},
+    {"week": 5, "weekTitle": "Services & Evaluation", "day": "Woensdag", "type": "carousel", "id": "evaluating-use-cases"},
+    {"week": 5, "weekTitle": "Services & Evaluation", "day": "Donderdag", "type": "post", "id": "dev-copilot"},
+    {"week": 6, "weekTitle": "Cases & Mistakes", "day": "Dinsdag", "type": "post", "id": "medux"},
+    {"week": 6, "weekTitle": "Cases & Mistakes", "day": "Woensdag", "type": "carousel", "id": "implementation-mistakes"},
+    {"week": 6, "weekTitle": "Cases & Mistakes", "day": "Donderdag", "type": "post", "id": "privacy-literacy"},
+    {"week": 7, "weekTitle": "Call to Action", "day": "Dinsdag", "type": "post", "id": "beginnen"}
+  ],
+  "posts": {
+    "announcement": {
+      "title": "AI Heroes is vernieuwd",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "AI Heroes is vernieuwd. We zijn nu een team van drie, werken vanuit Groningen, en helpen teams op elk niveau. Van workshops tot specialistische trajecten.\n\nWe weten inmiddels wat werkt: praktische sessies waar teams echt iets aan hebben. 7 jaar ervaring in wat wel en niet werkt.\n\n→ aiheroes.io",
+      "file": "post-01-announcement.html"
+    },
+    "frans": {
+      "title": "Frans Hoorn - AI Strategy",
+      "author": "Frans Hoorn",
+      "authorType": "person",
+      "content": "Zoekt uit waar AI echt waarde toevoegt voor organisaties. Achtergrond in UX en Product Design.\n\nVan opportunity scouting tot hands-on implementatie. Focus op het waarom achter AI-keuzes.",
+      "file": "post-02-frans.html"
+    },
+    "groningen": {
+      "title": "Gevestigd in Groningen",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "Trots op onze noordelijke roots.\n\nWe komen alle drie uit Groningen, werken door heel Nederland, en waarderen wat de regio te bieden heeft.",
+      "file": "post-03-groningen.html"
+    },
+    "jan": {
+      "title": "Jan Brusse - Technical AI",
+      "author": "Jan Brusse",
+      "authorType": "person",
+      "content": "Bouwt AI-toepassingen en helpt teams om dit zelf werkend te krijgen.\n\nVan LLM API's tot RAG systemen en AI agents. Focus op praktische implementatie.",
+      "file": "post-04-jan.html"
+    },
+    "david": {
+      "title": "David Homan - Future of Work",
+      "author": "David Homan",
+      "authorType": "person",
+      "content": "Kijkt naar hoe AI de manier van werken verandert. Achtergrond in AI en filosofie.\n\nVan AI adoption tot ethics & governance. Focus op de mens achter de technologie.",
+      "file": "post-05-david.html"
+    },
+    "aanpak": {
+      "title": "Onze aanpak",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "We werken praktisch en gefocust. Eerst begrijpen wat er speelt, dan samen bouwen aan oplossingen.\n\nGeen buzzwords, wel resultaat. Van strategie tot implementatie.",
+      "file": "post-06-aanpak.html"
+    },
+    "ai-foundations": {
+      "title": "AI Foundations Workshop",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "Bouw een solide basis voor AI-adoptie in je organisatie.\n\nVan basics tot praktische use cases. Hands-on sessie voor teams die echt aan de slag willen.",
+      "file": "post-07-ai-foundations.html"
+    },
+    "opportunity-scouting": {
+      "title": "Opportunity Scouting",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "Ontdek de beste AI-kansen voor jouw bedrijf.\n\nWe kijken samen waar AI echt waarde toevoegt. Van quick wins tot strategische projecten.",
+      "file": "post-08-opportunity-scouting.html"
+    },
+    "dev-copilot": {
+      "title": "Developer Copilot Training",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "Verhoog de productiviteit van je developers met AI.\n\nPraktische training in GitHub Copilot, Cursor, en andere AI dev tools. Direct toepasbaar.",
+      "file": "post-09-dev-copilot.html"
+    },
+    "medux": {
+      "title": "MEDUX Case Study",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "Hoe we MEDUX hielpen met AI-implementatie.\n\nVan concept tot werkende oplossing. Praktijkvoorbeeld van onze aanpak.",
+      "file": "post-10-medux.html"
+    },
+    "privacy-literacy": {
+      "title": "Privacy Literacy",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "Veilig werken met AI. Privacy, compliance en governance.\n\nPraktische workshop over verantwoord AI-gebruik binnen je organisatie.",
+      "file": "post-11-privacy-literacy.html"
+    },
+    "beginnen": {
+      "title": "Klaar om te beginnen?",
+      "author": "AI Heroes",
+      "authorType": "company",
+      "content": "We helpen je graag verder. Of je nu aan het verkennen bent of al concrete plannen hebt.\n\nNeem contact op voor een vrijblijvend gesprek.\n\n→ aiheroes.io",
+      "file": "post-12-beginnen.html"
+    }
+  },
+  "carousels": {
+    "ai-literacy": {
+      "title": "AI Literacy",
+      "description": "Wat is AI en waarom moet je het snappen?",
+      "slides": 6,
+      "file": "carousel-01-ai-literacy.html"
+    },
+    "ai-strategy": {
+      "title": "AI Strategy",
+      "description": "Van visie naar actie in 3 stappen",
+      "slides": 7,
+      "file": "carousel-02-ai-strategy.html"
+    },
+    "what-is-rag": {
+      "title": "What is RAG?",
+      "description": "Retrieval Augmented Generation uitgelegd",
+      "slides": 6,
+      "file": "carousel-03-what-is-rag.html"
+    },
+    "prompt-engineering": {
+      "title": "Prompt Engineering",
+      "description": "Effectief communiceren met AI",
+      "slides": 5,
+      "file": "carousel-04-prompt-engineering.html"
+    },
+    "agents-vs-automation": {
+      "title": "Agents vs Automation",
+      "description": "Het verschil tussen AI agents en klassieke automatisering",
+      "slides": 6,
+      "file": "carousel-05-agents-vs-automation.html"
+    },
+    "evaluating-use-cases": {
+      "title": "Evaluating Use Cases",
+      "description": "Framework voor het beoordelen van AI use cases",
+      "slides": 7,
+      "file": "carousel-06-evaluating-use-cases.html"
+    },
+    "implementation-mistakes": {
+      "title": "Common Implementation Mistakes",
+      "description": "5 veelgemaakte fouten bij AI-implementatie",
+      "slides": 6,
+      "file": "carousel-07-implementation-mistakes.html"
+    }
+  },
+  "banners": [
+    {
+      "id": "company",
+      "title": "AI Heroes Company Page",
+      "type": "company",
+      "size": "1128 × 191",
+      "file": "banner-aiheroes-company-v2.html"
+    },
+    {
+      "id": "frans",
+      "title": "Frans Hoorn Personal",
+      "type": "personal",
+      "size": "1584 × 396",
+      "file": "banner-frans-personal-v3.html"
+    },
+    {
+      "id": "jan",
+      "title": "Jan Brusse Personal",
+      "type": "personal",
+      "size": "1584 × 396",
+      "file": "banner-jan-personal-v3.html"
+    },
+    {
+      "id": "david",
+      "title": "David Homan Personal",
+      "type": "personal",
+      "size": "1584 × 396",
+      "file": "banner-david-personal-v3.html"
+    }
+  ]
+}
