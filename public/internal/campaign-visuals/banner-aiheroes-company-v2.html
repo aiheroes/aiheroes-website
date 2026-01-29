@@ -19,7 +19,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 50px 0 270px;
+      padding: 0 45px 0 240px;
     }
 
     /* Company Logo Mockup */
@@ -75,23 +75,37 @@
     .tagline .underline-red {
       text-decoration: underline;
       text-decoration-color: #D9534F;
-      text-decoration-thickness: 4px;
+      text-decoration-thickness: 5px;
       text-underline-offset: 6px;
     }
 
     .tagline .underline-blue {
       text-decoration: underline;
       text-decoration-color: #2563EB;
-      text-decoration-thickness: 4px;
+      text-decoration-thickness: 5px;
       text-underline-offset: 6px;
     }
 
     .subtitle {
       font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
+      font-size: 17px;
+      font-weight: 500;
       color: #A8A29E;
       line-height: 1.4;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(253, 252, 248, 0.05);
+      border-radius: 6px;
+      border: 1px solid rgba(253, 252, 248, 0.08);
+    }
+
+    .subtitle::before {
+      content: "→";
+      font-size: 18px;
+      color: #D9534F;
+      font-weight: 600;
     }
 
     /* Right side - Services */

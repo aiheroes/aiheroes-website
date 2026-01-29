@@ -19,7 +19,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 80px 0 400px;
+      padding: 0 70px 0 370px;
     }
 
     /* Profile Picture Mockup */
@@ -99,23 +99,37 @@
     .tagline .underline-red {
       text-decoration: underline;
       text-decoration-color: #D9534F;
-      text-decoration-thickness: 5px;
+      text-decoration-thickness: 6px;
       text-underline-offset: 8px;
     }
 
     .tagline .underline-blue {
       text-decoration: underline;
       text-decoration-color: #2563EB;
-      text-decoration-thickness: 5px;
+      text-decoration-thickness: 6px;
       text-underline-offset: 8px;
     }
 
     .description {
       font-family: 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: #57534E;
-      line-height: 1.5;
+      font-size: 20px;
+      font-weight: 500;
+      color: #78716C;
+      line-height: 1.4;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: rgba(28, 25, 23, 0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(28, 25, 23, 0.08);
+    }
+
+    .description::before {
+      content: "→";
+      font-size: 22px;
+      color: #D9534F;
+      font-weight: 600;
     }
 
     /* Right side */
