@@ -57,10 +57,12 @@
       opacity: 0.5;
     }
 
-    /* Left side - Tagline */
+    /* Left side - Logo & Expertise */
     .left-section {
-      flex: 1;
-      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
     }
 
     .role-badge {
@@ -119,12 +121,13 @@
       letter-spacing: 0.3px;
     }
 
-    /* Right side */
+    /* Right side - Tagline */
     .right-section {
+      flex: 1;
+      max-width: 600px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 16px;
     }
 
     .logo-badge {
@@ -178,7 +181,7 @@
       flex-shrink: 0;
     }
 
-    .team-label {
+    .website-label {
       position: absolute;
       bottom: 20px;
       right: 80px;
@@ -186,8 +189,7 @@
       font-size: 13px;
       font-weight: 600;
       color: #A8A29E;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.5px;
     }
 
     .accent-line {
@@ -206,20 +208,6 @@
     <div class="profile-pic-mockup" onclick="this.style.display='none'">PROFILE<br>PICTURE</div>
 
     <div class="left-section">
-      <div class="role-badge">
-        <svg class="role-icon" viewBox="0 0 24 24">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-        </svg>
-        <span>Future of Work</span>
-      </div>
-      <h1 class="tagline">AI <span class="underline-red">werkt</span> als je<br>weet <span class="underline-blue">hoe</span></h1>
-      <p class="description">aiheroes.io</p>
-    </div>
-
-    <div class="right-section">
       <div class="logo-badge">
         <svg class="logo-icon" viewBox="0 0 604 604" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="604" height="604" rx="120" fill="#D9534F"/>
@@ -262,7 +250,20 @@
       </div>
     </div>
 
-    <div class="team-label">David Homan · AI Heroes</div>
+    <div class="right-section">
+      <div class="role-badge">
+        <svg class="role-icon" viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Future of Work</span>
+      </div>
+      <h1 class="tagline">AI <span class="underline-red">werkt</span> als je<br>weet <span class="underline-blue">hoe</span></h1>
+    </div>
+
+    <div class="website-label">aiheroes.io</div>
 
     <div class="accent-line"></div>
   </div>
