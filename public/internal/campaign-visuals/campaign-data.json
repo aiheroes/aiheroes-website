@@ -25,14 +25,14 @@
       "title": "AI Heroes is vernieuwd",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "AI Heroes is vernieuwd. We zijn nu een team van drie, werken vanuit Groningen, en helpen teams op elk niveau. Van workshops tot specialistische trajecten.\n\nWe weten inmiddels wat werkt: praktische sessies waar teams echt iets aan hebben. 7 jaar ervaring in wat wel en niet werkt.\n\n→ aiheroes.io",
+      "content": "AI Heroes is vernieuwd. We zijn nu een team van drie, werken vanuit Groningen, en focussen volledig op trainingen en workshops.\n\nWe weten inmiddels wat werkt: praktische sessies waar teams echt iets aan hebben. De komende weken laten we zien hoe we dat doen.\n\n→ aiheroes.io",
       "file": "post-01-announcement.html"
     },
     "frans": {
       "title": "Frans Hoorn - AI Strategy",
       "author": "Frans Hoorn",
       "authorType": "person",
-      "content": "Zoekt uit waar AI echt waarde toevoegt voor organisaties. Achtergrond in UX en Product Design.\n\nVan opportunity scouting tot hands-on implementatie. Focus op het waarom achter AI-keuzes.",
+      "content": "Dit is Frans. Hij houdt zich bezig met AI-strategie en prompt engineering. Zijn achtergrond ligt in UX en design, en de afgelopen jaren is daar AI bijgekomen.\n\nFrans zoekt uit waar AI echt waarde toevoegt voor een organisatie, en maakt dat concreet. Samen met Jan en David vormt hij het AI Heroes team.",
       "file": "post-02-frans.html"
     },
     "groningen": {
@@ -46,63 +46,63 @@
       "title": "Jan Brusse - Technical AI",
       "author": "Jan Brusse",
       "authorType": "person",
-      "content": "Bouwt AI-toepassingen en helpt teams om dit zelf werkend te krijgen.\n\nVan LLM API's tot RAG systemen en AI agents. Focus op praktische implementatie.",
+      "content": "Dit is Jan. Hij doet de technische kant bij AI Heroes. Hij bouwt AI-toepassingen, traint modellen, en helpt teams om dit soort dingen zelf werkend te krijgen.\n\nVeel bedrijven willen iets met AI en weten niet goed waar te beginnen. Of ze hebben iets geprobeerd dat niet werkte zoals gehoopt. Dat is precies waar Jan mee helpt.",
       "file": "post-04-jan.html"
     },
     "david": {
       "title": "David Homan - Future of Work",
       "author": "David Homan",
       "authorType": "person",
-      "content": "Kijkt naar hoe AI de manier van werken verandert. Achtergrond in AI en filosofie.\n\nVan AI adoption tot ethics & governance. Focus op de mens achter de technologie.",
+      "content": "Dit is David. Zijn achtergrond is AI en filosofie, en bij AI Heroes kijkt hij naar hoe AI de manier van werken verandert.\n\nDat gaat over praktische vragen: welke taken kunnen anders, waar zitten mensen vast, hoe zorg je dat een team AI ook echt blijft gebruiken na een training. Met Frans en Jan erbij vullen ze elkaar goed aan.",
       "file": "post-05-david.html"
     },
     "aanpak": {
       "title": "Onze aanpak",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "We werken praktisch en gefocust. Eerst begrijpen wat er speelt, dan samen bouwen aan oplossingen.\n\nGeen buzzwords, wel resultaat. Van strategie tot implementatie.",
+      "content": "Onze trainingen zijn voor minstens de helft hands-on. We stemmen vooraf af wat er speelt zodat de voorbeelden relevant zijn, en achteraf krijgen deelnemers materialen om mee verder te werken.\n\nDie aanpak werkt. Teams gaan ermee aan de slag, en dat maakt het verschil.",
       "file": "post-06-aanpak.html"
     },
     "ai-foundations": {
       "title": "AI Foundations Workshop",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "Bouw een solide basis voor AI-adoptie in je organisatie.\n\nVan basics tot praktische use cases. Hands-on sessie voor teams die echt aan de slag willen.",
+      "content": "De training die we het vaakst geven is AI Foundations. Een dagworkshop voor teams die willen snappen hoe AI werkt en wat je ermee kunt.\n\nWe behandelen hoe generatieve AI werkt, hoe je goede prompts schrijft, welke tools er zijn, en waar je op moet letten qua privacy en betrouwbaarheid. Geschikt voor teams zonder technische achtergrond.",
       "file": "post-07-ai-foundations.html"
     },
     "opportunity-scouting": {
       "title": "Opportunity Scouting",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "Ontdek de beste AI-kansen voor jouw bedrijf.\n\nWe kijken samen waar AI echt waarde toevoegt. Van quick wins tot strategische projecten.",
+      "content": "Soms weten organisaties dat ze iets met AI willen en niet waar te beginnen. Daar hebben we Opportunity Scouting voor.\n\nWe kijken naar processen, praten met mensen uit verschillende afdelingen, en zoeken uit waar AI het meeste oplevert. Dat leveren we op als een overzicht met concrete business cases. En als we niks waardevols vinden, betaal je niks.",
       "file": "post-08-opportunity-scouting.html"
     },
     "dev-copilot": {
       "title": "Developer Copilot Training",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "Verhoog de productiviteit van je developers met AI.\n\nPraktische training in GitHub Copilot, Cursor, en andere AI dev tools. Direct toepasbaar.",
+      "content": "Voor developers hebben we een technische workshop: werken met API's van OpenAI en Anthropic, RAG-systemen bouwen, agents maken. Hands-on, code schrijven.\n\nVoor teams die Microsoft 365 Copilot gebruiken hebben we Copilot Basics. In een halve dag leer je hoe je er het meeste uithaalt.",
       "file": "post-09-dev-copilot.html"
     },
     "medux": {
       "title": "MEDUX Case Study",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "Hoe we MEDUX hielpen met AI-implementatie.\n\nVan concept tot werkende oplossing. Praktijkvoorbeeld van onze aanpak.",
+      "content": "Medux is een zorgorganisatie waar oudere patiënten het liefst bellen. Dat kost veel tijd en schaalt niet.\n\nWe hebben samen een voice AI gebouwd die gesprekken voert, vragen beantwoordt, en waar nodig doorverbindt. Nu wordt 80% van de telefoontjes door AI afgehandeld, de kosten zijn 70% lager, en patiënten geven het een 7,8.",
       "file": "post-10-medux.html"
     },
     "privacy-literacy": {
       "title": "Privacy Literacy",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "Veilig werken met AI. Privacy, compliance en governance.\n\nPraktische workshop over verantwoord AI-gebruik binnen je organisatie.",
+      "content": "AI brengt ook risico's met zich mee. Daar hebben we twee trainingen voor.\n\nAI Privacy & Security gaat over veilige inzet van AI: GDPR, de AI Act, wat je wel en niet met data mag doen. Vooral nuttig voor IT-managers en privacy officers.",
       "file": "post-11-privacy-literacy.html"
     },
     "beginnen": {
       "title": "Klaar om te beginnen?",
       "author": "AI Heroes",
       "authorType": "company",
-      "content": "We helpen je graag verder. Of je nu aan het verkennen bent of al concrete plannen hebt.\n\nNeem contact op voor een vrijblijvend gesprek.\n\n→ aiheroes.io",
+      "content": "We krijgen vaak de vraag waar je het beste kunt beginnen met AI. Het eerlijke antwoord: dat hangt af van je situatie.\n\nSoms is een brede introductie voor het hele team de beste eerste stap. Soms is het slimmer om eerst te kijken waar de grootste kansen liggen. En soms weet een team al precies wat ze willen en hebben ze alleen begeleiding nodig bij de uitvoering.",
       "file": "post-12-beginnen.html"
     }
   },
