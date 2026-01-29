@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>AI Heroes Workshop Opdracht - Bedrijfsbeschrijving</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f8fafc;
+            --bg-strong: #ffffff;
+            --text: #0f172a; /* Darker text */
+            --text-muted: #475569; /* Darker muted */
+            --border: #cbd5e1;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-size: 1.125rem; /* Bigger text */
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--bg-strong);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: white;
+            color: var(--text);
+            padding: 50px 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .content {
+            padding: 40px 32px 50px;
+        }
+
+        .instruction-box {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 24px 26px;
+            margin-bottom: 28px;
+            border-radius: 12px;
+        }
+
+        .instruction-box h2 {
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .instruction-box p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        .instruction-box strong {
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: #1e293b;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.4rem;
+            letter-spacing: -0.01em;
+            font-weight: 700;
+        }
+
+        .ai-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 26px 0 34px;
+        }
+
+        .after-selection {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .after-selection.visible {
+            display: grid;
+        }
+
+        .level-card {
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            filter: brightness(0.95);
+        }
+
+        .ai-levels.has-selection .level-card:not(.selected) {
+            opacity: 0.4;
+            transform: scale(0.98);
+            filter: grayscale(0.5);
+        }
+
+        .level-card.selected {
+            box-shadow: 0 0 0 3px var(--primary);
+            transform: translateY(-2px);
+            z-index: 10;
+        }
+
+        .level-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .level-card p {
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+        
+        /* Full Color Levels */
+        .level-1 { background-color: #fee2e2; border-color: #fca5a5; }
+        .level-2 { background-color: #ffedd5; border-color: #fdba74; }
+        .level-3 { background-color: #fef9c3; border-color: #fde047; }
+        .level-4 { background-color: #dcfce7; border-color: #86efac; }
+        .level-5 { background-color: #dbeafe; border-color: #93c5fd; }
+
+
+        .tools-section {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+
+        .tools-section h3 {
+            color: #1e293b;
+            margin-bottom: 18px;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .tool-link {
+            display: block;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .tool-link:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .assignment-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 12px;
+            margin: 40px 0 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .assignment-box h2 {
+            color: #0f172a;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .assignment-box h3 {
+            color: #334155;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .assignment-box p, .assignment-box ul {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        .assignment-box ul {
+            margin-left: 20px;
+        }
+
+        .assignment-box li {
+            margin-bottom: 8px;
+        }
+        
+        .assignment-box strong {
+            color: #334155;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #1e3a8a;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: transparent;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .back-button:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            border-color: #cbd5e1;
+            transform: translateX(-2px);
+        }
+
+        .toggle-example-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: white;
+            color: #334155;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 30px 0 20px;
+            width: 100%;
+        }
+
+        .toggle-example-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+
+        .toggle-example-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-example-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .example-solution {
+            display: none;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0 30px;
+            overflow: hidden;
+        }
+
+        .example-solution.visible {
+            display: block;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .example-badge {
+            display: inline-block;
+            background: #fff7ed;
+            color: #c2410c;
+            border: 1px solid #ffedd5;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .example-solution h2 {
+            color: #0f172a;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .example-solution h3 {
+            color: #334155;
+            font-size: 1.2rem;
+            margin-top: 22px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .example-solution p {
+            color: var(--text-muted);
+            margin: 10px 0;
+        }
+
+        .example-solution ul {
+            color: var(--text-muted);
+            margin-left: 20px;
+            margin-bottom: 14px;
+        }
+
+        .example-solution li {
+            margin: 7px 0;
+        }
+        
+        .example-solution strong {
+            color: #334155;
+        }
+
+        .example-callout {
+            background: #fff1f2;
+            border: 1px solid #ffe4e6;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin: 16px 0 22px;
+        }
+        
+        .example-callout h3 {
+            color: #9f1239;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin: 14px 0 22px;
+        }
+
+        @media(min-width: 860px) {
+            .example-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .example-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+            background: white;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .example-card.level2 {
+            background: #fff7ed;
+            border-color: #ffedd5;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px 40px;
+            }
+
+            .ai-levels {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Heroes Workshop Opdracht Business Analyse</h1>
+            <p>Maak je opdracht AI-proof met de AI-waaier</p>
+        </div>
+
+        <div class="content">
+            <a href="../index.html" class="back-button">
+                <span>←</span>
+                Terug naar overzicht
+            </a>
+            
+            <div class="instruction-box">
+                <h2>📋 Jouw Opdracht</h2>
+                <p><strong>Kies een AI-level van de waaier en pas de opdracht daarop aan.</strong></p>
+                <p>Gebruik Perplexity en/of andere LLMs in je proces om de opdracht aan te passen aan het gekozen AI-level.</p>
+                <p><strong>Creëer ook een manier om AI-gebruik te checken</strong> (bijv. reflectievragen, procesverantwoording, of verificatiemethoden).</p>
+            </div>
+
+            <h2 class="section-title">🎯 Kies je AI-Level</h2>
+
+            <div class="ai-levels">
+                <div class="level-card level-1" data-level="1" tabindex="0" role="button" aria-pressed="false">
+                    <h3>1. Geen AI</h3>
+                    <p>Deze opdracht moet volledig zonder AI gemaakt worden.</p>
+                </div>
+
+                <div class="level-card level-2" data-level="2" tabindex="0" role="button" aria-pressed="false">
+                    <h3>2. Idee/Structuur</h3>
+                    <p>AI mag gebruikt worden om opzet, structuur te doen of brainstormen. AI mag niets maken of berekenen.</p>
+                </div>
+
+                <div class="level-card level-3" data-level="3" tabindex="0" role="button" aria-pressed="false">
+                    <h3>3. Bewerken</h3>
+                    <p>AI mag gebruikt worden om de opdracht te verbeteren en te bewerken. AI mag geen actieve inhoud maken. Eigen, originele werk wordt toegevoegd.</p>
+                </div>
+
+                <div class="level-card level-4" data-level="4" tabindex="0" role="button" aria-pressed="false">
+                    <h3>4. Aanvullen</h3>
+                    <p>AI mag gebruikt worden om de opdracht in te vullen en bewerken. Mens is verantwoordelijk. Werk zo nodig worden aangegeven.</p>
+                </div>
+
+                <div class="level-card level-5" data-level="5" tabindex="0" role="button" aria-pressed="false">
+                    <h3>5. AI Toegestaan</h3>
+                    <p>AI mag in deze opdracht overal worden toegepast.</p>
+                </div>
+            </div>
+
+            <div class="after-selection" id="afterSelection">
+                <div class="tools-section">
+                    <h3>🛠️ AI Tools</h3>
+                    <div class="tools-grid">
+                        <a href="https://www.perplexity.ai" target="_blank" class="tool-link">Perplexity AI</a>
+                        <a href="https://chat.openai.com" target="_blank" class="tool-link">ChatGPT</a>
+                        <a href="https://claude.ai" target="_blank" class="tool-link">Claude</a>
+                        <a href="https://gemini.google.com" target="_blank" class="tool-link">Google Gemini</a>
+                    </div>
+                </div>
+
+                <div class="assignment-box">
+                    <h2>🏢 De Originele Opdracht: Bedrijfsbeschrijving</h2>
+
+                        <p>Elke groep maakt een bedrijfsbeschrijving van het bedrijf(sonderdeel) waar stage wordt gelopen. De maximale omvang is 1500 woorden. De beschrijving is een verkorte versie van de beschrijving, zoals die uitgevoerd is in het eerstejaars beroepsproduct “bedrijfsanalyse”, met (naast de omvang) dit verschil dat er geen waardeoordelen geveld en adviezen gegeven hoeven te worden. Besteed in de beschrijving tenminste aandacht aan:</p>
+
+                        <p>
+                            <strong>Strategisch</strong><br>
+                            - Missie, visie, strategie<br>
+                            - Doelstellingen<br>
+                            - Financiële resultaten (bijv. omzet)
+                        </p>
+
+                        <p>
+                            <strong>Markt</strong><br>
+                            - Klanten<br>
+                            - Concurrenten
+                        </p>
+
+                        <p>
+                            <strong>Structuur:</strong><br>
+                            - Organogram<br>
+                            - Omvang
+                        </p>
+
+                        <p>
+                            <strong>Processen:</strong><br>
+                            - Primaire proces; ook grafisch weergegeven
+                        </p>
+
+                        <p>
+                            <strong>Cultuur:</strong><br>
+                            - Cultuuranalyse<br>
+                            - Stijl van leidinggeven
+                        </p>
+
+                        <p>Begin de beschrijving breed en spits deze vervolgens toe op het onderdeel waar de stageopdracht betrekking op heeft.</p>
+
+                        <p>De beschrijving wordt gebaseerd op interviews en gesprekken, observaties, documenten en de website. Vermeld de bronnen op een juiste manier.</p>
+                </div>
+
+                <button class="toggle-example-btn" id="toggleExample">
+                    <span>📖 Toon voorbeeld (AI Level 2)</span>
+                    <span class="arrow">▼</span>
+                </button>
+
+                <div class="example-solution" id="exampleSolution">
+                        <span class="example-badge">AI Heroes Workshop Opdracht 2</span>
+                        <h2>Bedrijfsbeschrijving — AI Level 2 (Idee/Structuur)</h2>
+                        <p style="margin-bottom: 20px;">AI mag alleen gebruikt worden voor opzet, structuur en brainstormen. Alle inhoud moet origineel en door jou geschreven zijn.</p>
+
+                        <div class="example-callout">
+                            <h3 style="margin-top: 0;">AI Level 2 regels (studenten)</h3>
+                            <p><strong>AI is alleen voor ideeën en structuur.</strong> Geen AI-gegenereerde teksten, analyses of conclusies!</p>
+                            <p><strong>Je mag AI gebruiken</strong> om een outline te maken, structuur te suggereren, of brainstormvragen te genereren.</p>
+                            <p><strong>Je mag AI NIET gebruiken</strong> voor het schrijven van tekst, het maken van analyses, of het invullen van inhoud.</p>
+                            <p style="margin-bottom: 0;"><strong>Transparantie:</strong> lever een korte notitie met wat je aan AI hebt gevraagd en hoe je dat hebt gebruikt voor de opzet.</p>
+                        </div>
+
+                        <div class="example-grid">
+                            <div class="example-card level2">
+                                <h3 style="margin-top: 0;">✅ Wat AI wél mag doen</h3>
+                                <ul>
+                                    <li>Een outline voorstellen voor de bedrijfsbeschrijving.</li>
+                                    <li>Structuur-suggesties geven (bijv. "begin met missie, dan organogram").</li>
+                                    <li>Brainstormvragen genereren (bijv. "welke vragen stel je over primaire processen?").</li>
+                                    <li>Suggesties voor volgorde van onderwerpen.</li>
+                                </ul>
+                            </div>
+                            <div class="example-card">
+                                <h3 style="margin-top: 0;">❌ Wat AI NIET mag doen</h3>
+                                <ul>
+                                    <li>Geen tekst schrijven over het bedrijf, missie, visie, etc.</li>
+                                    <li>Geen analyses maken van cultuur of markt.</li>
+                                    <li>Geen organogrammen of grafieken genereren.</li>
+                                    <li>Geen financiële cijfers of marktinfo ophalen/analyseren.</li>
+                                    <li>Geen samenvattingen of conclusies maken.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="example-callout">
+                            <h3 style="margin-top: 0;">AI tools (alleen voor structuur/ideeën)</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 12px 0;">
+                                <a href="https://www.perplexity.ai" target="_blank" class="tool-link">Perplexity (outline)</a>
+                                <a href="https://chat.openai.com" target="_blank" class="tool-link">ChatGPT (structuur)</a>
+                                <a href="https://claude.ai" target="_blank" class="tool-link">Claude (brainstorm)</a>
+                            </div>
+                            <p style="margin: 10px 0 0; font-size: 0.9rem;">Voorbeeld prompt: "Geef een outline voor een bedrijfsbeschrijving met structuur Strategisch→Markt→Structuur→Processen→Cultuur."</p>
+                        </div>
+
+                        <h3>De opdracht (AI-proof, Level 2)</h3>
+                        <p><strong>Semester:</strong> Stuurinformatie - Beroepsproduct Business Analyse in de IT</p>
+                        <p>Elke groep maakt een bedrijfsbeschrijving van het bedrijf(sonderdeel) waar stage wordt gelopen. <strong>Maximaal 1500 woorden.</strong></p>
+                        <p>Verkorte versie van eerstejaars "bedrijfsanalyse" — <strong>geen waardeoordelen of adviezen!</strong></p>
+                        <p>Begin breed, spits toe op het stageonderdeel. Gebaseerd op interviews, observaties, documenten, website. Bronnen correct vermelden.</p>
+
+                        <h3>Verplichte onderwerpen</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h3 style="margin-top: 0;">📊 Strategisch</h3>
+                                <ul>
+                                    <li>Missie, visie, strategie</li>
+                                    <li>Doelstellingen</li>
+                                    <li>Financiële resultaten (bijv. omzet)</li>
+                                </ul>
+                            </div>
+                            <div class="example-card">
+                                <h3 style="margin-top: 0;">🎯 Markt</h3>
+                                <ul>
+                                    <li>Klanten</li>
+                                    <li>Concurrenten</li>
+                                </ul>
+                            </div>
+                            <div class="example-card">
+                                <h3 style="margin-top: 0;">🏗️ Structuur</h3>
+                                <ul>
+                                    <li>Organogram</li>
+                                    <li>Omvang</li>
+                                </ul>
+                            </div>
+                            <div class="example-card">
+                                <h3 style="margin-top: 0;">⚙️ Processen</h3>
+                                <ul>
+                                    <li>Primaire proces (grafisch weergeven)</li>
+                                </ul>
+                            </div>
+                            <div class="example-card">
+                                <h3 style="margin-top: 0;">🎨 Cultuur</h3>
+                                <ul>
+                                    <li>Cultuuranalyse</li>
+                                    <li>Stijl van leidinggeven</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>AI-gebruik documentatie (verplicht, max 1 pagina)</h3>
+                        <ul>
+                            <li>Welke AI-tool(s) heb je gebruikt? (bijv. ChatGPT, Perplexity)</li>
+                            <li>Wat was je prompt? (kopieer/plak)</li>
+                            <li>Wat gaf AI terug? (samenvatting of screenshot)</li>
+                            <li>Hoe heb je het gebruikt? (bijv. "outline gevolgd, zelf ingevuld")</li>
+                        </ul>
+
+                        <h3>AI-check voor docent</h3>
+                        <ul>
+                            <li><strong>Originele ideeën:</strong> laat student eigen meningen geven op locatie</li>
+                            <li><strong>Detailvragen:</strong> vraag naar specifieke interviews/observaties die niet online staan</li>
+                            <li><strong>Structuur-check:</strong> past de structuur bij AI tools, maar op welke manier is de inhoud origineel?</li>
+                            <li><strong>Plagiaat-check:</strong> specifieke opvallende passages googlen/verifieren om AI-tekst te detecteren</li>
+                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>AI Heroes Workshop | Business Analyse Docenten | 2026</p>
+            <p>💡 Transparant AI-gebruik voor betere leerresultaten</p>
+        </div>
+    </div>
+    <script>
+        const levelContainer = document.querySelector('.ai-levels');
+        const levelCards = Array.from(document.querySelectorAll('.level-card'));
+        const afterSelection = document.getElementById('afterSelection');
+
+        const setSelectedLevel = (level) => {
+            levelCards.forEach((card) => {
+                const isSelected = card.dataset.level === level;
+                card.classList.toggle('selected', isSelected);
+                card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+            });
+            if (level) {
+                levelContainer.classList.add('has-selection');
+                if (afterSelection) {
+                    afterSelection.classList.add('visible');
+                }
+            }
+        };
+
+        levelCards.forEach((card) => {
+            card.addEventListener('click', () => setSelectedLevel(card.dataset.level));
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedLevel(card.dataset.level);
+                }
+            });
+        });
+
+        // Toggle example solution
+        const toggleBtn = document.getElementById('toggleExample');
+        const exampleSolution = document.getElementById('exampleSolution');
+        
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('active');
+            exampleSolution.classList.toggle('visible');
+            
+            if (exampleSolution.classList.contains('visible')) {
+                toggleBtn.querySelector('span:first-child').textContent = '📖 Verberg voorbeeld';
+            } else {
+                toggleBtn.querySelector('span:first-child').textContent = '📖 Toon voorbeeld (AI Level 2)';
+            }
+        });
+
+    </script>
+</body>
+</html>

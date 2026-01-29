@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>AI Heroes Workshop - Opdrachten Overzicht</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f8fafc;
+            --bg-strong: #ffffff;
+            --text: #0f172a; /* Darker text */
+            --text-muted: #475569; /* Darker muted text */
+            --border: #cbd5e1; /* Slightly darker border */
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --accent: #2563eb; /* Blue for consisteny */
+            --accent-2: #0ea5e9; /* Light blue */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-size: 1.125rem; /* Bigger text */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--bg-strong);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: white;
+            color: var(--text);
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: clamp(2.2rem, 3.5vw, 3rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 50px 40px 60px;
+        }
+
+        .opdrachten-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .opdracht-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .opdracht-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: #cbd5e1;
+        }
+
+        .opdracht-number {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .opdracht-card h3 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .opdracht-description {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 1rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .opdracht-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .opdracht-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        
+        .opdracht-link span {
+            transition: transform 0.2s;
+        }
+        .opdracht-link:hover span {
+            transform: translateX(4px);
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            .header {
+                padding: 40px 20px;
+            }
+            .opdrachten-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Heroes Workshop</h1>
+            <p>Overzicht van alle opdrachten</p>
+        </div>
+
+        <div class="content">
+            <div class="opdrachten-grid">
+                <div class="opdracht-card">
+                    <span class="opdracht-number">OPDRACHT 1</span>
+                    <h3>Organisatieadvies - Business Case & MCA</h3>
+                    <p class="opdracht-description">
+                        Stel een business case op met financiële onderbouwing (CAPEX, OPEX, NCW, IRR) en/of een Multi-Criteria Analyse voor innovaties waarbij investeringen moeilijk in geld uit te drukken zijn.
+                    </p>
+                    <a href="opdracht 1/index.html" class="opdracht-link">
+                        Start opdracht
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <div class="opdracht-card">
+                    <span class="opdracht-number">OPDRACHT 2</span>
+                    <h3>Business Analyse - Bedrijfsbeschrijving</h3>
+                    <p class="opdracht-description">
+                        Maak een bedrijfsbeschrijving van het stagebedrijf met strategische analyse, marktpositie, organisatiestructuur, primaire processen en cultuuranalyse (max. 1500 woorden).
+                    </p>
+                    <a href="opdracht 2/index.html" class="opdracht-link">
+                        Start opdracht
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <div class="opdracht-card">
+                    <span class="opdracht-number">OPDRACHT 3</span>
+                    <h3>Cross Cultural Communication</h3>
+                    <p class="opdracht-description">
+                        Investigate a country using the theories of Hofstede, Trompenaars and Hall. Analyze cultural dimensions, context classification and develop an advisory plan for cross-cultural communication.
+                    </p>
+                    <a href="opdracht 3/index.html" class="opdracht-link">
+                        Start opdracht
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <div class="opdracht-card">
+                    <span class="opdracht-number">OPDRACHT 4</span>
+                    <h3>Eigen TBK Opdracht (Leeg Sjabloon)</h3>
+                    <p class="opdracht-description">
+                        Ontwerp je eigen TBK-opdracht van scratch. Kies een AI-level, bepaal scope, doelen, aanpak, deliverables en je AI-check methode.
+                    </p>
+                    <a href="opdracht 4/index.html" class="opdracht-link">
+                        Start opdracht
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>AI Heroes Workshop | 2026</p>
+            <p>💡 Transparant AI-gebruik voor betere leerresultaten</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>AI Heroes Workshop Assignment - Cross Cultural Communication</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f8fafc;
+            --bg-strong: #ffffff;
+            --text: #0f172a; /* Darker text */
+            --text-muted: #475569; /* Darker muted */
+            --border: #cbd5e1;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background-color: var(--bg);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-size: 1.125rem; /* Bigger text */
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--bg-strong);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: white;
+            color: var(--text);
+            padding: 50px 32px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .content {
+            padding: 40px 32px 50px;
+        }
+
+        .instruction-box {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 24px 26px;
+            margin-bottom: 28px;
+            border-radius: 12px;
+        }
+
+        .instruction-box h2 {
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .instruction-box p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        .instruction-box strong {
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: #1e293b;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.4rem;
+            letter-spacing: -0.01em;
+            font-weight: 700;
+        }
+
+        .ai-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 26px 0 34px;
+        }
+
+        .after-selection {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .after-selection.visible {
+            display: grid;
+        }
+
+        .level-card {
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            filter: brightness(0.95);
+        }
+
+        .ai-levels.has-selection .level-card:not(.selected) {
+            opacity: 0.4;
+            transform: scale(0.98);
+            filter: grayscale(0.5);
+        }
+
+        .level-card.selected {
+            box-shadow: 0 0 0 3px var(--primary);
+            transform: translateY(-2px);
+            z-index: 10;
+        }
+
+        .level-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        .level-card p {
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+        
+        /* Full Color Levels */
+        .level-1 { background-color: #fee2e2; border-color: #fca5a5; }
+        .level-2 { background-color: #ffedd5; border-color: #fdba74; }
+        .level-3 { background-color: #fef9c3; border-color: #fde047; }
+        .level-4 { background-color: #dcfce7; border-color: #86efac; }
+        .level-5 { background-color: #dbeafe; border-color: #93c5fd; }
+
+
+        .tools-section {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+
+        .tools-section h3 {
+            color: #1e293b;
+            margin-bottom: 18px;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .tool-link {
+            display: block;
+            padding: 12px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .tool-link:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .assignment-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 12px;
+            margin: 40px 0 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .assignment-box h2 {
+            color: #0f172a;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .assignment-box h3 {
+            color: #334155;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .assignment-box p, .assignment-box ul {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        .assignment-box ul {
+            margin-left: 20px;
+        }
+
+        .assignment-box li {
+            margin-bottom: 8px;
+        }
+        
+        .assignment-box strong {
+            color: #334155;
+        }
+
+        .highlight-box {
+            background: #f0fdf4; /* Light green for info */
+            border: 1px solid #dcfce7;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #166534;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: transparent;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .back-button:hover {
+            background: #f8fafc;
+            color: #0f172a;
+            border-color: #cbd5e1;
+            transform: translateX(-2px);
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .toggle-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: white;
+            color: #334155;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 30px 0 20px;
+            width: 100%;
+        }
+
+        .toggle-button:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+            color: #0f172a;
+        }
+
+        .toggle-button .arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .toggle-button.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .example-solution {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s ease;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .example-solution.visible {
+            max-height: 10000px;
+            opacity: 1;
+            padding: 30px;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .example-solution h2 {
+            color: #0f172a;
+            margin-bottom: 18px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 12px;
+        }
+
+        .example-solution h3 {
+            color: #334155;
+            margin-top: 22px;
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .example-solution p, .example-solution ul {
+            margin-bottom: 14px;
+            color: var(--text-muted);
+        }
+
+        .example-solution ul {
+            margin-left: 20px;
+        }
+
+        .example-solution li {
+            margin-bottom: 8px;
+        }
+
+        .example-solution strong {
+            color: #334155;
+        }
+
+        .example-badge {
+            display: inline-block;
+            background: #fef2f2;
+            border: 1px solid #fee2e2;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 650;
+            color: #ef4444;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+        }
+
+        .example-callout {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin: 16px 0 22px;
+        }
+
+        .example-callout h3 {
+            color: #991b1b;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .example-callout p {
+            margin: 8px 0;
+            color: #7f1d1d;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 16px 0 24px;
+        }
+
+        @media(min-width: 860px) {
+            .example-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .example-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .example-card h3 {
+            color: #334155;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .example-card ul {
+            margin-left: 18px;
+        }
+
+        .example-card li {
+            margin: 8px 0;
+            color: var(--text-muted);
+        }
+
+        .example-card.level1 {
+            background: #fff1f2; /* Light red */
+            border-color: #ffe4e6;
+        }
+
+        .example-card.level1 h3 {
+            color: #be123c;
+        }
+
+        .example-pill {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1e3a8a;
+            border: 1px solid #dbeafe;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-weight: 650;
+            margin: 6px 6px 0 0;
+            font-size: 0.9rem;
+        }
+
+        .declaration-box {
+            background: #fff7ed; /* Light orange */
+            padding: 18px;
+            border-left: 4px solid #f97316;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .declaration-box p {
+            color: #7c2d12;
+            margin-bottom: 10px;
+        }
+
+        .declaration-box ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .declaration-box li {
+            color: #9a3412;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 24px 18px 34px;
+            }
+
+            .ai-levels {
+                grid-template-columns: 1fr;
+            }
+
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Heroes Workshop Assignment Cross Cultural Communication</h1>
+            <p>Make your assignment AI-proof with the AI framework</p>
+        </div>
+        
+        <div class="content">
+            <a href="../index.html" class="back-button">
+                <span>←</span>
+                Back to overview
+            </a>
+            
+            <div class="instruction-box">
+                <h2>📋 Your Task</h2>
+                <p><strong>Choose an AI level from the framework and adapt the assignment accordingly.</strong></p>
+                <p>Use Perplexity and/or other LLMs in your process to adjust the assignment to the chosen AI level.</p>
+                <p><strong>Also create a method to check AI usage</strong> (e.g., reflection questions, process accountability, or verification methods).</p>
+            </div>
+            
+            <h2 class="section-title">🎯 Choose Your AI Level</h2>
+            
+            <div class="ai-levels">
+                <div class="level-card level-1" data-level="1" tabindex="0" role="button" aria-pressed="false">
+                    <h3>1. No AI</h3>
+                    <p>This assignment must be completed entirely without AI.</p>
+                </div>
+                
+                <div class="level-card level-2" data-level="2" tabindex="0" role="button" aria-pressed="false">
+                    <h3>2. Idea/Structure</h3>
+                    <p>AI may be used for setup, structure, or brainstorming. AI cannot create or calculate anything.</p>
+                </div>
+                
+                <div class="level-card level-3" data-level="3" tabindex="0" role="button" aria-pressed="false">
+                    <h3>3. Edit</h3>
+                    <p>AI may be used to improve and edit the assignment. AI cannot create active content. Original work must be added.</p>
+                </div>
+                
+                <div class="level-card level-4" data-level="4" tabindex="0" role="button" aria-pressed="false">
+                    <h3>4. Supplement</h3>
+                    <p>AI may be used to complete and edit the assignment. Human is responsible. AI-generated work must be indicated.</p>
+                </div>
+                
+                <div class="level-card level-5" data-level="5" tabindex="0" role="button" aria-pressed="false">
+                    <h3>5. AI Allowed</h3>
+                    <p>AI may be used everywhere in this assignment.</p>
+                </div>
+            </div>
+
+            <div class="after-selection" id="afterSelection">
+                <div class="tools-section">
+                    <h3>🛠️ AI Tools</h3>
+                    <div class="tools-grid">
+                        <a href="https://www.perplexity.ai" target="_blank" class="tool-link">Perplexity AI</a>
+                        <a href="https://chat.openai.com" target="_blank" class="tool-link">ChatGPT</a>
+                        <a href="https://claude.ai" target="_blank" class="tool-link">Claude</a>
+                        <a href="https://gemini.google.com" target="_blank" class="tool-link">Google Gemini</a>
+                    </div>
+                </div>
+
+                <div class="assignment-box">
+                    <h2>🌍 The Original Assignment: Cross Cultural Communication</h2>
+                        
+                        <h3>📝 Assignment Description</h3>
+                        <p>Describe the country you were tasked to investigate using the three theories we discussed during the workshops (Hofstede, Trompenaars and Hall).</p>
+                        
+                        <h3>📊 Requirements</h3>
+                        <p>Touch upon the following:</p>
+                        
+                        <ul>
+                            <li><strong>Cultural Dimensions:</strong> Identify and highlight at least 4 dimensions from Hofstede or Trompenaars (or a mix of the two) which play a significant role in the culture of your target country.</li>
+                            
+                            <li><strong>Real-Life Examples:</strong> Provide examples for all 4 dimensions of real-life behaviours or practices in a professional setting that reflect these dimensions.</li>
+                            
+                            <li><strong>Context Classification:</strong> Classify the target country as high-context or low-context and justify your classification.</li>
+                            
+                            <li><strong>Comparative Analysis:</strong> Compare these traits to your country of origin and highlight potential conflicts or misunderstandings that could arise.</li>
+                            
+                            <li><strong>Advisory Plan:</strong> Come up with a detailed advisory plan to prevent these conflicts or misunderstandings from happening (as much as possible).</li>
+                        </ul>
+                        
+                        <h3>🎓 Theories to Apply</h3>
+                        <ul>
+                            <li>Hofstede's Cultural Dimensions</li>
+                            <li>Trompenaars' Model of National Culture Differences</li>
+                            <li>Hall's High-Context and Low-Context Cultures</li>
+                        </ul>
+                </div>
+
+                <button class="toggle-button" id="toggleExample">
+                    Show example (AI Level 1 - No AI)
+                    <span class="arrow">▼</span>
+                </button>
+
+                <div class="example-solution" id="exampleSolution">
+                <div class="example-badge">AI Heroes Workshop Assignment 3</div>
+                <h2>Cross Cultural Communication — AI Level 1 (No AI)</h2>
+                <p>This assignment must be completed entirely without any AI assistance. Pure human work only.</p>
+
+                <div class="example-callout">
+                    <h3>AI Level 1: No AI Allowed</h3>
+                    <p><strong>ZERO AI usage.</strong> No Perplexity, ChatGPT, Claude, Gemini, or any other AI tool.</p>
+                    <p><strong>Allowed:</strong> textbooks, workshop notes, lectures, group discussion, library research, interviews.</p>
+                    <p><strong>Not allowed:</strong> AI for research, outlines, examples, explanations, or text generation.</p>
+                    <p><strong>Declaration:</strong> Sign a statement confirming no AI was used (template provided below).</p>
+                </div>
+
+                <div class="example-grid">
+                    <div class="example-card level1">
+                        <h3>🚫 Completely Forbidden</h3>
+                        <ul>
+                            <li>No AI research on country culture</li>
+                            <li>No AI outlines or structure suggestions</li>
+                            <li>No AI-generated examples or scenarios</li>
+                            <li>No AI explanations of Hofstede/Trompenaars/Hall</li>
+                            <li>No AI comparison or advisory plans</li>
+                        </ul>
+                    </div>
+                    <div class="example-card">
+                        <h3>✅ Human-only sources</h3>
+                        <ul>
+                            <li>Workshop slides and notes</li>
+                            <li>Textbooks (Hofstede, Trompenaars, Hall)</li>
+                            <li>Library databases (academic papers)</li>
+                            <li>Group brainstorming sessions</li>
+                            <li>Your own observations/experiences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>The Assignment (AI Level 1)</h2>
+                <p><strong>Group assignment</strong> — complete with your assigned group.</p>
+
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h3>🌍 Country Analysis</h3>
+                        <p>Describe the country you were tasked to investigate using the three theories:</p>
+                        <ul>
+                            <li><strong>Hofstede:</strong> Identify ≥4 dimensions that play a significant role</li>
+                            <li><strong>Trompenaars:</strong> Use where relevant (mix OK)</li>
+                            <li><strong>Hall:</strong> High-context or low-context + justification</li>
+                        </ul>
+                    </div>
+                    <div class="example-card">
+                        <h3>💼 Professional Examples</h3>
+                        <p>For all 4+ dimensions, provide <strong>real-life examples</strong> of:</p>
+                        <ul>
+                            <li>Behaviours in professional settings</li>
+                            <li>Practices that reflect the dimension</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h3>🔄 Comparison</h3>
+                        <p>Compare to your country of origin:</p>
+                        <ul>
+                            <li>Highlight potential conflicts/misunderstandings</li>
+                            <li>Give specific scenarios</li>
+                        </ul>
+                    </div>
+                    <div class="example-card">
+                        <h3>🛡️ Advisory Plan</h3>
+                        <p>Detailed plan to prevent conflicts:</p>
+                        <ul>
+                            <li>Concrete strategies and actions</li>
+                            <li>Timeline and responsibilities</li>
+                            <li>Training recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>📚 Sources (human-only)</h3>
+                <ul>
+                    <li>Workshop materials and slides</li>
+                    <li>Textbooks: Hofstede, Trompenaars, Hall</li>
+                    <li>Academic papers (via library, no AI summaries)</li>
+                    <li>Personal experience or interviews</li>
+                </ul>
+
+                <h3>✍️ No-AI Declaration (copy & sign)</h3>
+                <div class="declaration-box">
+                    <p><strong>We declare:</strong></p>
+                    <ul>
+                        <li>No AI tools were used in any phase of this assignment</li>
+                        <li>All content is original human work</li>
+                        <li>All sources are from approved human-only materials</li>
+                    </ul>
+                    <p style="margin-top:12px">Names: ____________________ Date: ______ Signature: ______</p>
+                </div>
+
+                <h3>🕵️ Instructor AI Detection Methods</h3>
+                <ul>
+                    <li><strong>Process interview:</strong> "Walk us through how you found the Hofstede data?"</li>
+                    <li><strong>Memory test:</strong> Explain one dimension from memory (no notes)</li>
+                    <li><strong>Source verification:</strong> Show physical/digital sources used</li>
+                    <li><strong>Writing style consistency:</strong> Compare to previous no-AI work</li>
+                    <li><strong>Group dynamics:</strong> All members explain their contributions</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>AI Heroes Workshop | Cross Cultural Communication | 2026</p>
+            <p>💡 Transparent AI use for better learning outcomes</p>
+        </div>
+    </div>
+    <script>
+        const levelContainer = document.querySelector('.ai-levels');
+        const levelCards = Array.from(document.querySelectorAll('.level-card'));
+        const afterSelection = document.getElementById('afterSelection');
+
+        const setSelectedLevel = (level) => {
+            levelCards.forEach((card) => {
+                const isSelected = card.dataset.level === level;
+                card.classList.toggle('selected', isSelected);
+                card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+            });
+            if (level) {
+                levelContainer.classList.add('has-selection');
+                if (afterSelection) {
+                    afterSelection.classList.add('visible');
+                }
+            }
+        };
+
+        levelCards.forEach((card) => {
+            card.addEventListener('click', () => setSelectedLevel(card.dataset.level));
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSelectedLevel(card.dataset.level);
+                }
+            });
+        });
+
+        // Toggle example solution
+        const toggleButton = document.getElementById('toggleExample');
+        const exampleSolution = document.getElementById('exampleSolution');
+
+        toggleButton.addEventListener('click', () => {
+            toggleButton.classList.toggle('active');
+            exampleSolution.classList.toggle('visible');
+            
+            if (exampleSolution.classList.contains('visible')) {
+                toggleButton.innerHTML = 'Hide example <span class="arrow">▼</span>';
+            } else {
+                toggleButton.innerHTML = 'Show example (AI Level 1 - No AI) <span class="arrow">▼</span>';
+            }
+        });
+
+    </script>
+</body>
+</html>
