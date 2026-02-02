@@ -122,15 +122,15 @@ export const CONTENT: Record<Language, Content> = {
         items: [
           {
             title: "Practitioners, niet consultants",
-            description: "We bouwen zelf AI-producten en -systemen. Geen theorie uit handboeken, maar kennis uit de praktijk."
+            description: "We bouwen zelf AI-producten en -systemen. Kennis uit de praktijk, niet uit handboeken."
           },
           {
             title: "Praktijk boven theorie",
             description: "Elke workshop is hands-on. Je team werkt met echte tools aan echte use cases. Direct toepasbaar."
           },
           {
-            title: "Resultaat, geen rapporten",
-            description: "We garanderen concrete skills en inzichten. Niet tevreden? Geld terug. Zo simpel is het."
+            title: "Focus op resultaat",
+            description: "We leveren concrete skills en inzichten. Meetbare impact, niet alleen mooie verhalen."
           }
         ]
       },
@@ -171,7 +171,7 @@ export const CONTENT: Record<Language, Content> = {
         steps: [
           {
             title: "Kennismakingsgesprek",
-            description: "We luisteren naar je situatie, uitdagingen en doelen. Geen verkooppraatje, gewoon begrijpen wat je nodig hebt."
+            description: "We luisteren naar je situatie, uitdagingen en doelen. Verstaan wat je nodig hebt staat voorop."
           },
           {
             title: "Voorstel op maat",
@@ -359,15 +359,15 @@ export const CONTENT: Record<Language, Content> = {
         items: [
           {
             title: "Practitioners, not consultants",
-            description: "We build AI products and systems ourselves. No theory from textbooks, but knowledge from practice."
+            description: "We build AI products and systems ourselves. Knowledge from practice, not from textbooks."
           },
           {
             title: "Practice over theory",
             description: "Every workshop is hands-on. Your team works with real tools on real use cases. Immediately applicable."
           },
           {
-            title: "Results, not reports",
-            description: "We guarantee concrete skills and insights. Not satisfied? Money back. It's that simple."
+            title: "Focus on results",
+            description: "We deliver concrete skills and insights. Measurable impact, not just nice stories."
           }
         ]
       },
@@ -408,7 +408,7 @@ export const CONTENT: Record<Language, Content> = {
         steps: [
           {
             title: "Discovery call",
-            description: "We listen to your situation, challenges and goals. No sales pitch, just understanding what you need."
+            description: "We listen to your situation, challenges and goals. Understanding what you need comes first."
           },
           {
             title: "Tailored proposal",

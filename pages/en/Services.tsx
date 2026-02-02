@@ -75,7 +75,7 @@ export const ServicesEN: React.FC = () => {
       >
         <button
           onClick={scrollToContact}
-          className="group bg-brand-red text-white px-6 py-4 shadow-2xl hover:shadow-brand-red/30 transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+          className="group bg-brand-blue text-white px-6 py-4 shadow-2xl hover:shadow-brand-blue/30 transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
         >
           <span>Get in touch</span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -129,11 +129,11 @@ export const ServicesEN: React.FC = () => {
             {content.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white p-8 border-2 border-stone-200 hover:border-brand-red transition-all duration-500 overflow-hidden"
+                className="group relative bg-white p-8 border-2 border-stone-200 hover:border-brand-red transition-all duration-500"
               >
                 <div className="absolute top-0 left-0 w-1 h-0 bg-brand-red group-hover:h-full transition-all duration-500"></div>
                 <div className="relative">
-                  <div className="text-3xl md:text-4xl font-serif text-brand-red mb-3 font-bold">
+                  <div className="text-3xl md:text-4xl font-serif text-brand-red mb-3 font-bold break-words hyphens-auto">
                     {stat.metric}
                   </div>
                   <p className="text-stone-600 text-sm leading-relaxed">{stat.description}</p>
@@ -145,13 +145,13 @@ export const ServicesEN: React.FC = () => {
       </div>
 
       {/* How We Work - Methodology */}
-      <div className="max-w-none py-16 md:py-20 bg-brand-dark -mx-6 md:-mx-12 px-6 md:px-12">
+      <div className="max-w-none py-16 md:py-20 bg-stone-900 -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 text-center">
             How we work
           </h2>
           <p className="text-white/60 text-center mb-16 max-w-2xl mx-auto">
-            No reports, no theoretical talk. We work hands-on with your team until you see results.
+            We work hands-on with your team. Practical training, measurable results.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
@@ -159,7 +159,7 @@ export const ServicesEN: React.FC = () => {
               {
                 icon: <Users className="w-8 h-8" />,
                 title: "Practitioners, not consultants",
-                description: "We build AI products ourselves. No theory from textbooks, but knowledge from practice."
+                description: "We build AI products ourselves. Knowledge from practice, not from textbooks."
               },
               {
                 icon: <Zap className="w-8 h-8" />,
@@ -169,7 +169,7 @@ export const ServicesEN: React.FC = () => {
               {
                 icon: <Target className="w-8 h-8" />,
                 title: "Focus on results",
-                description: "We measure success by concrete skills and insights, not by days billed."
+                description: "We measure success by concrete skills and insights. Measurable impact comes first."
               }
             ].map((item, idx) => (
               <div key={idx} className="group">
@@ -203,8 +203,8 @@ export const ServicesEN: React.FC = () => {
             {content.heroServices.map((service, idx) => {
               const colors = [
                 { border: 'border-brand-red', accent: 'bg-brand-red', hover: 'hover:shadow-brand-red/20' },
-                { border: 'border-brand-blue', accent: 'bg-brand-blue', hover: 'hover:shadow-brand-blue/20' },
-                { border: 'border-brand-taupe', accent: 'bg-brand-taupe', hover: 'hover:shadow-brand-taupe/20' }
+                { border: 'border-brand-taupe', accent: 'bg-brand-taupe', hover: 'hover:shadow-brand-taupe/20' },
+                { border: 'border-brand-blue', accent: 'bg-brand-blue', hover: 'hover:shadow-brand-blue/20' }
               ];
               const color = colors[idx];
 
@@ -286,7 +286,7 @@ export const ServicesEN: React.FC = () => {
       </div>
 
       {/* Process Section - Polished */}
-      <div className="max-w-none py-16 md:py-20 bg-gradient-to-br from-brand-dark via-stone-900 to-brand-dark -mx-6 md:-mx-12 px-6 md:px-12">
+      <div className="max-w-none py-16 md:py-20 bg-stone-900 -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-3 text-center">
             {content.process.title}
