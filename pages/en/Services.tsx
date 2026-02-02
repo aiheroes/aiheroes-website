@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../../components/PageLayout';
-import { Link } from 'react-router-dom';
 import { CONTENT } from '../../constants';
 import { ChevronDown, ArrowRight, Check } from 'lucide-react';
 
@@ -92,12 +91,12 @@ export const ServicesEN: React.FC = () => {
             <span>{content.hero.cta1}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-          <Link
-            to="/en/contact"
+          <button
+            onClick={scrollToContact}
             className="inline-flex items-center justify-center gap-3 border-2 border-stone-300 text-brand-dark px-8 py-4 font-medium hover:border-brand-red hover:text-brand-red transition-all duration-300"
           >
             <span>{content.hero.cta2}</span>
-          </Link>
+          </button>
         </div>
         <div className="flex items-center gap-3 text-stone-600">
           <div className="w-8 h-8 rounded-full bg-brand-red/10 flex items-center justify-center">
