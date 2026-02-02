@@ -121,8 +121,8 @@ export const CONTENT: Record<Language, Content> = {
         title: "Waarom AI Heroes",
         items: [
           {
-            title: "Practitioners, niet consultants",
-            description: "We bouwen zelf AI-producten en -systemen. Kennis uit de praktijk, niet uit handboeken."
+            title: "Wij bouwen zelf AI",
+            description: "We bouwen zelf AI-producten en -systemen. Kennis uit de praktijk, rechtstreeks toegepast."
           },
           {
             title: "Praktijk boven theorie",
@@ -130,7 +130,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Focus op resultaat",
-            description: "We leveren concrete skills en inzichten. Meetbare impact, niet alleen mooie verhalen."
+            description: "We leveren concrete skills en inzichten. Meetbare impact staat voorop."
           }
         ]
       },
@@ -358,8 +358,8 @@ export const CONTENT: Record<Language, Content> = {
         title: "Why AI Heroes",
         items: [
           {
-            title: "Practitioners, not consultants",
-            description: "We build AI products and systems ourselves. Knowledge from practice, not from textbooks."
+            title: "We build AI ourselves",
+            description: "We build AI products and systems ourselves. Knowledge from practice, applied directly."
           },
           {
             title: "Practice over theory",
@@ -367,7 +367,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Focus on results",
-            description: "We deliver concrete skills and insights. Measurable impact, not just nice stories."
+            description: "We deliver concrete skills and insights. Measurable impact comes first."
           }
         ]
       },

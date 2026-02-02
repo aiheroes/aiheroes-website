@@ -129,11 +129,11 @@ export const DienstenNL: React.FC = () => {
             {content.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="group relative bg-white p-8 border-2 border-stone-200 hover:border-brand-red transition-all duration-500"
+                className="group relative bg-white p-8 border-2 border-stone-200 hover:border-brand-blue transition-all duration-500"
               >
-                <div className="absolute top-0 left-0 w-1 h-0 bg-brand-red group-hover:h-full transition-all duration-500"></div>
+                <div className="absolute top-0 left-0 w-1 h-0 bg-brand-blue group-hover:h-full transition-all duration-500"></div>
                 <div className="relative">
-                  <div className="text-3xl md:text-4xl font-serif text-brand-red mb-3 font-bold break-words hyphens-auto">
+                  <div className="text-2xl md:text-3xl font-serif text-brand-blue mb-3 font-bold leading-tight">
                     {stat.metric}
                   </div>
                   <p className="text-stone-600 text-sm leading-relaxed">{stat.description}</p>
@@ -158,8 +158,8 @@ export const DienstenNL: React.FC = () => {
             {[
               {
                 icon: <Users className="w-8 h-8" />,
-                title: "Practitioners, niet consultants",
-                description: "We bouwen zelf AI-producten. Kennis uit de praktijk, niet uit handboeken."
+                title: "Wij bouwen zelf AI",
+                description: "We bouwen zelf AI-producten. Kennis uit de praktijk, rechtstreeks toegepast."
               },
               {
                 icon: <Zap className="w-8 h-8" />,
