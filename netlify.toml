@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "dist"
 
+# Redirect /diensten to /nl/diensten (for social media campaigns)
+[[redirects]]
+  from = "/diensten"
+  to = "/nl/diensten"
+  status = 301
+
 # Handle SPA routing - redirect all routes to index.html
 [[redirects]]
   from = "/*"

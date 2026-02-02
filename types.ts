@@ -105,6 +105,59 @@ export interface FooterContent {
   madeIn: string;
 }
 
+export interface DienstenContent {
+  hero: {
+    title: string;
+    subtitle: string;
+    cta1: string;
+    cta2: string;
+    credibility: string;
+  };
+  valueProps: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  stats: Array<{
+    metric: string;
+    description: string;
+  }>;
+  heroServices: Array<{
+    title: string;
+    description: string;
+    benefit: string;
+  }>;
+  process: {
+    title: string;
+    timeline: string;
+    steps: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  guarantees: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  faq: {
+    title: string;
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
+  };
+  contactSection: {
+    title: string;
+    subtitle: string;
+    altCta: string;
+  };
+}
+
 export interface Content {
   nav: NavStructure;
   hero: HeroContent;
@@ -114,4 +167,6 @@ export interface Content {
   socialProof: SocialProofContent;
   contact: ContactContent;
   footer: FooterContent;
+  dienstenPage?: DienstenContent;
+  servicesPage?: DienstenContent;
 }

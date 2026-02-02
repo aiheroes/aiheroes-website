@@ -109,6 +109,124 @@ export const CONTENT: Record<Language, Content> = {
         sendAnother: "Nog een versturen"
       }
     },
+    dienstenPage: {
+      hero: {
+        title: "Onze Diensten",
+        subtitle: "Van AI Foundations tot specialistische tracks. Praktische training die je team direct toepasbaar maakt.",
+        cta1: "Bekijk diensten",
+        cta2: "Direct contact",
+        credibility: "50+ organisaties geholpen sinds 2019"
+      },
+      valueProps: {
+        title: "Waarom AI Heroes",
+        items: [
+          {
+            title: "Practitioners, niet consultants",
+            description: "We bouwen zelf AI-producten en -systemen. Geen theorie uit handboeken, maar kennis uit de praktijk."
+          },
+          {
+            title: "Praktijk boven theorie",
+            description: "Elke workshop is hands-on. Je team werkt met echte tools aan echte use cases. Direct toepasbaar."
+          },
+          {
+            title: "Resultaat, geen rapporten",
+            description: "We garanderen concrete skills en inzichten. Niet tevreden? Geld terug. Zo simpel is het."
+          }
+        ]
+      },
+      stats: [
+        {
+          metric: "70% kostenbesparing",
+          description: "Medux reduceerde AI-kosten met 70% na onze workshop"
+        },
+        {
+          metric: "6 dagen tot prototype",
+          description: "Gemiddelde tijd van eerste gesprek tot werkend prototype"
+        },
+        {
+          metric: "50+ teams getraind",
+          description: "Van startups tot Fortune 500 bedrijven"
+        }
+      ],
+      heroServices: [
+        {
+          title: "AI Foundations",
+          description: "Van nul tot AI-vaardig team in één dag",
+          benefit: "Je team snapt AI fundamenteel en kan direct productief aan de slag met tools als ChatGPT en Claude."
+        },
+        {
+          title: "Opportunity Scouting",
+          description: "Ontdek waar AI 10x impact maakt",
+          benefit: "Een concrete roadmap met gekwantificeerde ROI. Weet precies waar je AI moet inzetten voor maximale waarde."
+        },
+        {
+          title: "Specialistische Tracks",
+          description: "Advanced AI voor gevorderde teams",
+          benefit: "Van advanced prompting tot custom LLM-integraties. Voor teams die voorbij de basis willen."
+        }
+      ],
+      process: {
+        title: "Wat gebeurt er als je contact opneemt",
+        timeline: "Van eerste gesprek tot workshop: gemiddeld 2 weken",
+        steps: [
+          {
+            title: "Kennismakingsgesprek",
+            description: "We luisteren naar je situatie, uitdagingen en doelen. Geen verkooppraatje, gewoon begrijpen wat je nodig hebt."
+          },
+          {
+            title: "Voorstel op maat",
+            description: "We stellen een aanpak voor die past bij je team, budget en tijdlijn. Transparant over kosten en verwachte resultaten."
+          },
+          {
+            title: "Directe impact",
+            description: "We gaan aan de slag. Praktische training, concrete tools, meetbare resultaten. Direct toepasbaar in je werk."
+          }
+        ]
+      },
+      guarantees: {
+        title: "Onze garanties",
+        items: [
+          {
+            title: "Tevredenheidsgarantie",
+            description: "Niet tevreden na de workshop? Je krijgt je geld terug. Geen gedoe, geen kleine lettertjes."
+          },
+          {
+            title: "Geen vendor lock-in",
+            description: "We leren je werken met algemene AI-tools. Je bent niet afhankelijk van één platform of leverancier."
+          },
+          {
+            title: "Eerlijk advies",
+            description: "Als AI niet de oplossing is, zeggen we dat. We verkopen alleen wat echt waarde toevoegt."
+          }
+        ]
+      },
+      faq: {
+        title: "Veelgestelde vragen",
+        items: [
+          {
+            question: "Hoe lang duurt een workshop?",
+            answer: "De meeste workshops duren een dag (6-8 uur). Voor specialistische tracks plannen we meerdere sessies in overleg."
+          },
+          {
+            question: "Wat zijn de kosten?",
+            answer: "Afhankelijk van de dienst en groepsgrootte. AI Foundations start vanaf €2.500 voor een team tot 15 personen. Voor scholen en non-profits hebben we lagere tarieven."
+          },
+          {
+            question: "Wat als AI niet geschikt blijkt?",
+            answer: "Dan zeggen we dat eerlijk. Bij Opportunity Scouting krijg je altijd een helder advies, ook als dat betekent dat AI nog niet de juiste fit is."
+          },
+          {
+            question: "Werken jullie op locatie of online?",
+            answer: "Beiden. We geven voorkeur aan on-site workshops voor betere interactie, maar online werkt ook uitstekend."
+          }
+        ]
+      },
+      contactSection: {
+        title: "Start vandaag met AI",
+        subtitle: "Laat je gegevens achter en we nemen binnen 24 uur contact op.",
+        altCta: "Of mail ons direct:"
+      }
+    },
     footer: {
       tagline: "Wij helpen bedrijven AI te navigeren met praktische vaardigheden en strategisch inzicht.",
       caseStudies: {
@@ -230,6 +348,124 @@ export const CONTENT: Record<Language, Content> = {
         title: "Received",
         message: "We will be in touch shortly.",
         sendAnother: "Send another"
+      }
+    },
+    servicesPage: {
+      hero: {
+        title: "Our Services",
+        subtitle: "From AI Foundations to specialized tracks. Practical training that makes your team immediately productive.",
+        cta1: "View services",
+        cta2: "Get in touch",
+        credibility: "50+ organizations helped since 2019"
+      },
+      valueProps: {
+        title: "Why AI Heroes",
+        items: [
+          {
+            title: "Practitioners, not consultants",
+            description: "We build AI products and systems ourselves. No theory from textbooks, but knowledge from practice."
+          },
+          {
+            title: "Practice over theory",
+            description: "Every workshop is hands-on. Your team works with real tools on real use cases. Immediately applicable."
+          },
+          {
+            title: "Results, not reports",
+            description: "We guarantee concrete skills and insights. Not satisfied? Money back. It's that simple."
+          }
+        ]
+      },
+      stats: [
+        {
+          metric: "70% cost reduction",
+          description: "Medux reduced AI costs by 70% after our workshop"
+        },
+        {
+          metric: "6 days to prototype",
+          description: "Average time from first conversation to working prototype"
+        },
+        {
+          metric: "50+ teams trained",
+          description: "From startups to Fortune 500 companies"
+        }
+      ],
+      heroServices: [
+        {
+          title: "AI Foundations",
+          description: "From zero to AI-capable team in one day",
+          benefit: "Your team understands AI fundamentally and can immediately work productively with tools like ChatGPT and Claude."
+        },
+        {
+          title: "Opportunity Scouting",
+          description: "Discover where AI creates 10x impact",
+          benefit: "A concrete roadmap with quantified ROI. Know exactly where to deploy AI for maximum value."
+        },
+        {
+          title: "Specialized Tracks",
+          description: "Advanced AI for experienced teams",
+          benefit: "From advanced prompting to custom LLM integrations. For teams ready to go beyond the basics."
+        }
+      ],
+      process: {
+        title: "What happens when you reach out",
+        timeline: "From first conversation to workshop: average 2 weeks",
+        steps: [
+          {
+            title: "Discovery call",
+            description: "We listen to your situation, challenges and goals. No sales pitch, just understanding what you need."
+          },
+          {
+            title: "Tailored proposal",
+            description: "We propose an approach that fits your team, budget and timeline. Transparent about costs and expected results."
+          },
+          {
+            title: "Immediate impact",
+            description: "We get to work. Practical training, concrete tools, measurable results. Immediately applicable in your work."
+          }
+        ]
+      },
+      guarantees: {
+        title: "Our guarantees",
+        items: [
+          {
+            title: "Satisfaction guarantee",
+            description: "Not satisfied after the workshop? You get your money back. No hassle, no fine print."
+          },
+          {
+            title: "No vendor lock-in",
+            description: "We teach you to work with general AI tools. You're not dependent on one platform or vendor."
+          },
+          {
+            title: "Honest advice",
+            description: "If AI isn't the solution, we'll tell you. We only sell what truly adds value."
+          }
+        ]
+      },
+      faq: {
+        title: "Frequently asked questions",
+        items: [
+          {
+            question: "How long does a workshop take?",
+            answer: "Most workshops last one day (6-8 hours). For specialized tracks we schedule multiple sessions in consultation."
+          },
+          {
+            question: "What are the costs?",
+            answer: "Depends on the service and group size. AI Foundations starts at €2,500 for a team up to 15 people. We have lower rates for schools and non-profits."
+          },
+          {
+            question: "What if AI turns out not to be suitable?",
+            answer: "Then we'll tell you honestly. With Opportunity Scouting you always get clear advice, even if that means AI isn't the right fit yet."
+          },
+          {
+            question: "Do you work on-site or online?",
+            answer: "Both. We prefer on-site workshops for better interaction, but online works excellently too."
+          }
+        ]
+      },
+      contactSection: {
+        title: "Start with AI today",
+        subtitle: "Leave your details and we'll contact you within 24 hours.",
+        altCta: "Or email us directly:"
       }
     },
     footer: {
