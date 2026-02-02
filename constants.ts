@@ -187,10 +187,6 @@ export const CONTENT: Record<Language, Content> = {
         title: "Onze garanties",
         items: [
           {
-            title: "Tevredenheidsgarantie",
-            description: "Niet tevreden na de workshop? Je krijgt je geld terug. Geen gedoe, geen kleine lettertjes."
-          },
-          {
             title: "Geen vendor lock-in",
             description: "We leren je werken met algemene AI-tools. Je bent niet afhankelijk van één platform of leverancier."
           },
@@ -427,10 +423,6 @@ export const CONTENT: Record<Language, Content> = {
       guarantees: {
         title: "Our guarantees",
         items: [
-          {
-            title: "Satisfaction guarantee",
-            description: "Not satisfied after the workshop? You get your money back. No hassle, no fine print."
-          },
           {
             title: "No vendor lock-in",
             description: "We teach you to work with general AI tools. You're not dependent on one platform or vendor."

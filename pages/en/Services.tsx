@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../../components/PageLayout';
 import { Link } from 'react-router-dom';
 import { CONTENT } from '../../constants';
-import { DarkBox } from '../../components/DarkBox';
-import { PageContactForm } from '../../components/PageContactForm';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight, Check, Zap, Target, Users } from 'lucide-react';
 
 export const ServicesEN: React.FC = () => {
   const content = CONTENT.en.servicesPage!;
   const services = CONTENT.en.nav.services.children;
   const [expandedServices, setExpandedServices] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<string | undefined>(undefined);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [showStickyCta, setShowStickyCta] = useState(false);
 
   const groupedServices = {
     training: services.filter(s => s.category === 'training'),
@@ -21,8 +21,8 @@ export const ServicesEN: React.FC = () => {
 
   const categoryTitles = {
     training: 'Training & Workshops',
-    strategy: 'Strategy & Scouting',
-    bespoke: 'Specialized Programs',
+    strategy: 'Strategie & Scouting',
+    bespoke: 'Specialistische Trajecten',
     awareness: 'Awareness & Literacy'
   };
 
@@ -41,6 +41,23 @@ export const ServicesEN: React.FC = () => {
     }
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-form');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Sticky CTA on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = 600;
+      setShowStickyCta(window.scrollY > heroHeight);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <PageLayout
       lang="en"
@@ -48,50 +65,59 @@ export const ServicesEN: React.FC = () => {
       subtitle={content.hero.subtitle}
       seoDescription="AI Heroes services: practical workshops, strategic scouting, and specialized tracks. From basic AI training to custom LLM integrations. View our full offering."
       accentColor="red"
+      showContactForm={false}
     >
+      {/* Sticky CTA */}
+      <div
+        className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
+          showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+        }`}
+      >
+        <button
+          onClick={scrollToContact}
+          className="group bg-brand-red text-white px-6 py-4 shadow-2xl hover:shadow-brand-red/30 transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+        >
+          <span>Get in touch</span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+
       {/* Hero CTAs Section */}
-      <div className="max-w-4xl -mt-8 mb-16">
-        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+      <div className="max-w-4xl -mt-6 mb-20">
+        <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mb-6">
           <button
             onClick={scrollToServices}
-            className="bg-brand-red text-white px-8 py-3 font-medium hover:bg-brand-red-dark transition-colors"
+            className="group bg-brand-red text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
           >
-            {content.hero.cta1}
+            <span>{content.hero.cta1}</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
           <Link
             to="/en/contact"
-            className="inline-block border-2 border-brand-red text-brand-red px-8 py-3 font-medium hover:bg-brand-red hover:text-white transition-colors"
+            className="inline-flex items-center justify-center gap-3 border-2 border-stone-300 text-brand-dark px-8 py-4 font-medium hover:border-brand-red hover:text-brand-red transition-all duration-300"
           >
-            {content.hero.cta2}
+            <span>{content.hero.cta2}</span>
           </Link>
         </div>
-        <p className="text-stone-500 text-sm mt-4">
-          {content.hero.credibility}
-        </p>
+        <div className="flex items-center gap-3 text-stone-600">
+          <div className="w-8 h-8 rounded-full bg-brand-red/10 flex items-center justify-center">
+            <Check className="w-5 h-5 text-brand-red" />
+          </div>
+          <span className="text-sm font-medium">{content.hero.credibility}</span>
+        </div>
       </div>
 
-      {/* Social Proof Section */}
-      <div className="max-w-none py-20 md:py-24 bg-stone-50 -mx-6 md:-mx-12 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Testimonial */}
-          <div className="mb-16 text-center">
-            <blockquote className="text-2xl md:text-3xl font-serif text-brand-dark mb-6 italic">
-              "{CONTENT.en.socialProof.testimonial.text}"
-            </blockquote>
-            <cite className="not-italic">
-              <span className="block font-bold text-brand-dark">{CONTENT.en.socialProof.testimonial.author}</span>
-              <span className="block text-stone-500">{CONTENT.en.socialProof.testimonial.role}</span>
-            </cite>
-          </div>
-
-          {/* Logo row */}
-          <div className="border-t border-stone-200 pt-8 mb-12">
-            <p className="text-center text-xs font-bold uppercase tracking-widest text-stone-400 mb-6">
-              {CONTENT.en.socialProof.title}
+      {/* Social Proof - Logos + Stats */}
+      <div className="max-w-none py-16 md:py-20 bg-gradient-to-b from-stone-50 to-white -mx-6 md:-mx-12 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          {/* Logos */}
+          <div className="mb-12 pb-8 border-b border-stone-200">
+            <p className="text-center text-xs font-bold uppercase tracking-widest text-stone-400 mb-8">
+              Trusted by
             </p>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 opacity-60">
+            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6 opacity-50">
               {["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Locatiqs"].map((logo, idx) => (
-                <span key={idx} className="text-lg font-serif text-stone-400">
+                <span key={idx} className="text-base md:text-lg font-serif text-stone-500">
                   {logo}
                 </span>
               ))}
@@ -101,81 +127,138 @@ export const ServicesEN: React.FC = () => {
           {/* Stats cards */}
           <div className="grid md:grid-cols-3 gap-6">
             {content.stats.map((stat, idx) => (
-              <div key={idx} className="bg-white p-6 border-l-4 border-brand-red">
-                <div className="text-2xl font-serif text-brand-red mb-2">{stat.metric}</div>
-                <p className="text-stone-600 text-sm">{stat.description}</p>
+              <div
+                key={idx}
+                className="group relative bg-white p-8 border-2 border-stone-200 hover:border-brand-red transition-all duration-500 overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1 h-0 bg-brand-red group-hover:h-full transition-all duration-500"></div>
+                <div className="relative">
+                  <div className="text-3xl md:text-4xl font-serif text-brand-red mb-3 font-bold">
+                    {stat.metric}
+                  </div>
+                  <p className="text-stone-600 text-sm leading-relaxed">{stat.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Value Props Section */}
-      <div className="max-w-none py-20 md:py-24">
-        <DarkBox className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-white mb-12 text-center">
-            {content.valueProps.title}
+      {/* How We Work - Methodology */}
+      <div className="max-w-none py-16 md:py-20 bg-brand-dark -mx-6 md:-mx-12 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 text-center">
+            How we work
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {content.valueProps.items.map((item, idx) => (
-              <div key={idx}>
-                <h3 className="text-xl font-serif text-white mb-3">{item.title}</h3>
-                <p className="text-white/75 leading-relaxed">{item.description}</p>
+          <p className="text-white/60 text-center mb-16 max-w-2xl mx-auto">
+            No reports, no theoretical talk. We work hands-on with your team until you see results.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {[
+              {
+                icon: <Users className="w-8 h-8" />,
+                title: "Practitioners, not consultants",
+                description: "We build AI products ourselves. No theory from textbooks, but knowledge from practice."
+              },
+              {
+                icon: <Zap className="w-8 h-8" />,
+                title: "Immediately applicable",
+                description: "Your team works with real tools on real use cases. Learned today, applied tomorrow."
+              },
+              {
+                icon: <Target className="w-8 h-8" />,
+                title: "Focus on results",
+                description: "We measure success by concrete skills and insights, not by days billed."
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="group">
+                <div className="mb-6 text-brand-red group-hover:scale-110 transition-transform duration-300 inline-block">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif text-white mb-4 leading-tight">
+                  {item.title}
+                </h3>
+                <p className="text-white/70 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
-        </DarkBox>
+        </div>
       </div>
 
       {/* Interactive Services Section */}
-      <div id="services-section" className="max-w-none py-20 md:py-24 bg-stone-50 -mx-6 md:-mx-12 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-12 text-center">
+      <div id="services-section" className="max-w-none py-16 md:py-20 -mx-6 md:-mx-12 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-serif text-brand-dark mb-3 text-center">
             Our services
           </h2>
+          <p className="text-stone-600 text-center mb-12 max-w-2xl mx-auto">
+            Choose the approach that fits where your team is now
+          </p>
 
-          {/* Hero service cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {content.heroServices.map((service, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleServiceCardClick(service.title)}
-                className="group text-left bg-white border-2 border-stone-200 hover:border-brand-red transition-all duration-200 p-6 cursor-pointer"
-              >
-                <h3 className="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand-red transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-brand-red font-medium text-sm mb-3">{service.description}</p>
-                <p className="text-stone-600 text-sm leading-relaxed mb-4">{service.benefit}</p>
-                <div className="flex items-center text-brand-red font-medium text-sm">
-                  <span className="group-hover:mr-2 transition-all">Interested?</span>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </div>
-              </button>
-            ))}
+          {/* Hero service cards with distinct visual styles */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {content.heroServices.map((service, idx) => {
+              const colors = [
+                { border: 'border-brand-red', accent: 'bg-brand-red', hover: 'hover:shadow-brand-red/20' },
+                { border: 'border-brand-blue', accent: 'bg-brand-blue', hover: 'hover:shadow-brand-blue/20' },
+                { border: 'border-brand-taupe', accent: 'bg-brand-taupe', hover: 'hover:shadow-brand-taupe/20' }
+              ];
+              const color = colors[idx];
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleServiceCardClick(service.title)}
+                  className={`group text-left bg-white border-2 ${color.border} hover:border-opacity-100 border-opacity-30 transition-all duration-300 p-6 md:p-8 cursor-pointer ${color.hover} hover:shadow-xl transform hover:-translate-y-1`}
+                >
+                  <div className={`w-12 h-1 ${color.accent} mb-6 group-hover:w-16 transition-all duration-300`}></div>
+                  <h3 className="text-xl md:text-2xl font-serif text-brand-dark mb-3 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="font-medium text-sm mb-4 text-stone-700">{service.description}</p>
+                  <p className="text-stone-600 text-sm leading-relaxed mb-6">{service.benefit}</p>
+                  <div className="flex items-center text-brand-dark font-medium text-sm group-hover:text-brand-red transition-colors">
+                    <span>Interested?</span>
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Expandable full service list */}
-          <div className="mt-12">
+          {/* Expandable full service list - more prominent */}
+          <div className="mt-12 border-2 border-stone-200">
             <button
               onClick={() => setExpandedServices(!expandedServices)}
-              className="w-full bg-white border border-stone-200 hover:border-brand-red transition-colors p-4 flex items-center justify-between group"
+              className="w-full bg-stone-50 hover:bg-stone-100 transition-colors p-6 flex items-center justify-between group"
             >
-              <span className="font-medium text-brand-dark group-hover:text-brand-red transition-colors">
-                View all services
-              </span>
-              <ChevronDown className={`w-5 h-5 text-stone-400 transition-transform ${expandedServices ? 'rotate-180' : ''}`} />
+              <div className="text-left">
+                <span className="font-serif text-xl md:text-2xl text-brand-dark block mb-1">
+                  All services
+                </span>
+                <span className="text-sm text-stone-500">
+                  View our full offering of 7 services
+                </span>
+              </div>
+              <ChevronDown
+                className={`w-6 h-6 text-stone-400 transition-transform duration-300 ${
+                  expandedServices ? 'rotate-180' : ''
+                }`}
+              />
             </button>
 
             {expandedServices && (
-              <div className="bg-white border border-stone-200 border-t-0 p-6 space-y-12 animate-fade-in-up">
+              <div className="bg-white p-6 md:p-8 space-y-10 border-t-2 border-stone-200">
                 {(Object.keys(groupedServices) as Array<keyof typeof groupedServices>).map(category => {
                   const categoryServices = groupedServices[category];
                   if (categoryServices.length === 0) return null;
 
                   return (
                     <div key={category}>
-                      <h3 className="text-2xl font-serif text-brand-dark mb-2">
+                      <h3 className="text-xl md:text-2xl font-serif text-brand-dark mb-4 pb-2 border-b border-stone-200">
                         {categoryTitles[category]}
                       </h3>
                       <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -183,12 +266,13 @@ export const ServicesEN: React.FC = () => {
                           <Link
                             key={service.href}
                             to={service.href}
-                            className="block border border-stone-200 hover:border-brand-red transition-colors p-4 group"
+                            className="group block border border-stone-200 hover:border-brand-red transition-all duration-300 p-5 hover:shadow-md"
                           >
-                            <h4 className="font-medium text-brand-dark group-hover:text-brand-red transition-colors mb-1">
+                            <h4 className="font-bold text-brand-dark group-hover:text-brand-red transition-colors mb-2 flex items-center gap-2">
                               {service.label}
+                              <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                             </h4>
-                            <p className="text-stone-600 text-sm">{service.description}</p>
+                            <p className="text-stone-600 text-sm leading-relaxed">{service.description}</p>
                           </Link>
                         ))}
                       </div>
@@ -201,84 +285,112 @@ export const ServicesEN: React.FC = () => {
         </div>
       </div>
 
-      {/* Process Section */}
-      <div className="max-w-none py-20 md:py-24">
-        <DarkBox className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-white mb-4 text-center">
+      {/* Process Section - Polished */}
+      <div className="max-w-none py-16 md:py-20 bg-gradient-to-br from-brand-dark via-stone-900 to-brand-dark -mx-6 md:-mx-12 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-serif text-white mb-3 text-center">
             {content.process.title}
           </h2>
-          <p className="text-white/60 text-center mb-12">{content.process.timeline}</p>
+          <p className="text-white/50 text-center mb-16 text-sm uppercase tracking-wider">
+            {content.process.timeline}
+          </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {content.process.steps.map((step, idx) => (
-              <div key={idx} className="relative">
-                <div className="text-5xl font-serif text-brand-red mb-4">{idx + 1}</div>
-                <h3 className="text-xl font-serif text-white mb-3">{step.title}</h3>
-                <p className="text-white/75 leading-relaxed">{step.description}</p>
+              <div key={idx} className="relative group">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-serif text-xl font-bold group-hover:scale-110 transition-transform duration-300">
+                    {idx + 1}
+                  </div>
+                  <div className="flex-1 h-0.5 bg-white/20 md:hidden"></div>
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif text-white mb-4 leading-tight">
+                  {step.title}
+                </h3>
+                <p className="text-white/70 leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             ))}
-          </div>
-        </DarkBox>
-      </div>
-
-      {/* Guarantees & FAQ Section */}
-      <div className="max-w-none py-20 md:py-24 bg-stone-50 -mx-6 md:-mx-12 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Guarantees */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-8">
-                {content.guarantees.title}
-              </h2>
-              <div className="space-y-6">
-                {content.guarantees.items.map((item, idx) => (
-                  <div key={idx}>
-                    <h3 className="font-bold text-brand-dark mb-2">{item.title}</h3>
-                    <p className="text-stone-600 leading-relaxed text-sm">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* FAQ */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-8">
-                {content.faq.title}
-              </h2>
-              <div className="space-y-6">
-                {content.faq.items.map((item, idx) => (
-                  <div key={idx}>
-                    <h3 className="font-bold text-brand-dark mb-2">{item.question}</h3>
-                    <p className="text-stone-600 leading-relaxed text-sm">{item.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Education pricing note */}
-          <div className="mt-8 text-center text-stone-500 text-sm border-t border-stone-200 pt-8">
-            <p>{CONTENT.en.contact.educationNote}</p>
           </div>
         </div>
       </div>
 
-      {/* Contact Form Section - Full Width */}
-      <div id="contact-form" className="max-w-none py-20 md:py-24 bg-white -mx-6 md:-mx-12 px-6 md:px-12">
+      {/* FAQ with Trust Signals */}
+      <div className="max-w-none py-16 md:py-20 bg-stone-50 -mx-6 md:-mx-12 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto">
+          {/* Trust Badges */}
+          <div className="mb-12 flex flex-wrap justify-center gap-6">
+            {[
+              { icon: <Check className="w-5 h-5" />, text: "No vendor lock-in" },
+              { icon: <Check className="w-5 h-5" />, text: "Honest advice" },
+              { icon: <Check className="w-5 h-5" />, text: "Lower rates for education" }
+            ].map((badge, idx) => (
+              <div key={idx} className="flex items-center gap-2 bg-white px-5 py-3 border border-stone-200 shadow-sm">
+                <div className="text-brand-red">{badge.icon}</div>
+                <span className="text-sm font-medium text-stone-700">{badge.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* FAQ Accordion */}
+          <div>
+            <h2 className="text-2xl md:text-4xl font-serif text-brand-dark mb-8 text-center">
+              Frequently asked questions
+            </h2>
+            <div className="space-y-3">
+              {content.faq.items.map((item, idx) => (
+                <div key={idx} className="bg-white border-2 border-stone-200 overflow-hidden">
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                    className="w-full text-left p-6 flex items-center justify-between hover:bg-stone-50 transition-colors"
+                  >
+                    <span className="font-bold text-brand-dark pr-4">{item.question}</span>
+                    <ChevronDown
+                      className={`w-5 h-5 text-stone-400 flex-shrink-0 transition-transform duration-300 ${
+                        expandedFaq === idx ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      expandedFaq === idx ? 'max-h-96' : 'max-h-0'
+                    }`}
+                  >
+                    <div className="px-6 pb-6 text-stone-600 leading-relaxed border-t border-stone-100 pt-4">
+                      {item.answer}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Education note */}
+            <div className="mt-8 text-center text-stone-500 text-sm">
+              <p>{CONTENT.en.contact.educationNote}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Form Section */}
+      <div id="contact-form" className="max-w-none py-16 md:py-24 bg-white -mx-6 md:-mx-12 px-6 md:px-12 border-t-4 border-brand-red">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-4">
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-dark mb-4">
               {content.contactSection.title}
             </h2>
-            <p className="text-stone-600 mb-2">{content.contactSection.subtitle}</p>
+            <p className="text-stone-600 text-lg mb-2">{content.contactSection.subtitle}</p>
             <p className="text-stone-500 text-sm">
               {content.contactSection.altCta}{' '}
-              <a href="mailto:hello@aiheroes.io" className="text-brand-red hover:underline">
+              <a href="mailto:hello@aiheroes.io" className="text-brand-red hover:underline font-medium">
                 hello@aiheroes.io
               </a>
             </p>
           </div>
-          <PageContactForm
+
+          {/* Contact Form */}
+          <ContactFormEmbed
             lang="en"
             accentColor="red"
             preselectedTopic={selectedTopic}
@@ -286,5 +398,171 @@ export const ServicesEN: React.FC = () => {
         </div>
       </div>
     </PageLayout>
+  );
+};
+
+// Embedded contact form component
+const ContactFormEmbed: React.FC<{
+  lang: 'nl' | 'en';
+  accentColor: 'red' | 'blue';
+  preselectedTopic?: string;
+}> = ({ lang, accentColor, preselectedTopic }) => {
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    message: ''
+  });
+
+  const content = {
+    nl: {
+      name: 'Naam',
+      email: 'E-mail',
+      org: 'Organisatie',
+      message: 'Je bericht',
+      submit: 'Verstuur',
+      success: { title: 'Ontvangen', message: 'We nemen snel contact met je op.', sendAnother: 'Nog een versturen' }
+    },
+    en: {
+      name: 'Name',
+      email: 'Email',
+      org: 'Organization',
+      message: 'Your message',
+      submit: 'Send',
+      success: { title: 'Received', message: 'We will be in touch shortly.', sendAnother: 'Send another' }
+    }
+  }[lang];
+
+  const accentBg = accentColor === 'red' ? 'bg-brand-red hover:bg-opacity-90' : 'bg-brand-blue hover:bg-opacity-90';
+  const accentFocus = accentColor === 'red' ? 'focus:border-brand-red' : 'focus:border-brand-blue';
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('submitting');
+
+    const submitData = new URLSearchParams({
+      'form-name': 'contact',
+      name: formData.name,
+      email: formData.email,
+      organization: formData.organization,
+      topics: preselectedTopic || '',
+      message: formData.message
+    });
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: submitData.toString(),
+      });
+
+      if (response.ok) {
+        setFormState('success');
+        setFormData({ name: '', email: '', organization: '', message: '' });
+      } else {
+        setFormState('error');
+      }
+    } catch (error) {
+      setFormState('error');
+    }
+  };
+
+  if (formState === 'success') {
+    return (
+      <div className="text-center py-12 animate-fade-in-up">
+        <div className="w-16 h-16 border-4 border-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
+          <Check className="w-8 h-8" />
+        </div>
+        <h3 className="text-3xl font-serif text-brand-dark mb-3">{content.success.title}</h3>
+        <p className="text-stone-600 mb-8">{content.success.message}</p>
+        <button
+          onClick={() => setFormState('idle')}
+          className="text-brand-red font-bold hover:underline underline-offset-4"
+        >
+          {content.success.sendAnother}
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form name="contact" method="POST" onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+            {content.name}
+          </label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            className={`w-full bg-white border-2 border-stone-200 px-4 py-3 text-lg text-brand-dark ${accentFocus} focus:outline-none transition-colors`}
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+            {content.email}
+          </label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            className={`w-full bg-white border-2 border-stone-200 px-4 py-3 text-lg text-brand-dark ${accentFocus} focus:outline-none transition-colors`}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="organization" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+          {content.org}
+        </label>
+        <input
+          id="organization"
+          type="text"
+          name="organization"
+          value={formData.organization}
+          onChange={handleInputChange}
+          className={`w-full bg-white border-2 border-stone-200 px-4 py-3 text-lg text-brand-dark ${accentFocus} focus:outline-none transition-colors`}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+          {content.message}
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          rows={4}
+          className={`w-full bg-white border-2 border-stone-200 px-4 py-3 text-lg text-brand-dark ${accentFocus} focus:outline-none transition-colors resize-none`}
+        />
+      </div>
+
+      {formState === 'error' && (
+        <p className="text-brand-red text-sm">Something went wrong. Please try again.</p>
+      )}
+
+      <button
+        disabled={formState === 'submitting'}
+        type="submit"
+        className={`${accentBg} text-white px-10 py-4 uppercase tracking-widest text-sm font-bold transition-all duration-300 disabled:opacity-50 shadow-lg hover:shadow-xl`}
+      >
+        {formState === 'submitting' ? 'Verzenden...' : content.submit}
+      </button>
+    </form>
   );
 };
