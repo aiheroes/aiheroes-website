@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../../components/PageLayout';
+import { Link } from 'react-router-dom';
 import { CONTENT } from '../../constants';
 import { ChevronDown, ArrowRight, Check } from 'lucide-react';
 
