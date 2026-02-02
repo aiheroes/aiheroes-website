@@ -136,7 +136,7 @@ export const CONTENT: Record<Language, Content> = {
       },
       stats: [
         {
-          metric: "70% kostenbesparing",
+          metric: "70% minder kosten",
           description: "Medux reduceerde AI-kosten met 70% na onze workshop"
         },
         {
@@ -373,7 +373,7 @@ export const CONTENT: Record<Language, Content> = {
       },
       stats: [
         {
-          metric: "70% cost reduction",
+          metric: "70% lower costs",
           description: "Medux reduced AI costs by 70% after our workshop"
         },
         {

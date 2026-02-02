@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../../components/PageLayout';
 import { Link } from 'react-router-dom';
 import { CONTENT } from '../../constants';
-import { ChevronDown, ArrowRight, Check, Zap, Target, Users } from 'lucide-react';
+import { ChevronDown, ArrowRight, Check } from 'lucide-react';
 
 export const ServicesEN: React.FC = () => {
   const content = CONTENT.en.servicesPage!;
@@ -145,38 +145,32 @@ export const ServicesEN: React.FC = () => {
       </div>
 
       {/* How We Work - Methodology */}
-      <div className="max-w-none py-16 md:py-20 bg-stone-900 -mx-6 md:-mx-12 px-6 md:px-12">
+      <div className="max-w-none py-12 md:py-16 bg-stone-900 -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 text-center">
             How we work
           </h2>
-          <p className="text-white/60 text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-white/60 text-center mb-12 max-w-2xl mx-auto">
             We work hands-on with your team. Practical training, measurable results.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
             {[
               {
-                icon: <Users className="w-8 h-8" />,
                 title: "We build AI ourselves",
                 description: "We build AI products ourselves. Knowledge from practice, applied directly."
               },
               {
-                icon: <Zap className="w-8 h-8" />,
                 title: "Immediately applicable",
                 description: "Your team works with real tools on real use cases. Learned today, applied tomorrow."
               },
               {
-                icon: <Target className="w-8 h-8" />,
                 title: "Focus on results",
                 description: "We measure success by concrete skills and insights. Measurable impact comes first."
               }
             ].map((item, idx) => (
-              <div key={idx} className="group">
-                <div className="mb-6 text-brand-red group-hover:scale-110 transition-transform duration-300 inline-block">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl md:text-2xl font-serif text-white mb-4 leading-tight">
+              <div key={idx}>
+                <h3 className="text-xl md:text-2xl font-serif text-white mb-3 leading-tight">
                   {item.title}
                 </h3>
                 <p className="text-white/70 leading-relaxed">
@@ -285,13 +279,13 @@ export const ServicesEN: React.FC = () => {
         </div>
       </div>
 
-      {/* Process Section - Polished */}
-      <div className="max-w-none py-16 md:py-20 bg-stone-900 -mx-6 md:-mx-12 px-6 md:px-12">
+      {/* Process Section - Friendly Blue */}
+      <div className="max-w-none py-16 md:py-20 bg-brand-blue -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-3 text-center">
             {content.process.title}
           </h2>
-          <p className="text-white/50 text-center mb-16 text-sm uppercase tracking-wider">
+          <p className="text-white/60 text-center mb-16 text-sm uppercase tracking-wider">
             {content.process.timeline}
           </p>
 
@@ -299,15 +293,15 @@ export const ServicesEN: React.FC = () => {
             {content.process.steps.map((step, idx) => (
               <div key={idx} className="relative group">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-brand-red flex items-center justify-center text-white font-serif text-xl font-bold group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand-blue font-serif text-xl font-bold group-hover:scale-110 transition-transform duration-300">
                     {idx + 1}
                   </div>
-                  <div className="flex-1 h-0.5 bg-white/20 md:hidden"></div>
+                  <div className="flex-1 h-0.5 bg-white/30 md:hidden"></div>
                 </div>
                 <h3 className="text-xl md:text-2xl font-serif text-white mb-4 leading-tight">
                   {step.title}
                 </h3>
-                <p className="text-white/70 leading-relaxed">
+                <p className="text-white/80 leading-relaxed">
                   {step.description}
                 </p>
               </div>
