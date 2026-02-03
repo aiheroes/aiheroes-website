@@ -197,7 +197,7 @@ export const DienstenNL: React.FC = () => {
             {content.heroServices.map((service, idx) => {
               const colors = [
                 { border: 'border-brand-red', accent: 'bg-brand-red', hover: 'hover:shadow-brand-red/20' },
-                { border: 'border-brand-taupe', accent: 'bg-brand-taupe', hover: 'hover:shadow-brand-taupe/20' },
+                { border: 'border-brand-red', accent: 'bg-brand-red', hover: 'hover:shadow-brand-red/20' },
                 { border: 'border-brand-blue', accent: 'bg-brand-blue', hover: 'hover:shadow-brand-blue/20' }
               ];
               const color = colors[idx];
@@ -234,7 +234,7 @@ export const DienstenNL: React.FC = () => {
                   Alle diensten
                 </span>
                 <span className="text-sm text-stone-500">
-                  Bekijk ons volledige aanbod van 7 diensten
+                  Bekijk ons volledige aanbod van diensten
                 </span>
               </div>
               <ChevronDown
