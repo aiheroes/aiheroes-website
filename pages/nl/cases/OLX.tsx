@@ -103,9 +103,9 @@ export const OLXNL: React.FC = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="not-prose p-6 bg-brand-blue text-white">
-            <h4 className="font-bold mb-2 text-white">Hogere engagement</h4>
-            <p className="text-sm text-white/90">
+          <div className="not-prose p-6 bg-brand-blue">
+            <h4 className="text-xl font-serif text-white mb-3 leading-tight">Hogere engagement</h4>
+            <p className="text-white/80 leading-relaxed">
               Gebruikers vinden sneller wat ze zoeken en blijven langer op het platform.
             </p>
           </div>
@@ -121,9 +121,9 @@ export const OLXNL: React.FC = () => {
               Visual search en natural language maken het platform toegankelijker.
             </p>
           </DarkBox>
-          <div className="not-prose p-6 bg-brand-blue text-white">
-            <h4 className="font-bold mb-2 text-white">Data-gedreven inzichten</h4>
-            <p className="text-sm text-white/90">
+          <div className="not-prose p-6 bg-brand-blue">
+            <h4 className="text-xl font-serif text-white mb-3 leading-tight">Data-gedreven inzichten</h4>
+            <p className="text-white/80 leading-relaxed">
               Real-time analytics helpen het platform continu te verbeteren.
             </p>
           </div>
