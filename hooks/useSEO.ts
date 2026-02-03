@@ -98,8 +98,8 @@ function calculateAlternatePath(path: string, currentLang: Language): string {
     return path
       .replace(/^\/nl\//, '/en/')
       .replace(/^\/$/, '/en')
-      .replace('/diensten/', '/services/')
-      .replace('/over-ons/', '/about/')
+      .replace('/diensten', '/services')
+      .replace('/over-ons', '/about')
       .replace('/ai-voor-developers', '/ai-for-developers')
       .replace('/specialistische-tracks', '/specialized-tracks')
       .replace('/aanpak', '/approach')
@@ -112,8 +112,8 @@ function calculateAlternatePath(path: string, currentLang: Language): string {
     return path
       .replace(/^\/en\//, '/nl/')
       .replace(/^\/en$/, '/')
-      .replace('/services/', '/diensten/')
-      .replace('/about/', '/over-ons/')
+      .replace('/services', '/diensten')
+      .replace('/about', '/over-ons')
       .replace('/ai-for-developers', '/ai-voor-developers')
       .replace('/specialized-tracks', '/specialistische-tracks')
       .replace('/approach', '/aanpak')
