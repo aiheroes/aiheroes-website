@@ -72,23 +72,49 @@ export const InnoEnergyEN: React.FC = () => {
         <h3 className="text-xl font-serif text-brand-dark mb-4">Advanced features</h3>
 
         <div className="grid md:grid-cols-3 gap-4 mb-8">
-          <div className="not-prose p-4 bg-brand-blue">
-            <h4 className="text-lg font-serif text-white mb-2 leading-tight">Market Intelligence</h4>
-            <p className="text-sm text-white/80 leading-relaxed">
-              Real-time analytics of industry trends and competitors.
-            </p>
+          <div className="relative overflow-hidden" style={{ backgroundColor: '#2563EB', padding: '1.5rem', borderRadius: '2px' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-white/30"></div>
+            <div className="relative">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
+                <span style={{ color: '#FFFFFF', fontSize: '1rem', fontWeight: '600' }}>📈</span>
+              </div>
+              <h4 className="font-serif mb-2" style={{ color: '#FFFFFF', fontSize: '1.125rem', lineHeight: '1.3', fontWeight: '600' }}>
+                Market Intelligence
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem', lineHeight: '1.5' }}>
+                Real-time analytics of industry trends and competitors.
+              </p>
+            </div>
           </div>
-          <DarkBox accentColor="red">
-            <h4>Financial Health</h4>
-            <p className="text-sm">
-              Cash flow monitoring, burn rate analysis, and runway projections.
-            </p>
-          </DarkBox>
-          <div className="not-prose p-4 bg-brand-blue">
-            <h4 className="text-lg font-serif text-white mb-2 leading-tight">Exit Risk Assessment</h4>
-            <p className="text-sm text-white/80 leading-relaxed">
-              Valuation monitoring and KPI analysis for strategic decisions.
-            </p>
+
+          <div className="relative overflow-hidden" style={{ backgroundColor: '#1C1917', padding: '1.5rem', borderRadius: '2px', border: '1px solid rgba(217,83,79,0.3)' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: '#D9534F' }}></div>
+            <div className="relative">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: 'rgba(217,83,79,0.15)' }}>
+                <span style={{ color: '#D9534F', fontSize: '1rem', fontWeight: '600' }}>💰</span>
+              </div>
+              <h4 className="font-serif mb-2" style={{ color: '#FFFFFF', fontSize: '1.125rem', lineHeight: '1.3', fontWeight: '600' }}>
+                Financial Health
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.875rem', lineHeight: '1.5' }}>
+                Cash flow monitoring, burn rate analysis, and runway projections.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden" style={{ backgroundColor: '#2563EB', padding: '1.5rem', borderRadius: '2px' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-white/30"></div>
+            <div className="relative">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
+                <span style={{ color: '#FFFFFF', fontSize: '1rem', fontWeight: '600' }}>⚖️</span>
+              </div>
+              <h4 className="font-serif mb-2" style={{ color: '#FFFFFF', fontSize: '1.125rem', lineHeight: '1.3', fontWeight: '600' }}>
+                Exit Risk Assessment
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem', lineHeight: '1.5' }}>
+                Valuation monitoring and KPI analysis for strategic decisions.
+              </p>
+            </div>
           </div>
         </div>
 

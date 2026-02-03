@@ -103,29 +103,72 @@ export const OLXNL: React.FC = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="not-prose p-6 bg-brand-blue">
-            <h4 className="text-xl font-serif text-white mb-3 leading-tight">Hogere engagement</h4>
-            <p className="text-white/80 leading-relaxed">
-              Gebruikers vinden sneller wat ze zoeken en blijven langer op het platform.
-            </p>
+          <div className="relative overflow-hidden group" style={{ backgroundColor: '#2563EB', padding: '2rem', borderRadius: '2px' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-white/30"></div>
+            <div className="relative">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
+                  <span style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: '600' }}>↑</span>
+                </div>
+              </div>
+              <h4 className="font-serif mb-3" style={{ color: '#FFFFFF', fontSize: '1.5rem', lineHeight: '1.2', fontWeight: '600' }}>
+                Hogere engagement
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Gebruikers vinden sneller wat ze zoeken en blijven langer op het platform.
+              </p>
+            </div>
           </div>
-          <DarkBox accentColor="red" className="p-6">
-            <h4 className="font-bold mb-2">Meer conversies</h4>
-            <p className="text-sm">
-              Slimme vergelijkingstools leiden tot snellere koopbeslissingen.
-            </p>
-          </DarkBox>
-          <DarkBox accentColor="red" className="p-6">
-            <h4 className="font-bold mb-2">Intuïtieve navigatie</h4>
-            <p className="text-sm">
-              Visual search en natural language maken het platform toegankelijker.
-            </p>
-          </DarkBox>
-          <div className="not-prose p-6 bg-brand-blue">
-            <h4 className="text-xl font-serif text-white mb-3 leading-tight">Data-gedreven inzichten</h4>
-            <p className="text-white/80 leading-relaxed">
-              Real-time analytics helpen het platform continu te verbeteren.
-            </p>
+
+          <div className="relative overflow-hidden group" style={{ backgroundColor: '#1C1917', padding: '2rem', borderRadius: '2px', border: '1px solid rgba(217,83,79,0.3)' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: '#D9534F' }}></div>
+            <div className="relative">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(217,83,79,0.15)' }}>
+                  <span style={{ color: '#D9534F', fontSize: '1.25rem', fontWeight: '600' }}>✓</span>
+                </div>
+              </div>
+              <h4 className="font-serif mb-3" style={{ color: '#FFFFFF', fontSize: '1.5rem', lineHeight: '1.2', fontWeight: '600' }}>
+                Meer conversies
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Slimme vergelijkingstools leiden tot snellere koopbeslissingen.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden group" style={{ backgroundColor: '#1C1917', padding: '2rem', borderRadius: '2px', border: '1px solid rgba(217,83,79,0.3)' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: '#D9534F' }}></div>
+            <div className="relative">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(217,83,79,0.15)' }}>
+                  <span style={{ color: '#D9534F', fontSize: '1.25rem', fontWeight: '600' }}>→</span>
+                </div>
+              </div>
+              <h4 className="font-serif mb-3" style={{ color: '#FFFFFF', fontSize: '1.5rem', lineHeight: '1.2', fontWeight: '600' }}>
+                Intuïtieve navigatie
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Visual search en natural language maken het platform toegankelijker.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden group" style={{ backgroundColor: '#2563EB', padding: '2rem', borderRadius: '2px' }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-white/30"></div>
+            <div className="relative">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }}>
+                  <span style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: '600' }}>📊</span>
+                </div>
+              </div>
+              <h4 className="font-serif mb-3" style={{ color: '#FFFFFF', fontSize: '1.5rem', lineHeight: '1.2', fontWeight: '600' }}>
+                Data-gedreven inzichten
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Real-time analytics helpen het platform continu te verbeteren.
+              </p>
+            </div>
           </div>
         </div>
 
