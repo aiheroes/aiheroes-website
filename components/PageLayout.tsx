@@ -47,6 +47,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   const [splitPosition, setSplitPosition] = useState<number | null>(null);
   const [topTheme, setTopTheme] = useState<'dark' | 'light'>('dark');
   const [bottomTheme, setBottomTheme] = useState<'dark' | 'light'>('dark');
+  const [showStickyCta, setShowStickyCta] = useState(false);
 
   // Generate the alternate language URL
   const getAlternateUrl = (): string => {
@@ -84,6 +85,19 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       window.location.href = getAlternateUrl();
     }
   };
+
+  // Track scroll to show sticky CTA when hero is out of view
+  useEffect(() => {
+    const handleStickyCtaScroll = () => {
+      if (!heroRef.current || !showContactForm) return;
+      const heroRect = heroRef.current.getBoundingClientRect();
+      // Show sticky CTA when hero is completely scrolled past
+      setShowStickyCta(heroRect.bottom < 0);
+    };
+    window.addEventListener('scroll', handleStickyCtaScroll);
+    handleStickyCtaScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleStickyCtaScroll);
+  }, [showContactForm]);
 
   // Track scroll to change navbar theme with split effect
   useEffect(() => {
@@ -218,6 +232,23 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           alternateUrl={getAlternateUrl()}
         />
       </footer>
+
+      {/* Sticky CTA - only show when hero button is scrolled out */}
+      {showContactForm && (
+        <div
+          className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
+            showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+          }`}
+        >
+          <button
+            onClick={scrollToContact}
+            className={`group ${accentColor === 'red' ? 'bg-brand-red hover:shadow-brand-red/30' : 'bg-brand-blue hover:shadow-brand-blue/30'} text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105`}
+          >
+            <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

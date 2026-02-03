@@ -11,6 +11,7 @@ import { SocialProof } from '../components/SocialProof';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { useSEO } from '../hooks/useSEO';
+import { ArrowRight } from 'lucide-react';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 
@@ -78,9 +79,11 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
   const [splitPosition, setSplitPosition] = useState<number | null>(null);
   const [topTheme, setTopTheme] = useState<'dark' | 'light'>('dark');
   const [bottomTheme, setBottomTheme] = useState<'dark' | 'light'>('dark');
+  const [showStickyCta, setShowStickyCta] = useState(false);
   const content = CONTENT[lang];
   const scrollRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLElement>(null);
+  const heroSectionRef = useRef<HTMLElement>(null);
 
   // Sync language state when defaultLang prop changes (e.g., navigating between / and /en)
   useEffect(() => {
@@ -110,6 +113,23 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
     localStorage.setItem(LANG_STORAGE_KEY, lang);
     document.documentElement.lang = lang;
   }, [lang]);
+
+  // Track scroll to show sticky CTA when hero is out of view
+  useEffect(() => {
+    const handleStickyCtaScroll = () => {
+      if (!heroSectionRef.current) return;
+      const heroRect = heroSectionRef.current.getBoundingClientRect();
+      // Show sticky CTA when hero is completely scrolled past
+      setShowStickyCta(heroRect.bottom < 0);
+    };
+
+    const container = scrollRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleStickyCtaScroll);
+      handleStickyCtaScroll(); // Initial check
+      return () => container.removeEventListener('scroll', handleStickyCtaScroll);
+    }
+  }, []);
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
@@ -172,6 +192,14 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
     }
   };
 
+  // Scroll to contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div
       ref={scrollRef}
@@ -192,7 +220,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
 
       <main className="w-full">
         {/* Hero (Dark) */}
-        <section id="hero" className="md:snap-start h-screen w-full overflow-hidden">
+        <section ref={heroSectionRef} id="hero" className="md:snap-start h-screen w-full overflow-hidden">
           <Hero content={content.hero} />
         </section>
 
@@ -226,6 +254,21 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           <Footer content={content.footer} nav={content.nav} lang={lang} setLang={handleLangChange} />
         </section>
       </main>
+
+      {/* Sticky CTA - only show when hero is scrolled out */}
+      <div
+        className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
+          showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+        }`}
+      >
+        <button
+          onClick={scrollToContact}
+          className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+        >
+          <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
     </div>
   );
 }
