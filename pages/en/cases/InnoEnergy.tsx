@@ -73,7 +73,7 @@ export const InnoEnergyEN: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="p-4 bg-brand-blue text-white">
-            <h4 className="font-bold mb-2">Market Intelligence</h4>
+            <h4 className="font-bold mb-2 text-white">Market Intelligence</h4>
             <p className="text-sm text-white/80">
               Real-time analytics of industry trends and competitors.
             </p>
@@ -85,7 +85,7 @@ export const InnoEnergyEN: React.FC = () => {
             </p>
           </DarkBox>
           <div className="p-4 bg-brand-blue text-white">
-            <h4 className="font-bold mb-2">Exit Risk Assessment</h4>
+            <h4 className="font-bold mb-2 text-white">Exit Risk Assessment</h4>
             <p className="text-sm text-white/80">
               Valuation monitoring and KPI analysis for strategic decisions.
             </p>

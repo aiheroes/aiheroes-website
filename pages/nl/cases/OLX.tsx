@@ -104,7 +104,7 @@ export const OLXNL: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="p-6 bg-brand-blue text-white">
-            <h4 className="font-bold mb-2">Hogere engagement</h4>
+            <h4 className="font-bold mb-2 text-white">Hogere engagement</h4>
             <p className="text-sm text-white/80">
               Gebruikers vinden sneller wat ze zoeken en blijven langer op het platform.
             </p>
@@ -122,7 +122,7 @@ export const OLXNL: React.FC = () => {
             </p>
           </DarkBox>
           <div className="p-6 bg-brand-blue text-white">
-            <h4 className="font-bold mb-2">Data-gedreven inzichten</h4>
+            <h4 className="font-bold mb-2 text-white">Data-gedreven inzichten</h4>
             <p className="text-sm text-white/80">
               Real-time analytics helpen het platform continu te verbeteren.
             </p>
