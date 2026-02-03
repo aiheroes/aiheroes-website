@@ -242,7 +242,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     label: string;
     type: DropdownType;
     theme: 'dark' | 'light';
-  }> = ({ label, type, theme }) => {
+    href?: string;
+  }> = ({ label, type, theme, href }) => {
     const isOpen = openDropdown === type;
     const textColorClass = theme === 'dark' ? 'text-white' : 'text-brand-dark';
 
@@ -252,12 +253,23 @@ export const Navbar: React.FC<NavbarProps> = ({
         onMouseEnter={() => setOpenDropdown(type)}
         onMouseLeave={() => setOpenDropdown(null)}
       >
-        <button
-          className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
-        >
-          {label}
-          <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-        </button>
+        {href ? (
+          <Link
+            to={href}
+            className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
+            onClick={() => setOpenDropdown(null)}
+          >
+            {label}
+            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          </Link>
+        ) : (
+          <button
+            className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
+          >
+            {label}
+            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          </button>
+        )}
 
         {isOpen && type === 'services' && <ServicesMegaMenu />}
         {isOpen && type === 'about' && <SimpleDropdown items={content.about.children || []} />}
@@ -286,9 +298,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Nav - Mega Menu */}
         <div ref={dropdownRef} className={`hidden md:flex items-center space-x-8 ${navTextClass}`}>
-          <NavDropdownButton label={content.services.label} type="services" theme={theme} />
-          <NavDropdownButton label={content.about.label} type="about" theme={theme} />
-          <NavDropdownButton label={content.resources.label} type="resources" theme={theme} />
+          <NavDropdownButton label={content.services.label} type="services" theme={theme} href={content.services.href} />
+          <NavDropdownButton label={content.about.label} type="about" theme={theme} href={content.about.href} />
+          <NavDropdownButton label={content.resources.label} type="resources" theme={theme} href={content.resources.href} />
 
           <button
             onClick={handleContactClick}

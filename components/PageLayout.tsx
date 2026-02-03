@@ -90,9 +90,19 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   useEffect(() => {
     const handleStickyCtaScroll = () => {
       if (!heroRef.current || !showContactForm) return;
+
       const heroRect = heroRef.current.getBoundingClientRect();
-      // Show sticky CTA when hero is completely scrolled past
-      setShowStickyCta(heroRect.bottom < 0);
+      const contactSection = document.getElementById('contact-form');
+
+      // Show sticky CTA only when:
+      // 1. Hero is completely scrolled past
+      // 2. Contact form is not yet in view
+      const heroScrolledOut = heroRect.bottom < 0;
+      const contactInView = contactSection
+        ? contactSection.getBoundingClientRect().top < window.innerHeight
+        : false;
+
+      setShowStickyCta(heroScrolledOut && !contactInView);
     };
     window.addEventListener('scroll', handleStickyCtaScroll);
     handleStickyCtaScroll(); // Initial check

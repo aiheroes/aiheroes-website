@@ -118,9 +118,19 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
   useEffect(() => {
     const handleStickyCtaScroll = () => {
       if (!heroSectionRef.current) return;
+
       const heroRect = heroSectionRef.current.getBoundingClientRect();
-      // Show sticky CTA when hero is completely scrolled past
-      setShowStickyCta(heroRect.bottom < 0);
+      const contactSection = document.getElementById('contact');
+
+      // Show sticky CTA only when:
+      // 1. Hero is completely scrolled past
+      // 2. Contact form is not yet in view
+      const heroScrolledOut = heroRect.bottom < 0;
+      const contactInView = contactSection
+        ? contactSection.getBoundingClientRect().top < window.innerHeight
+        : false;
+
+      setShowStickyCta(heroScrolledOut && !contactInView);
     };
 
     const container = scrollRef.current;
