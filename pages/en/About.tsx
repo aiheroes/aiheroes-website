@@ -22,7 +22,7 @@ export const AboutEN: React.FC = () => {
       showContactForm={true}
     >
       {/* Intro Section - Light Background */}
-      <section className="py-16 md:py-20 bg-brand-light">
+      <section className="max-w-none py-16 md:py-20 bg-brand-light -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none mb-12">
             {content.intro.text.split('\n\n').map((paragraph, i) => (
@@ -48,8 +48,8 @@ export const AboutEN: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Preview Section - Light Background */}
-      <section className="py-16 md:py-20 bg-white">
+      {/* Team Preview Section - White Background */}
+      <section className="max-w-none py-16 md:py-20 bg-white -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-brand-dark mb-3">
             {content.team.title}
@@ -77,7 +77,7 @@ export const AboutEN: React.FC = () => {
       </section>
 
       {/* Content Cards - Light Background */}
-      <section className="py-16 md:py-20 bg-brand-light">
+      <section className="max-w-none py-16 md:py-20 bg-brand-light -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {content.cards.map((card, i) => {
@@ -86,7 +86,7 @@ export const AboutEN: React.FC = () => {
                 <Link
                   key={i}
                   to={card.href}
-                  className="group bg-white p-8 shadow-sm hover:shadow-md transition-all duration-300 border-l-4 border-brand-red"
+                  className="group bg-white p-8 hover:shadow-lg transition-all duration-300 border-l-4 border-brand-red"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">
@@ -115,7 +115,7 @@ export const AboutEN: React.FC = () => {
       </section>
 
       {/* Values Section - Dark Background */}
-      <section className="py-16 md:py-20 bg-brand-dark">
+      <section className="max-w-none py-16 md:py-20 bg-brand-dark -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-12">
             {content.values.title}

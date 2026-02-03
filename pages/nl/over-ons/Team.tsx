@@ -29,9 +29,9 @@ export const TeamNL: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Strategy & Product</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · AI Strategy</p>
               <p className="text-stone-600 leading-relaxed">
-                Combineert strategisch denken met een scherp oog voor gebruikerservaring. Helpt organisaties om AI niet als losstaande technologie te zien, maar als integraal onderdeel van hun product- en merkstrategie.
+                Achtergrond in UX/UI Design. Specialiseert zich in AI-strategie, prompt engineering en het vertalen van complexe technologie naar praktische toepassingen.
               </p>
             </div>
           </div>
@@ -43,9 +43,9 @@ export const TeamNL: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · AI & Development</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · Future of Work</p>
               <p className="text-stone-600 leading-relaxed">
-                De schakel tussen techniek en boardroom. Begrijpt hoe AI-modellen onder de motorkap werken en vertaalt die kennis naar wat het betekent voor jouw bedrijfsprocessen. Bouwt zelf met tools als GitHub Copilot en lokale AI-modellen.
+                Studeerde AI en Filosofie. Specialiseert zich in hoe AI de manier waarop we werken verandert, low-code/no-code oplossingen en AI-assisted development.
               </p>
             </div>
           </div>
@@ -57,9 +57,9 @@ export const TeamNL: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Training & Innovation</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · Technical AI</p>
               <p className="text-stone-600 leading-relaxed">
-                Specialist in het toegankelijk maken van complexe technologie. Snapt als geen ander hoe je een taai onderwerp omzet naar een interactieve, praktische sessie die blijft hangen.
+                Ervaren AI Trainer. Specialiseert zich in technische implementaties: agents bouwen, modellen trainen en AI-integraties op maat.
               </p>
             </div>
           </div>

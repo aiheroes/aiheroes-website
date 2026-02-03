@@ -54,8 +54,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     let path = location.pathname;
     if (lang === 'nl') {
       path = path.replace(/^\/nl\//, '/en/')
-        .replace('/diensten/', '/services/')
-        .replace('/over-ons/', '/about/')
+        .replace('/diensten', '/services')
+        .replace('/over-ons', '/about')
         .replace('/ai-voor-developers', '/ai-for-developers')
         .replace('/specialistische-tracks', '/specialized-tracks')
         .replace('/aanpak', '/approach')
@@ -66,8 +66,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       return path;
     } else {
       path = path.replace(/^\/en\//, '/nl/')
-        .replace('/services/', '/diensten/')
-        .replace('/about/', '/over-ons/')
+        .replace('/services', '/diensten')
+        .replace('/about', '/over-ons')
         .replace('/ai-for-developers', '/ai-voor-developers')
         .replace('/specialized-tracks', '/specialistische-tracks')
         .replace('/approach', '/aanpak')
