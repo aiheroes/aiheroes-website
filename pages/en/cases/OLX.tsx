@@ -103,9 +103,9 @@ export const OLXEN: React.FC = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="p-6 bg-brand-blue text-white">
+          <div className="not-prose p-6 bg-brand-blue text-white">
             <h4 className="font-bold mb-2 text-white">Higher engagement</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/90">
               Users find what they're looking for faster and stay longer on the platform.
             </p>
           </div>
@@ -121,9 +121,9 @@ export const OLXEN: React.FC = () => {
               Visual search and natural language make the platform more accessible.
             </p>
           </DarkBox>
-          <div className="p-6 bg-brand-blue text-white">
+          <div className="not-prose p-6 bg-brand-blue text-white">
             <h4 className="font-bold mb-2 text-white">Data-driven insights</h4>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/90">
               Real-time analytics help continuously improve the platform.
             </p>
           </div>
