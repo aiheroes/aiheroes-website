@@ -46,15 +46,19 @@ const AIPrivacySecurityEN = React.lazy(() => import('./pages/en/services/AIPriva
 const AIMediaLiteracyEN = React.lazy(() => import('./pages/en/services/AIMediaLiteracy').then(m => ({ default: m.AIMediaLiteracyEN })));
 const SpecializedTracksEN = React.lazy(() => import('./pages/en/services/SpecializedTracks').then(m => ({ default: m.SpecializedTracksEN })));
 
+const OverOnsNL = React.lazy(() => import('./pages/nl/OverOns').then(m => ({ default: m.OverOnsNL })));
 const AanpakNL = React.lazy(() => import('./pages/nl/over-ons/Aanpak').then(m => ({ default: m.AanpakNL })));
 const TeamNL = React.lazy(() => import('./pages/nl/over-ons/Team').then(m => ({ default: m.TeamNL })));
 
+const AboutEN = React.lazy(() => import('./pages/en/About').then(m => ({ default: m.AboutEN })));
 const ApproachEN = React.lazy(() => import('./pages/en/about/Approach').then(m => ({ default: m.ApproachEN })));
 const TeamEN = React.lazy(() => import('./pages/en/about/Team').then(m => ({ default: m.TeamEN })));
 
+const ResourcesNL = React.lazy(() => import('./pages/nl/Resources').then(m => ({ default: m.ResourcesNL })));
 const AIGeletterdheidNL = React.lazy(() => import('./pages/nl/resources/AIGeletterdheid').then(m => ({ default: m.AIGeletterdheidNL })));
 const AIStrategieGidsNL = React.lazy(() => import('./pages/nl/resources/AIStrategieGids').then(m => ({ default: m.AIStrategieGidsNL })));
 
+const ResourcesPageEN = React.lazy(() => import('./pages/en/ResourcesPage').then(m => ({ default: m.ResourcesPageEN })));
 const AILiteracyEN = React.lazy(() => import('./pages/en/resources/AILiteracy').then(m => ({ default: m.AILiteracyEN })));
 const AIStrategyGuideEN = React.lazy(() => import('./pages/en/resources/AIStrategyGuide').then(m => ({ default: m.AIStrategyGuideEN })));
 
@@ -113,18 +117,22 @@ function App() {
           <Route path="/en/services/specialized-tracks" element={<SpecializedTracksEN />} />
 
           {/* Dutch About Pages */}
+          <Route path="/nl/over-ons" element={<OverOnsNL />} />
           <Route path="/nl/over-ons/aanpak" element={<AanpakNL />} />
           <Route path="/nl/over-ons/team" element={<TeamNL />} />
 
           {/* English About Pages */}
+          <Route path="/en/about" element={<AboutEN />} />
           <Route path="/en/about/approach" element={<ApproachEN />} />
           <Route path="/en/about/team" element={<TeamEN />} />
 
           {/* Dutch Resource Pages */}
+          <Route path="/nl/resources" element={<ResourcesNL />} />
           <Route path="/nl/resources/ai-geletterdheid" element={<AIGeletterdheidNL />} />
           <Route path="/nl/resources/ai-strategie-gids" element={<AIStrategieGidsNL />} />
 
           {/* English Resource Pages */}
+          <Route path="/en/resources" element={<ResourcesPageEN />} />
           <Route path="/en/resources/ai-literacy" element={<AILiteracyEN />} />
           <Route path="/en/resources/ai-strategy-guide" element={<AIStrategyGuideEN />} />
 

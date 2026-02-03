@@ -52,7 +52,14 @@ export const DienstenNL: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight = 600;
-      setShowStickyCta(window.scrollY > heroHeight);
+      const contactSection = document.getElementById('contact-form');
+
+      const heroScrolledOut = window.scrollY > heroHeight;
+      const contactInView = contactSection
+        ? contactSection.getBoundingClientRect().top < window.innerHeight
+        : false;
+
+      setShowStickyCta(heroScrolledOut && !contactInView);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);

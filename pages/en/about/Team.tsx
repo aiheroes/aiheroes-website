@@ -29,9 +29,9 @@ export const TeamEN: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · AI Strategy</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · Strategy & Product</p>
               <p className="text-stone-600 leading-relaxed">
-                Background in UX/UI Design. Specializes in AI strategy, prompt engineering and translating complex technology into practical applications.
+                Combines strategic thinking with a sharp eye for user experience. Helps organizations see AI not as standalone technology, but as an integral part of their product and brand strategy.
               </p>
             </div>
           </div>
@@ -43,9 +43,9 @@ export const TeamEN: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Future of Work</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · AI & Development</p>
               <p className="text-stone-600 leading-relaxed">
-                Studied AI and Philosophy. Specializes in how AI transforms the way we work, low-code/no-code solutions and AI-assisted development.
+                The link between tech and boardroom. Understands how AI models work under the hood and translates that knowledge into what it means for your business processes. Builds with tools like GitHub Copilot and local AI models.
               </p>
             </div>
           </div>
@@ -57,9 +57,9 @@ export const TeamEN: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Technical AI</p>
+              <p className="text-brand-red font-medium mb-3">Managing Partner · Training & Innovation</p>
               <p className="text-stone-600 leading-relaxed">
-                Experienced AI Trainer. Specializes in technical implementations: building agents, training models and custom AI integrations.
+                Specialist in making complex technology accessible. Knows like no other how to turn a tough subject into an interactive, practical session that sticks.
               </p>
             </div>
           </div>

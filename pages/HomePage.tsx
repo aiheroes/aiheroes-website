@@ -256,7 +256,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
 
         {/* Contact (Light) */}
         <section id="contact" className="md:snap-start h-screen w-full flex items-center bg-brand-light overflow-hidden relative z-10">
-          <Contact content={content.contact} />
+          <Contact content={content.contact} contactFormContent={content.contactForm} />
         </section>
 
         {/* Footer (Dark) */}
@@ -273,7 +273,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
       >
         <button
           onClick={scrollToContact}
-          className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+          className="group bg-brand-red hover:shadow-brand-red/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
         >
           <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

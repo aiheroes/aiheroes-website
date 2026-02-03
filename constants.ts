@@ -109,6 +109,131 @@ export const CONTENT: Record<Language, Content> = {
         sendAnother: "Nog een versturen"
       }
     },
+    contactForm: {
+      title: "Start vandaag met AI",
+      subtitle: "Laat je gegevens achter en we nemen binnen 24 uur contact op.",
+      emailLabel: "Of mail ons direct:",
+      email: "hello@aiheroes.io"
+    },
+    aboutPage: {
+      hero: {
+        title: "Over AI Heroes",
+        subtitle: "Sinds 2019 helpen we organisaties praktisch met AI. Wij zijn geen consultants die rapporten schrijven - wij zijn practitioners die bouwen en trainen."
+      },
+      intro: {
+        text: "We zijn in 2019 begonnen vanuit een simpele observatie: organisaties hebben geen behoefte aan nog meer PowerPoints over AI. Ze willen concrete skills, werkende prototypes, en teams die zelfstandig met AI aan de slag kunnen.\n\nVanuit Groningen werken we met organisaties door heel Nederland en daarbuiten. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties.",
+        stats: [
+          { metric: "50+", description: "Organisaties geholpen" },
+          { metric: "Sinds 2019", description: "Gevestigd in Groningen" },
+          { metric: "3", description: "Managing partners" }
+        ]
+      },
+      team: {
+        title: "Het team",
+        subtitle: "Drie achtergronden, één missie: AI praktisch maken",
+        members: [
+          {
+            name: "Frans Hoorn",
+            role: "Managing Partner · Strategy & Product",
+            description: "Combineert strategisch denken met een scherp oog voor gebruikerservaring. Helpt organisaties om AI niet als losstaande technologie te zien, maar als integraal onderdeel van hun product- en merkstrategie."
+          },
+          {
+            name: "David Homan",
+            role: "Managing Partner · AI & Development",
+            description: "De schakel tussen techniek en boardroom. Begrijpt hoe AI-modellen onder de motorkap werken en vertaalt die kennis naar wat het betekent voor jouw bedrijfsprocessen. Bouwt zelf met tools als GitHub Copilot en lokale AI-modellen."
+          },
+          {
+            name: "Jan Brusse",
+            role: "Managing Partner · Training & Innovation",
+            description: "Specialist in het toegankelijk maken van complexe technologie. Snapt als geen ander hoe je een taai onderwerp omzet naar een interactieve, praktische sessie die blijft hangen."
+          }
+        ]
+      },
+      cards: [
+        {
+          title: "Onze Aanpak",
+          description: "Practice over theory, results over reports",
+          href: "/nl/over-ons/aanpak",
+          icon: "target"
+        },
+        {
+          title: "Het Team",
+          description: "Ontmoet Frans, Jan en David - lees hun volledige profielen",
+          href: "/nl/over-ons/team",
+          icon: "users"
+        }
+      ],
+      values: {
+        title: "Wat ons drijft",
+        items: [
+          {
+            title: "Eerlijkheid boven verkoop",
+            description: "Als AI niet de oplossing is, zeggen we dat. We verkopen alleen wat echt waarde toevoegt."
+          },
+          {
+            title: "Maatwerk boven standaard",
+            description: "Elke organisatie is anders. We passen onze aanpak aan jouw situatie, niet andersom."
+          },
+          {
+            title: "Practitioners, geen consultants",
+            description: "We bouwen zelf met AI. Kennis uit de praktijk, rechtstreeks toegepast in jouw organisatie."
+          },
+          {
+            title: "Groningen sinds 2019",
+            description: "Lokaal geworteld, internationaal actief. Vaste thuisbasis, flexibel werkgebied."
+          }
+        ]
+      }
+    },
+    resourcesPage: {
+      hero: {
+        title: "Resources",
+        subtitle: "Praktische kennis over AI-strategie en geletterdheid. Gratis beschikbaar voor iedereen die AI begrijpt en toepast."
+      },
+      intro: {
+        text: "In een wereld waar AI steeds meer impact heeft op organisaties en de samenleving, is het cruciaal dat mensen begrijpen hoe deze technologie werkt. Niet alleen de techneuten, maar iedereen.\n\nDaarom delen we onze kennis openlijk. Deze resources helpen je de basis te leggen voor AI-geletterdheid in je organisatie en een strategische koers uit te zetten.",
+        stats: [
+          { metric: "72%", description: "AI-adoptie onder bedrijven" },
+          { metric: "2025", description: "EU AI Act verplicht" },
+          { metric: "4 pijlers", description: "Van AI-geletterdheid" }
+        ]
+      },
+      cards: [
+        {
+          title: "AI Geletterdheid",
+          description: "Vanaf 2025 is begrip van AI niet langer optioneel door de EU AI Act",
+          href: "/nl/resources/ai-geletterdheid",
+          icon: "book"
+        },
+        {
+          title: "AI Strategie Gids",
+          description: "4-stappenplan om je AI-strategie praktisch vorm te geven",
+          href: "/nl/resources/ai-strategie-gids",
+          icon: "map"
+        }
+      ],
+      why: {
+        title: "Waarom deze resources",
+        items: [
+          {
+            title: "Educatie voor implementatie",
+            description: "Voordat je AI implementeert, moet je team begrijpen waar ze mee werken. Investeren in begrip voorkomt dure misstappen."
+          },
+          {
+            title: "Transparantie en kennisdeling",
+            description: "Wij geloven dat kennis over AI toegankelijk moet zijn. Geen marketing-praat, geen vendor lock-in, gewoon praktische info."
+          },
+          {
+            title: "AI-geletterde organisaties bouwen",
+            description: "Organisaties die succesvol zijn met AI hebben één ding gemeen: breed gedragen begrip van de mogelijkheden én beperkingen."
+          },
+          {
+            title: "EU AI Act compliance",
+            description: "Vanaf 2025 verplicht de EU AI Act organisaties om AI-geletterdheid aan te tonen. Begin nu met de basis leggen."
+          }
+        ]
+      }
+    },
     dienstenPage: {
       hero: {
         title: "Onze Diensten",
@@ -344,6 +469,131 @@ export const CONTENT: Record<Language, Content> = {
         title: "Received",
         message: "We will be in touch shortly.",
         sendAnother: "Send another"
+      }
+    },
+    contactForm: {
+      title: "Start with AI today",
+      subtitle: "Leave your details and we'll contact you within 24 hours.",
+      emailLabel: "Or email us directly:",
+      email: "hello@aiheroes.io"
+    },
+    aboutPage: {
+      hero: {
+        title: "About AI Heroes",
+        subtitle: "Since 2019, we've been helping organizations with practical AI. We're not consultants who write reports - we're practitioners who build and train."
+      },
+      intro: {
+        text: "We started in 2019 with a simple observation: organizations don't need more PowerPoints about AI. They want concrete skills, working prototypes, and teams that can work independently with AI.\n\nBased in Groningen, we work with organizations throughout the Netherlands and beyond. From startups to Fortune 500 companies, from municipalities to media organizations.",
+        stats: [
+          { metric: "50+", description: "Organizations helped" },
+          { metric: "Since 2019", description: "Based in Groningen" },
+          { metric: "3", description: "Managing partners" }
+        ]
+      },
+      team: {
+        title: "The team",
+        subtitle: "Three backgrounds, one mission: making AI practical",
+        members: [
+          {
+            name: "Frans Hoorn",
+            role: "Managing Partner · Strategy & Product",
+            description: "Combines strategic thinking with a sharp eye for user experience. Helps organizations see AI not as standalone technology, but as an integral part of their product and brand strategy."
+          },
+          {
+            name: "David Homan",
+            role: "Managing Partner · AI & Development",
+            description: "The link between tech and boardroom. Understands how AI models work under the hood and translates that knowledge into what it means for your business processes. Builds with tools like GitHub Copilot and local AI models."
+          },
+          {
+            name: "Jan Brusse",
+            role: "Managing Partner · Training & Innovation",
+            description: "Specialist in making complex technology accessible. Knows like no other how to turn a tough subject into an interactive, practical session that sticks."
+          }
+        ]
+      },
+      cards: [
+        {
+          title: "Our Approach",
+          description: "Practice over theory, results over reports",
+          href: "/en/about/approach",
+          icon: "target"
+        },
+        {
+          title: "The Team",
+          description: "Meet Frans, Jan and David - read their full profiles",
+          href: "/en/about/team",
+          icon: "users"
+        }
+      ],
+      values: {
+        title: "What drives us",
+        items: [
+          {
+            title: "Honesty over sales",
+            description: "If AI isn't the solution, we'll tell you. We only sell what truly adds value."
+          },
+          {
+            title: "Custom over standard",
+            description: "Every organization is different. We adapt our approach to your situation, not the other way around."
+          },
+          {
+            title: "Practitioners, not consultants",
+            description: "We build with AI ourselves. Knowledge from practice, directly applied in your organization."
+          },
+          {
+            title: "Groningen since 2019",
+            description: "Locally rooted, internationally active. Fixed home base, flexible work area."
+          }
+        ]
+      }
+    },
+    resourcesPage: {
+      hero: {
+        title: "Resources",
+        subtitle: "Practical knowledge about AI strategy and literacy. Free for everyone who wants to understand and apply AI."
+      },
+      intro: {
+        text: "In a world where AI has increasing impact on organizations and society, it's crucial that people understand how this technology works. Not just the tech people, but everyone.\n\nThat's why we share our knowledge openly. These resources help you lay the foundation for AI literacy in your organization and chart a strategic course.",
+        stats: [
+          { metric: "72%", description: "AI adoption among companies" },
+          { metric: "2025", description: "EU AI Act mandatory" },
+          { metric: "4 pillars", description: "Of AI literacy" }
+        ]
+      },
+      cards: [
+        {
+          title: "Why AI Literacy Matters",
+          description: "From 2025, understanding AI is no longer optional due to the EU AI Act",
+          href: "/en/resources/ai-literacy",
+          icon: "book"
+        },
+        {
+          title: "AI Strategy Starter Guide",
+          description: "4-step practical guide to building your AI strategy",
+          href: "/en/resources/ai-strategy-guide",
+          icon: "map"
+        }
+      ],
+      why: {
+        title: "Why these resources",
+        items: [
+          {
+            title: "Education before implementation",
+            description: "Before you implement AI, your team needs to understand what they're working with. Investing in understanding prevents expensive mistakes."
+          },
+          {
+            title: "Transparency and knowledge sharing",
+            description: "We believe knowledge about AI should be accessible. No marketing speak, no vendor lock-in, just practical information."
+          },
+          {
+            title: "Building AI-literate organizations",
+            description: "Organizations that succeed with AI have one thing in common: widely supported understanding of both possibilities and limitations."
+          },
+          {
+            title: "EU AI Act compliance",
+            description: "From 2025, the EU AI Act requires organizations to demonstrate AI literacy. Start laying the foundation now."
+          }
+        ]
       }
     },
     servicesPage: {

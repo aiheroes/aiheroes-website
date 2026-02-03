@@ -4,9 +4,10 @@ import { Check } from 'lucide-react';
 
 interface ContactProps {
   content: Content['contact'];
+  contactFormContent: Content['contactForm'];
 }
 
-export const Contact: React.FC<ContactProps> = ({ content }) => {
+export const Contact: React.FC<ContactProps> = ({ content, contactFormContent }) => {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [topicColors, setTopicColors] = useState<Record<string, 'red' | 'blue'>>({});
@@ -96,14 +97,17 @@ export const Contact: React.FC<ContactProps> = ({ content }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-start">
           {/* Left Column - Info */}
           <div className="lg:col-span-5">
-             <h2 className="text-3xl md:text-6xl font-serif text-brand-dark mb-2 md:mb-6">{content.title}</h2>
+             <h2 className="text-3xl md:text-6xl font-serif text-brand-dark mb-2 md:mb-6">{contactFormContent.title}</h2>
              <p className="text-sm md:text-xl text-stone-600 leading-relaxed mb-4 md:mb-8 text-pretty">
-               {content.subtitle}{' '}
+               {contactFormContent.subtitle}
+             </p>
+             <p className="text-sm md:text-xl text-stone-600 leading-relaxed text-pretty">
+               {contactFormContent.emailLabel}{' '}
                <a
-                 href="mailto:hello@aiheroes.io"
+                 href={`mailto:${contactFormContent.email}`}
                  className="relative inline-block font-serif text-brand-dark hover:text-black transition-colors pb-0.5 whitespace-nowrap"
                >
-                 hello@aiheroes.io
+                 {contactFormContent.email}
                  <span className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-brand-red"></span>
                </a>
              </p>

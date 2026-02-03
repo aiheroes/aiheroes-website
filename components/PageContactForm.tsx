@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { Check } from 'lucide-react';
+import { CONTENT } from '../constants';
 
 interface PageContactFormProps {
   lang: Language;
@@ -10,8 +11,6 @@ interface PageContactFormProps {
 
 const FORM_CONTENT = {
   nl: {
-    title: 'Interesse?',
-    subtitle: 'Laat je gegevens achter en we nemen contact op.',
     name: 'Naam',
     email: 'E-mail',
     org: 'Organisatie',
@@ -24,8 +23,6 @@ const FORM_CONTENT = {
     }
   },
   en: {
-    title: 'Interested?',
-    subtitle: 'Leave your details and we\'ll get back to you.',
     name: 'Name',
     email: 'Email',
     org: 'Organization',
@@ -111,10 +108,22 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
     );
   }
 
+  const contactFormContent = CONTENT[lang].contactForm;
+
   return (
     <div>
-      <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-2">{content.title}</h2>
-      <p className="text-stone-600 mb-8">{content.subtitle}</p>
+      <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-2">{contactFormContent.title}</h2>
+      <p className="text-stone-600 mb-4">{contactFormContent.subtitle}</p>
+      <p className="text-stone-600 mb-8">
+        {contactFormContent.emailLabel}{' '}
+        <a
+          href={`mailto:${contactFormContent.email}`}
+          className="relative inline-block font-serif text-brand-dark hover:text-black transition-colors pb-0.5 whitespace-nowrap"
+        >
+          {contactFormContent.email}
+          <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-red"></span>
+        </a>
+      </p>
 
       <form name="contact" method="POST" onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -158,6 +158,76 @@ export interface DienstenContent {
   };
 }
 
+export interface ContactFormContent {
+  title: string;
+  subtitle: string;
+  emailLabel: string;
+  email: string;
+}
+
+export interface AboutPageContent {
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  intro: {
+    text: string;
+    stats: Array<{
+      metric: string;
+      description: string;
+    }>;
+  };
+  team: {
+    title: string;
+    subtitle: string;
+    members: Array<{
+      name: string;
+      role: string;
+      description: string;
+    }>;
+  };
+  cards: Array<{
+    title: string;
+    description: string;
+    href: string;
+    icon: string;
+  }>;
+  values: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+}
+
+export interface ResourcesPageContent {
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  intro: {
+    text: string;
+    stats: Array<{
+      metric: string;
+      description: string;
+    }>;
+  };
+  cards: Array<{
+    title: string;
+    description: string;
+    href: string;
+    icon: string;
+  }>;
+  why: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+}
+
 export interface Content {
   nav: NavStructure;
   hero: HeroContent;
@@ -166,6 +236,9 @@ export interface Content {
   team: TeamContent;
   socialProof: SocialProofContent;
   contact: ContactContent;
+  contactForm: ContactFormContent;
+  aboutPage: AboutPageContent;
+  resourcesPage: ResourcesPageContent;
   footer: FooterContent;
   dienstenPage?: DienstenContent;
   servicesPage?: DienstenContent;
