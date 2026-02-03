@@ -6,6 +6,7 @@ import { PageContactForm } from './PageContactForm';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import { useSEO } from '../hooks/useSEO';
+import { ArrowRight } from 'lucide-react';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -148,6 +149,14 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
 
   const accentBorder = accentColor === 'red' ? 'border-brand-red' : 'border-brand-blue';
 
+  // Scroll to contact form
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-form');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-brand-light text-brand-dark">
       {/* Navigation - theme changes based on scroll with split effect */}
@@ -170,7 +179,16 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">{title}</h1>
           {subtitle && (
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">{subtitle}</p>
+            <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{subtitle}</p>
+          )}
+          {showContactForm && (
+            <button
+              onClick={scrollToContact}
+              className={`group ${accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue'} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl`}
+            >
+              <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
           )}
         </div>
       </header>
@@ -184,7 +202,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
 
       {/* Contact Form Section */}
       {showContactForm && (
-        <section className="py-16 md:py-24 bg-white border-t border-stone-200">
+        <section id="contact-form" className="py-16 md:py-24 bg-white border-t border-stone-200">
           <div className="max-w-4xl mx-auto px-6">
             <PageContactForm lang={lang} accentColor={accentColor} />
           </div>
