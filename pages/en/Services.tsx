@@ -293,8 +293,8 @@ export const ServicesEN: React.FC = () => {
             {content.process.steps.map((step, idx) => (
               <div key={idx} className="relative group">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand-blue font-serif text-xl font-bold group-hover:scale-110 transition-transform duration-300">
-                    {idx + 1}
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand-blue font-serif text-xl font-bold group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    <span className="block leading-none">{idx + 1}</span>
                   </div>
                   <div className="flex-1 h-0.5 bg-white/30 md:hidden"></div>
                 </div>
