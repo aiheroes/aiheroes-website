@@ -52,7 +52,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
+        panelRef.current && !panelRef.current.contains(event.target as Node)
+      ) {
         setOpenDropdown(null);
       }
     };
