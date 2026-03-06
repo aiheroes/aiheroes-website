@@ -135,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // Pillar metadata for mega-menu column headers
   const pillarMeta = lang === 'nl'
-    ? { training: { label: 'TRAINING', subtitle: 'Workshops die bij blijven', href: '/nl/diensten#training' }, consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten#consulting' }, software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten#software' } }
+    ? { training: { label: 'TRAINING', subtitle: 'Workshops die bijblijven', href: '/nl/diensten#training' }, consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten#consulting' }, software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten#software' } }
     : { training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services#training' }, consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services#consulting' }, software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services#software' } };
 
   const allServicesLabel = lang === 'nl' ? 'Bekijk alle diensten' : 'View all services';

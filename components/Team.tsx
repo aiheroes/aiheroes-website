@@ -38,7 +38,7 @@ export const Team: React.FC<TeamProps> = ({ content }) => {
               </h2>
 
               {/* Body */}
-              <p className="text-lg md:text-xl text-brand-dark/70 font-light leading-relaxed mb-8 max-w-lg text-pretty">
+              <p className="text-lg md:text-xl text-brand-dark/70 font-light leading-relaxed mb-8 max-w-lg text-pretty whitespace-pre-line">
                 {content.body}
               </p>
 

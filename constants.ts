@@ -65,7 +65,7 @@ export const CONTENT: Record<Language, Content> = {
         {
           label: "Training & Workshops",
           headline: "Maak je <blue>team</blue>\nAI-<red>vaardig</red>",
-          subhead: "Van boardroom tot werkvloer.\nPraktische workshops die bij blijven.",
+          subhead: "Van boardroom tot werkvloer.\nPraktische workshops die bijblijven.",
           ctaLabel: "Ontdek Training",
           ctaTarget: "/nl/diensten#training",
           image: "/hero/road.webp"
@@ -93,7 +93,7 @@ export const CONTENT: Record<Language, Content> = {
       items: {
         training: {
           title: "Training & Workshops",
-          description: "Maak je team AI-vaardig. Van AI Foundations tot EU AI Act compliance — praktische workshops die bij blijven."
+          description: "Maak je team AI-vaardig. Van AI Foundations tot EU AI Act compliance — praktische workshops die bijblijven."
         },
         consulting: {
           title: "AI Consultancy",
@@ -108,12 +108,12 @@ export const CONTENT: Record<Language, Content> = {
     approach: {
       title: "Hoe we werken",
       p1: "",
-      p2: "Je huurt een AI adviseur\nDie laat een rapport genereren\nJe huurt een trainer\nEén standaard praatje en weg\nJe huurt een techbedrijf\nZe bouwen iets dat niemand begrijpt\n\n<blue>Of je belt ons</blue>\nWij adviseren, trainen, bouwen — en zorgen dat het <red>werkt</red>"
+      p2: "Je wilt een AI-strategie die klopt\nJe wilt een team dat het snapt\nJe wilt software die écht wordt gebruikt\n\nDat hoeft niet bij drie partijen\n\n<blue>Wij zijn de One-Stop-Shop</blue>\nWe adviseren, trainen, bouwen — en zorgen dat het <red>werkt</red>"
     },
     team: {
       title: "Wij zijn Frans, Jan en David",
       location: "Gevestigd in Groningen",
-      body: "Drie achtergronden, drie expertises, één team. Frans (strategie), Jan (training), David (development). Samen dekken we het hele AI-traject.",
+      body: "Drie achtergronden, drie expertises, één team.\nSamen dekken we het hele AI-traject.",
       cta: {
         text: "Leer ons kennen",
         href: "/nl/over-ons/team"
@@ -191,7 +191,7 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "Jan Brusse",
             role: "Managing Partner · Training & Workshops",
-            description: "Specialist in het toegankelijk maken van complexe technologie. Leidt onze training-pijler: van AI Foundations tot EU AI Act compliance, praktische workshops die bij blijven."
+            description: "Specialist in het toegankelijk maken van complexe technologie. Leidt onze training-pijler: van AI Foundations tot EU AI Act compliance, praktische workshops die bijblijven."
           }
         ]
       },
@@ -323,7 +323,7 @@ export const CONTENT: Record<Language, Content> = {
         {
           title: "Training & Workshops",
           description: "Maak je team AI-vaardig",
-          benefit: "Van AI Foundations tot EU AI Act compliance. Praktische workshops van boardroom tot werkvloer die bij blijven."
+          benefit: "Van AI Foundations tot EU AI Act compliance. Praktische workshops van boardroom tot werkvloer die bijblijven."
         },
         {
           title: "AI Consultancy",
@@ -524,12 +524,12 @@ export const CONTENT: Record<Language, Content> = {
     approach: {
       title: "How we work",
       p1: "",
-      p2: "You hire an AI consultant\nThey have a report generated\nYou hire a trainer\nOne standard talk and gone\nYou hire a tech company\nThey build something nobody understands\n\n<blue>Or you call us</blue>\nWe advise, train, build — and make sure it <red>works</red>"
+      p2: "You want an AI strategy that holds up\nYou want a team that gets it\nYou want software that's actually used\n\nYou don't need three vendors for that\n\n<blue>We're your One-Stop-Shop</blue>\nWe advise, train, build — and make sure it <red>works</red>"
     },
     team: {
       title: "We are Frans, Jan and David",
       location: "Based in Groningen",
-      body: "Three backgrounds, three expertises, one team. Frans (strategy), Jan (training), David (development). Together we cover the full AI trajectory.",
+      body: "Three backgrounds, three expertises, one team.\nTogether we cover the full AI trajectory.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"
