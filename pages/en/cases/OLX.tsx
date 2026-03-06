@@ -9,6 +9,7 @@ export const OLXEN: React.FC = () => {
       title="Case Study: OLX Magic"
       subtitle="AI-powered marketplace transformation. Smarter search, better user experience."
       accentColor="blue"
+      pillarBadge="Consulting + Software"
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

@@ -9,6 +9,7 @@ export const TrabuNL: React.FC = () => {
       title="Case Study: Trabu"
       subtitle="Van idee naar werkend prototype in 6 dagen. AI-gedreven reisplanning voor investeerders."
       accentColor="red"
+      pillarBadge="Software & Implementatie"
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

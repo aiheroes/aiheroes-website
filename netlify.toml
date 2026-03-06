@@ -8,6 +8,17 @@
   to = "/nl/diensten"
   status = 301
 
+# Redirect old SpecialistischeTracks URLs to Maatwerk/Custom pages
+[[redirects]]
+  from = "/nl/diensten/specialistische-tracks"
+  to = "/nl/diensten/maatwerk-ai-oplossingen"
+  status = 301
+
+[[redirects]]
+  from = "/en/services/specialized-tracks"
+  to = "/en/services/custom-ai-solutions"
+  status = 301
+
 # Handle SPA routing - redirect all routes to index.html
 [[redirects]]
   from = "/*"

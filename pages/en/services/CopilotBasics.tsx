@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const CopilotBasicsEN: React.FC = () => {
   return (
@@ -86,6 +88,16 @@ export const CopilotBasicsEN: React.FC = () => {
         <p className="text-stone-600 leading-relaxed">
           This workshop is meant for professionals who work with Microsoft 365 and want to use Copilot in their daily work. No technical background needed - just curiosity and the will to learn.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h4 className="text-xl font-serif text-white mb-3">More than Copilot?</h4>
+          <p className="text-white/85">
+            Copilot is a great starting point. But AI offers more. Through our partner Copilot Academy, we also provide comprehensive Copilot programs.
+          </p>
+          <Link to="/en/services#training" className="inline-flex items-center gap-2 text-white font-medium underline underline-offset-4 hover:no-underline mt-3">
+            View all training →
+          </Link>
+        </DarkBox>
       </div>
     </PageLayout>
   );

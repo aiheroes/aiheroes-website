@@ -74,8 +74,11 @@ export const AIGeletterdheidNL: React.FC = () => {
         </DarkBox>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Aan de slag</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-6">
           Wil je jouw team AI-geletterd maken? Onze workshops zijn praktisch, hands-on, en aangepast aan jullie context. Je gaat naar huis met vaardigheden die je de volgende dag al kunt toepassen.
+        </p>
+        <p className="text-stone-600 leading-relaxed">
+          Bekijk onze <a href="/nl/diensten#training" className="text-brand-red hover:underline font-medium">Training & Workshops</a> voor het volledige aanbod.
         </p>
       </div>
     </PageLayout>

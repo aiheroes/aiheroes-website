@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Language, Content, NavChild } from '../types';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {
   lang: Language;
@@ -103,29 +103,13 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   };
 
-  // Category labels for mega-menu
-  const categoryLabels = lang === 'nl'
-    ? { training: 'Training', strategy: 'Strategie', awareness: 'Bewustwording & Compliance', bespoke: 'Maatwerk' }
-    : { training: 'Training', strategy: 'Strategy', awareness: 'Awareness & Compliance', bespoke: 'Bespoke' };
-
-  // Group services by category
-  const groupServicesByCategory = (services: NavChild[]) => {
-    const training = services.filter(s => s.category === 'training');
-    const strategy = services.filter(s => s.category === 'strategy');
-    const awareness = services.filter(s => s.category === 'awareness');
-    const bespoke = services.filter(s => s.category === 'bespoke');
-    return { training, strategy, awareness, bespoke };
-  };
-
   // Background styles based on theme
   const getBackgroundClass = (theme: 'dark' | 'light', blur: boolean) => {
     if (blur) {
-      // Frosted glass effect when scrolled
       return theme === 'dark'
         ? 'navbar-blur navbar-blur-dark'
         : 'navbar-blur navbar-blur-light';
     }
-    // Subtle gradient at top for text legibility, no blur
     return theme === 'dark'
       ? 'navbar-clear navbar-clear-dark'
       : 'navbar-clear navbar-clear-light';
@@ -139,141 +123,232 @@ export const Navbar: React.FC<NavbarProps> = ({
   const textClass = textColor === 'white' ? 'text-white' : 'text-brand-dark';
   const logoVariant = 'square';
 
-  // Determine if we should use split mode (only on mobile, when splitPosition is set)
+  // Determine if we should use split mode
   const useSplitMode = splitPosition !== null && topTheme !== bottomTheme;
 
-  // Pre-compute clip paths to avoid TypeScript narrowing issues
+  // Pre-compute clip paths
   const topClipPath = splitPosition !== null ? `inset(0 0 ${100 - splitPosition}% 0)` : undefined;
   const bottomClipPath = splitPosition !== null ? `inset(${splitPosition}% 0 0 0)` : undefined;
 
-  // Dropdown item component
-  const DropdownItem: React.FC<{ item: NavChild; onClick?: () => void; hoverColor?: 'red' | 'blue' }> = ({ item, onClick, hoverColor = 'red' }) => (
-    <Link
-      to={item.href}
-      onClick={onClick}
-      className="block px-3 py-2 hover:bg-stone-100 rounded transition-colors group"
-    >
-      <span className={`font-medium text-sm text-brand-dark transition-colors ${hoverColor === 'blue' ? 'group-hover:text-brand-blue' : 'group-hover:text-brand-red'}`}>
-        {item.label}
-      </span>
-      {item.description && (
-        <span className="block text-xs text-stone-500 mt-0.5">
-          {item.description}
-        </span>
-      )}
-    </Link>
-  );
+  // Pillar metadata for mega-menu column headers
+  const pillarMeta = lang === 'nl'
+    ? { training: { label: 'TRAINING', subtitle: 'Workshops die bij blijven', href: '/nl/diensten#training' }, consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten#consulting' }, software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten#software' } }
+    : { training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services#training' }, consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services#consulting' }, software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services#software' } };
 
-  // Services mega-menu content
-  const ServicesMegaMenu: React.FC = () => {
-    const services = content.services.children || [];
-    const grouped = groupServicesByCategory(services);
+  const allServicesLabel = lang === 'nl' ? 'Bekijk alle diensten' : 'View all services';
+  const allServicesHref = lang === 'nl' ? '/nl/diensten' : '/en/services';
 
-    return (
-      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
-        <div className="bg-white rounded-lg shadow-xl border border-stone-200 w-[500px] p-5">
-        <div className="grid grid-cols-2 gap-4">
-          {/* Training Column */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 px-3">
-              {categoryLabels.training}
-            </h3>
-            <div className="space-y-0.5">
-              {grouped.training.map((item, idx) => (
-                <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
-              ))}
-            </div>
-          </div>
+  // Group children by category
+  const trainingItems = content.services.children?.filter(c => c.category === 'training') || [];
+  const consultingItems = content.services.children?.filter(c => c.category === 'consulting') || [];
+  const softwareItems = content.services.children?.filter(c => c.category === 'software') || [];
 
-          {/* Strategy & Bespoke Column */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 px-3">
-              {categoryLabels.strategy}
-            </h3>
-            <div className="space-y-0.5">
-              {grouped.strategy.map((item, idx) => (
-                <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
-              ))}
-            </div>
+  const panelRef = useRef<HTMLDivElement>(null);
+  const triggersRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const openIntentRef = useRef<ReturnType<typeof setTimeout>>();
+  const [panelCenter, setPanelCenter] = useState<number | null>(null);
 
-            {/* Bespoke - below strategy with blue hover */}
-            <div className="border-t border-stone-200 mt-4 pt-4">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 px-3">
-                {categoryLabels.bespoke}
-              </h3>
-              <div className="space-y-0.5">
-                {grouped.bespoke.map((item, idx) => (
-                  <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} hoverColor="blue" />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+  // Measure center of the 3 nav triggers
+  useEffect(() => {
+    const measure = () => {
+      if (triggersRef.current) {
+        const rect = triggersRef.current.getBoundingClientRect();
+        setPanelCenter(rect.left + rect.width / 2);
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
 
-        {/* Awareness & Compliance Row */}
-        <div className="mt-4 pt-4 border-t border-stone-200">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2 px-3">
-            {categoryLabels.awareness}
-          </h3>
-          <div className="grid grid-cols-2 gap-0.5">
-            {grouped.awareness.map((item, idx) => (
-              <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
+  const handleNavEnter = (type: DropdownType) => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    if (openIntentRef.current) clearTimeout(openIntentRef.current);
+    // If already open, switch instantly. If closed, add small intent delay.
+    if (openDropdown !== null) {
+      setOpenDropdown(type);
+    } else {
+      openIntentRef.current = setTimeout(() => setOpenDropdown(type), 150);
+    }
+  };
+
+  const handleNavAreaLeave = () => {
+    if (openIntentRef.current) { clearTimeout(openIntentRef.current); openIntentRef.current = undefined; }
+    closeTimerRef.current = setTimeout(() => setOpenDropdown(null), 100);
+  };
+
+  const handlePanelEnter = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+  };
+
+  const handlePanelLeave = () => {
+    closeTimerRef.current = setTimeout(() => setOpenDropdown(null), 100);
+  };
+
+  // Services content
+  const ServicesContent: React.FC = () => (
+    <>
+      <div className="mb-4 pb-3 border-b border-stone-100">
+        <Link
+          to={allServicesHref}
+          onClick={() => setOpenDropdown(null)}
+          className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors"
+        >
+          {allServicesLabel} <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
+      <div className="grid grid-cols-3 gap-6">
+        <div>
+          <Link to={pillarMeta.training.href} onClick={() => setOpenDropdown(null)} className="block mb-3">
+            <span className="text-xs font-bold tracking-wider text-brand-red">{pillarMeta.training.label}</span>
+            <span className="block text-xs text-stone-400 mt-0.5">{pillarMeta.training.subtitle}</span>
+          </Link>
+          <div className="space-y-0.5">
+            {trainingItems.map((item, idx) => (
+              <Link key={idx} to={item.href} onClick={() => setOpenDropdown(null)}
+                className="block px-2 py-1.5 text-sm text-brand-dark hover:text-brand-red hover:bg-stone-50 rounded transition-colors"
+              >{item.label}</Link>
             ))}
           </div>
         </div>
+        <div>
+          <Link to={pillarMeta.consulting.href} onClick={() => setOpenDropdown(null)} className="block mb-3">
+            <span className="text-xs font-bold tracking-wider text-brand-blue">{pillarMeta.consulting.label}</span>
+            <span className="block text-xs text-stone-400 mt-0.5">{pillarMeta.consulting.subtitle}</span>
+          </Link>
+          <div className="space-y-0.5">
+            {consultingItems.map((item, idx) => (
+              <Link key={idx} to={item.href} onClick={() => setOpenDropdown(null)}
+                className="block px-2 py-1.5 text-sm text-brand-dark hover:text-brand-blue hover:bg-stone-50 rounded transition-colors"
+              >{item.label}</Link>
+            ))}
+          </div>
+        </div>
+        <div>
+          <Link to={pillarMeta.software.href} onClick={() => setOpenDropdown(null)} className="block mb-3">
+            <span className="text-xs font-bold tracking-wider text-stone-700">{pillarMeta.software.label}</span>
+            <span className="block text-xs text-stone-400 mt-0.5">{pillarMeta.software.subtitle}</span>
+          </Link>
+          <div className="space-y-0.5">
+            {softwareItems.map((item, idx) => (
+              <Link key={idx} to={item.href} onClick={() => setOpenDropdown(null)}
+                className="block px-2 py-1.5 text-sm text-brand-dark hover:text-stone-900 hover:bg-stone-50 rounded transition-colors"
+              >{item.label}</Link>
+            ))}
+          </div>
         </div>
       </div>
-    );
-  };
+    </>
+  );
 
-  // Simple dropdown for About and Resources
-  const SimpleDropdown: React.FC<{ items: NavChild[] }> = ({ items }) => (
-    <div className="absolute top-full left-0 pt-2 z-50">
-      <div className="bg-white rounded-lg shadow-xl border border-stone-200 min-w-[280px] py-2">
-        {items.map((item, idx) => (
-          <DropdownItem key={idx} item={item} onClick={() => setOpenDropdown(null)} />
-        ))}
+  // Simple list content for About / Resources
+  const SimpleListContent: React.FC<{ items: NavChild[] }> = ({ items }) => (
+    <div className="space-y-1">
+      {items.map((item, idx) => (
+        <Link
+          key={idx}
+          to={item.href}
+          onClick={() => setOpenDropdown(null)}
+          className="block px-3 py-2.5 hover:bg-stone-50 rounded transition-colors group"
+        >
+          <span className="font-medium text-sm text-brand-dark transition-colors group-hover:text-brand-red">
+            {item.label}
+          </span>
+          {item.description && (
+            <span className="block text-xs text-stone-500 mt-0.5">{item.description}</span>
+          )}
+        </Link>
+      ))}
+    </div>
+  );
+
+  // Which content to show (persists briefly after close for exit animation)
+  const [shownDropdown, setShownDropdown] = useState<DropdownType>(null);
+  useEffect(() => {
+    if (openDropdown) setShownDropdown(openDropdown);
+  }, [openDropdown]);
+
+  const isDropdownVisible = openDropdown !== null;
+  const activePanel = shownDropdown;
+  const panelWidth = activePanel === 'services' ? 720 : 340;
+
+  // Top link labels for about/resources panels (matching "Bekijk alle diensten" style)
+  const panelTopLinks = lang === 'nl'
+    ? { about: { label: 'Over AI Heroes', href: '/nl/over-ons' }, resources: { label: 'Alle resources bekijken', href: '/nl/resources' } }
+    : { about: { label: 'About AI Heroes', href: '/en/about' }, resources: { label: 'View all resources', href: '/en/resources' } };
+
+  // Dropdown panel JSX — inlined (not a component) so React doesn't remount it
+  const dropdownPanel = (
+    <div
+      ref={panelRef}
+      className="fixed pt-2 z-50"
+      onMouseEnter={handlePanelEnter}
+      onMouseLeave={handlePanelLeave}
+      style={{
+        top: 72,
+        left: panelCenter ?? '50%',
+        transform: 'translateX(-50%)',
+        maxWidth: 'calc(100vw - 3rem)',
+        width: panelWidth,
+        opacity: isDropdownVisible ? 1 : 0,
+        pointerEvents: isDropdownVisible ? 'auto' : 'none',
+        transition: 'width 250ms cubic-bezier(0.4,0,0.2,1), opacity 150ms ease-out',
+      }}
+    >
+      <div className="bg-white rounded-lg shadow-xl border border-stone-200 overflow-hidden">
+        {activePanel === 'services' && (
+          <div className="p-5">
+            <ServicesContent />
+          </div>
+        )}
+        {activePanel === 'about' && (
+          <div className="p-5">
+            <div className="mb-4 pb-3 border-b border-stone-100">
+              <span className="text-sm text-stone-500">
+                {panelTopLinks.about.label}
+              </span>
+            </div>
+            <SimpleListContent items={content.about.children || []} />
+          </div>
+        )}
+        {activePanel === 'resources' && (
+          <div className="p-5">
+            <div className="mb-4 pb-3 border-b border-stone-100">
+              <span className="text-sm text-stone-500">
+                {panelTopLinks.resources.label}
+              </span>
+            </div>
+            <SimpleListContent items={content.resources.children || []} />
+          </div>
+        )}
       </div>
     </div>
   );
 
-  // Desktop nav button with dropdown (hover to open)
-  const NavDropdownButton: React.FC<{
+  // Desktop nav button (no dropdown children — panel is unified)
+  const NavTrigger: React.FC<{
     label: string;
     type: DropdownType;
     theme: 'dark' | 'light';
-    href?: string;
+    href: string;
   }> = ({ label, type, theme, href }) => {
-    const isOpen = openDropdown === type;
+    const isActive = openDropdown === type;
     const textColorClass = theme === 'dark' ? 'text-white' : 'text-brand-dark';
 
     return (
       <div
-        className="relative"
-        onMouseEnter={() => setOpenDropdown(type)}
-        onMouseLeave={() => setOpenDropdown(null)}
+        onMouseEnter={() => handleNavEnter(type)}
+        onMouseLeave={handleNavAreaLeave}
       >
-        {href ? (
-          <Link
-            to={href}
-            className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
-            onClick={() => setOpenDropdown(null)}
-          >
-            {label}
-            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-          </Link>
-        ) : (
-          <button
-            className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
-          >
-            {label}
-            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-          </button>
-        )}
-
-        {isOpen && type === 'services' && <ServicesMegaMenu />}
-        {isOpen && type === 'about' && <SimpleDropdown items={content.about.children || []} />}
-        {isOpen && type === 'resources' && <SimpleDropdown items={content.resources.children || []} />}
+        <Link
+          to={href}
+          className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
+          onClick={() => setOpenDropdown(null)}
+        >
+          {label}
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isActive ? 'rotate-180' : ''}`} />
+        </Link>
       </div>
     );
   };
@@ -296,15 +371,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </a>
 
-        {/* Desktop Nav - Mega Menu */}
+        {/* Desktop Nav */}
         <div ref={dropdownRef} className={`hidden md:flex items-center space-x-8 ${navTextClass}`}>
-          <NavDropdownButton label={content.services.label} type="services" theme={theme} href={content.services.href} />
-          <NavDropdownButton label={content.about.label} type="about" theme={theme} href={content.about.href} />
-          <NavDropdownButton label={content.resources.label} type="resources" theme={theme} href={content.resources.href} />
+          <div ref={triggersRef} className="flex items-center space-x-8">
+            <NavTrigger label={content.services.label} type="services" theme={theme} href={content.services.href} />
+            <NavTrigger label={content.about.label} type="about" theme={theme} href={content.about.href} />
+            <NavTrigger label={content.resources.label} type="resources" theme={theme} href={content.resources.href} />
+          </div>
 
           <button
             onClick={handleContactClick}
-            className={`text-sm font-medium hover:opacity-80 transition-opacity ${theme === 'dark' ? 'text-white' : 'text-brand-dark'}`}
+            className="bg-brand-red text-white px-5 py-2 text-sm font-medium rounded-sm hover:bg-brand-red/90 transition-colors"
           >
             {content.contact.label}
           </button>
@@ -336,15 +413,90 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
-  // When mobile menu is open, never hide the navbar (so the X button is always visible)
+  // When mobile menu is open, never hide the navbar
   const shouldHide = hidden && !isOpen;
   const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ease-out ${shouldHide ? '-translate-y-full' : 'translate-y-0'}`;
 
-  // Mobile accordion section
+  // Mobile: sub-expanded state for pillar groups inside Diensten
+  const [mobilePillarExpanded, setMobilePillarExpanded] = useState<string | null>(null);
+
+  // Mobile services accordion with sub-pillars
+  const MobileServicesAccordion: React.FC = () => {
+    const isExpanded = mobileExpanded === 'services';
+
+    return (
+      <div className="border-b border-stone-200">
+        <button
+          onClick={() => setMobileExpanded(isExpanded ? null : 'services')}
+          className="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark"
+        >
+          {content.services.label}
+          <ChevronDown className={`w-6 h-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+        </button>
+
+        {isExpanded && (
+          <div className="pb-4 space-y-1">
+            {/* Training sub-group */}
+            <MobilePillarGroup
+              label={pillarMeta.training.label}
+              items={trainingItems}
+              pillarKey="training"
+            />
+            {/* Consulting sub-group */}
+            <MobilePillarGroup
+              label={pillarMeta.consulting.label}
+              items={consultingItems}
+              pillarKey="consulting"
+            />
+            {/* Software sub-group */}
+            <MobilePillarGroup
+              label={pillarMeta.software.label}
+              items={softwareItems}
+              pillarKey="software"
+            />
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const MobilePillarGroup: React.FC<{ label: string; items: NavChild[]; pillarKey: string }> = ({ label, items, pillarKey }) => {
+    const isPillarExpanded = mobilePillarExpanded === pillarKey;
+    const hoverColor = pillarKey === 'training' ? 'text-brand-red' : pillarKey === 'consulting' ? 'text-brand-blue' : 'text-stone-900';
+
+    return (
+      <div className="pl-4">
+        <button
+          onClick={() => setMobilePillarExpanded(isPillarExpanded ? null : pillarKey)}
+          className="w-full flex justify-between items-center py-3 text-xs font-bold uppercase tracking-wider text-stone-500"
+        >
+          {label}
+          <ChevronDown className={`w-4 h-4 transition-transform ${isPillarExpanded ? 'rotate-180' : ''}`} />
+        </button>
+
+        {isPillarExpanded && (
+          <div className="pb-3 pl-2 space-y-2">
+            {items.map((item, idx) => (
+              <Link
+                key={idx}
+                to={item.href}
+                className={`block text-lg text-stone-600 hover:${hoverColor} transition-colors`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Mobile simple accordion
   const MobileAccordion: React.FC<{
     label: string;
     type: DropdownType;
-    items: NavChild[]
+    items: NavChild[];
   }> = ({ label, type, items }) => {
     const isExpanded = mobileExpanded === type;
 
@@ -376,110 +528,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
-  // Mobile services accordion with categories
-  const MobileServicesAccordion: React.FC = () => {
-    const isExpanded = mobileExpanded === 'services';
-    const services = content.services.children || [];
-    const grouped = groupServicesByCategory(services);
-
-    return (
-      <div className="border-b border-stone-200">
-        <button
-          onClick={() => setMobileExpanded(isExpanded ? null : 'services')}
-          className="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark"
-        >
-          {content.services.label}
-          <ChevronDown className={`w-6 h-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-        </button>
-
-        {isExpanded && (
-          <div className="pb-4 pl-4 space-y-4">
-            {/* Training */}
-            <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
-                {categoryLabels.training}
-              </span>
-              <div className="space-y-2">
-                {grouped.training.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    to={item.href}
-                    className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Strategy */}
-            <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
-                {categoryLabels.strategy}
-              </span>
-              <div className="space-y-2">
-                {grouped.strategy.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    to={item.href}
-                    className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Awareness & Compliance */}
-            <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
-                {categoryLabels.awareness}
-              </span>
-              <div className="space-y-2">
-                {grouped.awareness.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    to={item.href}
-                    className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Bespoke - blue hover */}
-            <div>
-              <span className="block text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">
-                {categoryLabels.bespoke}
-              </span>
-              <div className="space-y-2">
-                {grouped.bespoke.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    to={item.href}
-                    className="block text-lg text-stone-600 hover:text-brand-blue transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  };
-
   // Determine the single-layer theme
   const singleLayerTheme: 'dark' | 'light' = textColor === 'white' ? 'dark' : 'light';
-
-  // When mobile menu is open, always use light theme (dark text) with solid background
-  const mobileMenuOpenClass = isOpen ? 'bg-brand-light text-brand-dark' : '';
 
   return (
     <>
@@ -490,7 +540,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
       ) : useSplitMode ? (
         <>
-          {/* Layer 1: Top portion (clips from top to splitPosition) */}
+          {/* Layer 1: Top portion */}
           <nav
             className={`${baseNavClass} ${getBackgroundClass(topTheme, useBlur)} ${getTextClass(topTheme)}`}
             style={{ clipPath: topClipPath }}
@@ -498,7 +548,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {renderNavContent(topTheme)}
           </nav>
 
-          {/* Layer 2: Bottom portion (clips from splitPosition to bottom) */}
+          {/* Layer 2: Bottom portion */}
           <nav
             className={`${baseNavClass} ${getBackgroundClass(bottomTheme, useBlur)} ${getTextClass(bottomTheme)}`}
             style={{ clipPath: bottomClipPath }}
@@ -507,7 +557,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
         </>
       ) : (
-        /* Single layer mode (no split) */
+        /* Single layer mode */
         <nav
           className={`${baseNavClass} ${getBackgroundClass(singleLayerTheme, useBlur)} ${textClass}`}
         >
@@ -515,26 +565,35 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
       )}
 
+      {/* Unified dropdown panel (fixed position, outside nav flow) */}
+      <div className="hidden md:block">
+        {dropdownPanel}
+      </div>
+
       {/* Mobile Menu Overlay */}
       <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-24 px-6 overflow-y-auto`}>
         <div className="max-w-md mx-auto">
-          {/* Accordion Sections */}
+          {/* Diensten accordion with sub-pillars */}
           <MobileServicesAccordion />
+
+          {/* Over ons */}
           <MobileAccordion
             label={content.about.label}
             type="about"
             items={content.about.children || []}
           />
+
+          {/* Resources */}
           <MobileAccordion
             label={content.resources.label}
             type="resources"
             items={content.resources.children || []}
           />
 
-          {/* Contact Button */}
+          {/* Contact CTA Button */}
           <button
             onClick={handleContactClick}
-            className="w-full py-4 text-2xl font-serif font-medium text-brand-dark text-left border-b border-stone-200"
+            className="block w-full bg-brand-red text-white text-center py-4 text-xl font-medium mt-6"
           >
             {content.contact.label}
           </button>

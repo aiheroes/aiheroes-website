@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -89,6 +90,16 @@ export const AIForDevelopersEN: React.FC = () => {
           <p>
             We can customize the workshop to your tech stack and use cases. Whether it's a chatbot for customer service, document processing, or something entirely different - we build it together.
           </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue">
+          <h4 className="text-xl font-serif text-white mb-3">From knowledge to product?</h4>
+          <p className="text-white/85">
+            Your developers now know the tools. Time to build? We help develop custom AI solutions.
+          </p>
+          <Link to="/en/services#software" className="inline-flex items-center gap-2 text-white font-medium underline underline-offset-4 hover:no-underline mt-3">
+            Explore Software & Implementation →
+          </Link>
         </DarkBox>
       </div>
     </PageLayout>

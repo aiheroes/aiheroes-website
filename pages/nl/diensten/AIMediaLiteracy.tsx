@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
+import { Link } from 'react-router-dom';
 
 export const AIMediaLiteracyNL: React.FC = () => {
   return (
@@ -91,9 +92,20 @@ export const AIMediaLiteracyNL: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Voor wie?</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-8">
           Deze workshop is geschikt voor iedereen: van communicatieprofessionals en journalisten tot HR teams en management. Mediawijsheid is een skill die iedereen nodig heeft in het AI-tijdperk.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h3>Europese digitale weerbaarheid</h3>
+          <p>
+            Deepfakes en desinformatie raken ook aan digitale soevereiniteit. Bekijk onze{' '}
+            <Link to="/nl/diensten/eu-training" className="text-white underline underline-offset-2 hover:text-white/80">
+              EU Training
+            </Link>{' '}
+            voor een breder perspectief op digitale risico's en Europese alternatieven.
+          </p>
+        </DarkBox>
       </div>
     </PageLayout>
   );

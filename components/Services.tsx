@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Content, Language } from '../types';
 
 interface ServicesProps {
@@ -7,31 +8,20 @@ interface ServicesProps {
 }
 
 const SERVICE_BACKGROUNDS = {
-  foundations: "/services/foundations.webp",
-  scouting: "/services/scouting.webp",
-  specialized: "/services/specialized.webp"
+  training: "/services/foundations.webp",
+  consulting: "/services/scouting.webp",
+  software: "/services/specialized.webp"
 };
 
 export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
   const servicesList = [
-    { key: 'foundations' as const, accentColor: 'border-brand-red', chipColor: 'red' as const, topicIndex: 0 },
-    { key: 'scouting' as const, accentColor: 'border-brand-red', chipColor: 'red' as const, topicIndex: 1 },
-    { key: 'specialized' as const, accentColor: 'border-brand-blue', chipColor: 'blue' as const, topicIndex: 2 }
+    { key: 'training' as const, accentColor: 'border-brand-red', anchor: '#training' },
+    { key: 'consulting' as const, accentColor: 'border-brand-blue', anchor: '#consulting' },
+    { key: 'software' as const, accentColor: 'border-brand-dark', anchor: '#software' }
   ];
 
   const ctaText = lang === 'nl' ? 'Meer info' : 'Learn more';
-
-  const handleServiceClick = (topicIndex: number, chipColor: 'red' | 'blue') => {
-    // Dispatch event to pre-select the topic in the contact form
-    window.dispatchEvent(new CustomEvent('selectTopic', {
-      detail: { topicIndex, chipColor }
-    }));
-    // Scroll to contact section
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const dienstenPath = lang === 'nl' ? '/nl/diensten' : '/en/services';
 
   return (
     <section id="services" className="w-full min-h-screen py-24 bg-brand-light relative flex flex-col justify-center">
@@ -50,12 +40,9 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
             const serviceData = content.items[item.key];
             const bgImage = SERVICE_BACKGROUNDS[item.key];
             return (
-              <div
+              <Link
                 key={item.key}
-                role="button"
-                tabIndex={0}
-                onClick={() => handleServiceClick(item.topicIndex, item.chipColor)}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleServiceClick(item.topicIndex, item.chipColor); } }}
+                to={`${dienstenPath}${item.anchor}`}
                 className={`
                   relative overflow-hidden
                   h-[220px] md:h-[320px]
@@ -64,6 +51,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                   transition-all duration-500
                   md:hover:-translate-y-1
                   group cursor-pointer
+                  block
                 `}
               >
                 {/* Background Image */}
@@ -97,7 +85,7 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

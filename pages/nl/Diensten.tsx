@@ -1,29 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { PageLayout } from '../../components/PageLayout';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { CONTENT } from '../../constants';
 import { ChevronDown, ArrowRight, Check } from 'lucide-react';
 
 export const DienstenNL: React.FC = () => {
   const content = CONTENT.nl.dienstenPage!;
-  const services = CONTENT.nl.nav.services.children;
+  const services = CONTENT.nl.nav.services.children || [];
+  const location = useLocation();
   const [expandedServices, setExpandedServices] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<string | undefined>(undefined);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [showStickyCta, setShowStickyCta] = useState(false);
 
+  // Auto-expand and scroll to pillar section when navigating via hash
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (['training', 'consulting', 'software'].includes(hash)) {
+      setExpandedServices(true);
+      // Wait for DOM to update after expanding
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      });
+    }
+  }, [location.hash]);
+
   const groupedServices = {
     training: services.filter(s => s.category === 'training'),
-    strategy: services.filter(s => s.category === 'strategy'),
-    bespoke: services.filter(s => s.category === 'bespoke'),
-    awareness: services.filter(s => s.category === 'awareness')
+    consulting: services.filter(s => s.category === 'consulting'),
+    software: services.filter(s => s.category === 'software')
   };
 
   const categoryTitles = {
     training: 'Training & Workshops',
-    strategy: 'Strategie & Scouting',
-    bespoke: 'Specialistische Trajecten',
-    awareness: 'Awareness & Literacy'
+    consulting: 'AI Consultancy',
+    software: 'Software & Implementatie'
   };
 
   const handleServiceCardClick = (serviceTitle: string) => {
@@ -70,7 +86,7 @@ export const DienstenNL: React.FC = () => {
       lang="nl"
       title={content.hero.title}
       subtitle={content.hero.subtitle}
-      seoDescription="AI Heroes diensten: praktische workshops, strategische scouting, en specialistische tracks. Van basis AI-training tot custom LLM-integraties. Bekijk ons volledige aanbod."
+      seoDescription="AI Heroes diensten: training, consulting en software onder één dak. Van AI Foundations tot custom implementaties. Bekijk ons volledige aanbod."
       accentColor="red"
       showContactForm={false}
     >
@@ -158,14 +174,14 @@ export const DienstenNL: React.FC = () => {
             Hoe we werken
           </h2>
           <p className="text-white/60 text-center mb-12 max-w-2xl mx-auto">
-            We werken hands-on met je team. Praktische training, meetbare resultaten.
+            Training, consulting en software onder één dak. We begeleiden het hele AI-traject.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
             {[
               {
-                title: "Wij bouwen zelf AI",
-                description: "We bouwen zelf AI-producten. Kennis uit de praktijk, rechtstreeks toegepast."
+                title: "Wij combineren alle drie",
+                description: "Training, consulting en software van één partner. Geen gefragmenteerde aanpak, maar één team dat het hele traject dekt."
               },
               {
                 title: "Direct toepasbaar",
@@ -173,7 +189,7 @@ export const DienstenNL: React.FC = () => {
               },
               {
                 title: "Focus op resultaat",
-                description: "We meten succes aan concrete skills en inzichten. Meetbare impact staat voorop."
+                description: "We meten succes aan concrete skills, werkende prototypes en meetbare impact."
               }
             ].map((item, idx) => (
               <div key={idx}>
@@ -204,8 +220,8 @@ export const DienstenNL: React.FC = () => {
             {content.heroServices.map((service, idx) => {
               const colors = [
                 { border: 'border-brand-red', accent: 'bg-brand-red', hover: 'hover:shadow-brand-red/20' },
-                { border: 'border-brand-red', accent: 'bg-brand-red', hover: 'hover:shadow-brand-red/20' },
-                { border: 'border-brand-blue', accent: 'bg-brand-blue', hover: 'hover:shadow-brand-blue/20' }
+                { border: 'border-brand-blue', accent: 'bg-brand-blue', hover: 'hover:shadow-brand-blue/20' },
+                { border: 'border-brand-dark', accent: 'bg-brand-dark', hover: 'hover:shadow-stone-500/20' }
               ];
               const color = colors[idx];
 
@@ -258,7 +274,7 @@ export const DienstenNL: React.FC = () => {
                   if (categoryServices.length === 0) return null;
 
                   return (
-                    <div key={category}>
+                    <div key={category} id={category} className="scroll-mt-24">
                       <h3 className="text-xl md:text-2xl font-serif text-brand-dark mb-4 pb-2 border-b border-stone-200">
                         {categoryTitles[category]}
                       </h3>

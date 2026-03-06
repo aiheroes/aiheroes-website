@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
+import { Link } from 'react-router-dom';
 
 export const OpportunityScoutingNL: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ export const OpportunityScoutingNL: React.FC = () => {
       lang="nl"
       title="Opportunity Scouting"
       subtitle="Waar laat je geld liggen? We analyseren je processen en komen terug met een roadmap die direct rendeert."
-      seoDescription="AI Opportunity Scouting: ontdek waar AI waarde toevoegt in jouw organisatie. Strategische analyse met concrete roadmap en ROI-berekening. 2-3 weken traject door AI Heroes."
+      seoDescription="AI Opportunity Scouting: ontdek waar AI waarde toevoegt in jouw organisatie. Strategische analyse met concrete roadmap en ROI-berekening. Onderdeel van onze consulting-pijler."
       accentColor="red"
     >
       <div className="prose prose-lg max-w-none">
@@ -78,6 +79,21 @@ export const OpportunityScoutingNL: React.FC = () => {
           <h3>Resultaatgarantie</h3>
           <p>
             We identificeren AI-oplossingen die je minimaal het geïnvesteerde bedrag terugverdienen. Vinden we geen waardevolle kansen? Dan betaal je niets.
+          </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue" className="mb-8">
+          <h3>Wat komt er na de scouting?</h3>
+          <p>
+            Roadmap in de hand? Wij helpen je ook verder. Met een{' '}
+            <Link to="/nl/diensten/ai-readiness-scan" className="text-white underline underline-offset-2 hover:text-white/80">
+              AI Readiness Scan
+            </Link>{' '}
+            breng je de organisatie in kaart, en via onze{' '}
+            <Link to="/nl/diensten/maatwerk-ai-oplossingen" className="text-white underline underline-offset-2 hover:text-white/80">
+              Software-pijler
+            </Link>{' '}
+            bouwen we wat in de roadmap staat.
           </p>
         </DarkBox>
 

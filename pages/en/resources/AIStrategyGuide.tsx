@@ -98,8 +98,11 @@ export const AIStrategyGuideEN: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Need help?</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-6">
           This step-by-step plan might sound simple, but the details make the difference. We help organizations through each phase, from the first workshop to working AI solution.
+        </p>
+        <p className="text-stone-600 leading-relaxed">
+          Check out our <a href="/en/services#consulting" className="text-brand-blue hover:underline font-medium">AI Consulting</a> services for professional guidance with your AI strategy.
         </p>
       </div>
     </PageLayout>

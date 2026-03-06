@@ -16,6 +16,7 @@ interface PageLayoutProps {
   seoDescription?: string;
   accentColor?: 'red' | 'blue';
   showContactForm?: boolean;
+  pillarBadge?: string;
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
@@ -25,7 +26,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   subtitle,
   seoDescription,
   accentColor = 'red',
-  showContactForm = true
+  showContactForm = true,
+  pillarBadge
 }) => {
   const location = useLocation();
 
@@ -57,7 +59,11 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         .replace('/diensten', '/services')
         .replace('/over-ons', '/about')
         .replace('/ai-voor-developers', '/ai-for-developers')
-        .replace('/specialistische-tracks', '/specialized-tracks')
+        .replace('/maatwerk-ai-oplossingen', '/custom-ai-solutions')
+        .replace('/digitale-onafhankelijkheid', '/digital-independence')
+        .replace('/ai-implementatiebegeleiding', '/ai-implementation-guidance')
+        .replace('/procesanalyse', '/process-analysis')
+        .replace('/ai-integratie', '/ai-integration')
         .replace('/aanpak', '/approach')
         .replace('/ai-geletterdheid', '/ai-literacy')
         .replace('/ai-strategie-gids', '/ai-strategy-guide')
@@ -69,7 +75,11 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         .replace('/services', '/diensten')
         .replace('/about', '/over-ons')
         .replace('/ai-for-developers', '/ai-voor-developers')
-        .replace('/specialized-tracks', '/specialistische-tracks')
+        .replace('/custom-ai-solutions', '/maatwerk-ai-oplossingen')
+        .replace('/digital-independence', '/digitale-onafhankelijkheid')
+        .replace('/ai-implementation-guidance', '/ai-implementatiebegeleiding')
+        .replace('/process-analysis', '/procesanalyse')
+        .replace('/ai-integration', '/ai-integratie')
         .replace('/approach', '/aanpak')
         .replace('/ai-literacy', '/ai-geletterdheid')
         .replace('/ai-strategy-guide', '/ai-strategie-gids')
@@ -201,6 +211,11 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         className={`pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}
       >
         <div className="max-w-4xl mx-auto px-6">
+          {pillarBadge && (
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-white/70 border border-white/30 px-3 py-1 mb-4">
+              {pillarBadge}
+            </span>
+          )}
           <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">{title}</h1>
           {subtitle && (
             <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{subtitle}</p>

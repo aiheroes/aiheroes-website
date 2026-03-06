@@ -98,8 +98,11 @@ export const AIStrategieGidsNL: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Hulp nodig?</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-6">
           Dit stappenplan klinkt misschien eenvoudig, maar de details maken het verschil. Wij helpen organisaties door elke fase heen, van de eerste workshop tot werkende AI-oplossing.
+        </p>
+        <p className="text-stone-600 leading-relaxed">
+          Bekijk onze <a href="/nl/diensten#consulting" className="text-brand-blue hover:underline font-medium">AI Consultancy</a> diensten voor professionele begeleiding bij je AI-strategie.
         </p>
       </div>
     </PageLayout>

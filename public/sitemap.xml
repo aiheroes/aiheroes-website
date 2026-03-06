@@ -100,6 +100,204 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- New Consulting & Software Services - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-readiness-scan</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-readiness-scan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-readiness-scan"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-roadmap</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-roadmap"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-roadmap"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/maatwerk-ai-oplossingen</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/maatwerk-ai-oplossingen"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/custom-ai-solutions"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- New Consulting & Software Services - English -->
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-readiness-scan</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-readiness-scan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-readiness-scan"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-roadmap</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-roadmap"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-roadmap"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/custom-ai-solutions</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/maatwerk-ai-oplossingen"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/custom-ai-solutions"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- New Consultancy Services - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/business-case-development</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/business-case-development"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/business-case-development"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-implementatiebegeleiding</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-implementatiebegeleiding"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-implementation-guidance"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/procesanalyse</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/procesanalyse"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/process-analysis"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- New Consultancy Services - English -->
+  <url>
+    <loc>https://aiheroes.io/en/services/business-case-development</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/business-case-development"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/business-case-development"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-implementation-guidance</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-implementatiebegeleiding"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-implementation-guidance"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/process-analysis</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/procesanalyse"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/process-analysis"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- New Software Services - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-prototyping</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-prototyping"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-prototyping"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-integratie</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-integratie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-integration"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/ai-development-teams</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-development-teams"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-development-teams"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- New Software Services - English -->
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-prototyping</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-prototyping"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-prototyping"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-integration</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-integratie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-integration"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/ai-development-teams</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/ai-development-teams"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/ai-development-teams"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- EU Digital Independence - Dutch -->
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/digitale-onafhankelijkheid</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/digitale-onafhankelijkheid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/digital-independence"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/eu-training</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/eu-training"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/eu-training"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/eu-consultancy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/eu-consultancy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/eu-consultancy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/diensten/eu-development</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/eu-development"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/eu-development"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- EU Digital Independence - English -->
+  <url>
+    <loc>https://aiheroes.io/en/services/digital-independence</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/digitale-onafhankelijkheid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/digital-independence"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/eu-training</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/eu-training"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/eu-training"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/eu-consultancy</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/eu-consultancy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/eu-consultancy"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/services/eu-development</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/diensten/eu-development"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/services/eu-development"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- About - Dutch -->
   <url>
     <loc>https://aiheroes.io/nl/over-ons/aanpak</loc>

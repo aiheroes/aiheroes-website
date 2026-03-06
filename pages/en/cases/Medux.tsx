@@ -9,6 +9,7 @@ export const MeduxEN: React.FC = () => {
       title="Case Study: Medux"
       subtitle="Voice-to-voice AI customer service. 70% cost reduction, 80% of calls automated."
       accentColor="red"
+      pillarBadge="Software & Implementation"
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

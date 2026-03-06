@@ -33,7 +33,19 @@ const CopilotBasicsNL = React.lazy(() => import('./pages/nl/diensten/CopilotBasi
 const AIVoorDevelopersNL = React.lazy(() => import('./pages/nl/diensten/AIVoorDevelopers').then(m => ({ default: m.AIVoorDevelopersNL })));
 const AIPrivacySecurityNL = React.lazy(() => import('./pages/nl/diensten/AIPrivacySecurity').then(m => ({ default: m.AIPrivacySecurityNL })));
 const AIMediaLiteracyNL = React.lazy(() => import('./pages/nl/diensten/AIMediaLiteracy').then(m => ({ default: m.AIMediaLiteracyNL })));
-const SpecialistischeTracksNL = React.lazy(() => import('./pages/nl/diensten/SpecialistischeTracks').then(m => ({ default: m.SpecialistischeTracksNL })));
+const AIReadinessScanNL = React.lazy(() => import('./pages/nl/diensten/AIReadinessScan').then(m => ({ default: m.AIReadinessScanNL })));
+const AIRoadmapNL = React.lazy(() => import('./pages/nl/diensten/AIRoadmap').then(m => ({ default: m.AIRoadmapNL })));
+const MaatwerkAIOplossigenNL = React.lazy(() => import('./pages/nl/diensten/MaatwerkAIOplossingen').then(m => ({ default: m.MaatwerkAIOplossigenNL })));
+const DigitaleOnafhankelijkheidNL = React.lazy(() => import('./pages/nl/diensten/DigitaleOnafhankelijkheid').then(m => ({ default: m.DigitaleOnafhankelijkheidNL })));
+const EUTrainingNL = React.lazy(() => import('./pages/nl/diensten/EUTraining').then(m => ({ default: m.EUTrainingNL })));
+const EUConsultancyNL = React.lazy(() => import('./pages/nl/diensten/EUConsultancy').then(m => ({ default: m.EUConsultancyNL })));
+const EUDevelopmentNL = React.lazy(() => import('./pages/nl/diensten/EUDevelopment').then(m => ({ default: m.EUDevelopmentNL })));
+const BusinessCaseDevelopmentNL = React.lazy(() => import('./pages/nl/diensten/BusinessCaseDevelopment').then(m => ({ default: m.BusinessCaseDevelopmentNL })));
+const AIImplementatiebegeleidingNL = React.lazy(() => import('./pages/nl/diensten/AIImplementatiebegeleiding').then(m => ({ default: m.AIImplementatiebegeleidingNL })));
+const ProcesanalyseNL = React.lazy(() => import('./pages/nl/diensten/Procesanalyse').then(m => ({ default: m.ProcesanalyseNL })));
+const AIPrototypingNL = React.lazy(() => import('./pages/nl/diensten/AIPrototyping').then(m => ({ default: m.AIPrototypingNL })));
+const AIIntegratieNL = React.lazy(() => import('./pages/nl/diensten/AIIntegratie').then(m => ({ default: m.AIIntegratieNL })));
+const AIDevelopmentTeamsNL = React.lazy(() => import('./pages/nl/diensten/AIDevelopmentTeams').then(m => ({ default: m.AIDevelopmentTeamsNL })));
 
 const DienstenNL = React.lazy(() => import('./pages/nl/Diensten').then(m => ({ default: m.DienstenNL })));
 const ServicesEN = React.lazy(() => import('./pages/en/Services').then(m => ({ default: m.ServicesEN })));
@@ -44,7 +56,19 @@ const CopilotBasicsEN = React.lazy(() => import('./pages/en/services/CopilotBasi
 const AIForDevelopersEN = React.lazy(() => import('./pages/en/services/AIForDevelopers').then(m => ({ default: m.AIForDevelopersEN })));
 const AIPrivacySecurityEN = React.lazy(() => import('./pages/en/services/AIPrivacySecurity').then(m => ({ default: m.AIPrivacySecurityEN })));
 const AIMediaLiteracyEN = React.lazy(() => import('./pages/en/services/AIMediaLiteracy').then(m => ({ default: m.AIMediaLiteracyEN })));
-const SpecializedTracksEN = React.lazy(() => import('./pages/en/services/SpecializedTracks').then(m => ({ default: m.SpecializedTracksEN })));
+const AIReadinessScanEN = React.lazy(() => import('./pages/en/services/AIReadinessScan').then(m => ({ default: m.AIReadinessScanEN })));
+const AIRoadmapEN = React.lazy(() => import('./pages/en/services/AIRoadmap').then(m => ({ default: m.AIRoadmapEN })));
+const CustomAISolutionsEN = React.lazy(() => import('./pages/en/services/CustomAISolutions').then(m => ({ default: m.CustomAISolutionsEN })));
+const DigitalIndependenceEN = React.lazy(() => import('./pages/en/services/DigitalIndependence').then(m => ({ default: m.DigitalIndependenceEN })));
+const EUTrainingEN = React.lazy(() => import('./pages/en/services/EUTraining').then(m => ({ default: m.EUTrainingEN })));
+const EUConsultancyEN = React.lazy(() => import('./pages/en/services/EUConsultancy').then(m => ({ default: m.EUConsultancyEN })));
+const EUDevelopmentEN = React.lazy(() => import('./pages/en/services/EUDevelopment').then(m => ({ default: m.EUDevelopmentEN })));
+const BusinessCaseDevelopmentEN = React.lazy(() => import('./pages/en/services/BusinessCaseDevelopment').then(m => ({ default: m.BusinessCaseDevelopmentEN })));
+const AIImplementationGuidanceEN = React.lazy(() => import('./pages/en/services/AIImplementationGuidance').then(m => ({ default: m.AIImplementationGuidanceEN })));
+const ProcessAnalysisEN = React.lazy(() => import('./pages/en/services/ProcessAnalysis').then(m => ({ default: m.ProcessAnalysisEN })));
+const AIPrototypingEN = React.lazy(() => import('./pages/en/services/AIPrototyping').then(m => ({ default: m.AIPrototypingEN })));
+const AIIntegrationEN = React.lazy(() => import('./pages/en/services/AIIntegration').then(m => ({ default: m.AIIntegrationEN })));
+const AIDevelopmentTeamsEN = React.lazy(() => import('./pages/en/services/AIDevelopmentTeams').then(m => ({ default: m.AIDevelopmentTeamsEN })));
 
 const OverOnsNL = React.lazy(() => import('./pages/nl/OverOns').then(m => ({ default: m.OverOnsNL })));
 const AanpakNL = React.lazy(() => import('./pages/nl/over-ons/Aanpak').then(m => ({ default: m.AanpakNL })));
@@ -105,7 +129,19 @@ function App() {
           <Route path="/nl/diensten/ai-voor-developers" element={<AIVoorDevelopersNL />} />
           <Route path="/nl/diensten/ai-privacy-security" element={<AIPrivacySecurityNL />} />
           <Route path="/nl/diensten/ai-media-literacy" element={<AIMediaLiteracyNL />} />
-          <Route path="/nl/diensten/specialistische-tracks" element={<SpecialistischeTracksNL />} />
+          <Route path="/nl/diensten/ai-readiness-scan" element={<AIReadinessScanNL />} />
+          <Route path="/nl/diensten/ai-roadmap" element={<AIRoadmapNL />} />
+          <Route path="/nl/diensten/maatwerk-ai-oplossingen" element={<MaatwerkAIOplossigenNL />} />
+          <Route path="/nl/diensten/digitale-onafhankelijkheid" element={<DigitaleOnafhankelijkheidNL />} />
+          <Route path="/nl/diensten/eu-training" element={<EUTrainingNL />} />
+          <Route path="/nl/diensten/eu-consultancy" element={<EUConsultancyNL />} />
+          <Route path="/nl/diensten/eu-development" element={<EUDevelopmentNL />} />
+          <Route path="/nl/diensten/business-case-development" element={<BusinessCaseDevelopmentNL />} />
+          <Route path="/nl/diensten/ai-implementatiebegeleiding" element={<AIImplementatiebegeleidingNL />} />
+          <Route path="/nl/diensten/procesanalyse" element={<ProcesanalyseNL />} />
+          <Route path="/nl/diensten/ai-prototyping" element={<AIPrototypingNL />} />
+          <Route path="/nl/diensten/ai-integratie" element={<AIIntegratieNL />} />
+          <Route path="/nl/diensten/ai-development-teams" element={<AIDevelopmentTeamsNL />} />
 
           {/* English Service Pages */}
           <Route path="/en/services/ai-foundations" element={<AIFoundationsEN />} />
@@ -114,7 +150,19 @@ function App() {
           <Route path="/en/services/ai-for-developers" element={<AIForDevelopersEN />} />
           <Route path="/en/services/ai-privacy-security" element={<AIPrivacySecurityEN />} />
           <Route path="/en/services/ai-media-literacy" element={<AIMediaLiteracyEN />} />
-          <Route path="/en/services/specialized-tracks" element={<SpecializedTracksEN />} />
+          <Route path="/en/services/ai-readiness-scan" element={<AIReadinessScanEN />} />
+          <Route path="/en/services/ai-roadmap" element={<AIRoadmapEN />} />
+          <Route path="/en/services/custom-ai-solutions" element={<CustomAISolutionsEN />} />
+          <Route path="/en/services/digital-independence" element={<DigitalIndependenceEN />} />
+          <Route path="/en/services/eu-training" element={<EUTrainingEN />} />
+          <Route path="/en/services/eu-consultancy" element={<EUConsultancyEN />} />
+          <Route path="/en/services/eu-development" element={<EUDevelopmentEN />} />
+          <Route path="/en/services/business-case-development" element={<BusinessCaseDevelopmentEN />} />
+          <Route path="/en/services/ai-implementation-guidance" element={<AIImplementationGuidanceEN />} />
+          <Route path="/en/services/process-analysis" element={<ProcessAnalysisEN />} />
+          <Route path="/en/services/ai-prototyping" element={<AIPrototypingEN />} />
+          <Route path="/en/services/ai-integration" element={<AIIntegrationEN />} />
+          <Route path="/en/services/ai-development-teams" element={<AIDevelopmentTeamsEN />} />
 
           {/* Dutch About Pages */}
           <Route path="/nl/over-ons" element={<OverOnsNL />} />

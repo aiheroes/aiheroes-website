@@ -46,11 +46,39 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
             </p>
           </div>
 
-          {/* Services Column */}
+          {/* Training Column */}
           <div>
-            <h3 className="font-serif text-lg mb-4 text-white">{nav.services.label}</h3>
+            <h3 className="font-serif text-lg mb-4 text-white">{lang === 'nl' ? 'Training' : 'Training'}</h3>
             <ul className="space-y-2">
-              {nav.services.children?.map((item, idx) => (
+              {nav.services.children?.filter(c => c.category === 'training').map((item, idx) => (
+                <li key={idx}>
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Consultancy Column */}
+          <div>
+            <h3 className="font-serif text-lg mb-4 text-white">{lang === 'nl' ? 'Consultancy' : 'Consulting'}</h3>
+            <ul className="space-y-2">
+              {nav.services.children?.filter(c => c.category === 'consulting').map((item, idx) => (
+                <li key={idx}>
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Software Column */}
+          <div>
+            <h3 className="font-serif text-lg mb-4 text-white">Software</h3>
+            <ul className="space-y-2">
+              {nav.services.children?.filter(c => c.category === 'software').map((item, idx) => (
                 <li key={idx}>
                   <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
                     {item.label}
@@ -79,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
             </ul>
           </div>
 
-          {/* Company Column */}
+          {/* Company + Resources + Legal Column */}
           <div>
             <h3 className="font-serif text-lg mb-4 text-white">{companyLabel}</h3>
             <ul className="space-y-2">
@@ -107,11 +135,8 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 )}
               </li>
             </ul>
-          </div>
 
-          {/* Resources Column */}
-          <div>
-            <h3 className="font-serif text-lg mb-4 text-white">{nav.resources.label}</h3>
+            <h3 className="font-serif text-lg mb-3 mt-6 text-white">{nav.resources.label}</h3>
             <ul className="space-y-2">
               {nav.resources.children?.map((item, idx) => (
                 <li key={idx}>
@@ -121,11 +146,8 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </li>
               ))}
             </ul>
-          </div>
 
-          {/* Legal Column */}
-          <div>
-            <h3 className="font-serif text-lg mb-4 text-white">Legal</h3>
+            <h3 className="font-serif text-lg mb-3 mt-6 text-white">Legal</h3>
             <ul className="space-y-2">
               <li>
                 <Link to={`/${lang}/legal/privacy`} className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.privacy}</Link>

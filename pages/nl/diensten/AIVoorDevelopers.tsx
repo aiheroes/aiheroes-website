@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -89,6 +90,16 @@ export const AIVoorDevelopersNL: React.FC = () => {
           <p>
             We kunnen de workshop aanpassen op jullie tech stack en use cases. Of het nu gaat om een chatbot voor klantenservice, document processing, of iets heel anders - we bouwen het samen.
           </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue">
+          <h4 className="text-xl font-serif text-white mb-3">Van kennis naar product?</h4>
+          <p className="text-white/85">
+            Je developers kennen nu de tools. Tijd om te bouwen? Wij helpen bij het ontwikkelen van custom AI-oplossingen.
+          </p>
+          <Link to="/nl/diensten#software" className="inline-flex items-center gap-2 text-white font-medium underline underline-offset-4 hover:no-underline mt-3">
+            Ontdek Software & Implementatie →
+          </Link>
         </DarkBox>
       </div>
     </PageLayout>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
+import { Link } from 'react-router-dom';
 
 export const AIMediaLiteracyEN: React.FC = () => {
   return (
@@ -91,9 +92,20 @@ export const AIMediaLiteracyEN: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Who is it for?</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-8">
           This workshop is suitable for everyone: from communications professionals and journalists to HR teams and management. Media literacy is a skill everyone needs in the AI era.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h3>European digital resilience</h3>
+          <p>
+            Deepfakes and disinformation also touch on digital sovereignty. Check out our{' '}
+            <Link to="/en/services/eu-training" className="text-white underline underline-offset-2 hover:text-white/80">
+              EU Training
+            </Link>{' '}
+            for a broader perspective on digital risks and European alternatives.
+          </p>
+        </DarkBox>
       </div>
     </PageLayout>
   );

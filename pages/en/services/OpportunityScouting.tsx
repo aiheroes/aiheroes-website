@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
+import { Link } from 'react-router-dom';
 
 export const OpportunityScoutingEN: React.FC = () => {
   return (
@@ -73,10 +74,25 @@ export const OpportunityScoutingEN: React.FC = () => {
           <li>Need an objective outside perspective</li>
         </ul>
 
-        <DarkBox accentColor="red">
+        <DarkBox accentColor="red" className="mb-8">
           <h3>Results guarantee</h3>
           <p>
             We identify AI solutions that earn back at least your investment. If we don't find valuable opportunities, you pay nothing.
+          </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue">
+          <h3>What comes after scouting?</h3>
+          <p>
+            Roadmap in hand? We help you move forward too. With an{' '}
+            <Link to="/en/services/ai-readiness-scan" className="text-white underline underline-offset-2 hover:text-white/80">
+              AI Readiness Scan
+            </Link>{' '}
+            you map the organisation, and through our{' '}
+            <Link to="/en/services/custom-ai-solutions" className="text-white underline underline-offset-2 hover:text-white/80">
+              Software pillar
+            </Link>{' '}
+            we build what's in the roadmap.
           </p>
         </DarkBox>
 

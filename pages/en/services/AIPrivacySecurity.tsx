@@ -1,5 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
+import { Link } from 'react-router-dom';
 
 export const AIPrivacySecurityEN: React.FC = () => {
   return (
@@ -89,9 +91,20 @@ export const AIPrivacySecurityEN: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Who is it for?</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-8">
           This workshop is relevant for IT managers, privacy officers, compliance teams and anyone responsible for safely implementing AI in the organization.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h3>EU AI Act compliance at organisation level?</h3>
+          <p>
+            Beyond this workshop, we also offer our{' '}
+            <Link to="/en/services/digital-independence" className="text-white underline underline-offset-2 hover:text-white/80">
+              Digital Independence
+            </Link>{' '}
+            tracks — from organisation scan to migration to European alternatives.
+          </p>
+        </DarkBox>
       </div>
     </PageLayout>
   );

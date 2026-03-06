@@ -4,7 +4,7 @@ export interface NavChild {
   label: string;
   href: string;
   description?: string;
-  category?: 'training' | 'strategy' | 'awareness' | 'bespoke';
+  category?: 'training' | 'consulting' | 'software';
 }
 
 export interface NavItem {
@@ -20,11 +20,22 @@ export interface NavStructure {
   contact: NavItem;
 }
 
+export interface HeroSlide {
+  label: string;
+  headline: string;
+  subhead: string;
+  ctaLabel: string;
+  ctaTarget: string;
+  image: string;
+  topicIndex?: number;
+}
+
 export interface HeroContent {
   headline: string;
   subhead: string;
   primaryBtn: string;
   secondaryBtn: string;
+  slides: HeroSlide[];
 }
 
 export interface ServiceItem {
@@ -35,9 +46,9 @@ export interface ServiceItem {
 export interface ServicesContent {
   title: string;
   items: {
-    foundations: ServiceItem;
-    scouting: ServiceItem;
-    specialized: ServiceItem;
+    training: ServiceItem;
+    consulting: ServiceItem;
+    software: ServiceItem;
   };
 }
 

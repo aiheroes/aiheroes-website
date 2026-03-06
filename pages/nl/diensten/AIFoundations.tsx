@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const AIFoundationsNL: React.FC = () => {
   return (
@@ -59,6 +61,16 @@ export const AIFoundationsNL: React.FC = () => {
         <p className="text-stone-600 leading-relaxed">
           Je ontvangt een naslagwerk met alle behandelde concepten, prompts en tools. Plus toegang tot onze online community waar je vragen kunt stellen en ervaringen kunt delen met andere deelnemers.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h4 className="text-xl font-serif text-white mb-3">Klaar voor de volgende stap?</h4>
+          <p className="text-white/85">
+            Na de training weet je team wat AI kan. De volgende stap? Ontdek waar AI het meeste waarde toevoegt in jouw organisatie.
+          </p>
+          <Link to="/nl/diensten#consulting" className="inline-flex items-center gap-2 text-white font-medium underline underline-offset-4 hover:no-underline mt-3">
+            Ontdek AI Consultancy →
+          </Link>
+        </DarkBox>
       </div>
     </PageLayout>
   );

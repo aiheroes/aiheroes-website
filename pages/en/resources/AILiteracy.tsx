@@ -74,8 +74,11 @@ export const AILiteracyEN: React.FC = () => {
         </DarkBox>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Get started</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-6">
           Want to make your team AI-literate? Our workshops are practical, hands-on, and tailored to your context. You'll go home with skills you can apply the very next day.
+        </p>
+        <p className="text-stone-600 leading-relaxed">
+          Check out our <a href="/en/services#training" className="text-brand-red hover:underline font-medium">Training & Workshops</a> for the full offering.
         </p>
       </div>
     </PageLayout>

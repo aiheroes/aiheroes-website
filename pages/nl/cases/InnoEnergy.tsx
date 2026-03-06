@@ -9,6 +9,7 @@ export const InnoEnergyNL: React.FC = () => {
       title="Case Study: InnoEnergy"
       subtitle="AI-gedreven investment intelligence platform. Van visie naar board-approved prototype."
       accentColor="blue"
+      pillarBadge="Software & Implementatie"
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

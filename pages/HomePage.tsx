@@ -61,12 +61,12 @@ const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
 // SEO content per language
 const SEO_CONTENT = {
   nl: {
-    title: 'Praktische AI Workshops & Training',
-    description: 'Wij geven praktische AI workshops waar je iets aan hebt. Van AI Foundations tot Copilot training - skills die voor je werken. Sinds 2019 trainen we teams bij Postcodeloterij, Prosus en meer.'
+    title: 'AI Consultancy — Training, Consultancy & Software',
+    description: 'AI Heroes is een AI consultancy die organisaties helpt met training, consultancy en software. Van AI Foundations tot custom implementaties. Eén partner voor het hele AI-traject.'
   },
   en: {
-    title: 'Practical AI Workshops & Training',
-    description: 'We give practical AI workshops that actually help. From AI Foundations to Copilot training - skills that work for you. Since 2019 we have trained teams at Postcodeloterij, Prosus and more.'
+    title: 'AI Consultancy — Training, Consulting & Software',
+    description: 'AI Heroes is an AI consultancy helping organisations with training, consulting and software. From AI Foundations to custom implementations. One partner for the entire AI journey.'
   }
 };
 
@@ -231,7 +231,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
       <main className="w-full">
         {/* Hero (Dark) */}
         <section ref={heroSectionRef} id="hero" className="md:snap-start h-screen w-full overflow-hidden">
-          <Hero content={content.hero} />
+          <Hero content={content.hero} lang={lang} />
         </section>
 
         {/* Services (Light) */}

@@ -9,6 +9,7 @@ export const OLXNL: React.FC = () => {
       title="Case Study: OLX Magic"
       subtitle="AI-gedreven marketplace transformatie. Slimmere zoekfuncties, betere gebruikerservaring."
       accentColor="blue"
+      pillarBadge="Consultancy + Software"
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

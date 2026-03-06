@@ -8,12 +8,23 @@ export const CONTENT: Record<Language, Content> = {
         href: "/nl/diensten",
         children: [
           { label: "AI Foundations", href: "/nl/diensten/ai-foundations", description: "De eerste stap van je team in AI", category: "training" },
-          { label: "Opportunity Scouting", href: "/nl/diensten/opportunity-scouting", description: "Vind waar AI waarde creëert", category: "strategy" },
           { label: "Copilot Basics", href: "/nl/diensten/copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
           { label: "AI voor Developers", href: "/nl/diensten/ai-voor-developers", description: "Technische implementatie", category: "training" },
-          { label: "Specialistische Tracks", href: "/nl/diensten/specialistische-tracks", description: "Advanced prompting & LLM-integraties", category: "bespoke" },
-          { label: "AI Privacy & Security", href: "/nl/diensten/ai-privacy-security", description: "Governance & risicobeheer", category: "awareness" },
-          { label: "AI Media Literacy", href: "/nl/diensten/ai-media-literacy", description: "Deepfakes & desinformatie", category: "awareness" }
+          { label: "AI Privacy & Security", href: "/nl/diensten/ai-privacy-security", description: "Governance & risicobeheer", category: "training" },
+          { label: "AI Media Literacy", href: "/nl/diensten/ai-media-literacy", description: "Deepfakes & desinformatie", category: "training" },
+          { label: "EU Training", href: "/nl/diensten/eu-training", description: "Digitale risico's & Europese alternatieven", category: "training" },
+          { label: "Opportunity Scouting", href: "/nl/diensten/opportunity-scouting", description: "Vind waar AI waarde creëert", category: "consulting" },
+          { label: "AI Readiness Scan", href: "/nl/diensten/ai-readiness-scan", description: "Waar staat jouw organisatie?", category: "consulting" },
+          { label: "AI Roadmap", href: "/nl/diensten/ai-roadmap", description: "Van inzicht naar implementatieplan", category: "consulting" },
+          { label: "Business Case Development", href: "/nl/diensten/business-case-development", description: "Van kans naar investeringsvoorstel", category: "consulting" },
+          { label: "AI Implementatiebegeleiding", href: "/nl/diensten/ai-implementatiebegeleiding", description: "Hands-on begeleiding bij AI-uitrol", category: "consulting" },
+          { label: "AI Procesanalyse", href: "/nl/diensten/procesanalyse", description: "Ontdek waar AI waarde toevoegt", category: "consulting" },
+          { label: "EU Consultancy", href: "/nl/diensten/eu-consultancy", description: "Organisatiescan & migratie roadmap", category: "consulting" },
+          { label: "Maatwerk AI-Oplossingen", href: "/nl/diensten/maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
+          { label: "AI Prototyping", href: "/nl/diensten/ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
+          { label: "AI Integratie", href: "/nl/diensten/ai-integratie", description: "AI verbinden met je systemen", category: "software" },
+          { label: "AI Development Teams", href: "/nl/diensten/ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" },
+          { label: "EU Development", href: "/nl/diensten/eu-development", description: "Europese AI die werkt", category: "software" }
         ]
       },
       about: {
@@ -39,36 +50,70 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       headline: "AI <red>werkt</red> als je\nweet <blue>hoe</blue>",
-      subhead: "Wij geven praktische workshops waar je iets aan hebt.\nSkills die voor je werken.",
+      subhead: "Eén partner voor training, strategie en implementatie.\nWaar je ook staat met AI.",
       primaryBtn: "Laten we praten",
-      secondaryBtn: "Wat we doen"
+      secondaryBtn: "Wat we doen",
+      slides: [
+        {
+          label: "AI Heroes",
+          headline: "AI <red>werkt</red> als je\nweet <blue>hoe</blue>",
+          subhead: "Eén partner voor training, strategie en implementatie.\nWaar je ook staat met AI.",
+          ctaLabel: "Laten we praten",
+          ctaTarget: "#contact",
+          image: "/hero/summit.webp"
+        },
+        {
+          label: "Training & Workshops",
+          headline: "Maak je <blue>team</blue>\nAI-<red>vaardig</red>",
+          subhead: "Van boardroom tot werkvloer.\nPraktische workshops die bij blijven.",
+          ctaLabel: "Ontdek Training",
+          ctaTarget: "/nl/diensten#training",
+          image: "/hero/road.webp"
+        },
+        {
+          label: "AI Consultancy",
+          headline: "<red>Weet</red> waar AI\n<blue>waarde</blue> creëert",
+          subhead: "AI-readiness scans, roadmaps\nen business cases.",
+          ctaLabel: "Ontdek Consultancy",
+          ctaTarget: "/nl/diensten#consulting",
+          image: "/hero/glass.webp"
+        },
+        {
+          label: "Software & Implementatie",
+          headline: "Van <red>plan</red> naar\n<blue>oplossing</blue>",
+          subhead: "Custom AI-oplossingen,\ngebouwd met jouw team.",
+          ctaLabel: "Ontdek Software",
+          ctaTarget: "/nl/diensten#software",
+          image: "/hero-bg.webp"
+        }
+      ]
     },
     services: {
       title: "Onze Expertises",
       items: {
-        foundations: {
-          title: "AI Foundations",
-          description: "Onze kernworkshop. We komen bij je langs en werken met je team tot iedereen het snapt. Zo maak je snel stappen met AI."
+        training: {
+          title: "Training & Workshops",
+          description: "Maak je team AI-vaardig. Van AI Foundations tot EU AI Act compliance — praktische workshops die bij blijven."
         },
-        scouting: {
-          title: "Opportunity Scouting",
-          description: "Waar laat je geld liggen? We analyseren je processen en komen terug met een roadmap voor AI-implementatie."
+        consulting: {
+          title: "AI Consultancy",
+          description: "Van inzicht naar strategie. AI-readiness scans, roadmaps en business cases die je organisatie vooruit helpen."
         },
-        specialized: {
-          title: "Specialistische Tracks",
-          description: "Van advanced prompting tot custom LLM-integraties. Voor teams die de basis al voorbij zijn en de diepte in willen."
+        software: {
+          title: "Software & Implementatie",
+          description: "Van plan naar werkende oplossing. Custom AI-toepassingen, gebouwd met jouw team."
         }
       }
     },
     approach: {
       title: "Hoe we werken",
       p1: "",
-      p2: "Elke organisatie is anders.\nEen marketingteam zit met andere vragen dan een IT-afdeling.\nEen startup werkt anders dan een gemeente. Daar houden we rekening mee."
+      p2: "Je huurt een AI adviseur\nDie laat een rapport genereren\nJe huurt een trainer\nEén standaard praatje en weg\nJe huurt een techbedrijf\nZe bouwen iets dat niemand begrijpt\n\n<blue>Of je belt ons</blue>\nWij adviseren, trainen, bouwen — en zorgen dat het <red>werkt</red>"
     },
     team: {
       title: "Wij zijn Frans, Jan en David",
       location: "Gevestigd in Groningen",
-      body: "Sinds 2019. Groningen als thuisbasis, de wereld als werkterrein. Drie achtergronden, een missie: AI praktisch maken.",
+      body: "Drie achtergronden, drie expertises, één team. Frans (strategie), Jan (training), David (development). Samen dekken we het hele AI-traject.",
       cta: {
         text: "Leer ons kennen",
         href: "/nl/over-ons/team"
@@ -96,8 +141,9 @@ export const CONTENT: Record<Language, Content> = {
         org: "Organisatie",
         topic: "Onderwerp",
         topicOptions: [
-          "Workshop",
-          "Scouting",
+          "Training",
+          "Consultancy",
+          "Software & Implementatie",
           "Iets anders"
         ],
         message: "Je bericht",
@@ -118,14 +164,14 @@ export const CONTENT: Record<Language, Content> = {
     aboutPage: {
       hero: {
         title: "Over AI Heroes",
-        subtitle: "Sinds 2019 helpen we organisaties praktisch met AI. Wij zijn geen consultants die rapporten schrijven - wij zijn practitioners die bouwen en trainen."
+        subtitle: "AI Heroes is een AI consultancy die organisaties helpt in elk stadium van hun AI-reis. Van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen."
       },
       intro: {
-        text: "We zijn in 2019 begonnen vanuit een simpele observatie: organisaties hebben geen behoefte aan nog meer PowerPoints over AI. Ze willen concrete skills, werkende prototypes, en teams die zelfstandig met AI aan de slag kunnen.\n\nVanuit Groningen werken we met organisaties door heel Nederland en daarbuiten. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties.",
+        text: "We zijn in 2019 begonnen vanuit een simpele observatie: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Niemand combineert alle drie.\n\nVanuit Groningen werken we met organisaties door heel Nederland en daarbuiten. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
           { metric: "Sinds 2019", description: "Gevestigd in Groningen" },
-          { metric: "3", description: "Managing partners" }
+          { metric: "3", description: "Expertises onder één dak" }
         ]
       },
       team: {
@@ -134,18 +180,18 @@ export const CONTENT: Record<Language, Content> = {
         members: [
           {
             name: "Frans Hoorn",
-            role: "Managing Partner · Strategy & Product",
-            description: "Combineert strategisch denken met een scherp oog voor gebruikerservaring. Helpt organisaties om AI niet als losstaande technologie te zien, maar als integraal onderdeel van hun product- en merkstrategie."
+            role: "Managing Partner · AI Consultancy",
+            description: "Combineert strategisch denken met een scherp oog voor gebruikerservaring. Leidt onze consultancy-pijler: AI-readiness scans, roadmaps en business cases die organisaties vooruit helpen."
           },
           {
             name: "David Homan",
-            role: "Managing Partner · AI & Development",
-            description: "De schakel tussen techniek en boardroom. Begrijpt hoe AI-modellen onder de motorkap werken en vertaalt die kennis naar wat het betekent voor jouw bedrijfsprocessen. Bouwt zelf met tools als GitHub Copilot en lokale AI-modellen."
+            role: "Managing Partner · Software & Implementatie",
+            description: "De schakel tussen techniek en boardroom. Leidt onze software-pijler: custom AI-oplossingen gebouwd met jouw team. Van prototype tot productie."
           },
           {
             name: "Jan Brusse",
-            role: "Managing Partner · Training & Innovation",
-            description: "Specialist in het toegankelijk maken van complexe technologie. Snapt als geen ander hoe je een taai onderwerp omzet naar een interactieve, praktische sessie die blijft hangen."
+            role: "Managing Partner · Training & Workshops",
+            description: "Specialist in het toegankelijk maken van complexe technologie. Leidt onze training-pijler: van AI Foundations tot EU AI Act compliance, praktische workshops die bij blijven."
           }
         ]
       },
@@ -175,8 +221,8 @@ export const CONTENT: Record<Language, Content> = {
             description: "Elke organisatie is anders. We passen onze aanpak aan jouw situatie, niet andersom."
           },
           {
-            title: "Practitioners, geen consultants",
-            description: "We bouwen zelf met AI. Kennis uit de praktijk, rechtstreeks toegepast in jouw organisatie."
+            title: "Practitioners die meedoen",
+            description: "We adviseren niet alleen, we bouwen ook. Kennis uit de praktijk, rechtstreeks toegepast in jouw organisatie."
           },
           {
             title: "Groningen sinds 2019",
@@ -237,7 +283,7 @@ export const CONTENT: Record<Language, Content> = {
     dienstenPage: {
       hero: {
         title: "Onze Diensten",
-        subtitle: "Van AI Foundations tot specialistische tracks. Praktische training die je team direct toepasbaar maakt.",
+        subtitle: "Training, consulting en software onder één dak. Waar je ook staat met AI, wij helpen je verder.",
         cta1: "Bekijk diensten",
         cta2: "Direct contact",
         credibility: "50+ organisaties geholpen sinds 2019"
@@ -262,37 +308,37 @@ export const CONTENT: Record<Language, Content> = {
       stats: [
         {
           metric: "70% minder kosten",
-          description: "Medux reduceerde AI-kosten met 70% na onze workshop"
+          description: "Medux reduceerde AI-kosten met 70% na ons traject"
         },
         {
           metric: "6 dagen tot prototype",
           description: "Gemiddelde tijd van eerste gesprek tot werkend prototype"
         },
         {
-          metric: "50+ teams getraind",
-          description: "Van startups tot Fortune 500 bedrijven"
+          metric: "3 expertises, 1 partner",
+          description: "Training, consulting en software onder één dak"
         }
       ],
       heroServices: [
         {
-          title: "AI Foundations",
-          description: "Van nul tot AI-vaardig team in één dag",
-          benefit: "Je team snapt AI fundamenteel en kan direct productief aan de slag met tools als ChatGPT en Claude."
+          title: "Training & Workshops",
+          description: "Maak je team AI-vaardig",
+          benefit: "Van AI Foundations tot EU AI Act compliance. Praktische workshops van boardroom tot werkvloer die bij blijven."
         },
         {
-          title: "Opportunity Scouting",
-          description: "Ontdek waar AI 10x impact maakt",
-          benefit: "Een concrete roadmap met gekwantificeerde ROI. Weet precies waar je AI moet inzetten voor maximale waarde."
+          title: "AI Consultancy",
+          description: "Van inzicht naar strategie",
+          benefit: "AI-readiness scans, roadmaps en business cases. Weet precies waar AI waarde toevoegt in jouw organisatie."
         },
         {
-          title: "Specialistische Tracks",
-          description: "Advanced AI voor gevorderde teams",
-          benefit: "Van advanced prompting tot custom LLM-integraties. Voor teams die voorbij de basis willen."
+          title: "Software & Implementatie",
+          description: "Van plan naar werkende oplossing",
+          benefit: "Custom AI-toepassingen, gebouwd met jouw team. Van prototype tot productie."
         }
       ],
       process: {
         title: "Wat gebeurt er als je contact opneemt",
-        timeline: "Van eerste gesprek tot workshop: gemiddeld 2 weken",
+        timeline: "Van eerste gesprek tot resultaat: gemiddeld 2 weken",
         steps: [
           {
             title: "Kennismakingsgesprek",
@@ -304,7 +350,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Directe impact",
-            description: "We gaan aan de slag. Praktische training, concrete tools, meetbare resultaten. Direct toepasbaar in je werk."
+            description: "We gaan aan de slag. Training, advies of ontwikkeling — meetbare resultaten die direct waarde opleveren."
           }
         ]
       },
@@ -326,19 +372,27 @@ export const CONTENT: Record<Language, Content> = {
         items: [
           {
             question: "Hoe lang duurt een workshop?",
-            answer: "De meeste workshops duren een dag (6-8 uur). Voor specialistische tracks plannen we meerdere sessies in overleg."
+            answer: "De meeste workshops duren een dag (6-8 uur). Voor meerdaagse trajecten plannen we sessies in overleg."
           },
           {
             question: "Wat zijn de kosten?",
-            answer: "Afhankelijk van de dienst en groepsgrootte. AI Foundations start vanaf €2.500 voor een team tot 15 personen. Voor scholen en non-profits hebben we lagere tarieven."
+            answer: "Afhankelijk van de dienst. Training start vanaf €2.500 per dag, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor scholen en non-profits hebben we lagere tarieven."
           },
           {
             question: "Wat als AI niet geschikt blijkt?",
-            answer: "Dan zeggen we dat eerlijk. Bij Opportunity Scouting krijg je altijd een helder advies, ook als dat betekent dat AI nog niet de juiste fit is."
+            answer: "Dan zeggen we dat eerlijk. Bij onze consulting trajecten krijg je altijd een helder advies, ook als dat betekent dat AI nog niet de juiste fit is."
           },
           {
             question: "Werken jullie op locatie of online?",
-            answer: "Beiden. We geven voorkeur aan on-site workshops voor betere interactie, maar online werkt ook uitstekend."
+            answer: "Beiden. We geven voorkeur aan on-site voor betere interactie, maar online werkt ook uitstekend."
+          },
+          {
+            question: "Wat is een AI-readiness scan?",
+            answer: "Een scan van jouw organisatie: waar staan jullie met AI, waar liggen kansen, en wat is de beste eerste stap? Je ontvangt een concreet rapport met aanbevelingen."
+          },
+          {
+            question: "Bouwen jullie ook software?",
+            answer: "Ja. Via onze software-pijler bouwen we custom AI-oplossingen. Van prototype tot productie, zelfstandig of samen met jouw ontwikkelteam."
           }
         ]
       },
@@ -349,7 +403,7 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "Wij helpen bedrijven AI te navigeren met praktische vaardigheden en strategisch inzicht.",
+      tagline: "Training, consulting en implementatie voor organisaties die AI willen inzetten.",
       caseStudies: {
         title: "Case Studies",
         items: ["Medux", "OLX", "Trabu", "InnoEnergy"]
@@ -370,12 +424,23 @@ export const CONTENT: Record<Language, Content> = {
         href: "/en/services",
         children: [
           { label: "AI Foundations", href: "/en/services/ai-foundations", description: "Your team's first step into AI", category: "training" },
-          { label: "Opportunity Scouting", href: "/en/services/opportunity-scouting", description: "Find where AI creates value", category: "strategy" },
           { label: "Copilot Basics", href: "/en/services/copilot-basics", description: "Microsoft 365 productivity", category: "training" },
           { label: "AI for Developers", href: "/en/services/ai-for-developers", description: "Technical implementation", category: "training" },
-          { label: "Specialized Tracks", href: "/en/services/specialized-tracks", description: "Advanced prompting & LLM integrations", category: "bespoke" },
-          { label: "AI Privacy & Security", href: "/en/services/ai-privacy-security", description: "Governance & risk management", category: "awareness" },
-          { label: "AI Media Literacy", href: "/en/services/ai-media-literacy", description: "Deepfakes & misinformation", category: "awareness" }
+          { label: "AI Privacy & Security", href: "/en/services/ai-privacy-security", description: "Governance & risk management", category: "training" },
+          { label: "AI Media Literacy", href: "/en/services/ai-media-literacy", description: "Deepfakes & misinformation", category: "training" },
+          { label: "EU Training", href: "/en/services/eu-training", description: "Digital risk & European alternatives", category: "training" },
+          { label: "Opportunity Scouting", href: "/en/services/opportunity-scouting", description: "Find where AI creates value", category: "consulting" },
+          { label: "AI Readiness Scan", href: "/en/services/ai-readiness-scan", description: "Where does your organisation stand?", category: "consulting" },
+          { label: "AI Roadmap", href: "/en/services/ai-roadmap", description: "From insight to implementation plan", category: "consulting" },
+          { label: "Business Case Development", href: "/en/services/business-case-development", description: "From opportunity to investment proposal", category: "consulting" },
+          { label: "AI Implementation Guidance", href: "/en/services/ai-implementation-guidance", description: "Hands-on guidance during AI rollout", category: "consulting" },
+          { label: "AI Process Analysis", href: "/en/services/process-analysis", description: "Discover where AI adds value", category: "consulting" },
+          { label: "EU Consultancy", href: "/en/services/eu-consultancy", description: "Organisation scan & migration roadmap", category: "consulting" },
+          { label: "Custom AI Solutions", href: "/en/services/custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
+          { label: "AI Prototyping", href: "/en/services/ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
+          { label: "AI Integration", href: "/en/services/ai-integration", description: "Connect AI to your systems", category: "software" },
+          { label: "AI Development Teams", href: "/en/services/ai-development-teams", description: "Dedicated AI development capacity", category: "software" },
+          { label: "EU Development", href: "/en/services/eu-development", description: "European AI that works", category: "software" }
         ]
       },
       about: {
@@ -401,36 +466,70 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       headline: "AI <red>works</red> if you\nknow <blue>how</blue>",
-      subhead: "We give practical workshops that actually help.\nSkills to work for you.",
+      subhead: "One partner for training, strategy and implementation.\nWherever you stand with AI.",
       primaryBtn: "Let's talk",
-      secondaryBtn: "What we do"
+      secondaryBtn: "What we do",
+      slides: [
+        {
+          label: "AI Heroes",
+          headline: "AI <red>works</red> if you\n<red>know</red> <blue>how</blue>",
+          subhead: "One partner for training, strategy and implementation.\nWherever you stand with AI.",
+          ctaLabel: "Let's talk",
+          ctaTarget: "#contact",
+          image: "/hero/summit.webp"
+        },
+        {
+          label: "Training & Workshops",
+          headline: "Make your <blue>team</blue>\nAI-<red>ready</red>",
+          subhead: "From boardroom to work floor.\nPractical workshops that stick.",
+          ctaLabel: "Discover Training",
+          ctaTarget: "/en/services#training",
+          image: "/hero/road.webp"
+        },
+        {
+          label: "AI Consultancy",
+          headline: "<red>Know</red> where AI\ncreates <blue>value</blue>",
+          subhead: "AI-readiness scans, roadmaps\nand business cases.",
+          ctaLabel: "Discover Consulting",
+          ctaTarget: "/en/services#consulting",
+          image: "/hero/glass.webp"
+        },
+        {
+          label: "Software & Implementation",
+          headline: "From <red>plan</red> to\n<blue>solution</blue>",
+          subhead: "Custom AI solutions,\nbuilt with your team.",
+          ctaLabel: "Discover Software",
+          ctaTarget: "/en/services#software",
+          image: "/hero-bg.webp"
+        }
+      ]
     },
     services: {
       title: "Our Expertises",
       items: {
-        foundations: {
-          title: "AI Foundations",
-          description: "Our core workshop. We come in and work with your team until everyone gets it. No fluff, just concrete tools."
+        training: {
+          title: "Training & Workshops",
+          description: "Get your team AI-ready. From AI Foundations to EU AI Act compliance — practical workshops that stick."
         },
-        scouting: {
-          title: "Opportunity Scouting",
-          description: "Where are you leaving money on the table? We analyze your processes and return with an AI roadmap that actually yields returns."
+        consulting: {
+          title: "AI Consulting",
+          description: "From insight to strategy. AI-readiness scans, roadmaps and business cases that move your organisation forward."
         },
-        specialized: {
-          title: "Specialized Tracks",
-          description: "From advanced prompting to custom LLM integrations. For teams that are past the basics and want to go deep."
+        software: {
+          title: "Software & Implementation",
+          description: "From plan to working solution. Custom AI applications, built with your team."
         }
       }
     },
     approach: {
       title: "How we work",
       p1: "",
-      p2: "Every organization is different.\nA marketing team has different questions than an IT department.\nA startup works differently than a municipality. We take that into account."
+      p2: "You hire an AI consultant\nThey have a report generated\nYou hire a trainer\nOne standard talk and gone\nYou hire a tech company\nThey build something nobody understands\n\n<blue>Or you call us</blue>\nWe advise, train, build — and make sure it <red>works</red>"
     },
     team: {
       title: "We are Frans, Jan and David",
       location: "Based in Groningen",
-      body: "Since 2019. Groningen as home base, the world as our workspace. Three backgrounds, one mission: making AI practical.",
+      body: "Three backgrounds, three expertises, one team. Frans (strategy), Jan (training), David (development). Together we cover the full AI trajectory.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"
@@ -458,8 +557,9 @@ export const CONTENT: Record<Language, Content> = {
         org: "Organization",
         topic: "Topic",
         topicOptions: [
-          "Workshop",
-          "Scouting",
+          "Training",
+          "Consulting",
+          "Software & Implementation",
           "Something else"
         ],
         message: "Your message",
@@ -480,14 +580,14 @@ export const CONTENT: Record<Language, Content> = {
     aboutPage: {
       hero: {
         title: "About AI Heroes",
-        subtitle: "Since 2019, we've been helping organizations with practical AI. We're not consultants who write reports - we're practitioners who build and train."
+        subtitle: "AI Heroes is an AI consultancy that helps organisations at every stage of their AI journey. From teams that don't yet know what AI is, to companies ready to build."
       },
       intro: {
-        text: "We started in 2019 with a simple observation: organizations don't need more PowerPoints about AI. They want concrete skills, working prototypes, and teams that can work independently with AI.\n\nBased in Groningen, we work with organizations throughout the Netherlands and beyond. From startups to Fortune 500 companies, from municipalities to media organizations.",
+        text: "We started in 2019 with a simple observation: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Nobody combines all three.\n\nBased in Groningen, we work with organizations throughout the Netherlands and beyond. From startups to Fortune 500 companies, from municipalities to media organizations.",
         stats: [
           { metric: "50+", description: "Organizations helped" },
           { metric: "Since 2019", description: "Based in Groningen" },
-          { metric: "3", description: "Managing partners" }
+          { metric: "3", description: "Expertises under one roof" }
         ]
       },
       team: {
@@ -496,18 +596,18 @@ export const CONTENT: Record<Language, Content> = {
         members: [
           {
             name: "Frans Hoorn",
-            role: "Managing Partner · Strategy & Product",
-            description: "Combines strategic thinking with a sharp eye for user experience. Helps organizations see AI not as standalone technology, but as an integral part of their product and brand strategy."
+            role: "Managing Partner · AI Consulting",
+            description: "Combines strategic thinking with a sharp eye for user experience. Leads our consulting pillar: AI-readiness scans, roadmaps and business cases that move organisations forward."
           },
           {
             name: "David Homan",
-            role: "Managing Partner · AI & Development",
-            description: "The link between tech and boardroom. Understands how AI models work under the hood and translates that knowledge into what it means for your business processes. Builds with tools like GitHub Copilot and local AI models."
+            role: "Managing Partner · Software & Implementation",
+            description: "The link between tech and boardroom. Leads our software pillar: custom AI solutions built with your team. From prototype to production."
           },
           {
             name: "Jan Brusse",
-            role: "Managing Partner · Training & Innovation",
-            description: "Specialist in making complex technology accessible. Knows like no other how to turn a tough subject into an interactive, practical session that sticks."
+            role: "Managing Partner · Training & Workshops",
+            description: "Specialist in making complex technology accessible. Leads our training pillar: from AI Foundations to EU AI Act compliance, practical workshops that stick."
           }
         ]
       },
@@ -537,8 +637,8 @@ export const CONTENT: Record<Language, Content> = {
             description: "Every organization is different. We adapt our approach to your situation, not the other way around."
           },
           {
-            title: "Practitioners, not consultants",
-            description: "We build with AI ourselves. Knowledge from practice, directly applied in your organization."
+            title: "Practitioners who do the work",
+            description: "We don't just advise, we also build. Knowledge from practice, directly applied in your organization."
           },
           {
             title: "Groningen since 2019",
@@ -599,7 +699,7 @@ export const CONTENT: Record<Language, Content> = {
     servicesPage: {
       hero: {
         title: "Our Services",
-        subtitle: "From AI Foundations to specialized tracks. Practical training that makes your team immediately productive.",
+        subtitle: "Training, consulting and software under one roof. Wherever you stand with AI, we help you forward.",
         cta1: "View services",
         cta2: "Get in touch",
         credibility: "50+ organizations helped since 2019"
@@ -624,37 +724,37 @@ export const CONTENT: Record<Language, Content> = {
       stats: [
         {
           metric: "70% lower costs",
-          description: "Medux reduced AI costs by 70% after our workshop"
+          description: "Medux reduced AI costs by 70% after our engagement"
         },
         {
           metric: "6 days to prototype",
           description: "Average time from first conversation to working prototype"
         },
         {
-          metric: "50+ teams trained",
-          description: "From startups to Fortune 500 companies"
+          metric: "3 expertises, 1 partner",
+          description: "Training, consulting and software under one roof"
         }
       ],
       heroServices: [
         {
-          title: "AI Foundations",
-          description: "From zero to AI-capable team in one day",
-          benefit: "Your team understands AI fundamentally and can immediately work productively with tools like ChatGPT and Claude."
+          title: "Training & Workshops",
+          description: "Get your team AI-ready",
+          benefit: "From AI Foundations to EU AI Act compliance. Practical workshops from boardroom to work floor that stick."
         },
         {
-          title: "Opportunity Scouting",
-          description: "Discover where AI creates 10x impact",
-          benefit: "A concrete roadmap with quantified ROI. Know exactly where to deploy AI for maximum value."
+          title: "AI Consulting",
+          description: "From insight to strategy",
+          benefit: "AI-readiness scans, roadmaps and business cases. Know exactly where AI adds value in your organisation."
         },
         {
-          title: "Specialized Tracks",
-          description: "Advanced AI for experienced teams",
-          benefit: "From advanced prompting to custom LLM integrations. For teams ready to go beyond the basics."
+          title: "Software & Implementation",
+          description: "From plan to working solution",
+          benefit: "Custom AI applications, built with your team. From prototype to production."
         }
       ],
       process: {
         title: "What happens when you reach out",
-        timeline: "From first conversation to workshop: average 2 weeks",
+        timeline: "From first conversation to results: average 2 weeks",
         steps: [
           {
             title: "Discovery call",
@@ -666,7 +766,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Immediate impact",
-            description: "We get to work. Practical training, concrete tools, measurable results. Immediately applicable in your work."
+            description: "We get to work. Training, advice or development — measurable results that deliver immediate value."
           }
         ]
       },
@@ -688,19 +788,27 @@ export const CONTENT: Record<Language, Content> = {
         items: [
           {
             question: "How long does a workshop take?",
-            answer: "Most workshops last one day (6-8 hours). For specialized tracks we schedule multiple sessions in consultation."
+            answer: "Most workshops last one day (6-8 hours). For multi-day programmes we schedule sessions in consultation."
           },
           {
             question: "What are the costs?",
-            answer: "Depends on the service and group size. AI Foundations starts at €2,500 for a team up to 15 people. We have lower rates for schools and non-profits."
+            answer: "Depends on the service. Training starts at €2,500 per day, consulting from €3,000 per engagement, software from €15,000 per project. We have lower rates for schools and non-profits."
           },
           {
             question: "What if AI turns out not to be suitable?",
-            answer: "Then we'll tell you honestly. With Opportunity Scouting you always get clear advice, even if that means AI isn't the right fit yet."
+            answer: "Then we'll tell you honestly. With our consulting engagements you always get clear advice, even if that means AI isn't the right fit yet."
           },
           {
             question: "Do you work on-site or online?",
-            answer: "Both. We prefer on-site workshops for better interaction, but online works excellently too."
+            answer: "Both. We prefer on-site for better interaction, but online works excellently too."
+          },
+          {
+            question: "What is an AI-readiness scan?",
+            answer: "A scan of your organisation: where do you stand with AI, where are the opportunities, and what's the best first step? You receive a concrete report with recommendations."
+          },
+          {
+            question: "Do you also build software?",
+            answer: "Yes. Through our software pillar we build custom AI solutions. From prototype to production, independently or alongside your development team."
           }
         ]
       },
@@ -711,7 +819,7 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "Helping organizations navigate the complexities of Artificial Intelligence with practical skills and strategic insight.",
+      tagline: "Training, consulting and implementation for organisations that want to put AI to work.",
       caseStudies: {
         title: "Case Studies",
         items: ["Medux", "OLX", "Trabu", "InnoEnergy"]

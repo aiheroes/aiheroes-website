@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
 
 export const AIFoundationsEN: React.FC = () => {
   return (
@@ -58,6 +60,16 @@ export const AIFoundationsEN: React.FC = () => {
         <p className="text-stone-600 leading-relaxed">
           You receive a reference guide with all covered concepts, prompts and tools. Plus access to our online community where you can ask questions and share experiences with other participants.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h4 className="text-xl font-serif text-white mb-3">Ready for the next step?</h4>
+          <p className="text-white/85">
+            After training, your team knows what AI can do. Next step? Discover where AI adds the most value in your organization.
+          </p>
+          <Link to="/en/services#consulting" className="inline-flex items-center gap-2 text-white font-medium underline underline-offset-4 hover:no-underline mt-3">
+            Explore AI Consulting →
+          </Link>
+        </DarkBox>
       </div>
     </PageLayout>
   );

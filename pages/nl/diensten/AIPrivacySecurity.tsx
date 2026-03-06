@@ -1,5 +1,7 @@
 import React from 'react';
 import { PageLayout } from '../../../components/PageLayout';
+import { DarkBox } from '../../../src/components/DarkBox';
+import { Link } from 'react-router-dom';
 
 export const AIPrivacySecurityNL: React.FC = () => {
   return (
@@ -89,9 +91,20 @@ export const AIPrivacySecurityNL: React.FC = () => {
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Voor wie?</h3>
-        <p className="text-stone-600 leading-relaxed">
+        <p className="text-stone-600 leading-relaxed mb-8">
           Deze workshop is relevant voor IT managers, privacy officers, compliance teams en iedereen die verantwoordelijk is voor het veilig implementeren van AI in de organisatie.
         </p>
+
+        <DarkBox accentColor="blue">
+          <h3>EU AI Act compliance op organisatieniveau?</h3>
+          <p>
+            Naast deze workshop bieden we ook onze{' '}
+            <Link to="/nl/diensten/digitale-onafhankelijkheid" className="text-white underline underline-offset-2 hover:text-white/80">
+              Digitale Onafhankelijkheid
+            </Link>{' '}
+            tracks aan — van organisatiescan tot migratie naar Europese alternatieven.
+          </p>
+        </DarkBox>
       </div>
     </PageLayout>
   );
