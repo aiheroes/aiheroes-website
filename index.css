@@ -101,8 +101,10 @@ body {
   background-color: transparent;
 }
 
-/* Hanze Workshop specific styles */
-.prose h2 {
+/* Hanze Workshop specific styles — scoped to exclude .not-prose sections.
+   :where() gives zero specificity so Tailwind utility classes always win. */
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(h2),
+:where(.prose) > :where(h2) {
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 1.5rem;
@@ -111,7 +113,8 @@ body {
   margin-bottom: 1rem;
 }
 
-.prose h3 {
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(h3),
+:where(.prose) > :where(h3) {
   font-weight: 600;
   font-size: 1.2rem;
   color: #334155;
@@ -119,23 +122,27 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.prose p {
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(p),
+:where(.prose) > :where(p) {
   color: #475569;
   margin-bottom: 1rem;
   line-height: 1.7;
 }
 
-.prose ul {
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(ul),
+:where(.prose) > :where(ul) {
   margin-left: 1.25rem;
   margin-bottom: 1rem;
   color: #475569;
 }
 
-.prose li {
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(li),
+:where(.prose) > :where(li) {
   margin-bottom: 0.5rem;
 }
 
-.prose strong {
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(strong),
+:where(.prose) > :where(strong) {
   color: #334155;
   font-weight: 600;
 }

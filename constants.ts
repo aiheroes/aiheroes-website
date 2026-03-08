@@ -55,7 +55,7 @@ export const CONTENT: Record<Language, Content> = {
       secondaryBtn: "Wat we doen",
       slides: [
         {
-          label: "AI Heroes",
+          label: "One-Stop AI",
           headline: "AI <red>werkt</red> als je\nweet <blue>hoe</blue>",
           subhead: "Eén partner voor training, strategie en implementatie.\nWaar je ook staat met AI.",
           ctaLabel: "Laten we praten",
@@ -66,30 +66,30 @@ export const CONTENT: Record<Language, Content> = {
           label: "Training & Workshops",
           headline: "Maak je <blue>team</blue>\nAI-<red>vaardig</red>",
           subhead: "Van boardroom tot werkvloer.\nPraktische workshops die bijblijven.",
-          ctaLabel: "Ontdek Training",
-          ctaTarget: "/nl/diensten#training",
+          ctaLabel: "Plan een workshop",
+          ctaTarget: "#contact?topic=0",
           image: "/hero/road.webp"
         },
         {
           label: "AI Consultancy",
           headline: "<red>Weet</red> waar AI\n<blue>waarde</blue> creëert",
           subhead: "AI-readiness scans, roadmaps\nen business cases.",
-          ctaLabel: "Ontdek Consultancy",
-          ctaTarget: "/nl/diensten#consulting",
+          ctaLabel: "Start met een scan",
+          ctaTarget: "/nl/diensten/ai-readiness-scan",
           image: "/hero/glass.webp"
         },
         {
           label: "Software & Implementatie",
           headline: "Van <red>plan</red> naar\n<blue>oplossing</blue>",
           subhead: "Custom AI-oplossingen,\ngebouwd met jouw team.",
-          ctaLabel: "Ontdek Software",
-          ctaTarget: "/nl/diensten#software",
+          ctaLabel: "Bespreek je project",
+          ctaTarget: "#contact?topic=2",
           image: "/hero-bg.webp"
         }
       ]
     },
     services: {
-      title: "Onze Expertises",
+      title: "One-Stop AI",
       items: {
         training: {
           title: "Training & Workshops",
@@ -108,12 +108,12 @@ export const CONTENT: Record<Language, Content> = {
     approach: {
       title: "Hoe we werken",
       p1: "",
-      p2: "Je wilt een AI-strategie die klopt\nJe wilt een team dat het snapt\nJe wilt software die écht wordt gebruikt\n\nDat hoeft niet bij drie partijen\n\n<blue>Wij zijn de One-Stop-Shop</blue>\nWe adviseren, trainen, bouwen — en zorgen dat het <red>werkt</red>"
+      p2: "AI raakt <red>alles</red>\nJe strategie, je team, je technologie\n\nWij pakken alles aan\n\nEén partner voor het hele traject\nWe adviseren, trainen, bouwen\nen zorgen dat het <blue>werkt</blue>"
     },
     team: {
       title: "Wij zijn Frans, Jan en David",
       location: "Gevestigd in Groningen",
-      body: "Drie achtergronden, drie expertises, één team.\nSamen dekken we het hele AI-traject.",
+      body: "Drie oprichters, één missie.\nMet een netwerk van specialisten voor elk project.",
       cta: {
         text: "Leer ons kennen",
         href: "/nl/over-ons/team"
@@ -471,8 +471,8 @@ export const CONTENT: Record<Language, Content> = {
       secondaryBtn: "What we do",
       slides: [
         {
-          label: "AI Heroes",
-          headline: "AI <red>works</red> if you\n<red>know</red> <blue>how</blue>",
+          label: "One-Stop AI",
+          headline: "AI <red>works</red> if you\nknow <blue>how</blue>",
           subhead: "One partner for training, strategy and implementation.\nWherever you stand with AI.",
           ctaLabel: "Let's talk",
           ctaTarget: "#contact",
@@ -482,30 +482,30 @@ export const CONTENT: Record<Language, Content> = {
           label: "Training & Workshops",
           headline: "Make your <blue>team</blue>\nAI-<red>ready</red>",
           subhead: "From boardroom to work floor.\nPractical workshops that stick.",
-          ctaLabel: "Discover Training",
-          ctaTarget: "/en/services#training",
+          ctaLabel: "Plan a workshop",
+          ctaTarget: "#contact?topic=0",
           image: "/hero/road.webp"
         },
         {
           label: "AI Consultancy",
           headline: "<red>Know</red> where AI\ncreates <blue>value</blue>",
           subhead: "AI-readiness scans, roadmaps\nand business cases.",
-          ctaLabel: "Discover Consulting",
-          ctaTarget: "/en/services#consulting",
+          ctaLabel: "Start with a scan",
+          ctaTarget: "/en/services/ai-readiness-scan",
           image: "/hero/glass.webp"
         },
         {
           label: "Software & Implementation",
           headline: "From <red>plan</red> to\n<blue>solution</blue>",
           subhead: "Custom AI solutions,\nbuilt with your team.",
-          ctaLabel: "Discover Software",
-          ctaTarget: "/en/services#software",
+          ctaLabel: "Discuss your project",
+          ctaTarget: "#contact?topic=2",
           image: "/hero-bg.webp"
         }
       ]
     },
     services: {
-      title: "Our Expertises",
+      title: "One-Stop AI",
       items: {
         training: {
           title: "Training & Workshops",
@@ -524,12 +524,12 @@ export const CONTENT: Record<Language, Content> = {
     approach: {
       title: "How we work",
       p1: "",
-      p2: "You want an AI strategy that holds up\nYou want a team that gets it\nYou want software that's actually used\n\nYou don't need three vendors for that\n\n<blue>We're your One-Stop-Shop</blue>\nWe advise, train, build — and make sure it <red>works</red>"
+      p2: "AI touches <red>everything</red>\nYour strategy, your team, your technology\n\nThat's why we tackle it all\n\nOne partner for the entire journey\nWe advise, train, build\nand make sure it <blue>works</blue>"
     },
     team: {
       title: "We are Frans, Jan and David",
       location: "Based in Groningen",
-      body: "Three backgrounds, three expertises, one team.\nTogether we cover the full AI trajectory.",
+      body: "Three founders, one mission.\nWith a network of specialists for every project.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"

@@ -346,7 +346,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <Link
           to={href}
-          className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity ${textColorClass}`}
+          className={`flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity py-2 ${textColorClass}`}
           onClick={() => setOpenDropdown(null)}
         >
           {label}
@@ -384,7 +384,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={handleContactClick}
-            className="bg-brand-red text-white px-5 py-2 text-sm font-medium rounded-sm hover:bg-brand-red/90 transition-colors"
+            className="bg-white text-brand-dark px-5 py-2 text-sm font-medium rounded-sm hover:bg-stone-200 transition-colors"
           >
             {content.contact.label}
           </button>
@@ -392,14 +392,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex gap-2 text-xs font-bold uppercase tracking-wider">
             <button
               onClick={() => setLang('nl')}
-              className={`transition-colors ${lang === 'nl' ? 'text-brand-red' : 'opacity-50 hover:opacity-100'}`}
+              className={`transition-colors ${lang === 'nl' ? 'underline underline-offset-4' : 'opacity-50 hover:opacity-100'}`}
             >
               NL
             </button>
             <span className={slashClass}>/</span>
             <button
               onClick={() => setLang('en')}
-              className={`transition-colors ${lang === 'en' ? 'text-brand-red' : 'opacity-50 hover:opacity-100'}`}
+              className={`transition-colors ${lang === 'en' ? 'underline underline-offset-4' : 'opacity-50 hover:opacity-100'}`}
             >
               EN
             </button>

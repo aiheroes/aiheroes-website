@@ -9,7 +9,7 @@ export const Approach: React.FC<ApproachProps> = ({ content }) => {
   const renderText = (text: string) => {
     const lines = text.split('\n');
     return lines.map((line, i) => {
-      if (line === '') return <span key={i} className="block h-6" />;
+      if (line === '') return <span key={i} className="block h-10 md:h-14" />;
       const parts = line.split(/(<red>.*?<\/red>|<blue>.*?<\/blue>)/g);
       return (
         <span key={i} className="block leading-[1.4]">
