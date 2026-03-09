@@ -17,6 +17,7 @@ interface PageLayoutProps {
   accentColor?: 'red' | 'blue';
   showContactForm?: boolean;
   pillarBadge?: string;
+  noindex?: boolean;
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
@@ -27,7 +28,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   seoDescription,
   accentColor = 'red',
   showContactForm = true,
-  pillarBadge
+  pillarBadge,
+  noindex
 }) => {
   const location = useLocation();
 
@@ -37,7 +39,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     title,
     description,
     lang,
-    path: location.pathname
+    path: location.pathname,
+    noindex
   });
   const content = CONTENT[lang];
   const heroRef = useRef<HTMLElement>(null);

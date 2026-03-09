@@ -20,8 +20,8 @@ export const DigitaleOnafhankelijkheidNL: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Tijdlijn</p>
           <ul className="space-y-2 text-sm text-stone-200">
-            <li><strong className="text-white">Feb 2025:</strong> EU AI Act Artikel 4 — AI-geletterdheid verplicht</li>
-            <li><strong className="text-white">Aug 2025:</strong> Algemene bepalingen EU AI Act van kracht</li>
+            <li><strong className="text-white">Sinds feb 2025:</strong> EU AI Act Artikel 4 — AI-geletterdheid verplicht</li>
+            <li><strong className="text-white">Sinds aug 2025:</strong> Algemene bepalingen EU AI Act van kracht</li>
             <li><strong className="text-white">CLOUD Act:</strong> VS-overheid kan data bij Amerikaanse bedrijven opeisen, ongeacht serverlocatie</li>
           </ul>
         </div>

@@ -9,6 +9,7 @@ export const AIGeletterdheidNL: React.FC = () => {
       title="Waarom AI-geletterdheid essentieel is"
       subtitle="De EU AI Act maakt het verplicht. Maar ook zonder wet: wie AI niet begrijpt, mist kansen."
       accentColor="blue"
+      seoDescription="Waarom AI-geletterdheid essentieel is: de EU AI Act maakt het verplicht. Ontdek wat AI literacy betekent en hoe je ermee begint."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

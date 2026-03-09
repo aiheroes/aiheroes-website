@@ -8,8 +8,10 @@ export const PrivacyEN: React.FC = () => {
       lang="en"
       title="Privacy Policy"
       subtitle="How we handle your data. Last updated: January 2026."
+      seoDescription="AI Heroes privacy policy. How we handle your data and protect your privacy."
       accentColor="blue"
       showContactForm={false}
+      noindex
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

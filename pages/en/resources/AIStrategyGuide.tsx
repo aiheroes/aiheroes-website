@@ -9,6 +9,7 @@ export const AIStrategyGuideEN: React.FC = () => {
       title="How to Get Started with Your AI Strategy"
       subtitle="A practical guide in four steps. From education to implementation."
       accentColor="red"
+      seoDescription="Start your AI strategy: practical guide in four steps. From education to implementation. Free guide by AI Heroes."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

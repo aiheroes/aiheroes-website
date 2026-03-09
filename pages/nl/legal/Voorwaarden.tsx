@@ -8,8 +8,10 @@ export const VoorwaardenNL: React.FC = () => {
       lang="nl"
       title="Algemene Voorwaarden"
       subtitle="De spelregels voor onze samenwerking. Laatst bijgewerkt: januari 2026."
+      seoDescription="Algemene voorwaarden van AI Heroes. De spelregels voor onze samenwerking."
       accentColor="red"
       showContactForm={false}
+      noindex
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

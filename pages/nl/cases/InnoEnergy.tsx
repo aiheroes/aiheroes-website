@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -10,6 +11,7 @@ export const InnoEnergyNL: React.FC = () => {
       subtitle="AI-gedreven investment intelligence platform. Van visie naar board-approved prototype."
       accentColor="blue"
       pillarBadge="Software & Implementatie"
+      seoDescription="Case study InnoEnergy: AI-gedreven investment intelligence platform. Van visie naar board-approved prototype door AI Heroes."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -140,6 +142,19 @@ export const InnoEnergyNL: React.FC = () => {
             InnoEnergy drijft Europa's duurzame energietransitie door strategische investeringen en innovatie. Ze leiden cruciale initiatieven in batterijopslag, groene waterstof en zonne-energie. Via hun educatieve programma's ontwikkelen ze ook de volgende generatie energieleiders, met 2.000+ master's en PhD afgestudeerden die de sector vormgeven.
           </p>
         </div>
+
+        <DarkBox accentColor="blue" className="mt-8">
+          <h3 className="text-xl font-serif mb-3">Wil je vergelijkbare resultaten?</h3>
+          <p className="mb-4">
+            Vertel ons over je uitdaging. We denken graag mee over hoe AI jouw organisatie kan helpen.
+          </p>
+          <Link
+            to="/nl/diensten#software"
+            className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+          >
+            Bekijk onze diensten
+          </Link>
+        </DarkBox>
       </div>
     </PageLayout>
   );

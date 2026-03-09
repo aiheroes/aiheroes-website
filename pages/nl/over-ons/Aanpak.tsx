@@ -10,6 +10,7 @@ export const AanpakNL: React.FC = () => {
       title="Onze Aanpak"
       subtitle="Training, consulting en software — drie pijlers, één partner. We begeleiden het hele AI-traject."
       accentColor="red"
+      seoDescription="Onze aanpak: training, consulting en software als drie pijlers onder één dak. Bekijk hoe AI Heroes het hele AI-traject begeleidt."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

@@ -9,6 +9,7 @@ export const AIStrategieGidsNL: React.FC = () => {
       title="Hoe begin je met je AI-strategie"
       subtitle="Een praktische gids in vier stappen. Van educatie tot implementatie."
       accentColor="red"
+      seoDescription="AI-strategie starten: praktische gids in vier stappen. Van educatie tot implementatie. Gratis handleiding door AI Heroes."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

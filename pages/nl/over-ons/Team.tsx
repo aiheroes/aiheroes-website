@@ -10,6 +10,7 @@ export const TeamNL: React.FC = () => {
       title="Ons Team"
       subtitle="Wij zijn Frans, Jan en David. We helpen je verder als je vastloopt met AI."
       accentColor="blue"
+      seoDescription="Het team achter AI Heroes: Frans, Jan en David. Sinds 2019 helpen we organisaties met praktische AI-training, consulting en software."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

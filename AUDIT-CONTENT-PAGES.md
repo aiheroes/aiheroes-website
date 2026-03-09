@@ -276,14 +276,16 @@ Privacy and Terms pages consume crawl budget without providing search value. The
 
 ## 5. Priority Recommendations
 
-### Tier 1: Quick Wins (1-2 days effort)
+### Tier 1: Quick Wins (1-2 days effort) -- COMPLETED 2026-03-09
 
-1. **Add `seoDescription` to all pages** that are missing one (28+ pages). Use keyword-targeted descriptions.
-2. **Add OG image, og:type, og:site_name, and twitter:card** to `useSEO.ts`.
-3. **Fix the Dutch "Verzenden..." text** in the English contact form.
-4. **Add CTAs to case study pages** - "Want similar results? Let's talk" linking to contact form.
-5. **Add `noindex` to legal pages** (Privacy, Terms/Voorwaarden).
-6. **Update EU AI Act dates** on Digital Independence pages (Feb 2025 and Aug 2025 are in the past).
+1. ~~**Add `seoDescription` to all pages** that are missing one (28+ pages). Use keyword-targeted descriptions.~~ **DONE** -- Added keyword-targeted SEO descriptions to all 23 pages that were missing them (NL + EN), including service pages, case studies, resource articles, legal pages, and about pages.
+2. ~~**Add OG image, og:type, og:site_name, and twitter:card** to `useSEO.ts`.~~ **DONE** -- Added `og:type` ("website"), `og:site_name` ("AI Heroes"), `og:image`, `twitter:card` ("summary_large_image"), and `twitter:image` to all pages via the `useSEO` hook. Note: an actual `og-image.png` file should be placed in the `public/` directory.
+3. ~~**Fix the Dutch "Verzenden..." text** in the English contact form.~~ **DONE** -- Fixed in `pages/en/Services.tsx` to show "Sending..." for English.
+4. ~~**Add CTAs to case study pages** - "Want similar results? Let's talk" linking to contact form.~~ **DONE** -- Added "Wil je vergelijkbare resultaten?" / "Want similar results?" CTA DarkBoxes to all 8 case study pages (4 NL + 4 EN), linking to the relevant services section.
+5. ~~**Add `noindex` to legal pages** (Privacy, Terms/Voorwaarden).~~ **DONE** -- Added `noindex` prop to all 4 legal pages. Also added `noindex` support to `useSEO.ts` hook and `PageLayout` component.
+6. ~~**Update EU AI Act dates** on Digital Independence pages (Feb 2025 and Aug 2025 are in the past).~~ **DONE** -- Updated both NL and EN pages from future tense ("Feb 2025:") to past tense ("Sinds feb 2025:" / "Since Feb 2025:").
+
+**Bonus fix:** Added `useSEO` hook to Press/Pers pages, which previously had no SEO tags at all.
 
 ### Tier 2: High-Impact Improvements (1-2 weeks effort)
 
@@ -307,40 +309,42 @@ Privacy and Terms pages consume crawl budget without providing search value. The
 
 ---
 
-## Appendix: Page-by-Page SEO Description Status
+## Appendix: Page-by-Page SEO Description Status (Updated 2026-03-09)
 
-| Page | NL seoDescription | EN seoDescription |
-|---|---|---|
-| AI Foundations | Yes | **Missing** |
-| Opportunity Scouting | Yes | Yes |
-| Copilot Basics | Yes | Yes |
-| AI voor Developers | **Missing** | **Missing** |
-| AI Privacy & Security | **Missing** | **Missing** |
-| AI Media Literacy | **Missing** | **Missing** |
-| AI Readiness Scan | Yes | Yes |
-| AI Roadmap | Yes | Yes |
-| Maatwerk AI-Oplossingen | Yes | Yes |
-| Digitale Onafhankelijkheid | Yes | Yes |
-| EU Training | Yes | Yes |
-| EU Consultancy | Yes | Yes |
-| EU Development | Yes | Yes |
-| Business Case Development | Yes | Yes |
-| AI Implementatiebegeleiding | Yes | Yes |
-| Procesanalyse | Yes | Yes |
-| AI Prototyping | Yes | Yes |
-| AI Integratie | Yes | Yes |
-| AI Development Teams | Yes | Yes |
-| Diensten (overview) | Yes | Yes |
-| Over Ons / About | Yes | Yes |
-| Aanpak / Approach | **Missing** | **Missing** |
-| Team | **Missing** | **Missing** |
-| Resources (overview) | Yes | Yes |
-| AI Geletterdheid / Literacy | **Missing** | **Missing** |
-| AI Strategie Gids / Strategy Guide | **Missing** | **Missing** |
-| Case: Medux | **Missing** | **Missing** |
-| Case: OLX | **Missing** | **Missing** |
-| Case: Trabu | **Missing** | **Missing** |
-| Case: InnoEnergy | **Missing** | **Missing** |
-| Pers / Press | **No SEO at all** | **No SEO at all** |
-| Privacy | **Missing** | **Missing** |
-| Voorwaarden / Terms | **Missing** | **Missing** |
+| Page | NL seoDescription | EN seoDescription | Notes |
+|---|---|---|---|
+| AI Foundations | Yes | Yes (added) | |
+| Opportunity Scouting | Yes | Yes | |
+| Copilot Basics | Yes | Yes | |
+| AI voor Developers | Yes (added) | Yes (added) | |
+| AI Privacy & Security | Yes (added) | Yes (added) | |
+| AI Media Literacy | Yes (added) | Yes (added) | |
+| AI Readiness Scan | Yes | Yes | |
+| AI Roadmap | Yes | Yes | |
+| Maatwerk AI-Oplossingen | Yes | Yes | |
+| Digitale Onafhankelijkheid | Yes | Yes | Dates updated |
+| EU Training | Yes | Yes | |
+| EU Consultancy | Yes | Yes | |
+| EU Development | Yes | Yes | |
+| Business Case Development | Yes | Yes | |
+| AI Implementatiebegeleiding | Yes | Yes | |
+| Procesanalyse | Yes | Yes | |
+| AI Prototyping | Yes | Yes | |
+| AI Integratie | Yes | Yes | |
+| AI Development Teams | Yes | Yes | |
+| Diensten (overview) | Yes | Yes | |
+| Over Ons / About | Yes | Yes | |
+| Aanpak / Approach | Yes (added) | Yes (added) | |
+| Team | Yes (added) | Yes (added) | |
+| Resources (overview) | Yes | Yes | |
+| AI Geletterdheid / Literacy | Yes (added) | Yes (added) | |
+| AI Strategie Gids / Strategy Guide | Yes (added) | Yes (added) | |
+| Case: Medux | Yes (added) | Yes (added) | CTA added |
+| Case: OLX | Yes (added) | Yes (added) | CTA added |
+| Case: Trabu | Yes (added) | Yes (added) | CTA added |
+| Case: InnoEnergy | Yes (added) | Yes (added) | CTA added |
+| Pers / Press | Yes (added) | Yes (added) | useSEO added |
+| Privacy | Yes (added, noindex) | Yes (added, noindex) | noindex set |
+| Voorwaarden / Terms | Yes (added, noindex) | Yes (added, noindex) | noindex set |
+
+**All pages now have SEO descriptions. Tier 1 quick wins are complete.**

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -9,6 +10,7 @@ export const OLXEN: React.FC = () => {
       title="Case Study: OLX Magic"
       subtitle="AI-powered marketplace transformation. Smarter search, better user experience."
       accentColor="blue"
+      seoDescription="Case study OLX Magic: AI-powered marketplace transformation with smarter search and better user experience. By AI Heroes."
       pillarBadge="Consulting + Software"
     >
       <div className="prose prose-lg max-w-none">
@@ -178,6 +180,19 @@ export const OLXEN: React.FC = () => {
           <p>
             OLX is a leading global marketplace enabling millions to buy and sell goods and services easily. Committed to simplifying transactions and fostering trust, OLX has redefined e-commerce with innovative solutions and a user-first approach.
           </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue" className="mt-8">
+          <h3 className="text-xl font-serif mb-3">Want similar results?</h3>
+          <p className="mb-4">
+            Tell us about your challenge. We'd love to explore how AI can help your organization.
+          </p>
+          <Link
+            to="/en/services"
+            className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+          >
+            View our services
+          </Link>
         </DarkBox>
       </div>
     </PageLayout>

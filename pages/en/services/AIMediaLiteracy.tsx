@@ -10,6 +10,7 @@ export const AIMediaLiteracyEN: React.FC = () => {
       title="AI Media Literacy"
       subtitle="Deepfakes, AI-generated content and disinformation. Learn to recognize what's real and what's not."
       accentColor="blue"
+      seoDescription="AI Media Literacy workshop: learn to recognize deepfakes and AI-generated content. Protect your organization from disinformation. By AI Heroes."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

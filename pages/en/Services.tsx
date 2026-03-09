@@ -577,7 +577,7 @@ const ContactFormEmbed: React.FC<{
         type="submit"
         className={`${accentBg} text-white px-10 py-4 uppercase tracking-widest text-sm font-bold transition-all duration-300 disabled:opacity-50 shadow-lg hover:shadow-xl`}
       >
-        {formState === 'submitting' ? 'Verzenden...' : content.submit}
+        {formState === 'submitting' ? (lang === 'nl' ? 'Verzenden...' : 'Sending...') : content.submit}
       </button>
     </form>
   );
