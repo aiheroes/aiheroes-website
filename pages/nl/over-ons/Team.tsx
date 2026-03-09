@@ -8,7 +8,7 @@ export const TeamNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Ons Team"
-      subtitle="Wij zijn Frans, Jan en David. We helpen je verder als je vastloopt met AI."
+      subtitle="Geboren probleemoplossers. We helpen je verder als je vastloopt met AI."
       accentColor="blue"
       seoDescription="Het team achter AI Heroes: Frans, Jan en David. Sinds 2019 helpen we organisaties met praktische AI-training, consulting en software."
     >
