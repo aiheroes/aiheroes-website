@@ -109,7 +109,7 @@ export const CONTENT: Record<Language, Content> = {
     approach: {
       title: "Hoe we werken",
       p1: "",
-      p2: "AI raakt <red>alles</red>\nJe strategie, je team, je technologie\n\nWij pakken alles aan\n\nEén partner voor het hele traject\nWe adviseren, trainen, bouwen\nen zorgen dat het <blue>werkt</blue>"
+      p2: "AI raakt <red>alles</red>\nJe strategie, je team, je technologie\n\nWij pakken het allemaal op\n\nEén partner voor het hele traject\nWe adviseren, trainen, bouwen\nen zorgen dat het <blue>werkt</blue>"
     },
     team: {
       title: "Wij zijn Frans, Jan en David",
