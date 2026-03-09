@@ -76,14 +76,14 @@ export const useSEO = ({ title, description, lang, path, alternatePath, noindex 
     setMetaTag('og:locale', lang === 'nl' ? 'nl_NL' : 'en_US');
     setMetaTag('og:type', 'website');
     setMetaTag('og:site_name', 'AI Heroes');
-    setMetaTag('og:image', `${DOMAIN}/og-image.png`);
+    setMetaTag('og:image', `${DOMAIN}/og-image.jpg`);
 
     // Twitter
     setMetaTag('twitter:card', 'summary_large_image');
     setMetaTag('twitter:title', fullTitle);
     setMetaTag('twitter:description', description);
     setMetaTag('twitter:url', fullUrl);
-    setMetaTag('twitter:image', `${DOMAIN}/og-image.png`);
+    setMetaTag('twitter:image', `${DOMAIN}/og-image.jpg`);
 
     // Canonical URL
     setLinkTag('canonical', fullUrl);
@@ -103,7 +103,7 @@ export const useSEO = ({ title, description, lang, path, alternatePath, noindex 
 };
 
 // Calculate the alternate language path based on URL patterns
-function calculateAlternatePath(path: string, currentLang: Language): string {
+export function calculateAlternatePath(path: string, currentLang: Language): string {
   if (currentLang === 'nl') {
     // NL -> EN
     return path

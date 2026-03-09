@@ -11,6 +11,9 @@ export const AIReadinessScanNL: React.FC = () => {
       subtitle="Waar staat jouw organisatie met AI? We brengen het in kaart en geven je een concreet actieplan."
       seoDescription="AI Readiness Scan: ontdek waar jouw organisatie staat met AI. Concrete aanbevelingen, quick wins en een roadmap voor de volgende stap. Door AI Heroes."
       accentColor="red"
+      pillarBadge="Consultancy"
+      ctaLabel="Vraag een scan aan"
+      trustedBy={["Medux", "Envalior", "050-IT"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

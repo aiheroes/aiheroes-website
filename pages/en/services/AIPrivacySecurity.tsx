@@ -7,10 +7,13 @@ export const AIPrivacySecurityEN: React.FC = () => {
   return (
     <PageLayout
       lang="en"
-      title="AI Privacy & Security"
+      title="Responsible AI Use"
       subtitle="Working safely with AI. From GDPR compliance to data governance - without losing productivity."
       accentColor="red"
       seoDescription="AI Privacy & Security training: work safely with AI, GDPR-compliant. Data governance and security best practices. Workshop by AI Heroes."
+      pillarBadge="Training"
+      ctaLabel="Book a workshop"
+      trustedBy={["Philips Healthcare", "Tweede Kamer", "Envalior"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

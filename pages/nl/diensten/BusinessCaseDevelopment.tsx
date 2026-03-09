@@ -12,6 +12,8 @@ export const BusinessCaseDevelopmentNL: React.FC = () => {
       seoDescription="Business Case Development: vertaal AI-kansen naar concrete business cases met ROI-berekeningen, kostenramingen en implementatietijdlijnen. Door AI Heroes."
       accentColor="red"
       pillarBadge="Consultancy"
+      ctaLabel="Plan een gesprek"
+      trustedBy={["InnoEnergy", "Prosus", "Envalior"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

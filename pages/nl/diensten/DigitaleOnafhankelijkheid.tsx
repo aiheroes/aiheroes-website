@@ -11,6 +11,8 @@ export const DigitaleOnafhankelijkheidNL: React.FC = () => {
       subtitle="Data, platformen en Europese wetgeving. Grip op je digitale omgeving in drie stappen."
       seoDescription="Digitale onafhankelijkheid voor Nederlandse organisaties. Training, consultancy en development voor Europese alternatieven en compliance. Door AI Heroes."
       accentColor="blue"
+      ctaLabel="Plan een gesprek"
+      trustedBy={["Tweede Kamer", "Envalior", "050-IT"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

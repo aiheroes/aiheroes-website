@@ -7,11 +7,13 @@ export const ProcessAnalysisEN: React.FC = () => {
   return (
     <PageLayout
       lang="en"
-      title="AI Process Analysis"
+      title="Process Optimisation"
       subtitle="Deep-dive into your business processes. Where are the automation opportunities? Which bottlenecks can AI solve?"
       seoDescription="AI Process Analysis: discover where automation and AI add value in your processes. Workflow mapping, bottleneck analysis and concrete gains. By AI Heroes."
       accentColor="red"
-      pillarBadge="Consultancy"
+      pillarBadge="Consulting"
+      ctaLabel="Schedule a consultation"
+      trustedBy={["Medux", "OLX Poland", "Prosus"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

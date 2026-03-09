@@ -7,11 +7,13 @@ export const AIIntegratieNL: React.FC = () => {
   return (
     <PageLayout
       lang="nl"
-      title="AI Integratie"
+      title="Systeemintegratie"
       subtitle="AI verbinden met je bestaande systemen. ERP, CRM, interne tools — we werken met wat je al hebt."
       seoDescription="AI Integratie: verbind AI-capaciteiten met je bestaande systemen. API-integraties, workflow automatisering en data pipelines. Door AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementatie"
+      ctaLabel="Bespreek je project"
+      trustedBy={["OLX Poland", "iFood Brazil", "Medux"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

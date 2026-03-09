@@ -7,11 +7,13 @@ export const AIImplementationGuidanceEN: React.FC = () => {
   return (
     <PageLayout
       lang="en"
-      title="AI Implementation Guidance"
+      title="Implementation Guidance"
       subtitle="Hands-on guidance during AI rollout. Change management, adoption tracking and on-the-floor coaching."
       seoDescription="AI Implementation Guidance: hands-on support during AI rollout. Change management, adoption tracking and coaching on the work floor. By AI Heroes."
       accentColor="red"
-      pillarBadge="Consultancy"
+      pillarBadge="Consulting"
+      ctaLabel="Schedule a consultation"
+      trustedBy={["Medux", "Trabu", "OLX Poland"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

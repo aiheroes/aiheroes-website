@@ -11,7 +11,9 @@ export const BusinessCaseDevelopmentEN: React.FC = () => {
       subtitle="From AI opportunity to substantiated investment proposal. ROI calculations, cost estimates and implementation timelines."
       seoDescription="Business Case Development: translate AI opportunities into concrete business cases with ROI calculations, cost estimates and implementation timelines. By AI Heroes."
       accentColor="red"
-      pillarBadge="Consultancy"
+      pillarBadge="Consulting"
+      ctaLabel="Schedule a consultation"
+      trustedBy={["InnoEnergy", "Prosus", "Envalior"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

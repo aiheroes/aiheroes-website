@@ -5,7 +5,7 @@ import { CONTENT } from '../constants';
 import { PageContactForm } from './PageContactForm';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
-import { useSEO } from '../hooks/useSEO';
+import { useSEO, calculateAlternatePath } from '../hooks/useSEO';
 import { ArrowRight } from 'lucide-react';
 
 interface PageLayoutProps {
@@ -18,6 +18,9 @@ interface PageLayoutProps {
   showContactForm?: boolean;
   pillarBadge?: string;
   noindex?: boolean;
+  ctaLabel?: string;
+  trustedBy?: string[];
+  heroExtra?: React.ReactNode;
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
@@ -29,7 +32,10 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   accentColor = 'red',
   showContactForm = true,
   pillarBadge,
-  noindex
+  noindex,
+  ctaLabel,
+  trustedBy,
+  heroExtra
 }) => {
   const location = useLocation();
 
@@ -56,40 +62,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
 
   // Generate the alternate language URL
   const getAlternateUrl = (): string => {
-    let path = location.pathname;
-    if (lang === 'nl') {
-      path = path.replace(/^\/nl\//, '/en/')
-        .replace('/diensten', '/services')
-        .replace('/over-ons', '/about')
-        .replace('/ai-voor-developers', '/ai-for-developers')
-        .replace('/maatwerk-ai-oplossingen', '/custom-ai-solutions')
-        .replace('/digitale-onafhankelijkheid', '/digital-independence')
-        .replace('/ai-implementatiebegeleiding', '/ai-implementation-guidance')
-        .replace('/procesanalyse', '/process-analysis')
-        .replace('/ai-integratie', '/ai-integration')
-        .replace('/aanpak', '/approach')
-        .replace('/ai-geletterdheid', '/ai-literacy')
-        .replace('/ai-strategie-gids', '/ai-strategy-guide')
-        .replace('/voorwaarden', '/terms')
-        .replace('/pers', '/press');
-      return path;
-    } else {
-      path = path.replace(/^\/en\//, '/nl/')
-        .replace('/services', '/diensten')
-        .replace('/about', '/over-ons')
-        .replace('/ai-for-developers', '/ai-voor-developers')
-        .replace('/custom-ai-solutions', '/maatwerk-ai-oplossingen')
-        .replace('/digital-independence', '/digitale-onafhankelijkheid')
-        .replace('/ai-implementation-guidance', '/ai-implementatiebegeleiding')
-        .replace('/process-analysis', '/procesanalyse')
-        .replace('/ai-integration', '/ai-integratie')
-        .replace('/approach', '/aanpak')
-        .replace('/ai-literacy', '/ai-geletterdheid')
-        .replace('/ai-strategy-guide', '/ai-strategie-gids')
-        .replace('/terms', '/voorwaarden')
-        .replace('/press', '/pers');
-      return path;
-    }
+    return calculateAlternatePath(location.pathname, lang);
   };
 
   // Handle language change - navigate to alternate URL
@@ -228,10 +201,23 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
               onClick={scrollToContact}
               className={`group ${accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue'} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl`}
             >
-              <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
+              <span>{ctaLabel || (lang === 'nl' ? 'Start gesprek' : 'Start conversation')}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           )}
+          {trustedBy && trustedBy.length > 0 && (
+            <div className="mt-10 pt-6 border-t border-white/15">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
+                {lang === 'nl' ? 'Vertrouwd door' : 'Trusted by'}
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-1">
+                {trustedBy.map((name, idx) => (
+                  <span key={idx} className="text-sm text-white/60 font-medium">{name}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {heroExtra}
         </div>
       </header>
 
@@ -246,7 +232,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       {showContactForm && (
         <section id="contact-form" className="py-16 md:py-24 bg-white border-t border-stone-200">
           <div className="max-w-4xl mx-auto px-6">
-            <PageContactForm lang={lang} accentColor={accentColor} />
+            <PageContactForm lang={lang} accentColor={accentColor} preselectedTopic={pillarBadge} />
           </div>
         </section>
       )}
@@ -272,7 +258,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
             onClick={scrollToContact}
             className={`group ${accentColor === 'red' ? 'bg-brand-blue hover:shadow-brand-blue/30' : 'bg-brand-red hover:shadow-brand-red/30'} text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105`}
           >
-            <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
+            <span>{ctaLabel || (lang === 'nl' ? 'Start gesprek' : 'Start conversation')}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

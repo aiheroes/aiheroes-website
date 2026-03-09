@@ -12,6 +12,8 @@ export const EUDevelopmentEN: React.FC = () => {
       seoDescription="EU Development: European AI solutions that work. Local models, European cloud integration and full data sovereignty. By AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementation"
+      ctaLabel="Discuss your project"
+      trustedBy={["Tweede Kamer", "050-IT"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

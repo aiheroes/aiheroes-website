@@ -7,9 +7,13 @@ export const OpportunityScoutingEN: React.FC = () => {
   return (
     <PageLayout
       lang="en"
-      title="Opportunity Scouting"
+      title="Business Case Analysis"
       subtitle="Where are you leaving money on the table? We analyze your processes and return with a roadmap that actually yields returns."
+      seoDescription="AI Opportunity Scouting: discover where AI adds value in your organization. Strategic analysis with a concrete roadmap and ROI calculation. Part of our consulting pillar."
       accentColor="red"
+      pillarBadge="Consulting"
+      ctaLabel="Schedule a consultation"
+      trustedBy={["Medux", "InnoEnergy", "Prosus"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

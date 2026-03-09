@@ -8,23 +8,19 @@ export const CONTENT: Record<Language, Content> = {
         href: "/nl/diensten",
         children: [
           { label: "AI Foundations", href: "/nl/diensten/ai-foundations", description: "De eerste stap van je team in AI", category: "training" },
-          { label: "Copilot Basics", href: "/nl/diensten/copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
+          { label: "Copilot Training", href: "/nl/diensten/copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
           { label: "AI voor Developers", href: "/nl/diensten/ai-voor-developers", description: "Technische implementatie", category: "training" },
-          { label: "AI Privacy & Security", href: "/nl/diensten/ai-privacy-security", description: "Governance & risicobeheer", category: "training" },
-          { label: "AI Media Literacy", href: "/nl/diensten/ai-media-literacy", description: "Deepfakes & desinformatie", category: "training" },
-          { label: "EU Training", href: "/nl/diensten/eu-training", description: "Digitale risico's & Europese alternatieven", category: "training" },
-          { label: "Opportunity Scouting", href: "/nl/diensten/opportunity-scouting", description: "Vind waar AI waarde creëert", category: "consulting" },
+          { label: "Verantwoord AI-gebruik", href: "/nl/diensten/ai-privacy-security", description: "Governance & risicobeheer", category: "training" },
+          { label: "AI & Desinformatie", href: "/nl/diensten/ai-media-literacy", description: "Deepfakes & desinformatie", category: "training" },
+          { label: "Business Case Analyse", href: "/nl/diensten/opportunity-scouting", description: "Vind waar AI waarde creëert", category: "consulting" },
           { label: "AI Readiness Scan", href: "/nl/diensten/ai-readiness-scan", description: "Waar staat jouw organisatie?", category: "consulting" },
           { label: "AI Roadmap", href: "/nl/diensten/ai-roadmap", description: "Van inzicht naar implementatieplan", category: "consulting" },
-          { label: "Business Case Development", href: "/nl/diensten/business-case-development", description: "Van kans naar investeringsvoorstel", category: "consulting" },
-          { label: "AI Implementatiebegeleiding", href: "/nl/diensten/ai-implementatiebegeleiding", description: "Hands-on begeleiding bij AI-uitrol", category: "consulting" },
-          { label: "AI Procesanalyse", href: "/nl/diensten/procesanalyse", description: "Ontdek waar AI waarde toevoegt", category: "consulting" },
-          { label: "EU Consultancy", href: "/nl/diensten/eu-consultancy", description: "Organisatiescan & migratie roadmap", category: "consulting" },
-          { label: "Maatwerk AI-Oplossingen", href: "/nl/diensten/maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
-          { label: "AI Prototyping", href: "/nl/diensten/ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
-          { label: "AI Integratie", href: "/nl/diensten/ai-integratie", description: "AI verbinden met je systemen", category: "software" },
-          { label: "AI Development Teams", href: "/nl/diensten/ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" },
-          { label: "EU Development", href: "/nl/diensten/eu-development", description: "Europese AI die werkt", category: "software" }
+          { label: "Implementatiebegeleiding", href: "/nl/diensten/ai-implementatiebegeleiding", description: "Hands-on begeleiding bij AI-uitrol", category: "consulting" },
+          { label: "Procesoptimalisatie", href: "/nl/diensten/procesanalyse", description: "Ontdek waar AI waarde toevoegt", category: "consulting" },
+          { label: "AI op Maat", href: "/nl/diensten/maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
+          { label: "Proof of Concept", href: "/nl/diensten/ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
+          { label: "Systeemintegratie", href: "/nl/diensten/ai-integratie", description: "AI verbinden met je systemen", category: "software" },
+          { label: "Dedicated Teams", href: "/nl/diensten/ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" }
         ]
       },
       about: {
@@ -46,6 +42,11 @@ export const CONTENT: Record<Language, Content> = {
       contact: {
         label: "Contact",
         href: "/nl/contact"
+      },
+      featured: {
+        label: "Digitale Onafhankelijkheid",
+        href: "/nl/diensten/eu-consultancy",
+        description: "Europese AI zonder vendor lock-in"
       }
     },
     hero: {
@@ -424,23 +425,19 @@ export const CONTENT: Record<Language, Content> = {
         href: "/en/services",
         children: [
           { label: "AI Foundations", href: "/en/services/ai-foundations", description: "Your team's first step into AI", category: "training" },
-          { label: "Copilot Basics", href: "/en/services/copilot-basics", description: "Microsoft 365 productivity", category: "training" },
+          { label: "Copilot Training", href: "/en/services/copilot-basics", description: "Microsoft 365 productivity", category: "training" },
           { label: "AI for Developers", href: "/en/services/ai-for-developers", description: "Technical implementation", category: "training" },
-          { label: "AI Privacy & Security", href: "/en/services/ai-privacy-security", description: "Governance & risk management", category: "training" },
-          { label: "AI Media Literacy", href: "/en/services/ai-media-literacy", description: "Deepfakes & misinformation", category: "training" },
-          { label: "EU Training", href: "/en/services/eu-training", description: "Digital risk & European alternatives", category: "training" },
-          { label: "Opportunity Scouting", href: "/en/services/opportunity-scouting", description: "Find where AI creates value", category: "consulting" },
+          { label: "Responsible AI Use", href: "/en/services/ai-privacy-security", description: "Governance & risk management", category: "training" },
+          { label: "AI & Disinformation", href: "/en/services/ai-media-literacy", description: "Deepfakes & misinformation", category: "training" },
+          { label: "Business Case Analysis", href: "/en/services/opportunity-scouting", description: "Find where AI creates value", category: "consulting" },
           { label: "AI Readiness Scan", href: "/en/services/ai-readiness-scan", description: "Where does your organisation stand?", category: "consulting" },
           { label: "AI Roadmap", href: "/en/services/ai-roadmap", description: "From insight to implementation plan", category: "consulting" },
-          { label: "Business Case Development", href: "/en/services/business-case-development", description: "From opportunity to investment proposal", category: "consulting" },
-          { label: "AI Implementation Guidance", href: "/en/services/ai-implementation-guidance", description: "Hands-on guidance during AI rollout", category: "consulting" },
-          { label: "AI Process Analysis", href: "/en/services/process-analysis", description: "Discover where AI adds value", category: "consulting" },
-          { label: "EU Consultancy", href: "/en/services/eu-consultancy", description: "Organisation scan & migration roadmap", category: "consulting" },
-          { label: "Custom AI Solutions", href: "/en/services/custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
-          { label: "AI Prototyping", href: "/en/services/ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
-          { label: "AI Integration", href: "/en/services/ai-integration", description: "Connect AI to your systems", category: "software" },
-          { label: "AI Development Teams", href: "/en/services/ai-development-teams", description: "Dedicated AI development capacity", category: "software" },
-          { label: "EU Development", href: "/en/services/eu-development", description: "European AI that works", category: "software" }
+          { label: "Implementation Guidance", href: "/en/services/ai-implementation-guidance", description: "Hands-on guidance during AI rollout", category: "consulting" },
+          { label: "Process Optimisation", href: "/en/services/process-analysis", description: "Discover where AI adds value", category: "consulting" },
+          { label: "Custom AI", href: "/en/services/custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
+          { label: "Proof of Concept", href: "/en/services/ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
+          { label: "System Integration", href: "/en/services/ai-integration", description: "Connect AI to your systems", category: "software" },
+          { label: "Dedicated Teams", href: "/en/services/ai-development-teams", description: "Dedicated AI development capacity", category: "software" }
         ]
       },
       about: {
@@ -462,6 +459,11 @@ export const CONTENT: Record<Language, Content> = {
       contact: {
         label: "Contact",
         href: "/en/contact"
+      },
+      featured: {
+        label: "Digital Independence",
+        href: "/en/services/eu-consultancy",
+        description: "European AI without vendor lock-in"
       }
     },
     hero: {

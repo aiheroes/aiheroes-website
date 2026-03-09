@@ -11,6 +11,9 @@ export const AIFoundationsEN: React.FC = () => {
       subtitle="Our core workshop. We come in and work with your team until everyone gets it."
       accentColor="red"
       seoDescription="AI Foundations workshop: teach your team to work effectively with ChatGPT, Claude and other AI tools. Practical 1-day training by AI Heroes."
+      pillarBadge="Training"
+      ctaLabel="Book a workshop"
+      trustedBy={["Postcode Loterij", "Banijay Benelux", "Prosus", "Hanze"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

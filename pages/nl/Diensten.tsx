@@ -30,6 +30,28 @@ export const DienstenNL: React.FC = () => {
     }
   }, [location.hash]);
 
+  // Inject FAQ structured data (JSON-LD)
+  useEffect(() => {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': content.faq.items.map(item => ({
+        '@type': 'Question',
+        'name': item.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.answer
+        }
+      }))
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'faq-schema';
+    script.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
+    return () => { document.getElementById('faq-schema')?.remove(); };
+  }, [content.faq.items]);
+
   const groupedServices = {
     training: services.filter(s => s.category === 'training'),
     consulting: services.filter(s => s.category === 'consulting'),
@@ -81,6 +103,37 @@ export const DienstenNL: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const heroCtaContent = (
+    <>
+      <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mt-8">
+        <button
+          onClick={scrollToServices}
+          className="group bg-brand-red text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+        >
+          <span>{content.hero.cta1}</span>
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </button>
+        <button
+          onClick={scrollToContact}
+          className="inline-flex items-center justify-center gap-3 border-2 border-white/30 text-white px-8 py-4 font-medium hover:border-white hover:bg-white/10 transition-all duration-300"
+        >
+          <span>{content.hero.cta2}</span>
+        </button>
+      </div>
+      <div className="mt-8 pt-6 border-t border-white/15">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/60">
+          <span className="font-medium text-white/80">{content.hero.credibility}</span>
+          <span className="text-white/30 mx-1">—</span>
+          {["Postcode Loterij", "Prosus", "Medux", "Banijay", "Hanze"].map((name, idx) => (
+            <span key={idx}>
+              {name}{idx < 4 && <span className="text-white/30 ml-1">&middot;</span>}
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <PageLayout
       lang="nl"
@@ -89,6 +142,7 @@ export const DienstenNL: React.FC = () => {
       seoDescription="AI Heroes diensten: training, consulting en software onder één dak. Van AI Foundations tot custom implementaties. Bekijk ons volledige aanbod."
       accentColor="red"
       showContactForm={false}
+      heroExtra={heroCtaContent}
     >
       {/* Sticky CTA */}
       <div
@@ -105,49 +159,9 @@ export const DienstenNL: React.FC = () => {
         </button>
       </div>
 
-      {/* Hero CTAs Section */}
-      <div className="max-w-4xl -mt-6 mb-20">
-        <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mb-6">
-          <button
-            onClick={scrollToServices}
-            className="group bg-brand-red text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
-          >
-            <span>{content.hero.cta1}</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button
-            onClick={scrollToContact}
-            className="inline-flex items-center justify-center gap-3 border-2 border-stone-300 text-brand-dark px-8 py-4 font-medium hover:border-brand-red hover:text-brand-red transition-all duration-300"
-          >
-            <span>{content.hero.cta2}</span>
-          </button>
-        </div>
-        <div className="flex items-center gap-3 text-stone-600">
-          <div className="w-8 h-8 rounded-full bg-brand-red/10 flex items-center justify-center">
-            <Check className="w-5 h-5 text-brand-red" />
-          </div>
-          <span className="text-sm font-medium">{content.hero.credibility}</span>
-        </div>
-      </div>
-
-      {/* Social Proof - Logos + Stats */}
-      <div className="max-w-none py-16 md:py-20 bg-gradient-to-b from-stone-50 to-white -mx-6 md:-mx-12 px-6 md:px-12">
+      {/* Stats */}
+      <div className="max-w-none -mt-8 md:-mt-16 pb-16 md:pb-20 -mx-6 md:-mx-12 px-6 md:px-12">
         <div className="max-w-5xl mx-auto">
-          {/* Logos */}
-          <div className="mb-12 pb-8 border-b border-stone-200">
-            <p className="text-center text-xs font-bold uppercase tracking-widest text-stone-400 mb-8">
-              Vertrouwd door
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6 opacity-50">
-              {["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Locatiqs"].map((logo, idx) => (
-                <span key={idx} className="text-base md:text-lg font-serif text-stone-500">
-                  {logo}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Stats cards */}
           <div className="grid md:grid-cols-3 gap-6">
             {content.stats.map((stat, idx) => (
               <div

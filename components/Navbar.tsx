@@ -189,6 +189,25 @@ export const Navbar: React.FC<NavbarProps> = ({
     closeTimerRef.current = setTimeout(() => setOpenDropdown(null), 100);
   };
 
+  // Featured nav link (EU / Digital Independence)
+  const featured = content.featured;
+
+  // EU flag inline SVG for featured link
+  const EuFlagIcon: React.FC<{ className?: string }> = ({ className }) => {
+    const stars = Array.from({ length: 12 }, (_, i) => {
+      const angle = (i * 30 - 90) * (Math.PI / 180);
+      return { x: 405 + 140 * Math.cos(angle), y: 270 + 140 * Math.sin(angle) };
+    });
+    return (
+      <svg viewBox="0 0 810 540" className={className} aria-label="EU Flag">
+        <rect width="810" height="540" fill="#003399" />
+        {stars.map((s, i) => (
+          <polygon key={i} points={`${s.x},${s.y - 20} ${s.x + 6},${s.y - 6} ${s.x + 19},${s.y - 6} ${s.x + 9},${s.y + 3} ${s.x + 12},${s.y + 17} ${s.x},${s.y + 9} ${s.x - 12},${s.y + 17} ${s.x - 9},${s.y + 3} ${s.x - 19},${s.y - 6} ${s.x - 6},${s.y - 6}`} fill="#FFCC00" />
+        ))}
+      </svg>
+    );
+  };
+
   // Services content
   const ServicesContent: React.FC = () => (
     <>
@@ -242,6 +261,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
       </div>
+      {featured && (
+        <div className="mt-4 pt-4 border-t border-stone-100">
+          <Link
+            to={featured.href}
+            onClick={() => setOpenDropdown(null)}
+            className="group flex items-center gap-3 px-3 py-2.5 rounded hover:bg-stone-50 transition-colors border-l-2 border-transparent hover:border-l-2"
+            style={{ borderImage: 'linear-gradient(to bottom, #E63946, #1D4ED8) 1' }}
+          >
+            <EuFlagIcon className="w-6 h-4 flex-shrink-0 rounded-[2px]" />
+            <div className="flex-1 min-w-0">
+              <span className="text-sm font-medium text-brand-dark group-hover:text-brand-red transition-colors">
+                {featured.label}
+              </span>
+              <span className="block text-xs text-stone-400 mt-0.5">
+                {featured.description}
+              </span>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-brand-red group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          </Link>
+        </div>
+      )}
     </>
   );
 
@@ -457,6 +497,26 @@ export const Navbar: React.FC<NavbarProps> = ({
               items={softwareItems}
               pillarKey="software"
             />
+            {/* Featured cross-pillar link */}
+            {featured && (
+              <div className="pl-4 pt-3 mt-2 border-t border-stone-200">
+                <Link
+                  to={featured.href}
+                  className="flex items-center gap-3 py-3 group"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <EuFlagIcon className="w-6 h-4 flex-shrink-0 rounded-[2px]" />
+                  <div>
+                    <span className="text-lg text-brand-dark group-hover:text-brand-red transition-colors">
+                      {featured.label}
+                    </span>
+                    <span className="block text-xs text-stone-400 mt-0.5">
+                      {featured.description}
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </div>

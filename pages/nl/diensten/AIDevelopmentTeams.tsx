@@ -7,11 +7,13 @@ export const AIDevelopmentTeamsNL: React.FC = () => {
   return (
     <PageLayout
       lang="nl"
-      title="AI Development Teams"
+      title="Dedicated Teams"
       subtitle="Dedicated AI-ontwikkelcapaciteit. Onze developers werken samen met jouw team. Flexibel schaalbaar."
       seoDescription="AI Development Teams: dedicated AI-ontwikkelcapaciteit. Team augmentatie, technisch leiderschap en flexibel schaalbare dev-capaciteit. Door AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementatie"
+      ctaLabel="Bespreek je project"
+      trustedBy={["OLX Poland", "iFood Brazil", "Prosus"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

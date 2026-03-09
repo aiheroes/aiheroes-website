@@ -12,6 +12,8 @@ export const EUTrainingNL: React.FC = () => {
       seoDescription="Training digitale onafhankelijkheid: risico's van Amerikaanse platformen, Europese alternatieven en regelgeving. Halve of hele dag op locatie. Door AI Heroes."
       accentColor="red"
       pillarBadge="Training"
+      ctaLabel="Plan een workshop"
+      trustedBy={["Tweede Kamer", "Hanze", "Envalior"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

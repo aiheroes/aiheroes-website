@@ -7,10 +7,13 @@ export const MaatwerkAIOplossigenNL: React.FC = () => {
   return (
     <PageLayout
       lang="nl"
-      title="Maatwerk AI-Oplossingen"
+      title="AI op Maat"
       subtitle="Custom AI-toepassingen, gebouwd met jouw team. Van prototype tot productie."
       seoDescription="Maatwerk AI-oplossingen door AI Heroes. Custom AI-applicaties, integratie in bestaande systemen, van prototype tot productie. Gebouwd met jouw team."
       accentColor="blue"
+      pillarBadge="Software & Implementatie"
+      ctaLabel="Bespreek je project"
+      trustedBy={["OLX Poland", "iFood Brazil", "Trabu", "TicketGenie"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

@@ -11,6 +11,9 @@ export const AIForDevelopersEN: React.FC = () => {
       subtitle="From API integration to custom model fine-tuning. Learn to build AI, not just use it."
       accentColor="blue"
       seoDescription="AI for Developers workshop: from API integration to fine-tuning. Learn to build AI with Python and JavaScript. Hands-on training by AI Heroes."
+      pillarBadge="Training"
+      ctaLabel="Book a workshop"
+      trustedBy={["OLX Poland", "iFood Brazil", "Prosus"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

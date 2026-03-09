@@ -7,10 +7,13 @@ export const AIPrivacySecurityNL: React.FC = () => {
   return (
     <PageLayout
       lang="nl"
-      title="AI Privacy & Security"
+      title="Verantwoord AI-gebruik"
       subtitle="Veilig werken met AI. Van GDPR compliance tot data governance - zonder de productiviteit te verliezen."
       accentColor="red"
       seoDescription="AI Privacy & Security training: veilig werken met AI, GDPR-compliant. Data governance en security best practices. Workshop door AI Heroes."
+      pillarBadge="Training"
+      ctaLabel="Plan een workshop"
+      trustedBy={["Philips Healthcare", "Tweede Kamer", "Envalior"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

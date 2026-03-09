@@ -7,10 +7,13 @@ export const AIMediaLiteracyNL: React.FC = () => {
   return (
     <PageLayout
       lang="nl"
-      title="AI Media Literacy"
+      title="AI & Desinformatie"
       subtitle="Deepfakes, AI-gegenereerde content en desinformatie. Leer herkennen wat echt is en wat niet."
       accentColor="blue"
       seoDescription="AI Media Literacy workshop: leer deepfakes en AI-content herkennen. Bescherm je organisatie tegen desinformatie. Training door AI Heroes."
+      pillarBadge="Training"
+      ctaLabel="Plan een workshop"
+      trustedBy={["Banijay Benelux", "Hanze"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

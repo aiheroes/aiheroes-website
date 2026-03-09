@@ -13,11 +13,18 @@ export interface NavItem {
   children?: NavChild[];
 }
 
+export interface FeaturedNavLink {
+  label: string;
+  href: string;
+  description: string;
+}
+
 export interface NavStructure {
   services: NavItem;
   about: NavItem;
   resources: NavItem;
   contact: NavItem;
+  featured?: FeaturedNavLink;
 }
 
 export interface HeroSlide {

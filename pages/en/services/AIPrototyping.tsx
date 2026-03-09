@@ -7,11 +7,13 @@ export const AIPrototypingEN: React.FC = () => {
   return (
     <PageLayout
       lang="en"
-      title="AI Prototyping"
+      title="Proof of Concept"
       subtitle="Validate your AI idea before committing to a full build. Rapid proof-of-concept in a 6-day sprint."
       seoDescription="AI Prototyping: validate your AI idea with a rapid proof-of-concept. 6-day sprint methodology that de-risks your investment. By AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementation"
+      ctaLabel="Discuss your project"
+      trustedBy={["Trabu", "TicketGenie", "050-IT"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

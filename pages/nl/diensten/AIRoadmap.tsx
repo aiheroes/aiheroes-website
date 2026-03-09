@@ -11,6 +11,9 @@ export const AIRoadmapNL: React.FC = () => {
       subtitle="Van inzicht naar implementatieplan. We vertalen AI-mogelijkheden naar een concrete roadmap voor jouw organisatie."
       seoDescription="AI Roadmap: van inzicht naar implementatieplan. Business cases, ROI-berekeningen en een gefaseerd plan voor AI-implementatie. Door AI Heroes."
       accentColor="red"
+      pillarBadge="Consultancy"
+      ctaLabel="Plan een gesprek"
+      trustedBy={["InnoEnergy", "Prosus", "Medux"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

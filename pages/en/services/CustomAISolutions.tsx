@@ -7,10 +7,13 @@ export const CustomAISolutionsEN: React.FC = () => {
   return (
     <PageLayout
       lang="en"
-      title="Custom AI Solutions"
+      title="Custom AI"
       subtitle="Custom AI applications, built with your team. From prototype to production."
       seoDescription="Custom AI solutions by AI Heroes. Custom AI applications, integration into existing systems, from prototype to production. Built with your team."
       accentColor="blue"
+      pillarBadge="Software & Implementation"
+      ctaLabel="Discuss your project"
+      trustedBy={["OLX Poland", "iFood Brazil", "Trabu", "TicketGenie"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

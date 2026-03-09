@@ -7,11 +7,13 @@ export const AIImplementatiebegeleidingNL: React.FC = () => {
   return (
     <PageLayout
       lang="nl"
-      title="AI Implementatiebegeleiding"
+      title="Implementatiebegeleiding"
       subtitle="Hands-on begeleiding tijdens AI-uitrol. Change management, adoptietracking en coaching op de werkvloer."
       seoDescription="AI Implementatiebegeleiding: hands-on begeleiding bij AI-uitrol. Change management, adoptietracking en coaching op de werkvloer. Door AI Heroes."
       accentColor="red"
       pillarBadge="Consultancy"
+      ctaLabel="Plan een gesprek"
+      trustedBy={["Medux", "Trabu", "OLX Poland"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

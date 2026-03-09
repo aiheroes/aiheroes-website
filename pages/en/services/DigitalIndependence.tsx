@@ -11,6 +11,8 @@ export const DigitalIndependenceEN: React.FC = () => {
       subtitle="Data, platforms and European law. Take control of your digital environment in three steps."
       seoDescription="Digital Independence: take control of your digital environment. Training, consultancy and development for European compliance and sovereignty. By AI Heroes."
       accentColor="blue"
+      ctaLabel="Schedule a consultation"
+      trustedBy={["Tweede Kamer", "Envalior", "050-IT"]}
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
