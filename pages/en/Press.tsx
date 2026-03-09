@@ -1,13 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../../components/Logo';
 import { Footer } from '../../components/Footer';
 import { CONTENT } from '../../constants';
 import { ArrowLeft, Download } from 'lucide-react';
 import { DarkBox } from '../../src/components/DarkBox';
+import { useSEO } from '../../hooks/useSEO';
 
 export const PressEN: React.FC = () => {
   const content = CONTENT['en'];
+
+  const location = useLocation();
+  useSEO({
+    title: 'Press & Media',
+    description: 'AI Heroes press & media: brand identity, logo, brand colors and guidelines. Brand assets and press contact.',
+    lang: 'en',
+    path: location.pathname
+  });
 
   return (
     <div className="min-h-screen bg-brand-light text-brand-dark">

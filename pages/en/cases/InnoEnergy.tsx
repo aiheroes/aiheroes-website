@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -9,6 +10,7 @@ export const InnoEnergyEN: React.FC = () => {
       title="Case Study: InnoEnergy"
       subtitle="AI-powered investment intelligence platform. From vision to board-approved prototype."
       accentColor="blue"
+      seoDescription="Case study InnoEnergy: AI-powered investment intelligence platform. From vision to board-approved prototype by AI Heroes."
       pillarBadge="Software & Implementation"
     >
       <div className="prose prose-lg max-w-none">
@@ -140,6 +142,19 @@ export const InnoEnergyEN: React.FC = () => {
             InnoEnergy drives Europe's sustainable energy transformation through strategic investment and innovation. They lead crucial initiatives in battery storage, green hydrogen, and solar energy. Through their educational programs, they're also developing the next generation of energy leaders, with 2,000+ master's and PhD graduates shaping the sector's future.
           </p>
         </div>
+
+        <DarkBox accentColor="blue" className="mt-8">
+          <h3 className="text-xl font-serif mb-3">Want similar results?</h3>
+          <p className="mb-4">
+            Tell us about your challenge. We'd love to explore how AI can help your organization.
+          </p>
+          <Link
+            to="/en/services#software"
+            className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+          >
+            View our services
+          </Link>
+        </DarkBox>
       </div>
     </PageLayout>
   );

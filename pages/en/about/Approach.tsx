@@ -10,6 +10,7 @@ export const ApproachEN: React.FC = () => {
       title="Our Approach"
       subtitle="Training, consulting and software — three pillars, one partner. We guide the entire AI journey."
       accentColor="red"
+      seoDescription="Our approach: training, consulting and software as three pillars under one roof. See how AI Heroes guides the entire AI journey."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

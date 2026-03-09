@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -10,6 +11,7 @@ export const TrabuNL: React.FC = () => {
       subtitle="Van idee naar werkend prototype in 6 dagen. AI-gedreven reisplanning voor investeerders."
       accentColor="red"
       pillarBadge="Software & Implementatie"
+      seoDescription="Case study Trabu: van idee naar werkend AI-prototype in 6 dagen. AI-gedreven reisplanning gebouwd door AI Heroes."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -99,6 +101,19 @@ export const TrabuNL: React.FC = () => {
           <p>
             Trabu combineert diepgaande reiskennis met geavanceerde technologie om iets volledig nieuws te creëren: AI die echt begrijpt wat elke reis bijzonder maakt. Hun visie gaat verder dan simpele boekingen - ze transformeren hoe mensen hun avonturen plannen.
           </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue" className="mt-8">
+          <h3 className="text-xl font-serif mb-3">Wil je vergelijkbare resultaten?</h3>
+          <p className="mb-4">
+            Vertel ons over je uitdaging. We denken graag mee over hoe AI jouw organisatie kan helpen.
+          </p>
+          <Link
+            to="/nl/diensten#software"
+            className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+          >
+            Bekijk onze diensten
+          </Link>
         </DarkBox>
       </div>
     </PageLayout>

@@ -9,6 +9,7 @@ export const AILiteracyEN: React.FC = () => {
       title="Why AI Literacy is an Essential Skill"
       subtitle="The EU AI Act makes it mandatory. But even without the law: those who don't understand AI miss opportunities."
       accentColor="blue"
+      seoDescription="Why AI literacy is essential: the EU AI Act makes it mandatory. Discover what AI literacy means and how to get started."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">

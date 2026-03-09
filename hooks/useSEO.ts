@@ -7,6 +7,7 @@ interface SEOConfig {
   lang: Language;
   path: string; // Current path without domain, e.g. "/nl/diensten/ai-foundations"
   alternatePath?: string; // The equivalent path in the other language
+  noindex?: boolean; // Set to true for pages that should not be indexed (e.g. legal pages)
 }
 
 const DOMAIN = 'https://aiheroes.io';
@@ -43,7 +44,7 @@ const setLinkTag = (rel: string, href: string, hreflang?: string) => {
   element.href = href;
 };
 
-export const useSEO = ({ title, description, lang, path, alternatePath }: SEOConfig) => {
+export const useSEO = ({ title, description, lang, path, alternatePath, noindex }: SEOConfig) => {
   useEffect(() => {
     // Full title with brand
     const fullTitle = `${title} | AI Heroes`;
@@ -63,16 +64,26 @@ export const useSEO = ({ title, description, lang, path, alternatePath }: SEOCon
     setMetaTag('title', fullTitle, true);
     setMetaTag('description', description, true);
 
+    // Robots directive for noindex pages
+    if (noindex) {
+      setMetaTag('robots', 'noindex, follow', true);
+    }
+
     // Open Graph
     setMetaTag('og:title', fullTitle);
     setMetaTag('og:description', description);
     setMetaTag('og:url', fullUrl);
     setMetaTag('og:locale', lang === 'nl' ? 'nl_NL' : 'en_US');
+    setMetaTag('og:type', 'website');
+    setMetaTag('og:site_name', 'AI Heroes');
+    setMetaTag('og:image', `${DOMAIN}/og-image.png`);
 
     // Twitter
+    setMetaTag('twitter:card', 'summary_large_image');
     setMetaTag('twitter:title', fullTitle);
     setMetaTag('twitter:description', description);
     setMetaTag('twitter:url', fullUrl);
+    setMetaTag('twitter:image', `${DOMAIN}/og-image.png`);
 
     // Canonical URL
     setLinkTag('canonical', fullUrl);
@@ -88,7 +99,7 @@ export const useSEO = ({ title, description, lang, path, alternatePath }: SEOCon
       setLinkTag('alternate', altUrl, 'x-default'); // Default to Dutch
     }
 
-  }, [title, description, lang, path, alternatePath]);
+  }, [title, description, lang, path, alternatePath, noindex]);
 };
 
 // Calculate the alternate language path based on URL patterns

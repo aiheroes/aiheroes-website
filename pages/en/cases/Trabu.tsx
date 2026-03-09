@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -9,6 +10,7 @@ export const TrabuEN: React.FC = () => {
       title="Case Study: Trabu"
       subtitle="From idea to working prototype in 6 days. AI-powered travel planning for investors."
       accentColor="red"
+      seoDescription="Case study Trabu: from idea to working AI prototype in 6 days. AI-powered travel planning built by AI Heroes."
       pillarBadge="Software & Implementation"
     >
       <div className="prose prose-lg max-w-none">
@@ -99,6 +101,19 @@ export const TrabuEN: React.FC = () => {
           <p>
             Trabu combines deep travel industry expertise with advanced technology to create something entirely new: AI that truly understands what makes each journey special. Their vision goes beyond simple booking - they're transforming how people plan their adventures.
           </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue" className="mt-8">
+          <h3 className="text-xl font-serif mb-3">Want similar results?</h3>
+          <p className="mb-4">
+            Tell us about your challenge. We'd love to explore how AI can help your organization.
+          </p>
+          <Link
+            to="/en/services#software"
+            className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+          >
+            View our services
+          </Link>
         </DarkBox>
       </div>
     </PageLayout>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageLayout } from '../../../components/PageLayout';
 import { DarkBox } from '../../../src/components/DarkBox';
 
@@ -9,6 +10,7 @@ export const MeduxEN: React.FC = () => {
       title="Case Study: Medux"
       subtitle="Voice-to-voice AI customer service. 70% cost reduction, 80% of calls automated."
       accentColor="red"
+      seoDescription="Case study Medux: voice-to-voice AI customer service with 70% cost reduction and 80% automated calls. Built by AI Heroes."
       pillarBadge="Software & Implementation"
     >
       <div className="prose prose-lg max-w-none">
@@ -98,6 +100,19 @@ export const MeduxEN: React.FC = () => {
           <p>
             Medux is a leading Dutch healthcare innovation company specializing in medical aids and healthcare technology. As a trusted partner to healthcare institutions and individuals, they make healthcare more accessible and affordable across the Netherlands.
           </p>
+        </DarkBox>
+
+        <DarkBox accentColor="blue" className="mt-8">
+          <h3 className="text-xl font-serif mb-3">Want similar results?</h3>
+          <p className="mb-4">
+            Tell us about your challenge. We'd love to explore how AI can help your organization.
+          </p>
+          <Link
+            to="/en/services#software"
+            className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
+          >
+            View our services
+          </Link>
         </DarkBox>
       </div>
     </PageLayout>

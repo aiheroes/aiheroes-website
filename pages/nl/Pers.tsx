@@ -1,13 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../../components/Logo';
 import { Footer } from '../../components/Footer';
 import { CONTENT } from '../../constants';
 import { ArrowLeft } from 'lucide-react';
 import { DarkBox } from '../../src/components/DarkBox';
+import { useSEO } from '../../hooks/useSEO';
 
 export const PersNL: React.FC = () => {
   const content = CONTENT['nl'];
+
+  const location = useLocation();
+  useSEO({
+    title: 'Pers & Media',
+    description: 'AI Heroes pers & media: huisstijl, logo, merkkleuren en richtlijnen. Brand assets en perscontact voor media.',
+    lang: 'nl',
+    path: location.pathname
+  });
 
   return (
     <div className="min-h-screen bg-brand-light text-brand-dark">

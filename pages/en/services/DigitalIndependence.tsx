@@ -20,8 +20,8 @@ export const DigitalIndependenceEN: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Timeline</p>
           <ul className="space-y-2 text-sm text-stone-200">
-            <li><strong className="text-white">Feb 2025:</strong> EU AI Act Article 4 — AI literacy mandatory</li>
-            <li><strong className="text-white">Aug 2025:</strong> General provisions of the EU AI Act take effect</li>
+            <li><strong className="text-white">Since Feb 2025:</strong> EU AI Act Article 4 — AI literacy now mandatory</li>
+            <li><strong className="text-white">Since Aug 2025:</strong> General provisions of the EU AI Act in effect</li>
             <li><strong className="text-white">CLOUD Act:</strong> US government can demand data from American companies, regardless of server location</li>
           </ul>
         </div>

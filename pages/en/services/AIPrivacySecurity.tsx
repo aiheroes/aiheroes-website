@@ -10,6 +10,7 @@ export const AIPrivacySecurityEN: React.FC = () => {
       title="AI Privacy & Security"
       subtitle="Working safely with AI. From GDPR compliance to data governance - without losing productivity."
       accentColor="red"
+      seoDescription="AI Privacy & Security training: work safely with AI, GDPR-compliant. Data governance and security best practices. Workshop by AI Heroes."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
