@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Content, Language } from '../types';
 import { ArrowRight } from 'lucide-react';
@@ -52,9 +52,11 @@ interface GlowCardProps {
   data: { title: string; description: string };
   lang: Language;
   dienstenPath: string;
+  staggerIndex: number;
+  revealed: boolean;
 }
 
-const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath }) => {
+const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath, staggerIndex, revealed }) => {
   const config = CARD_CONFIG[configKey];
   const navigate = useNavigate();
   const cardRef = useRef<HTMLAnchorElement>(null);
@@ -106,6 +108,9 @@ const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => { setIsHovered(false); setArrowHovered(false); }}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
+      onTouchCancel={() => setIsHovered(false)}
       className={`
         group relative
         bg-white border-l-[5px] ${config.accent}
@@ -114,17 +119,43 @@ const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath
         transition-all duration-500 ease-out
         md:hover:-translate-y-0.5
         block overflow-hidden
+        md:opacity-100 md:translate-y-0
+        ${revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
       `}
+      style={{ transitionDelay: `${staggerIndex * 150}ms` }}
     >
-      {/* Mouse-following glow */}
+      {/* Mouse-following glow (desktop) */}
       <div
-        className="absolute w-80 h-80 rounded-full pointer-events-none transition-opacity duration-300"
+        className="hidden md:block absolute w-80 h-80 rounded-full pointer-events-none transition-opacity duration-300"
         style={{
           background: `radial-gradient(circle, ${config.glowColor} 0%, transparent 65%)`,
           left: `${mousePos.x}%`,
           top: `${mousePos.y}%`,
           transform: 'translate(-50%, -50%)',
           opacity: isHovered ? 1 : 0,
+        }}
+      />
+      {/* Auto-animating glow (mobile) — two overlapping orbs with different periods for organic movement */}
+      <div
+        className="md:hidden absolute pointer-events-none"
+        style={{
+          width: '250px',
+          height: '250px',
+          borderRadius: '50%',
+          background: `radial-gradient(circle, ${config.glowColor.replace(/[\d.]+\)$/, '0.2)')} 0%, transparent 70%)`,
+          animation: revealed ? `glow-drift-x 7s ease-in-out ${staggerIndex * 0.9}s infinite, glow-drift-y1 11s ease-in-out ${staggerIndex * 0.5}s infinite` : 'none',
+          opacity: revealed ? 1 : 0,
+        }}
+      />
+      <div
+        className="md:hidden absolute pointer-events-none"
+        style={{
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          background: `radial-gradient(circle, ${config.glowColor.replace(/[\d.]+\)$/, '0.15)')} 0%, transparent 70%)`,
+          animation: revealed ? `glow-drift-x2 9s ease-in-out ${staggerIndex * 1.3}s infinite, glow-drift-y 6s ease-in-out ${staggerIndex * 0.7}s infinite` : 'none',
+          opacity: revealed ? 1 : 0,
         }}
       />
 
@@ -156,7 +187,8 @@ const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath
                 : isHovered
                   ? `${config.arrowBg} text-white border-transparent w-10 justify-center`
                   : `${config.arrowRestBg} ${config.arrowRestText} border-transparent w-10 justify-center`
-            }`}
+            } ${revealed ? 'md:animate-none animate-[arrow-pulse_0.6s_ease-out]' : ''}`}
+            style={revealed ? { animationDelay: `${staggerIndex * 150 + 500}ms`, animationFillMode: 'both' } : undefined}
           >
             {arrowHovered && (
               <span className="text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
@@ -174,6 +206,19 @@ const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath
 export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
   const keys = ['training', 'consulting', 'software'] as const;
   const dienstenPath = lang === 'nl' ? '/nl/diensten' : '/en/services';
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setRevealed(true); observer.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="services" className="w-full min-h-screen py-24 bg-brand-light relative flex flex-col justify-center">
@@ -187,14 +232,16 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
-          {keys.map((key) => (
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+          {keys.map((key, i) => (
             <GlowCard
               key={key}
               configKey={key}
               data={content.items[key]}
               lang={lang}
               dienstenPath={dienstenPath}
+              staggerIndex={i}
+              revealed={revealed}
             />
           ))}
         </div>

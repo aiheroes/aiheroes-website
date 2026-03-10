@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Language } from '../types';
 import { Check } from 'lucide-react';
 import { CONTENT } from '../constants';
@@ -48,6 +48,8 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
     organization: '',
     message: ''
   });
+  const [honeypot, setHoneypot] = useState('');
+  const mountTime = useRef(Date.now());
 
   const content = FORM_CONTENT[lang];
   const accentBg = accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue';
@@ -63,8 +65,22 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
     e.preventDefault();
     setFormState('submitting');
 
+    // Bot detection: silently show success to avoid revealing detection
+    const elapsed = Date.now() - mountTime.current;
+    if (
+      honeypot ||
+      elapsed < 3000 ||
+      /<a[\s>]/i.test(formData.message) ||
+      (formData.name.trim() !== '' && formData.name.trim() === formData.organization.trim())
+    ) {
+      setFormState('success');
+      setFormData({ name: '', email: '', organization: '', message: '' });
+      return;
+    }
+
     const submitData = new URLSearchParams({
       'form-name': 'contact',
+      'bot-field': honeypot,
       name: formData.name,
       email: formData.email,
       organization: formData.organization,
@@ -126,6 +142,16 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
       </p>
 
       <form name="contact" method="POST" onSubmit={handleSubmit} className="space-y-6">
+        <input
+          type="text"
+          name="bot-field"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          style={{ position: 'absolute', left: '-9999px' }}
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="page-contact-name" className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">

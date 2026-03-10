@@ -178,7 +178,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
 
       {/* Text content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full h-full flex flex-col justify-center">
-        <div className="max-w-3xl pt-20 pb-40">
+        <div className="max-w-3xl pt-16 pb-28 md:pt-20 md:pb-40">
           <div
             className="transition-opacity ease-in-out"
             style={{
@@ -187,15 +187,15 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
             }}
           >
             {/* Pillar label */}
-            <p className="text-sm md:text-base font-medium text-white/80 uppercase tracking-widest mb-6">
+            <p className="text-sm md:text-base font-medium text-white/80 uppercase tracking-widest mb-3 md:mb-6">
               {currentSlide.label}
             </p>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-white tracking-tight mb-8">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif font-medium text-white tracking-tight mb-5 md:mb-8">
               {renderHeadline(currentSlide.headline)}
             </h1>
 
-            <p className="text-xl md:text-2xl text-stone-200 mb-12 leading-relaxed max-w-2xl font-light whitespace-pre-line drop-shadow-md text-pretty">
+            <p className="text-lg md:text-2xl text-stone-200 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light whitespace-pre-line drop-shadow-md text-pretty">
               {currentSlide.subhead}
             </p>
 
@@ -218,7 +218,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
                 <button
                   key={idx}
                   onClick={() => goToSlide(idx)}
-                  className="relative text-left py-4 md:py-5 pr-4 group cursor-pointer"
+                  className="relative text-left py-3 md:py-5 pr-4 group cursor-pointer"
                 >
                   {/* Progress line / active indicator */}
                   <div className="absolute top-0 left-0 right-4 h-[3px]">
@@ -247,7 +247,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-24 md:bottom-20 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+      <div className="absolute bottom-20 md:bottom-20 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>

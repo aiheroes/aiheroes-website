@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Content } from '../types';
 import { Check } from 'lucide-react';
 
@@ -17,6 +17,8 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
     organization: '',
     message: ''
   });
+  const [honeypot, setHoneypot] = useState('');
+  const mountTime = useRef(Date.now());
 
   // Listen for topic selection from Services
   useEffect(() => {
@@ -41,8 +43,24 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
     e.preventDefault();
     setFormState('submitting');
 
+    // Bot detection: silently show success to avoid revealing detection
+    const elapsed = Date.now() - mountTime.current;
+    if (
+      honeypot ||
+      elapsed < 3000 ||
+      /<a[\s>]/i.test(formData.message) ||
+      (formData.name.trim() !== '' && formData.name.trim() === formData.organization.trim())
+    ) {
+      setFormState('success');
+      setFormData({ name: '', email: '', organization: '', message: '' });
+      setSelectedTopics([]);
+      setTopicColors({});
+      return;
+    }
+
     const submitData = new URLSearchParams({
       'form-name': 'contact',
+      'bot-field': honeypot,
       name: formData.name,
       email: formData.email,
       organization: formData.organization,
@@ -133,6 +151,16 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
                 onSubmit={handleSubmit}
                 className="space-y-3 md:space-y-8"
               >
+                <input
+                  type="text"
+                  name="bot-field"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  style={{ position: 'absolute', left: '-9999px' }}
+                />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8">
                   <div className="group">
                     <label htmlFor="contact-name" className="block text-[8px] md:text-xs font-bold uppercase tracking-wider text-stone-500 mb-0.5">

@@ -56,7 +56,7 @@ export const CONTENT: Record<Language, Content> = {
       secondaryBtn: "Wat we doen",
       slides: [
         {
-          label: "One-Stop AI",
+          label: "Alles van A tot I",
           headline: "AI <red>werkt</red> als je\nweet <blue>hoe</blue>",
           subhead: "Eén partner voor training, strategie en implementatie.\nWaar je ook staat met AI.",
           ctaLabel: "Laten we praten",
@@ -90,7 +90,7 @@ export const CONTENT: Record<Language, Content> = {
       ]
     },
     services: {
-      title: "One-Stop AI",
+      title: "Alles van A tot I",
       items: {
         training: {
           title: "Training & Workshops",
@@ -473,7 +473,7 @@ export const CONTENT: Record<Language, Content> = {
       secondaryBtn: "What we do",
       slides: [
         {
-          label: "One-Stop AI",
+          label: "Everything A to I",
           headline: "AI <red>works</red> if you\nknow <blue>how</blue>",
           subhead: "One partner for training, strategy and implementation.\nWherever you stand with AI.",
           ctaLabel: "Let's talk",
@@ -507,7 +507,7 @@ export const CONTENT: Record<Language, Content> = {
       ]
     },
     services: {
-      title: "One-Stop AI",
+      title: "Everything A to I",
       items: {
         training: {
           title: "Training & Workshops",

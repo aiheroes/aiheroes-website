@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Main Footer Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-6 mb-10">
 
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
@@ -220,7 +220,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Partner logos row */}
           <div className="flex flex-wrap items-center gap-y-3 mb-6">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-stone-600 pr-6">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-stone-600 pr-6 w-full md:w-auto mb-1 md:mb-0">
               {lang === 'nl' ? 'We werken met' : 'We work with'}
             </span>
             {/* AI providers */}
@@ -254,7 +254,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
           </div>
 
           {/* EU Trust Badges row */}
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {/* GDPR */}
             <div className="flex items-center gap-3 bg-stone-800/80 border border-stone-700/60 px-5 py-3 rounded-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
               <svg viewBox="0 0 810 540" className="w-7 h-5 flex-shrink-0 rounded-[2px]" aria-label="EU Flag">
@@ -311,8 +311,8 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
         {/* Bottom Bar */}
         <div className="pt-6">
           <div className="h-px bg-gradient-to-r from-brand-red/30 via-purple-500/15 to-brand-blue/30 mb-6" />
-          <div className="flex flex-col md:flex-row justify-between items-center text-xs text-stone-500 gap-4">
-            <p className="flex items-center gap-1.5">
+          <div className="flex flex-col md:flex-row justify-between items-center text-xs text-stone-500 gap-3">
+            <p className="flex items-center gap-1.5 whitespace-nowrap">
               <span>{content.copyright}</span>
               <span className="text-stone-700">|</span>
               <img src="/Flag_Groningen.svg" alt="Groningen flag" className="w-4 h-[11px] rounded-[1px] flex-shrink-0" />
