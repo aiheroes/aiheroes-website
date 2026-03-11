@@ -114,7 +114,7 @@ export const CONTENT: Record<Language, Content> = {
     team: {
       title: "Geboren probleemoplossers",
       location: "Gevestigd in Groningen",
-      body: "Drie oprichters, één gedeelde passie voor AI.\nMet een netwerk van specialisten voor elk project.",
+      body: "Drie oprichters, één gedeelde passie voor AI.\nMet een lokaal netwerk van experts voor elk project.",
       cta: {
         text: "Leer ons kennen",
         href: "/nl/over-ons/team"
@@ -531,7 +531,7 @@ export const CONTENT: Record<Language, Content> = {
     team: {
       title: "Born problem-solvers",
       location: "Based in Groningen",
-      body: "Three founders, one shared passion for AI.\nWith a network of specialists for every project.",
+      body: "Three founders, one shared passion for AI.\nWith a local network of experts for every project.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"
