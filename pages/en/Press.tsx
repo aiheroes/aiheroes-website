@@ -24,10 +24,7 @@ export const PressEN: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center">
-            <Logo className="h-10 w-10 mr-3" variant="square" />
-            <span className="text-xl font-sans font-bold tracking-tight text-brand-dark">
-              AI Heroes
-            </span>
+            <Logo className="h-8 w-auto text-brand-dark" variant="wordmark" />
           </Link>
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-sm font-medium text-stone-600 hover:text-brand-dark flex items-center gap-1">
@@ -80,32 +77,50 @@ export const PressEN: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Our logo represents the human element in AI – a stylized figure with neural pathways, symbolizing the connection between human intelligence and artificial intelligence.
+              Our logo combines the letters "AI" with a distinctive frame enclosing "HEROES" — a mark that represents structure, clarity, and the power of AI.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              {/* Primary Logo */}
+            <h3 className="text-xl font-serif text-brand-dark mb-4">Wordmark</h3>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
                 <div className="bg-brand-light p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-24 w-24" variant="square" />
+                  <Logo className="h-16 w-auto text-brand-dark" variant="wordmark" />
                 </div>
-                <span className="text-sm text-stone-500">Primary (Color)</span>
+                <span className="text-sm text-stone-500">On light background</span>
               </div>
-
-              {/* Logo on Dark */}
               <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-24 w-24" variant="square" />
+                  <Logo className="h-16 w-auto text-white" variant="wordmark" />
                 </div>
-                <span className="text-sm text-white/70">On Dark Background</span>
+                <span className="text-sm text-white/70">On dark background</span>
               </div>
+            </div>
 
-              {/* Logo Mark Only */}
-              <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-24 w-24" variant="white" />
+            <h3 className="text-xl font-serif text-brand-dark mb-4">Icon</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+              <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
+                <div className="bg-brand-light p-4 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-20 w-20 text-brand-dark" variant="icon" />
                 </div>
-                <span className="text-sm text-white/80">Monochrome White</span>
+                <span className="text-sm text-stone-500">Dark</span>
+              </div>
+              <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
+                <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-20 w-20 text-white" variant="icon" />
+                </div>
+                <span className="text-sm text-white/70">White</span>
+              </div>
+              <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
+                <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-20 w-20 text-white" variant="icon" />
+                </div>
+                <span className="text-sm text-white/80">On red</span>
+              </div>
+              <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
+                <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-20 w-20 text-white" variant="icon" />
+                </div>
+                <span className="text-sm text-white/80">On blue</span>
               </div>
             </div>
 

@@ -54,11 +54,8 @@ export const NotFound: React.FC = () => {
     <div className="min-h-screen bg-brand-dark flex flex-col">
       {/* Simple header */}
       <nav className="p-6">
-        <Link to={homeUrl} className="flex items-center gap-3">
-          <Logo className="h-10 w-10" variant="square" />
-          <span className="text-xl font-sans font-bold tracking-tight text-white">
-            AI Heroes
-          </span>
+        <Link to={homeUrl} className="flex items-center">
+          <Logo className="h-8 w-auto text-white" variant="wordmark" />
         </Link>
       </nav>
 

@@ -91,9 +91,8 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <Logo className="h-8 w-8" variant="white" />
-              <span className="font-sans font-bold tracking-tight uppercase text-white text-lg">AI Heroes</span>
+            <div className="mb-6 flex justify-center -ml-6">
+              <Logo className="h-20 w-20 lg:h-24 lg:w-24 text-white" variant="icon" />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed mb-6 text-pretty">
               {content.tagline}

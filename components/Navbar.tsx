@@ -124,7 +124,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // Legacy support for non-split mode
   const textClass = textColor === 'white' ? 'text-white' : 'text-brand-dark';
-  const logoVariant = 'square';
 
   // Determine if we should use split mode
   const useSplitMode = splitPosition !== null && topTheme !== bottomTheme;
@@ -399,19 +398,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   // Render nav content for a given theme
   const renderNavContent = (theme: 'dark' | 'light') => {
     const navTextClass = getTextClass(theme);
-    const logoTextClass = theme === 'dark' ? 'text-white' : 'text-brand-dark';
+    const logoColorClass = theme === 'dark' ? 'text-white' : 'text-brand-dark';
     const slashClass = theme === 'dark' ? 'text-white/30' : 'text-brand-dark/30';
 
     return (
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <a href={homeUrl} onClick={handleLogoClick} className="flex items-center cursor-pointer">
-          <div className="mr-3">
-            <Logo className="h-10 w-10" variant={logoVariant} />
-          </div>
-          <span className={`text-xl font-sans font-bold tracking-tight ${logoTextClass}`}>
-            AI Heroes
-          </span>
+          <Logo className={`h-16 w-auto ${logoColorClass}`} variant="wordmark" />
         </a>
 
         {/* Desktop Nav */}
