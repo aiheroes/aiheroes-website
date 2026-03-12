@@ -399,13 +399,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   const renderNavContent = (theme: 'dark' | 'light') => {
     const navTextClass = getTextClass(theme);
     const logoColorClass = theme === 'dark' ? 'text-white' : 'text-brand-dark';
+    const logoColor = theme === 'dark' ? 'mono' as const : 'fullcolor' as const;
     const slashClass = theme === 'dark' ? 'text-white/30' : 'text-brand-dark/30';
 
     return (
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <a href={homeUrl} onClick={handleLogoClick} className="flex items-center cursor-pointer">
-          <Logo className={`h-16 w-auto ${logoColorClass}`} variant="wordmark" />
+          <Logo className={`h-16 w-auto ${logoColorClass}`} variant="wordmark" colorVariant={logoColor} />
         </a>
 
         {/* Desktop Nav */}
