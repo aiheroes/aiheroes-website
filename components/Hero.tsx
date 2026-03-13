@@ -178,7 +178,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
 
       {/* Text content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full h-full flex flex-col justify-center">
-        <div className="max-w-3xl pt-16 pb-28 md:pt-20 md:pb-40">
+        <div className="max-w-3xl pt-24 pb-28 md:pt-32 md:pb-40">
           <div
             className="transition-opacity ease-in-out"
             style={{
