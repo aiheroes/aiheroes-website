@@ -55,10 +55,10 @@ export const PersNL: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes helpt organisaties bij het navigeren door de complexiteit van kunstmatige intelligentie met praktische vaardigheden en strategisch inzicht. Opgericht in 2019, hebben we duizenden professionals getraind bij bedrijven van startups tot Fortune 500-ondernemingen.
+                  AI Heroes is een AI consultancy uit Groningen. We trainen teams, maken plannen en bouwen AI-oplossingen. Eén team, drie disciplines, van eerste kennismaking tot werkende software.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  Onze workshops snijden door de hype heen om echte, toepasbare AI-kennis te leveren. Wij geloven dat AI werkt als je weet hoe.
+                  We helpen 50+ organisaties met AI — van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen. Waar je ook staat, we kunnen helpen.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
@@ -66,8 +66,9 @@ export const PersNL: React.FC = () => {
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Opgericht:</strong> 2019</li>
                   <li><strong>Hoofdkantoor:</strong> Groningen, Nederland</li>
-                  <li><strong>Focus:</strong> AI Training & Advies</li>
+                  <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
                   <li><strong>Contact:</strong> hello@aiheroes.io</li>
+                  <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters, elk specialist in een pijler</Link></li>
                 </ul>
               </div>
             </div>
@@ -77,11 +78,11 @@ export const PersNL: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Ons logo combineert de letters "AI" met een kenmerkend kader dat "HEROES" omsluit — een beeldmerk dat structuur, helderheid en de kracht van AI vertegenwoordigt.
+              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn — als een circuit dat onze drie pijlers vertegenwoordigt. De rode lijn begint bij de I (training, het startpunt), loopt door het kader (software, de infrastructuur) en eindigt in de A: een pijl omhoog (advies, vooruitgang). De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt. Het traject kan bij elke pijler beginnen — de lijn loopt rond.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Woordmerk</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
               <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
                 <div className="bg-brand-light p-6 rounded-lg mb-4 w-full flex justify-center">
                   <Logo className="h-12 w-auto" variant="wordmark" colorVariant="fullcolor" />
@@ -99,6 +100,12 @@ export const PersNL: React.FC = () => {
                   <Logo className="h-12 w-auto text-white" variant="wordmark" />
                 </div>
                 <span className="text-sm text-white/80">Op rood</span>
+              </div>
+              <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
+                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
+                </div>
+                <span className="text-sm text-white/80">Op blauw</span>
               </div>
             </div>
 
@@ -231,17 +238,23 @@ export const PersNL: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Missie</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Training</p>
                   <p className="text-stone-700 font-medium">
-                    Wij helpen organisaties AI te navigeren met praktische vaardigheden en strategisch inzicht.
+                    We leren je team wat AI kan. En wat niet.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Waardepropositie</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Advies</p>
                   <p className="text-stone-700 font-medium">
-                    Praktische workshops waar je iets aan hebt. Skills die voor je werken.
+                    We brengen je kansen in kaart en maken een concreet plan.
+                  </p>
+                </div>
+                <div className="bg-stone-50 p-6 border-l-4 border-brand-dark">
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Software</p>
+                  <p className="text-stone-700 font-medium">
+                    We bouwen AI-oplossingen. Met je team of zelfstandig.
                   </p>
                 </div>
               </div>

@@ -55,10 +55,10 @@ export const PressEN: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes helps organizations navigate the complexities of Artificial Intelligence with practical skills and strategic insight. Founded in 2019, we've trained thousands of professionals at companies ranging from startups to Fortune 500 enterprises.
+                  AI Heroes is an AI consultancy based in Groningen. We train teams, make plans, and build AI solutions. One team, three disciplines, from first introduction to working software.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  Our workshops cut through the hype to deliver real, applicable AI knowledge. We believe AI works when you know how.
+                  We help 50+ organisations with AI — from teams that don't know what AI is yet, to companies ready to build. Wherever you stand, we can help.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
@@ -66,8 +66,9 @@ export const PressEN: React.FC = () => {
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Founded:</strong> 2019</li>
                   <li><strong>Headquarters:</strong> Groningen, Netherlands</li>
-                  <li><strong>Focus:</strong> AI Training & Consulting</li>
+                  <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
                   <li><strong>Contact:</strong> hello@aiheroes.io</li>
+                  <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders, each a specialist in one pillar</Link></li>
                 </ul>
               </div>
             </div>
@@ -77,11 +78,11 @@ export const PressEN: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Our logo combines the letters "AI" with a distinctive frame enclosing "HEROES" — a mark that represents structure, clarity, and the power of AI.
+              Our logo reads like a line diagram. The frame connects the letters "AI" with "HEROES" in one continuous line — like a circuit representing our three pillars. The red line starts at the I (training, the starting point), runs through the frame (software, the infrastructure) and ends in the A: an upward arrow (consulting, progress). The upward arrow also references the send button of an AI prompt. The journey can start at any pillar — the line runs full circle.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Wordmark</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
               <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
                 <div className="bg-brand-light p-6 rounded-lg mb-4 w-full flex justify-center">
                   <Logo className="h-12 w-auto" variant="wordmark" colorVariant="fullcolor" />
@@ -99,6 +100,12 @@ export const PressEN: React.FC = () => {
                   <Logo className="h-12 w-auto text-white" variant="wordmark" />
                 </div>
                 <span className="text-sm text-white/80">On red</span>
+              </div>
+              <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
+                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
+                </div>
+                <span className="text-sm text-white/80">On blue</span>
               </div>
             </div>
 
@@ -231,17 +238,23 @@ export const PressEN: React.FC = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Mission Statement</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Training</p>
                   <p className="text-stone-700 font-medium">
-                    We help organizations navigate the complexities of Artificial Intelligence with practical skills and strategic insight.
+                    We teach your team what AI can do. And what it can't.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Value Proposition</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Consulting</p>
                   <p className="text-stone-700 font-medium">
-                    Practical workshops where people actually learn something. Skills that work for you.
+                    We map your opportunities and make a concrete plan.
+                  </p>
+                </div>
+                <div className="bg-stone-50 p-6 border-l-4 border-brand-dark">
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Software</p>
+                  <p className="text-stone-700 font-medium">
+                    We build AI solutions. With your team or independently.
                   </p>
                 </div>
               </div>
