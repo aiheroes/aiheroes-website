@@ -24,7 +24,7 @@ export const PressEN: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center">
-            <Logo className="h-8 w-auto text-brand-dark" variant="wordmark" />
+            <Logo className="h-8 w-auto" variant="wordmark" colorVariant="fullcolor" />
           </Link>
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-sm font-medium text-stone-600 hover:text-brand-dark flex items-center gap-1">

@@ -1,280 +1,285 @@
 # AI Heroes — Offerings Bible
 
-> Single source of truth for positioning, messaging, and service descriptions.
-> Use this document as the foundation for the website, social campaigns, sales decks, and all external communication.
+> Zo praten we over onszelf. Dit document is de basis voor de website, socials, salespresentaties en alles wat naar buiten gaat.
 
 ---
 
-## Brand Identity
+## Wie we zijn
 
-**Company name:** AI Heroes
-**Tagline:** AI werkt als je weet hoe / AI works when you know how
-**Type:** AI Consultancy
-**Location:** Groningen, Nederland
+**Bedrijf:** AI Heroes
+**Tagline:** AI werkt als je weet hoe
+**Wat we zijn:** AI consultancy
+**Waar:** Groningen
 **Contact:** info@aiheroes.io / aiheroes.io
-**Founders:** Frans Hoorn, Jan Brusse, David Homan
+**Team:** Frans Hoorn, Jan Brusse, David Homan
 
 ---
 
-## Core Value Proposition
+## Wat we doen
 
-AI Heroes is een AI consultancy die organisaties helpt in elk stadium van hun AI-reis. Van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen — wij zijn de partner voor het hele traject.
+We helpen organisaties met AI. We trainen teams, maken plannen en bouwen oplossingen. Eén team, drie disciplines, van eerste kennismaking tot werkende software.
 
-**English:** AI Heroes is an AI consultancy that helps organisations at every stage of their AI journey. From teams that don't yet know what AI is, to companies ready to build — we are the partner for the entire trajectory.
-
----
-
-## The Problem We Solve
-
-The AI market is fragmented. Organisations want to use AI but face a broken landscape:
-
-### Strategy without execution
-Advisory firms deliver reports. Those reports end up in a drawer. There's no one to help implement the recommendations.
-
-### Training without follow-up
-Workshop bureaus deliver a training day. Afterwards, the organisation is on its own. Knowledge fades, adoption stalls.
-
-### Software without adoption
-Tech companies build tools. When nobody understands what the tools can do, nothing happens. Technology without people is useless.
-
-### The gap in the market
-Nobody combines training, consulting, and software development in one local partner. AI Heroes does.
+**English:** We help organisations with AI. We train teams, make plans, and build solutions. One team, three disciplines, from first introduction to working software.
 
 ---
 
-## Three Pillars
+## Drie pijlers
 
-AI Heroes integrates three service pillars into one offering. Clients can enter at any stage — they don't need to start at pillar 1. However, the natural flow is Training > Consulting > Software, and clients frequently progress through all three.
-
----
-
-### Pillar 1: Training
-
-**One-liner:** We teach your people what AI can do — and what to watch out for.
-
-**Owner:** Jan Brusse
-
-**What it is:**
-Workshops and incompany trainings for teams at every level. From the boardroom to the work floor, we bring practical AI knowledge to the people who need it most.
-
-**What we cover:**
-- What AI is and what it can already do today
-- Hands-on demonstrations and exercises
-- Pitfalls, risks, and limitations
-- How to identify opportunities within your own role
-- EU AI Act compliance and AI literacy obligations (Article 4)
-
-**Formats:**
-- Half-day and full-day workshops
-- Multi-session incompany training programmes
-- Tailored to audience level (executive, management, operational teams)
-- Both Dutch and English
-
-**Price range:** EUR 2.500 - EUR 4.000 per day
-
-**Margin:** ~80% (own labour + expertise)
-
-**Why it matters:**
-The EU AI Act (Article 4) obliges organisations to ensure AI literacy. Many organisations still have massive knowledge gaps — even within the same company, understanding varies wildly. Training is the foundation for everything that follows.
-
-**Typical client:**
-- MKB directie that wants to understand AI before investing
-- Large organisations needing to upskill teams at scale
-- Overflow from Copilot Academy partnership (Microsoft Copilot trainings)
-
-**Example engagement:**
-Workshop AI for MT — MKB directie, 10 participants. 1 day preparation + 1 day workshop. Revenue: EUR 3.500.
+Je kunt bij elke pijler instappen. De meeste klanten beginnen bij training, gaan door naar advies, en bouwen dan. Maar als je al weet wat je wilt, beginnen we gewoon daar.
 
 ---
 
-### Pillar 2: Consulting
+### Pijler 1: Training
 
-**One-liner:** We map your opportunities and build your AI roadmap.
+**Kort:** We leren je team wat AI kan. En wat niet.
 
-**Owner:** Frans Hoorn
+**Eigenaar:** Jan Brusse
 
-**What it is:**
-Hands-on AI consultancy. We go into an organisation, audit processes, assess teams, and identify where AI creates real value. We translate possibilities into concrete plans with business cases and cost estimates.
+Workshops en incompany trainingen voor elk niveau. Van directie tot werkvloer. Praktijk gaat voor theorie — je werkt met echte tools aan echte cases, direct toepasbaar.
 
-**What we deliver:**
-- AI-readiness scans: where does your organisation stand?
-- Process audits: what does your team do, where are you leaving opportunities on the table?
-- Opportunity mapping: what can AI realistically do for you?
-- Business case development with cost estimates and ROI projections
-- AI roadmaps: phased implementation plans
-- Implementation guidance on the work floor
+#### Trainingen die we geven
 
-**Price range:** EUR 3.000 - EUR 50.000+ per engagement
+**AI Foundations** — onze kernworkshop
+We komen langs en werken met je team tot iedereen het snapt. Hoe generatieve AI werkt, effectief prompten, tools kiezen en beoordelen, valkuilen vermijden, en workflows die je morgen kunt gebruiken. Hele dag, 8-20 deelnemers. We passen de voorbeelden aan op jouw sector.
+*Klanten: Postcode Loterij, Banijay Benelux, Prosus, Hanze*
 
-**Margin:** ~80% (own labour + expertise)
+**Copilot Training**
+De snelste manier om productief te worden met Microsoft Copilot. Van beginner tot power user in een middag. Copilot in Word, Excel, Outlook, Teams — plus wat je wel en niet moet delen qua privacy.
+Halve dag, 5-15 deelnemers.
+*Klanten: Postcode Loterij, Envalior, Philips Healthcare*
 
-**Why it matters:**
-Many organisations find AI interesting and want to do something with it, but lack the knowledge to approach it properly. They need an experienced partner who can translate the possibilities of AI into their specific context — not a generic report, but actionable strategy tied to their processes, people, and budget.
+**AI voor Developers**
+Van API-integratie tot fine-tuning. OpenAI, Anthropic, open-source modellen. Prompt engineering, function calling, embeddings, vector databases, RAG, kosten. Geen PowerPoint — je codeert, debugt en bouwt werkende prototypes. Python en/of JavaScript.
+1-2 dagen, 4-12 developers. Je neemt een werkende code repo mee naar huis.
+*Klanten: OLX Poland, iFood Brazil, Prosus*
 
-**Typical client:**
-- Organisations that completed training and want to take the next step
-- Companies that had a mediocre experience with another AI partner
-- Organisations that know AI is important but don't know where to start strategically
+**Verantwoord AI-gebruik**
+Veilig werken met AI. GDPR, EU AI Act, datagovernance, on-premise vs cloud, AI-beleid opzetten, risicobeoordeling. Je krijgt een concept AI-beleid, een checklist voor veilig gebruik, en een risico-framework.
+Halve dag, 5-20 deelnemers.
+*Klanten: Philips Healthcare, Tweede Kamer, Envalior*
 
-**Example engagement:**
-AI-readiness scan for a mid-size healthcare organisation. 3 days of scanning + roadmap delivery. Revenue: EUR 5.000.
+**AI & Desinformatie**
+Deepfakes, AI-gegenereerde content en desinformatie herkennen. We laten zien hoe we een overtuigende Mark Rutte-deepfake hebben gemaakt en welke signalen het verraden. Hands-on detectie met live demo's.
+2-3 uur, 10-30 deelnemers.
+*Klanten: Banijay Benelux, Hanze*
 
----
+#### Wat elke training oplevert
+- Naslagwerk met concepten, prompts en tools
+- Toegang tot onze online community
+- Alle voorbeelden afgestemd op jouw sector en doelgroep
 
-### Pillar 3: Software & Implementation
+**Prijsindicatie:** EUR 2.500 - EUR 4.000 per dag
+**Marge:** ~80%
+**Onderwijskorting:** Lagere tarieven voor scholen en non-profits
 
-**One-liner:** We build and implement AI solutions with you.
+**Typische klant:**
+- MKB-directie die AI wil snappen voor ze investeren
+- Grote organisaties die teams breed willen bijspijkeren
+- Overflow van onze Copilot Academy-samenwerking
 
-**Owner:** David Homan
-
-**What it is:**
-Custom AI solution development and implementation. When an organisation knows what it wants (or has a clear idea from our consulting phase), we provide the expert team to build it. This can be alongside the client's own developers or fully independent.
-
-**What we deliver:**
-- Custom AI application development
-- Integration of AI into existing systems and workflows
-- Project management and technical leadership
-- Working alongside or independently from client development teams
-- Development capacity via kostenmaatschap (dev-pool at cost price)
-
-**Price range:** EUR 15.000 - EUR 100.000+ per project
-
-**Margin:** ~50% (dev-pool at cost via kostenmaatschap, vs ~25-30% with external ZZP)
-
-**Why it matters:**
-The final step. Organisations that know what they want need experts to make it happen. Our kostenmaatschap structure gives us access to developers and designers without profit markup, allowing us to deliver software projects at competitive rates while maintaining healthy margins.
-
-**Typical client:**
-- Organisations that completed consulting and are ready to build
-- Companies with a clear AI use case that need expert execution
-- Government bodies and large organisations with specific project requirements
-
-**Example engagement:**
-Custom AI tool for a government organisation. 3 weeks development via kostenmaatschap. Revenue: EUR 25.000.
+**Voorbeeld:**
+Workshop AI voor het MT. Tien deelnemers. Een dag voorbereiding, een dag workshop. Opbrengst: EUR 3.500.
 
 ---
 
-## The Client Journey
+### Pijler 2: Advies
+
+**Kort:** We brengen je kansen in kaart en maken een concreet plan.
+
+**Eigenaar:** Frans Hoorn
+
+We gaan een organisatie in, kijken naar processen, praten met mensen uit verschillende afdelingen, en zoeken uit waar AI het meeste oplevert. Dat leveren we op als concrete plannen met business cases en kostenplaatjes.
+
+#### Diensten
+
+**AI-readiness scan**
+Waar staat je organisatie met AI? We onderzoeken AI-volwassenheid per afdeling, huidige tools en technologie, datakwaliteit, organisatiecultuur, bestaande experimenten en EU AI Act-status. Je krijgt een readiness report, quick wins die je morgen kunt starten, en geprioriteerde aanbevelingen.
+1-3 dagen, vanaf EUR 3.000.
+*Klanten: Medux, Envalior, 050-IT*
+
+**AI Roadmap**
+Van inzicht naar implementatieplan. We vertalen AI-mogelijkheden naar een concreet stappenplan. Je krijgt een geprioriteerde lijst kansen met geschatte ROI, uitgewerkte business cases voor de top 3-5 initiatieven, een gefaseerd implementatieplan (quick wins → korte termijn → lange termijn), technische architectuuraanbevelingen, en een planning qua mensen, budget en tijd.
+2-4 weken, vanaf EUR 5.000.
+Het team dat je roadmap maakt kan ook bouwen wat erin staat. Geen overdracht, geen kennisverlies.
+*Klanten: InnoEnergy, Prosus, Medux*
+
+**Procesanalyse**
+Deep-dive in je bedrijfsprocessen. We brengen workflows in kaart, meten tijdsbesteding, identificeren bottlenecks en dubbel werk, en kwantificeren wat AI kan opleveren versus traditionele automatisering. Je krijgt een visuele procesmap met pijnpunten, een kansenregister met prioritering, en een impactschatting per kans.
+3-5 dagen, vanaf EUR 5.000.
+*Klanten: Medux, OLX Poland, Prosus*
+
+**Business case analyse**
+Waar laat je geld liggen? We analyseren processen, interviewen mensen uit verschillende afdelingen, en komen terug met concrete business cases met geschatte ROI. We identificeren AI-oplossingen die minimaal je investering terugverdienen. Als we niks waardevols vinden, betaal je niks.
+*Klanten: Medux, InnoEnergy, Prosus*
+
+**Implementatiebegeleiding**
+Hands-on begeleiding tijdens AI-uitrol. Change management, adoptietracking, coaching op de werkvloer. We begeleiden champions per afdeling, meten adoptie met concrete metrics, en bereiden je interne team voor om zelfstandig door te gaan.
+2-8 weken, op locatie.
+*Klanten: Medux, Trabu, OLX Poland*
+
+**Prijsindicatie:** EUR 3.000 - EUR 50.000+ per traject
+**Marge:** ~80%
+
+**Typische klant:**
+- Organisaties die een training hebben gehad en verder willen
+- Bedrijven die weten dat AI belangrijk is maar concreet advies nodig hebben
+- Organisaties die budget hebben gereserveerd en meetbare resultaten willen voor ze investeren
+
+**Voorbeeld:**
+AI-readiness scan voor een middelgrote zorgorganisatie. Drie dagen scannen, roadmap opleveren. Opbrengst: EUR 5.000.
+
+---
+
+### Pijler 3: Software
+
+**Kort:** We bouwen AI-oplossingen. Met je team of zelfstandig.
+
+**Eigenaar:** David Homan
+
+Als een organisatie weet wat ze wil, leveren we het team om het te bouwen. Je team is erbij betrokken — we leveren geen black box.
+
+#### Diensten
+
+**Proof of concept**
+Valideer je AI-idee voor je groot investeert. In een sprint van 6 dagen: scope definiëren, data verkennen, architectuur kiezen, prototype bouwen, testen met echte data, demo en go/no-go beslissing. De code is herbruikbaar voor het volledige project.
+6 dagen, vanaf EUR 8.000.
+*Klanten: Trabu, TicketGenie, 050-IT*
+
+**Maatwerk AI-oplossingen**
+AI-applicaties op maat. RAG-pipelines voor interne kennisbanken, AI-assistenten met jouw bedrijfscontext, automatisering van repetitieve processen, integratie in bestaande systemen. Agile development in korte sprints met regelmatige demo's. Je krijgt werkende software, documentatie en teamtraining.
+2-12 weken, vanaf EUR 15.000.
+*Klanten: OLX Poland, iFood Brazil, Trabu, TicketGenie*
+
+**Systeemintegratie**
+AI verbinden met je bestaande systemen. ERP, CRM, interne tools — we werken met wat je al hebt. Microsoft 365 + AI, ERP + AI, CRM + AI, of maatwerkkoppelingen met legacy-systemen.
+2-6 weken, vanaf EUR 10.000.
+*Klanten: OLX Poland, iFood Brazil, Medux*
+
+**Dedicated teams**
+AI-development capaciteit. Onze developers werken naast je eigen team. Flexibel op- en afschalen, 1-5 developers, binnen een week productief. We zorgen dat je team leert en zelfstandig verder kan.
+*Klanten: OLX Poland, iFood Brazil, Prosus*
+
+**Prijsindicatie:** EUR 8.000 - EUR 100.000+ per project
+**Marge:** ~50% (dev-pool tegen kostprijs via kostenmaatschap, vs ~25-30% met externe ZZP)
+
+**Typische klant:**
+- Organisaties die het adviestraject hebben doorlopen en klaar zijn om te bouwen
+- Bedrijven met een duidelijke AI use case die experts nodig hebben
+- Overheden en grote organisaties met specifieke projecteisen
+
+**Voorbeeld:**
+AI-tool op maat voor een overheidsorganisatie. Drie weken development via de kostenmaatschap. Opbrengst: EUR 25.000.
+
+Medux: AI-kosten met 70% verlaagd door maatwerk workflow-optimalisatie.
+Trabu: vertaalprocessen geautomatiseerd en kwaliteit verbeterd met AI-integratie.
+
+---
+
+## Het klantenpad
 
 ```
-[Any stage entry point]
+[Instappen waar je wilt]
         |
-   +---------+     ~80% convert     +------------+     varies     +----------+
-   | Training | ----------------->  | Consulting  | ----------->  | Software |
-   +---------+                      +------------+                +----------+
-   "We don't know                   "We're interested,            "We know what
-    what AI is"                      but need a plan"              we want — build it"
+   +---------+     ~80% gaat door    +----------+     varieert     +----------+
+   | Training | ------------------>  |  Advies   | ------------->  | Software |
+   +---------+                       +----------+                  +----------+
+   "We weten niet                    "We zijn geinteresseerd,      "We weten wat
+    wat AI is"                        maar we hebben een plan       we willen —
+                                      nodig"                        bouw het"
 ```
 
-Clients can enter at any pillar. The natural progression is 1 > 2 > 3, but some organisations are already at stage 2 or 3. AI Heroes meets them where they are.
+Klanten kunnen bij elke pijler instappen. De logische volgorde is 1 > 2 > 3, maar sommige organisaties zitten al bij 2 of 3. We beginnen waar jij staat.
 
-Key insight: because AI is such a new technology, the spread in knowledge is enormous — even within a single organisation. This means all three pillars have active demand simultaneously.
-
----
-
-## Team & Expertise
-
-Each founder naturally owns one pillar, creating complementary coverage across the full client journey.
-
-### Frans Hoorn — Strategy & Operations (Pillar 2)
-- 15+ years in development, UX/UI, and sales
-- Product management at Tele2, BOZU, and Prosus
-- 3 years management at previous AI Heroes, led the acquisition
-- Strongest in: creative strategy, identifying opportunities, translating AI possibilities to business context
-- Fulltime from day 1
-
-### Jan Brusse — Training & Innovation (Pillar 1)
-- Built Smart Lab at the Groninger Forum over 4 years
-- Managed a team of 12, ran 3+ workshops per week
-- 3.5 years sales at SQ People
-- Strongest in: training delivery, workshop design, audience engagement
-- Fulltime after 3 months
-
-### David Homan — Product & Development (Pillar 3)
-- Study in Artificial Intelligence (RUG)
-- Founded own app startup
-- 2 years operations at previous AI Heroes
-- Strongest in: translating tech to business, technical implementation, managing development teams
-- Fulltime after 10 months
-
-### Scaling model
-ZZP trainer network for basic trainings (dispatch model) so founders can focus on consulting and strategy.
+AI is zo nieuw dat de kennisverschillen enorm zijn, zelfs binnen een organisatie. Daardoor is er voor alle drie de pijlers tegelijk vraag.
 
 ---
 
-## Competitive Positioning
+## Team
 
-### The landscape is fragmented
+Elke oprichter is eigenaar van een pijler.
 
-| Competitor type | Examples | What they lack |
-|----------------|----------|---------------|
-| AI software companies (Groningen) | Stekz (35 FTE), DataNorth | No training offering |
-| Local AI agencies | ai-ify, AICG | No software capability |
-| National workshop bureaus | ai.nl, De AI Workshop, AITraining.nl | No follow-up trajectory |
+### Frans Hoorn — Advies (Pijler 2)
+- 15+ jaar ervaring in development, UX/UI en sales
+- Product management bij Tele2, BOZU en Prosus
+- 3 jaar management bij het vorige AI Heroes, leidde de overname
+- Sterkste in: creatieve strategie, kansen zien, AI vertalen naar de business
+- Fulltime vanaf dag 1
 
-### Our differentiators
+### Jan Brusse — Training (Pijler 1)
+- Smart Lab opgebouwd bij het Groninger Forum, 4 jaar
+- Team van 12 aangestuurd, 3+ workshops per week
+- 3,5 jaar sales bij SQ People
+- Sterkste in: trainingen geven, workshops ontwerpen, publiek meenemen
+- Fulltime na 3 maanden
 
-1. **All three pillars under one roof** — nobody else offers training + consulting + software from a single party
-2. **Local in Noord-Nederland** — present where the growth is, near AI Fabriek, RUG, Hanze
-3. **Dev capacity at cost price** — kostenmaatschap gives margin advantage on every software project
-4. **Structural partner inflow** — Copilot Academy refers overflow to us
-5. **Complementary founding team** — each founder is an expert in their pillar
+### David Homan — Software (Pijler 3)
+- Studie Kunstmatige Intelligentie (RUG)
+- Eigen app-startup opgericht
+- 2 jaar operations bij het vorige AI Heroes
+- Sterkste in: tech vertalen naar business, technische implementatie, development teams aansturen
+- Fulltime na 10 maanden
+
+### Opschaling
+ZZP-trainernetwerk voor basistrainingen. Zo kunnen de oprichters zich richten op advies en strategie.
 
 ---
 
-## Key Partnerships
+## Samenwerkingen
 
-### Copilot Academy (key partnership)
-Market leader in Microsoft Copilot trainings (adoption trajectories of 10 to 1,500+ participants, clients like Dura Vermeer). Team of 5 employees + 5 ZZP trainers cannot handle demand in Noord-NL — AI Heroes is their technical partner for overflow and deeper engagements.
-- Deal structure: 10% referral fee, 10% maintenance, max 1 year
+### Copilot Academy
+Marktleider in Microsoft Copilot trainingen. Team van 5 medewerkers + 5 ZZP-trainers kan de vraag in Noord-NL niet aan. Wij zijn hun partner voor overflow en diepere trajecten.
+- Deal: 10% verwijsvergoeding, 10% onderhoud, max 1 jaar
 
 ### Kostenmaatschap
-Complementary businesses under one roof in Groningen. Each keeps its own profit, but shares costs and resources.
-- **AI Heroes** — AI training, consulting & software (Frans, Jan, David)
-- **Odoo ERP** — ERP implementation & business software (Jorryt, Jeroen)
-- **Dev-pool** — Development capacity at cost price (Pim)
-- Cross-selling with 10% lead fee between all members
+Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, maar deelt kosten en middelen.
+- **AI Heroes** — AI training, advies & software (Frans, Jan, David)
+- **Odoo ERP** — ERP-implementatie & bedrijfssoftware (Jorryt, Jeroen)
+- **Dev-pool** — Development tegen kostprijs (Pim)
+- Onderling 10% leadfee
 
-### Ecosystem
-- AI Fabriek Groningen (EUR 200M investment, operational 2026-2027)
-- RUG & Hanze — talent pipeline, research partners, first clients
-- AI Hub Noord-Nederland — subsidies and network
-- MIT Noord-Nederland subsidies (up to EUR 50k individual, EUR 100k collaboration)
-
----
-
-## Market Context
-
-| Metric | Value | Source |
-|--------|-------|--------|
-| Dutch AI market size | EUR 7.4 billion | Statista, 2025 |
-| NL organisations running AI programmes | 95% | Mordor Intelligence, 2025 |
-| Annual AI market growth in NL | 20%+ | NL AI Coalition |
-| AI Fabriek Groningen investment | EUR 200M | Rijksoverheid, 2025 |
-
-### Market drivers
-- **EU AI Act (Article 4):** Obliges organisations to ensure AI literacy — creates structural demand for training
-- **Talent shortage:** Organisations want AI but can't find the people
-- **Adoption ≠ implementation:** NL leads in ambition but struggles with the step from experiment to daily use
+### Ecosysteem
+- AI Fabriek Groningen (EUR 200M investering, operationeel 2026-2027)
+- RUG & Hanze — talent, onderzoekspartners, eerste klanten
+- AI Hub Noord-Nederland — subsidies en netwerk
+- MIT Noord-Nederland subsidies (tot EUR 50k individueel, EUR 100k samenwerking)
 
 ---
 
-## Messaging Guidelines
+## Marktcijfers
 
-### When someone asks "What do you do?"
-"We're an AI consultancy. We help organisations at every stage of their AI journey — from training teams who don't know what AI is, to strategic consulting for companies that want a plan, to building and implementing AI solutions. Wherever you stand, we can help."
+| Wat | Cijfer | Bron |
+|-----|--------|------|
+| Nederlandse AI-markt | EUR 7,4 miljard | Statista, 2025 |
+| NL organisaties met AI-programma | 95% | Mordor Intelligence, 2025 |
+| Jaarlijkse groei AI-markt in NL | 20%+ | NL AI Coalition |
+| AI Fabriek Groningen investering | EUR 200M | Rijksoverheid, 2025 |
 
-### When someone asks "How are you different?"
-"The market is fragmented. Advisory firms write reports that end up in drawers. Workshop companies train people and leave. Tech companies build tools nobody uses. We're the only party that combines training, consulting, and software in one local partner. And our three founders each specialise in one of those pillars."
+### Wat de markt drijft
+- **EU AI Act (Artikel 4):** Verplicht organisaties om AI-geletterdheid te regelen. Structurele vraag naar training.
+- **Tekort aan mensen:** Organisaties willen AI maar vinden de mensen niet.
+- **Ambitie loopt voor op uitvoering:** Nederland is ambitieus met AI, maar de stap van experiment naar dagelijks gebruik is lastig.
 
-### Key phrases to use
-- "One partner for the entire AI trajectory"
-- "From boardroom to work floor"
-- "Wherever you stand with AI, we can help"
-- "Training, consulting, and software under one roof"
-- "Local in Groningen, hands-on, with development capacity"
+---
 
-### Phrases to avoid
-- "AI journey" (overused internally, feels generic externally)
-- Overly technical jargon without context
-- Implying training is all we do
+## Zo praten we over onszelf
+
+### "Wat doen jullie?"
+"We zijn een AI consultancy uit Groningen. We trainen teams, maken plannen en bouwen AI-oplossingen. Eén partner voor het hele traject."
+
+### "Wat maakt jullie anders?"
+"We doen training, advies en software vanuit een team. Elke oprichter is specialist in een van die drie. En het team dat je roadmap maakt kan ook bouwen wat erin staat."
+
+### Zinnen die we gebruiken
+- "Eén partner voor het hele AI-traject"
+- "Van directiekamer tot werkvloer"
+- "Waar je ook staat met AI, we kunnen helpen"
+- "Training, advies en software in één team"
+- "Lokaal in Groningen, hands-on, met eigen development"
+- "Praktijk gaat voor theorie"
+- "Als AI niet de oplossing is, zeggen we dat"
+
+### Zinnen die we vermijden
+- "AI journey" (te vaag)
+- Technisch jargon zonder context
+- Suggereren dat we alleen trainingen doen
+- Negatieve contrasten ("geen X, maar Y" — zeg gewoon Y)
