@@ -81,23 +81,41 @@ export const PressEN: React.FC = () => {
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Wordmark</h3>
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
               <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
                 <div className="bg-brand-light p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-16 w-auto text-brand-dark" variant="wordmark" />
+                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="fullcolor" />
                 </div>
-                <span className="text-sm text-stone-500">On light background</span>
+                <span className="text-sm text-stone-500">Full-color</span>
+              </div>
+              <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
+                <div className="bg-brand-light p-6 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-12 w-auto text-brand-dark" variant="wordmark" />
+                </div>
+                <span className="text-sm text-stone-500">On light</span>
               </div>
               <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-16 w-auto text-white" variant="wordmark" />
+                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
                 </div>
-                <span className="text-sm text-white/70">On dark background</span>
+                <span className="text-sm text-white/70">On dark</span>
+              </div>
+              <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
+                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
+                </div>
+                <span className="text-sm text-white/80">On red</span>
               </div>
             </div>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Icon</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8">
+              <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
+                <div className="bg-brand-light p-4 rounded-lg mb-4 w-full flex justify-center">
+                  <Logo className="h-20 w-20" variant="icon" colorVariant="fullcolor" />
+                </div>
+                <span className="text-sm text-stone-500">Full-color</span>
+              </div>
               <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
                 <div className="bg-brand-light p-4 rounded-lg mb-4 w-full flex justify-center">
                   <Logo className="h-20 w-20 text-brand-dark" variant="icon" />
@@ -139,74 +157,44 @@ export const PressEN: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Brand Colors</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Our color palette is bold yet professional. The primary red conveys energy and action, while the blue represents trust and technology.
+              Each colour in our palette represents a pillar of AI Heroes. Together they form the identity of our brand.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {/* Primary Colors */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="group">
                 <div className="bg-brand-red h-32 rounded-t-lg"></div>
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
-                  <h4 className="font-bold text-brand-dark text-sm">Hero Red</h4>
+                  <h4 className="font-bold text-brand-dark text-sm">Foundry Red</h4>
                   <p className="text-xs text-stone-500 font-mono">#D9534F</p>
-                  <p className="text-xs text-stone-400 mt-1">Primary accent</p>
+                  <p className="text-xs text-stone-400 mt-1">Training</p>
                 </div>
               </div>
 
               <div className="group">
                 <div className="bg-brand-blue h-32 rounded-t-lg"></div>
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
-                  <h4 className="font-bold text-brand-dark text-sm">Hero Blue</h4>
+                  <h4 className="font-bold text-brand-dark text-sm">Catalyst Blue</h4>
                   <p className="text-xs text-stone-500 font-mono">#2563EB</p>
-                  <p className="text-xs text-stone-400 mt-1">Secondary accent</p>
+                  <p className="text-xs text-stone-400 mt-1">Consulting</p>
                 </div>
               </div>
 
               <div className="group">
                 <div className="bg-brand-dark h-32 rounded-t-lg"></div>
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
-                  <h4 className="font-bold text-brand-dark text-sm">Deep Stone</h4>
+                  <h4 className="font-bold text-brand-dark text-sm">Forged Black</h4>
                   <p className="text-xs text-stone-500 font-mono">#1C1917</p>
-                  <p className="text-xs text-stone-400 mt-1">Text & backgrounds</p>
+                  <p className="text-xs text-stone-400 mt-1">Software</p>
                 </div>
               </div>
 
               <div className="group">
                 <div className="bg-brand-light h-32 rounded-t-lg border border-stone-200 border-b-0"></div>
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
-                  <h4 className="font-bold text-brand-dark text-sm">Warm White</h4>
+                  <h4 className="font-bold text-brand-dark text-sm">Rooftop White</h4>
                   <p className="text-xs text-stone-500 font-mono">#FDFCF8</p>
-                  <p className="text-xs text-stone-400 mt-1">Page backgrounds</p>
+                  <p className="text-xs text-stone-400 mt-1">Backgrounds & logo</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Extended Palette */}
-            <h3 className="text-xl font-serif text-brand-dark mb-4">Extended Palette</h3>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-              <div className="text-center">
-                <div className="bg-stone-100 h-16 rounded-lg mb-2"></div>
-                <p className="text-xs text-stone-500 font-mono">#F5F5F4</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-stone-200 h-16 rounded-lg mb-2"></div>
-                <p className="text-xs text-stone-500 font-mono">#E7E5E4</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-stone-400 h-16 rounded-lg mb-2"></div>
-                <p className="text-xs text-stone-500 font-mono">#A8A29E</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-stone-500 h-16 rounded-lg mb-2"></div>
-                <p className="text-xs text-stone-500 font-mono">#78716C</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-stone-600 h-16 rounded-lg mb-2"></div>
-                <p className="text-xs text-stone-500 font-mono">#57534E</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-stone-800 h-16 rounded-lg mb-2"></div>
-                <p className="text-xs text-stone-500 font-mono">#292524</p>
               </div>
             </div>
           </section>

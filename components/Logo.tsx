@@ -96,9 +96,41 @@ const WordmarkFullColorSvg: React.FC<{ className?: string }> = ({ className }) =
   </svg>
 );
 
+// Full-color icon: dark A+I+H, gradient frame
+const IconFullColorSvg: React.FC<{ className?: string }> = ({ className }) => (
+  <svg
+    className={className}
+    viewBox="0 0 1244.24145 1244.24145"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="icon-frame-grad" x1="326.48" y1="700" x2="923.37" y2="700" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#2563eb" />
+        <stop offset="50%" stopColor="#2563eb" />
+        <stop offset="100%" stopColor="#1c1917" />
+      </linearGradient>
+      <linearGradient id="icon-frame-top-grad" x1="610.01" y1="374" x2="923.37" y2="374" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#d9534f" />
+        <stop offset="60%" stopColor="#d9534f" />
+        <stop offset="100%" stopColor="#1c1917" />
+      </linearGradient>
+    </defs>
+    <g fill="#1c1917">
+      <path d="M349.8197,270.34005c3.91748,14.65021,7.57959,28.12518,10.97437,40.37769,4.76172,17.17456,9.35034,32.56281,13.77515,46.16022l45.05273,131.59979h49.81934l-90.45215-253.33417h-57.63867l-88.41064,253.33417h49.64624l43.52637-131.59979c4.07837-13.1463,8.41626-28.36139,13.00513-45.64984,3.28784-12.3844,6.85913-26.0285,10.70215-40.88806Z"/>
+      <rect x="517.81132" y="235.14358" width="45.39453" height="253.33417"/>
+      <polygon points="563.20585 685.95626 681.03104 685.95626 681.03104 796.30324 726.42997 796.30324 726.42997 542.96908 681.03104 542.96908 681.03104 647.70211 563.20585 647.70211 563.20585 542.96908 517.81132 542.96908 517.81132 796.30324 563.20585 796.30324 563.20585 685.95626"/>
+    </g>
+    <rect fill="url(#icon-frame-top-grad)" x="610.00638" y="350.66836" width="313.36548" height="46.66143"/>
+    <polygon fill="url(#icon-frame-grad)" points="326.48368 495.28231 326.48368 974.32754 923.37186 974.32754 923.37186 397.32979 876.71024 397.32979 876.71024 927.6661 373.14506 927.6661 373.14506 495.28231 326.48368 495.28231"/>
+  </svg>
+);
+
 export const Logo: React.FC<LogoProps> = ({ className, variant = 'icon', colorVariant = 'mono' }) => {
   if (colorVariant === 'fullcolor' && variant === 'wordmark') {
     return <WordmarkFullColorSvg className={className} />;
+  }
+  if (colorVariant === 'fullcolor' && variant === 'icon') {
+    return <IconFullColorSvg className={className} />;
   }
   if (variant === 'wordmark') {
     return <WordmarkSvg className={className} />;
