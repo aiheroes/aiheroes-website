@@ -19,6 +19,113 @@
   to = "/en/services/custom-ai-solutions"
   status = 301
 
+# Return 410 Gone for old WordPress pages still indexed by Google
+[[redirects]]
+  from = "/how-we-work/*"
+  to = "/nl/over-ons/aanpak"
+  status = 301
+
+[[redirects]]
+  from = "/consultancy-track/*"
+  to = "/nl/diensten"
+  status = 301
+
+[[redirects]]
+  from = "/industries/*"
+  to = "/nl/diensten"
+  status = 301
+
+[[redirects]]
+  from = "/nl/become-a-hero/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/nl/success-stories/*"
+  to = "/nl/diensten"
+  status = 301
+
+[[redirects]]
+  from = "/general-terms-and-conditions/*"
+  to = "/en/legal/terms"
+  status = 301
+
+[[redirects]]
+  from = "/privacy-cookies-policy/*"
+  to = "/en/legal/privacy"
+  status = 301
+
+# Old WordPress blog posts, categories, PDFs, signatures — gone
+[[redirects]]
+  from = "/category/*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/case-study-category/*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/whats-new-in-ai-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/ai-agents-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/how-getfanatic-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/culinary-adventures-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/from-the-founders-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/5-ways-generative-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/ai-search-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/how-to-get-started-*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/guess-the-movie/*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/mastermind-form/*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/signatures/*"
+  to = "/"
+  status = 410
+
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/"
+  status = 410
+
 # Handle SPA routing - redirect all routes to index.html
 [[redirects]]
   from = "/*"
