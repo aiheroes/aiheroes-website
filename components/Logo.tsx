@@ -60,12 +60,12 @@ const WordmarkFullColorSvg: React.FC<{ className?: string }> = ({ className }) =
     <defs>
       <linearGradient id="frame-grad" x1="337.22" y1="700" x2="2498.60" y2="700" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stopColor="#2563eb" />
-        <stop offset="50%" stopColor="#2563eb" />
+        <stop offset="65%" stopColor="#2563eb" />
         <stop offset="100%" stopColor="#1c1917" />
       </linearGradient>
       <linearGradient id="frame-top-grad" x1="620.59" y1="393" x2="2498.60" y2="393" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stopColor="#d9534f" />
-        <stop offset="60%" stopColor="#d9534f" />
+        <stop offset="80%" stopColor="#d9534f" />
         <stop offset="100%" stopColor="#1c1917" />
       </linearGradient>
     </defs>
@@ -106,12 +106,12 @@ const IconFullColorSvg: React.FC<{ className?: string }> = ({ className }) => (
     <defs>
       <linearGradient id="icon-frame-grad" x1="326.48" y1="700" x2="923.37" y2="700" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stopColor="#2563eb" />
-        <stop offset="50%" stopColor="#2563eb" />
+        <stop offset="65%" stopColor="#2563eb" />
         <stop offset="100%" stopColor="#1c1917" />
       </linearGradient>
       <linearGradient id="icon-frame-top-grad" x1="610.01" y1="374" x2="923.37" y2="374" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stopColor="#d9534f" />
-        <stop offset="60%" stopColor="#d9534f" />
+        <stop offset="80%" stopColor="#d9534f" />
         <stop offset="100%" stopColor="#1c1917" />
       </linearGradient>
     </defs>
