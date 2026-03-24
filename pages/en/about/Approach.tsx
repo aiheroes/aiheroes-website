@@ -8,9 +8,9 @@ export const ApproachEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Our Approach"
-      subtitle="Training, consulting and software — three pillars, one partner. We guide the entire AI journey."
+      subtitle="From change management to technical implementation — three pillars, one agency. We guide the entire AI journey."
       accentColor="red"
-      seoDescription="Our approach: training, consulting and software as three pillars under one roof. See how AI Heroes guides the entire AI journey."
+      seoDescription="Our approach: from change management to technical implementation as a full-service AI agency. Three pillars, one European partner."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -18,11 +18,11 @@ export const ApproachEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          The AI market is fragmented. Advisory firms write reports that end up in drawers. Training bureaus train and leave. Tech companies build tools nobody uses. Nobody combines all three.
+          The AI market is fragmented. Advisory firms write reports that end up in drawers. Training bureaus train and leave. Tech companies build tools nobody uses. Nobody covers the full spectrum — from organisational change to technical implementation.
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          AI Heroes does. We combine training, consulting and software under one roof. Clients can enter at any point — you don't need to start at pillar 1.
+          AI Heroes does. As a full-service AI agency, we combine change management, training, consulting and software under one roof. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. Clients can enter at any point — you don't need to start at pillar 1.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -96,7 +96,7 @@ export const ApproachEN: React.FC = () => {
         <DarkBox accentColor="red" className="mb-8">
           <h3>Why AI Heroes?</h3>
           <p>
-            We are practitioners who do the work. We don't just advise, we also build. We don't just train, we also implement. One team for the entire AI journey.
+            We are practitioners who do the work. From change management to technical implementation. We don't just advise, we also build. One agency, three pillars, the entire AI journey.
           </p>
         </DarkBox>
 

@@ -17,7 +17,7 @@ export const AboutEN: React.FC = () => {
       lang="en"
       title={content.hero.title}
       subtitle={content.hero.subtitle}
-      seoDescription="About AI Heroes: since 2019, we've been helping organizations with practical AI. Not consultants who write reports, but practitioners who build and train."
+      seoDescription="About AI Heroes: full-service AI agency based in Groningen. Since 2019, guiding organisations from change management to technical implementation."
       accentColor="red"
       showContactForm={true}
     >

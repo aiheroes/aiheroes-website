@@ -17,7 +17,7 @@ export const OverOnsNL: React.FC = () => {
       lang="nl"
       title={content.hero.title}
       subtitle={content.hero.subtitle}
-      seoDescription="Over AI Heroes: sinds 2019 helpen we organisaties praktisch met AI. Geen consultants die rapporten schrijven, maar practitioners die bouwen en trainen."
+      seoDescription="Over AI Heroes: full-service AI agency vanuit Groningen. Sinds 2019 helpen we organisaties van change management tot technische implementatie."
       accentColor="red"
       showContactForm={true}
     >

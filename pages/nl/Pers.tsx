@@ -55,7 +55,7 @@ export const PersNL: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes is een AI consultancy uit Groningen. We trainen teams, maken plannen en bouwen AI-oplossingen. Eén team, drie disciplines, van eerste kennismaking tot werkende software.
+                  AI Heroes is een full-service AI agency uit Groningen — het toekomstige centrum van AI in Europa. Van change management tot technische implementatie: training, consulting en software onder één dak.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
                   We helpen 50+ organisaties met AI — van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen. Waar je ook staat, we kunnen helpen.
@@ -65,7 +65,7 @@ export const PersNL: React.FC = () => {
                 <h3 className="font-bold text-brand-dark mb-3">Kerngegevens</h3>
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Opgericht:</strong> 2019</li>
-                  <li><strong>Hoofdkantoor:</strong> Groningen, Nederland</li>
+                  <li><strong>Hoofdkantoor:</strong> Groningen, Nederland — toekomstig AI-centrum van Europa</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
                   <li><strong>Contact:</strong> hello@aiheroes.io</li>
                   <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters, elk specialist in een pijler</Link></li>

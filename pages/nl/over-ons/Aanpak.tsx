@@ -8,9 +8,9 @@ export const AanpakNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Onze Aanpak"
-      subtitle="Training, consulting en software — drie pijlers, één partner. We begeleiden het hele AI-traject."
+      subtitle="Van change management tot technische implementatie — drie pijlers, één agency. We begeleiden het hele AI-traject."
       accentColor="red"
-      seoDescription="Onze aanpak: training, consulting en software als drie pijlers onder één dak. Bekijk hoe AI Heroes het hele AI-traject begeleidt."
+      seoDescription="Onze aanpak: van change management tot technische implementatie als full-service AI agency. Drie pijlers, één Europese partner."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -18,11 +18,11 @@ export const AanpakNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          De AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten die in laden belanden. Trainingsbureaus trainen en vertrekken. Techbedrijven bouwen tools die niemand gebruikt. Niemand combineert alle drie.
+          De AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten die in laden belanden. Trainingsbureaus trainen en vertrekken. Techbedrijven bouwen tools die niemand gebruikt. Niemand pakt het hele spectrum — van organisatieverandering tot technische implementatie.
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          AI Heroes doet dat wel. Wij combineren training, consulting en software onder één dak. Klanten kunnen op elk punt instappen — je hoeft niet bij pijler 1 te beginnen.
+          AI Heroes doet dat wel. Als full-service AI agency combineren we change management, training, consulting en software onder één dak. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Klanten kunnen op elk punt instappen — je hoeft niet bij pijler 1 te beginnen.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -96,7 +96,7 @@ export const AanpakNL: React.FC = () => {
         <DarkBox accentColor="red" className="mb-8">
           <h3>Waarom AI Heroes?</h3>
           <p>
-            Wij zijn practitioners die meedoen. We adviseren niet alleen, we bouwen ook. We trainen niet alleen, we implementeren ook. Eén team voor het hele AI-traject.
+            Wij zijn practitioners die meedoen. Van change management tot technische implementatie. We adviseren niet alleen, we bouwen ook. Eén agency, drie pijlers, het hele AI-traject.
           </p>
         </DarkBox>
 

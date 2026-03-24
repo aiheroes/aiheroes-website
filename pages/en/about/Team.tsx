@@ -8,9 +8,9 @@ export const TeamEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Our Team"
-      subtitle="Born problem-solvers. We help you move forward when you get stuck with AI."
+      subtitle="Born problem-solvers. Based in Groningen, Europe's emerging AI hub."
       accentColor="blue"
-      seoDescription="The team behind AI Heroes: Frans, Jan and David. Since 2019, helping organizations with practical AI training, consulting and software."
+      seoDescription="The team behind AI Heroes: Frans, Jan and David. Since 2019, a full-service AI agency based in Groningen — from change management to technical implementation."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -18,7 +18,7 @@ export const TeamEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Since 2019, we've trained teams at organizations like Postcodeloterij, Prosus and Banijay Benelux. Practical AI knowledge, immediately applicable.
+          Since 2019, we've guided organisations like Postcodeloterij, Prosus and Banijay Benelux through the entire AI journey — from change management to technical implementation. Based in Groningen, serving all of Europe.
         </p>
 
         {/* Team Members */}

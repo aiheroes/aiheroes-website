@@ -61,12 +61,12 @@ const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
 // SEO content per language
 const SEO_CONTENT = {
   nl: {
-    title: 'AI Consultancy — Training, Consultancy & Software',
-    description: 'AI Heroes is een AI consultancy die organisaties helpt met training, consultancy en software. Van AI Foundations tot custom implementaties. Eén partner voor het hele AI-traject.'
+    title: 'Full-Service AI Agency — Training, Consulting & Software',
+    description: 'AI Heroes is een full-service AI agency vanuit Groningen. Van change management tot technische implementatie. Training, consulting en software voor heel Europa.'
   },
   en: {
-    title: 'AI Consultancy — Training, Consulting & Software',
-    description: 'AI Heroes is an AI consultancy helping organisations with training, consulting and software. From AI Foundations to custom implementations. One partner for the entire AI journey.'
+    title: 'Full-Service AI Agency — Training, Consulting & Software',
+    description: 'AI Heroes is a full-service AI agency based in Groningen. From change management to technical implementation. Training, consulting and software across Europe.'
   }
 };
 

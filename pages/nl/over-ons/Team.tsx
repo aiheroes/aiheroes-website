@@ -8,9 +8,9 @@ export const TeamNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Ons Team"
-      subtitle="Geboren probleemoplossers. We helpen je verder als je vastloopt met AI."
+      subtitle="Geboren probleemoplossers. Vanuit Groningen, Europa's AI-hub in wording."
       accentColor="blue"
-      seoDescription="Het team achter AI Heroes: Frans, Jan en David. Sinds 2019 helpen we organisaties met praktische AI-training, consulting en software."
+      seoDescription="Het team achter AI Heroes: Frans, Jan en David. Sinds 2019 full-service AI agency vanuit Groningen — van change management tot technische implementatie."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -18,7 +18,7 @@ export const TeamNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Sinds 2019 trainen we teams bij organisaties als Postcodeloterij, Prosus en Banijay Benelux. Praktische AI-kennis, direct toepasbaar.
+          Sinds 2019 begeleiden we organisaties als Postcodeloterij, Prosus en Banijay Benelux door het hele AI-traject — van change management tot technische implementatie. Vanuit Groningen, voor heel Europa.
         </p>
 
         {/* Team Members */}

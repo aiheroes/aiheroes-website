@@ -139,7 +139,7 @@ export const DienstenNL: React.FC = () => {
       lang="nl"
       title={content.hero.title}
       subtitle={content.hero.subtitle}
-      seoDescription="AI Heroes diensten: training, consulting en software onder één dak. Van AI Foundations tot custom implementaties. Bekijk ons volledige aanbod."
+      seoDescription="AI Heroes diensten: van change management tot technische implementatie, onder één dak. Training, consulting en software. Europese aanpak, Groningse basis."
       accentColor="red"
       showContactForm={false}
       heroExtra={heroCtaContent}
