@@ -120,7 +120,9 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
                {contactFormContent.subtitle}
              </p>
              <p className="text-sm md:text-xl text-stone-600 leading-relaxed text-pretty">
-               {contactFormContent.emailLabel}{' '}
+               {contactFormContent.emailLabel}
+             </p>
+             <p className="text-sm md:text-xl text-stone-600 leading-relaxed text-pretty mt-1 md:mt-2">
                <a
                  href={`mailto:${contactFormContent.email}`}
                  className="relative inline-block font-serif text-brand-dark hover:text-black transition-colors pb-0.5 whitespace-nowrap"
