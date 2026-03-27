@@ -113,7 +113,7 @@ export const PrivacyNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via hello@aiheroes.io.
+          Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via hello@aiheroes.io of bel 050-200 3373.
         </p>
 
         <DarkBox accentColor="red">

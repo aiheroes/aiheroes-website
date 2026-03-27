@@ -67,7 +67,7 @@ export const PressEN: React.FC = () => {
                   <li><strong>Founded:</strong> 2019</li>
                   <li><strong>Headquarters:</strong> Groningen, Netherlands — Europe's future AI capital</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
-                  <li><strong>Contact:</strong> hello@aiheroes.io</li>
+                  <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders, each a specialist in one pillar</Link></li>
                 </ul>
               </div>

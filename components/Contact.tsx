@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Content } from '../types';
-import { Check } from 'lucide-react';
+import { Check, Calendar } from 'lucide-react';
 
 interface ContactProps {
   content: Content['contact'];
@@ -129,6 +129,26 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
                  <span className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-brand-red"></span>
                </a>
              </p>
+             <p className="text-sm md:text-xl text-stone-600 leading-relaxed text-pretty mt-2 md:mt-3">
+               {contactFormContent.phoneLabel}{' '}
+               <a
+                 href={contactFormContent.phoneHref}
+                 className="relative inline-block font-serif text-brand-dark hover:text-black transition-colors pb-0.5 whitespace-nowrap"
+               >
+                 {contactFormContent.phone}
+                 <span className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-brand-blue"></span>
+               </a>
+             </p>
+             <a
+               href={contactFormContent.meetingUrl}
+               target="_blank"
+               rel="noopener noreferrer"
+               className="inline-flex items-center gap-2 mt-4 md:mt-6 text-sm md:text-base font-medium text-brand-dark hover:text-brand-red transition-colors group"
+             >
+               <Calendar className="w-4 h-4 md:w-5 md:h-5 text-stone-400 group-hover:text-brand-red transition-colors" />
+               {contactFormContent.meetingLabel}
+               <span className="transition-transform group-hover:translate-x-1">→</span>
+             </a>
           </div>
 
           {/* Right Column - Form */}

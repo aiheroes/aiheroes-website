@@ -160,7 +160,12 @@ export const CONTENT: Record<Language, Content> = {
       title: "Start vandaag met AI",
       subtitle: "Laat je gegevens achter en we nemen binnen 24 uur contact op.",
       emailLabel: "Of mail ons direct:",
-      email: "hello@aiheroes.io"
+      email: "hello@aiheroes.io",
+      phoneLabel: "Of bel ons:",
+      phone: "050-200 3373",
+      phoneHref: "tel:+31502003373",
+      meetingLabel: "Plan een kennismaking",
+      meetingUrl: "https://calendar.app.google/juFpF3MDmikH4BVS8"
     },
     aboutPage: {
       hero: {
@@ -577,7 +582,12 @@ export const CONTENT: Record<Language, Content> = {
       title: "Start with AI today",
       subtitle: "Leave your details and we'll contact you within 24 hours.",
       emailLabel: "Or email us directly:",
-      email: "hello@aiheroes.io"
+      email: "hello@aiheroes.io",
+      phoneLabel: "Or call us:",
+      phone: "050-200 3373",
+      phoneHref: "tel:+31502003373",
+      meetingLabel: "Schedule an introduction",
+      meetingUrl: "https://calendar.app.google/juFpF3MDmikH4BVS8"
     },
     aboutPage: {
       hero: {

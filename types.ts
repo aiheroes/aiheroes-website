@@ -181,6 +181,11 @@ export interface ContactFormContent {
   subtitle: string;
   emailLabel: string;
   email: string;
+  phoneLabel: string;
+  phone: string;
+  phoneHref: string;
+  meetingLabel: string;
+  meetingUrl: string;
 }
 
 export interface AboutPageContent {

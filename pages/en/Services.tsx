@@ -413,10 +413,23 @@ export const ServicesEN: React.FC = () => {
             <p className="text-stone-600 text-lg mb-2">{content.contactSection.subtitle}</p>
             <p className="text-stone-500 text-sm">
               {content.contactSection.altCta}{' '}
-              <a href="mailto:hello@aiheroes.io" className="text-brand-red hover:underline font-medium">
-                hello@aiheroes.io
+              <a href={`mailto:${CONTENT.en.contactForm.email}`} className="text-brand-red hover:underline font-medium">
+                {CONTENT.en.contactForm.email}
+              </a>
+              {' · '}
+              <a href={CONTENT.en.contactForm.phoneHref} className="text-brand-blue hover:underline font-medium">
+                {CONTENT.en.contactForm.phone}
               </a>
             </p>
+            <a
+              href={CONTENT.en.contactForm.meetingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-brand-dark hover:text-brand-red transition-colors group"
+            >
+              {CONTENT.en.contactForm.meetingLabel}
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
           </div>
 
           {/* Contact Form */}

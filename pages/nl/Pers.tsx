@@ -67,7 +67,7 @@ export const PersNL: React.FC = () => {
                   <li><strong>Opgericht:</strong> 2019</li>
                   <li><strong>Hoofdkantoor:</strong> Groningen, Nederland — toekomstig AI-centrum van Europa</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
-                  <li><strong>Contact:</strong> hello@aiheroes.io</li>
+                  <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters, elk specialist in een pijler</Link></li>
                 </ul>
               </div>
