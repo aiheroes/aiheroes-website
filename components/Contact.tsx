@@ -128,9 +128,7 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
                  {contactFormContent.email}
                  <span className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-brand-red"></span>
                </a>
-             </p>
-             <p className="text-sm md:text-xl text-stone-600 leading-relaxed text-pretty mt-2 md:mt-3">
-               {contactFormContent.phoneLabel}{' '}
+               {' · '}
                <a
                  href={contactFormContent.phoneHref}
                  className="relative inline-block font-serif text-brand-dark hover:text-black transition-colors pb-0.5 whitespace-nowrap"

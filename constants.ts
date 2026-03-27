@@ -159,9 +159,9 @@ export const CONTENT: Record<Language, Content> = {
     contactForm: {
       title: "Start vandaag met AI",
       subtitle: "Laat je gegevens achter en we nemen binnen 24 uur contact op.",
-      emailLabel: "Of mail ons direct:",
+      emailLabel: "Of neem direct contact op:",
       email: "hello@aiheroes.io",
-      phoneLabel: "Of bel ons:",
+      phoneLabel: "",
       phone: "050-200 3373",
       phoneHref: "tel:+31502003373",
       meetingLabel: "Plan een kennismaking",
@@ -581,9 +581,9 @@ export const CONTENT: Record<Language, Content> = {
     contactForm: {
       title: "Start with AI today",
       subtitle: "Leave your details and we'll contact you within 24 hours.",
-      emailLabel: "Or email us directly:",
+      emailLabel: "Or reach out directly:",
       email: "hello@aiheroes.io",
-      phoneLabel: "Or call us:",
+      phoneLabel: "",
       phone: "050-200 3373",
       phoneHref: "tel:+31502003373",
       meetingLabel: "Schedule an introduction",

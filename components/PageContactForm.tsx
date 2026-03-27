@@ -130,7 +130,7 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
     <div>
       <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-2">{contactFormContent.title}</h2>
       <p className="text-stone-600 mb-4">{contactFormContent.subtitle}</p>
-      <p className="text-stone-600 mb-2">
+      <p className="text-stone-600 mb-4">
         {contactFormContent.emailLabel}{' '}
         <a
           href={`mailto:${contactFormContent.email}`}
@@ -139,9 +139,7 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
           {contactFormContent.email}
           <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-red"></span>
         </a>
-      </p>
-      <p className="text-stone-600 mb-4">
-        {contactFormContent.phoneLabel}{' '}
+        {' · '}
         <a
           href={contactFormContent.phoneHref}
           className="relative inline-block font-serif text-brand-dark hover:text-black transition-colors pb-0.5 whitespace-nowrap"
