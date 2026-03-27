@@ -113,15 +113,15 @@ export const CONTENT: Record<Language, Content> = {
     },
     team: {
       title: "Geboren probleemoplossers",
-      location: "Groningen — Europese AI-hub in wording",
-      body: "Drie oprichters, één gedeelde passie voor AI.\nVanuit het hart van Europa's volgende AI-centrum.",
+      location: "Groningen — AI-hoofdstad van Europa",
+      body: "Drie oprichters, één gedeelde passie voor AI.\nVanuit het hart van Europa's AI-hoofdstad.",
       cta: {
         text: "Leer ons kennen",
         href: "/nl/over-ons/team"
       },
       image: {
         src: "/groningen.webp",
-        alt: "Groningen - thuisbasis en toekomstig AI-centrum van Europa"
+        alt: "Groningen - thuisbasis en AI-hoofdstad van Europa"
       }
     },
     socialProof: {
@@ -173,10 +173,10 @@ export const CONTENT: Record<Language, Content> = {
         subtitle: "AI Heroes is een full-service AI agency die organisaties door het hele AI-traject begeleidt — van change management tot technische implementatie. Vanuit Groningen, voor heel Europa."
       },
       intro: {
-        text: "We zijn in 2019 begonnen vanuit een simpele observatie: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Niemand pakt het hele spectrum — van organisatieverandering tot technische implementatie.\n\nVanuit Groningen — straks het epicentrum van AI in Europa dankzij de AI Fabriek — werken we met organisaties door heel Europa. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in.",
+        text: "We zijn in 2019 begonnen vanuit een simpele observatie: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Niemand pakt het hele spectrum — van organisatieverandering tot technische implementatie.\n\nVanuit Groningen — epicentrum van AI in Europa met de AI Fabriek — werken we met organisaties door heel Europa. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
-          { metric: "Sinds 2019", description: "Groningen, Europa's AI-hub" },
+          { metric: "Sinds 2019", description: "Groningen, AI-hoofdstad van Europa" },
           { metric: "3", description: "Expertises onder één dak" }
         ]
       },
@@ -231,8 +231,8 @@ export const CONTENT: Record<Language, Content> = {
             description: "We adviseren niet alleen, we bouwen ook. Kennis uit de praktijk, rechtstreeks toegepast in jouw organisatie."
           },
           {
-            title: "Groningen — Europa's AI-hub",
-            description: "Geworteld in Groningen, binnenkort thuisbasis van de AI Fabriek — een investering van €200M. Lokale basis, Europees werkgebied."
+            title: "Groningen — AI-hoofdstad van Europa",
+            description: "Geworteld in Groningen, thuisbasis van de AI Fabriek — een investering van €200M. Lokale basis, Europees werkgebied."
           }
         ]
       }
@@ -420,7 +420,7 @@ export const CONTENT: Record<Language, Content> = {
         terms: "Algemene Voorwaarden"
       },
       copyright: "© 2026 AI Heroes",
-      madeIn: "| Met trots gemaakt in Groningen — Europa's toekomstige AI-hub"
+      madeIn: "| Met trots gemaakt in Groningen — AI-hoofdstad van Europa"
     }
   },
   en: {
@@ -535,15 +535,15 @@ export const CONTENT: Record<Language, Content> = {
     },
     team: {
       title: "Born problem-solvers",
-      location: "Groningen — Europe's emerging AI hub",
-      body: "Three founders, one shared passion for AI.\nBased in the heart of Europe's next AI capital.",
+      location: "Groningen — AI Capital of Europe",
+      body: "Three founders, one shared passion for AI.\nBased in the heart of Europe's AI Capital.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"
       },
       image: {
         src: "/groningen.webp",
-        alt: "Groningen - home base and Europe's future AI centre"
+        alt: "Groningen - home base and AI Capital of Europe"
       }
     },
     socialProof: {
@@ -595,10 +595,10 @@ export const CONTENT: Record<Language, Content> = {
         subtitle: "AI Heroes is a full-service AI agency that guides organisations through the entire AI journey — from change management to technical implementation. Based in Groningen, serving all of Europe."
       },
       intro: {
-        text: "We started in 2019 with a simple observation: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Nobody covers the full spectrum — from organisational change to technical implementation.\n\nBased in Groningen — soon to be the epicentre of AI in Europe thanks to the AI Fabriek — we work with organisations across Europe. From startups to Fortune 500 companies, from municipalities to media organisations. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in.",
+        text: "We started in 2019 with a simple observation: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Nobody covers the full spectrum — from organisational change to technical implementation.\n\nBased in Groningen — the epicentre of AI in Europe, home to the AI Fabriek — we work with organisations across Europe. From startups to Fortune 500 companies, from municipalities to media organisations. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in.",
         stats: [
           { metric: "50+", description: "Organizations helped" },
-          { metric: "Since 2019", description: "Groningen, Europe's AI hub" },
+          { metric: "Since 2019", description: "Groningen, AI Capital of Europe" },
           { metric: "3", description: "Expertises under one roof" }
         ]
       },
@@ -653,8 +653,8 @@ export const CONTENT: Record<Language, Content> = {
             description: "We don't just advise, we also build. Knowledge from practice, directly applied in your organization."
           },
           {
-            title: "Groningen — Europe's AI hub",
-            description: "Rooted in Groningen, soon home to the AI Fabriek — a €200M investment. Local base, European reach."
+            title: "Groningen — AI Capital of Europe",
+            description: "Rooted in Groningen, home to the AI Fabriek — a €200M investment. Local base, European reach."
           }
         ]
       }
@@ -842,7 +842,7 @@ export const CONTENT: Record<Language, Content> = {
         terms: "Terms & Conditions"
       },
       copyright: "© 2026 AI Heroes",
-      madeIn: "| Proudly made in Groningen — Europe's future AI hub"
+      madeIn: "| Proudly made in Groningen — AI Capital of Europe"
     }
   }
 };

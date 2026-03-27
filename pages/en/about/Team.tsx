@@ -8,7 +8,7 @@ export const TeamEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Our Team"
-      subtitle="Born problem-solvers. Based in Groningen, Europe's emerging AI hub."
+      subtitle="Born problem-solvers. Based in Groningen, AI Capital of Europe."
       accentColor="blue"
       seoDescription="The team behind AI Heroes: Frans, Jan and David. Since 2019, a full-service AI agency based in Groningen — from change management to technical implementation."
     >

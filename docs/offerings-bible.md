@@ -9,7 +9,7 @@
 **Bedrijf:** AI Heroes
 **Tagline:** AI werkt als je weet hoe
 **Wat we zijn:** Full-service AI agency
-**Waar:** Groningen — Europa's toekomstige AI-centrum
+**Waar:** Groningen — AI-hoofdstad van Europa
 **Focus:** Europees — datasoevereiniteit, EU AI Act, geen vendor lock-in
 **Contact:** info@aiheroes.io / aiheroes.io
 **Team:** Frans Hoorn, Jan Brusse, David Homan
@@ -247,7 +247,7 @@ Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, ma
 - Onderling 10% leadfee
 
 ### Ecosysteem
-- AI Fabriek Groningen (EUR 200M investering, operationeel 2026-2027) — maakt Groningen het epicentrum van AI in Europa. Wij positioneren ons als de lokale agency die er al zit.
+- AI Fabriek Groningen (EUR 200M investering, operationeel 2026-2027) — bevestigt Groningen als epicentrum van AI in Europa. Wij zijn de lokale agency die er al zit.
 - RUG & Hanze — talent, onderzoekspartners, eerste klanten
 - AI Hub Noord-Nederland — subsidies en netwerk
 - MIT Noord-Nederland subsidies (tot EUR 50k individueel, EUR 100k samenwerking)
@@ -273,7 +273,7 @@ Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, ma
 ## Zo praten we over onszelf
 
 ### "Wat doen jullie?"
-"We zijn een full-service AI agency uit Groningen. We begeleiden organisaties van change management tot technische implementatie — training, consulting en software onder één dak. Vanuit Europa's toekomstige AI-centrum, voor klanten door heel Europa."
+"We zijn een full-service AI agency uit Groningen. We begeleiden organisaties van change management tot technische implementatie — training, consulting en software onder één dak. Vanuit Groningen, AI-hoofdstad van Europa, voor klanten door heel Europa."
 
 ### "Wat maakt jullie anders?"
 "We dekken het hele spectrum. Niet alleen advies of alleen tech — van organisatieverandering tot werkende software. Elke oprichter is specialist in een pijler. Het team dat je roadmap maakt kan ook bouwen wat erin staat. En we doen het met een Europese aanpak: datasoevereiniteit, EU AI Act compliance, geen vendor lock-in."
@@ -287,7 +287,7 @@ Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, ma
 - "Van directiekamer tot werkvloer"
 - "Waar je ook staat met AI, we kunnen helpen"
 - "Training, consulting en software in één team"
-- "Groningen — Europa's toekomstige AI-centrum"
+- "Groningen — AI-hoofdstad van Europa"
 - "Praktijk gaat voor theorie"
 - "Als AI niet de oplossing is, zeggen we dat"
 
@@ -320,16 +320,16 @@ Kant-en-klare teksten voor verschillende platformen en lengtes. Kopieer en plak.
 ### Korte paragraaf (~50 woorden)
 **Voor:** LinkedIn company "Over ons", evenement speaker bios, partner pages
 
-**NL:** AI Heroes is een full-service AI agency vanuit Groningen — het toekomstige AI-centrum van Europa. We begeleiden organisaties van change management tot technische implementatie. Drie pijlers onder één dak: training, consulting en software. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. 50+ organisaties geholpen sinds 2019.
+**NL:** AI Heroes is een full-service AI agency vanuit Groningen — AI-hoofdstad van Europa. We begeleiden organisaties van change management tot technische implementatie. Drie pijlers onder één dak: training, consulting en software. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. 50+ organisaties geholpen sinds 2019.
 
-**EN:** AI Heroes is a full-service AI agency based in Groningen — Europe's future AI capital. We guide organisations from change management to technical implementation. Three pillars under one roof: training, consulting and software. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. 50+ organisations helped since 2019.
+**EN:** AI Heroes is a full-service AI agency based in Groningen — AI Capital of Europe. We guide organisations from change management to technical implementation. Three pillars under one roof: training, consulting and software. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. 50+ organisations helped since 2019.
 
 ### Volledige paragraaf (~100 woorden)
 **Voor:** website "over ons" blurbs, perskit, subsidieaanvragen, partnership proposals
 
-**NL:** AI Heroes is een full-service AI agency vanuit Groningen — straks het epicentrum van AI in Europa dankzij de AI Fabriek. Sinds 2019 begeleiden we organisaties door het hele AI-traject: van change management tot technische implementatie. Onze drie pijlers — training, consulting en software — werken naadloos samen. We leren teams wat AI kan, brengen kansen in kaart met readiness scans en roadmaps, en bouwen custom oplossingen op Europese infrastructuur. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Van startups tot Fortune 500, van gemeenten tot media-organisaties — 50+ organisaties geholpen.
+**NL:** AI Heroes is een full-service AI agency vanuit Groningen — epicentrum van AI in Europa met de AI Fabriek. Sinds 2019 begeleiden we organisaties door het hele AI-traject: van change management tot technische implementatie. Onze drie pijlers — training, consulting en software — werken naadloos samen. We leren teams wat AI kan, brengen kansen in kaart met readiness scans en roadmaps, en bouwen custom oplossingen op Europese infrastructuur. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Van startups tot Fortune 500, van gemeenten tot media-organisaties — 50+ organisaties geholpen.
 
-**EN:** AI Heroes is a full-service AI agency based in Groningen — soon to be the epicentre of AI in Europe thanks to the AI Fabriek. Since 2019, we've guided organisations through the entire AI journey: from change management to technical implementation. Our three pillars — training, consulting and software — work seamlessly together. We teach teams what AI can do, map opportunities with readiness scans and roadmaps, and build custom solutions on European infrastructure. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. From startups to Fortune 500, from municipalities to media organisations — 50+ organisations helped.
+**EN:** AI Heroes is a full-service AI agency based in Groningen — the epicentre of AI in Europe, home to the AI Fabriek. Since 2019, we've guided organisations through the entire AI journey: from change management to technical implementation. Our three pillars — training, consulting and software — work seamlessly together. We teach teams what AI can do, map opportunities with readiness scans and roadmaps, and build custom solutions on European infrastructure. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. From startups to Fortune 500, from municipalities to media organisations — 50+ organisations helped.
 
 ### Meta description (~155 tekens)
 **Voor:** Google zoekresultaten, SEO
