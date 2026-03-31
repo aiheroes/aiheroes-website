@@ -84,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
   const companyLabel = lang === 'nl' ? 'Bedrijf' : 'Company';
 
   return (
-    <footer className="bg-brand-dark text-white pt-16 pb-8 mt-auto border-t border-stone-800">
+    <footer className="bg-brand-dark text-white pt-16 pb-8 mt-auto border-t border-stone-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Main Footer Links Grid */}
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <div className="mb-6 flex justify-center -ml-6">
+            <div className="mb-6 flex justify-center lg:-ml-6">
               <Logo className="h-20 w-20 lg:h-24 lg:w-24 text-white" variant="icon" />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed mb-4 text-pretty">

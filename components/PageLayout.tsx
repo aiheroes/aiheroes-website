@@ -168,7 +168,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-brand-light text-brand-dark">
+    <div className="min-h-screen bg-brand-light text-brand-dark overflow-x-hidden">
       {/* Navigation - theme changes based on scroll with split effect */}
       <Navbar
         lang={lang}

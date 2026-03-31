@@ -75,7 +75,6 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
   const [lang, setLang] = useState<Language>(() => getInitialLanguage(defaultLang));
   const [navColor, setNavColor] = useState<'white' | 'dark'>('white');
   const [useBlur, setUseBlur] = useState(false);
-  const [hideNav, setHideNav] = useState(false);
   const [splitPosition, setSplitPosition] = useState<number | null>(null);
   const [topTheme, setTopTheme] = useState<'dark' | 'light'>('dark');
   const [bottomTheme, setBottomTheme] = useState<'dark' | 'light'>('dark');
@@ -190,16 +189,6 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
     setNavColor(currentTheme === 'dark' ? 'white' : 'dark');
     setUseBlur(needsBlur);
 
-    // Hide nav on footer with hysteresis to prevent flickering
-    if (footerRef.current) {
-      const footerRect = footerRef.current.getBoundingClientRect();
-      // Hide when footer top enters navbar area, show when it's clearly below
-      if (footerRect.top < 60) {
-        setHideNav(true);
-      } else if (footerRect.top > 100) {
-        setHideNav(false);
-      }
-    }
   };
 
   // Scroll to contact section
@@ -214,14 +203,13 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
     <div
       ref={scrollRef}
       onScroll={handleScroll}
-      className="h-screen w-full overflow-y-scroll md:snap-y md:snap-proximity scroll-smooth snap-container bg-brand-light text-brand-dark"
+      className="h-screen w-full overflow-y-scroll overflow-x-hidden md:snap-y md:snap-proximity scroll-smooth snap-container bg-brand-light text-brand-dark"
     >
       <Navbar
         lang={lang}
         setLang={handleLangChange}
         content={content.nav}
         textColor={navColor}
-        hidden={hideNav}
         useBlur={useBlur}
         splitPosition={splitPosition}
         topTheme={topTheme}
