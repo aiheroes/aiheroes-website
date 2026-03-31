@@ -453,7 +453,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // When mobile menu is open, never hide the navbar
   const shouldHide = hidden && !isOpen;
-  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-transform duration-300 ease-out ${shouldHide ? '-translate-y-full' : 'translate-y-0'}`;
+  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-all duration-300 ease-out ${shouldHide ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
   // Mobile: sub-expanded state for pillar groups inside Diensten
   const [mobilePillarExpanded, setMobilePillarExpanded] = useState<string | null>(null);
