@@ -105,6 +105,9 @@ const TermsEN = React.lazy(() => import('./pages/en/legal/Terms').then(m => ({ d
 const PersNL = React.lazy(() => import('./pages/nl/Pers').then(m => ({ default: m.PersNL })));
 const PressEN = React.lazy(() => import('./pages/en/Press').then(m => ({ default: m.PressEN })));
 
+const VacaturesNL = React.lazy(() => import('./pages/nl/Vacatures').then(m => ({ default: m.VacaturesNL })));
+const CareersEN = React.lazy(() => import('./pages/en/Careers').then(m => ({ default: m.CareersEN })));
+
 const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 function App() {
@@ -207,6 +210,10 @@ function App() {
           {/* Press/Media Pages */}
           <Route path="/nl/pers" element={<PersNL />} />
           <Route path="/en/press" element={<PressEN />} />
+
+          {/* Careers Pages */}
+          <Route path="/nl/vacatures" element={<VacaturesNL />} />
+          <Route path="/en/careers" element={<CareersEN />} />
 
           {/* Hanze Workshop Page */}
           <Route path="/hanze" element={<Hanze />} />

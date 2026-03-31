@@ -251,6 +251,100 @@ export interface ResourcesPageContent {
   };
 }
 
+export interface JobPosition {
+  id: string;
+  title: string;
+  department: 'training' | 'consulting' | 'software' | 'general';
+  departmentLabel: string;
+  location: string;
+  hours: string;
+  type: string;
+  summary: string;
+  description: string[];
+  requirements: string[];
+  offerings: string[];
+}
+
+export interface CareersPageContent {
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  growth: {
+    text: string;
+    stats: Array<{
+      metric: string;
+      description: string;
+    }>;
+    trustedBy: string[];
+  };
+  culture: {
+    title: string;
+    values: Array<{
+      title: string;
+      description: string;
+    }>;
+    perks: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  departments: {
+    title: string;
+    subtitle: string;
+    items: Array<{
+      name: string;
+      pillar: 'training' | 'consulting' | 'software';
+      description: string;
+    }>;
+  };
+  positions: {
+    title: string;
+    subtitle: string;
+    items: JobPosition[];
+  };
+  openApplication: {
+    title: string;
+    text: string;
+    cta: string;
+  };
+  applicationForm: {
+    title: string;
+    fields: {
+      name: string;
+      email: string;
+      phone: string;
+      position: string;
+      openApplicationLabel: string;
+      motivation: string;
+      motivationPlaceholder: string;
+      cv: string;
+      cvHelp: string;
+      cvDrop: string;
+      cvChange: string;
+      gdpr: string;
+      submit: string;
+    };
+    success: {
+      title: string;
+      message: string;
+    };
+    errors: {
+      fileSize: string;
+      fileType: string;
+      generic: string;
+    };
+  };
+  hiringProcess: {
+    title: string;
+    steps: Array<{
+      step: string;
+      title: string;
+      description: string;
+    }>;
+  };
+}
+
 export interface Content {
   nav: NavStructure;
   hero: HeroContent;
@@ -265,4 +359,5 @@ export interface Content {
   footer: FooterContent;
   dienstenPage?: DienstenContent;
   servicesPage?: DienstenContent;
+  careersPage: CareersPageContent;
 }

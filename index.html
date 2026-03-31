@@ -200,6 +200,17 @@
       <textarea name="message"></textarea>
     </form>
 
+    <!-- Hidden application form for Netlify (with file upload) -->
+    <form name="application" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="position" />
+      <textarea name="motivation"></textarea>
+      <input type="file" name="cv" />
+    </form>
+
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

@@ -121,6 +121,7 @@ export function calculateAlternatePath(path: string, currentLang: Language): str
       .replace('/ai-geletterdheid', '/ai-literacy')
       .replace('/ai-strategie-gids', '/ai-strategy-guide')
       .replace('/voorwaarden', '/terms')
+      .replace('/vacatures', '/careers')
       .replace('/pers', '/press');
   } else {
     // EN -> NL
@@ -139,6 +140,7 @@ export function calculateAlternatePath(path: string, currentLang: Language): str
       .replace('/ai-literacy', '/ai-geletterdheid')
       .replace('/ai-strategy-guide', '/ai-strategie-gids')
       .replace('/terms', '/voorwaarden')
+      .replace('/careers', '/vacatures')
       .replace('/press', '/pers');
   }
 }

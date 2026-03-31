@@ -28,7 +28,8 @@ export const CONTENT: Record<Language, Content> = {
         href: "/nl/over-ons",
         children: [
           { label: "Onze Aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
-          { label: "Het Team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" }
+          { label: "Het Team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
+          { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
         ]
       },
       resources: {
@@ -408,6 +409,231 @@ export const CONTENT: Record<Language, Content> = {
         altCta: "Of mail ons direct:"
       }
     },
+    careersPage: {
+      hero: {
+        title: "Werken bij AI Heroes",
+        subtitle: "Wij groeien. Sluit je aan bij een ambitieus team dat organisaties door heel Europa helpt met AI: van strategie tot implementatie."
+      },
+      growth: {
+        text: "Sinds 2019 helpen we organisaties door heel Europa met het hele AI-traject. Van boardroom-workshops tot custom software, ons team groeit mee met de vraag. We zoeken mensen die net zo gedreven zijn als wij om AI toegankelijk en impactvol te maken.",
+        stats: [
+          { metric: "50+", description: "Organisaties geholpen" },
+          { metric: "1000+", description: "Professionals getraind" },
+          { metric: "3", description: "Expertiseteams" },
+          { metric: "2019", description: "Opgericht" }
+        ],
+        trustedBy: ["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Envalior"]
+      },
+      culture: {
+        title: "Waarom AI Heroes?",
+        values: [
+          {
+            title: "Echte impact",
+            description: "Onze klanten zetten AI in om concrete problemen op te lossen, en jij helpt ze daarbij."
+          },
+          {
+            title: "Autonomie & eigenaarschap",
+            description: "Je krijgt verantwoordelijkheid vanaf dag één. We vertrouwen op je expertise en geven je de ruimte om je eigen werk vorm te geven."
+          },
+          {
+            title: "Continu leren",
+            description: "AI verandert elke week. Wij ook. Je krijgt tijd en budget om bij te blijven, te experimenteren en jezelf te ontwikkelen."
+          },
+          {
+            title: "Eerlijk en direct",
+            description: "We zeggen wat we denken, helpen elkaar en focussen op wat ertoe doet."
+          }
+        ],
+        perks: [
+          { title: "Kantoor in Groningen", description: "Werkplek in de AI-hoofdstad van Europa" },
+          { title: "Flexibel werken", description: "Combineer kantoor en thuiswerk zoals het jou past" },
+          { title: "Leerbudget", description: "Persoonlijk budget voor cursussen, conferenties en tools" },
+          { title: "Diverse projecten", description: "Van startups tot multinationals, steeds nieuwe uitdagingen" },
+          { title: "Informele cultuur", description: "Platte organisatie, korte lijnen, directe samenwerking" },
+          { title: "Groei met ons mee", description: "Word onderdeel van een team dat snel groeit in een booming markt" }
+        ]
+      },
+      departments: {
+        title: "Onze teams",
+        subtitle: "AI Heroes bestaat uit drie gespecialiseerde teams die nauw samenwerken.",
+        items: [
+          {
+            name: "Training & Workshops",
+            pillar: "training",
+            description: "Ons Training team ontwikkelt en levert workshops en programma's voor organisaties van MKB tot multinational. Van AI Foundations voor beginners tot gespecialiseerde tracks voor developers en beleidsmakers."
+          },
+          {
+            name: "AI Consultancy",
+            pillar: "consulting",
+            description: "Ons Consultancy team helpt organisaties hun AI-strategie te bepalen. Van readiness scans en roadmaps tot implementatiebegeleiding — we vertalen ambitie naar actie."
+          },
+          {
+            name: "Software & Implementatie",
+            pillar: "software",
+            description: "Ons Software team bouwt custom AI-oplossingen. Van rapid prototypes in 6 dagen tot enterprise-grade integraties — altijd in samenwerking met het team van de klant."
+          }
+        ]
+      },
+      positions: {
+        title: "Openstaande vacatures",
+        subtitle: "Bekijk onze huidige vacatures en vind de rol die bij je past.",
+        items: [
+          {
+            id: "ai-engineer",
+            title: "AI Engineer / Developer",
+            department: "software",
+            departmentLabel: "Software & Implementatie",
+            location: "Groningen",
+            hours: "32-40 uur/week",
+            type: "Fulltime",
+            summary: "Bouw custom AI-oplossingen voor onze klanten, van prototype tot productie.",
+            description: [
+              "Als AI Engineer bij AI Heroes werk je aan uiteenlopende projecten voor klanten in heel Europa. Je bouwt custom AI-oplossingen die echte bedrijfsproblemen oplossen: van intelligente documentsystemen tot geautomatiseerde workflows en machine learning pipelines.",
+              "Je werkt nauw samen met ons Consultancy team om klantbehoeften te vertalen naar technische oplossingen, en met het team van de klant om te zorgen dat alles soepel integreert in hun bestaande systemen."
+            ],
+            requirements: [
+              "Ervaring met Python en moderne AI/ML frameworks (PyTorch, LangChain, of vergelijkbaar)",
+              "Kennis van LLM's, RAG-architecturen en/of computer vision",
+              "Ervaring met cloud platforms (AWS, Azure, of GCP)",
+              "Zelfstandig kunnen werken én goed functioneren in een team",
+              "Goede communicatieve vaardigheden in Nederlands en/of Engels"
+            ],
+            offerings: [
+              "Afwisselende projecten bij diverse organisaties",
+              "Werken met de nieuwste AI-technologie",
+              "Persoonlijk ontwikkelbudget",
+              "Flexibele werkuren en locatie",
+              "Competitief salaris"
+            ]
+          },
+          {
+            id: "ai-trainer",
+            title: "AI Trainer / Workshop Lead",
+            department: "training",
+            departmentLabel: "Training & Workshops",
+            location: "Groningen (+ reizen door Nederland)",
+            hours: "24-40 uur/week",
+            type: "Fulltime / Parttime",
+            summary: "Geef workshops en trainingen die organisaties AI-vaardig maken.",
+            description: [
+              "Als AI Trainer ben je het gezicht van AI Heroes bij onze klanten. Je geeft hands-on workshops aan teams variërend van C-level executives tot developers, en helpt ze begrijpen hoe ze AI effectief kunnen inzetten in hun dagelijks werk.",
+              "Je ontwikkelt samen met ons team nieuw trainingsmateriaal, houdt bestaande content actueel en denkt mee over nieuwe trainingsformats. Je combineert didactische vaardigheden met diepgaande kennis van AI-tools en -toepassingen."
+            ],
+            requirements: [
+              "Aantoonbare ervaring met het geven van trainingen of workshops",
+              "Brede kennis van AI-tools en -toepassingen (ChatGPT, Copilot, Claude, etc.)",
+              "Sterk in het vertalen van complexe concepten naar begrijpelijke taal",
+              "Comfortabel met presenteren voor groepen van 5 tot 50 personen",
+              "Bereid om te reizen door Nederland voor on-site trainingen",
+              "Uitstekende beheersing van het Nederlands"
+            ],
+            offerings: [
+              "Steeds nieuwe teams en organisaties",
+              "Direct impact: je ziet deelnemers groeien tijdens je workshop",
+              "Ruimte om eigen trainingsformats te ontwikkelen",
+              "Flexibele inzet (parttime mogelijk)",
+              "Competitieve dagvergoeding"
+            ]
+          },
+          {
+            id: "sales-intern",
+            title: "Sales & Business Development Intern",
+            department: "general",
+            departmentLabel: "Business Development",
+            location: "Groningen",
+            hours: "32-40 uur/week",
+            type: "Stage (min. 5 maanden)",
+            summary: "Bouw en onderhoud onze commerciële pipeline als onderdeel van het founding team.",
+            description: [
+              "AI Heroes is een snelgroeiende AI agency vanuit Groningen die bedrijven helpt het potentieel van kunstmatige intelligentie te benutten via training, consultancy en development. We maken AI praktisch en toegankelijk voor organisaties die het willen inzetten. We schalen snel op en zoeken commerciële versterking.",
+              "Als onze Sales & Business Development Intern ben je verantwoordelijk voor het opbouwen en onderhouden van onze commerciële pipeline. Je werkt direct samen met de founders en krijgt veel eigenaarschap."
+            ],
+            requirements: [
+              "Je studeert Commerciële Economie, International Business, of een vergelijkbare opleiding (HBO/Bachelor)",
+              "Je bent proactief, zelfstandig en niet bang om de telefoon te pakken",
+              "Je hebt affiniteit met technologie en AI",
+              "Je bent minimaal 5 maanden beschikbaar, 32-40 uur per week"
+            ],
+            offerings: [
+              "Stage bij een snelgroeiende AI agency met een ambitieuze, informele cultuur",
+              "Direct samenwerken met de drie founders",
+              "Veel ruimte voor initiatief en het ontwikkelen van je commerciële skills",
+              "Eerlijke stagevergoeding",
+              "Werkplek in Groningen"
+            ]
+          },
+          {
+            id: "content-creator-intern",
+            title: "AI-Enabled Content Creator Intern",
+            department: "training",
+            departmentLabel: "Training & Marketing",
+            location: "Groningen",
+            hours: "32-40 uur/week",
+            type: "Stage (min. 5 maanden)",
+            summary: "Creëer content die laat zien wat AI kan, met behulp van de nieuwste AI-tools.",
+            description: [
+              "Als Content Creator Intern bij AI Heroes maak je content die onze expertise zichtbaar maakt: van LinkedIn-posts en blogs tot video's, visuals en nieuwsbrieven. Je gebruikt hierbij actief AI-tools zoals ChatGPT, Midjourney, Runway en Canva AI.",
+              "Je werkt direct samen met de founders aan onze marketingstrategie en leert hoe een groeiende AI agency zichzelf positioneert. Je experimenteert continu met nieuwe AI-tools voor contentcreatie en deelt je bevindingen met het team."
+            ],
+            requirements: [
+              "Je studeert Communicatie, Media, Marketing of een vergelijkbare opleiding (HBO/Bachelor)",
+              "Je hebt ervaring met het maken van content voor social media (LinkedIn, Instagram, YouTube)",
+              "Je bent nieuwsgierig naar AI-tools en gebruikt ze al voor je eigen werk",
+              "Je kunt goed schrijven in het Nederlands, Engels is een plus",
+              "Je bent minimaal 5 maanden beschikbaar, 32-40 uur per week"
+            ],
+            offerings: [
+              "Hands-on ervaring met de nieuwste AI-tools voor contentcreatie",
+              "Direct samenwerken met de founders",
+              "Je eigen contentkalender opzetten en uitvoeren",
+              "Eerlijke stagevergoeding",
+              "Werkplek in Groningen"
+            ]
+          }
+        ]
+      },
+      openApplication: {
+        title: "Herken je jezelf niet in een vacature?",
+        text: "We zijn altijd op zoek naar getalenteerde mensen die onze missie delen. Stuur een open sollicitatie en vertel ons wat jij kunt bijdragen aan AI Heroes.",
+        cta: "Stuur een open sollicitatie"
+      },
+      applicationForm: {
+        title: "Solliciteer",
+        fields: {
+          name: "Naam",
+          email: "E-mail",
+          phone: "Telefoonnummer",
+          position: "Vacature",
+          openApplicationLabel: "Open sollicitatie",
+          motivation: "Motivatie",
+          motivationPlaceholder: "Vertel ons waarom je bij AI Heroes wilt werken en wat je kunt bijdragen...",
+          cv: "CV uploaden",
+          cvHelp: "PDF of DOCX, maximaal 10MB",
+          cvDrop: "Klik of sleep je CV hierheen",
+          cvChange: "Wijzig bestand",
+          gdpr: "Ik ga akkoord met de verwerking van mijn persoonsgegevens ten behoeve van deze sollicitatie conform het privacybeleid van AI Heroes.",
+          submit: "Verstuur sollicitatie"
+        },
+        success: {
+          title: "Sollicitatie ontvangen",
+          message: "Bedankt voor je interesse in AI Heroes! We nemen je sollicitatie zorgvuldig door en nemen binnen 5 werkdagen contact met je op."
+        },
+        errors: {
+          fileSize: "Bestand is te groot. Maximaal 10MB.",
+          fileType: "Alleen PDF en DOCX bestanden worden geaccepteerd.",
+          generic: "Er ging iets mis. Probeer het opnieuw."
+        }
+      },
+      hiringProcess: {
+        title: "Hoe werkt het?",
+        steps: [
+          { step: "1", title: "Sollicitatie", description: "Stuur je CV en motivatie via het formulier. We bevestigen de ontvangst binnen 2 werkdagen." },
+          { step: "2", title: "Kennismaking", description: "Een informeel gesprek (30 min) om elkaar te leren kennen en te kijken of er een klik is." },
+          { step: "3", title: "Verdieping", description: "Een inhoudelijk gesprek of praktijkopdracht, afhankelijk van de rol." },
+          { step: "4", title: "Aanbod", description: "Past het? Dan doen we je een voorstel. We communiceren snel en transparant." }
+        ]
+      }
+    },
     footer: {
       tagline: "Full-service AI agency. Van change management tot technische implementatie, met een Europese aanpak.",
       caseStudies: {
@@ -450,7 +676,8 @@ export const CONTENT: Record<Language, Content> = {
         href: "/en/about",
         children: [
           { label: "Our Approach", href: "/en/about/approach", description: "How we work" },
-          { label: "The Team", href: "/en/about/team", description: "Meet our experts" }
+          { label: "The Team", href: "/en/about/team", description: "Meet our experts" },
+          { label: "Careers", href: "/en/careers", description: "View open positions" }
         ]
       },
       resources: {
@@ -828,6 +1055,231 @@ export const CONTENT: Record<Language, Content> = {
         title: "Start with AI today",
         subtitle: "Leave your details and we'll contact you within 24 hours.",
         altCta: "Or email us directly:"
+      }
+    },
+    careersPage: {
+      hero: {
+        title: "Work at AI Heroes",
+        subtitle: "We're growing. Join an ambitious team helping organisations across Europe with AI: from strategy to implementation."
+      },
+      growth: {
+        text: "Since 2019, we've been helping organisations across Europe with the full AI journey. From boardroom workshops to custom software, our team grows with the demand. We're looking for people who are just as driven as we are to make AI accessible and impactful.",
+        stats: [
+          { metric: "50+", description: "Organisations helped" },
+          { metric: "1,000+", description: "Professionals trained" },
+          { metric: "3", description: "Expert teams" },
+          { metric: "2019", description: "Founded" }
+        ],
+        trustedBy: ["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Envalior"]
+      },
+      culture: {
+        title: "Why AI Heroes?",
+        values: [
+          {
+            title: "Real impact",
+            description: "Our clients use AI to solve concrete problems, and you help them do it."
+          },
+          {
+            title: "Autonomy & ownership",
+            description: "You get responsibility from day one. We trust your expertise and give you the space to shape your own work."
+          },
+          {
+            title: "Continuous learning",
+            description: "AI changes every week. So do we. You get time and budget to stay current, experiment, and develop yourself."
+          },
+          {
+            title: "Honest and direct",
+            description: "We say what we think, help each other, and focus on what matters."
+          }
+        ],
+        perks: [
+          { title: "Office in Groningen", description: "Workspace in the AI Capital of Europe" },
+          { title: "Flexible working", description: "Combine office and remote work as it suits you" },
+          { title: "Learning budget", description: "Personal budget for courses, conferences, and tools" },
+          { title: "Diverse projects", description: "From startups to multinationals, always new challenges" },
+          { title: "Informal culture", description: "Flat organisation, short lines, direct collaboration" },
+          { title: "Grow with us", description: "Join a team that's scaling fast in a booming market" }
+        ]
+      },
+      departments: {
+        title: "Our teams",
+        subtitle: "AI Heroes consists of three specialised teams that work closely together.",
+        items: [
+          {
+            name: "Training & Workshops",
+            pillar: "training",
+            description: "Our Training team develops and delivers workshops and programmes for organisations from SMEs to multinationals. From AI Foundations for beginners to specialised tracks for developers and policymakers."
+          },
+          {
+            name: "AI Consulting",
+            pillar: "consulting",
+            description: "Our Consulting team helps organisations define their AI strategy. From readiness scans and roadmaps to implementation guidance — we translate ambition into action."
+          },
+          {
+            name: "Software & Implementation",
+            pillar: "software",
+            description: "Our Software team builds custom AI solutions. From rapid prototypes in 6 days to enterprise-grade integrations — always in collaboration with the client's team."
+          }
+        ]
+      },
+      positions: {
+        title: "Open positions",
+        subtitle: "Explore our current openings and find the role that fits you.",
+        items: [
+          {
+            id: "ai-engineer",
+            title: "AI Engineer / Developer",
+            department: "software",
+            departmentLabel: "Software & Implementation",
+            location: "Groningen",
+            hours: "32-40 hours/week",
+            type: "Full-time",
+            summary: "Build custom AI solutions for our clients, from prototype to production.",
+            description: [
+              "As an AI Engineer at AI Heroes, you work on diverse projects for clients across Europe. You build custom AI solutions that solve real business problems: from intelligent document systems to automated workflows and machine learning pipelines.",
+              "You work closely with our Consulting team to translate client needs into technical solutions, and with the client's team to ensure smooth integration into their existing systems."
+            ],
+            requirements: [
+              "Experience with Python and modern AI/ML frameworks (PyTorch, LangChain, or similar)",
+              "Knowledge of LLMs, RAG architectures, and/or computer vision",
+              "Experience with cloud platforms (AWS, Azure, or GCP)",
+              "Able to work independently and thrive in a team",
+              "Strong communication skills in English and/or Dutch"
+            ],
+            offerings: [
+              "Varied projects across diverse organisations",
+              "Work with cutting-edge AI technology",
+              "Personal development budget",
+              "Flexible working hours and location",
+              "Competitive salary"
+            ]
+          },
+          {
+            id: "ai-trainer",
+            title: "AI Trainer / Workshop Lead",
+            department: "training",
+            departmentLabel: "Training & Workshops",
+            location: "Groningen (+ travel across the Netherlands)",
+            hours: "24-40 hours/week",
+            type: "Full-time / Part-time",
+            summary: "Deliver workshops and training that make organisations AI-ready.",
+            description: [
+              "As an AI Trainer, you are the face of AI Heroes at our clients. You deliver hands-on workshops to teams ranging from C-level executives to developers, helping them understand how to effectively use AI in their daily work.",
+              "You develop new training material with our team, keep existing content up to date, and brainstorm new training formats. You combine didactic skills with deep knowledge of AI tools and applications."
+            ],
+            requirements: [
+              "Demonstrable experience delivering training or workshops",
+              "Broad knowledge of AI tools and applications (ChatGPT, Copilot, Claude, etc.)",
+              "Strong at translating complex concepts into understandable language",
+              "Comfortable presenting to groups of 5 to 50 people",
+              "Willing to travel across the Netherlands for on-site training",
+              "Excellent command of Dutch"
+            ],
+            offerings: [
+              "Always new teams and organisations",
+              "Direct impact: you see participants grow during your workshop",
+              "Room to develop your own training formats",
+              "Flexible scheduling (part-time possible)",
+              "Competitive day rate"
+            ]
+          },
+          {
+            id: "sales-intern",
+            title: "Sales & Business Development Intern",
+            department: "general",
+            departmentLabel: "Business Development",
+            location: "Groningen",
+            hours: "32-40 hours/week",
+            type: "Internship (min. 5 months)",
+            summary: "Build and maintain our commercial pipeline as part of the founding team.",
+            description: [
+              "AI Heroes is a fast-growing AI agency based in Groningen, helping businesses unlock the potential of artificial intelligence through training, consultancy, and development. We make AI practical and accessible for organisations that want to put it to work. We're scaling quickly and looking for commercial reinforcement.",
+              "As our Sales & Business Development Intern, you'll be responsible for building and maintaining our commercial pipeline. You'll work directly alongside the founders and get a lot of ownership."
+            ],
+            requirements: [
+              "You're studying Commercial Economics, International Business, or a related programme (HBO/Bachelor level)",
+              "You're proactive, independent, and not afraid to pick up the phone",
+              "You have an affinity with technology and AI",
+              "You're available for at least 5 months, 32-40 hours per week"
+            ],
+            offerings: [
+              "An internship at a fast-growing AI agency with an ambitious, informal culture",
+              "Working directly with the three founders",
+              "Plenty of room for initiative and developing your commercial skills",
+              "Fair internship compensation",
+              "Office space in Groningen"
+            ]
+          },
+          {
+            id: "content-creator-intern",
+            title: "AI-Enabled Content Creator Intern",
+            department: "training",
+            departmentLabel: "Training & Marketing",
+            location: "Groningen",
+            hours: "32-40 hours/week",
+            type: "Internship (min. 5 months)",
+            summary: "Create content that showcases what AI can do, using the latest AI tools.",
+            description: [
+              "As a Content Creator Intern at AI Heroes, you create content that makes our expertise visible: from LinkedIn posts and blogs to videos, visuals and newsletters. You actively use AI tools like ChatGPT, Midjourney, Runway and Canva AI.",
+              "You work directly with the founders on our marketing strategy and learn how a growing AI agency positions itself. You continuously experiment with new AI tools for content creation and share your findings with the team."
+            ],
+            requirements: [
+              "You're studying Communications, Media, Marketing or a related programme (HBO/Bachelor level)",
+              "You have experience creating content for social media (LinkedIn, Instagram, YouTube)",
+              "You're curious about AI tools and already use them for your own work",
+              "You can write well in Dutch; English is a plus",
+              "You're available for at least 5 months, 32-40 hours per week"
+            ],
+            offerings: [
+              "Hands-on experience with the latest AI tools for content creation",
+              "Working directly with the founders",
+              "Set up and execute your own content calendar",
+              "Fair internship compensation",
+              "Office space in Groningen"
+            ]
+          }
+        ]
+      },
+      openApplication: {
+        title: "Don't see a role that fits?",
+        text: "We're always looking for talented people who share our mission. Send an open application and tell us what you can bring to AI Heroes.",
+        cta: "Send an open application"
+      },
+      applicationForm: {
+        title: "Apply",
+        fields: {
+          name: "Name",
+          email: "Email",
+          phone: "Phone number",
+          position: "Position",
+          openApplicationLabel: "Open application",
+          motivation: "Motivation",
+          motivationPlaceholder: "Tell us why you want to work at AI Heroes and what you can contribute...",
+          cv: "Upload CV",
+          cvHelp: "PDF or DOCX, max 10MB",
+          cvDrop: "Click or drag your CV here",
+          cvChange: "Change file",
+          gdpr: "I agree to the processing of my personal data for this application in accordance with AI Heroes' privacy policy.",
+          submit: "Submit application"
+        },
+        success: {
+          title: "Application received",
+          message: "Thank you for your interest in AI Heroes! We'll carefully review your application and get back to you within 5 working days."
+        },
+        errors: {
+          fileSize: "File is too large. Maximum 10MB.",
+          fileType: "Only PDF and DOCX files are accepted.",
+          generic: "Something went wrong. Please try again."
+        }
+      },
+      hiringProcess: {
+        title: "How it works",
+        steps: [
+          { step: "1", title: "Application", description: "Send your CV and motivation via the form. We'll confirm receipt within 2 working days." },
+          { step: "2", title: "Introduction", description: "An informal chat (30 min) to get to know each other and see if there's a fit." },
+          { step: "3", title: "Deep dive", description: "A substantive conversation or practical assignment, depending on the role." },
+          { step: "4", title: "Offer", description: "If it's a match, we'll make you a proposal. We communicate quickly and transparently." }
+        ]
       }
     },
     footer: {

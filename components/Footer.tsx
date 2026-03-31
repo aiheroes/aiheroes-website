@@ -193,6 +193,11 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </Link>
               </li>
               <li>
+                <Link to={lang === 'nl' ? '/nl/vacatures' : '/en/careers'} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {lang === 'nl' ? 'Vacatures' : 'Careers'}
+                </Link>
+              </li>
+              <li>
                 {isHomePage ? (
                   <button onClick={() => scrollTo('#contact')} className="text-stone-400 hover:text-white transition-colors text-sm text-left">
                     {nav.contact.label}
