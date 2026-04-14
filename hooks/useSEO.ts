@@ -76,14 +76,14 @@ export const useSEO = ({ title, description, lang, path, alternatePath, noindex 
     setMetaTag('og:locale', lang === 'nl' ? 'nl_NL' : 'en_US');
     setMetaTag('og:type', 'website');
     setMetaTag('og:site_name', 'AI Heroes');
-    setMetaTag('og:image', `${DOMAIN}/og-image.jpg`);
+    setMetaTag('og:image', `${DOMAIN}/og-image.png`);
 
     // Twitter
     setMetaTag('twitter:card', 'summary_large_image');
     setMetaTag('twitter:title', fullTitle);
     setMetaTag('twitter:description', description);
     setMetaTag('twitter:url', fullUrl);
-    setMetaTag('twitter:image', `${DOMAIN}/og-image.jpg`);
+    setMetaTag('twitter:image', `${DOMAIN}/og-image.png`);
 
     // Canonical URL
     setLinkTag('canonical', fullUrl);
