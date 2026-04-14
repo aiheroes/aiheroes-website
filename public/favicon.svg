@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-29.334 -18.334 1206.038 1245.998" role="img" aria-label="AI Heroes">
   <rect x="-29.334" y="-18.334" width="1206.038" height="1245.998" fill="#D9534F"/>
-  <g>
+  <g shape-rendering="crispEdges">
     <rect x="610.00638" y="350.66836" width="313.36548" height="46.66143" fill="#FDFCF8"/>
     <rect x="876.71024" y="350.66836" width="46.66162" height="623.65918" fill="#FDFCF8"/>
     <rect x="326.48368" y="927.66610" width="596.88818" height="46.66144" fill="#FDFCF8"/>
