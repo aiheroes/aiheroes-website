@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../../components/Logo';
+import { LogoShowcase } from '../../components/LogoShowcase';
 import { Footer } from '../../components/Footer';
 import { CONTENT } from '../../constants';
 import { ArrowLeft } from 'lucide-react';
@@ -82,59 +83,19 @@ export const PersNL: React.FC = () => {
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Woordmerk</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-              <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
-                <div className="bg-brand-light p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="fullcolor" />
-                </div>
-                <span className="text-sm text-stone-500">Op licht</span>
-              </div>
-              <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="white-dark" />
-                </div>
-                <span className="text-sm text-white/70">Op donker</span>
-              </div>
-              <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="white-red" />
-                </div>
-                <span className="text-sm text-white/80">Op rood</span>
-              </div>
-              <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="white-blue" />
-                </div>
-                <span className="text-sm text-white/80">Op blauw</span>
-              </div>
+            <div className="mb-8">
+              <LogoShowcase
+                variant="wordmark"
+                labels={{ groupLabel: 'Achtergrond', light: 'Op licht', dark: 'Op donker', red: 'Op rood', blue: 'Op blauw' }}
+              />
             </div>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Beeldmerk</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-              <div className="bg-white p-8 border border-stone-200 flex flex-col items-center">
-                <div className="bg-brand-light p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20" variant="icon" colorVariant="fullcolor" />
-                </div>
-                <span className="text-sm text-stone-500">Op licht</span>
-              </div>
-              <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20" variant="icon" colorVariant="white-dark" />
-                </div>
-                <span className="text-sm text-white/70">Op donker</span>
-              </div>
-              <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20" variant="icon" colorVariant="white-red" />
-                </div>
-                <span className="text-sm text-white/80">Op rood</span>
-              </div>
-              <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
-                <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20" variant="icon" colorVariant="white-blue" />
-                </div>
-                <span className="text-sm text-white/80">Op blauw</span>
-              </div>
+            <div className="mb-8">
+              <LogoShowcase
+                variant="icon"
+                labels={{ groupLabel: 'Achtergrond', light: 'Op licht', dark: 'Op donker', red: 'Op rood', blue: 'Op blauw' }}
+              />
             </div>
 
             <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
