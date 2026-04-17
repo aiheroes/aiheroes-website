@@ -18,16 +18,20 @@ import rawIconWhiteRedBg from '../assets/brand/icon-white-red-bg.svg?raw';
 import rawIconWhiteBlueBg from '../assets/brand/icon-white-blue-bg.svg?raw';
 import rawIconBlackTransparent from '../assets/brand/icon-black-transparent.svg?raw';
 
-// Make gradient IDs unique per render to avoid collisions when multiple SVGs
-// are inlined on the same page (e.g. navbar + press page).
 let logoInstanceId = 0;
-function makeUniqueIds(svg: string): string {
+function preprocessSvg(svg: string): string {
   const p = `l${++logoInstanceId}`;
   return svg
+    // Make gradient IDs unique per render so multiple SVGs on the same page don't collide.
     .replace(/id="aih-gRight"/g, `id="${p}-gRight"`).replace(/url\(#aih-gRight\)/g, `url(#${p}-gRight)`)
     .replace(/id="aih-gBottom"/g, `id="${p}-gBottom"`).replace(/url\(#aih-gBottom\)/g, `url(#${p}-gBottom)`)
     .replace(/id="aih-iRight"/g, `id="${p}-iRight"`).replace(/url\(#aih-iRight\)/g, `url(#${p}-iRight)`)
-    .replace(/id="aih-iBottom"/g, `id="${p}-iBottom"`).replace(/url\(#aih-iBottom\)/g, `url(#${p}-iBottom)`);
+    .replace(/id="aih-iBottom"/g, `id="${p}-iBottom"`).replace(/url\(#aih-iBottom\)/g, `url(#${p}-iBottom)`)
+    // Snap the frame rects to whole-pixel edges — at small sizes (h-16 navbar, h-20 showcase)
+    // each frame line is ~2-3px wide and subpixel antialiasing gives each of the 4 edges a
+    // different perceived thickness. crispEdges forces identical integer widths. Applied only
+    // to the first <g> (frame group); the letter group always has a fill attribute so it's skipped.
+    .replace(/<g>/, '<g shape-rendering="crispEdges">');
 }
 
 export type LogoVariant = 'icon' | 'wordmark';
@@ -79,6 +83,6 @@ function injectClassName(svg: string, className?: string): string {
 export const Logo: React.FC<LogoProps> = ({ className, variant = 'icon', colorVariant = 'fullcolor' }) => {
   const resolvedColor = colorVariant === 'mono' ? 'black' : colorVariant;
   const source = variant === 'wordmark' ? LOGO_SVGS[resolvedColor] : ICON_SVGS[resolvedColor];
-  const html = injectClassName(makeUniqueIds(source), className);
+  const html = injectClassName(preprocessSvg(source), className);
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
