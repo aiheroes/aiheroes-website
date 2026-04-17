@@ -405,7 +405,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <a href={homeUrl} onClick={handleLogoClick} className="flex items-center cursor-pointer">
-          <Logo className="h-16 w-auto" variant="wordmark" colorVariant={logoColor} />
+          <Logo className="h-20 w-auto" variant="wordmark" colorVariant={logoColor} />
         </a>
 
         {/* Desktop Nav */}
@@ -628,7 +628,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-24 px-6 overflow-y-auto`}>
+      <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-32 px-6 overflow-y-auto`}>
         <div className="max-w-md mx-auto">
           {/* Diensten accordion with sub-pillars */}
           <MobileServicesAccordion />

@@ -11,7 +11,7 @@
       <stop offset="0.92" stop-color="#1C1917"/>
     </linearGradient>
   </defs>
-  <g>
+  <g shape-rendering="crispEdges">
     <rect x="610.00638"    y="350.66836" width="313.36548"    height="46.66143"    fill="#D9534F"/>
     <rect x="876.71024"  y="350.66836" width="46.66162"  height="623.65918"  fill="url(#aih-iRight)"/>
     <rect x="326.48368" y="927.66610" width="596.88818" height="46.66144" fill="url(#aih-iBottom)"/>
