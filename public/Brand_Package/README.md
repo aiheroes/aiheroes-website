@@ -28,7 +28,7 @@ Complete logo asset package. Vector-clean SVGs (pure vector, no embedded bitmaps
 
 Internal files (`_source.svg`, `_source-white.svg`) are build inputs — don't ship them.
 
-**2. Site header logo.** Use `Logo/SVG/AIHeroes_Logo_FullColor_Transparent.svg` for light-background headers (sits on any light color). For dark-themed pages, use `Logo/SVG/AIHeroes_Logo_FullColor_DarkBG.svg` (the gradient's dark corner is replaced with light so the frame stays visible).
+**2. Site header logo.** Use `Logo/SVG/AIHeroes_Logo_FullColor_Transparent.svg` for light-background headers (sits on any light color). For dark-themed pages, use `Logo/SVG/AIHeroes_Logo_White_Transparent.svg` (solid light mark, reads cleanly against any dark surface).
 
 **3. Open Graph / social preview.** Use `Social/OG-1200x630.png`:
 
@@ -68,14 +68,13 @@ Brand_Package/
 
 Each Social artboard exists as both `.svg` (editable wrapper) and `.png` (ready to upload).
 
-## Color variants (8 per mark)
+## Color variants (7 per mark)
 
 | Variant | Background | Frame | Letters | Use case |
 |---|---|---|---|---|
 | `FullColor_Transparent` | none | red + gradients | dark `#1C1917` | Default for light surfaces |
 | `FullColor_LightBG` | light `#FDFCF8` | red + gradients | dark | Print on light paper, web |
-| `FullColor_DarkBG` | dark `#1C1917` | red + *light-ended* gradients | light `#FDFCF8` | Dark UI, dark decks. Dark-stops swapped to light so frame stays visible. |
-| `White_Transparent` | none | solid light | light | Overlay on photos |
+| `White_Transparent` | none | solid light | light | Overlay on photos, dark surfaces |
 | `White_DarkBG` | dark | solid light | light | Dark surfaces, single-color reproduction |
 | `White_RedBG` | red `#D9534F` | solid light | light | Training-branded materials |
 | `White_BlueBG` | blue `#2563EB` | solid light | light | Consultancy-branded materials |
@@ -173,7 +172,7 @@ Content bounding box within viewBox:
 Before handing off:
 - [ ] Open `_favicon_test.html` in a browser. Toggle theme top-right. Confirm both light and dark favicon variants look crisp at every size.
 - [ ] Open `Logo/SVG/AIHeroes_Logo_FullColor_LightBG.svg` — gradient frame, dark text, light bg.
-- [ ] Open `Logo/SVG/AIHeroes_Logo_FullColor_DarkBG.svg` — gradient frame fades to *light* at corners (not dark), light text.
+- [ ] Open `Logo/SVG/AIHeroes_Logo_White_Transparent.svg` — solid light mark, reads cleanly on dark surfaces.
 - [ ] Open `Icon/PNG/512/AIHeroes_Icon_White_RedBG.png` — 512×512, icon centered.
 - [ ] Open `Social/OG-1200x630.png` — logo on light, looks good at 1200×630.
 - [ ] Open `Logo/PDF/AIHeroes_Logo_FullColor_LightBG.pdf` — zoom 800%, no pixelation.

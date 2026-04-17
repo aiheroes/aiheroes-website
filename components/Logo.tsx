@@ -4,7 +4,6 @@ import React from 'react';
 // gradient fills and baked-in backgrounds render 1:1 with the brand deliverable.
 import rawLogoFullColorTransparent from '../assets/brand/logo-fullcolor-transparent.svg?raw';
 import rawLogoFullColorLightBg from '../assets/brand/logo-fullcolor-light-bg.svg?raw';
-import rawLogoFullColorDarkBg from '../assets/brand/logo-fullcolor-dark-bg.svg?raw';
 import rawLogoWhiteTransparent from '../assets/brand/logo-white-transparent.svg?raw';
 import rawLogoWhiteDarkBg from '../assets/brand/logo-white-dark-bg.svg?raw';
 import rawLogoWhiteRedBg from '../assets/brand/logo-white-red-bg.svg?raw';
@@ -13,7 +12,6 @@ import rawLogoBlackTransparent from '../assets/brand/logo-black-transparent.svg?
 
 import rawIconFullColorTransparent from '../assets/brand/icon-fullcolor-transparent.svg?raw';
 import rawIconFullColorLightBg from '../assets/brand/icon-fullcolor-light-bg.svg?raw';
-import rawIconFullColorDarkBg from '../assets/brand/icon-fullcolor-dark-bg.svg?raw';
 import rawIconWhiteTransparent from '../assets/brand/icon-white-transparent.svg?raw';
 import rawIconWhiteDarkBg from '../assets/brand/icon-white-dark-bg.svg?raw';
 import rawIconWhiteRedBg from '../assets/brand/icon-white-red-bg.svg?raw';
@@ -36,7 +34,6 @@ export type LogoVariant = 'icon' | 'wordmark';
 export type LogoColorVariant =
   | 'fullcolor'        // FullColor_Transparent — default, light surfaces
   | 'fullcolor-light'  // FullColor_LightBG     — light bg baked in
-  | 'fullcolor-dark'   // FullColor_DarkBG      — dark bg baked in (light-ended gradients)
   | 'white'            // White_Transparent     — solid white on transparent
   | 'white-dark'       // White_DarkBG          — solid white on dark bg
   | 'white-red'        // White_RedBG           — solid white on red bg
@@ -53,7 +50,6 @@ interface LogoProps {
 const LOGO_SVGS: Record<Exclude<LogoColorVariant, 'mono'>, string> = {
   'fullcolor':       rawLogoFullColorTransparent,
   'fullcolor-light': rawLogoFullColorLightBg,
-  'fullcolor-dark':  rawLogoFullColorDarkBg,
   'white':           rawLogoWhiteTransparent,
   'white-dark':      rawLogoWhiteDarkBg,
   'white-red':       rawLogoWhiteRedBg,
@@ -64,7 +60,6 @@ const LOGO_SVGS: Record<Exclude<LogoColorVariant, 'mono'>, string> = {
 const ICON_SVGS: Record<Exclude<LogoColorVariant, 'mono'>, string> = {
   'fullcolor':       rawIconFullColorTransparent,
   'fullcolor-light': rawIconFullColorLightBg,
-  'fullcolor-dark':  rawIconFullColorDarkBg,
   'white':           rawIconWhiteTransparent,
   'white-dark':      rawIconWhiteDarkBg,
   'white-red':       rawIconWhiteRedBg,

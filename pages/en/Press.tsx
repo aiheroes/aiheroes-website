@@ -91,7 +91,7 @@ export const PressEN: React.FC = () => {
               </div>
               <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="fullcolor-dark" />
+                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="white-dark" />
                 </div>
                 <span className="text-sm text-white/70">On dark</span>
               </div>
@@ -119,7 +119,7 @@ export const PressEN: React.FC = () => {
               </div>
               <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20" variant="icon" colorVariant="fullcolor-dark" />
+                  <Logo className="h-20 w-20" variant="icon" colorVariant="white-dark" />
                 </div>
                 <span className="text-sm text-white/70">On dark</span>
               </div>
