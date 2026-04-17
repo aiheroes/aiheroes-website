@@ -1,6 +1,24 @@
 import React from 'react';
-import rawFullColorWordmarkSvg from '../assets/logo-fullcolor-wordmark.svg?raw';
-import rawFullColorIconSvg from '../assets/logo-fullcolor-icon.svg?raw';
+
+// 16 Brand_Package SVGs (8 color variants × 2 marks), inlined as raw strings so
+// gradient fills and baked-in backgrounds render 1:1 with the brand deliverable.
+import rawLogoFullColorTransparent from '../assets/brand/logo-fullcolor-transparent.svg?raw';
+import rawLogoFullColorLightBg from '../assets/brand/logo-fullcolor-light-bg.svg?raw';
+import rawLogoFullColorDarkBg from '../assets/brand/logo-fullcolor-dark-bg.svg?raw';
+import rawLogoWhiteTransparent from '../assets/brand/logo-white-transparent.svg?raw';
+import rawLogoWhiteDarkBg from '../assets/brand/logo-white-dark-bg.svg?raw';
+import rawLogoWhiteRedBg from '../assets/brand/logo-white-red-bg.svg?raw';
+import rawLogoWhiteBlueBg from '../assets/brand/logo-white-blue-bg.svg?raw';
+import rawLogoBlackTransparent from '../assets/brand/logo-black-transparent.svg?raw';
+
+import rawIconFullColorTransparent from '../assets/brand/icon-fullcolor-transparent.svg?raw';
+import rawIconFullColorLightBg from '../assets/brand/icon-fullcolor-light-bg.svg?raw';
+import rawIconFullColorDarkBg from '../assets/brand/icon-fullcolor-dark-bg.svg?raw';
+import rawIconWhiteTransparent from '../assets/brand/icon-white-transparent.svg?raw';
+import rawIconWhiteDarkBg from '../assets/brand/icon-white-dark-bg.svg?raw';
+import rawIconWhiteRedBg from '../assets/brand/icon-white-red-bg.svg?raw';
+import rawIconWhiteBlueBg from '../assets/brand/icon-white-blue-bg.svg?raw';
+import rawIconBlackTransparent from '../assets/brand/icon-black-transparent.svg?raw';
 
 // Make gradient IDs unique per render to avoid collisions when multiple SVGs
 // are inlined on the same page (e.g. navbar + press page).
@@ -14,71 +32,58 @@ function makeUniqueIds(svg: string): string {
     .replace(/id="aih-iBottom"/g, `id="${p}-iBottom"`).replace(/url\(#aih-iBottom\)/g, `url(#${p}-iBottom)`);
 }
 
+export type LogoVariant = 'icon' | 'wordmark';
+export type LogoColorVariant =
+  | 'fullcolor'        // FullColor_Transparent — default, light surfaces
+  | 'fullcolor-light'  // FullColor_LightBG     — light bg baked in
+  | 'fullcolor-dark'   // FullColor_DarkBG      — dark bg baked in (light-ended gradients)
+  | 'white'            // White_Transparent     — solid white on transparent
+  | 'white-dark'       // White_DarkBG          — solid white on dark bg
+  | 'white-red'        // White_RedBG           — solid white on red bg
+  | 'white-blue'       // White_BlueBG          — solid white on blue bg
+  | 'black'            // Black_Transparent     — solid black on transparent
+  | 'mono';            // legacy alias → 'black'
+
 interface LogoProps {
   className?: string;
-  variant?: 'icon' | 'wordmark';
-  colorVariant?: 'mono' | 'fullcolor';
+  variant?: LogoVariant;
+  colorVariant?: LogoColorVariant;
 }
 
-// Icon paths (square "AIH" mark with frame) from brand files 2026-04
-const IconSvg: React.FC<{ className?: string }> = ({ className }) => (
-  <svg
-    className={className}
-    viewBox="-29.334 -18.334 1206.038 1245.998"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Frame — single polygon (ring shape) so all edges render with identical thickness */}
-    <polygon points="610.00638 350.66836 610.00638 397.32979 876.71024 397.32979 876.71024 927.6661 373.14506 927.6661 373.14506 495.28231 326.48368 495.28231 326.48368 974.32754 923.37186 974.32754 923.37186 350.66836 610.00638 350.66836"/>
-    {/* A */}
-    <path d="M349.8197,270.34005c3.91748,14.65021,7.57959,28.12518,10.97437,40.37769,4.76172,17.17456,9.35034,32.56281,13.77515,46.16022l45.05273,131.59979h49.81934l-90.45215-253.33417h-57.63867l-88.41064,253.33417h49.64624l43.52637-131.59979c4.07837-13.1463,8.41626-28.36139,13.00513-45.64984,3.28784-12.3844,6.85913-26.0285,10.70215-40.88806Z"/>
-    {/* I */}
-    <rect x="517.81132" y="235.14358" width="45.39453" height="253.33417"/>
-    {/* H */}
-    <polygon points="563.20585 685.95626 681.03104 685.95626 681.03104 796.30324 726.42997 796.30324 726.42997 542.96908 681.03104 542.96908 681.03104 647.70211 563.20585 647.70211 563.20585 542.96908 517.81132 542.96908 517.81132 796.30324 563.20585 796.30324 563.20585 685.95626"/>
-  </svg>
-);
+const LOGO_SVGS: Record<Exclude<LogoColorVariant, 'mono'>, string> = {
+  'fullcolor':       rawLogoFullColorTransparent,
+  'fullcolor-light': rawLogoFullColorLightBg,
+  'fullcolor-dark':  rawLogoFullColorDarkBg,
+  'white':           rawLogoWhiteTransparent,
+  'white-dark':      rawLogoWhiteDarkBg,
+  'white-red':       rawLogoWhiteRedBg,
+  'white-blue':      rawLogoWhiteBlueBg,
+  'black':           rawLogoBlackTransparent,
+};
 
-// Wordmark paths (full "AI HEROES" with frame) from brand files 2026-04
-const WordmarkSvg: React.FC<{ className?: string }> = ({ className }) => (
-  <svg
-    className={className}
-    viewBox="-19.334 1.666 2771.268 1245.578"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Frame — single polygon (ring shape) so all edges render with identical thickness */}
-    <polygon points="620.58565 370.25279 620.58567 416.91419 2451.93477 416.91355 2451.93495 947.24992 383.88522 947.25064 383.88507 515.13546 337.22361 515.13548 337.22378 993.91205 2498.59637 993.9113 2498.59615 370.25214 620.58565 370.25279"/>
-    {/* H */}
-    <polygon points="574.21511 816.15637 574.21507 706.8743 692.03978 706.87426 692.03982 816.15633 692.03982 817.22128 737.43898 817.22127 737.43898 816.15631 737.43889 563.88707 737.43889 562.82212 692.03973 562.82213 692.03973 563.88709 692.03977 667.55519 574.21505 667.55523 574.21502 563.88713 574.21502 562.82217 528.82036 562.82219 528.82036 563.88714 528.82044 816.15639 528.82045 817.22134 574.21511 817.22132 574.21511 816.15637"/>
-    {/* E */}
-    <polygon points="1047.75644 602.14108 1047.75636 563.8869 883.17461 563.88702 883.17476 817.22122 1048.43551 817.22116 1048.4355 778.96697 928.56941 778.96702 928.56932 708.23668 1038.91634 708.23665 1038.91633 670.49282 928.56931 670.49286 928.56929 602.14119 1047.75644 602.14108"/>
-    {/* R */}
-    <path d="M1363.41203,686.98368c6.85799-11.9023,10.28463-25.9007,10.28463-41.99529s-3.39932-30.23423-10.19809-42.41907c-6.80326-12.18477-16.8327-21.68114-30.0975-28.47983-13.26024-6.80332-29.58263-10.20263-48.96262-10.20262l-94.70356.00003.00009,253.3342,45.39466-.00002-.00003-93.00391,47.27829-.00002,49.8039,93.00389,50.84005-.00002-54.88056-100.53384c1.67278-.67502,3.30589-1.39193,4.89262-2.15776,13.37414-6.46148,23.4902-15.6434,30.34812-27.54576ZM1235.12957,601.97244h42.337c11.56058-.00002,20.99764,1.6997,28.30676,5.09901,7.31362,3.40394,12.72254,8.307,16.24033,14.7093,3.50872,6.4023,5.26768,14.13971,5.26769,23.20766,0,8.8402-1.75895,16.38163-5.26767,22.61079-3.51778,6.23823-8.89937,10.96815-16.15375,14.19889-7.25438,3.23081-16.60494,4.84389-28.05611,4.8439h-42.67422s-.00003-84.66955-.00003-84.66955Z"/>
-    {/* O */}
-    <path d="M1545.56507,803.82995c17.57093,10.31654,37.46128,15.47024,59.68012,15.47023,22.10043,0,41.90871-5.12639,59.42046-15.3837,17.51625-10.25731,31.34151-25.10787,41.48947-44.5471,10.13883-19.43923,15.21502-42.76079,15.21501-69.96483,0-27.31787-5.07622-50.69417-15.21506-70.13339-10.14797-19.43922-23.97324-34.3171-41.4895-44.63364-17.51176-10.31197-37.32004-15.47024-59.42047-15.47023-22.21884,0-42.10919,5.15829-59.68011,15.47027-17.57099,10.31655-31.42815,25.19444-41.56698,44.63367-10.1479,19.43923-15.21959,42.81553-15.21958,70.1334,0,27.20403,5.07172,50.49826,15.21963,69.87825,10.13884,19.38455,23.99601,34.2351,41.56701,44.54707ZM1543.44157,640.52407c6.06052-13.31947,14.42219-23.43554,25.07595-30.35271,10.65376-6.91267,22.89777-10.37129,36.7276-10.37129,13.71136,0,25.86887,3.43127,36.46796,10.2892,10.59903,6.85799,18.90154,16.94665,24.91189,30.26162,6.00585,13.31947,9.00879,29.6692,9.00879,49.05369,0,19.15674-3.00291,35.39257-9.00876,48.71204-6.01035,13.31947-14.31285,23.40814-24.91187,30.26157-10.59909,6.8625-22.7566,10.28922-36.46795,10.28922-13.82983,0-26.07384-3.45861-36.72761-10.3712-10.65376-6.91266-19.01544-17.00596-25.07597-30.26619-6.06509-13.26023-9.09536-29.46865-9.09536-48.6254,0-19.27058,3.03025-35.56108,9.09533-48.88055Z"/>
-    {/* E */}
-    <polygon points="2010.69965 600.82065 2010.69964 562.56646 1846.11783 562.56652 1846.11791 815.90078 2011.37867 815.90072 2011.37865 777.64654 1891.51256 777.64658 1891.51254 706.91625 2001.85949 706.91621 2001.85948 669.17239 1891.51252 669.17243 1891.5125 600.82069 2010.69965 600.82065"/>
-    {/* S */}
-    <path d="M2255.69582,776.45709c-7.6509,3.05766-16.46357,4.58875-26.43839,4.58875-9.5192,0-18.19069-1.4445-26.01017-4.33352-7.82392-2.89358-14.11238-7.28171-18.87413-13.17822-4.76176-5.89188-7.54144-13.26023-8.32978-22.10493l-44.71572.00002c.67901,16.66418,5.09905,30.83572,13.26025,42.50564,8.1612,11.67905,19.4665,20.57385,33.92073,26.6936,14.44953,6.12432,31.4782,9.18191,51.09057,9.1819,20.1729,0,37.40667-3.14418,51.68762-9.43708,14.28095-6.28834,25.21726-15.07387,32.81336-26.3519,7.59153-11.27803,11.39193-24.33772,11.39192-39.18827,0-10.99555-2.10068-20.57392-6.29291-28.73505-4.19222-8.1612-9.83352-15.10576-16.91477-20.82906-7.08581-5.7233-15.04659-10.45785-23.88666-14.19437-8.84477-3.74109-17.96745-6.74402-27.37718-9.01333l-23.63145-6.11975c-6.80332-1.69965-13.51532-3.90967-20.15007-6.63011-6.63005-2.72037-12.13017-6.34756-16.49097-10.88157-4.3655-4.534-6.54355-10.31654-6.54355-17.34311,0-6.46148,1.84089-12.18478,5.52269-17.17448,3.68206-4.98513,8.9541-8.92677,15.8121-11.81573,6.85799-2.88902,15.04646-4.33353,24.57023-4.33354,13.71129,0,24.84801,2.97558,33.4103,8.92676,8.55759,5.94655,13.40141,14.36295,14.53604,25.24453l44.03672-.00002c-.34159-14.05308-4.33797-26.5797-11.98875-37.57518-7.65091-10.99098-18.27734-19.60786-31.87942-25.84152-13.60195-6.23366-29.41392-9.35048-47.43591-9.35048-17.6804,0-33.49236,3.08951-47.43616,9.26394-13.9391,6.179-24.93934,14.87789-32.982,26.10125-8.05179,11.21879-12.07543,24.31045-12.07542,39.27491,0,17.90814,5.92379,32.36224,17.77149,43.35321,11.843,10.99548,28.36137,19.2159,49.55943,24.65672l28.73518,7.47762c9.18192,2.26932,17.19724,4.90769,24.05524,7.90604,6.85786,3.00749,12.18484,6.66201,15.98525,10.96814,3.7957,4.31069,5.69584,9.75151,5.69584,16.32239,0,7.25438-2.15521,13.62935-6.46147,19.12935-4.31069,5.49549-10.28914,9.77435-17.94004,12.83645Z"/>
-    {/* A */}
-    <path d="M360.39881,290.1932c3.91757,14.65027,7.57954,28.1252,10.97436,40.37776,4.76182,17.17447,9.3505,32.56272,13.77518,46.16016l45.05292,131.59979,49.81926-.00002-90.45213-253.33416-57.63874.00002-88.41058,253.33423,49.64612-.00002,43.52632-131.59982c4.07831-13.14633,8.4164-28.36143,13.00507-45.64981,3.28788-12.38441,6.85916-26.02857,10.70222-40.88812Z"/>
-    {/* I */}
-    <rect x="528.82029" y="254.99668" width="45.39466" height="253.3342"/>
-  </svg>
-);
+const ICON_SVGS: Record<Exclude<LogoColorVariant, 'mono'>, string> = {
+  'fullcolor':       rawIconFullColorTransparent,
+  'fullcolor-light': rawIconFullColorLightBg,
+  'fullcolor-dark':  rawIconFullColorDarkBg,
+  'white':           rawIconWhiteTransparent,
+  'white-dark':      rawIconWhiteDarkBg,
+  'white-red':       rawIconWhiteRedBg,
+  'white-blue':      rawIconWhiteBlueBg,
+  'black':           rawIconBlackTransparent,
+};
 
-// Full-color variants use the actual designer-provided SVGs, inlined so that
-// they scale with the parent's className.
-export const Logo: React.FC<LogoProps> = ({ className, variant = 'icon', colorVariant = 'mono' }) => {
-  if (colorVariant === 'fullcolor' && variant === 'wordmark') {
-    return <span dangerouslySetInnerHTML={{ __html: makeUniqueIds(rawFullColorWordmarkSvg).replace('<svg ', `<svg class="${className}" `) }} />;
+function injectClassName(svg: string, className?: string): string {
+  if (!className) return svg;
+  // Replace the class attribute if present, otherwise insert one into the opening <svg ...> tag.
+  if (/<svg[^>]*\sclass=/.test(svg)) {
+    return svg.replace(/<svg([^>]*)\sclass="[^"]*"/, `<svg$1 class="${className}"`);
   }
-  if (colorVariant === 'fullcolor' && variant === 'icon') {
-    return <span dangerouslySetInnerHTML={{ __html: makeUniqueIds(rawFullColorIconSvg).replace('<svg ', `<svg class="${className}" `) }} />;
-  }
-  if (variant === 'wordmark') {
-    return <WordmarkSvg className={className} />;
-  }
-  return <IconSvg className={className} />;
+  return svg.replace('<svg', `<svg class="${className}"`);
+}
+
+export const Logo: React.FC<LogoProps> = ({ className, variant = 'icon', colorVariant = 'fullcolor' }) => {
+  const resolvedColor = colorVariant === 'mono' ? 'black' : colorVariant;
+  const source = variant === 'wordmark' ? LOGO_SVGS[resolvedColor] : ICON_SVGS[resolvedColor];
+  const html = injectClassName(makeUniqueIds(source), className);
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };

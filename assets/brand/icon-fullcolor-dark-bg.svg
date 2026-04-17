@@ -1,23 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-29.334 -18.334 1206.038 1245.998" role="img" aria-label="AI Heroes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10.694 -4.417 1245.998 1245.998" role="img" aria-label="AI Heroes">
   <defs>
     <linearGradient id="aih-iRight" gradientUnits="userSpaceOnUse" x1="900.04" y1="397.32979" x2="900.04" y2="974.32754">
       <stop offset="0"    stop-color="#D9534F"/>
       <stop offset="0.15" stop-color="#D9534F"/>
-      <stop offset="0.92" stop-color="#1C1917"/>
+      <stop offset="0.92" stop-color="#FDFCF8"/>
     </linearGradient>
     <linearGradient id="aih-iBottom" gradientUnits="userSpaceOnUse" x1="326.48368" y1="950.99" x2="923.37186" y2="950.99">
       <stop offset="0"    stop-color="#2563EB"/>
       <stop offset="0.15" stop-color="#2563EB"/>
-      <stop offset="0.92" stop-color="#1C1917"/>
+      <stop offset="0.92" stop-color="#FDFCF8"/>
     </linearGradient>
   </defs>
+  <rect x="-10.694" y="-4.417" width="1245.998" height="1245.998" fill="#1C1917"/>
   <g>
     <rect x="610.00638"    y="350.66836" width="313.36548"    height="46.66143"    fill="#D9534F"/>
     <rect x="876.71024"  y="350.66836" width="46.66162"  height="623.65918"  fill="url(#aih-iRight)"/>
     <rect x="326.48368" y="927.66610" width="596.88818" height="46.66144" fill="url(#aih-iBottom)"/>
     <rect x="326.48368"   y="495.28231" width="46.66138"   height="479.04523"   fill="#2563EB"/>
   </g>
-  <g fill="#1C1917">
+  <g fill="#FDFCF8">
     <path d="M349.8197,270.34005c3.91748,14.65021,7.57959,28.12518,10.97437,40.37769,4.76172,17.17456,9.35034,32.56281,13.77515,46.16022l45.05273,131.59979h49.81934l-90.45215-253.33417h-57.63867l-88.41064,253.33417h49.64624l43.52637-131.59979c4.07837-13.1463,8.41626-28.36139,13.00513-45.64984,3.28784-12.3844,6.85913-26.0285,10.70215-40.88806Z"/>
     <rect x="517.81132" y="235.14358" width="45.39453" height="253.33417"/>
     <polygon points="563.20585 685.95626 681.03104 685.95626 681.03104 796.30324 726.42997 796.30324 726.42997 542.96908 681.03104 542.96908 681.03104 647.70211 563.20585 647.70211 563.20585 542.96908 517.81132 542.96908 517.81132 796.30324 563.20585 796.30324 563.20585 685.95626"/>

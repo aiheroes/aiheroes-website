@@ -55,7 +55,7 @@ export const NotFound: React.FC = () => {
       {/* Simple header */}
       <nav className="p-6">
         <Link to={homeUrl} className="flex items-center">
-          <Logo className="h-8 w-auto text-white" variant="wordmark" />
+          <Logo className="h-8 w-auto" variant="wordmark" colorVariant="white" />
         </Link>
       </nav>
 

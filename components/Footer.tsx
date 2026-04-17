@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <div className="mb-6 flex justify-center lg:-ml-6">
-              <Logo className="h-20 w-20 lg:h-24 lg:w-24 text-white" variant="icon" />
+              <Logo className="h-20 w-20 lg:h-24 lg:w-24" variant="icon" colorVariant="white" />
             </div>
             <p className="text-stone-400 text-sm leading-relaxed mb-4 text-pretty">
               {content.tagline}

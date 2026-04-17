@@ -91,19 +91,19 @@ export const PressEN: React.FC = () => {
               </div>
               <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
+                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="fullcolor-dark" />
                 </div>
                 <span className="text-sm text-white/70">On dark</span>
               </div>
               <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
+                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="white-red" />
                 </div>
                 <span className="text-sm text-white/80">On red</span>
               </div>
               <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-6 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-12 w-auto text-white" variant="wordmark" />
+                  <Logo className="h-12 w-auto" variant="wordmark" colorVariant="white-blue" />
                 </div>
                 <span className="text-sm text-white/80">On blue</span>
               </div>
@@ -119,19 +119,19 @@ export const PressEN: React.FC = () => {
               </div>
               <div className="bg-brand-dark p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20 text-white" variant="icon" />
+                  <Logo className="h-20 w-20" variant="icon" colorVariant="fullcolor-dark" />
                 </div>
                 <span className="text-sm text-white/70">On dark</span>
               </div>
               <div className="bg-brand-red p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20 text-white" variant="icon" />
+                  <Logo className="h-20 w-20" variant="icon" colorVariant="white-red" />
                 </div>
                 <span className="text-sm text-white/80">On red</span>
               </div>
               <div className="bg-brand-blue p-8 border border-stone-200 flex flex-col items-center">
                 <div className="p-4 rounded-lg mb-4 w-full flex justify-center">
-                  <Logo className="h-20 w-20 text-white" variant="icon" />
+                  <Logo className="h-20 w-20" variant="icon" colorVariant="white-blue" />
                 </div>
                 <span className="text-sm text-white/80">On blue</span>
               </div>
