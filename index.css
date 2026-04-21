@@ -91,6 +91,8 @@ html, body {
 @media (min-width: 1280px) and (max-width: 1920px) and (min-height: 800px) {
   body {
     zoom: 0.75;
+    outline: 8px solid magenta !important;
+    outline-offset: -8px;
   }
 }
 
