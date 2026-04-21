@@ -86,9 +86,10 @@ html, body {
 
 /* Scale the whole UI down on typical FHD (1920×1080) desktop monitors so type
    and layout breathe. Higher-density displays (1440p/4K) already render the
-   design at a comfortable relative size — this brings FHD closer to that. */
+   design at a comfortable relative size — this brings FHD closer to that.
+   Applied to body (not html) because some browsers ignore zoom on the root. */
 @media (min-width: 1280px) and (max-width: 1920px) and (min-height: 800px) {
-  html {
+  body {
     zoom: 0.9;
   }
 }
