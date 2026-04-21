@@ -90,7 +90,7 @@ html, body {
    Applied to body (not html) because some browsers ignore zoom on the root. */
 @media (min-width: 1280px) and (max-width: 1920px) and (min-height: 800px) {
   body {
-    zoom: 0.9;
+    zoom: 0.75;
   }
 }
 
