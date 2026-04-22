@@ -108,6 +108,8 @@ const PressEN = React.lazy(() => import('./pages/en/Press').then(m => ({ default
 const VacaturesNL = React.lazy(() => import('./pages/nl/Vacatures').then(m => ({ default: m.VacaturesNL })));
 const CareersEN = React.lazy(() => import('./pages/en/Careers').then(m => ({ default: m.CareersEN })));
 
+const MenuNL = React.lazy(() => import('./pages/nl/Menu').then(m => ({ default: m.MenuNL })));
+
 const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 function App() {
@@ -214,6 +216,9 @@ function App() {
           {/* Careers Pages */}
           <Route path="/nl/vacatures" element={<VacaturesNL />} />
           <Route path="/en/careers" element={<CareersEN />} />
+
+          {/* Partner Menu (reseller-facing, noindex) */}
+          <Route path="/nl/menu" element={<MenuNL />} />
 
           {/* Hanze Workshop Page */}
           <Route path="/hanze" element={<Hanze />} />
