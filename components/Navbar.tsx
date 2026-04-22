@@ -402,7 +402,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     const slashClass = theme === 'dark' ? 'text-white/30' : 'text-brand-dark/30';
 
     return (
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto flex justify-between items-center">
         {/* Logo */}
         <a href={homeUrl} onClick={handleLogoClick} className="flex items-center cursor-pointer">
           <Logo className="h-20 w-auto" variant="wordmark" colorVariant={logoColor} />

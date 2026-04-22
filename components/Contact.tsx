@@ -111,11 +111,11 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
 
   return (
     <div id="contact" className="w-full flex-grow flex flex-col justify-center pt-24 pb-12 md:pt-40 md:pb-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-start">
           {/* Left Column - Info */}
           <div className="lg:col-span-5">
-             <h2 className="text-3xl md:text-6xl font-serif text-brand-dark mb-2 md:mb-6">{contactFormContent.title}</h2>
+             <h2 className="text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif text-brand-dark mb-2 md:mb-6">{contactFormContent.title}</h2>
              <p className="text-sm md:text-xl text-stone-600 leading-relaxed mb-4 md:mb-8 text-pretty">
                {contactFormContent.subtitle}
              </p>

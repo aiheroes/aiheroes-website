@@ -10,7 +10,7 @@ interface TeamProps {
 export const Team: React.FC<TeamProps> = ({ content }) => {
   return (
     <section id="team" className="w-full bg-brand-light overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto">
         {/* Desktop: Side-by-side | Mobile: Stacked */}
         <div className="flex flex-col lg:flex-row">
           {/* Image Column - has its own ID for navbar theme detection on mobile */}
@@ -33,7 +33,7 @@ export const Team: React.FC<TeamProps> = ({ content }) => {
               </p>
 
               {/* Title */}
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-brand-dark mb-6 leading-tight">
+              <h2 className="text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif text-brand-dark mb-6 leading-tight">
                 {content.title}
               </h2>
 

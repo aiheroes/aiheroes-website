@@ -177,7 +177,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
       <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
 
       {/* Text content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full h-full flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8 w-full h-full flex flex-col justify-center">
         <div className="max-w-3xl pt-24 pb-28 md:pt-32 md:pb-40">
           <div
             className="transition-opacity ease-in-out"
@@ -191,11 +191,11 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
               {currentSlide.label}
             </p>
 
-            <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif font-medium text-white tracking-tight mb-5 md:mb-8">
+            <h1 className="text-[clamp(2.25rem,_1.5rem+3vw,_6rem)] font-serif font-medium text-white tracking-tight mb-5 md:mb-8">
               {renderHeadline(currentSlide.headline)}
             </h1>
 
-            <p className="text-lg md:text-2xl text-stone-200 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light whitespace-pre-line drop-shadow-md text-pretty">
+            <p className="text-[clamp(1.125rem,_1rem+0.5vw,_1.5rem)] text-stone-200 mb-8 md:mb-12 leading-relaxed max-w-2xl font-light whitespace-pre-line drop-shadow-md text-pretty">
               {currentSlide.subhead}
             </p>
 

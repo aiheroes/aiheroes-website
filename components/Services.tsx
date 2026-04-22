@@ -222,11 +222,11 @@ export const Services: React.FC<ServicesProps> = ({ content, lang }) => {
 
   return (
     <section id="services" className="w-full min-h-screen py-24 bg-brand-light relative flex flex-col justify-center">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 w-full flex flex-col justify-center">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 md:px-6 lg:px-8 w-full flex flex-col justify-center">
 
         {/* Header */}
         <div className="mb-10 md:mb-20 md:text-center">
-          <h2 className="text-3xl md:text-6xl font-serif text-brand-dark">
+          <h2 className="text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif text-brand-dark">
             {content.title}
           </h2>
         </div>

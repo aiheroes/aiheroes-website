@@ -12,14 +12,14 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
 
   return (
     <section className="w-full h-full py-12 md:py-20 flex flex-col justify-center items-center overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full flex flex-col items-center h-full justify-center">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8 w-full flex flex-col items-center h-full justify-center">
         
         {/* Testimonial First - Centered, extra padding for narrow look on desktop */}
         <div className="relative max-w-5xl mx-auto text-center mb-10 md:mb-16 px-4 md:px-24 lg:px-32">
            <span className="text-7xl md:text-9xl text-stone-800 absolute -top-8 left-1/2 -translate-x-1/2 font-serif z-0">
              &ldquo;
            </span>
-           <h3 className="relative z-10 text-2xl md:text-4xl lg:text-5xl font-serif italic text-white leading-[1.3] tracking-tight text-balance">
+           <h3 className="relative z-10 text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif italic text-white leading-[1.3] tracking-tight text-balance">
              {content.testimonial.text}
            </h3>
            <div className="mt-6 md:mt-10 relative z-10">

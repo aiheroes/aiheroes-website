@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-8 mt-auto border-t border-stone-800 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
 
         {/* Main Footer Links Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-6 mb-10">

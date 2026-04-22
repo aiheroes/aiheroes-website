@@ -192,7 +192,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
               {pillarBadge}
             </span>
           )}
-          <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">{title}</h1>
+          <h1 className="text-[clamp(1.875rem,_1.25rem+1.5vw,_3.75rem)] font-serif text-white mb-4">{title}</h1>
           {subtitle && (
             <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{subtitle}</p>
           )}
