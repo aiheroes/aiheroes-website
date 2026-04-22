@@ -211,7 +211,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
       {/* Bottom navigation — Rewire-style labeled segments */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 border-t border-white/20">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {slides.map((slide, idx) => {
               const isActive = idx === activeSlide;
               return (
@@ -246,12 +246,6 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
         </div>
       </div>
 
-      {/* Scroll indicator - desktop only */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 text-white/30 animate-bounce hidden md:block">
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
     </section>
   );
 };
