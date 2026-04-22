@@ -61,12 +61,12 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
 
     setIsFading(true);
-    setProgress(0);
 
     // After fade out, swap content
     setTimeout(() => {
       setDisplaySlide(index);
       setActiveSlide(index);
+      setProgress(0);
       // After swap, fade back in
       setTimeout(() => {
         setIsFading(false);
