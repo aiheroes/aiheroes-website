@@ -30,7 +30,7 @@ export const TeamNL: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Strategy & Product</p>
+              <p className="text-brand-red font-medium mb-3">Co-Founder · Strategy & Product</p>
               <p className="text-stone-600 leading-relaxed">
                 Combineert strategisch denken met een scherp oog voor gebruikerservaring. Helpt organisaties om AI niet als losstaande technologie te zien, maar als integraal onderdeel van hun product- en merkstrategie. Met een achtergrond in UX/UI design en productmanagement weet hij complexe trajecten te vertalen naar concrete roadmaps. Geeft workshops aan directie- en managementteams over AI-strategie en prompt engineering.
               </p>
@@ -44,7 +44,7 @@ export const TeamNL: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · AI & Development</p>
+              <p className="text-brand-red font-medium mb-3">Co-Founder · AI & Development</p>
               <p className="text-stone-600 leading-relaxed">
                 De schakel tussen techniek en boardroom. Begrijpt hoe AI-modellen onder de motorkap werken—van transformers tot image generation—en vertaalt die kennis naar wat het betekent voor jouw bedrijfsprocessen. Bouwt zelf met tools als GitHub Copilot en lokale AI-modellen, waardoor hij precies weet wat er technisch mogelijk is én wat haalbaar is binnen jouw organisatie. Gepassioneerd spreker die complexe AI-concepten helder en energiek overbrengt.
               </p>
@@ -58,7 +58,7 @@ export const TeamNL: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Training & Innovation</p>
+              <p className="text-brand-red font-medium mb-3">Co-Founder · Training & Innovation</p>
               <p className="text-stone-600 leading-relaxed">
                 Specialist in het toegankelijk maken van complexe technologie. Heeft jarenlang een innovatielab opgebouwd waar hij duizenden mensen—van beginners tot experts—trainde in nieuwe technologieën. Snapt als geen ander hoe je een taai onderwerp omzet naar een interactieve, praktische sessie die blijft hangen. Pikt nieuwe AI-ontwikkelingen razendsnel op en weet ze direct te vertalen naar toepassingen voor jouw team.
               </p>

@@ -30,7 +30,7 @@ export const TeamEN: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Strategy & Product</p>
+              <p className="text-brand-red font-medium mb-3">Co-Founder · Strategy & Product</p>
               <p className="text-stone-600 leading-relaxed">
                 Combines strategic thinking with a sharp eye for user experience. Helps organizations see AI not as standalone technology, but as an integral part of their product and brand strategy. With a background in UX/UI design and product management, he translates complex trajectories into concrete roadmaps. Delivers workshops to executive and management teams on AI strategy and prompt engineering.
               </p>
@@ -44,7 +44,7 @@ export const TeamEN: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · AI & Development</p>
+              <p className="text-brand-red font-medium mb-3">Co-Founder · AI & Development</p>
               <p className="text-stone-600 leading-relaxed">
                 The link between tech and boardroom. Understands how AI models work under the hood—from transformers to image generation—and translates that knowledge into what it means for your business processes. Builds with tools like GitHub Copilot and local AI models, giving him precise insight into what's technically possible and what's feasible within your organization. Passionate speaker who conveys complex AI concepts clearly and energetically.
               </p>
@@ -58,7 +58,7 @@ export const TeamEN: React.FC = () => {
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
-              <p className="text-brand-red font-medium mb-3">Managing Partner · Training & Innovation</p>
+              <p className="text-brand-red font-medium mb-3">Co-Founder · Training & Innovation</p>
               <p className="text-stone-600 leading-relaxed">
                 Specialist in making complex technology accessible. Has spent years building an innovation lab where he trained thousands of people—from beginners to experts—in new technologies. Knows like no other how to turn a tough subject into an interactive, practical session that sticks. Picks up new AI developments at lightning speed and immediately translates them into applications for your team.
               </p>

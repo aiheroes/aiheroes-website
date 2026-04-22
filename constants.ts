@@ -187,17 +187,17 @@ export const CONTENT: Record<Language, Content> = {
         members: [
           {
             name: "Frans Hoorn",
-            role: "Managing Partner · AI Consultancy",
+            role: "Co-Founder · AI Consultancy",
             description: "Combineert strategisch denken met een scherp oog voor gebruikerservaring. Leidt onze consultancy-pijler: AI-readiness scans, roadmaps en business cases die organisaties vooruit helpen."
           },
           {
             name: "David Homan",
-            role: "Managing Partner · Software & Implementatie",
+            role: "Co-Founder · Software & Implementatie",
             description: "De schakel tussen techniek en boardroom. Leidt onze software-pijler: custom AI-oplossingen gebouwd met jouw team. Van prototype tot productie."
           },
           {
             name: "Jan Brusse",
-            role: "Managing Partner · Training & Workshops",
+            role: "Co-Founder · Training & Workshops",
             description: "Specialist in het toegankelijk maken van complexe technologie. Leidt onze training-pijler: van AI Foundations tot EU AI Act compliance, praktische workshops die bijblijven."
           }
         ]
@@ -835,17 +835,17 @@ export const CONTENT: Record<Language, Content> = {
         members: [
           {
             name: "Frans Hoorn",
-            role: "Managing Partner · AI Consulting",
+            role: "Co-Founder · AI Consulting",
             description: "Combines strategic thinking with a sharp eye for user experience. Leads our consulting pillar: AI-readiness scans, roadmaps and business cases that move organisations forward."
           },
           {
             name: "David Homan",
-            role: "Managing Partner · Software & Implementation",
+            role: "Co-Founder · Software & Implementation",
             description: "The link between tech and boardroom. Leads our software pillar: custom AI solutions built with your team. From prototype to production."
           },
           {
             name: "Jan Brusse",
-            role: "Managing Partner · Training & Workshops",
+            role: "Co-Founder · Training & Workshops",
             description: "Specialist in making complex technology accessible. Leads our training pillar: from AI Foundations to EU AI Act compliance, practical workshops that stick."
           }
         ]
