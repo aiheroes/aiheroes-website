@@ -12,7 +12,7 @@
     </linearGradient>
   </defs>
   <rect x="-10.694" y="-4.417" width="1245.998" height="1245.998" fill="#FDFCF8"/>
-  <g shape-rendering="crispEdges">
+  <g>
     <rect x="610.00638"    y="350.66836" width="313.36548"    height="46.66143"    fill="#D9534F"/>
     <rect x="876.71024"  y="350.66836" width="46.66162"  height="623.65918"  fill="url(#aih-iRight)"/>
     <rect x="326.48368" y="927.66610" width="596.88818" height="46.66144" fill="url(#aih-iBottom)"/>
