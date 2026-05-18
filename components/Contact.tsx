@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Content, Language } from '../types';
+import { Content } from '../types';
 import { Check, Calendar } from 'lucide-react';
 
 interface ContactProps {
   content: Content['contact'];
   contactFormContent: Content['contactForm'];
-  lang: Language;
 }
 
-export const Contact: React.FC<ContactProps> = ({ content, contactFormContent, lang }) => {
+export const Contact: React.FC<ContactProps> = ({ content, contactFormContent }) => {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [topicColors, setTopicColors] = useState<Record<string, 'red' | 'blue'>>({});
@@ -151,14 +150,9 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent, l
                <span className="transition-transform group-hover:translate-x-1">→</span>
              </a>
 
-             <div className="mt-8 md:mt-12 pt-4 border-t border-stone-300/60 max-w-xs">
-               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 mb-1">
-                 {lang === 'nl' ? 'Officieel geregistreerd' : 'Officially registered'}
-               </p>
-               <p className="text-[11px] text-stone-500 leading-relaxed">
-                 AI Heroes B.V. <span className="text-stone-400">·</span> KvK 42051968 <span className="text-stone-400">·</span> BTW NL869486263B01
-               </p>
-             </div>
+             <p className="mt-8 md:mt-12 pt-4 border-t border-stone-300/60 max-w-xs text-[11px] text-stone-500 leading-relaxed">
+               AI Heroes B.V. <span className="text-stone-400">·</span> KvK 42051968 <span className="text-stone-400">·</span> BTW NL869486263B01
+             </p>
           </div>
 
           {/* Right Column - Form */}
