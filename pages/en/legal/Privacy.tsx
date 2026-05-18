@@ -7,7 +7,7 @@ export const PrivacyEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Privacy Policy"
-      subtitle="How we handle your data. Last updated: January 2026."
+      subtitle="How we handle your data. Last updated: May 2026."
       seoDescription="AI Heroes privacy policy. How we handle your data and protect your privacy."
       accentColor="blue"
       showContactForm={false}
@@ -119,7 +119,7 @@ export const PrivacyEN: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>Data Controller</h3>
           <p>
-            AI Heroes is responsible for the processing of personal data as described in this privacy policy. We are based in the Netherlands and fall under Dutch and European privacy legislation.
+            AI Heroes B.V., based in Groningen, the Netherlands, is the data controller for the personal data described in this privacy policy. Chamber of Commerce (KvK) number 42051968, VAT number NL869486263B01. We fall under Dutch and European privacy legislation (GDPR).
           </p>
         </DarkBox>
       </div>

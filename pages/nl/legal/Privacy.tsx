@@ -7,7 +7,7 @@ export const PrivacyNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Privacybeleid"
-      subtitle="Hoe wij omgaan met je gegevens. Laatst bijgewerkt: januari 2026."
+      subtitle="Hoe wij omgaan met je gegevens. Laatst bijgewerkt: mei 2026."
       seoDescription="Privacybeleid van AI Heroes. Hoe wij omgaan met je gegevens en je privacy beschermen."
       accentColor="blue"
       showContactForm={false}
@@ -119,7 +119,7 @@ export const PrivacyNL: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>Verantwoordelijke</h3>
           <p>
-            AI Heroes is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. We zijn gevestigd in Nederland en vallen onder de Nederlandse en Europese privacywetgeving.
+            AI Heroes B.V., gevestigd te Groningen, is verwerkingsverantwoordelijke voor de persoonsgegevens zoals beschreven in dit privacybeleid. KvK-nummer 42051968, BTW-nummer NL869486263B01. We vallen onder de Nederlandse en Europese privacywetgeving (AVG/GDPR).
           </p>
         </DarkBox>
       </div>

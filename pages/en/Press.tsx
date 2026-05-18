@@ -66,7 +66,10 @@ export const PressEN: React.FC = () => {
                 <h3 className="font-bold text-brand-dark mb-3">Quick Facts</h3>
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Founded:</strong> 2019</li>
+                  <li><strong>Legal name:</strong> AI Heroes B.V.</li>
                   <li><strong>Headquarters:</strong> Groningen, Netherlands — AI Capital of Europe</li>
+                  <li><strong>KvK (CoC):</strong> 42051968</li>
+                  <li><strong>VAT:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
                   <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders, each a specialist in one pillar</Link></li>

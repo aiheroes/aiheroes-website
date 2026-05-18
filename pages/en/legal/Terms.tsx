@@ -7,7 +7,7 @@ export const TermsEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Terms of Service"
-      subtitle="The ground rules for our collaboration. Last updated: January 2026."
+      subtitle="The ground rules for our collaboration. Last updated: May 2026."
       seoDescription="AI Heroes terms of service. The rules for our collaboration."
       accentColor="red"
       showContactForm={false}
@@ -23,7 +23,7 @@ export const TermsEN: React.FC = () => {
         </p>
 
         <ul className="text-stone-600 leading-relaxed mb-8 space-y-2">
-          <li><strong>AI Heroes:</strong> AI Heroes, a trade name of Lucidium, registered in the Netherlands, Chamber of Commerce number 78738105</li>
+          <li><strong>AI Heroes:</strong> AI Heroes B.V., based in Groningen, registered with the Dutch Chamber of Commerce (KvK) under number 42051968, VAT number NL869486263B01</li>
           <li><strong>Client:</strong> The natural or legal person entering into an agreement with AI Heroes</li>
           <li><strong>Services:</strong> All work performed by AI Heroes for the client, including workshops, training, consulting, and software development</li>
         </ul>

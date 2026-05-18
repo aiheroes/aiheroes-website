@@ -7,6 +7,9 @@
 ## Wie we zijn
 
 **Bedrijf:** AI Heroes
+**Statutaire naam:** AI Heroes B.V.
+**KvK:** 42051968
+**BTW:** NL869486263B01
 **Tagline:** AI werkt als je weet hoe
 **Wat we zijn:** Full-service AI agency
 **Waar:** Groningen — AI-hoofdstad van Europa

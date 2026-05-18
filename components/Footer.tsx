@@ -341,15 +341,20 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
         {/* Bottom Bar */}
         <div className="pt-6">
           <div className="h-px bg-gradient-to-r from-brand-red/30 via-purple-500/15 to-brand-blue/30 mb-6" />
-          <div className="flex flex-col md:flex-row justify-between items-center text-xs text-stone-500 gap-3">
-            <p className="flex items-center gap-1.5 whitespace-nowrap">
-              <span>{content.copyright}</span>
-              <span className="text-stone-700">|</span>
-              <img src="/Flag_Groningen.svg" alt="Groningen flag" className="w-4 h-[11px] rounded-[1px] flex-shrink-0" />
-              <span>{content.madeIn}</span>
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-start text-xs text-stone-500 gap-3">
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <p className="flex items-center gap-1.5 whitespace-nowrap">
+                <span>{content.copyright}</span>
+                <span className="text-stone-700">|</span>
+                <img src="/Flag_Groningen.svg" alt="Groningen flag" className="w-4 h-[11px] rounded-[1px] flex-shrink-0" />
+                <span>{content.madeIn}</span>
+              </p>
+              <p className="text-[11px] text-stone-600">
+                AI Heroes B.V. · KvK 42051968 · BTW NL869486263B01
+              </p>
+            </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 md:pt-0.5">
             <div className="flex gap-3">
               {alternateUrl ? (
                 <>
