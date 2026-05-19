@@ -23,7 +23,7 @@ export const MeduxNL: React.FC = () => {
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Een chatbot was geen optie - veel klanten zijn niet comfortabel met digitale interfaces. Medux zocht een oplossing die menselijk contact respecteert, maar wel schaalbaar en kostenefficiënt is.
+          Een chatbot was geen optie: veel klanten zijn niet comfortabel met digitale interfaces. Medux zocht een oplossing die menselijk contact respecteert en tegelijk schaalbaar en kostenefficiënt is.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -90,7 +90,7 @@ export const MeduxNL: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          De AI handelt nu maandelijks zo'n 4.000 gesprekken af. Klanten waarderen de kortere wachttijden en het feit dat ze ook buiten kantooruren geholpen worden. Medewerkers richten zich nu op complexe gevallen die echt menselijke aandacht vragen.
+          De AI handelt nu maandelijks zo'n 4.000 gesprekken af. Klanten waarderen de kortere wachttijden en het feit dat ze ook buiten kantooruren geholpen worden. Medewerkers richten zich nu op complexe gevallen die menselijke aandacht vragen.
         </p>
 
         <DarkBox accentColor="red">

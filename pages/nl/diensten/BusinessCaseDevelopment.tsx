@@ -21,7 +21,7 @@ export const BusinessCaseDevelopmentNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Je hebt AI-kansen geidentificeerd — via een readiness scan, opportunity scouting, of eigen inzicht. Maar voordat je investeert, wil je weten: wat kost het, wat levert het op, en hoe lang duurt het? Wij vertalen AI-mogelijkheden naar onderbouwde business cases die je boardroom overtuigen.
+          Je hebt AI-kansen geïdentificeerd, via een readiness scan, opportunity scouting, of eigen inzicht. Maar voordat je investeert, wil je weten: wat kost het, wat levert het op, en hoe lang duurt het? Wij vertalen AI-mogelijkheden naar onderbouwde business cases die je boardroom overtuigen.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -66,7 +66,7 @@ export const BusinessCaseDevelopmentNL: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Technische diepgang</h4>
             <p className="text-sm text-stone-600">
-              Omdat we zelf AI bouwen, zijn onze kostenramingen realistisch — geen consultancy-schattingen uit de lucht.
+              Omdat we zelf AI bouwen, zijn onze kostenramingen realistisch, geen consultancy-schattingen uit de lucht.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
@@ -78,7 +78,7 @@ export const BusinessCaseDevelopmentNL: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Actiegericht</h4>
             <p className="text-sm text-stone-600">
-              Elke business case bevat een concreet implementatieplan — geen rapport dat in de la belandt.
+              Elke business case bevat een concreet implementatieplan, geen rapport dat in de la belandt.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">

@@ -8,7 +8,7 @@ export const AIIntegrationEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="System Integration"
-      subtitle="Connecting AI to your existing systems. ERP, CRM, internal tools — we work with what you already have."
+      subtitle="Connecting AI to your existing systems. ERP, CRM, internal tools: we work with what you already have."
       seoDescription="AI Integration: connect AI capabilities to your existing systems. API integrations, workflow automation and data pipelines. By AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementation"
@@ -21,7 +21,7 @@ export const AIIntegrationEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          The power of AI isn't in standalone tools, but in integration with your daily work processes. We connect AI capabilities to your existing systems — so your team gets the benefits without switching platforms.
+          AI works best when it plugs into your daily processes. We connect AI capabilities to your existing systems, so your team gets the benefits without switching platforms.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">

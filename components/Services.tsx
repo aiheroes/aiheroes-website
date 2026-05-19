@@ -135,7 +135,7 @@ const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath
           opacity: isHovered ? 1 : 0,
         }}
       />
-      {/* Auto-animating glow (mobile) — two overlapping orbs with different periods for organic movement */}
+      {/* Auto-animating glow (mobile): two overlapping orbs with different periods for organic movement */}
       <div
         className="md:hidden absolute pointer-events-none"
         style={{
@@ -176,7 +176,7 @@ const GlowCard: React.FC<GlowCardProps> = ({ configKey, data, lang, dienstenPath
           {data.description}
         </p>
 
-        {/* Arrow button — always visible, expands on direct hover to reveal label */}
+        {/* Arrow button, always visible, expands on direct hover to reveal label */}
         <div className="mt-5 md:mt-6 flex justify-end">
           <span
             onMouseEnter={() => setArrowHovered(true)}

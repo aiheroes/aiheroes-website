@@ -21,7 +21,7 @@ export const AIImplementationGuidanceEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          You have an AI strategy, maybe even a working prototype. But the real challenge starts now: how do you get people to actually use it? AI implementation rarely fails because of technology — it fails because of adoption. We guide your team through the entire rollout.
+          You have an AI strategy, maybe even a working prototype. But the real challenge starts now: how do you get people to actually use it? AI implementation rarely fails on the tech. Adoption is almost always the bottleneck. We guide your team through the entire rollout.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -66,7 +66,7 @@ export const AIImplementationGuidanceEN: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">70% fail without it</h4>
             <p className="text-sm text-stone-600">
-              Most AI projects don't fail because of technology, but because of poor adoption and change management.
+              For most AI projects, the bottleneck is adoption and change management. Technology is rarely the problem.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">

@@ -23,7 +23,7 @@ export const EUTrainingEN: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Why now</p>
           <p className="text-sm text-stone-200 mb-2">
-            From <strong className="text-white">February 2025</strong>, the EU AI Act requires organisations to demonstrate AI literacy (Article 4). From <strong className="text-white">August 2025</strong>, the general provisions take effect. Meanwhile, the CLOUD Act gives the US access to data at American providers — regardless of server location.
+            From <strong className="text-white">February 2025</strong>, the EU AI Act requires organisations to demonstrate AI literacy (Article 4). From <strong className="text-white">August 2025</strong>, the general provisions take effect. Meanwhile, the CLOUD Act gives the US access to data at American providers, regardless of server location.
           </p>
           <p className="text-sm text-stone-200">
             Organisations that don't act now risk compliance fines, data exposure to foreign jurisdictions and strategic dependency.
@@ -31,22 +31,22 @@ export const EUTrainingEN: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Most organisations know that something is shifting. American tech platforms are under increasing scrutiny, European regulation is tightening, and the question of digital sovereignty is moving from policy papers to boardrooms. But what does this actually mean for your organisation? What are the real risks — and what can you realistically do about them?
+          Most organisations know that something is shifting. American tech platforms are under increasing scrutiny, European regulation is tightening, and the question of digital sovereignty is moving from policy papers to boardrooms. But what does this actually mean for your organisation? What are the real risks, and what can you realistically do about them?
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
           <h3 className="text-xl font-serif text-brand-dark mb-3">What the session covers</h3>
           <ol className="space-y-3 text-stone-600">
-            <li><strong>The risks of American platforms</strong> — CLOUD Act, jurisdiction issues, and what happens when a foreign government can legally access your data.</li>
-            <li><strong>The current landscape</strong> — actual tools your organisation uses, where your data flows, and where you are exposed.</li>
-            <li><strong>European alternatives</strong> — what is genuinely good enough to replace current tools, and what is not ready yet.</li>
-            <li><strong>The regulatory context</strong> — AI Act, NIS2, GDPR deadlines, and what non-compliance actually costs.</li>
+            <li><strong>The risks of American platforms:</strong> CLOUD Act, jurisdiction issues, and what happens when a foreign government can legally access your data.</li>
+            <li><strong>The current landscape:</strong> actual tools your organisation uses, where your data flows, and where you are exposed.</li>
+            <li><strong>European alternatives:</strong> what is genuinely good enough to replace current tools, and what is not ready yet.</li>
+            <li><strong>The regulatory context:</strong> AI Act, NIS2, GDPR deadlines, and what non-compliance actually costs.</li>
           </ol>
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Who it is for</h3>
         <p className="text-stone-600 leading-relaxed mb-4">
-          Directors, IT leads and legal/compliance professionals at organisations with 10 to 150 staff. The session is designed for people who make or influence technology decisions — not just the IT department.
+          Directors, IT leads and legal/compliance professionals at organisations with 10 to 150 staff. The session is designed for people who make or influence technology decisions, beyond just the IT department.
         </p>
         <p className="text-stone-600 leading-relaxed mb-8">
           We also offer a condensed 90-minute board-level session for management teams who need the essentials without the full deep dive.

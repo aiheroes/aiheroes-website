@@ -21,7 +21,7 @@ export const AIPrototypingEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Many AI projects start too big. Months of development, large teams, significant budgets — only to discover the approach doesn't work. We flip this: start small, prove the value, then scale. In 6 days you'll have a working prototype.
+          Many AI projects start too big. Months of development, large teams, significant budgets, only to discover the approach doesn't work. We flip this: start small, prove the value, then scale. In 6 days you'll have a working prototype.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
@@ -57,7 +57,7 @@ export const AIPrototypingEN: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Reusable code</h4>
             <p className="text-sm text-stone-600">
-              The prototype isn't throwaway — it forms the foundation for the full solution.
+              The prototype isn't throwaway; it forms the foundation for the full solution.
             </p>
           </div>
         </div>

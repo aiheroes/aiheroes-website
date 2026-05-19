@@ -56,10 +56,10 @@ export const PressEN: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes is a full-service AI agency based in Groningen — AI Capital of Europe. From change management to technical implementation: training, consulting and software under one roof.
+                  AI Heroes is a full-service AI agency based in Groningen, AI Capital of Europe. From change management to technical implementation: training, consulting and software under one roof.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  We help 50+ organisations with AI — from teams that don't know what AI is yet, to companies ready to build. Wherever you stand, we can help.
+                  We help 50+ organisations with AI: from teams that don't know what AI is yet, to companies ready to build. Wherever you stand, we can help.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
@@ -67,7 +67,7 @@ export const PressEN: React.FC = () => {
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Founded:</strong> 2019</li>
                   <li><strong>Legal name:</strong> AI Heroes B.V.</li>
-                  <li><strong>Headquarters:</strong> Groningen, Netherlands — AI Capital of Europe</li>
+                  <li><strong>Headquarters:</strong> Groningen, Netherlands (AI Capital of Europe)</li>
                   <li><strong>KvK (CoC):</strong> 42051968</li>
                   <li><strong>VAT:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
@@ -82,7 +82,7 @@ export const PressEN: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Our logo reads like a line diagram. The frame connects the letters "AI" with "HEROES" in one continuous line — like a circuit representing our three pillars. The red line starts at the I (training, the starting point), runs through the frame (software, the infrastructure) and ends in the A: an upward arrow (consulting, progress). The upward arrow also references the send button of an AI prompt. The journey can start at any pillar — the line runs full circle.
+              Our logo reads like a line diagram. The frame connects the letters "AI" with "HEROES" in one continuous line, like a circuit representing our three pillars. The red line starts at the I (training, the starting point), runs through the frame (software, the infrastructure) and ends in the A: an upward arrow (consulting, progress). The upward arrow also references the send button of an AI prompt. The journey can start at any pillar; the line runs full circle.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Wordmark</h3>

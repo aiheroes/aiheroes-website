@@ -21,7 +21,7 @@ export const CustomAISolutionsEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          You know what you want to build — or you have a roadmap that makes clear which AI solution delivers the most value. Now you need a team that can build it. We provide the expertise, independently or alongside your developers.
+          You know what you want to build, or you have a roadmap that makes clear which AI solution delivers the most value. Now you need a team that can build it. We provide the expertise, independently or alongside your developers.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
@@ -95,11 +95,11 @@ export const CustomAISolutionsEN: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>The full journey under one roof</h3>
           <p>
-            We don't just build — we also{' '}
+            We build, and we{' '}
             <Link to="/en/services/ai-foundations" className="text-white underline underline-offset-2 hover:text-white/80">
               train your team
             </Link>{' '}
-            to work with the solution. And with our{' '}
+            to work with the solution. With our{' '}
             <Link to="/en/services/opportunity-scouting" className="text-white underline underline-offset-2 hover:text-white/80">
               consulting
             </Link>{' '}

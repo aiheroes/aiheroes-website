@@ -8,7 +8,7 @@ export const EUConsultancyNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Digitale Onafhankelijkheid"
-      subtitle="Europese AI zonder vendor lock-in. Van bewustwording tot werkende oplossing — training, consulting en implementatie in één traject."
+      subtitle="Europese AI zonder vendor lock-in. Van bewustwording tot werkende oplossing: training, consulting en implementatie in één traject."
       seoDescription="Digitale onafhankelijkheid: Europese AI zonder vendor lock-in. Organisatiescan, training en implementatie van soevereine AI-oplossingen. Door AI Heroes."
       accentColor="red"
       ctaLabel="Plan een gesprek"
@@ -16,13 +16,13 @@ export const EUConsultancyNL: React.FC = () => {
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
-          Europese AI die werkt — zonder afhankelijkheid
+          Europese AI die werkt, zonder afhankelijkheid
         </h2>
 
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Waarom nu</p>
           <p className="text-sm text-stone-200 mb-2">
-            De CLOUD Act stelt de VS in staat om data op te eisen bij elk Amerikaans bedrijf — inclusief Microsoft, Google en AWS — ongeacht waar de servers staan. Vanaf <strong className="text-white">augustus 2025</strong> verplicht de EU AI Act transparantie over dataverwerking in AI-systemen.
+            De CLOUD Act stelt de VS in staat om data op te eisen bij elk Amerikaans bedrijf (inclusief Microsoft, Google en AWS), ongeacht waar de servers staan. Vanaf <strong className="text-white">augustus 2025</strong> verplicht de EU AI Act transparantie over dataverwerking in AI-systemen.
           </p>
           <p className="text-sm text-stone-200">
             Organisaties zonder helder beeld van hun digitale omgeving lopen risico op non-compliance, dataverlies aan buitenlandse jurisdicties en strategische afhankelijkheid.
@@ -30,7 +30,7 @@ export const EUConsultancyNL: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          De meeste organisaties weten dat ze iets moeten doen met digitale soevereiniteit — maar niet waar te beginnen. Wij bieden een compleet traject: van bewustwording en risico-inventarisatie tot werkende Europese AI-oplossingen. Geen losse onderdelen, maar één partner voor het hele pad.
+          De meeste organisaties weten dat ze iets moeten doen met digitale soevereiniteit; alleen weten ze niet waar te beginnen. Wij bieden een compleet traject: van bewustwording en risico-inventarisatie tot werkende Europese AI-oplossingen. Eén partner voor het hele pad.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Drie stappen naar onafhankelijkheid</h3>
@@ -46,7 +46,7 @@ export const EUConsultancyNL: React.FC = () => {
                 <h4 className="font-bold text-brand-dark text-lg mb-1">Bewustwording & Training</h4>
                 <p className="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Halve of hele dag op locatie</p>
                 <p className="text-stone-600 text-sm leading-relaxed mb-3">
-                  Wat betekent de CLOUD Act voor jouw data? Welke risico's loop je met Amerikaanse platformen? En welke Europese alternatieven bestaan er? Een praktische sessie die je team op hetzelfde niveau brengt — zonder jargon.
+                  Wat betekent de CLOUD Act voor jouw data? Welke risico's loop je met Amerikaanse platformen? En welke Europese alternatieven bestaan er? Een praktische sessie die je team op hetzelfde niveau brengt, zonder jargon.
                 </p>
                 <Link to="/nl/diensten/eu-training" className="text-sm font-medium text-brand-red hover:underline underline-offset-2">
                   Meer over de training &rarr;
@@ -84,7 +84,7 @@ export const EUConsultancyNL: React.FC = () => {
                 <h4 className="font-bold text-brand-dark text-lg mb-1">Europese AI-implementatie</h4>
                 <p className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">Op maat van je organisatie</p>
                 <p className="text-stone-600 text-sm leading-relaxed mb-3">
-                  Van lokaal model op eigen hardware tot Europese cloud-oplossingen (Mistral, Aleph Alpha). We bouwen AI die wél in Europa blijft — zonder concessies aan kwaliteit. Inclusief migratie, configuratie en training van medewerkers.
+                  Van lokaal model op eigen hardware tot Europese cloud-oplossingen (Mistral, Aleph Alpha). We bouwen AI die in Europa blijft, zonder concessies aan kwaliteit. Inclusief migratie, configuratie en training van medewerkers.
                 </p>
                 <Link to="/nl/diensten/eu-development" className="text-sm font-medium text-brand-dark hover:underline underline-offset-2">
                   Meer over implementatie &rarr;

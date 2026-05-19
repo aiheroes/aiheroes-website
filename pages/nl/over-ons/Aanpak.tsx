@@ -8,7 +8,7 @@ export const AanpakNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Onze Aanpak"
-      subtitle="Van change management tot technische implementatie — drie pijlers, één agency. We begeleiden het hele AI-traject."
+      subtitle="Van change management tot technische implementatie. Drie pijlers, één agency, het hele AI-traject."
       accentColor="red"
       seoDescription="Onze aanpak: van change management tot technische implementatie als full-service AI agency. Drie pijlers, één Europese partner."
     >
@@ -18,20 +18,20 @@ export const AanpakNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          De AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten die in laden belanden. Trainingsbureaus trainen en vertrekken. Techbedrijven bouwen tools die niemand gebruikt. Niemand pakt het hele spectrum — van organisatieverandering tot technische implementatie.
+          De AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten die in laden belanden. Trainingsbureaus trainen en vertrekken. Techbedrijven bouwen tools die niemand gebruikt. Niemand pakt het hele spectrum: van organisatieverandering tot technische implementatie.
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          AI Heroes doet dat wel. Als full-service AI agency combineren we change management, training, consulting en software onder één dak. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Klanten kunnen op elk punt instappen — je hoeft niet bij pijler 1 te beginnen.
+          AI Heroes doet dat wel. Als full-service AI agency combineren we change management, training, consulting en software onder één dak. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Klanten kunnen op elk punt instappen. Je hoeft niet bij pijler 1 te beginnen.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Onze principes</h3>
           <ul className="space-y-2 text-stone-600">
-            <li>Praktijk boven theorie — je leert door te doen</li>
-            <li>Resultaat boven rapport — we meten succes in wat er daadwerkelijk verandert</li>
-            <li>Eerlijkheid boven sales — als AI niet de oplossing is, zeggen we dat</li>
-            <li>Maatwerk boven standaard — elke organisatie is anders</li>
+            <li>Praktijk boven theorie: je leert door te doen</li>
+            <li>Resultaat boven rapport: we meten succes in wat er daadwerkelijk verandert</li>
+            <li>Eerlijkheid boven sales: als AI niet de oplossing is, zeggen we dat</li>
+            <li>Maatwerk boven standaard: elke organisatie is anders</li>
           </ul>
         </div>
 
@@ -42,7 +42,7 @@ export const AanpakNL: React.FC = () => {
             <div className="w-12 h-1 bg-brand-red mb-4"></div>
             <h4 className="font-bold text-brand-dark group-hover:text-brand-red transition-colors mb-2">1. Training</h4>
             <p className="text-sm text-stone-600">
-              We leren je team wat AI kan — en waar je op moet letten. Van boardroom tot werkvloer.
+              We leren je team wat AI kan, en waar je op moet letten. Van boardroom tot werkvloer.
             </p>
           </Link>
           <Link to="/nl/diensten#consulting" className="p-6 bg-white border-2 border-stone-200 hover:border-brand-blue transition-colors group">
@@ -76,7 +76,7 @@ export const AanpakNL: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Kennisoverdracht</h4>
             <p className="text-sm text-stone-600">
-              Bij elk traject zorgen we dat je team zelfstandig verder kan. Geen afhankelijkheid, maar eigen capability.
+              Elk traject is zo opgezet dat je team zonder ons verder kan. Jij houdt de regie.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">

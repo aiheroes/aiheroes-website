@@ -40,7 +40,7 @@ export const OLXNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          OLX Magic is een suite van AI-functies die de complete gebruikerservaring transformeert. Van zoeken tot vergelijken, van ontdekken tot kopen.
+          OLX Magic is een suite van AI-functies die de gebruikerservaring opnieuw vormgeeft: van zoeken tot vergelijken, van ontdekken tot kopen.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Slimmere zoekfuncties</h3>
@@ -94,7 +94,7 @@ export const OLXNL: React.FC = () => {
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
-            <h4 className="font-bold text-brand-dark mb-2">Geavanceerde analytics</h4>
+            <h4 className="font-bold text-brand-dark mb-2">Trend-analytics</h4>
             <p className="text-sm text-stone-600">
               Inzicht in trends en gebruikersgedrag voor continue verbetering.
             </p>

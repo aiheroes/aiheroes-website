@@ -10,7 +10,7 @@ export const TeamEN: React.FC = () => {
       title="Our Team"
       subtitle="Born problem-solvers. Based in Groningen, AI Capital of Europe."
       accentColor="blue"
-      seoDescription="The team behind AI Heroes: Frans, Jan and David. Since 2019, a full-service AI agency based in Groningen — from change management to technical implementation."
+      seoDescription="The team behind AI Heroes: Frans, Jan and David. Since 2019, a full-service AI agency based in Groningen, from change management to technical implementation."
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
@@ -18,7 +18,7 @@ export const TeamEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Since 2019, we've guided organisations like Postcodeloterij, Prosus and Banijay Benelux through the entire AI journey — from change management to technical implementation. Based in Groningen, serving all of Europe.
+          Since 2019, we've guided organisations like Postcodeloterij, Prosus and Banijay Benelux through the entire AI journey: from change management to technical implementation. Based in Groningen, serving all of Europe.
         </p>
 
         {/* Team Members */}
@@ -32,7 +32,7 @@ export const TeamEN: React.FC = () => {
               <h3 className="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
               <p className="text-brand-red font-medium mb-3">Co-Founder · Strategy & Product</p>
               <p className="text-stone-600 leading-relaxed">
-                Combines strategic thinking with a sharp eye for user experience. Helps organizations see AI not as standalone technology, but as an integral part of their product and brand strategy. With a background in UX/UI design and product management, he translates complex trajectories into concrete roadmaps. Delivers workshops to executive and management teams on AI strategy and prompt engineering.
+                Combines strategic thinking with a sharp eye for user experience. Embeds AI inside product and brand strategy, so it shapes the whole experience. With a background in UX/UI design and product management, he translates complex trajectories into concrete roadmaps. Delivers workshops to executive and management teams on AI strategy and prompt engineering.
               </p>
             </div>
           </div>
@@ -46,7 +46,7 @@ export const TeamEN: React.FC = () => {
               <h3 className="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
               <p className="text-brand-red font-medium mb-3">Co-Founder · AI & Development</p>
               <p className="text-stone-600 leading-relaxed">
-                The link between tech and boardroom. Understands how AI models work under the hood—from transformers to image generation—and translates that knowledge into what it means for your business processes. Builds with tools like GitHub Copilot and local AI models, giving him precise insight into what's technically possible and what's feasible within your organization. Passionate speaker who conveys complex AI concepts clearly and energetically.
+                The link between tech and boardroom. Understands how AI models work under the hood (from transformers to image generation) and translates that knowledge into what it means for your business processes. Builds with tools like GitHub Copilot and local AI models, giving him precise insight into what's technically possible and what's feasible within your organization. Passionate speaker who conveys complex AI concepts clearly and energetically.
               </p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export const TeamEN: React.FC = () => {
               <h3 className="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
               <p className="text-brand-red font-medium mb-3">Co-Founder · Training & Innovation</p>
               <p className="text-stone-600 leading-relaxed">
-                Specialist in making complex technology accessible. Has spent years building an innovation lab where he trained thousands of people—from beginners to experts—in new technologies. Knows like no other how to turn a tough subject into an interactive, practical session that sticks. Picks up new AI developments at lightning speed and immediately translates them into applications for your team.
+                Specialist in making complex technology accessible. Has spent years building an innovation lab where he trained thousands of people in new technologies, from beginners to experts. Knows like no other how to turn a tough subject into an interactive, practical session that sticks. Picks up new AI developments at lightning speed and immediately translates them into applications for your team.
               </p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export const TeamEN: React.FC = () => {
         <DarkBox accentColor="blue">
           <h3>Work together?</h3>
           <p>
-            Whether you want to book a workshop or explore possibilities — get in touch.
+            Whether you want to book a workshop or explore possibilities, get in touch.
           </p>
         </DarkBox>
       </div>

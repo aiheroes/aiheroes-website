@@ -21,7 +21,7 @@ export const AIDevelopmentTeamsNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Niet elk bedrijf heeft een volledig AI-team nodig, maar wel AI-capaciteit. Onze developers werken samen met jouw bestaande team — of zelfstandig als je nog geen ontwikkelcapaciteit hebt. Flexibel op- en afschalen, met technisch leiderschap inbegrepen.
+          De meeste bedrijven hebben AI-capaciteit nodig zonder een volledig AI-team in dienst te willen nemen. Onze developers werken samen met jouw bestaande team, of zelfstandig als je nog geen ontwikkelcapaciteit hebt. Flexibel op- en afschalen, met technisch leiderschap inbegrepen.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
@@ -57,7 +57,7 @@ export const AIDevelopmentTeamsNL: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Kennisoverdracht</h4>
             <p className="text-sm text-stone-600">
-              We bouwen niet alleen — we zorgen dat jouw team leert en zelfstandig verder kan.
+              We bouwen samen met je team en zorgen dat jouw mensen zelfstandig verder kunnen.
             </p>
           </div>
         </div>

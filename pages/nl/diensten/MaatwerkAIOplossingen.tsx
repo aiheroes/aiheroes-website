@@ -21,7 +21,7 @@ export const MaatwerkAIOplossigenNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Je weet wat je wilt bouwen — of je hebt een roadmap die duidelijk maakt welke AI-oplossing het meeste oplevert. Nu heb je een team nodig dat het kan bouwen. Wij leveren de expertise, zelfstandig of samen met jouw developers.
+          Je weet wat je wilt bouwen, of je hebt een roadmap die duidelijk maakt welke AI-oplossing het meeste oplevert. Nu heb je een team nodig dat het kan bouwen. Wij leveren de expertise, zelfstandig of samen met jouw developers.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
@@ -95,11 +95,11 @@ export const MaatwerkAIOplossigenNL: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>Het hele traject onder één dak</h3>
           <p>
-            We bouwen niet alleen — we{' '}
+            We bouwen, en we{' '}
             <Link to="/nl/diensten/ai-foundations" className="text-white underline underline-offset-2 hover:text-white/80">
               trainen je team
             </Link>{' '}
-            ook om met de oplossing te werken. En met onze{' '}
+            om met de oplossing te werken. Met onze{' '}
             <Link to="/nl/diensten/opportunity-scouting" className="text-white underline underline-offset-2 hover:text-white/80">
               consulting
             </Link>{' '}

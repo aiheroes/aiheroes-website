@@ -23,7 +23,7 @@ export const MeduxEN: React.FC = () => {
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          A chatbot wasn't an option - many customers aren't comfortable with digital interfaces. Medux needed a solution that respects human contact while being scalable and cost-efficient.
+          A chatbot wasn't an option: many customers aren't comfortable with digital interfaces. Medux needed a solution that respects human contact while staying scalable and cost-efficient.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -92,7 +92,7 @@ export const MeduxEN: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          The AI now handles about 4,000 calls monthly. Customers appreciate shorter wait times and the fact they can be helped outside office hours. Employees now focus on complex cases that truly need human attention.
+          The AI now handles about 4,000 calls monthly. Customers appreciate shorter wait times and the fact they can be helped outside office hours. Employees now focus on complex cases that need human attention.
         </p>
 
         <DarkBox accentColor="red">

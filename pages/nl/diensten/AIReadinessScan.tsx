@@ -21,7 +21,7 @@ export const AIReadinessScanNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Veel organisaties willen iets met AI maar weten niet waar ze staan. Sommige teams experimenteren al, andere hebben nog nooit een AI-tool aangeraakt. De AI Readiness Scan brengt dit helder in kaart — en geeft je een concreet plan voor de volgende stap.
+          Veel organisaties willen iets met AI maar weten niet waar ze staan. Sommige teams experimenteren al, andere hebben nog nooit een AI-tool aangeraakt. De AI Readiness Scan brengt dit helder in kaart en geeft je een concreet plan voor de volgende stap.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">

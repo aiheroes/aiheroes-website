@@ -40,7 +40,7 @@ export const InnoEnergyNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          We ontwikkelden een clickable prototype dat de kernfunctionaliteiten van het platform demonstreerde. Een intelligent dashboard dat niet alleen data visualiseert, maar actief helpt bij investeringsbeslissingen.
+          We ontwikkelden een clickable prototype dat de kernfunctionaliteiten van het platform demonstreerde. Een intelligent dashboard dat data visualiseert én actief helpt bij investeringsbeslissingen.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Kernfuncties</h3>
@@ -72,7 +72,7 @@ export const InnoEnergyNL: React.FC = () => {
           </div>
         </div>
 
-        <h3 className="text-xl font-serif text-brand-dark mb-4">Geavanceerde features</h3>
+        <h3 className="text-xl font-serif text-brand-dark mb-4">Specialistische features</h3>
 
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="relative overflow-hidden" style={{ backgroundColor: '#2563EB', padding: '1.5rem', borderRadius: '2px' }}>
@@ -126,13 +126,13 @@ export const InnoEnergyNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Het prototype won enthousiaste board-support en legde een praktische roadmap voor modernisering neer. We bewezen dat geavanceerde portfolio-analytics en intelligente beslissingsondersteuning geleverd kunnen worden via een intuïtieve, gebruiksvriendelijke interface.
+          Het prototype won enthousiaste board-support en legde een praktische roadmap voor modernisering neer. We bewezen dat portfolio-analytics op fondsniveau, gekoppeld aan intelligente beslissingsondersteuning, geleverd kunnen worden via een intuïtieve, gebruiksvriendelijke interface.
         </p>
 
         <DarkBox accentColor="red" className="mb-8">
           <h3>De impact</h3>
           <p>
-            Dit prototype laat zien hoe AI investeringsmanagement kan transformeren - geavanceerde portfolio-analyse toegankelijk en actionable maken. Data-gedreven inzichten die direct leiden tot betere investeringsbeslissingen.
+            Dit prototype laat zien hoe AI investeringsmanagement kan transformeren: portfolio-analyse op institutioneel niveau toegankelijk en actionable maken. Data-gedreven inzichten die direct leiden tot betere investeringsbeslissingen.
           </p>
         </DarkBox>
 

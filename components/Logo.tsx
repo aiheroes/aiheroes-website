@@ -18,32 +18,28 @@ import rawIconWhiteRedBg from '../assets/brand/icon-white-red-bg.svg?raw';
 import rawIconWhiteBlueBg from '../assets/brand/icon-white-blue-bg.svg?raw';
 import rawIconBlackTransparent from '../assets/brand/icon-black-transparent.svg?raw';
 
+// Make gradient IDs unique per render to avoid collisions when multiple SVGs
+// are inlined on the same page (e.g. navbar + press page).
 let logoInstanceId = 0;
-function preprocessSvg(svg: string): string {
+function makeUniqueIds(svg: string): string {
   const p = `l${++logoInstanceId}`;
   return svg
-    // Make gradient IDs unique per render so multiple SVGs on the same page don't collide.
     .replace(/id="aih-gRight"/g, `id="${p}-gRight"`).replace(/url\(#aih-gRight\)/g, `url(#${p}-gRight)`)
     .replace(/id="aih-gBottom"/g, `id="${p}-gBottom"`).replace(/url\(#aih-gBottom\)/g, `url(#${p}-gBottom)`)
     .replace(/id="aih-iRight"/g, `id="${p}-iRight"`).replace(/url\(#aih-iRight\)/g, `url(#${p}-iRight)`)
-    .replace(/id="aih-iBottom"/g, `id="${p}-iBottom"`).replace(/url\(#aih-iBottom\)/g, `url(#${p}-iBottom)`)
-    // Snap the frame rects to whole-pixel edges — at small sizes (h-16 navbar, h-20 showcase)
-    // each frame line is ~2-3px wide and subpixel antialiasing gives each of the 4 edges a
-    // different perceived thickness. crispEdges forces identical integer widths. Applied only
-    // to the first <g> (frame group); the letter group always has a fill attribute so it's skipped.
-    .replace(/<g>/, '<g shape-rendering="crispEdges">');
+    .replace(/id="aih-iBottom"/g, `id="${p}-iBottom"`).replace(/url\(#aih-iBottom\)/g, `url(#${p}-iBottom)`);
 }
 
 export type LogoVariant = 'icon' | 'wordmark';
 export type LogoColorVariant =
-  | 'fullcolor'        // FullColor_Transparent — default, light surfaces
-  | 'fullcolor-light'  // FullColor_LightBG     — light bg baked in
-  | 'white'            // White_Transparent     — solid white on transparent
-  | 'white-dark'       // White_DarkBG          — solid white on dark bg
-  | 'white-red'        // White_RedBG           — solid white on red bg
-  | 'white-blue'       // White_BlueBG          — solid white on blue bg
-  | 'black'            // Black_Transparent     — solid black on transparent
-  | 'mono';            // legacy alias → 'black'
+  | 'fullcolor'        // FullColor_Transparent: default, light surfaces
+  | 'fullcolor-light'  // FullColor_LightBG: light bg baked in
+  | 'white'            // White_Transparent: solid white on transparent
+  | 'white-dark'       // White_DarkBG: solid white on dark bg
+  | 'white-red'        // White_RedBG: solid white on red bg
+  | 'white-blue'       // White_BlueBG: solid white on blue bg
+  | 'black'            // Black_Transparent: solid black on transparent
+  | 'mono';            // legacy alias for 'black'
 
 interface LogoProps {
   className?: string;
@@ -83,6 +79,6 @@ function injectClassName(svg: string, className?: string): string {
 export const Logo: React.FC<LogoProps> = ({ className, variant = 'icon', colorVariant = 'fullcolor' }) => {
   const resolvedColor = colorVariant === 'mono' ? 'black' : colorVariant;
   const source = variant === 'wordmark' ? LOGO_SVGS[resolvedColor] : ICON_SVGS[resolvedColor];
-  const html = injectClassName(preprocessSvg(source), className);
+  const html = injectClassName(makeUniqueIds(source), className);
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };

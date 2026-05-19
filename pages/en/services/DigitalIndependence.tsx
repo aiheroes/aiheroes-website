@@ -22,18 +22,18 @@ export const DigitalIndependenceEN: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Timeline</p>
           <ul className="space-y-2 text-sm text-stone-200">
-            <li><strong className="text-white">Since Feb 2025:</strong> EU AI Act Article 4 — AI literacy now mandatory</li>
+            <li><strong className="text-white">Since Feb 2025:</strong> EU AI Act Article 4: AI literacy now mandatory</li>
             <li><strong className="text-white">Since Aug 2025:</strong> General provisions of the EU AI Act in effect</li>
             <li><strong className="text-white">CLOUD Act:</strong> US government can demand data from American companies, regardless of server location</li>
           </ul>
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-4">
-          Most organisations work daily with tools from large American tech companies — Microsoft, Google, Amazon. Convenient, powerful, deeply integrated. But under the surface, something is shifting. The US CLOUD Act gives American authorities access to data stored by US companies, regardless of where that data physically resides.
+          Most organisations work daily with tools from large American tech companies: Microsoft, Google, Amazon. Convenient, deeply integrated, hard to replace. But under the surface, something is shifting. The US CLOUD Act gives American authorities access to data stored by US companies, regardless of where that data physically resides.
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-4">
-          This is not theoretical. In 2024, the US government seized 67% of all domain names — over 16,500 — under American jurisdiction. In March 2025, the Dutch parliament passed multiple motions calling for reduced dependence on American tech platforms.
+          This is not theoretical. In 2024, the US government seized 67% of all domain names (over 16,500) under American jurisdiction. In March 2025, the Dutch parliament passed multiple motions calling for reduced dependence on American tech platforms.
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
@@ -42,7 +42,7 @@ export const DigitalIndependenceEN: React.FC = () => {
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">What we do</h3>
         <p className="text-stone-600 leading-relaxed mb-6">
-          We help organisations take back control of their digital environment in three tracks — each one self-contained, but strongest when combined.
+          We help organisations take back control of their digital environment in three tracks: each one self-contained, strongest in combination.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -77,7 +77,7 @@ export const DigitalIndependenceEN: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>One partner for the full journey</h3>
           <p>
-            Most organisations need more than one track. We combine training, consultancy and development into a single, coherent programme — so you don't have to coordinate between three different suppliers. Start wherever makes sense, and scale from there.
+            Most organisations need more than one track. We combine training, consultancy and development into a single, coherent programme, so you don't have to coordinate between three different suppliers. Start wherever makes sense, and scale from there.
           </p>
         </DarkBox>
       </div>

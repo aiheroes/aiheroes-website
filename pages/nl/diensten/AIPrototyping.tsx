@@ -21,7 +21,7 @@ export const AIPrototypingNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Veel AI-projecten beginnen te groot. Maanden development, grote teams, flinke budgetten — om er dan achter te komen dat de aanpak niet werkt. Wij draaien het om: begin klein, bewijs de waarde, en schaal dan op. In 6 dagen heb je een werkend prototype.
+          Veel AI-projecten beginnen te groot. Maanden development, grote teams, flinke budgetten, en dan blijkt dat de aanpak niet werkt. Wij draaien het om: begin klein, bewijs de waarde, en schaal dan op. In 6 dagen heb je een werkend prototype.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
@@ -57,7 +57,7 @@ export const AIPrototypingNL: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Herbruikbare code</h4>
             <p className="text-sm text-stone-600">
-              Het prototype is geen wegwerpartie — het vormt de basis voor de volledige oplossing.
+              Het prototype is geen wegwerpartie; het vormt de basis voor de volledige oplossing.
             </p>
           </div>
         </div>

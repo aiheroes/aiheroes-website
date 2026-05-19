@@ -56,10 +56,10 @@ export const PersNL: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes is een full-service AI agency uit Groningen — AI-hoofdstad van Europa. Van change management tot technische implementatie: training, consulting en software onder één dak.
+                  AI Heroes is een full-service AI agency uit Groningen, AI-hoofdstad van Europa. Van change management tot technische implementatie: training, consulting en software onder één dak.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  We helpen 50+ organisaties met AI — van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen. Waar je ook staat, we kunnen helpen.
+                  We helpen 50+ organisaties met AI: van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen. Waar je ook staat, we kunnen helpen.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
@@ -67,7 +67,7 @@ export const PersNL: React.FC = () => {
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Opgericht:</strong> 2019</li>
                   <li><strong>Statutaire naam:</strong> AI Heroes B.V.</li>
-                  <li><strong>Hoofdkantoor:</strong> Groningen, Nederland — AI-hoofdstad van Europa</li>
+                  <li><strong>Hoofdkantoor:</strong> Groningen, Nederland (AI-hoofdstad van Europa)</li>
                   <li><strong>KvK:</strong> 42051968</li>
                   <li><strong>BTW:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
@@ -82,7 +82,7 @@ export const PersNL: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn — als een circuit dat onze drie pijlers vertegenwoordigt. De rode lijn begint bij de I (training, het startpunt), loopt door het kader (software, de infrastructuur) en eindigt in de A: een pijl omhoog (advies, vooruitgang). De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt. Het traject kan bij elke pijler beginnen — de lijn loopt rond.
+              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn, als een circuit dat onze drie pijlers vertegenwoordigt. De rode lijn begint bij de I (training, het startpunt), loopt door het kader (software, de infrastructuur) en eindigt in de A: een pijl omhoog (advies, vooruitgang). De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt. Het traject kan bij elke pijler beginnen; de lijn loopt rond.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Woordmerk</h3>

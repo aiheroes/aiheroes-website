@@ -21,7 +21,7 @@ export const AIDevelopmentTeamsEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Not every company needs a full AI team, but they do need AI capacity. Our developers work alongside your existing team — or independently if you don't have development capacity yet. Flexibly scale up and down, with technical leadership included.
+          Most companies need AI capacity without taking on a full in-house AI team. Our developers work alongside your existing team, or independently if you don't have development capacity yet. Flexibly scale up and down, with technical leadership included.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
@@ -57,7 +57,7 @@ export const AIDevelopmentTeamsEN: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Knowledge transfer</h4>
             <p className="text-sm text-stone-600">
-              We don't just build — we ensure your team learns and can continue independently.
+              We build alongside your team and make sure your people can continue on their own.
             </p>
           </div>
         </div>

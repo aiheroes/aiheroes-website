@@ -8,7 +8,7 @@ export const ApproachEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Our Approach"
-      subtitle="From change management to technical implementation — three pillars, one agency. We guide the entire AI journey."
+      subtitle="From change management to technical implementation. Three pillars, one agency, the entire AI journey."
       accentColor="red"
       seoDescription="Our approach: from change management to technical implementation as a full-service AI agency. Three pillars, one European partner."
     >
@@ -18,20 +18,20 @@ export const ApproachEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          The AI market is fragmented. Advisory firms write reports that end up in drawers. Training bureaus train and leave. Tech companies build tools nobody uses. Nobody covers the full spectrum — from organisational change to technical implementation.
+          The AI market is fragmented. Advisory firms write reports that end up in drawers. Training bureaus train and leave. Tech companies build tools nobody uses. Nobody covers the full spectrum: from organisational change to technical implementation.
         </p>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          AI Heroes does. As a full-service AI agency, we combine change management, training, consulting and software under one roof. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. Clients can enter at any point — you don't need to start at pillar 1.
+          AI Heroes does. As a full-service AI agency, we combine change management, training, consulting and software under one roof. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. Clients can enter at any point. You don't need to start at pillar 1.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Our principles</h3>
           <ul className="space-y-2 text-stone-600">
-            <li>Practice over theory — you learn by doing</li>
-            <li>Results over reports — we measure success by what actually changes</li>
-            <li>Honesty over sales — if AI isn't the solution, we'll tell you</li>
-            <li>Custom over standard — every organization is different</li>
+            <li>Practice over theory: you learn by doing</li>
+            <li>Results over reports: we measure success by what actually changes</li>
+            <li>Honesty over sales: if AI isn't the solution, we'll tell you</li>
+            <li>Custom over standard: every organization is different</li>
           </ul>
         </div>
 
@@ -42,7 +42,7 @@ export const ApproachEN: React.FC = () => {
             <div className="w-12 h-1 bg-brand-red mb-4"></div>
             <h4 className="font-bold text-brand-dark group-hover:text-brand-red transition-colors mb-2">1. Training</h4>
             <p className="text-sm text-stone-600">
-              We teach your team what AI can do — and what to watch out for. From boardroom to work floor.
+              We teach your team what AI can do, and what to watch out for. From boardroom to work floor.
             </p>
           </Link>
           <Link to="/en/services#consulting" className="p-6 bg-white border-2 border-stone-200 hover:border-brand-blue transition-colors group">
@@ -76,7 +76,7 @@ export const ApproachEN: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Knowledge transfer</h4>
             <p className="text-sm text-stone-600">
-              With every engagement we ensure your team can continue independently. No dependency, but own capability.
+              Every engagement is set up so your team can continue without us. You own the capability, end to end.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">

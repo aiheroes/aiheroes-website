@@ -95,11 +95,11 @@ export const CONTENT: Record<Language, Content> = {
       items: {
         training: {
           title: "Training & Workshops",
-          description: "Maak je team AI-vaardig. Van AI Foundations tot EU AI Act compliance — praktische workshops die bijblijven."
+          description: "Maak je team AI-vaardig. Van AI Foundations tot EU AI Act compliance: praktische workshops die bijblijven."
         },
         consulting: {
           title: "AI Consultancy",
-          description: "Van inzicht naar strategie. AI-readiness scans, roadmaps en change management — zodat AI landt in je hele organisatie."
+          description: "Van inzicht naar strategie. AI-readiness scans, roadmaps en change management, zodat AI landt in je hele organisatie."
         },
         software: {
           title: "Software & Implementatie",
@@ -114,7 +114,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     team: {
       title: "Geboren probleemoplossers",
-      location: "Groningen — AI-hoofdstad van Europa",
+      location: "Groningen, AI-hoofdstad van Europa",
       body: "Drie oprichters, één gedeelde passie voor AI.\nVanuit het hart van Europa's AI-hoofdstad.",
       cta: {
         text: "Leer ons kennen",
@@ -171,10 +171,10 @@ export const CONTENT: Record<Language, Content> = {
     aboutPage: {
       hero: {
         title: "Over AI Heroes",
-        subtitle: "AI Heroes is een full-service AI agency die organisaties door het hele AI-traject begeleidt — van change management tot technische implementatie. Vanuit Groningen, voor heel Europa."
+        subtitle: "AI Heroes is een full-service AI agency die organisaties door het hele AI-traject begeleidt, van change management tot technische implementatie. Vanuit Groningen, voor heel Europa."
       },
       intro: {
-        text: "We zijn in 2019 begonnen vanuit een simpele observatie: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Niemand pakt het hele spectrum — van organisatieverandering tot technische implementatie.\n\nVanuit Groningen — epicentrum van AI in Europa met de AI Fabriek — werken we met organisaties door heel Europa. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in.",
+        text: "We zijn in 2019 begonnen vanuit een simpele observatie: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Niemand pakt het hele spectrum: van organisatieverandering tot technische implementatie.\n\nVanuit Groningen, epicentrum van AI in Europa en thuisbasis van de AI Fabriek, werken we met organisaties door heel Europa. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
           { metric: "Sinds 2019", description: "Groningen, AI-hoofdstad van Europa" },
@@ -232,8 +232,8 @@ export const CONTENT: Record<Language, Content> = {
             description: "We adviseren niet alleen, we bouwen ook. Kennis uit de praktijk, rechtstreeks toegepast in jouw organisatie."
           },
           {
-            title: "Groningen — AI-hoofdstad van Europa",
-            description: "Geworteld in Groningen, thuisbasis van de AI Fabriek — een investering van €200M. Lokale basis, Europees werkgebied."
+            title: "Groningen, AI-hoofdstad van Europa",
+            description: "Geworteld in Groningen, thuisbasis van de AI Fabriek (een investering van €200M). Lokale basis, Europees werkgebied."
           }
         ]
       }
@@ -244,7 +244,7 @@ export const CONTENT: Record<Language, Content> = {
         subtitle: "Praktische kennis over AI-strategie en geletterdheid. Gratis beschikbaar voor iedereen die AI begrijpt en toepast."
       },
       intro: {
-        text: "In een wereld waar AI steeds meer impact heeft op organisaties en de samenleving, is het cruciaal dat mensen begrijpen hoe deze technologie werkt. Niet alleen de techneuten, maar iedereen.\n\nDaarom delen we onze kennis openlijk. Deze resources helpen je de basis te leggen voor AI-geletterdheid in je organisatie en een strategische koers uit te zetten.",
+        text: "AI heeft steeds meer impact op organisaties en samenleving. Het is dus belangrijk dat iedereen begrijpt hoe deze technologie werkt, ook buiten het tech-team.\n\nDaarom delen we onze kennis openlijk. Deze resources helpen je de basis te leggen voor AI-geletterdheid in je organisatie en een strategische koers uit te zetten.",
         stats: [
           { metric: "72%", description: "AI-adoptie onder bedrijven" },
           { metric: "2025", description: "EU AI Act verplicht" },
@@ -357,7 +357,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Directe impact",
-            description: "We gaan aan de slag. Training, advies of ontwikkeling — meetbare resultaten die direct waarde opleveren."
+            description: "We gaan aan de slag met training, advies of ontwikkeling. Meetbare resultaten die direct waarde opleveren."
           }
         ]
       },
@@ -465,12 +465,12 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "AI Consultancy",
             pillar: "consulting",
-            description: "Ons Consultancy team helpt organisaties hun AI-strategie te bepalen. Van readiness scans en roadmaps tot implementatiebegeleiding — we vertalen ambitie naar actie."
+            description: "Ons Consultancy team helpt organisaties hun AI-strategie te bepalen. Van readiness scans en roadmaps tot implementatiebegeleiding: we vertalen ambitie naar actie."
           },
           {
             name: "Software & Implementatie",
             pillar: "software",
-            description: "Ons Software team bouwt custom AI-oplossingen. Van rapid prototypes in 6 dagen tot enterprise-grade integraties — altijd in samenwerking met het team van de klant."
+            description: "Ons Software team bouwt custom AI-oplossingen. Van rapid prototypes in 6 dagen tot enterprise-grade integraties, altijd in samenwerking met het team van de klant."
           }
         ]
       },
@@ -646,7 +646,7 @@ export const CONTENT: Record<Language, Content> = {
         terms: "Algemene Voorwaarden"
       },
       copyright: "© 2026 AI Heroes",
-      madeIn: "| Met trots gemaakt in Groningen — AI-hoofdstad van Europa"
+      madeIn: "| Met trots gemaakt in Groningen, AI-hoofdstad van Europa"
     }
   },
   en: {
@@ -743,11 +743,11 @@ export const CONTENT: Record<Language, Content> = {
       items: {
         training: {
           title: "Training & Workshops",
-          description: "Get your team AI-ready. From AI Foundations to EU AI Act compliance — practical workshops that stick."
+          description: "Get your team AI-ready. From AI Foundations to EU AI Act compliance: practical workshops that stick."
         },
         consulting: {
           title: "AI Consulting",
-          description: "From insight to strategy. AI-readiness scans, roadmaps and change management — so AI lands across your entire organisation."
+          description: "From insight to strategy. AI-readiness scans, roadmaps and change management, so AI lands across your entire organisation."
         },
         software: {
           title: "Software & Implementation",
@@ -762,7 +762,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     team: {
       title: "Born problem-solvers",
-      location: "Groningen — AI Capital of Europe",
+      location: "Groningen, AI Capital of Europe",
       body: "Three founders, one shared passion for AI.\nBased in the heart of Europe's AI Capital.",
       cta: {
         text: "Meet the team",
@@ -819,10 +819,10 @@ export const CONTENT: Record<Language, Content> = {
     aboutPage: {
       hero: {
         title: "About AI Heroes",
-        subtitle: "AI Heroes is a full-service AI agency that guides organisations through the entire AI journey — from change management to technical implementation. Based in Groningen, serving all of Europe."
+        subtitle: "AI Heroes is a full-service AI agency that guides organisations through the entire AI journey, from change management to technical implementation. Based in Groningen, serving all of Europe."
       },
       intro: {
-        text: "We started in 2019 with a simple observation: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Nobody covers the full spectrum — from organisational change to technical implementation.\n\nBased in Groningen — the epicentre of AI in Europe, home to the AI Fabriek — we work with organisations across Europe. From startups to Fortune 500 companies, from municipalities to media organisations. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in.",
+        text: "We started in 2019 with a simple observation: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Nobody covers the full spectrum: from organisational change to technical implementation.\n\nBased in Groningen, the epicentre of AI in Europe and home to the AI Fabriek, we work with organisations across Europe. From startups to Fortune 500 companies, from municipalities to media organisations. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in.",
         stats: [
           { metric: "50+", description: "Organizations helped" },
           { metric: "Since 2019", description: "Groningen, AI Capital of Europe" },
@@ -880,8 +880,8 @@ export const CONTENT: Record<Language, Content> = {
             description: "We don't just advise, we also build. Knowledge from practice, directly applied in your organization."
           },
           {
-            title: "Groningen — AI Capital of Europe",
-            description: "Rooted in Groningen, home to the AI Fabriek — a €200M investment. Local base, European reach."
+            title: "Groningen, AI Capital of Europe",
+            description: "Rooted in Groningen, home to the AI Fabriek (a €200M investment). Local base, European reach."
           }
         ]
       }
@@ -892,7 +892,7 @@ export const CONTENT: Record<Language, Content> = {
         subtitle: "Practical knowledge about AI strategy and literacy. Free for everyone who wants to understand and apply AI."
       },
       intro: {
-        text: "In a world where AI has increasing impact on organizations and society, it's crucial that people understand how this technology works. Not just the tech people, but everyone.\n\nThat's why we share our knowledge openly. These resources help you lay the foundation for AI literacy in your organization and chart a strategic course.",
+        text: "AI has growing impact on organisations and society. Understanding how this technology works matters across the whole organisation, well beyond the tech team.\n\nThat's why we share our knowledge openly. These resources help you lay the foundation for AI literacy in your organization and chart a strategic course.",
         stats: [
           { metric: "72%", description: "AI adoption among companies" },
           { metric: "2025", description: "EU AI Act mandatory" },
@@ -1005,7 +1005,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Immediate impact",
-            description: "We get to work. Training, advice or development — measurable results that deliver immediate value."
+            description: "We get to work on training, advice or development. Measurable results that deliver immediate value."
           }
         ]
       },
@@ -1113,12 +1113,12 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "AI Consulting",
             pillar: "consulting",
-            description: "Our Consulting team helps organisations define their AI strategy. From readiness scans and roadmaps to implementation guidance — we translate ambition into action."
+            description: "Our Consulting team helps organisations define their AI strategy. From readiness scans and roadmaps to implementation guidance: we translate ambition into action."
           },
           {
             name: "Software & Implementation",
             pillar: "software",
-            description: "Our Software team builds custom AI solutions. From rapid prototypes in 6 days to enterprise-grade integrations — always in collaboration with the client's team."
+            description: "Our Software team builds custom AI solutions. From rapid prototypes in 6 days to enterprise-grade integrations, always in collaboration with the client's team."
           }
         ]
       },
@@ -1294,7 +1294,7 @@ export const CONTENT: Record<Language, Content> = {
         terms: "Terms & Conditions"
       },
       copyright: "© 2026 AI Heroes",
-      madeIn: "| Proudly made in Groningen — AI Capital of Europe"
+      madeIn: "| Proudly made in Groningen, AI Capital of Europe"
     }
   }
 };

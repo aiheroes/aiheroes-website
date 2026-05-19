@@ -123,7 +123,7 @@ export const DienstenNL: React.FC = () => {
       <div className="mt-8 pt-6 border-t border-white/15">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/60">
           <span className="font-medium text-white/80">{content.hero.credibility}</span>
-          <span className="text-white/30 mx-1">—</span>
+          <span className="text-white/30 mx-1">·</span>
           {["Postcode Loterij", "Prosus", "Medux", "Banijay", "Hanze"].map((name, idx) => (
             <span key={idx}>
               {name}{idx < 4 && <span className="text-white/30 ml-1">&middot;</span>}
@@ -195,7 +195,7 @@ export const DienstenNL: React.FC = () => {
             {[
               {
                 title: "Wij combineren alle drie",
-                description: "Training, consulting en software van één partner. Geen gefragmenteerde aanpak, maar één team dat het hele traject dekt."
+                description: "Training, consulting en software van één partner. Eén team dekt het hele traject."
               },
               {
                 title: "Direct toepasbaar",

@@ -106,7 +106,7 @@ export const AIPrivacySecurityNL: React.FC = () => {
             <Link to="/nl/diensten/digitale-onafhankelijkheid" className="text-white underline underline-offset-2 hover:text-white/80">
               Digitale Onafhankelijkheid
             </Link>{' '}
-            tracks aan — van organisatiescan tot migratie naar Europese alternatieven.
+            tracks aan: van organisatiescan tot migratie naar Europese alternatieven.
           </p>
         </DarkBox>
       </div>

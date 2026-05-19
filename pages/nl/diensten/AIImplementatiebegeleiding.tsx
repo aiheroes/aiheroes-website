@@ -21,7 +21,7 @@ export const AIImplementatiebegeleidingNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Je hebt een AI-strategie, misschien zelfs al een werkend prototype. Maar de echte uitdaging begint nu: hoe zorg je dat mensen het daadwerkelijk gaan gebruiken? AI-implementatie faalt zelden door techniek — het faalt door adoptie. Wij begeleiden je team door de hele uitrol.
+          Je hebt een AI-strategie, misschien zelfs al een werkend prototype. Maar de echte uitdaging begint nu: hoe zorg je dat mensen het daadwerkelijk gaan gebruiken? AI-implementatie faalt zelden op de techniek. Adoptie is bijna altijd de bottleneck. Wij begeleiden je team door de hele uitrol.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -66,7 +66,7 @@ export const AIImplementatiebegeleidingNL: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">70% faalt zonder</h4>
             <p className="text-sm text-stone-600">
-              De meeste AI-projecten falen niet door techniek, maar door gebrekkige adoptie en change management.
+              Bij de meeste AI-projecten zit de bottleneck in adoptie en change management. Techniek is zelden het probleem.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">

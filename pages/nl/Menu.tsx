@@ -351,7 +351,7 @@ const IntroCard: React.FC = () => (
 export const MenuNL: React.FC = () => {
   useSEO({
     title: 'Menu',
-    description: 'Wat wij bouwen — een overzicht van AI-toepassingen, software en advies door AI Heroes.',
+    description: 'Wat wij bouwen: een overzicht van AI-toepassingen, software en advies door AI Heroes.',
     lang: 'nl',
     path: '/nl/menu',
     noindex: true,

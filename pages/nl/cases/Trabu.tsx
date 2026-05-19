@@ -89,17 +89,17 @@ export const TrabuNL: React.FC = () => {
           <blockquote className="text-lg text-stone-600 italic mb-4">
             "We waarderen de tijd en moeite die jullie team in het project heeft gestoken enorm."
           </blockquote>
-          <p className="text-brand-red font-medium">— Trabu Team</p>
+          <p className="text-brand-red font-medium">Trabu Team</p>
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Het belangrijkste resultaat was niet alleen het prototype zelf, maar de architectuur die we bouwden. Een fundament waarop verder gebouwd kan worden, met een AI-integratie die kan leren en verbeteren over tijd.
+          Het echte resultaat lag in de architectuur die we bouwden. Het prototype was het bewijs; eronder lag een fundament waarop Trabu kan blijven doorbouwen, met een AI-integratie die kan leren en verbeteren over tijd.
         </p>
 
         <DarkBox accentColor="red">
           <h3>Over Trabu</h3>
           <p>
-            Trabu combineert diepgaande reiskennis met geavanceerde technologie om iets volledig nieuws te creëren: AI die echt begrijpt wat elke reis bijzonder maakt. Hun visie gaat verder dan simpele boekingen - ze transformeren hoe mensen hun avonturen plannen.
+            Trabu combineert diepgaande reiskennis met moderne AI-technologie: een reisplanner die persoonlijke voorkeuren oppikt en daarop inspeelt. Hun visie reikt verder dan boekingen alleen; ze bouwen aan hoe mensen hun avonturen plannen.
           </p>
         </DarkBox>
 

@@ -8,7 +8,7 @@ export const AIIntegratieNL: React.FC = () => {
     <PageLayout
       lang="nl"
       title="Systeemintegratie"
-      subtitle="AI verbinden met je bestaande systemen. ERP, CRM, interne tools — we werken met wat je al hebt."
+      subtitle="AI verbinden met je bestaande systemen. ERP, CRM, interne tools: we werken met wat je al hebt."
       seoDescription="AI Integratie: verbind AI-capaciteiten met je bestaande systemen. API-integraties, workflow automatisering en data pipelines. Door AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementatie"
@@ -21,7 +21,7 @@ export const AIIntegratieNL: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          De kracht van AI zit niet in losstaande tools, maar in de integratie met je dagelijkse werkprocessen. Wij verbinden AI-capaciteiten met je bestaande systemen — zodat je team de voordelen krijgt zonder van platform te hoeven wisselen.
+          AI werkt het beste wanneer het aansluit op je dagelijkse processen. Wij verbinden AI-capaciteiten met je bestaande systemen, zodat je team de voordelen krijgt zonder van platform te hoeven wisselen.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">

@@ -61,11 +61,11 @@ const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
 // SEO content per language
 const SEO_CONTENT = {
   nl: {
-    title: 'Full-Service AI Agency — Training, Consulting & Software',
+    title: 'Full-Service AI Agency | Training, Consulting & Software',
     description: 'AI Heroes is een full-service AI agency vanuit Groningen. Van change management tot technische implementatie. Training, consulting en software voor heel Europa.'
   },
   en: {
-    title: 'Full-Service AI Agency — Training, Consulting & Software',
+    title: 'Full-Service AI Agency | Training, Consulting & Software',
     description: 'AI Heroes is a full-service AI agency based in Groningen. From change management to technical implementation. Training, consulting and software across Europe.'
   }
 };

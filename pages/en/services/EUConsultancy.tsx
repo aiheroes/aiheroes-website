@@ -8,7 +8,7 @@ export const EUConsultancyEN: React.FC = () => {
     <PageLayout
       lang="en"
       title="Digital Independence"
-      subtitle="European AI without vendor lock-in. From awareness to working solution — training, consulting and implementation in one engagement."
+      subtitle="European AI without vendor lock-in. From awareness to working solution: training, consulting and implementation in one engagement."
       seoDescription="Digital independence: European AI without vendor lock-in. Organisation scan, training and implementation of sovereign AI solutions. By AI Heroes."
       accentColor="red"
       ctaLabel="Schedule a consultation"
@@ -16,13 +16,13 @@ export const EUConsultancyEN: React.FC = () => {
     >
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl md:text-3xl font-serif text-brand-dark mb-6">
-          European AI that works — without dependency
+          European AI that works, without dependency
         </h2>
 
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Why now</p>
           <p className="text-sm text-stone-200 mb-2">
-            The CLOUD Act allows the US to demand data from any American company — including Microsoft, Google and AWS — regardless of where the servers are located. From <strong className="text-white">August 2025</strong>, the EU AI Act requires transparency about data processing in AI systems.
+            The CLOUD Act allows the US to demand data from any American company (including Microsoft, Google and AWS), regardless of where the servers are located. From <strong className="text-white">August 2025</strong>, the EU AI Act requires transparency about data processing in AI systems.
           </p>
           <p className="text-sm text-stone-200">
             Organisations without a clear picture of their digital environment risk non-compliance, data exposure to foreign jurisdictions and strategic dependency.
@@ -30,7 +30,7 @@ export const EUConsultancyEN: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Most organisations know they should reduce their dependence on American platforms — but they don't know where to start. We offer a complete journey: from awareness and risk assessment to working European AI solutions. Not separate pieces, but one partner for the entire path.
+          Most organisations know they should reduce their dependence on American platforms; they just don't know where to start. We offer a complete journey: from awareness and risk assessment to working European AI solutions. One partner for the entire path.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Three steps to independence</h3>
@@ -46,7 +46,7 @@ export const EUConsultancyEN: React.FC = () => {
                 <h4 className="font-bold text-brand-dark text-lg mb-1">Awareness & Training</h4>
                 <p className="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Half or full day on-site</p>
                 <p className="text-stone-600 text-sm leading-relaxed mb-3">
-                  What does the CLOUD Act mean for your data? What risks come with American platforms? And what European alternatives exist? A practical session that brings your team up to speed — without jargon.
+                  What does the CLOUD Act mean for your data? What risks come with American platforms? And what European alternatives exist? A practical session that brings your team up to speed, without jargon.
                 </p>
                 <Link to="/en/services/eu-training" className="text-sm font-medium text-brand-red hover:underline underline-offset-2">
                   More about the training &rarr;
@@ -84,7 +84,7 @@ export const EUConsultancyEN: React.FC = () => {
                 <h4 className="font-bold text-brand-dark text-lg mb-1">European AI Implementation</h4>
                 <p className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">Tailored to your organisation</p>
                 <p className="text-stone-600 text-sm leading-relaxed mb-3">
-                  From local models on your own hardware to European cloud solutions (Mistral, Aleph Alpha). We build AI that stays in Europe — without compromising on quality. Including migration, configuration and staff training.
+                  From local models on your own hardware to European cloud solutions (Mistral, Aleph Alpha). We build AI that stays in Europe, without compromising on quality. Including migration, configuration and staff training.
                 </p>
                 <Link to="/en/services/eu-development" className="text-sm font-medium text-brand-dark hover:underline underline-offset-2">
                   More about implementation &rarr;

@@ -22,14 +22,14 @@ export const DigitaleOnafhankelijkheidNL: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Tijdlijn</p>
           <ul className="space-y-2 text-sm text-stone-200">
-            <li><strong className="text-white">Sinds feb 2025:</strong> EU AI Act Artikel 4 — AI-geletterdheid verplicht</li>
+            <li><strong className="text-white">Sinds feb 2025:</strong> EU AI Act Artikel 4: AI-geletterdheid verplicht</li>
             <li><strong className="text-white">Sinds aug 2025:</strong> Algemene bepalingen EU AI Act van kracht</li>
             <li><strong className="text-white">CLOUD Act:</strong> VS-overheid kan data bij Amerikaanse bedrijven opeisen, ongeacht serverlocatie</li>
           </ul>
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Nederlandse organisaties werken massaal met Amerikaanse techbedrijven. Microsoft, Google, Amazon — ze zitten diep in onze infrastructuur. Maar die afhankelijkheid heeft een keerzijde. De CLOUD Act geeft de Amerikaanse overheid toegang tot data die bij Amerikaanse bedrijven is opgeslagen, ongeacht waar de servers staan. 67% van de Nederlandse organisaties heeft geen zicht op waar hun data precies naartoe gaat. In maart 2025 nam de Tweede Kamer moties aan over digitale soevereiniteit, en Europese regelgeving rond data en AI wordt elk kwartaal strenger. De vraag is niet óf je hieraan moet werken, maar wanneer.
+          Nederlandse organisaties werken massaal met Amerikaanse techbedrijven. Microsoft, Google, Amazon: ze zitten diep in onze infrastructuur. Maar die afhankelijkheid heeft een keerzijde. De CLOUD Act geeft de Amerikaanse overheid toegang tot data die bij Amerikaanse bedrijven is opgeslagen, ongeacht waar de servers staan. 67% van de Nederlandse organisaties heeft geen zicht op waar hun data precies naartoe gaat. In maart 2025 nam de Tweede Kamer moties aan over digitale soevereiniteit, en Europese regelgeving rond data en AI wordt elk kwartaal strenger. Dit komt sowieso op je af; de enige vraag is wanneer je begint.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Wat we doen</h3>
@@ -69,13 +69,13 @@ export const DigitaleOnafhankelijkheidNL: React.FC = () => {
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Hoe we werken</h3>
         <p className="text-stone-600 leading-relaxed mb-8">
-          We zijn onafhankelijk. We hebben geen partnerdeals met leveranciers en ontvangen geen doorverwijsvergoedingen. Ons advies is gebaseerd op wat het beste past bij jouw organisatie — niet op wat ons het meeste oplevert. Als een Amerikaans platform de beste keuze is, zeggen we dat eerlijk. Maar we zorgen ervoor dat je die keuze maakt met open ogen.
+          We zijn onafhankelijk. We hebben geen partnerdeals met leveranciers en ontvangen geen doorverwijsvergoedingen. Ons advies is gebaseerd op wat het beste past bij jouw organisatie. Als een Amerikaans platform de beste keuze is, zeggen we dat eerlijk. We zorgen ervoor dat je die keuze met open ogen maakt.
         </p>
 
         <DarkBox accentColor="red">
           <h3>Eén partner voor het hele traject</h3>
           <p>
-            De meeste organisaties hebben niet één probleem, maar een combinatie: medewerkers die niet weten wat er speelt, een IT-landschap dat niet in kaart is gebracht, en AI-tools die op Amerikaanse servers draaien. Wij combineren alle drie de sporen zodat je niet bij drie verschillende partijen hoeft aan te kloppen.{' '}
+            De meeste organisaties zien drie problemen tegelijk: medewerkers die niet weten wat er speelt, een IT-landschap dat niet in kaart is gebracht, en AI-tools die op Amerikaanse servers draaien. Wij combineren alle drie de sporen zodat je niet bij drie verschillende partijen hoeft aan te kloppen.{' '}
             <Link to="/nl/contact" className="text-white underline underline-offset-2 hover:text-white/80">
               Neem contact op
             </Link>{' '}

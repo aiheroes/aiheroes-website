@@ -23,7 +23,7 @@ export const EUTrainingNL: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Waarom nu</p>
           <p className="text-sm text-stone-200 mb-2">
-            Vanaf <strong className="text-white">februari 2025</strong> verplicht de EU AI Act organisaties om AI-geletterdheid aan te tonen (Artikel 4). Vanaf <strong className="text-white">augustus 2025</strong> gelden de algemene bepalingen. Ondertussen geeft de CLOUD Act de VS toegang tot data bij Amerikaanse providers — ongeacht serverlocatie.
+            Vanaf <strong className="text-white">februari 2025</strong> verplicht de EU AI Act organisaties om AI-geletterdheid aan te tonen (Artikel 4). Vanaf <strong className="text-white">augustus 2025</strong> gelden de algemene bepalingen. Ondertussen geeft de CLOUD Act de VS toegang tot data bij Amerikaanse providers, ongeacht serverlocatie.
           </p>
           <p className="text-sm text-stone-200">
             Organisaties die nu niet handelen riskeren compliance-boetes, dataverlies aan buitenlandse jurisdicties en strategische afhankelijkheid.
@@ -31,7 +31,7 @@ export const EUTrainingNL: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Organisaties voelen dat er iets verschuift. Geopolitieke spanningen, strengere Europese wetgeving, discussies over datasoevereiniteit — het is overal. Maar wat betekent het concreet voor jouw organisatie? En wat kun je er vandaag al aan doen? Deze sessie brengt het in kaart, zonder jargon en met praktische handvatten.
+          Organisaties voelen dat er iets verschuift. Geopolitieke spanningen, strengere Europese wetgeving, discussies over datasoevereiniteit: het is overal. Maar wat betekent het concreet voor jouw organisatie? En wat kun je er vandaag al aan doen? Deze sessie brengt het in kaart, zonder jargon en met praktische handvatten.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Wat de sessie behandelt</h3>
@@ -58,7 +58,7 @@ export const EUTrainingNL: React.FC = () => {
             <div>
               <h4 className="font-bold text-brand-dark mb-1">De regelgevingscontext</h4>
               <p className="text-stone-600 text-sm mb-0">
-                EU AI Act, NIS2, DORA, AVG — wat is relevant voor jouw organisatie en wat komt eraan? We vertalen de regelgeving naar concrete verplichtingen.
+                EU AI Act, NIS2, DORA, AVG: wat is relevant voor jouw organisatie en wat komt eraan? We vertalen de regelgeving naar concrete verplichtingen.
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@ export const EUTrainingNL: React.FC = () => {
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Jaarlijkse update</h3>
         <p className="text-stone-600 leading-relaxed mb-8">
-          Het landschap verandert snel. Regelgeving wordt aangescherpt, nieuwe alternatieven komen op de markt, geopolitieke verhoudingen verschuiven. Daarom bieden we de sessie ook als jaarlijkse update aan — zodat je organisatie op de hoogte blijft en het beleid actueel houdt.
+          Het landschap verandert snel. Regelgeving wordt aangescherpt, nieuwe alternatieven komen op de markt, geopolitieke verhoudingen verschuiven. Daarom bieden we de sessie ook als jaarlijkse update aan, zodat je organisatie op de hoogte blijft en het beleid actueel houdt.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">

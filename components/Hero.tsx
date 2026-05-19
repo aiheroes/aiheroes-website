@@ -153,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* Background Images — all layered, opacity-controlled for crossfade */}
+      {/* Background Images, all layered, opacity-controlled for crossfade */}
       {slides.map((slide, idx) => (
         <div
           key={idx}
@@ -208,7 +208,7 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
         </div>
       </div>
 
-      {/* Bottom navigation — Rewire-style labeled segments */}
+      {/* Bottom navigation, Rewire-style labeled segments */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4">

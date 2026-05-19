@@ -320,7 +320,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     ? { about: { label: 'Over AI Heroes', href: '/nl/over-ons' }, resources: { label: 'Alle resources bekijken', href: '/nl/resources' } }
     : { about: { label: 'About AI Heroes', href: '/en/about' }, resources: { label: 'View all resources', href: '/en/resources' } };
 
-  // Dropdown panel JSX — inlined (not a component) so React doesn't remount it
+  // Dropdown panel JSX, inlined (not a component) so React doesn't remount it
   const dropdownPanel = (
     <div
       ref={panelRef}
@@ -368,7 +368,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     </div>
   );
 
-  // Desktop nav button (no dropdown children — panel is unified)
+  // Desktop nav button (no dropdown children, panel is unified)
   const NavTrigger: React.FC<{
     label: string;
     type: DropdownType;

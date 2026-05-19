@@ -1,4 +1,4 @@
-# AI Heroes — Offerings Bible
+# AI Heroes Offerings Bible
 
 > Zo praten we over onszelf. Dit document is de basis voor de website, socials, salespresentaties en alles wat naar buiten gaat.
 
@@ -12,8 +12,8 @@
 **BTW:** NL869486263B01
 **Tagline:** AI werkt als je weet hoe
 **Wat we zijn:** Full-service AI agency
-**Waar:** Groningen — AI-hoofdstad van Europa
-**Focus:** Europees — datasoevereiniteit, EU AI Act, geen vendor lock-in
+**Waar:** Groningen, AI-hoofdstad van Europa
+**Focus:** Europees: datasoevereiniteit, EU AI Act, geen vendor lock-in
 **Contact:** info@aiheroes.io / aiheroes.io
 **Team:** Frans Hoorn, Jan Brusse, David Homan
 
@@ -21,9 +21,9 @@
 
 ## Wat we doen
 
-We zijn een full-service AI agency. We begeleiden organisaties van change management tot technische implementatie. Training, consulting en software onder één dak — vanuit Groningen, voor heel Europa.
+We zijn een full-service AI agency. We begeleiden organisaties van change management tot technische implementatie. Training, consulting en software onder één dak, vanuit Groningen voor heel Europa.
 
-**English:** We are a full-service AI agency. We guide organisations from change management to technical implementation. Training, consulting and software under one roof — from Groningen, for all of Europe.
+**English:** We are a full-service AI agency. We guide organisations from change management to technical implementation. Training, consulting and software under one roof, from Groningen for all of Europe.
 
 ---
 
@@ -39,21 +39,21 @@ Samen dekken onze drie pijlers het volledige spectrum: van change management tot
 
 **Eigenaar:** Jan Brusse
 
-Workshops en incompany trainingen voor elk niveau. Van directie tot werkvloer. Praktijk gaat voor theorie — je werkt met echte tools aan echte cases, direct toepasbaar.
+Workshops en incompany trainingen voor elk niveau. Van directie tot werkvloer. Praktijk gaat voor theorie: je werkt met echte tools aan echte cases, direct toepasbaar.
 
 #### Trainingen die we geven
 
-**AI Foundations** — onze kernworkshop
+**AI Foundations:** onze kernworkshop
 We komen langs en werken met je team tot iedereen het snapt. Hoe generatieve AI werkt, effectief prompten, tools kiezen en beoordelen, valkuilen vermijden, en workflows die je morgen kunt gebruiken. Hele dag, 8-20 deelnemers. We passen de voorbeelden aan op jouw sector.
 *Klanten: Postcode Loterij, Banijay Benelux, Prosus, Hanze*
 
 **Copilot Training**
-De snelste manier om productief te worden met Microsoft Copilot. Van beginner tot power user in een middag. Copilot in Word, Excel, Outlook, Teams — plus wat je wel en niet moet delen qua privacy.
+De snelste manier om productief te worden met Microsoft Copilot. Van beginner tot power user in een middag. Copilot in Word, Excel, Outlook, Teams; plus wat je wel en niet moet delen qua privacy.
 Halve dag, 5-15 deelnemers.
 *Klanten: Postcode Loterij, Envalior, Philips Healthcare*
 
 **AI voor Developers**
-Van API-integratie tot fine-tuning. OpenAI, Anthropic, open-source modellen. Prompt engineering, function calling, embeddings, vector databases, RAG, kosten. Geen PowerPoint — je codeert, debugt en bouwt werkende prototypes. Python en/of JavaScript.
+Van API-integratie tot fine-tuning. OpenAI, Anthropic, open-source modellen. Prompt engineering, function calling, embeddings, vector databases, RAG, kosten. Geen PowerPoint: je codeert, debugt en bouwt werkende prototypes. Python en/of JavaScript.
 1-2 dagen, 4-12 developers. Je neemt een werkende code repo mee naar huis.
 *Klanten: OLX Poland, iFood Brazil, Prosus*
 
@@ -121,7 +121,7 @@ Hands-on begeleiding tijdens AI-uitrol. Change management, adoptietracking, coac
 2-8 weken, op locatie.
 *Klanten: Medux, Trabu, OLX Poland*
 
-> **NB: Change management is geen losse dienst — het loopt door alles heen.** Bij training zorgen we dat teams niet alleen leren, maar ook veranderen. Bij advies brengen we organisatorische impact in kaart. Bij software betrekken we het team zodat adoptie geborgd is. De hele agency is gebouwd rond het idee dat AI-succes organisatieverandering vereist.
+> **NB: Change management is geen losse dienst; het loopt door alles heen.** Bij training zorgen we dat teams leren én veranderen. Bij advies brengen we organisatorische impact in kaart. Bij software betrekken we het team zodat adoptie geborgd is. De hele agency is gebouwd rond het idee dat AI-succes organisatieverandering vereist.
 
 **Prijsindicatie:** EUR 3.000 - EUR 50.000+ per traject
 **Marge:** ~80%
@@ -142,7 +142,7 @@ AI-readiness scan voor een middelgrote zorgorganisatie. Drie dagen scannen, road
 
 **Eigenaar:** David Homan
 
-Als een organisatie weet wat ze wil, leveren we het team om het te bouwen. Je team is erbij betrokken — we leveren geen black box.
+Als een organisatie weet wat ze wil, leveren we het team om het te bouwen. Je team is erbij betrokken; we leveren geen black box.
 
 #### Diensten
 
@@ -157,7 +157,7 @@ AI-applicaties op maat. RAG-pipelines voor interne kennisbanken, AI-assistenten 
 *Klanten: OLX Poland, iFood Brazil, Trabu, TicketGenie*
 
 **Systeemintegratie**
-AI verbinden met je bestaande systemen. ERP, CRM, interne tools — we werken met wat je al hebt. Microsoft 365 + AI, ERP + AI, CRM + AI, of maatwerkkoppelingen met legacy-systemen.
+AI verbinden met je bestaande systemen. ERP, CRM, interne tools: we werken met wat je al hebt. Microsoft 365 + AI, ERP + AI, CRM + AI, of maatwerkkoppelingen met legacy-systemen.
 2-6 weken, vanaf EUR 10.000.
 *Klanten: OLX Poland, iFood Brazil, Medux*
 
@@ -193,7 +193,7 @@ Trabu: vertaalprocessen geautomatiseerd en kwaliteit verbeterd met AI-integratie
    | Training | ------------------>  |  Advies   | ------------->  | Software |
    +---------+                       +----------+                  +----------+
    "We weten niet                    "We zijn geinteresseerd,      "We weten wat
-    wat AI is"                        maar we hebben een plan       we willen —
+    wat AI is"                        maar we hebben een plan       we willen,
                                       nodig"                        bouw het"
 
    change management ◄──────────────────────────────────────────► technische
@@ -202,7 +202,7 @@ Trabu: vertaalprocessen geautomatiseerd en kwaliteit verbeterd met AI-integratie
 
 Klanten kunnen bij elke pijler instappen. De logische volgorde is 1 > 2 > 3, maar sommige organisaties zitten al bij 2 of 3. We beginnen waar jij staat.
 
-AI is zo nieuw dat de kennisverschillen enorm zijn, zelfs binnen een organisatie. Daardoor is er voor alle drie de pijlers tegelijk vraag. Onze positionering als full-service AI agency betekent dat we het hele spectrum afdekken — van de organisatieverandering die nodig is om AI te laten landen, tot de technische implementatie die het werkend maakt. Vanuit Groningen, voor klanten door heel Europa.
+AI is zo nieuw dat de kennisverschillen enorm zijn, zelfs binnen een organisatie. Daardoor is er voor alle drie de pijlers tegelijk vraag. Onze positionering als full-service AI agency betekent dat we het hele spectrum afdekken: van de organisatieverandering die nodig is om AI te laten landen, tot de technische implementatie die het werkend maakt. Vanuit Groningen, voor klanten door heel Europa.
 
 ---
 
@@ -210,21 +210,21 @@ AI is zo nieuw dat de kennisverschillen enorm zijn, zelfs binnen een organisatie
 
 Elke oprichter is eigenaar van een pijler.
 
-### Frans Hoorn — Advies (Pijler 2)
+### Frans Hoorn, Advies (Pijler 2)
 - 15+ jaar ervaring in development, UX/UI en sales
 - Product management bij Tele2, BOZU en Prosus
 - 3 jaar management bij het vorige AI Heroes, leidde de overname
 - Sterkste in: creatieve strategie, kansen zien, AI vertalen naar de business
 - Fulltime vanaf dag 1
 
-### Jan Brusse — Training (Pijler 1)
+### Jan Brusse, Training (Pijler 1)
 - Smart Lab opgebouwd bij het Groninger Forum, 4 jaar
 - Team van 12 aangestuurd, 3+ workshops per week
 - 3,5 jaar sales bij SQ People
 - Sterkste in: trainingen geven, workshops ontwerpen, publiek meenemen
 - Fulltime na 3 maanden
 
-### David Homan — Software (Pijler 3)
+### David Homan, Software (Pijler 3)
 - Studie Kunstmatige Intelligentie (RUG)
 - Eigen app-startup opgericht
 - 2 jaar operations bij het vorige AI Heroes
@@ -244,15 +244,15 @@ Marktleider in Microsoft Copilot trainingen. Team van 5 medewerkers + 5 ZZP-trai
 
 ### Kostenmaatschap
 Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, maar deelt kosten en middelen.
-- **AI Heroes** — AI training, advies & software (Frans, Jan, David)
-- **Odoo ERP** — ERP-implementatie & bedrijfssoftware (Jorryt, Jeroen)
-- **Dev-pool** — Development tegen kostprijs (Pim)
+- **AI Heroes:** AI training, advies & software (Frans, Jan, David)
+- **Odoo ERP:** ERP-implementatie & bedrijfssoftware (Jorryt, Jeroen)
+- **Dev-pool:** Development tegen kostprijs (Pim)
 - Onderling 10% leadfee
 
 ### Ecosysteem
-- AI Fabriek Groningen (EUR 200M investering, operationeel 2026-2027) — bevestigt Groningen als epicentrum van AI in Europa. Wij zijn de lokale agency die er al zit.
-- RUG & Hanze — talent, onderzoekspartners, eerste klanten
-- AI Hub Noord-Nederland — subsidies en netwerk
+- AI Fabriek Groningen (EUR 200M investering, operationeel 2026-2027): bevestigt Groningen als epicentrum van AI in Europa. Wij zijn de lokale agency die er al zit.
+- RUG & Hanze: talent, onderzoekspartners, eerste klanten
+- AI Hub Noord-Nederland: subsidies en netwerk
 - MIT Noord-Nederland subsidies (tot EUR 50k individueel, EUR 100k samenwerking)
 
 ---
@@ -276,10 +276,10 @@ Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, ma
 ## Zo praten we over onszelf
 
 ### "Wat doen jullie?"
-"We zijn een full-service AI agency uit Groningen. We begeleiden organisaties van change management tot technische implementatie — training, consulting en software onder één dak. Vanuit Groningen, AI-hoofdstad van Europa, voor klanten door heel Europa."
+"We zijn een full-service AI agency uit Groningen. We begeleiden organisaties van change management tot technische implementatie: training, consulting en software onder één dak. Vanuit Groningen, AI-hoofdstad van Europa, voor klanten door heel Europa."
 
 ### "Wat maakt jullie anders?"
-"We dekken het hele spectrum. Niet alleen advies of alleen tech — van organisatieverandering tot werkende software. Elke oprichter is specialist in een pijler. Het team dat je roadmap maakt kan ook bouwen wat erin staat. En we doen het met een Europese aanpak: datasoevereiniteit, EU AI Act compliance, geen vendor lock-in."
+"We dekken het hele spectrum, van organisatieverandering tot werkende software. Geen split tussen advies en tech. Elke oprichter is specialist in een pijler. Het team dat je roadmap maakt kan ook bouwen wat erin staat. En we doen het met een Europese aanpak: datasoevereiniteit, EU AI Act compliance, geen vendor lock-in."
 
 ### Zinnen die we gebruiken
 - "Full-service AI agency"
@@ -290,7 +290,7 @@ Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, ma
 - "Van directiekamer tot werkvloer"
 - "Waar je ook staat met AI, we kunnen helpen"
 - "Training, consulting en software in één team"
-- "Groningen — AI-hoofdstad van Europa"
+- "Groningen, AI-hoofdstad van Europa"
 - "Praktijk gaat voor theorie"
 - "Als AI niet de oplossing is, zeggen we dat"
 
@@ -300,7 +300,8 @@ Complementaire bedrijven onder een dak in Groningen. Ieder houdt eigen winst, ma
 - Suggereren dat we alleen voor Nederland werken
 - Technisch jargon zonder context
 - Suggereren dat we alleen trainingen doen
-- Negatieve contrasten ("geen X, maar Y" — zeg gewoon Y)
+- Negatieve contrasten ("geen X, maar Y": zeg gewoon Y)
+- Em-dashes (gebruik komma, dubbele punt, puntkomma, haakjes of breek de zin op)
 
 ---
 
@@ -311,31 +312,31 @@ Kant-en-klare teksten voor verschillende platformen en lengtes. Kopieer en plak.
 ### Tagline (~10 woorden)
 **Voor:** e-mail signatures, social media headers, visitekaartjes
 
-**NL:** AI werkt als je weet hoe — full-service AI agency uit Groningen
-**EN:** AI works if you know how — full-service AI agency from Groningen
+**NL:** AI werkt als je weet hoe. Full-service AI agency uit Groningen.
+**EN:** AI works if you know how. Full-service AI agency from Groningen.
 
 ### One-liner (~25 woorden)
 **Voor:** Google Business, bedrijvengidsen, directory listings, conferentieprogramma's
 
-**NL:** AI Heroes is een full-service AI agency uit Groningen. Van change management tot technische implementatie — training, consulting en software voor heel Europa.
-**EN:** AI Heroes is a full-service AI agency from Groningen. From change management to technical implementation — training, consulting and software across Europe.
+**NL:** AI Heroes is een full-service AI agency uit Groningen. Van change management tot technische implementatie: training, consulting en software voor heel Europa.
+**EN:** AI Heroes is a full-service AI agency from Groningen. From change management to technical implementation: training, consulting and software across Europe.
 
 ### Korte paragraaf (~50 woorden)
 **Voor:** LinkedIn company "Over ons", evenement speaker bios, partner pages
 
-**NL:** AI Heroes is een full-service AI agency vanuit Groningen — AI-hoofdstad van Europa. We begeleiden organisaties van change management tot technische implementatie. Drie pijlers onder één dak: training, consulting en software. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. 50+ organisaties geholpen sinds 2019.
+**NL:** AI Heroes is een full-service AI agency vanuit Groningen, AI-hoofdstad van Europa. We begeleiden organisaties van change management tot technische implementatie. Drie pijlers onder één dak: training, consulting en software. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. 50+ organisaties geholpen sinds 2019.
 
-**EN:** AI Heroes is a full-service AI agency based in Groningen — AI Capital of Europe. We guide organisations from change management to technical implementation. Three pillars under one roof: training, consulting and software. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. 50+ organisations helped since 2019.
+**EN:** AI Heroes is a full-service AI agency based in Groningen, AI Capital of Europe. We guide organisations from change management to technical implementation. Three pillars under one roof: training, consulting and software. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. 50+ organisations helped since 2019.
 
 ### Volledige paragraaf (~100 woorden)
 **Voor:** website "over ons" blurbs, perskit, subsidieaanvragen, partnership proposals
 
-**NL:** AI Heroes is een full-service AI agency vanuit Groningen — epicentrum van AI in Europa met de AI Fabriek. Sinds 2019 begeleiden we organisaties door het hele AI-traject: van change management tot technische implementatie. Onze drie pijlers — training, consulting en software — werken naadloos samen. We leren teams wat AI kan, brengen kansen in kaart met readiness scans en roadmaps, en bouwen custom oplossingen op Europese infrastructuur. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Van startups tot Fortune 500, van gemeenten tot media-organisaties — 50+ organisaties geholpen.
+**NL:** AI Heroes is een full-service AI agency vanuit Groningen, epicentrum van AI in Europa en thuisbasis van de AI Fabriek. Sinds 2019 begeleiden we organisaties door het hele AI-traject: van change management tot technische implementatie. Onze drie pijlers (training, consulting en software) werken naadloos samen. We leren teams wat AI kan, brengen kansen in kaart met readiness scans en roadmaps, en bouwen custom oplossingen op Europese infrastructuur. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Van startups tot Fortune 500, van gemeenten tot media-organisaties, 50+ organisaties geholpen.
 
-**EN:** AI Heroes is a full-service AI agency based in Groningen — the epicentre of AI in Europe, home to the AI Fabriek. Since 2019, we've guided organisations through the entire AI journey: from change management to technical implementation. Our three pillars — training, consulting and software — work seamlessly together. We teach teams what AI can do, map opportunities with readiness scans and roadmaps, and build custom solutions on European infrastructure. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. From startups to Fortune 500, from municipalities to media organisations — 50+ organisations helped.
+**EN:** AI Heroes is a full-service AI agency based in Groningen, the epicentre of AI in Europe and home to the AI Fabriek. Since 2019, we've guided organisations through the entire AI journey: from change management to technical implementation. Our three pillars (training, consulting and software) work seamlessly together. We teach teams what AI can do, map opportunities with readiness scans and roadmaps, and build custom solutions on European infrastructure. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. From startups to Fortune 500, from municipalities to media organisations, 50+ organisations helped.
 
 ### Meta description (~155 tekens)
 **Voor:** Google zoekresultaten, SEO
 
-**NL:** Full-service AI agency vanuit Groningen. Van change management tot technische implementatie. Training, consulting en software — 50+ organisaties geholpen.
-**EN:** Full-service AI agency based in Groningen. From change management to technical implementation. Training, consulting and software — 50+ organisations helped.
+**NL:** Full-service AI agency vanuit Groningen. Van change management tot technische implementatie. Training, consulting en software, voor 50+ organisaties.
+**EN:** Full-service AI agency based in Groningen. From change management to technical implementation. Training, consulting and software, for 50+ organisations.

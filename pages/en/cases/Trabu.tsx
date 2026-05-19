@@ -30,7 +30,7 @@ export const TrabuEN: React.FC = () => {
           <h3 className="text-xl font-serif text-brand-dark mb-3">The challenges</h3>
           <ul className="space-y-2 text-stone-600">
             <li><strong>Vision to reality:</strong> Convert concept to working product</li>
-            <li><strong>Complex technology:</strong> AI that truly understands what travelers want</li>
+            <li><strong>Complex technology:</strong> AI that picks up on what travelers actually want</li>
             <li><strong>Tight deadline:</strong> Investor meeting on short notice</li>
           </ul>
         </div>
@@ -89,17 +89,17 @@ export const TrabuEN: React.FC = () => {
           <blockquote className="text-lg text-stone-600 italic mb-4">
             "We truly value the time and effort your team has invested in the project."
           </blockquote>
-          <p className="text-brand-red font-medium">— Trabu Team</p>
+          <p className="text-brand-red font-medium">Trabu Team</p>
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          The most important result wasn't just the prototype itself, but the architecture we built. A foundation to build upon, with AI integration that can learn and improve over time.
+          The real result was the architecture we built. The prototype proved the concept; underneath sat a foundation Trabu can keep building on, with AI integration that can learn and improve over time.
         </p>
 
         <DarkBox accentColor="red">
           <h3>About Trabu</h3>
           <p>
-            Trabu combines deep travel industry expertise with advanced technology to create something entirely new: AI that truly understands what makes each journey special. Their vision goes beyond simple booking - they're transforming how people plan their adventures.
+            Trabu combines deep travel industry expertise with modern AI: a travel planner that picks up on personal preferences and acts on them. Their vision reaches beyond booking; they're rebuilding how people plan their adventures.
           </p>
         </DarkBox>
 

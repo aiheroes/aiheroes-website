@@ -23,7 +23,7 @@ export const EUDevelopmentEN: React.FC = () => {
         <div className="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
           <p className="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Concrete risk</p>
           <p className="text-sm text-stone-200 mb-2">
-            Every time your organisation uses ChatGPT, Azure OpenAI or AWS Bedrock, data flows to servers under American jurisdiction. Via the CLOUD Act, the US can demand that data — without your knowledge.
+            Every time your organisation uses ChatGPT, Azure OpenAI or AWS Bedrock, data flows to servers under American jurisdiction. Via the CLOUD Act, the US can demand that data, without your knowledge.
           </p>
           <p className="text-sm text-stone-200">
             Only <strong className="text-white">23%</strong> of European organisations are certain their AI tools keep data within the EU. From <strong className="text-white">August 2025</strong>, the EU AI Act mandates transparency about data processing in AI systems.
@@ -31,7 +31,7 @@ export const EUDevelopmentEN: React.FC = () => {
         </div>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          We build AI solutions that stay in Europe. Whether it's a local model on your own hardware or a European cloud solution — your data stays under your control.
+          We build AI solutions that stay in Europe. Whether it's a local model on your own hardware or a European cloud solution: your data stays under your control.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">What we do</h3>
@@ -53,15 +53,15 @@ export const EUDevelopmentEN: React.FC = () => {
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Additional services</h3>
           <ul className="space-y-2 text-stone-600">
-            <li><strong>AI policy document</strong> — Internal guidelines for responsible and compliant AI use within your organisation.</li>
-            <li><strong>Staff training</strong> — Hands-on training so your team can work with the new European tools confidently.</li>
-            <li><strong>Procurement review</strong> — Assessment of your current vendor contracts and recommendations for EU-compliant alternatives.</li>
+            <li><strong>AI policy document:</strong> internal guidelines for responsible and compliant AI use within your organisation.</li>
+            <li><strong>Staff training:</strong> hands-on training so your team can work with the new European tools confidently.</li>
+            <li><strong>Procurement review:</strong> assessment of your current vendor contracts and recommendations for EU-compliant alternatives.</li>
           </ul>
         </div>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Who it is for</h3>
         <p className="text-stone-600 leading-relaxed mb-8">
-          Legal firms, healthcare organisations, government bodies and any organisation where EU data residency is a requirement — not a preference. If your data cannot leave European soil, or if you need to demonstrate full sovereignty in audits and procurement, this track is for you.
+          Legal firms, healthcare organisations, government bodies and any organisation where EU data residency is a hard requirement. If your data cannot leave European soil, or if you need to demonstrate full sovereignty in audits and procurement, this track is for you.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -82,7 +82,7 @@ export const EUDevelopmentEN: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>Not sure which direction?</h3>
           <p>
-            Book a free orientation session. We'll help you figure out whether on-premises or European cloud is the right fit — and what it takes to get there. Or start with our{' '}
+            Book a free orientation session. We'll help you figure out whether on-premises or European cloud is the right fit, and what it takes to get there. Or start with our{' '}
             <Link to="/en/services/digital-independence" className="text-white underline underline-offset-2 hover:text-white/80">
               Digital Independence overview
             </Link>{' '}

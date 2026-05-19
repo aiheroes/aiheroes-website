@@ -21,7 +21,7 @@ export const BusinessCaseDevelopmentEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          You've identified AI opportunities — through a readiness scan, opportunity scouting, or your own insight. But before you invest, you want to know: what does it cost, what does it deliver, and how long does it take? We translate AI possibilities into substantiated business cases that convince your boardroom.
+          You've identified AI opportunities through a readiness scan, opportunity scouting, or your own insight. But before you invest, you want to know: what does it cost, what does it deliver, and how long does it take? We translate AI possibilities into substantiated business cases that convince your boardroom.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
@@ -66,7 +66,7 @@ export const BusinessCaseDevelopmentEN: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Technical depth</h4>
             <p className="text-sm text-stone-600">
-              Because we build AI ourselves, our cost estimates are realistic — not consultancy guesswork.
+              Because we build AI ourselves, our cost estimates are realistic, not consultancy guesswork.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
@@ -78,7 +78,7 @@ export const BusinessCaseDevelopmentEN: React.FC = () => {
           <div className="p-6 bg-white border border-stone-200">
             <h4 className="font-bold text-brand-dark mb-2">Action-oriented</h4>
             <p className="text-sm text-stone-600">
-              Every business case includes a concrete implementation plan — no report that ends up in a drawer.
+              Every business case includes a concrete implementation plan, not a report that ends up in a drawer.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">

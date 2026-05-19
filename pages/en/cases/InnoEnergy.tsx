@@ -40,7 +40,7 @@ export const InnoEnergyEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          We developed a clickable prototype demonstrating the platform's core functionalities. An intelligent dashboard that doesn't just visualize data but actively helps with investment decisions.
+          We developed a clickable prototype demonstrating the platform's core functionalities. An intelligent dashboard that visualizes data and actively helps with investment decisions.
         </p>
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Core features</h3>
@@ -72,7 +72,7 @@ export const InnoEnergyEN: React.FC = () => {
           </div>
         </div>
 
-        <h3 className="text-xl font-serif text-brand-dark mb-4">Advanced features</h3>
+        <h3 className="text-xl font-serif text-brand-dark mb-4">Specialist features</h3>
 
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="relative overflow-hidden" style={{ backgroundColor: '#2563EB', padding: '1.5rem', borderRadius: '2px' }}>
@@ -126,13 +126,13 @@ export const InnoEnergyEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          The prototype won enthusiastic board support and laid out a practical roadmap for modernization. We proved that sophisticated portfolio analytics and intelligent decision support can be delivered through an intuitive, user-friendly interface.
+          The prototype won enthusiastic board support and laid out a practical roadmap for modernization. We proved that institutional-grade portfolio analytics, paired with intelligent decision support, can be delivered through an intuitive, user-friendly interface.
         </p>
 
         <DarkBox accentColor="red">
           <h3>The impact</h3>
           <p>
-            This prototype shows how AI can reshape investment management - making sophisticated portfolio analysis accessible and actionable. Data-driven insights that directly lead to better investment decisions.
+            This prototype shows how AI can reshape investment management: making institutional-grade portfolio analysis accessible and actionable. Data-driven insights that lead directly to better investment decisions.
           </p>
         </DarkBox>
 

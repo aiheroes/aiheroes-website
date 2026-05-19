@@ -21,7 +21,7 @@ export const AIReadinessScanEN: React.FC = () => {
         </h2>
 
         <p className="text-stone-600 leading-relaxed mb-8">
-          Many organisations want to do something with AI but don't know where they stand. Some teams are already experimenting, others have never touched an AI tool. The AI Readiness Scan maps this out clearly — and gives you a concrete plan for the next step.
+          Many organisations want to do something with AI but don't know where they stand. Some teams are already experimenting, others have never touched an AI tool. The AI Readiness Scan maps this out clearly and gives you a concrete plan for the next step.
         </p>
 
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
