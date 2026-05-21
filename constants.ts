@@ -20,7 +20,8 @@ export const CONTENT: Record<Language, Content> = {
           { label: "AI op Maat", href: "/nl/diensten/maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
           { label: "Proof of Concept", href: "/nl/diensten/ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
           { label: "Systeemintegratie", href: "/nl/diensten/ai-integratie", description: "AI verbinden met je systemen", category: "software" },
-          { label: "Dedicated Teams", href: "/nl/diensten/ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" }
+          { label: "Dedicated Teams", href: "/nl/diensten/ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" },
+          { label: "Digital Twins", href: "/nl/diensten/digital-twins", description: "Twin van je organisatie die zelf cases vindt en agents uitrolt", category: "software" }
         ]
       },
       about: {
@@ -668,7 +669,8 @@ export const CONTENT: Record<Language, Content> = {
           { label: "Custom AI", href: "/en/services/custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
           { label: "Proof of Concept", href: "/en/services/ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
           { label: "System Integration", href: "/en/services/ai-integration", description: "Connect AI to your systems", category: "software" },
-          { label: "Dedicated Teams", href: "/en/services/ai-development-teams", description: "Dedicated AI development capacity", category: "software" }
+          { label: "Dedicated Teams", href: "/en/services/ai-development-teams", description: "Dedicated AI development capacity", category: "software" },
+          { label: "Digital Twins", href: "/en/services/digital-twins", description: "A twin of your organisation that surfaces cases and deploys agents", category: "software" }
         ]
       },
       about: {
