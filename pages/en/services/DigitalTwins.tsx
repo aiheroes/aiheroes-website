@@ -9,7 +9,7 @@ export const DigitalTwinsEN: React.FC = () => {
       lang="en"
       title="Digital Twins"
       subtitle="A digital copy of your organisation that finds the best business cases itself and builds and deploys the agents that run them."
-      seoDescription="Digital Twin of your organisation: a virtual model that mirrors processes, data and decisions, surfaces business cases and deploys AI agents. By AI Heroes, with partners including Novo Solutions."
+      seoDescription="Digital Twin of your organisation: a virtual model that mirrors processes, data and decisions, surfaces business cases and deploys AI agents. By AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementation"
       ctaLabel="Discuss your digital twin"
@@ -40,30 +40,30 @@ export const DigitalTwinsEN: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">1</div>
-            <h4 className="font-bold text-brand-dark mb-2">Map</h4>
+            <h4 className="font-bold text-brand-dark mb-2">Gather context</h4>
             <p className="text-sm text-stone-600">
-              We document your processes, systems (ERP, CRM, DMS), roles and data flows. No multi-week workshop; we work with what is already there and fill the gaps where needed.
+              We feed the twin from three sources: public information about your organisation, short interviews with key people, and optional integrations with your systems (ERP, CRM, DMS). No multi-week workshop; we start with what is already there.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">2</div>
             <h4 className="font-bold text-brand-dark mb-2">Model</h4>
             <p className="text-sm text-stone-600">
-              Using that input we build a digital representation of your organisation: teams, workflows, decision points and KPIs become executable building blocks.
+              From that input we build a digital representation of your organisation: teams, workflows, decision points and KPIs become executable building blocks that update themselves as new information comes in.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">3</div>
-            <h4 className="font-bold text-brand-dark mb-2">Simulate and score</h4>
+            <h4 className="font-bold text-brand-dark mb-2">Score the bottlenecks</h4>
             <p className="text-sm text-stone-600">
-              The twin runs scenarios, compares variants and ranks opportunities by expected impact. You get a list of grounded business cases, not gut feel.
+              The twin flags where time and money leak away and weighs every opportunity on three axes: value, feasibility and risk for your organisation. The result is a ranked list of grounded business cases, not gut feel.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">4</div>
             <h4 className="font-bold text-brand-dark mb-2">Deploy agents</h4>
             <p className="text-sm text-stone-600">
-              For the cases you green-light, the twin configures and deploys the matching AI agents. Connected to your existing systems, with monitoring and a kill switch.
+              For the cases you green-light, the twin generates a working prototype in hours rather than months. We then roll the agent out on your existing platform, with governance, monitoring and a kill switch.
             </p>
           </div>
         </div>
@@ -127,7 +127,7 @@ export const DigitalTwinsEN: React.FC = () => {
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Our technology choice</h3>
           <p className="text-stone-600 leading-relaxed mb-3">
-            We build on proven digital-twin platforms and agent frameworks. For enterprise implementations we work white-label with specialist partners (including Novo Solutions), so you get a mature platform without locking yourself into a single vendor. Same approach we take with{' '}
+            We build on proven digital-twin platforms and agent frameworks. For enterprise implementations we work white-label with specialist partners, so you get a mature platform without locking yourself into a single vendor. Same approach we take with{' '}
             <Link to="/en/services/eu-consultancy" className="text-brand-blue underline underline-offset-2 hover:opacity-80">
               digital independence
             </Link>: European hosting where it matters, no vendor lock-in, open standards where possible.

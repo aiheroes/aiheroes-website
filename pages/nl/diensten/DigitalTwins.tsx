@@ -9,7 +9,7 @@ export const DigitalTwinsNL: React.FC = () => {
       lang="nl"
       title="Digital Twins"
       subtitle="Een digitale kopie van je organisatie die zelf de beste business cases vindt en de bijbehorende agents bouwt en uitrolt."
-      seoDescription="Digital Twin van je organisatie: een virtueel model dat processen, data en beslissingen nabootst, business cases blootlegt en AI-agents uitrolt. Door AI Heroes, met partners als Novo Solutions."
+      seoDescription="Digital Twin van je organisatie: een virtueel model dat processen, data en beslissingen nabootst, business cases blootlegt en AI-agents uitrolt. Door AI Heroes."
       accentColor="blue"
       pillarBadge="Software & Implementatie"
       ctaLabel="Bespreek je digital twin"
@@ -40,30 +40,30 @@ export const DigitalTwinsNL: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">1</div>
-            <h4 className="font-bold text-brand-dark mb-2">In kaart brengen</h4>
+            <h4 className="font-bold text-brand-dark mb-2">Context verzamelen</h4>
             <p className="text-sm text-stone-600">
-              We documenteren je processen, systemen (ERP, CRM, DMS), rollen en datastromen. Geen workshop van weken; we werken met wat er al ligt en vullen aan waar nodig.
+              We voeden de twin uit drie bronnen: publieke informatie over je organisatie, korte gesprekken met sleutelmedewerkers, en optionele koppelingen met je systemen (ERP, CRM, DMS). Geen workshop van weken; we starten met wat er al ligt.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">2</div>
             <h4 className="font-bold text-brand-dark mb-2">Modelleren</h4>
             <p className="text-sm text-stone-600">
-              Op basis van die input bouwen we een digitale representatie van je organisatie: afdelingen, workflows, beslismomenten en KPI's worden uitvoerbare blokken.
+              Op basis van die input bouwen we een digitale representatie van je organisatie: afdelingen, workflows, beslismomenten en KPI's worden uitvoerbare blokken die zichzelf bijwerken als er nieuwe informatie binnenkomt.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">3</div>
-            <h4 className="font-bold text-brand-dark mb-2">Simuleren en scoren</h4>
+            <h4 className="font-bold text-brand-dark mb-2">Bottlenecks scoren</h4>
             <p className="text-sm text-stone-600">
-              De twin draait scenario's, vergelijkt varianten en rangschikt kansen op verwachte impact. Je krijgt een lijst met onderbouwde business cases, niet een onderbuikgevoel.
+              De twin signaleert waar tijd en geld weglekken en weegt elke kans op drie assen: waarde, haalbaarheid en risico voor jouw organisatie. Het resultaat is een gerangschikte lijst met onderbouwde business cases, geen onderbuikgevoel.
             </p>
           </div>
           <div className="p-6 bg-white border border-stone-200">
             <div className="text-3xl font-serif text-brand-blue mb-3">4</div>
             <h4 className="font-bold text-brand-dark mb-2">Agents uitrollen</h4>
             <p className="text-sm text-stone-600">
-              Voor de cases die je groen licht geeft, configureert en deployt de twin de bijbehorende AI-agents. Aangesloten op je bestaande systemen, met monitoring en kill-switch.
+              Voor de cases die je groen licht geeft, genereert de twin een werkend prototype in uren in plaats van maanden. Daarna rollen we de agent uit op je bestaande platform, met governance, monitoring en kill-switch.
             </p>
           </div>
         </div>
@@ -127,7 +127,7 @@ export const DigitalTwinsNL: React.FC = () => {
         <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Onze technologiekeuze</h3>
           <p className="text-stone-600 leading-relaxed mb-3">
-            We bouwen op bewezen digital-twin-platformen en agent-frameworks. Voor enterprise-implementaties werken we white-label met specialistische partners (waaronder Novo Solutions), zodat je een doorontwikkeld platform krijgt zonder dat je vastzit aan één leverancier. Dezelfde aanpak die we hanteren bij{' '}
+            We bouwen op bewezen digital-twin-platformen en agent-frameworks. Voor enterprise-implementaties werken we white-label met gespecialiseerde partners, zodat je een doorontwikkeld platform krijgt zonder dat je vastzit aan één leverancier. Dezelfde aanpak die we hanteren bij{' '}
             <Link to="/nl/diensten/eu-consultancy" className="text-brand-blue underline underline-offset-2 hover:opacity-80">
               digitale onafhankelijkheid
             </Link>: Europese hosting waar dat moet, geen vendor lock-in, en open standaarden waar mogelijk.
