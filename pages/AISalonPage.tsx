@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { Logo } from '../components/Logo';
 import { CONTENT } from '../constants';
 import { useSEO } from '../hooks/useSEO';
 import { Language } from '../types';
@@ -42,14 +43,12 @@ type FormCopy = {
 
 type Copy = {
   meta: { title: string; description: string };
-  edition: string;
   hero: {
     title: string;
     lead: string;
     date: string;
     meta: string;
     cta: string;
-    scrollHint: string;
   };
   about: {
     body: string;
@@ -61,6 +60,13 @@ type Copy = {
   format: {
     heading: string;
     cards: { num: string; title: string; body: string; icon: 'mic' | 'sparkles' | 'wine'; accent: 'red' | 'blue' | 'dark' }[];
+  };
+  speakers: {
+    heading: string;
+    body: string;
+    tbaLabel: string;
+    talkDuration: string;
+    pitchNote: string;
   };
   agenda: {
     heading: string;
@@ -96,7 +102,11 @@ type Copy = {
     heading: string;
     body: string;
     tbaLabel: string;
-    cityLabel: string;
+  };
+  host: {
+    body: string;
+    cta: string;
+    ctaHref: string;
   };
   faq: {
     heading: string;
@@ -107,7 +117,6 @@ type Copy = {
     lead: string;
     topic: string;
   };
-  hostLine: string;
   form: FormCopy;
 };
 
@@ -118,14 +127,12 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       description:
         'AI Salon Groningen: een bimaandelijkse avond voor de Groningse AI-community. Twee talks, open pitches, eten en drinken. Eerste editie 3 september 2026.',
     },
-    edition: 'Editie 01',
     hero: {
       title: 'AI Salon Groningen',
       lead: 'Een avond voor de Groningse AI-community. Twee korte talks, open pitches, eten en drinken.',
       date: '3 september 2026',
       meta: 'Eerste editie · Gratis · Beperkt aantal plekken',
       cta: 'Reserveer je plek',
-      scrollHint: 'Lees verder',
     },
     about: {
       body: 'De AI Salon is een wereldwijd netwerk van AI-bouwers, onderzoekers en investeerders, met chapters in meer dan 50 steden. Wij hosten de Groningse editie. Iedere twee maanden komen we samen met de mensen die hier aan AI werken: founders, developers, onderzoekers, studenten.',
@@ -137,28 +144,17 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
     format: {
       heading: 'Het programma',
       cards: [
-        {
-          num: '01',
-          title: 'Twee talks van 20 minuten',
-          body: 'Praktijkverhalen van mensen die met AI bouwen of onderzoek doen.',
-          icon: 'mic',
-          accent: 'red',
-        },
-        {
-          num: '02',
-          title: 'Open 1-minuut pitches',
-          body: 'Iedereen mag op het podium. 60 seconden, geen pitchdeck.',
-          icon: 'sparkles',
-          accent: 'blue',
-        },
-        {
-          num: '03',
-          title: 'Eten en drinken',
-          body: 'Inbegrepen. Na afloop blijft iedereen aan de bar hangen.',
-          icon: 'wine',
-          accent: 'dark',
-        },
+        { num: '01', title: 'Twee talks van 20 minuten', body: 'Praktijkverhalen van mensen die met AI bouwen of onderzoek doen.', icon: 'mic', accent: 'red' },
+        { num: '02', title: 'Open 1-minuut pitches', body: 'Iedereen mag op het podium. 60 seconden, geen pitchdeck.', icon: 'sparkles', accent: 'blue' },
+        { num: '03', title: 'Eten en drinken', body: 'Inbegrepen. Na afloop blijft iedereen aan de bar hangen.', icon: 'wine', accent: 'dark' },
       ],
+    },
+    speakers: {
+      heading: 'Sprekers',
+      body: 'De sprekers voor editie 1 worden in augustus aangekondigd.',
+      tbaLabel: 'Wordt aangekondigd',
+      talkDuration: '20 minuten talk',
+      pitchNote: 'Zelf spreken of pitchen? Vermeld het in je aanmelding.',
     },
     agenda: {
       heading: 'Avond in vogelvlucht',
@@ -166,9 +162,9 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       rows: [
         { time: '18:30', title: 'Inloop' },
         { time: '19:15', title: 'Welkom en talk 1' },
-        { time: '20:00', title: 'Pitches en pauze' },
-        { time: '20:45', title: 'Talk 2' },
-        { time: '21:15', title: 'Mingle' },
+        { time: '19:45', title: 'Talk 2' },
+        { time: '20:15', title: '1-minuut pitches' },
+        { time: '20:30', title: 'Eten en borrel' },
       ],
     },
     dates: {
@@ -187,28 +183,9 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       heading: 'Sponsors',
       lead: 'De Salon is gratis dankzij sponsors. We zoeken een kleine groep founding partners voor het eerste jaar.',
       tiers: [
-        {
-          name: 'Founding Partner',
-          meta: '2 plekken · op aanvraag',
-          body: 'Logo en welkomstmoment per editie. Voor de eerste zes edities.',
-          slots: 2,
-          recommended: true,
-          icon: 'award',
-        },
-        {
-          name: 'Supporting Partner',
-          meta: '4 plekken · op aanvraag',
-          body: 'Logo in de zaal. Per editie of voor het hele jaar.',
-          slots: 4,
-          icon: 'star',
-        },
-        {
-          name: 'Community Partner',
-          meta: '6 plekken · in natura',
-          body: 'Voor onderwijs, meetups en non-profits. Op uitnodiging.',
-          slots: 6,
-          icon: 'heart',
-        },
+        { name: 'Founding Partner', meta: '2 plekken · op aanvraag', body: 'Logo en welkomstmoment per editie. Voor de eerste zes edities.', slots: 2, recommended: true, icon: 'award' },
+        { name: 'Supporting Partner', meta: '4 plekken · op aanvraag', body: 'Logo in de zaal. Per editie of voor het hele jaar.', slots: 4, icon: 'star' },
+        { name: 'Community Partner', meta: '6 plekken · in natura', body: 'Voor onderwijs, meetups en non-profits. Op uitnodiging.', slots: 6, icon: 'heart' },
       ],
       emptySlot: 'Jouw logo',
     },
@@ -216,7 +193,11 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       heading: 'Locatie',
       body: 'Een plek in het centrum van Groningen. De locatie kondigen we in augustus aan.',
       tbaLabel: 'Wordt aangekondigd in augustus',
-      cityLabel: 'Groningen, centrum',
+    },
+    host: {
+      body: 'AI Salon Groningen wordt georganiseerd door AI Heroes, een full-service AI agency uit Groningen.',
+      cta: 'Meer over AI Heroes',
+      ctaHref: '/nl/over-ons',
     },
     faq: {
       heading: 'Veelgestelde vragen',
@@ -225,7 +206,10 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
         { q: 'Is het echt gratis?', a: 'Ja, inclusief eten en drinken. Mogelijk gemaakt door sponsors. Plekken zijn beperkt, dus reserveer op tijd.' },
         { q: 'In welke taal?', a: 'De talks zijn in het Engels. Vragen en pitches in het Nederlands mogen ook.' },
         { q: 'Hoe reserveer ik?', a: 'Vul het formulier onderaan in. Je hoort het zodra reserveringen openen.' },
-        { q: 'Ik wil zelf spreken of sponsoren.', a: 'Geef het door in het bericht onderaan, dan plannen we een korte call.' },
+        { q: 'Mag ik collega\'s meenemen?', a: 'Graag, maar laat ze zich ook apart aanmelden zodat we het juiste aantal plekken en catering hebben.' },
+        { q: 'Hoe werkt een 1-minuut pitch?', a: 'Aan de zaal geef je op dat je wil pitchen. 60 seconden over één onderwerp: een project, vacature, vraag of idee. Geen slides, geen verkoop.' },
+        { q: 'Worden de talks opgenomen?', a: 'De eerste editie houden we bewust intiem en zonder opnames. Vanaf editie 2 of 3 publiceren we waarschijnlijk wel.' },
+        { q: 'Ik wil zelf spreken of sponsoren.', a: 'Vink het aan in het aanmeldformulier en voeg een korte toelichting toe. We plannen daarna een korte call.' },
       ],
     },
     signup: {
@@ -233,7 +217,6 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       lead: 'Vul je gegevens in. Je hoort het zodra reserveringen open zijn.',
       topic: 'AI Salon: early-bird aanmelding',
     },
-    hostLine: 'Georganiseerd door AI Heroes, Groningen.',
     form: {
       name: 'Naam',
       email: 'E-mail',
@@ -264,14 +247,12 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       description:
         'AI Salon Groningen: a bimonthly evening for the Groningen AI community. Two talks, open pitches, food and drinks. First edition September 3, 2026.',
     },
-    edition: 'Edition 01',
     hero: {
       title: 'AI Salon Groningen',
       lead: 'An evening for the Groningen AI community. Two short talks, open pitches, food and drinks.',
       date: 'September 3, 2026',
       meta: 'First edition · Free · Limited seats',
       cta: 'Reserve your spot',
-      scrollHint: 'Read on',
     },
     about: {
       body: 'The AI Salon is a global network of AI builders, researchers, and investors, with chapters in 50+ cities. We host the Groningen edition. Every two months we get together with the people working on AI here: founders, developers, researchers, students.',
@@ -288,15 +269,22 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
         { num: '03', title: 'Food and drinks', body: 'Included. Everyone sticks around at the bar afterwards.', icon: 'wine', accent: 'dark' },
       ],
     },
+    speakers: {
+      heading: 'Speakers',
+      body: 'Speakers for edition 1 are announced in August.',
+      tbaLabel: 'To be announced',
+      talkDuration: '20-minute talk',
+      pitchNote: 'Want to speak or pitch? Mention it in your signup.',
+    },
     agenda: {
       heading: 'The evening',
       note: 'Indicative timing.',
       rows: [
         { time: '18:30', title: 'Doors open' },
         { time: '19:15', title: 'Welcome and talk 1' },
-        { time: '20:00', title: 'Pitches and break' },
-        { time: '20:45', title: 'Talk 2' },
-        { time: '21:15', title: 'Mingle' },
+        { time: '19:45', title: 'Talk 2' },
+        { time: '20:15', title: '1-minute pitches' },
+        { time: '20:30', title: 'Food and drinks' },
       ],
     },
     dates: {
@@ -325,7 +313,11 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       heading: 'Venue',
       body: 'A spot in the centre of Groningen. We announce the venue in August.',
       tbaLabel: 'Announced in August',
-      cityLabel: 'Groningen, city centre',
+    },
+    host: {
+      body: 'AI Salon Groningen is organised by AI Heroes, a full-service AI agency from Groningen.',
+      cta: 'More about AI Heroes',
+      ctaHref: '/en/about',
     },
     faq: {
       heading: 'Questions',
@@ -334,7 +326,10 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
         { q: 'Is it really free?', a: 'Yes, food and drinks included. Made possible by sponsors. Seats are limited, so reserve early.' },
         { q: 'What language?', a: 'Talks are in English. Questions and pitches in Dutch are welcome too.' },
         { q: 'How do I reserve?', a: 'Fill in the form below. You hear from us when reservations open.' },
-        { q: 'I want to speak or sponsor.', a: 'Mention it in the message below and we set up a short call.' },
+        { q: 'Can I bring colleagues?', a: 'Please, but have each person sign up separately so we have the right headcount for seats and catering.' },
+        { q: 'How does a 1-minute pitch work?', a: 'Put your name in at the venue. 60 seconds on one topic: a project, role opening, question, or idea. No slides, no selling.' },
+        { q: 'Are the talks recorded?', a: 'We keep the first edition intimate and unrecorded. From edition 2 or 3 we will probably start publishing them.' },
+        { q: 'I want to speak or sponsor.', a: 'Tick the option in the signup form and add a short note. We plan a short call after that.' },
       ],
     },
     signup: {
@@ -342,7 +337,6 @@ const CONTENT_AI_SALON: Record<Language, Copy> = {
       lead: 'Leave your details. You hear from us when reservations open.',
       topic: 'AI Salon: early-bird signup',
     },
-    hostLine: 'Hosted by AI Heroes, Groningen.',
     form: {
       name: 'Name',
       email: 'Email',
@@ -402,7 +396,6 @@ const TierIcon: React.FC<{ kind: 'award' | 'star' | 'heart'; className?: string 
   return <Heart className={className} />;
 };
 
-// Dedicated AI Salon signup form (Netlify form name: ai-salon-signup)
 const AISalonForm: React.FC<{ form: FormCopy }> = ({ form }) => {
   const [state, setState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [data, setData] = useState({ name: '', email: '', role: '', notes: '' });
@@ -494,7 +487,6 @@ const AISalonForm: React.FC<{ form: FormCopy }> = ({ form }) => {
         style={{ position: 'absolute', left: '-9999px' }}
       />
 
-      {/* Name + Email row */}
       <div className="grid md:grid-cols-2 gap-6">
         <label className="block">
           <span className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
@@ -524,7 +516,6 @@ const AISalonForm: React.FC<{ form: FormCopy }> = ({ form }) => {
         </label>
       </div>
 
-      {/* Role */}
       <label className="block">
         <span className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
           {form.role}
@@ -539,7 +530,6 @@ const AISalonForm: React.FC<{ form: FormCopy }> = ({ form }) => {
         />
       </label>
 
-      {/* Interests — checkbox cards */}
       <fieldset>
         <legend className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">
           {form.interestsLabel}
@@ -585,7 +575,6 @@ const AISalonForm: React.FC<{ form: FormCopy }> = ({ form }) => {
         </div>
       </fieldset>
 
-      {/* Notes */}
       <label className="block">
         <span className="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
           {form.notes}
@@ -691,7 +680,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         ref={heroRef}
         className="relative isolate min-h-[92svh] flex items-end bg-brand-dark text-white overflow-hidden"
       >
-        {/* Background photo */}
         <div className="absolute inset-0 -z-20">
           <img
             src="/groningen.webp"
@@ -702,7 +690,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/90 via-brand-dark/75 to-brand-dark/95" />
         </div>
 
-        {/* Animated colored glows */}
         <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
           <div
             className="absolute w-[60vw] h-[60vw] rounded-full opacity-20 blur-[120px]"
@@ -724,7 +711,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           />
         </div>
 
-        {/* Decorative grain dots (subtle) */}
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-10 opacity-[0.06]"
@@ -734,7 +720,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           }}
         />
 
-        {/* Massive watermark edition number */}
         <span
           aria-hidden="true"
           className="absolute font-serif text-white/[0.04] select-none pointer-events-none leading-none"
@@ -748,17 +733,8 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           01
         </span>
 
-        {/* Top accent stripe */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-brand-red" />
 
-        {/* Marquee-style edition pill */}
-        <div className="absolute top-28 left-6 md:left-12 right-6 md:right-12 flex items-center gap-4 text-[10px] font-mono uppercase tracking-[0.3em] text-white/40">
-          <span className="h-px flex-1 bg-white/20" />
-          <span>{copy.edition}</span>
-          <span className="h-px flex-1 bg-white/20" />
-        </div>
-
-        {/* Content */}
         <div className="relative w-full max-w-6xl mx-auto px-6 pt-40 pb-24">
           <div className="grid md:grid-cols-5 gap-10 items-end">
             <div className="md:col-span-3">
@@ -778,7 +754,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
               </button>
             </div>
 
-            {/* Date plaque */}
             <div className="md:col-span-2">
               <div className="bg-white/[0.04] backdrop-blur-sm border border-white/15 p-6 md:p-7 relative">
                 <span className="absolute top-0 left-0 w-12 h-0.5 bg-brand-red" />
@@ -804,27 +779,10 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
             </div>
           </div>
         </div>
-
-        {/* Scroll hint */}
-        <button
-          onClick={() => scrollToId('ai-salon-about')}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 hover:text-white/80 transition-colors flex flex-col items-center gap-1 text-[10px] uppercase tracking-[0.25em]"
-        >
-          {copy.hero.scrollHint}
-          <ChevronDown className="w-4 h-4 animate-bounce" />
-        </button>
       </header>
 
       {/* ═══════════ About ═══════════ */}
       <section id="ai-salon-about" className="relative py-24 md:py-32 bg-brand-light overflow-hidden">
-        {/* Decorative side rule */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-3">
-          <span className="block w-12 h-px bg-brand-red" />
-          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-400">
-            About
-          </span>
-        </div>
-
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-12 items-center">
           <div className="md:col-span-2">
             <p className="font-serif text-2xl md:text-3xl text-brand-dark leading-snug">
@@ -835,7 +793,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
             </p>
           </div>
 
-          {/* Stats panel */}
           <div className="md:col-span-1 space-y-6">
             <div className="border-l-2 border-brand-red pl-5">
               <p className="font-serif text-5xl text-brand-dark leading-none">
@@ -859,7 +816,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
 
       {/* ═══════════ Format ═══════════ */}
       <section className="relative py-24 md:py-32 bg-brand-sand border-y border-stone-200 overflow-hidden">
-        {/* Background big number */}
         <span
           aria-hidden="true"
           className="absolute font-serif text-stone-300/40 select-none pointer-events-none leading-none -z-0"
@@ -869,14 +825,9 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         </span>
 
         <div className="relative max-w-6xl mx-auto px-6 z-10">
-          <div className="flex items-end justify-between mb-12 gap-4 flex-wrap">
-            <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight">
-              {copy.format.heading}
-            </h2>
-            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-500 pb-2">
-              03 · {lang === 'nl' ? 'Ingrediënten' : 'Ingredients'}
-            </span>
-          </div>
+          <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight mb-12">
+            {copy.format.heading}
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-5">
             {copy.format.cards.map((card, i) => {
@@ -908,13 +859,46 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         </div>
       </section>
 
+      {/* ═══════════ Speakers ═══════════ */}
+      <section className="py-24 md:py-32 bg-brand-sand border-b border-stone-200">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight mb-3">
+            {copy.speakers.heading}
+          </h2>
+          <p className="text-stone-600 mb-10 max-w-xl">{copy.speakers.body}</p>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {[1, 2].map((n) => (
+              <div
+                key={n}
+                className="bg-white border border-stone-200 p-7 flex items-center gap-6 hover:border-stone-300 transition-colors"
+              >
+                <div className="relative w-20 h-20 flex-shrink-0">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center border border-stone-200">
+                    <Mic2 className="w-8 h-8 text-stone-400" strokeWidth={1.5} />
+                  </div>
+                  <span className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-brand-dark text-white text-xs font-serif font-bold flex items-center justify-center shadow-md">
+                    {n}
+                  </span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-serif text-2xl text-brand-dark leading-tight mb-1">
+                    {copy.speakers.tbaLabel}
+                  </p>
+                  <p className="text-sm text-stone-500">{copy.speakers.talkDuration}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-sm text-stone-500 italic mt-8">{copy.speakers.pitchNote}</p>
+        </div>
+      </section>
+
       {/* ═══════════ Agenda ═══════════ */}
       <section className="py-24 md:py-32 bg-brand-light">
         <div className="max-w-4xl mx-auto px-6 grid md:grid-cols-5 gap-12">
           <div className="md:col-span-2">
-            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-400 mb-3 block">
-              18:30 → 22:00
-            </span>
             <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight mb-2">
               {copy.agenda.heading}
             </h2>
@@ -923,7 +907,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
 
           <div className="md:col-span-3">
             <ol className="relative">
-              {/* Vertical line */}
               <span className="absolute left-2 top-2 bottom-2 w-px bg-stone-200" aria-hidden="true" />
 
               {copy.agenda.rows.map((row, i) => (
@@ -946,9 +929,8 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         </div>
       </section>
 
-      {/* ═══════════ Dates / Ticket card ═══════════ */}
+      {/* ═══════════ Dates / Ticket ═══════════ */}
       <section className="relative py-24 md:py-32 bg-brand-dark text-white overflow-hidden">
-        {/* Pattern bg */}
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-[0.04]"
@@ -963,9 +945,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
             {copy.dates.heading}
           </h2>
 
-          {/* Ticket stub */}
           <div className="grid md:grid-cols-[1fr_auto_2fr] bg-white text-brand-dark relative overflow-hidden shadow-2xl">
-            {/* Left — big date */}
             <div className="p-8 md:p-10 bg-brand-red text-white relative">
               <span className="absolute top-0 left-0 right-0 h-1 bg-brand-dark/20" />
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4 opacity-80">
@@ -982,20 +962,16 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
               </div>
             </div>
 
-            {/* Middle — perforated separator */}
             <div className="hidden md:flex flex-col items-center justify-center px-4 relative">
-              {/* Perforation dots */}
               <div className="flex flex-col gap-2">
                 {Array.from({ length: 16 }).map((_, i) => (
                   <span key={i} className="w-1 h-1 rounded-full bg-stone-300" />
                 ))}
               </div>
-              {/* Cutout circles top/bottom */}
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-dark" />
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-dark" />
             </div>
 
-            {/* Right — details */}
             <div className="p-8 md:p-10 flex flex-col justify-between gap-6">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-stone-400 mb-3">
@@ -1023,9 +999,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-12 mb-12 items-end">
             <div className="md:col-span-2">
-              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-400 block mb-3">
-                {lang === 'nl' ? 'Founding partners gezocht' : 'Founding partners wanted'}
-              </span>
               <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight">
                 {copy.sponsors.heading}
               </h2>
@@ -1067,11 +1040,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
                   <p className="text-xs uppercase tracking-widest text-stone-500 mb-4">{tier.meta}</p>
                   <p className="text-stone-600 text-sm leading-relaxed mb-6">{tier.body}</p>
 
-                  {/* Logo slot grid */}
                   <div className="mt-auto pt-4 border-t border-stone-100">
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-stone-400 mb-3">
-                      {tier.slots} {lang === 'nl' ? 'plekken' : 'spots'}
-                    </p>
                     <div className="grid grid-cols-3 gap-2">
                       {Array.from({ length: tier.slots }).map((_, j) => (
                         <div
@@ -1095,16 +1064,12 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-400 mb-3 block">
-                {copy.venue.cityLabel}
-              </span>
               <h2 className="font-serif text-3xl md:text-5xl text-brand-dark mb-4 leading-tight">
                 {copy.venue.heading}
               </h2>
               <p className="text-stone-700 text-lg leading-relaxed">{copy.venue.body}</p>
             </div>
 
-            {/* Decorative TBA card with Groningen flag + map pin */}
             <div className="relative bg-white border border-stone-200 aspect-[4/3] flex flex-col items-center justify-center p-8 overflow-hidden">
               <div
                 aria-hidden="true"
@@ -1141,14 +1106,9 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
       {/* ═══════════ FAQ ═══════════ */}
       <section className="py-24 md:py-32 bg-brand-light">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="flex items-end justify-between gap-4 mb-12 flex-wrap">
-            <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight">
-              {copy.faq.heading}
-            </h2>
-            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-stone-400 pb-2">
-              {String(copy.faq.items.length).padStart(2, '0')} {lang === 'nl' ? 'vragen' : 'questions'}
-            </span>
-          </div>
+          <h2 className="font-serif text-3xl md:text-5xl text-brand-dark leading-tight mb-12">
+            {copy.faq.heading}
+          </h2>
 
           <div className="space-y-3">
             {copy.faq.items.map((item, i) => {
@@ -1194,12 +1154,28 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
         </div>
       </section>
 
+      {/* ═══════════ Host (AI Heroes) ═══════════ */}
+      <section className="py-16 md:py-20 bg-brand-light border-t border-stone-200">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <Logo className="h-12 w-auto mx-auto mb-6" variant="wordmark" colorVariant="fullcolor" />
+          <p className="text-stone-700 text-lg leading-relaxed mb-6 max-w-xl mx-auto">
+            {copy.host.body}
+          </p>
+          <a
+            href={copy.host.ctaHref}
+            className="group inline-flex items-center gap-2 text-brand-red font-medium hover:underline underline-offset-4"
+          >
+            {copy.host.cta}
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+      </section>
+
       {/* ═══════════ Signup ═══════════ */}
       <section
         id="ai-salon-signup"
         className="relative py-24 md:py-32 bg-brand-dark text-white overflow-hidden"
       >
-        {/* Decorative glow */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[40vh] opacity-25 blur-[100px] -z-0"
           style={{ background: 'radial-gradient(ellipse, #D9534F 0%, transparent 70%)' }}
@@ -1207,9 +1183,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
 
         <div className="relative max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-brand-red mb-4 block">
-              {copy.edition} · {copy.dates.day} {copy.dates.monthShort} {copy.dates.year}
-            </span>
             <h2 className="font-serif text-3xl md:text-5xl leading-tight mb-4">
               {copy.signup.heading}
             </h2>
@@ -1217,8 +1190,6 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           </div>
 
           <AISalonForm form={copy.form} />
-
-          <p className="text-center text-xs text-white/40 mt-10">{copy.hostLine}</p>
         </div>
       </section>
 
