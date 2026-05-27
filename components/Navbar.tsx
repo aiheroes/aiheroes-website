@@ -395,6 +395,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
+  // AI Salon link (top-level event page, no dropdown)
+  const aiSalonHref = lang === 'nl' ? '/nl/ai-salon' : '/en/ai-salon';
+
   // Render nav content for a given theme
   const renderNavContent = (theme: 'dark' | 'light') => {
     const navTextClass = getTextClass(theme);
@@ -414,6 +417,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             <NavTrigger label={content.services.label} type="services" theme={theme} href={content.services.href} />
             <NavTrigger label={content.about.label} type="about" theme={theme} href={content.about.href} />
             <NavTrigger label={content.resources.label} type="resources" theme={theme} href={content.resources.href} />
+            <Link
+              to={aiSalonHref}
+              onClick={() => setOpenDropdown(null)}
+              className="relative flex items-center gap-1.5 text-sm font-medium hover:opacity-80 transition-opacity py-2"
+            >
+              AI Salon
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse" aria-hidden="true" />
+            </Link>
           </div>
 
           <button
@@ -646,6 +657,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="resources"
             items={content.resources.children || []}
           />
+
+          {/* AI Salon (direct link, no accordion) */}
+          <Link
+            to={aiSalonHref}
+            onClick={() => setIsOpen(false)}
+            className="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200"
+          >
+            <span className="flex items-center gap-3">
+              AI Salon
+              <span className="w-2 h-2 rounded-full bg-brand-red animate-pulse" aria-hidden="true" />
+            </span>
+            <ArrowRight className="w-5 h-5 text-stone-400" />
+          </Link>
 
           {/* Contact CTA Button */}
           <button

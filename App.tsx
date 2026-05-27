@@ -112,6 +112,8 @@ const CareersEN = React.lazy(() => import('./pages/en/Careers').then(m => ({ def
 
 const MenuNL = React.lazy(() => import('./pages/nl/Menu').then(m => ({ default: m.MenuNL })));
 
+const AISalonPage = React.lazy(() => import('./pages/AISalonPage').then(m => ({ default: m.AISalonPage })));
+
 const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 function App() {
@@ -223,6 +225,10 @@ function App() {
 
           {/* Partner Menu (reseller-facing, noindex) */}
           <Route path="/nl/menu" element={<MenuNL />} />
+
+          {/* AI Salon Event Pages */}
+          <Route path="/nl/ai-salon" element={<AISalonPage lang="nl" />} />
+          <Route path="/en/ai-salon" element={<AISalonPage lang="en" />} />
 
           {/* Hanze Workshop Page */}
           <Route path="/hanze" element={<Hanze />} />
