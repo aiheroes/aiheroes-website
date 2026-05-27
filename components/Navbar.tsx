@@ -420,10 +420,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Link
               to={aiSalonHref}
               onClick={() => setOpenDropdown(null)}
-              className="relative flex items-center gap-1.5 text-sm font-medium hover:opacity-80 transition-opacity py-2"
+              className="text-sm font-medium hover:opacity-80 transition-opacity py-2"
             >
               AI Salon
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse" aria-hidden="true" />
             </Link>
           </div>
 
@@ -664,10 +663,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => setIsOpen(false)}
             className="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200"
           >
-            <span className="flex items-center gap-3">
-              AI Salon
-              <span className="w-2 h-2 rounded-full bg-brand-red animate-pulse" aria-hidden="true" />
-            </span>
+            AI Salon
             <ArrowRight className="w-5 h-5 text-stone-400" />
           </Link>
 
