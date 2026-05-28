@@ -6,6 +6,7 @@
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', serif;
   --font-display: 'Playfair Display', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Brand colors */
   --color-brand-red: #D9534F;
