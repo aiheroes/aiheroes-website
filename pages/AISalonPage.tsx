@@ -504,7 +504,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           <div className="relative flex-1 flex flex-col">
             {/* Statement + lead — vertically centered */}
             <div className="flex-1 max-w-6xl mx-auto w-full px-6 pt-24 md:pt-28 pb-16 md:pb-20 flex flex-col justify-center">
-              <h1 className="font-sans text-[38px] sm:text-[56px] md:text-[72px] leading-[1.05] tracking-[-0.02em] text-balance max-w-[860px] font-medium">
+              <h1 className="font-sans text-[28px] sm:text-[40px] md:text-[52px] lg:text-[64px] xl:text-[72px] leading-[1.1] sm:leading-[1.05] tracking-[-0.02em] text-balance max-w-[860px] font-medium">
                 {copy.hero}
               </h1>
               <p className="mt-12 md:mt-14 md:ml-32 max-w-[600px] text-[17px] md:text-[18px] leading-[1.7] text-white/80 text-pretty">
@@ -525,10 +525,10 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
 
             {/* Meta strip — bottom of hero */}
             <div className="border-t border-white/15">
-              <div className="max-w-6xl mx-auto px-6 py-5 font-mono text-[11px] tracking-[0.18em] uppercase text-white/75 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <div className="max-w-6xl mx-auto px-6 py-5 font-mono text-[11px] tracking-[0.18em] uppercase text-white/75 flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2">
                 {copy.metaStrip.map((item, i) => (
                   <React.Fragment key={i}>
-                    {i > 0 && <span className="text-white/30" aria-hidden>·</span>}
+                    {i > 0 && <span className="hidden sm:inline text-white/30" aria-hidden>·</span>}
                     <span>{item.text}</span>
                   </React.Fragment>
                 ))}
