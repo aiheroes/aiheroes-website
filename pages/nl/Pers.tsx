@@ -68,6 +68,7 @@ export const PersNL: React.FC = () => {
                   <li><strong>Opgericht:</strong> 2019</li>
                   <li><strong>Statutaire naam:</strong> AI Heroes B.V.</li>
                   <li><strong>Hoofdkantoor:</strong> Groningen, Nederland (AI-hoofdstad van Europa)</li>
+                  <li><strong>Bezoekadres:</strong> Aarhusweg 4-16, 9723 JJ Groningen</li>
                   <li><strong>KvK:</strong> 42051968</li>
                   <li><strong>BTW:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>

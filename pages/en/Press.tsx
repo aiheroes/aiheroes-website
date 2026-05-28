@@ -68,6 +68,7 @@ export const PressEN: React.FC = () => {
                   <li><strong>Founded:</strong> 2019</li>
                   <li><strong>Legal name:</strong> AI Heroes B.V.</li>
                   <li><strong>Headquarters:</strong> Groningen, Netherlands (AI Capital of Europe)</li>
+                  <li><strong>Visiting address:</strong> Aarhusweg 4-16, 9723 JJ Groningen</li>
                   <li><strong>KvK (CoC):</strong> 42051968</li>
                   <li><strong>VAT:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>

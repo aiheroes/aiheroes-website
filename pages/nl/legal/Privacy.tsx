@@ -119,7 +119,7 @@ export const PrivacyNL: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>Verantwoordelijke</h3>
           <p>
-            AI Heroes B.V., gevestigd te Groningen, is verwerkingsverantwoordelijke voor de persoonsgegevens zoals beschreven in dit privacybeleid. KvK-nummer 42051968, BTW-nummer NL869486263B01. We vallen onder de Nederlandse en Europese privacywetgeving (AVG/GDPR).
+            AI Heroes B.V., gevestigd aan Aarhusweg 4-16, 9723 JJ Groningen, is verwerkingsverantwoordelijke voor de persoonsgegevens zoals beschreven in dit privacybeleid. KvK-nummer 42051968, BTW-nummer NL869486263B01. We vallen onder de Nederlandse en Europese privacywetgeving (AVG/GDPR).
           </p>
         </DarkBox>
       </div>

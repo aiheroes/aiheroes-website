@@ -119,7 +119,7 @@ export const PrivacyEN: React.FC = () => {
         <DarkBox accentColor="red">
           <h3>Data Controller</h3>
           <p>
-            AI Heroes B.V., based in Groningen, the Netherlands, is the data controller for the personal data described in this privacy policy. Chamber of Commerce (KvK) number 42051968, VAT number NL869486263B01. We fall under Dutch and European privacy legislation (GDPR).
+            AI Heroes B.V., located at Aarhusweg 4-16, 9723 JJ Groningen, the Netherlands, is the data controller for the personal data described in this privacy policy. Chamber of Commerce (KvK) number 42051968, VAT number NL869486263B01. We fall under Dutch and European privacy legislation (GDPR).
           </p>
         </DarkBox>
       </div>

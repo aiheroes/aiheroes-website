@@ -23,7 +23,7 @@ export const VoorwaardenNL: React.FC = () => {
         </p>
 
         <ul className="text-stone-600 leading-relaxed mb-8 space-y-2">
-          <li><strong>AI Heroes:</strong> AI Heroes B.V., gevestigd te Groningen, ingeschreven bij de Kamer van Koophandel onder nummer 42051968, BTW-nummer NL869486263B01</li>
+          <li><strong>AI Heroes:</strong> AI Heroes B.V., gevestigd aan Aarhusweg 4-16, 9723 JJ Groningen, ingeschreven bij de Kamer van Koophandel onder nummer 42051968, BTW-nummer NL869486263B01</li>
           <li><strong>Opdrachtgever:</strong> De natuurlijke of rechtspersoon die met AI Heroes een overeenkomst aangaat</li>
           <li><strong>Diensten:</strong> Alle werkzaamheden die AI Heroes voor opdrachtgever verricht, waaronder workshops, trainingen, advies en softwareontwikkeling</li>
         </ul>

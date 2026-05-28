@@ -350,7 +350,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 <span>{content.madeIn}</span>
               </p>
               <p className="text-[11px] text-stone-600">
-                AI Heroes B.V. · KvK 42051968 · BTW NL869486263B01
+                AI Heroes B.V. · Aarhusweg 4-16, 9723 JJ Groningen · KvK 42051968 · BTW NL869486263B01
               </p>
             </div>
 
