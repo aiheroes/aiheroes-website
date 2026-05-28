@@ -155,7 +155,7 @@ const COPY: Record<Language, Copy> = {
       description:
         'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
     },
-    hero: 'Het #1 networking event voor iedereen in de AI-scene en wie er nieuwsgierig naar is.',
+    hero: 'Het #1 netwerk event voor iedereen in de AI-scene en wie er nieuwsgierig naar is.',
     lead: {
       intro: 'Wees erbij op ',
       dateText: 'donderdag 3 september',
@@ -502,8 +502,8 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/75 via-brand-dark/60 to-brand-dark/90" />
 
           <div className="relative flex-1 flex flex-col">
-            {/* Statement + lead — vertically centered */}
-            <div className="flex-1 max-w-6xl mx-auto w-full px-6 pt-24 md:pt-28 pb-16 md:pb-20 flex flex-col justify-center">
+            {/* Statement + lead — bottom-aligned on mobile, centered on desktop */}
+            <div className="flex-1 max-w-6xl mx-auto w-full px-6 pt-24 md:pt-28 pb-16 md:pb-20 flex flex-col justify-end sm:justify-center">
               <h1 className="font-sans text-[28px] sm:text-[40px] md:text-[52px] lg:text-[64px] xl:text-[72px] leading-[1.1] sm:leading-[1.05] tracking-[-0.02em] text-balance max-w-[860px] font-medium">
                 {copy.hero}
               </h1>
