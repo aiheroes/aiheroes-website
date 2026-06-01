@@ -114,7 +114,7 @@ const MenuNL = React.lazy(() => import('./pages/nl/Menu').then(m => ({ default: 
 
 const AISalonPage = React.lazy(() => import('./pages/AISalonPage').then(m => ({ default: m.AISalonPage })));
 
-const NotFound = React.lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
+const BarePathRedirect = React.lazy(() => import('./components/BarePathRedirect').then(m => ({ default: m.BarePathRedirect })));
 
 function App() {
   return (
@@ -233,8 +233,8 @@ function App() {
           {/* Hanze Workshop Page */}
           <Route path="/hanze" element={<Hanze />} />
 
-          {/* 404 Page */}
-          <Route path="*" element={<NotFound />} />
+          {/* Prefix-less URLs redirect to the right language; genuine 404s fall through */}
+          <Route path="*" element={<BarePathRedirect />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

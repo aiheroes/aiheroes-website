@@ -2,10 +2,57 @@
   command = "npm run build"
   publish = "dist"
 
-# Redirect /diensten to /nl/diensten (for social media campaigns)
+# Prefix-less entry points -> language-prefixed pages (301 for SEO).
+# Only the slugs that are unambiguously one language live here; language-neutral
+# slugs (e.g. /ai-salon, /resources) are resolved client-side in BarePathRedirect
+# using the visitor's language preference. Keep these in sync with App.tsx routes.
 [[redirects]]
   from = "/diensten"
   to = "/nl/diensten"
+  status = 301
+[[redirects]]
+  from = "/diensten/*"
+  to = "/nl/diensten/:splat"
+  status = 301
+[[redirects]]
+  from = "/services"
+  to = "/en/services"
+  status = 301
+[[redirects]]
+  from = "/services/*"
+  to = "/en/services/:splat"
+  status = 301
+[[redirects]]
+  from = "/over-ons"
+  to = "/nl/over-ons"
+  status = 301
+[[redirects]]
+  from = "/over-ons/*"
+  to = "/nl/over-ons/:splat"
+  status = 301
+[[redirects]]
+  from = "/about"
+  to = "/en/about"
+  status = 301
+[[redirects]]
+  from = "/about/*"
+  to = "/en/about/:splat"
+  status = 301
+[[redirects]]
+  from = "/vacatures"
+  to = "/nl/vacatures"
+  status = 301
+[[redirects]]
+  from = "/careers"
+  to = "/en/careers"
+  status = 301
+[[redirects]]
+  from = "/pers"
+  to = "/nl/pers"
+  status = 301
+[[redirects]]
+  from = "/press"
+  to = "/en/press"
   status = 301
 
 # Redirect old SpecialistischeTracks URLs to Maatwerk/Custom pages

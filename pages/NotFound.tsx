@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 import { ArrowLeft } from 'lucide-react';
 import { Language } from '../types';
+import { detectVisitorLang } from '../utils/routing';
 
 const CONTENT = {
   nl: {
@@ -20,16 +21,11 @@ const CONTENT = {
 export const NotFound: React.FC = () => {
   const location = useLocation();
 
-  // Detect language from URL path or localStorage
+  // Detect language from the URL prefix, falling back to the visitor's preference.
   const detectLanguage = (): Language => {
-    if (location.pathname.startsWith('/en')) {
-      return 'en';
-    }
-    const stored = localStorage.getItem('aiheroes-lang');
-    if (stored === 'en') {
-      return 'en';
-    }
-    return 'nl';
+    if (location.pathname.startsWith('/en')) return 'en';
+    if (location.pathname.startsWith('/nl')) return 'nl';
+    return detectVisitorLang();
   };
 
   const [lang] = useState<Language>(detectLanguage);
