@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -25,6 +25,7 @@ function ScrollToTop() {
 // HomePage is eagerly loaded (critical for initial render)
 import { HomePage } from './pages/HomePage';
 import { Hanze } from './pages/Hanze';
+import { ContactRedirect } from './components/ContactRedirect';
 
 // All other pages are lazily loaded
 const AIFoundationsNL = React.lazy(() => import('./pages/nl/diensten/AIFoundations').then(m => ({ default: m.AIFoundationsNL })));
@@ -232,6 +233,11 @@ function App() {
 
           {/* Hanze Workshop Page */}
           <Route path="/hanze" element={<Hanze />} />
+
+          {/* Contact is the #contact section on the homepage, not a standalone page */}
+          <Route path="/contact" element={<ContactRedirect />} />
+          <Route path="/nl/contact" element={<Navigate to="/#contact" replace />} />
+          <Route path="/en/contact" element={<Navigate to="/en#contact" replace />} />
 
           {/* Prefix-less URLs redirect to the right language; genuine 404s fall through */}
           <Route path="*" element={<BarePathRedirect />} />

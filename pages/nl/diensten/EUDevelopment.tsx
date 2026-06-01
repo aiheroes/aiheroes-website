@@ -87,7 +87,7 @@ export const EUDevelopmentNL: React.FC = () => {
               aanpak voor digitale onafhankelijkheid
             </Link>{' '}
             of neem direct{' '}
-            <Link to="/nl/contact" className="text-white underline underline-offset-2 hover:text-white/80">
+            <Link to="/#contact" className="text-white underline underline-offset-2 hover:text-white/80">
               contact
             </Link>{' '}
             op.

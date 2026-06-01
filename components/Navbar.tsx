@@ -72,13 +72,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleContactClick = () => {
     setIsOpen(false);
     setOpenDropdown(null);
-    if (isHomePage) {
+    const onHome = location.pathname === '/' || location.pathname === '/en';
+    if (onHome) {
       const element = document.getElementById('contact');
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      navigate('/#contact');
+      navigate(lang === 'en' ? '/en#contact' : '/#contact');
     }
   };
 

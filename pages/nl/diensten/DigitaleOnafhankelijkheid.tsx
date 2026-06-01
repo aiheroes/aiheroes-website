@@ -76,7 +76,7 @@ export const DigitaleOnafhankelijkheidNL: React.FC = () => {
           <h3>Eén partner voor het hele traject</h3>
           <p>
             De meeste organisaties zien drie problemen tegelijk: medewerkers die niet weten wat er speelt, een IT-landschap dat niet in kaart is gebracht, en AI-tools die op Amerikaanse servers draaien. Wij combineren alle drie de sporen zodat je niet bij drie verschillende partijen hoeft aan te kloppen.{' '}
-            <Link to="/nl/contact" className="text-white underline underline-offset-2 hover:text-white/80">
+            <Link to="/#contact" className="text-white underline underline-offset-2 hover:text-white/80">
               Neem contact op
             </Link>{' '}
             voor een vrijblijvend gesprek.
