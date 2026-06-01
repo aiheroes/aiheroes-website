@@ -243,7 +243,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
 
         {/* Contact (Light) */}
-        <section id="contact" className="md:snap-start h-screen w-full flex items-center bg-brand-light overflow-hidden relative z-10">
+        <section id="contact" className="md:snap-start min-h-screen md:h-screen w-full flex items-center bg-brand-light md:overflow-hidden relative z-10">
           <Contact content={content.contact} contactFormContent={content.contactForm} />
         </section>
 
