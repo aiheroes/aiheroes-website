@@ -64,20 +64,21 @@ const COPY: Record<Language, Copy> = {
       description:
         'AI Salon Groningen kick-off, Thursday September 3, 2026. A bimonthly community evening for AI founders, builders, investors, researchers and partners.',
     },
-    hero: 'The #1 networking event for everyone in the AI scene and those curious about the topic.',
+    hero: 'The #1 international AI networking event. For everyone working with AI, in any shape or form.',
     lead: {
       intro: 'Join us on ',
       dateText: 'Thursday, September 3rd',
       between: ', for the very first ',
       linkText: 'AI Salon Groningen',
       after:
-        " event. Bimonthly, we bring together AI founders, builders, investors, researchers, and partners to connect, collaborate, and showcase what's next. Don't miss the kick-off. Space is limited, so RSVP now to secure your spot.",
+        " event. Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. Don't miss the kick-off. Space is limited, so RSVP now to secure your spot.",
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
       { text: 'Kick-Off' },
       { text: 'Thursday, Sep 03, 2026' },
       { text: 'Groningen, City Centre' },
+      { text: 'English-spoken' },
       { text: 'Bimonthly' },
     ],
     agenda: {
@@ -113,7 +114,7 @@ const COPY: Record<Language, Copy> = {
       note: 'Want to pitch a demo or sponsor a future edition? Email salon@aiheroes.io.',
     },
     about:
-      'AI Salon is the global community for AI founders, builders, investors, and partners to connect and collaborate. Decentralized, chapter-based.',
+      'AI Salon is the global community where AI founders, builders, investors and partners connect and collaborate, with chapters around the world. Groningen is our chapter, in the AI capital of Europe.',
     practical: {
       location: { label: 'Location', lines: ['Event location TBA', 'City centre, Groningen'] },
       organiser: { label: 'Organiser', lines: ['AI Heroes (chapter)'] },
@@ -126,20 +127,21 @@ const COPY: Record<Language, Copy> = {
       description:
         'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
     },
-    hero: 'Het #1 netwerk event voor iedereen in de AI-scene en wie er nieuwsgierig naar is.',
+    hero: 'Het #1 internationale AI netwerk-event. Voor iedereen die bezig is met AI, in welke vorm dan ook.',
     lead: {
       intro: 'Wees erbij op ',
       dateText: 'donderdag 3 september',
       between: ' voor de allereerste editie van ',
       linkText: 'AI Salon Groningen',
       after:
-        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn. Mis de kick-off niet. Beperkt aantal plekken, dus RSVP nu om er zeker bij te zijn.',
+        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. Mis de kick-off niet. Beperkt aantal plekken, dus RSVP nu om er zeker bij te zijn.',
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
       { text: 'Kick-Off' },
       { text: 'Donderdag 3 sep 2026' },
       { text: 'Groningen, centrum' },
+      { text: 'Engelstalig' },
       { text: 'Bimonthly' },
     ],
     agenda: {
@@ -175,7 +177,7 @@ const COPY: Record<Language, Copy> = {
       note: 'Wil je een demo pitchen of een volgende editie sponsoren? Mail salon@aiheroes.io.',
     },
     about:
-      'AI Salon is de wereldwijde community waarin AI founders, builders, investeerders en partners elkaar ontmoeten en samenwerken. Decentraal, chapter-based.',
+      'AI Salon is de wereldwijde community waarin AI founders, builders, investeerders en partners elkaar ontmoeten en samenwerken, met chapters over de hele wereld. Groningen is ons chapter, in de AI-hoofdstad van Europa.',
     practical: {
       location: { label: 'Locatie', lines: ['Locatie TBA', 'Centrum, Groningen'] },
       organiser: { label: 'Organisator', lines: ['AI Heroes (chapter)'] },
