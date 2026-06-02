@@ -64,7 +64,7 @@ const COPY: Record<Language, Copy> = {
       description:
         'AI Salon Groningen kick-off, Thursday September 3, 2026. A bimonthly community evening for AI founders, builders, investors, researchers and partners.',
     },
-    hero: 'The #1 international AI networking event. For everyone working with AI, in any shape or form.',
+    hero: 'The AI Salon: the #1 international AI networking event, now in Groningen.',
     lead: {
       intro: 'Join us on ',
       dateText: 'Thursday, September 3rd',
@@ -127,7 +127,7 @@ const COPY: Record<Language, Copy> = {
       description:
         'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
     },
-    hero: 'Het #1 internationale AI netwerk-event. Voor iedereen die bezig is met AI, in welke vorm dan ook.',
+    hero: 'De AI Salon: Het #1 internationale AI netwerk-event, nu ook in Groningen.',
     lead: {
       intro: 'Wees erbij op ',
       dateText: 'donderdag 3 september',
