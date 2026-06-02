@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // Handle hash navigation after arriving at homepage
   useEffect(() => {
-    if (location.pathname === '/' && location.hash === '#contact') {
+    if ((location.pathname === '/' || location.pathname === '/en') && location.hash === '#contact') {
       setTimeout(() => {
         const element = document.getElementById('contact');
         if (element) {

@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Repository
+
+GitHub: https://github.com/AIHeroes/aiheroes-website — **public**, owned by the AIHeroes org. Auto-deploys to Netlify on push to `master`.
+
 ## Commands
 
 ```bash
