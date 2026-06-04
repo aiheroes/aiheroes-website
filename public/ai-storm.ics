@@ -7,11 +7,9 @@ BEGIN:VEVENT
 UID:ai-heroes-ai-storm-rtl7-20260607@aiheroes.io
 DTSTAMP:20260604T000000Z
 DTSTART;TZID=Europe/Amsterdam:20260607T123000
-DTEND;TZID=Europe/Amsterdam:20260607T124500
+DTEND;TZID=Europe/Amsterdam:20260607T130000
 SUMMARY:De AI Storm op RTL 7 met AI Heroes
-DESCRIPTION:AI Heroes is te zien in De AI Storm\, het RTL-programma over AI in het Nederlandse bedrijfsleven. Mede-oprichter Jan Brusse vertelt over AI-adoptie bij het MKB.
-
-Uitzending: RTL 7\, zondag 7 juni\, 12:30. Ook terug te kijken op Videoland.
+DESCRIPTION:AI Heroes is te zien in De AI Storm\, het RTL-programma over AI in het Nederlandse bedrijfsleven. Mede-oprichter Jan Brusse vertelt over AI-adoptie bij het MKB. Uitzending: RTL 7\, zondag 7 juni\, 12:30. Ook terug te kijken op Videoland.
 LOCATION:RTL 7
 STATUS:CONFIRMED
 BEGIN:VALARM
