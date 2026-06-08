@@ -217,8 +217,5 @@
   to = "/"
   status = 410
 
-# Handle SPA routing - redirect all routes to index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Astro generates real static pages — no SPA fallback. Unknown paths fall through
+# to Astro's 404 page. (The legacy `/* -> /index.html 200` rule was removed here.)
