@@ -9,6 +9,7 @@ interface SEOConfig {
   alternatePath?: string; // The equivalent path in the other language
   noindex?: boolean; // Set to true for pages that should not be indexed (e.g. legal pages)
   jsonLd?: object | object[]; // Structured data (schema.org) injected as a <script type="application/ld+json"> tag
+  seoTitle?: string; // Overrides the visible title for the <title> tag only (keyword targeting without changing the on-page H1)
 }
 
 const DOMAIN = 'https://aiheroes.io';
@@ -65,10 +66,10 @@ const setJsonLd = (data?: object | object[]) => {
   element.textContent = JSON.stringify(data);
 };
 
-export const useSEO = ({ title, description, lang, path, alternatePath, noindex, jsonLd }: SEOConfig) => {
+export const useSEO = ({ title, description, lang, path, alternatePath, noindex, jsonLd, seoTitle }: SEOConfig) => {
   useEffect(() => {
-    // Full title with brand
-    const fullTitle = `${title} | AI Heroes`;
+    // Full title with brand (seoTitle overrides the visible H1 for the <title> tag only)
+    const fullTitle = `${seoTitle || title} | AI Heroes`;
     const fullUrl = `${DOMAIN}${path}`;
 
     // Calculate alternate URL
@@ -125,7 +126,7 @@ export const useSEO = ({ title, description, lang, path, alternatePath, noindex,
     setJsonLd(jsonLd);
     return () => setJsonLd(undefined);
 
-  }, [title, description, lang, path, alternatePath, noindex, jsonLd]);
+  }, [title, description, lang, path, alternatePath, noindex, jsonLd, seoTitle]);
 };
 
 // Calculate the alternate language path based on URL patterns
@@ -139,6 +140,7 @@ export function calculateAlternatePath(path: string, currentLang: Language): str
       .replace('/over-ons', '/about')
       .replace('/ai-voor-developers', '/ai-for-developers')
       .replace('/maatwerk-ai-oplossingen', '/custom-ai-solutions')
+      .replace('/ai-bureau-nederland', '/ai-agency-netherlands')
       .replace('/digitale-onafhankelijkheid', '/digital-independence')
       .replace('/ai-implementatiebegeleiding', '/ai-implementation-guidance')
       .replace('/procesanalyse', '/process-analysis')
@@ -158,6 +160,7 @@ export function calculateAlternatePath(path: string, currentLang: Language): str
       .replace('/about', '/over-ons')
       .replace('/ai-for-developers', '/ai-voor-developers')
       .replace('/custom-ai-solutions', '/maatwerk-ai-oplossingen')
+      .replace('/ai-agency-netherlands', '/ai-bureau-nederland')
       .replace('/digital-independence', '/digitale-onafhankelijkheid')
       .replace('/ai-implementation-guidance', '/ai-implementatiebegeleiding')
       .replace('/process-analysis', '/procesanalyse')
