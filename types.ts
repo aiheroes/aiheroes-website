@@ -263,6 +263,7 @@ export interface JobPosition {
   description: string[];
   requirements: string[];
   offerings: string[];
+  datePosted: string; // ISO date (YYYY-MM-DD) for JobPosting structured data
 }
 
 export interface CareersPageContent {

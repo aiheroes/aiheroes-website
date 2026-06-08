@@ -43,8 +43,16 @@
   to = "/nl/vacatures"
   status = 301
 [[redirects]]
+  from = "/vacatures/*"
+  to = "/nl/vacatures/:splat"
+  status = 301
+[[redirects]]
   from = "/careers"
   to = "/en/careers"
+  status = 301
+[[redirects]]
+  from = "/careers/*"
+  to = "/en/careers/:splat"
   status = 301
 [[redirects]]
   from = "/pers"

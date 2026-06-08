@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { PageLayout } from '../../components/PageLayout';
 import { ApplicationForm } from '../../components/ApplicationForm';
 import { CONTENT } from '../../constants';
-import { ChevronDown, MapPin, Clock, Briefcase, GraduationCap, Code, Mic } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { MapPin, Clock, Briefcase, GraduationCap, Code, Mic, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const departmentIcons: Record<string, React.FC<{ className?: string }>> = {
   training: Mic,
@@ -14,29 +14,9 @@ const departmentIcons: Record<string, React.FC<{ className?: string }>> = {
 
 export const VacaturesNL: React.FC = () => {
   const content = CONTENT.nl.careersPage;
-  const [expandedPosition, setExpandedPosition] = useState<string | null>(null);
-  const [selectedPosition, setSelectedPosition] = useState('');
-  const location = useLocation();
 
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.substring(1);
-      const pos = content.positions.items.find(p => p.id === id);
-      if (pos) {
-        setExpandedPosition(id);
-        setTimeout(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    }
-  }, [location.hash, content.positions.items]);
-
-  const scrollToForm = (positionTitle?: string) => {
-    if (positionTitle) setSelectedPosition(positionTitle);
-    else setSelectedPosition('');
-    setTimeout(() => {
-      document.getElementById('solliciteer')?.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+  const scrollToForm = () => {
+    document.getElementById('solliciteer')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -82,69 +62,32 @@ export const VacaturesNL: React.FC = () => {
 
           <div className="space-y-4">
             {content.positions.items.map((position) => {
-              const isExpanded = expandedPosition === position.id;
               const Icon = departmentIcons[position.department] || Briefcase;
               const accentBorder = position.department === 'training' ? 'border-brand-red' : 'border-brand-blue';
               const accentText = position.department === 'training' ? 'text-brand-red' : 'text-brand-blue';
               const accentBg = position.department === 'training' ? 'bg-brand-red' : 'bg-brand-blue';
 
               return (
-                <div key={position.id} id={position.id} className={`border ${accentBorder} border-l-4`}>
-                  <button
-                    onClick={() => setExpandedPosition(isExpanded ? null : position.id)}
-                    className="w-full text-left p-6 flex items-start gap-4 hover:bg-stone-50 transition-colors"
-                  >
-                    <div className={`w-10 h-10 ${accentBg}/10 flex items-center justify-center flex-shrink-0 mt-1`}>
-                      <Icon className={`w-5 h-5 ${accentText}`} />
+                <Link
+                  key={position.id}
+                  to={`/nl/vacatures/${position.id}`}
+                  className={`group border ${accentBorder} border-l-4 p-6 flex items-start gap-4 hover:bg-stone-50 transition-colors`}
+                >
+                  <div className={`w-10 h-10 ${accentBg}/10 flex items-center justify-center flex-shrink-0 mt-1`}>
+                    <Icon className={`w-5 h-5 ${accentText}`} />
+                  </div>
+                  <div className="flex-grow min-w-0">
+                    <h3 className="text-xl font-serif text-brand-dark mb-1">{position.title}</h3>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-500">
+                      <span className={`font-medium ${accentText}`}>{position.departmentLabel}</span>
+                      <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{position.location}</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{position.hours}</span>
+                      <span>{position.type}</span>
                     </div>
-                    <div className="flex-grow min-w-0">
-                      <h3 className="text-xl font-serif text-brand-dark mb-1">{position.title}</h3>
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-500">
-                        <span className={`font-medium ${accentText}`}>{position.departmentLabel}</span>
-                        <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" />{position.location}</span>
-                        <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{position.hours}</span>
-                        <span>{position.type}</span>
-                      </div>
-                      <p className="text-stone-600 mt-2 text-sm">{position.summary}</p>
-                    </div>
-                    <ChevronDown className={`w-5 h-5 text-stone-400 flex-shrink-0 mt-2 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  {isExpanded && (
-                    <div className="px-6 pb-6 pt-2 border-t border-stone-100 animate-fade-in-up">
-                      <div className="ml-14">
-                        {position.description.map((p, i) => (
-                          <p key={i} className="text-stone-700 leading-relaxed mb-4">{p}</p>
-                        ))}
-
-                        <h4 className="font-bold text-brand-dark mt-6 mb-3 text-sm uppercase tracking-wider">Wat vragen we?</h4>
-                        <ul className="space-y-2 mb-6">
-                          {position.requirements.map((req, i) => (
-                            <li key={i} className="text-stone-700 text-sm pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-blue before:rounded-full">
-                              {req}
-                            </li>
-                          ))}
-                        </ul>
-
-                        <h4 className="font-bold text-brand-dark mt-6 mb-3 text-sm uppercase tracking-wider">Wat bieden we?</h4>
-                        <ul className="space-y-2 mb-8">
-                          {position.offerings.map((offer, i) => (
-                            <li key={i} className="text-stone-700 text-sm pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand-red before:rounded-full">
-                              {offer}
-                            </li>
-                          ))}
-                        </ul>
-
-                        <button
-                          onClick={() => scrollToForm(position.title)}
-                          className={`${accentBg} hover:opacity-90 text-white px-8 py-3 uppercase tracking-widest text-xs font-bold transition-opacity`}
-                        >
-                          Solliciteer
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                    <p className="text-stone-600 mt-2 text-sm">{position.summary}</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-stone-400 flex-shrink-0 mt-2 group-hover:translate-x-1 group-hover:text-brand-blue transition-all" />
+                </Link>
               );
             })}
           </div>
@@ -220,7 +163,6 @@ export const VacaturesNL: React.FC = () => {
             lang="nl"
             content={content.applicationForm}
             positions={content.positions.items}
-            preselectedPosition={selectedPosition}
           />
         </div>
       </section>

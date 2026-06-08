@@ -8,6 +8,7 @@ interface SEOConfig {
   path: string; // Current path without domain, e.g. "/nl/diensten/ai-foundations"
   alternatePath?: string; // The equivalent path in the other language
   noindex?: boolean; // Set to true for pages that should not be indexed (e.g. legal pages)
+  jsonLd?: object | object[]; // Structured data (schema.org) injected as a <script type="application/ld+json"> tag
 }
 
 const DOMAIN = 'https://aiheroes.io';
@@ -44,7 +45,27 @@ const setLinkTag = (rel: string, href: string, hreflang?: string) => {
   element.href = href;
 };
 
-export const useSEO = ({ title, description, lang, path, alternatePath, noindex }: SEOConfig) => {
+// Inject (or clear) a single JSON-LD structured-data script. Marked with a data
+// attribute so it can be updated/removed on navigation without touching other tags.
+const setJsonLd = (data?: object | object[]) => {
+  let element = document.querySelector('script[data-seo-jsonld]') as HTMLScriptElement | null;
+
+  if (!data) {
+    if (element) element.remove();
+    return;
+  }
+
+  if (!element) {
+    element = document.createElement('script');
+    element.type = 'application/ld+json';
+    element.setAttribute('data-seo-jsonld', '');
+    document.head.appendChild(element);
+  }
+
+  element.textContent = JSON.stringify(data);
+};
+
+export const useSEO = ({ title, description, lang, path, alternatePath, noindex, jsonLd }: SEOConfig) => {
   useEffect(() => {
     // Full title with brand
     const fullTitle = `${title} | AI Heroes`;
@@ -99,7 +120,12 @@ export const useSEO = ({ title, description, lang, path, alternatePath, noindex 
       setLinkTag('alternate', altUrl, 'x-default'); // Default to Dutch
     }
 
-  }, [title, description, lang, path, alternatePath, noindex]);
+    // Structured data (e.g. JobPosting). Cleared on unmount so it never leaks
+    // onto pages that don't set it.
+    setJsonLd(jsonLd);
+    return () => setJsonLd(undefined);
+
+  }, [title, description, lang, path, alternatePath, noindex, jsonLd]);
 };
 
 // Calculate the alternate language path based on URL patterns

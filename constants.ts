@@ -487,6 +487,7 @@ export const CONTENT: Record<Language, Content> = {
             location: "Groningen",
             hours: "32-40 uur/week",
             type: "Fulltime",
+            datePosted: "2026-06-08",
             summary: "Bouw custom AI-oplossingen voor onze klanten, van prototype tot productie.",
             description: [
               "Als AI Engineer bij AI Heroes werk je aan uiteenlopende projecten voor klanten in heel Europa. Je bouwt custom AI-oplossingen die echte bedrijfsproblemen oplossen: van intelligente documentsystemen tot geautomatiseerde workflows en machine learning pipelines.",
@@ -515,6 +516,7 @@ export const CONTENT: Record<Language, Content> = {
             location: "Groningen (+ reizen door Nederland)",
             hours: "24-40 uur/week",
             type: "Fulltime / Parttime",
+            datePosted: "2026-06-08",
             summary: "Geef workshops en trainingen die organisaties AI-vaardig maken.",
             description: [
               "Als AI Trainer ben je het gezicht van AI Heroes bij onze klanten. Je geeft hands-on workshops aan teams variërend van C-level executives tot developers, en helpt ze begrijpen hoe ze AI effectief kunnen inzetten in hun dagelijks werk.",
@@ -544,6 +546,7 @@ export const CONTENT: Record<Language, Content> = {
             location: "Groningen",
             hours: "32-40 uur/week",
             type: "Stage (min. 5 maanden)",
+            datePosted: "2026-06-08",
             summary: "Bouw en onderhoud onze commerciële pipeline als onderdeel van het founding team.",
             description: [
               "AI Heroes is een snelgroeiende AI agency vanuit Groningen die bedrijven helpt het potentieel van kunstmatige intelligentie te benutten via training, consultancy en development. We maken AI praktisch en toegankelijk voor organisaties die het willen inzetten. We schalen snel op en zoeken commerciële versterking.",
@@ -564,16 +567,17 @@ export const CONTENT: Record<Language, Content> = {
             ]
           },
           {
-            id: "content-creator-intern",
-            title: "AI-Enabled Content Creator Intern",
+            id: "marketing-intern",
+            title: "AI-Enabled Marketing Intern",
             department: "training",
             departmentLabel: "Training & Marketing",
             location: "Groningen",
             hours: "32-40 uur/week",
             type: "Stage (min. 5 maanden)",
+            datePosted: "2026-06-08",
             summary: "Creëer content die laat zien wat AI kan, met behulp van de nieuwste AI-tools.",
             description: [
-              "Als Content Creator Intern bij AI Heroes maak je content die onze expertise zichtbaar maakt: van LinkedIn-posts en blogs tot video's, visuals en nieuwsbrieven. Je gebruikt hierbij actief AI-tools zoals ChatGPT, Midjourney, Runway en Canva AI.",
+              "Als Marketing Intern bij AI Heroes maak je content die onze expertise zichtbaar maakt: van LinkedIn-posts en blogs tot video's, visuals en nieuwsbrieven. Je gebruikt hierbij actief AI-tools zoals ChatGPT, Midjourney, Runway en Canva AI.",
               "Je werkt direct samen met de founders aan onze marketingstrategie en leert hoe een groeiende AI agency zichzelf positioneert. Je experimenteert continu met nieuwe AI-tools voor contentcreatie en deelt je bevindingen met het team."
             ],
             requirements: [
@@ -1136,6 +1140,7 @@ export const CONTENT: Record<Language, Content> = {
             location: "Groningen",
             hours: "32-40 hours/week",
             type: "Full-time",
+            datePosted: "2026-06-08",
             summary: "Build custom AI solutions for our clients, from prototype to production.",
             description: [
               "As an AI Engineer at AI Heroes, you work on diverse projects for clients across Europe. You build custom AI solutions that solve real business problems: from intelligent document systems to automated workflows and machine learning pipelines.",
@@ -1164,6 +1169,7 @@ export const CONTENT: Record<Language, Content> = {
             location: "Groningen (+ travel across the Netherlands)",
             hours: "24-40 hours/week",
             type: "Full-time / Part-time",
+            datePosted: "2026-06-08",
             summary: "Deliver workshops and training that make organisations AI-ready.",
             description: [
               "As an AI Trainer, you are the face of AI Heroes at our clients. You deliver hands-on workshops to teams ranging from C-level executives to developers, helping them understand how to effectively use AI in their daily work.",
@@ -1193,6 +1199,7 @@ export const CONTENT: Record<Language, Content> = {
             location: "Groningen",
             hours: "32-40 hours/week",
             type: "Internship (min. 5 months)",
+            datePosted: "2026-06-08",
             summary: "Build and maintain our commercial pipeline as part of the founding team.",
             description: [
               "AI Heroes is a fast-growing AI agency based in Groningen, helping businesses unlock the potential of artificial intelligence through training, consultancy, and development. We make AI practical and accessible for organisations that want to put it to work. We're scaling quickly and looking for commercial reinforcement.",
@@ -1213,16 +1220,17 @@ export const CONTENT: Record<Language, Content> = {
             ]
           },
           {
-            id: "content-creator-intern",
-            title: "AI-Enabled Content Creator Intern",
+            id: "marketing-intern",
+            title: "AI-Enabled Marketing Intern",
             department: "training",
             departmentLabel: "Training & Marketing",
             location: "Groningen",
             hours: "32-40 hours/week",
             type: "Internship (min. 5 months)",
+            datePosted: "2026-06-08",
             summary: "Create content that showcases what AI can do, using the latest AI tools.",
             description: [
-              "As a Content Creator Intern at AI Heroes, you create content that makes our expertise visible: from LinkedIn posts and blogs to videos, visuals and newsletters. You actively use AI tools like ChatGPT, Midjourney, Runway and Canva AI.",
+              "As a Marketing Intern at AI Heroes, you create content that makes our expertise visible: from LinkedIn posts and blogs to videos, visuals and newsletters. You actively use AI tools like ChatGPT, Midjourney, Runway and Canva AI.",
               "You work directly with the founders on our marketing strategy and learn how a growing AI agency positions itself. You continuously experiment with new AI tools for content creation and share your findings with the team."
             ],
             requirements: [

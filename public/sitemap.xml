@@ -470,4 +470,80 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Careers - listing -->
+  <url>
+    <loc>https://aiheroes.io/nl/vacatures</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/careers</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Careers - job postings (Dutch) -->
+  <url>
+    <loc>https://aiheroes.io/nl/vacatures/ai-engineer</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/ai-engineer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/ai-engineer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/vacatures/ai-trainer</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/ai-trainer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/ai-trainer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/vacatures/sales-intern</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/sales-intern"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/sales-intern"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/nl/vacatures/marketing-intern</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/marketing-intern"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/marketing-intern"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Careers - job postings (English) -->
+  <url>
+    <loc>https://aiheroes.io/en/careers/ai-engineer</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/ai-engineer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/ai-engineer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/careers/ai-trainer</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/ai-trainer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/ai-trainer"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/careers/sales-intern</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/sales-intern"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/sales-intern"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiheroes.io/en/careers/marketing-intern</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://aiheroes.io/nl/vacatures/marketing-intern"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiheroes.io/en/careers/marketing-intern"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
