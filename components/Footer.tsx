@@ -131,8 +131,17 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
 
           {/* Consultancy Column */}
           <div>
-            <h3 className="font-serif text-lg mb-4 text-white">{lang === 'nl' ? 'Consultancy' : 'Consulting'}</h3>
+            <h3 className="font-serif text-lg mb-4 text-white">
+              <Link to={lang === 'nl' ? '/nl/diensten' : '/en/services'} className="hover:text-stone-300 transition-colors">
+                {lang === 'nl' ? 'Consultancy' : 'Consulting'}
+              </Link>
+            </h3>
             <ul className="space-y-2">
+              <li>
+                <Link to={lang === 'nl' ? '/nl/diensten/ai-bureau-nederland' : '/en/services/ai-agency-netherlands'} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {lang === 'nl' ? 'AI Bureau Nederland' : 'AI Agency Netherlands'}
+                </Link>
+              </li>
               {nav.services.children?.filter(c => c.category === 'consulting').map((item, idx) => (
                 <li key={idx}>
                   <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">

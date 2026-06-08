@@ -110,6 +110,42 @@
   to = "/en/legal/privacy"
   status = 301
 
+# Legacy WordPress pages that still rank -> closest current equivalent (preserve link authority)
+[[redirects]]
+  from = "/the-team/"
+  to = "/en/about/team"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home-nederlands/"
+  to = "/nl/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us/"
+  to = "/#contact"
+  status = 301
+
+[[redirects]]
+  from = "/design-track/"
+  to = "/en/services/custom-ai-solutions"
+  status = 301
+
+[[redirects]]
+  from = "/ai-that-makes-your-vision-real/"
+  to = "/en/services/custom-ai-solutions"
+  status = 301
+
+[[redirects]]
+  from = "/making-text-more-inclusive-with-ai/"
+  to = "/en/resources/ai-literacy"
+  status = 301
+
 # Old WordPress blog posts, categories, PDFs, signatures — gone
 [[redirects]]
   from = "/category/*"
@@ -148,8 +184,8 @@
 
 [[redirects]]
   from = "/5-ways-generative-*"
-  to = "/"
-  status = 410
+  to = "/en/resources/ai-strategy-guide"
+  status = 301
 
 [[redirects]]
   from = "/ai-search-*"
@@ -158,8 +194,8 @@
 
 [[redirects]]
   from = "/how-to-get-started-*"
-  to = "/"
-  status = 410
+  to = "/en/resources/ai-strategy-guide"
+  status = 301
 
 [[redirects]]
   from = "/guess-the-movie/*"
@@ -168,8 +204,8 @@
 
 [[redirects]]
   from = "/mastermind-form/*"
-  to = "/"
-  status = 410
+  to = "/#contact"
+  status = 301
 
 [[redirects]]
   from = "/signatures/*"

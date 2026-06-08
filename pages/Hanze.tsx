@@ -6,10 +6,20 @@ import { LevelSelector } from '../components/HanzeWizard/LevelSelector';
 import { ExerciseView } from '../components/HanzeWizard/ExerciseView';
 import { HANZE_CONTENT } from '../constants/hanzeContent';
 import { CONTENT } from '../constants';
+import { useSEO } from '../hooks/useSEO';
 
 type WizardStep = 'welcome' | 'exercise-select' | 'level-select' | 'exercise-view';
 
 export const Hanze: React.FC = () => {
+  // Internal workshop tool — keep out of the index (otherwise it inherits the homepage <title>).
+  useSEO({
+    title: 'AI Workshop',
+    description: 'Interactieve AI-oefeningen voor de Hanzehogeschool-workshop van AI Heroes.',
+    lang: 'nl',
+    path: '/hanze',
+    noindex: true
+  });
+
   const [step, setStep] = useState<WizardStep>('welcome');
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);

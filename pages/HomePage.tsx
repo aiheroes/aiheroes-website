@@ -20,9 +20,17 @@ function getInitialLanguage(forcedLang?: Language): Language {
   if (forcedLang) {
     return forcedLang;
   }
-  const stored = localStorage.getItem(LANG_STORAGE_KEY);
-  if (stored === 'nl' || stored === 'en') {
-    return stored;
+  // Guard browser globals so this is safe during static prerendering (runs in Node).
+  if (typeof window === 'undefined') {
+    return 'nl';
+  }
+  try {
+    const stored = localStorage.getItem(LANG_STORAGE_KEY);
+    if (stored === 'nl' || stored === 'en') {
+      return stored;
+    }
+  } catch {
+    // localStorage can throw (private mode, blocked cookies); fall through.
   }
   const browserLang = navigator.language || (navigator as any).userLanguage || '';
   if (browserLang.toLowerCase().startsWith('nl')) {
@@ -61,12 +69,12 @@ const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
 // SEO content per language
 const SEO_CONTENT = {
   nl: {
-    title: 'Full-Service AI Agency | Training, Consulting & Software',
-    description: 'AI Heroes is een full-service AI agency vanuit Groningen. Van change management tot technische implementatie. Training, consulting en software voor heel Europa.'
+    title: 'Full-Service AI Agency Nederland | Training, Consulting & Software',
+    description: 'AI Heroes is een full-service AI bureau uit Groningen, actief in heel Nederland en Europa. Van change management tot technische implementatie: training, consulting en software.'
   },
   en: {
-    title: 'Full-Service AI Agency | Training, Consulting & Software',
-    description: 'AI Heroes is a full-service AI agency based in Groningen. From change management to technical implementation. Training, consulting and software across Europe.'
+    title: 'Full-Service AI Agency Netherlands | Training, Consulting & Software',
+    description: 'AI Heroes is a full-service AI agency in the Netherlands, based in Groningen. From change management to technical implementation: AI training, consulting and software.'
   }
 };
 

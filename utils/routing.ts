@@ -7,6 +7,8 @@ export const LANG_STORAGE_KEY = 'aiheroes-lang';
  * saved preference (localStorage) -> browser language -> Dutch default.
  */
 export function detectVisitorLang(): Language {
+  // Guard browser globals so this is safe during static prerendering (runs in Node).
+  if (typeof window === 'undefined') return 'nl';
   try {
     const stored = localStorage.getItem(LANG_STORAGE_KEY);
     if (stored === 'nl' || stored === 'en') return stored;

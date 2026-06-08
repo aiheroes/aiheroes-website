@@ -48,6 +48,7 @@ const AIPrototypingNL = React.lazy(() => import('./pages/nl/diensten/AIPrototypi
 const AIIntegratieNL = React.lazy(() => import('./pages/nl/diensten/AIIntegratie').then(m => ({ default: m.AIIntegratieNL })));
 const AIDevelopmentTeamsNL = React.lazy(() => import('./pages/nl/diensten/AIDevelopmentTeams').then(m => ({ default: m.AIDevelopmentTeamsNL })));
 const DigitalTwinsNL = React.lazy(() => import('./pages/nl/diensten/DigitalTwins').then(m => ({ default: m.DigitalTwinsNL })));
+const AIBureauNederlandNL = React.lazy(() => import('./pages/nl/diensten/AIBureauNederland').then(m => ({ default: m.AIBureauNederlandNL })));
 
 const DienstenNL = React.lazy(() => import('./pages/nl/Diensten').then(m => ({ default: m.DienstenNL })));
 const ServicesEN = React.lazy(() => import('./pages/en/Services').then(m => ({ default: m.ServicesEN })));
@@ -72,6 +73,7 @@ const AIPrototypingEN = React.lazy(() => import('./pages/en/services/AIPrototypi
 const AIIntegrationEN = React.lazy(() => import('./pages/en/services/AIIntegration').then(m => ({ default: m.AIIntegrationEN })));
 const AIDevelopmentTeamsEN = React.lazy(() => import('./pages/en/services/AIDevelopmentTeams').then(m => ({ default: m.AIDevelopmentTeamsEN })));
 const DigitalTwinsEN = React.lazy(() => import('./pages/en/services/DigitalTwins').then(m => ({ default: m.DigitalTwinsEN })));
+const AIAgencyNetherlandsEN = React.lazy(() => import('./pages/en/services/AIAgencyNetherlands').then(m => ({ default: m.AIAgencyNetherlandsEN })));
 
 const OverOnsNL = React.lazy(() => import('./pages/nl/OverOns').then(m => ({ default: m.OverOnsNL })));
 const AanpakNL = React.lazy(() => import('./pages/nl/over-ons/Aanpak').then(m => ({ default: m.AanpakNL })));
@@ -154,6 +156,7 @@ function App() {
           <Route path="/nl/diensten/ai-integratie" element={<AIIntegratieNL />} />
           <Route path="/nl/diensten/ai-development-teams" element={<AIDevelopmentTeamsNL />} />
           <Route path="/nl/diensten/digital-twins" element={<DigitalTwinsNL />} />
+          <Route path="/nl/diensten/ai-bureau-nederland" element={<AIBureauNederlandNL />} />
 
           {/* English Service Pages */}
           <Route path="/en/services/ai-foundations" element={<AIFoundationsEN />} />
@@ -176,6 +179,7 @@ function App() {
           <Route path="/en/services/ai-integration" element={<AIIntegrationEN />} />
           <Route path="/en/services/ai-development-teams" element={<AIDevelopmentTeamsEN />} />
           <Route path="/en/services/digital-twins" element={<DigitalTwinsEN />} />
+          <Route path="/en/services/ai-agency-netherlands" element={<AIAgencyNetherlandsEN />} />
 
           {/* Dutch About Pages */}
           <Route path="/nl/over-ons" element={<OverOnsNL />} />

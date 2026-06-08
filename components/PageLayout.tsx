@@ -22,6 +22,7 @@ interface PageLayoutProps {
   trustedBy?: string[];
   heroExtra?: React.ReactNode;
   jsonLd?: object | object[];
+  seoTitle?: string;
 }
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
@@ -37,7 +38,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   ctaLabel,
   trustedBy,
   heroExtra,
-  jsonLd
+  jsonLd,
+  seoTitle
 }) => {
   const location = useLocation();
 
@@ -49,7 +51,8 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     lang,
     path: location.pathname,
     noindex,
-    jsonLd
+    jsonLd,
+    seoTitle
   });
   const content = CONTENT[lang];
   const heroRef = useRef<HTMLElement>(null);
