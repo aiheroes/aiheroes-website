@@ -1,4 +1,4 @@
-import { Content, Language } from './types';
+import type { Content, Language } from './types';
 
 export const CONTENT: Record<Language, Content> = {
   nl: {

@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Lang } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  subtitle?: string;
+  seoTitle?: string;
+  seoDescription: string;
+  noindex?: boolean;
+  jsonLd?: object | object[];
+  accentColor?: 'red' | 'blue';
+  pillarBadge?: string;
+  ctaLabel?: string;
+  trustedBy?: string[];
+}
+
+const {
+  lang, title, subtitle, seoTitle, seoDescription,
+  noindex, jsonLd, accentColor = 'red', pillarBadge, ctaLabel, trustedBy,
+} = Astro.props;
+
+const accentBorder = accentColor === 'red' ? 'border-brand-red' : 'border-brand-blue';
+const accentBg = accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue';
+const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
+const cta = ctaLabel ?? (lang === 'nl' ? 'Start gesprek' : 'Start conversation');
+const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
+---
+
+<BaseLayout lang={lang} title={title} seoTitle={seoTitle} description={seoDescription} noindex={noindex} jsonLd={jsonLd}>
+  <!-- Hero (id is a landmark for the navbar scroll-theme island, ported later) -->
+  <header id="page-hero" class={`pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}>
+    <div class="max-w-4xl mx-auto px-6">
+      {pillarBadge && (
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-white/70 border border-white/30 px-3 py-1 mb-4">{pillarBadge}</span>
+      )}
+      <h1 class="text-[clamp(1.875rem,_1.25rem+1.5vw,_3.75rem)] font-serif text-white mb-4">{title}</h1>
+      {subtitle && <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{subtitle}</p>}
+      <a href={contactHref} class={`inline-flex items-center gap-3 ${accentBg} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg`}>{cta}</a>
+      {trustedBy && trustedBy.length > 0 && (
+        <div class="mt-10 pt-6 border-t border-white/15">
+          <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">{trustedLabel}</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-1">
+            {trustedBy.map((n) => <span class="text-sm text-white/60 font-medium">{n}</span>)}
+          </div>
+        </div>
+      )}
+    </div>
+  </header>
+
+  <main class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <slot />
+    </div>
+  </main>
+</BaseLayout>

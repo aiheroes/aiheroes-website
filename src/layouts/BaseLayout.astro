@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import { hreflangPaths, type Lang } from '../data/i18n';
+import Navbar from '../components/static/Navbar.astro';
+import Footer from '../components/static/Footer.astro';
+
+export interface Props {
+  lang: Lang;
+  title: string;
+  /** Overrides the visible-title-derived <title> for keyword targeting only. */
+  seoTitle?: string;
+  description: string;
+  noindex?: boolean;
+  jsonLd?: object | object[];
+  ogImage?: string;
+}
+
+const {
+  lang,
+  title,
+  seoTitle,
+  description,
+  noindex = false,
+  jsonLd,
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const DOMAIN = 'https://aiheroes.io';
+// Canonical path: strip a trailing slash except for the root.
+const rawPath = Astro.url.pathname;
+const path = rawPath !== '/' ? rawPath.replace(/\/$/, '') : '/';
+const canonical = `${DOMAIN}${path}`;
+const fullTitle = `${seoTitle ?? title} | AI Heroes`;
+const { nl, en, xDefault } = hreflangPaths(path, lang);
+const ogLocale = lang === 'nl' ? 'nl_NL' : 'en_US';
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${DOMAIN}${ogImage}`;
+const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicons (light) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+    <!-- Favicons (dark, auto-swap on OS theme) -->
+    <link rel="icon" href="/favicon-white.ico" sizes="any" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-white-16.png" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-white-32.png" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-white-48.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-white-180.png" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-white-512.png" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" as="image" href="/hero-bg.webp" type="image/webp" />
+
+    <!-- Primary meta -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+    <meta name="author" content="AI Heroes" />
+    <meta name="google-site-verification" content="cDwNcWtvIDJx0kC5rIDIanesLuEY6_aVipJl-fZRdZI" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={lang === 'nl' ? 'en_US' : 'nl_NL'} />
+    <meta property="og:site_name" content="AI Heroes" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageUrl} />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="nl" href={`${DOMAIN}${nl}`} />
+    <link rel="alternate" hreflang="en" href={`${DOMAIN}${en}`} />
+    <link rel="alternate" hreflang="x-default" href={`${DOMAIN}${xDefault}`} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data -->
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-brand-light text-brand-dark font-sans overflow-x-hidden">
+    <Navbar lang={lang} path={path} />
+    <slot />
+    <Footer lang={lang} path={path} />
+
+    <!-- Hidden form definitions so Netlify detects them at build time (forms post to "/"). -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="organization" />
+      <input type="text" name="topics" />
+      <textarea name="message"></textarea>
+    </form>
+    <form name="application" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="position" />
+      <textarea name="motivation"></textarea>
+      <input type="file" name="cv" />
+    </form>
+  </body>
+</html>
