@@ -22,4 +22,23 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+// Case studies. Slugs are identical across languages (medux, olx, …) so files live
+// in nl/ and en/ subfolders; hreflang is derived from the path (cases is language-neutral).
+const cases = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/cases' }),
+  schema: z.object({
+    lang: z.enum(['nl', 'en']),
+    slug: z.string(),
+    title: z.string(),
+    subtitle: z.string().optional(),
+    seoTitle: z.string().optional(),
+    description: z.string(),
+    accentColor: z.enum(['red', 'blue']).default('red'),
+    pillarBadge: z.string().optional(),
+    client: z.string().optional(),
+    order: z.number().default(0),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, cases };
