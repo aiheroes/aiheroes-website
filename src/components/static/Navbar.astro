@@ -18,7 +18,7 @@ const links = [
   { label: nav.about.label, href: lang === 'nl' ? '/nl/over-ons' : '/en/about' },
   { label: nav.resources.label, href: lang === 'nl' ? '/nl/resources' : '/en/resources' },
 ];
-const contactLabel = CONTENT[lang].contact.label;
+const contactLabel = nav.contact.label;
 ---
 
 <header
@@ -29,7 +29,7 @@ const contactLabel = CONTENT[lang].contact.label;
   <div class="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <a href={homeHref} class="flex items-center" aria-label="AI Heroes home">
-        <Logo className="h-10 w-auto" variant="logo" colorVariant="white" data-navbar-logo />
+        <Logo className="h-10 w-auto" variant="wordmark" colorVariant="white" />
       </a>
 
       <!-- Desktop nav -->
