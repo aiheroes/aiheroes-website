@@ -1,0 +1,89 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import { ApplicationForm } from '../../../../components/ApplicationForm';
+import { CONTENT } from '../../../data/content';
+
+const DOMAIN = 'https://aiheroes.io';
+
+const employmentType = (type: string): string => {
+  const t = type.toLowerCase();
+  if (/stage|intern/.test(t)) return 'INTERN';
+  if (/(parttime|part-time|part time)/.test(t) && !/full/.test(t)) return 'PART_TIME';
+  return 'FULL_TIME';
+};
+
+export async function getStaticPaths() {
+  const items = CONTENT.en.careersPage.positions.items;
+  return items.map((position) => ({ params: { slug: position.id }, props: { position } }));
+}
+
+const { position } = Astro.props;
+const content = CONTENT.en.careersPage;
+const path = `/en/careers/${position.id}`;
+const accentColor = position.department === 'training' ? 'red' : 'blue';
+
+const descriptionHtml =
+  position.description.map((p) => `<p>${p}</p>`).join('') +
+  `<p><strong>What we're looking for</strong></p>` +
+  `<ul>${position.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>` +
+  `<p><strong>What we offer</strong></p>` +
+  `<ul>${position.offerings.map((o) => `<li>${o}</li>`).join('')}</ul>`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: position.title,
+  description: descriptionHtml,
+  datePosted: position.datePosted,
+  employmentType: employmentType(position.type),
+  url: `${DOMAIN}${path}`,
+  directApply: true,
+  hiringOrganization: { '@type': 'Organization', name: 'AI Heroes B.V.', sameAs: DOMAIN, logo: `${DOMAIN}/og-image.png` },
+  jobLocation: {
+    '@type': 'Place',
+    address: { '@type': 'PostalAddress', streetAddress: 'Aarhusweg 4-16', addressLocality: 'Groningen', postalCode: '9723 JJ', addressCountry: 'NL' },
+  },
+};
+---
+
+<SubpageLayout
+  lang="en"
+  title={position.title}
+  subtitle={position.summary}
+  seoDescription={`${position.summary} ${position.location}. Apply at AI Heroes.`}
+  accentColor={accentColor}
+  pillarBadge={position.departmentLabel}
+  showContactForm={false}
+  jsonLd={jsonLd}
+>
+  <a href="/en/careers" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-brand-blue transition-colors mb-8 no-underline">← All positions</a>
+
+  <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-500 mb-10">
+    <span class={position.department === 'training' ? 'font-medium text-brand-red' : 'font-medium text-brand-blue'}>{position.departmentLabel}</span>
+    <span>{position.location}</span>
+    <span>{position.hours}</span>
+    <span>{position.type}</span>
+  </div>
+
+  {position.description.map((p) => <p class="text-lg text-stone-700 leading-relaxed mb-4">{p}</p>)}
+
+  <h2 class="font-bold text-brand-dark mt-10 mb-3 text-sm uppercase tracking-wider">What we're looking for</h2>
+  <ul class="space-y-2 mb-8 list-disc ml-5 text-stone-700">
+    {position.requirements.map((req) => <li>{req}</li>)}
+  </ul>
+
+  <h2 class="font-bold text-brand-dark mt-10 mb-3 text-sm uppercase tracking-wider">What we offer</h2>
+  <ul class="space-y-2 mb-12 list-disc ml-5 text-stone-700">
+    {position.offerings.map((offer) => <li>{offer}</li>)}
+  </ul>
+
+  <div class="border-t border-stone-200 pt-12">
+    <ApplicationForm
+      lang="en"
+      content={content.applicationForm}
+      positions={content.positions.items}
+      preselectedPosition={position.title}
+      client:visible
+    />
+  </div>
+</SubpageLayout>
