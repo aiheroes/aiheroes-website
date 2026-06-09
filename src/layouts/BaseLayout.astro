@@ -14,6 +14,8 @@ export interface Props {
   noindex?: boolean;
   jsonLd?: object | object[];
   ogImage?: string;
+  /** Skip the Astro Navbar + Footer (e.g. the homepage island renders its own). */
+  noChrome?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   noindex = false,
   jsonLd,
   ogImage = '/og-image.png',
+  noChrome = false,
 } = Astro.props;
 
 const DOMAIN = 'https://aiheroes.io';
@@ -107,9 +110,9 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <ClientRouter />
   </head>
   <body class="min-h-screen bg-brand-light text-brand-dark font-sans overflow-x-hidden">
-    <Navbar lang={lang} path={path} />
+    {!noChrome && <Navbar lang={lang} path={path} />}
     <slot />
-    <Footer lang={lang} path={path} />
+    {!noChrome && <Footer lang={lang} path={path} />}
 
     <!-- Hidden form definitions so Netlify detects them at build time (forms post to "/"). -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>

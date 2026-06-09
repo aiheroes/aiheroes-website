@@ -1,4 +1,5 @@
 // @ts-check
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
@@ -19,5 +20,11 @@ export default defineConfig({
   vite: {
     // Tailwind 4 the recommended way for Astro (NOT @astrojs/tailwind, which is the v3 pattern).
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        // Reuse existing React page/components as islands without a Router.
+        'react-router-dom': fileURLToPath(new URL('./src/lib/react-router-shim.tsx', import.meta.url)),
+      },
+    },
   },
 });
