@@ -18,7 +18,7 @@ const links = [
   { label: nav.about.label, href: lang === 'nl' ? '/nl/over-ons' : '/en/about' },
   { label: nav.resources.label, href: lang === 'nl' ? '/nl/resources' : '/en/resources' },
 ];
-const ctaLabel = lang === 'nl' ? 'Start gesprek' : 'Start conversation';
+const contactLabel = CONTENT[lang].contact.label;
 ---
 
 <header
@@ -42,7 +42,7 @@ const ctaLabel = lang === 'nl' ? 'Start gesprek' : 'Start conversation';
           <span class="text-white/30">|</span>
           {lang === 'en' ? <span class="font-bold text-white">EN</span> : <a href={altUrl} class="text-white/70 hover:text-white">EN</a>}
         </div>
-        <a href={contactHref} class="bg-brand-red text-white px-5 py-2.5 text-sm font-medium hover:bg-opacity-90 transition-all">{ctaLabel}</a>
+        <a href={contactHref} class="bg-white text-brand-dark px-5 py-2 text-sm font-medium rounded-sm hover:bg-stone-200 transition-colors">{contactLabel}</a>
       </nav>
 
       <!-- Mobile toggle -->
@@ -58,7 +58,7 @@ const ctaLabel = lang === 'nl' ? 'Start gesprek' : 'Start conversation';
       {links.map((l) => (
         <a href={l.href} class="text-white/90 py-1">{l.label}</a>
       ))}
-      <a href={contactHref} class="bg-brand-red text-white px-5 py-3 text-center font-medium mt-2">{ctaLabel}</a>
+      <a href={contactHref} class="bg-brand-red text-white px-5 py-3 text-center font-medium mt-2">{contactLabel}</a>
       <div class="flex items-center gap-3 pt-2 text-white/80">
         {lang === 'nl' ? <span class="font-bold text-white">NL</span> : <a href={altUrl}>NL</a>}
         <span class="text-white/30">|</span>
