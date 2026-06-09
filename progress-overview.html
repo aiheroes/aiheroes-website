@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Heroes — SEO & Re-platform Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#D9534F; --blue:#2563EB; --dark:#1C1917; --light:#FDFCF8;
+    --stone:#78716c; --stone2:#a8a29e; --line:#e7e5e4; --green:#16a34a; --amber:#d97706;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:var(--light);color:var(--dark);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:48px 28px 80px}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,1.2rem+2.2vw,3rem);font-weight:700;letter-spacing:-.01em}
+  h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;margin:0 0 18px}
+  .sub{color:var(--stone);font-size:1.05rem;margin-top:8px}
+  .meta{color:var(--stone2);font-size:.8rem;text-transform:uppercase;letter-spacing:.18em;font-weight:600;margin-bottom:14px}
+  section{margin-top:52px}
+  /* Timeline */
+  .timeline{display:flex;flex-wrap:wrap;gap:0;border-left:2px solid var(--line);padding-left:0;margin-left:6px}
+  .step{position:relative;padding:0 0 22px 28px;border-left:2px solid var(--line);margin-left:-2px}
+  .step:last-child{border-color:transparent}
+  .step::before{content:'';position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--light)}
+  .step.now::before{background:var(--amber)}
+  .step .t{font-weight:600;font-size:.97rem}
+  .step .d{color:var(--stone);font-size:.86rem;margin-top:2px}
+  /* Cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .card .h{font-weight:600;font-size:.95rem;display:flex;align-items:center;gap:8px}
+  .card .s{color:var(--stone);font-size:.82rem;margin-top:6px}
+  .pill{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .live{background:#dcfce7;color:#166534}
+  .proven{background:#dbeafe;color:#1e40af}
+  .prog{background:#fef3c7;color:#92400e}
+  .todo{background:#f5f5f4;color:#78716c}
+  .check{color:var(--green);font-weight:700}
+  /* Phase bars */
+  .phase{display:grid;grid-template-columns:170px 1fr 56px;align-items:center;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border-bottom:none}
+  .phase .name{font-weight:600;font-size:.92rem}
+  .phase .name small{display:block;font-weight:400;color:var(--stone2);font-size:.74rem;margin-top:1px}
+  .bar{height:9px;border-radius:999px;background:var(--line);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:999px}
+  .fill-blue{background:var(--blue)} .fill-green{background:var(--green)} .fill-amber{background:var(--amber)}
+  .pct{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;font-size:.85rem;color:var(--stone)}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 22px}
+  .banner{background:var(--dark);color:#fff;border-radius:12px;padding:22px 26px;display:flex;gap:18px;align-items:flex-start}
+  .banner .ic{font-size:1.6rem;line-height:1}
+  .banner h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:4px}
+  .banner p{color:rgba(255,255,255,.78);font-size:.9rem}
+  ul.next{list-style:none;display:grid;gap:9px}
+  ul.next li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem}
+  ul.next li .n{flex:none;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  @media(max-width:720px){.two{grid-template-columns:1fr}.phase{grid-template-columns:120px 1fr 44px;gap:10px}}
+  .foot{margin-top:54px;color:var(--stone2);font-size:.78rem;border-top:1px solid var(--line);padding-top:16px}
+  .accent{height:4px;width:60px;background:var(--red);border-radius:2px;margin:18px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="meta">Progress overview · 8 June 2026</div>
+  <h1>AI Heroes — SEO &amp; Re-platform</h1>
+  <p class="sub">From a one-word rename to a full SEO recovery (live) and a content-ready Astro re-platform (in&nbsp;progress).</p>
+  <div class="accent"></div>
+
+  <!-- JOURNEY -->
+  <section>
+    <h2>The journey</h2>
+    <div class="timeline">
+      <div class="step"><div class="t">Renamed “Content Creator” → “Marketing Intern”</div><div class="d">The small task that started it.</div></div>
+      <div class="step"><div class="t">Per-job SEO pages + JobPosting schema</div><div class="d">Each vacancy now its own indexable, Google-for-Jobs-eligible page.</div></div>
+      <div class="step"><div class="t">Full SEO + GEO audit</div><div class="d">Search Console data revealed: 76% branded traffic, money terms on page 2–4, a WordPress→React authority leak.</div></div>
+      <div class="step"><div class="t">SEO Recovery — Phases 1 &amp; 2 → shipped to production</div><div class="d">Migration redirects, national titles, AI-bureau landing pages, sitemap fixes.</div></div>
+      <div class="step"><div class="t">Decision: re-platform to Astro</div><div class="d">CSR ceiling + the move to invest in content marketing made it worth it.</div></div>
+      <div class="step now"><div class="t">Astro Phase 1 — foundation &amp; content engine proven</div><div class="d">You are here. Branch <code>feat/astro-migration</code>, building toward a deploy preview.</div></div>
+    </div>
+  </section>
+
+  <!-- LIVE -->
+  <section>
+    <h2>Live on aiheroes.io now</h2>
+    <div class="grid">
+      <div class="card"><div class="h"><span class="check">✓</span> Marketing Intern rename</div><div class="s"><span class="pill live">Live</span></div></div>
+      <div class="card"><div class="h"><span class="check">✓</span> Per-job pages + schema</div><div class="s">JobPosting structured data <span class="pill live">Live</span></div></div>
+      <div class="card"><div class="h"><span class="check">✓</span> Migration redirects</div><div class="s">Authority leak stopped <span class="pill live">Live</span></div></div>
+      <div class="card"><div class="h"><span class="check">✓</span> National targeting</div><div class="s">Titles + AI-bureau/agency pages <span class="pill live">Live</span></div></div>
+      <div class="card"><div class="h"><span class="check">✓</span> Sitemap + crawl fixes</div><div class="s"><span class="pill live">Live</span></div></div>
+    </div>
+  </section>
+
+  <!-- ASTRO -->
+  <section>
+    <h2>Astro re-platform — branch progress</h2>
+    <div class="panel">
+      <div class="phase">
+        <div class="name">Phase 1 — Foundation<small>scaffold · SEO · nav · layouts</small></div>
+        <div class="bar"><i class="fill-amber" style="width:70%"></i></div><div class="pct">70%</div>
+      </div>
+      <div class="phase">
+        <div class="name">Content engine<small>blog / Content Collections</small></div>
+        <div class="bar"><i class="fill-green" style="width:90%"></i></div><div class="pct">90%</div>
+      </div>
+      <div class="phase">
+        <div class="name">Phase 2 — Bulk pages<small>42 service + about + legal</small></div>
+        <div class="bar"><i class="fill-blue" style="width:4%"></i></div><div class="pct">4%</div>
+      </div>
+      <div class="phase">
+        <div class="name">Phase 3 — Articles &amp; cases<small>migrate prose to MDX</small></div>
+        <div class="bar"><i class="fill-blue" style="width:8%"></i></div><div class="pct">8%</div>
+      </div>
+      <div class="phase">
+        <div class="name">Phase 4 — Forms &amp; dynamic<small>careers · forms · events</small></div>
+        <div class="bar"><i class="fill-blue" style="width:0%"></i></div><div class="pct">0%</div>
+      </div>
+      <div class="phase">
+        <div class="name">Phase 5 — QA &amp; cutover<small>parity · go-live</small></div>
+        <div class="bar"><i class="fill-blue" style="width:0%"></i></div><div class="pct">0%</div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px" class="grid">
+      <div class="card"><div class="h">Toolchain</div><div class="s">Astro 5 · React 19 · Tailwind 4 <span class="pill proven">Proven</span></div></div>
+      <div class="card"><div class="h">SEO baked into HTML</div><div class="s">title · canonical · hreflang · JSON-LD <span class="pill proven">Proven</span></div></div>
+      <div class="card"><div class="h">Zero-JS static pages</div><div class="s">React only where needed <span class="pill proven">Proven</span></div></div>
+      <div class="card"><div class="h">Homepage + nav polish</div><div class="s">snap-scroll + split-theme <span class="pill prog">Needs preview QA</span></div></div>
+    </div>
+  </section>
+
+  <!-- CONTENT BANNER -->
+  <section>
+    <div class="banner">
+      <div class="ic">🎯</div>
+      <div>
+        <h3>Your content engine is working</h3>
+        <p>A new blog post is now a single Markdown file — it comes out with full SEO, an Article schema (rich-result + AI-citation ready) and NL/EN hreflang, automatically. This is the payoff for investing in content marketing, and it's already proven on the branch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT + OFFSITE -->
+  <section class="two">
+    <div>
+      <h2>What's next</h2>
+      <ul class="next">
+        <li><span class="n">1</span><span><strong>Open the PR</strong> → get the Netlify preview URL.</span></li>
+        <li><span class="n">2</span><span><strong>Homepage + navbar</strong> built against the preview (visual QA).</span></li>
+        <li><span class="n">3</span><span><strong>Bulk-port</strong> the 42 service + remaining pages.</span></li>
+        <li><span class="n">4</span><span><strong>Forms, careers, events</strong>, then parity QA &amp; cutover.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Your off-site track</h2>
+      <ul class="next">
+        <li><span class="n" style="background:var(--red)">A</span><span><strong>Bing Webmaster Tools</strong> — feeds ChatGPT (top NL lever).</span></li>
+        <li><span class="n" style="background:var(--red)">B</span><span><strong>Google Business Profile</strong> — category + reviews.</span></li>
+        <li><span class="n" style="background:var(--red)">C</span><span><strong>Listings &amp; listicles</strong> — Clutch, Sortlist, GoodFirms, NL directories.</span></li>
+        <li><span class="n" style="background:var(--red)">D</span><span><strong>Start publishing</strong> — the engine is ready for you.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="foot">
+    Live work deployed to <strong>aiheroes.io</strong> · Re-platform on branch <strong>feat/astro-migration</strong> (8 commits) · Full detail in <strong>AUDIT-SEO-GEO-2026-06.md</strong> &amp; <strong>ASTRO-MIGRATION-PLAN.md</strong>.
+  </div>
+
+</div>
+</body>
+</html>
