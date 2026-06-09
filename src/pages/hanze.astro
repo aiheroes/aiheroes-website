@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HanzeIsland from '../components/islands/HanzeIsland';
+---
+
+<BaseLayout
+  lang="nl"
+  title="AI Workshop"
+  description="Interactieve AI-oefeningen voor de Hanzehogeschool-workshop van AI Heroes."
+  noindex
+  noChrome
+>
+  <HanzeIsland client:load />
+</BaseLayout>
