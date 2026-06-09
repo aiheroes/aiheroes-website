@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { PageContactForm } from '../../components/PageContactForm';
 import type { Lang } from '../data/i18n';
 
 interface Props {
@@ -14,11 +15,13 @@ interface Props {
   pillarBadge?: string;
   ctaLabel?: string;
   trustedBy?: string[];
+  showContactForm?: boolean;
 }
 
 const {
   lang, title, subtitle, seoTitle, seoDescription,
   noindex, jsonLd, accentColor = 'red', pillarBadge, ctaLabel, trustedBy,
+  showContactForm = true,
 } = Astro.props;
 
 const accentBorder = accentColor === 'red' ? 'border-brand-red' : 'border-brand-blue';
@@ -54,4 +57,12 @@ const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
       <slot />
     </div>
   </main>
+
+  {showContactForm && (
+    <section id="contact-form" class="py-16 md:py-24 bg-white border-t border-stone-200">
+      <div class="max-w-4xl mx-auto px-6">
+        <PageContactForm lang={lang} accentColor={accentColor} preselectedTopic={pillarBadge} client:visible />
+      </div>
+    </section>
+  )}
 </BaseLayout>
