@@ -25,7 +25,13 @@ const articles = defineCollection({
 // Case studies. Slugs are identical across languages (medux, olx, …) so files live
 // in nl/ and en/ subfolders; hreflang is derived from the path (cases is language-neutral).
 const cases = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/cases' }),
+  // Slugs repeat across languages (nl/olx, en/olx), so derive a unique id from the
+  // full relative path including the lang subfolder — the default basename id collides.
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/cases',
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),
+  }),
   schema: z.object({
     lang: z.enum(['nl', 'en']),
     slug: z.string(),

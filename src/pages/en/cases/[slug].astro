@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from 'astro:content';
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft);
+  return items.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<SubpageLayout
+  lang="en"
+  title={d.title}
+  subtitle={d.subtitle}
+  seoTitle={d.seoTitle}
+  seoDescription={d.description}
+  accentColor={d.accentColor}
+  pillarBadge={d.pillarBadge}
+>
+  <div class="prose prose-lg max-w-none">
+    <Content />
+  </div>
+</SubpageLayout>
