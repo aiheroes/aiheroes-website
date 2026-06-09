@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Astro 5 requires a modern Node. Pin it so Netlify preview/branch builds don't fail.
+[build.environment]
+  NODE_VERSION = "20"
+
 # Prefix-less entry points -> language-prefixed pages (301 for SEO).
 # Only the slugs that are unambiguously one language live here; language-neutral
 # slugs (e.g. /ai-salon, /resources) are resolved client-side in BarePathRedirect
