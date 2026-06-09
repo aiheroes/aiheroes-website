@@ -67,6 +67,34 @@
   to = "/en/press"
   status = 301
 
+# Language-neutral bare paths (slug is identical in NL and EN) -> NL default.
+[[redirects]]
+  from = "/ai-salon"
+  to = "/nl/ai-salon"
+  status = 301
+[[redirects]]
+  from = "/resources"
+  to = "/nl/resources"
+  status = 301
+[[redirects]]
+  from = "/cases/*"
+  to = "/nl/cases/:splat"
+  status = 301
+
+# Contact convenience paths -> homepage contact anchor (the React ContactRedirect).
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
+[[redirects]]
+  from = "/nl/contact"
+  to = "/#contact"
+  status = 301
+[[redirects]]
+  from = "/en/contact"
+  to = "/en#contact"
+  status = 301
+
 # Redirect old SpecialistischeTracks URLs to Maatwerk/Custom pages
 [[redirects]]
   from = "/nl/diensten/specialistische-tracks"
@@ -127,7 +155,7 @@
 
 [[redirects]]
   from = "/home-nederlands/"
-  to = "/nl/"
+  to = "/"
   status = 301
 
 [[redirects]]
