@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DienstenIsland from '../../../components/islands/DienstenIsland';
+import { CONTENT } from '../../../data/content';
+
+const faq = CONTENT.en.servicesPage!.faq;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<BaseLayout
+  lang="en"
+  title="AI Services"
+  seoTitle="AI Services across the Netherlands: Training, Consulting & Software"
+  description="Explore AI Heroes' services for organisations across the Netherlands: from AI training and consulting to custom software. All under one roof, based in Groningen."
+  jsonLd={faqSchema}
+  noChrome
+>
+  <DienstenIsland lang="en" client:load />
+</BaseLayout>

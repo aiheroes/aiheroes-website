@@ -1,0 +1,315 @@
+@import "tailwindcss";
+
+/* Custom theme extending Tailwind defaults */
+@theme {
+  /* Font families */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-display: 'Playfair Display', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Brand colors */
+  --color-brand-red: #D9534F;
+  --color-brand-blue: #2563EB;
+  --color-brand-taupe: #A47E68;
+  --color-brand-light: #FDFCF8;
+  --color-brand-dark: #1C1917;
+  --color-brand-stone: #E7E5E4;
+  --color-brand-sand: #F5F5F4;
+
+  /* Animations */
+  --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-ken-burns: ken-burns 20s ease-out infinite alternate;
+  --animate-fadeIn: fadeIn 0.4s ease-out both;
+  --animate-fade-in: dropdown-fade-in 0.15s ease-out both;
+  --animate-image-fade: image-fade 0.6s ease-out both;
+
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ken-burns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes dropdown-fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes image-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+}
+
+@keyframes arrow-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow-drift-x {
+  0%, 100% { left: -10%; }
+  30% { left: 70%; }
+  70% { left: 20%; }
+}
+
+@keyframes glow-drift-x2 {
+  0%, 100% { left: 60%; }
+  40% { left: -15%; }
+  75% { left: 45%; }
+}
+
+@keyframes glow-drift-y {
+  0%, 100% { top: -20%; }
+  50% { top: 80%; }
+}
+
+@keyframes glow-drift-y1 {
+  0%, 100% { top: 70%; }
+  35% { top: -10%; }
+  65% { top: 50%; }
+}
+
+/* Base styles */
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FDFCF8;
+}
+
+/* Hide scrollbar for clean presentation but allow functionality */
+.snap-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.snap-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Text wrap utilities for preventing orphans */
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Navbar blur transition styles */
+.navbar-blur,
+.navbar-clear {
+  -webkit-transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
+  transition: -webkit-backdrop-filter 300ms ease-out, backdrop-filter 300ms ease-out, background-color 300ms ease-out;
+}
+.navbar-blur {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.navbar-blur-dark {
+  background-color: rgba(28, 25, 23, 0.75);
+}
+.navbar-blur-light {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+.navbar-clear {
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+}
+.navbar-clear-dark {
+  /* Use solid with transparency instead of gradient for smooth transition */
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.navbar-clear-light {
+  background-color: transparent;
+}
+
+/* Hanze Workshop specific styles — scoped to exclude .not-prose sections.
+   :where() gives zero specificity so Tailwind utility classes always win. */
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(h2),
+:where(.prose) > :where(h2) {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-brand-dark);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(h3),
+:where(.prose) > :where(h3) {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #334155;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(p),
+:where(.prose) > :where(p) {
+  color: #475569;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(ul),
+:where(.prose) > :where(ul) {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(li),
+:where(.prose) > :where(li) {
+  margin-bottom: 0.5rem;
+}
+
+:where(.prose) :where(:not(.not-prose, .not-prose *)) :where(strong),
+:where(.prose) > :where(strong) {
+  color: #334155;
+  font-weight: 600;
+}
+
+.example-badge {
+  display: inline-block;
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #dcfce7;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.example-callout {
+  background: #f1f5f9;
+  border-left: 5px solid #2563eb;
+  padding: 18px 20px;
+  border-radius: 8px;
+  margin: 16px 0 22px;
+}
+
+.example-callout h3 {
+  color: #1e293b;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.example-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 14px 0 22px;
+}
+
+@media(min-width: 860px) {
+  .example-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.example-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 18px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.example-card.level1 {
+  background: #fff1f2;
+  border-color: #ffe4e6;
+}
+
+.example-card.level1 h3 {
+  color: #be123c;
+}
+
+.example-card.level2 {
+  background: #fff7ed;
+  border-color: #ffedd5;
+}
+
+.example-card.level4 {
+  background: #f0fdf4;
+  border-color: #dcfce7;
+}
+
+.example-card h3 {
+  color: #1e293b;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.example-card ul {
+  margin-left: 1.25rem;
+  color: #475569;
+}
+
+.example-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Image loading styles */
+img {
+  background-color: #1c1917; /* AIH-dark color as placeholder */
+}
+
+img.loaded {
+  animation: image-fade 0.6s ease-out both;
+}
+
+/* Don't apply the dark image placeholder to third-party widget images injected
+   outside our control (e.g. Luma's modal + close-button X icon), where it would
+   show a dark box behind a transparent SVG. */
+.luma-checkout--overlay img,
+.luma-checkout--close-btn img {
+  background-color: transparent;
+}
+
+/* DarkBox component - override prose styles with specificity */
+.dark-box-content h2,
+.dark-box-content h3,
+.dark-box-content h4 {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-family: var(--font-serif);
+}
+
+.dark-box-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.dark-box-content h4 {
+  margin-bottom: 0.75rem;
+}
+
+.dark-box-content p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.75;
+}
+
+.dark-box-content ul,
+.dark-box-content li {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark-box-content strong {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600;
+}

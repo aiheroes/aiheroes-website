@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Astro 5 requires a modern Node. Pin it so Netlify preview/branch builds don't fail.
+[build.environment]
+  NODE_VERSION = "20"
+
 # Prefix-less entry points -> language-prefixed pages (301 for SEO).
 # Only the slugs that are unambiguously one language live here; language-neutral
 # slugs (e.g. /ai-salon, /resources) are resolved client-side in BarePathRedirect
@@ -61,6 +65,34 @@
 [[redirects]]
   from = "/press"
   to = "/en/press"
+  status = 301
+
+# Language-neutral bare paths (slug is identical in NL and EN) -> NL default.
+[[redirects]]
+  from = "/ai-salon"
+  to = "/nl/ai-salon"
+  status = 301
+[[redirects]]
+  from = "/resources"
+  to = "/nl/resources"
+  status = 301
+[[redirects]]
+  from = "/cases/*"
+  to = "/nl/cases/:splat"
+  status = 301
+
+# Contact convenience paths -> homepage contact anchor (the React ContactRedirect).
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
+[[redirects]]
+  from = "/nl/contact"
+  to = "/#contact"
+  status = 301
+[[redirects]]
+  from = "/en/contact"
+  to = "/en#contact"
   status = 301
 
 # Redirect old SpecialistischeTracks URLs to Maatwerk/Custom pages
@@ -123,7 +155,7 @@
 
 [[redirects]]
   from = "/home-nederlands/"
-  to = "/nl/"
+  to = "/"
   status = 301
 
 [[redirects]]
@@ -217,8 +249,5 @@
   to = "/"
   status = 410
 
-# Handle SPA routing - redirect all routes to index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Astro generates real static pages — no SPA fallback. Unknown paths fall through
+# to Astro's 404 page. (The legacy `/* -> /index.html 200` rule was removed here.)

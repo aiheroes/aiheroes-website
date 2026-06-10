@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="nl"
+  title="Pagina niet gevonden"
+  description="Pagina niet gevonden."
+  noindex
+  noChrome
+>
+  <!--
+    Bare-path catch-all. Mirrors the old SPA BarePathRedirect: a prefix-less URL
+    (e.g. /over-ons, /about, /ai-salon) is resolved to its language-prefixed page
+    in the browser. Language-specific slugs already have server-side 301s in
+    netlify.toml; this handles the long tail and visitor-language-based neutral slugs.
+  -->
+  <script is:inline>
+    (function () {
+      var NL_ONLY = ['diensten','over-ons','ai-voor-developers','maatwerk-ai-oplossingen','digitale-onafhankelijkheid','ai-implementatiebegeleiding','procesanalyse','ai-integratie','aanpak','ai-geletterdheid','ai-strategie-gids','voorwaarden','vacatures','pers','menu'];
+      var EN_ONLY = ['services','about','ai-for-developers','custom-ai-solutions','digital-independence','ai-implementation-guidance','process-analysis','ai-integration','approach','ai-literacy','ai-strategy-guide','terms','careers','press'];
+      function visitorLang() {
+        try {
+          var s = localStorage.getItem('aiheroes-lang');
+          if (s === 'nl' || s === 'en') return s;
+        } catch (e) {}
+        var b = (navigator.language || '').toLowerCase();
+        return b.indexOf('nl') === 0 ? 'nl' : 'en';
+      }
+      var path = window.location.pathname;
+      var segments = path.split('/').filter(Boolean);
+      if (segments.length === 0) return;
+      if (segments[0] === 'nl' || segments[0] === 'en') return; // already prefixed -> genuine 404
+      var lang = null;
+      for (var i = 0; i < segments.length; i++) {
+        if (NL_ONLY.indexOf(segments[i]) !== -1) { lang = 'nl'; break; }
+        if (EN_ONLY.indexOf(segments[i]) !== -1) { lang = 'en'; break; }
+      }
+      if (!lang) lang = visitorLang();
+      window.location.replace('/' + lang + '/' + segments.join('/') + window.location.search + window.location.hash);
+    })();
+  </script>
+
+  <main class="min-h-[70vh] flex items-center justify-center px-6 py-24 bg-brand-light">
+    <div class="text-center max-w-lg">
+      <p class="text-sm font-bold uppercase tracking-widest text-brand-red mb-4">404</p>
+      <h1 class="text-3xl md:text-5xl font-serif text-brand-dark mb-4">Pagina niet gevonden</h1>
+      <p class="text-stone-600 mb-8">Deze pagina bestaat niet (meer). Ga terug naar de homepage of bekijk onze diensten.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/" class="bg-brand-dark text-white px-6 py-3 text-sm font-medium hover:bg-stone-800 transition-colors">Naar home</a>
+        <a href="/nl/diensten" class="border border-stone-300 text-brand-dark px-6 py-3 text-sm font-medium hover:bg-white transition-colors">Bekijk diensten</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

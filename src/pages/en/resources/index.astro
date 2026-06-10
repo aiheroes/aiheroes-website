@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const articles = (await getCollection('articles', (e) => e.data.lang === 'en' && !e.data.draft))
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
+---
+
+<SubpageLayout
+  lang="en"
+  title="Resources"
+  subtitle="Insights, practical guides and AI know-how for organisations across the Netherlands."
+  seoDescription="AI resources from AI Heroes: practical guides and insights on AI literacy, AI strategy and more. From a full-service AI agency based in Groningen."
+  accentColor="blue"
+>
+  <div class="grid md:grid-cols-2 gap-6 not-prose">
+    {articles.map((a) => (
+      <a href={`/en/resources/${a.data.slug}`} class="group block p-6 bg-white border border-stone-200 hover:border-brand-blue transition-colors">
+        <p class="text-xs uppercase tracking-wider text-stone-400 mb-2">{fmt(a.data.publishDate)}</p>
+        <h2 class="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand-blue transition-colors">{a.data.title}</h2>
+        <p class="text-stone-600 text-sm leading-relaxed">{a.data.description}</p>
+      </a>
+    ))}
+  </div>
+</SubpageLayout>

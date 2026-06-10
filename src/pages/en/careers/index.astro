@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CareersIsland from '../../../components/islands/CareersIsland';
+import { CONTENT } from '../../../data/content';
+
+const content = CONTENT.en.careersPage;
+---
+
+<BaseLayout
+  lang="en"
+  title={content.hero.title}
+  description="Work at AI Heroes: explore our open positions and join a growing AI agency in Groningen. AI Engineer, Trainer and more."
+  noChrome
+>
+  <CareersIsland lang="en" client:load />
+</BaseLayout>

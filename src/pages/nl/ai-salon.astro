@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AISalonIsland from '../../components/islands/AISalonIsland';
+
+const description =
+  'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.';
+
+const eventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'AI Salon Groningen · Kick-Off',
+  startDate: '2026-09-03T17:30:00+02:00',
+  endDate: '2026-09-03T21:00:00+02:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'Groningen, centrum',
+    address: { '@type': 'PostalAddress', addressLocality: 'Groningen', addressCountry: 'NL' },
+  },
+  image: ['https://aiheroes.io/og-image.png'],
+  description,
+  organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://lu.ma/aisalongroningen',
+  },
+};
+---
+
+<BaseLayout
+  lang="nl"
+  title="AI Salon Groningen · Kick-Off"
+  description={description}
+  jsonLd={eventSchema}
+  noChrome
+>
+  <AISalonIsland lang="nl" client:load />
+</BaseLayout>
