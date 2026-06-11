@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import { hreflangPaths, type Lang } from '../data/i18n';
+import { PROFESSIONAL_SERVICE_SCHEMA } from '../data/schema';
 import Navbar from '../components/static/Navbar.astro';
 import Footer from '../components/static/Footer.astro';
 
@@ -38,7 +39,12 @@ const fullTitle = `${seoTitle ?? title} | AI Heroes`;
 const { nl, en, xDefault } = hreflangPaths(path, lang);
 const ogLocale = lang === 'nl' ? 'nl_NL' : 'en_US';
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${DOMAIN}${ogImage}`;
-const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+// Organization schema ships on every page (entity grounding for search + AI engines),
+// unless the page provides its own org-level block (e.g. a LocalBusiness variant).
+const ORG_TYPES = ['ProfessionalService', 'LocalBusiness', 'Organization'];
+const hasOwnOrgSchema = pageSchemas.some((s) => ORG_TYPES.includes(s['@type']));
+const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ...pageSchemas];
 ---
 
 <!doctype html>
