@@ -1,0 +1,133 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import { PROFESSIONAL_SERVICE_SCHEMA } from '../../../data/schema';
+
+const FAQ = [
+  {
+    q: 'What does an AI agency in Groningen offer?',
+    a: 'AI Heroes covers the full spectrum: AI readiness scans and roadmaps (consulting), workshops and AI literacy programs (training), and custom AI development from prototype to production (software). One partner from change management to technical implementation.',
+  },
+  {
+    q: 'Why is Groningen called the AI Capital of Europe?',
+    a: 'The AI Factory brings EUR 200 million of AI compute and infrastructure to Groningen, operational from 2026-2027. Around it sits a fast-growing ecosystem of universities, startups and established companies applying AI in practice.',
+  },
+  {
+    q: 'Do you work with international clients?',
+    a: 'Yes. Our client list includes OLX (Poland), iFood (Brazil) and InnoEnergy (EU-wide). For international firms scouting the Groningen AI ecosystem, we are the local partner with European data sovereignty built in: GDPR-compliant, EU AI Act ready, no vendor lock-in.',
+  },
+  {
+    q: 'How fast can we start?',
+    a: 'An introductory call is usually scheduled within a week. An AI readiness assessment takes 1 to 3 days, and for software we build working prototypes in days: Trabu went from idea to working product in 6 days.',
+  },
+];
+
+const PAGE_URL = 'https://aiheroes.io/en/services/ai-agency-groningen';
+
+const localBusinessSchema = {
+  ...PROFESSIONAL_SERVICE_SCHEMA,
+  url: PAGE_URL,
+  description:
+    'Full-service AI agency in Groningen, the Netherlands: training, consulting and custom AI software. From change management to technical implementation, for all of Europe.',
+  areaServed: [
+    { '@type': 'City', name: 'Groningen' },
+    { '@type': 'Place', name: 'Northern Netherlands' },
+    { '@type': 'Place', name: 'European Union' },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/en' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aiheroes.io/en/services' },
+    { '@type': 'ListItem', position: 3, name: 'AI Agency Groningen', item: PAGE_URL },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<SubpageLayout
+  lang="en"
+  title="AI Agency Groningen"
+  subtitle="The full-service AI agency in the AI Capital of Europe. Training, consulting and software for organisations in Groningen and across Europe."
+  seoTitle="AI Agency Groningen | Training, Consulting & Software"
+  seoDescription="Looking for an AI agency or consultancy in Groningen? AI Heroes offers readiness assessments, roadmaps, training and custom AI development from the AI Capital of Europe."
+  accentColor="red"
+  ctaLabel="Schedule an introduction"
+  trustedBy={["Hanze", "050-IT", "Medux", "OLX Poland"]}
+  jsonLd={[localBusinessSchema, breadcrumbSchema, faqSchema]}
+>
+  <div class="prose prose-lg max-w-none">
+    <p class="text-xl text-stone-700 leading-relaxed mb-8">
+      AI Heroes is an AI agency in Groningen, the Netherlands, helping organisations from first idea to working AI solution. Three disciplines under one roof: training, consulting and software development. Since 2019 we have helped over 50 organisations, from Northern Dutch SMEs to the Dutch House of Representatives and international clients like OLX and iFood.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Groningen is the AI Capital of Europe</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">
+      The AI Factory brings EUR 200 million of AI compute and infrastructure to Groningen, operational from 2026-2027. The city combines a strong university base with a growing ecosystem of AI startups and established companies putting AI to work.
+    </p>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      AI Heroes sits in the middle of that ecosystem. We host the <a href="/en/ai-salon" class="text-brand-red underline underline-offset-2">AI Salon</a>, Groningen's monthly AI event, collaborate with Hanze University of Applied Sciences and work with regional and international organisations alike. For firms scouting the Groningen AI scene, we are the local partner.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">What we do</h2>
+    <div class="grid md:grid-cols-3 gap-6 mb-10 not-prose">
+      <div class="p-6 bg-white border border-stone-200">
+        <h3 class="font-serif text-xl text-brand-dark mb-2">Consulting</h3>
+        <p class="text-sm text-stone-600 mb-4">AI readiness assessments, roadmaps and business cases. From EUR 3,000 to full implementation programmes.</p>
+        <a href="/en/services/ai-readiness-scan" class="text-brand-red text-sm font-medium underline underline-offset-2">View consulting</a>
+      </div>
+      <div class="p-6 bg-white border border-stone-200">
+        <h3 class="font-serif text-xl text-brand-dark mb-2">Training</h3>
+        <p class="text-sm text-stone-600 mb-4">Workshops and in-company programmes, from AI Foundations to EU AI Act Article 4 literacy training.</p>
+        <a href="/en/services/ai-foundations" class="text-brand-red text-sm font-medium underline underline-offset-2">View training</a>
+      </div>
+      <div class="p-6 bg-white border border-stone-200">
+        <h3 class="font-serif text-xl text-brand-dark mb-2">Software</h3>
+        <p class="text-sm text-stone-600 mb-4">Custom AI solutions, from prototype in days to production. Built with your team, hosted in Europe.</p>
+        <a href="/en/services/custom-ai-solutions" class="text-brand-red text-sm font-medium underline underline-offset-2">View software</a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Results</h2>
+    <ul class="mb-8">
+      <li><a href="/en/cases/medux" class="text-brand-red underline underline-offset-2">Medux</a>: 70% cost reduction on a labour-intensive process.</li>
+      <li><a href="/en/cases/trabu" class="text-brand-red underline underline-offset-2">Trabu</a>: from idea to working prototype in 6 days.</li>
+      <li><a href="/en/cases/olx" class="text-brand-red underline underline-offset-2">OLX</a>: AI-powered search experience for one of Europe's largest marketplaces.</li>
+      <li>1,000+ professionals trained, from boardroom to dev team.</li>
+    </ul>
+
+    <div class="bg-stone-50 p-6 md:p-8 mb-10 border-l-4 border-brand-red not-prose">
+      <h3 class="text-xl font-serif text-brand-dark mb-3">Visit us</h3>
+      <p class="text-stone-600 mb-1">AI Heroes B.V.</p>
+      <p class="text-stone-600 mb-1">Aarhusweg 4-16</p>
+      <p class="text-stone-600 mb-4">9723 JJ Groningen, the Netherlands</p>
+      <p class="text-sm text-stone-500">Coffee is ready. Schedule an introduction via the form below or email <a href="mailto:hello@aiheroes.io" class="text-brand-red underline underline-offset-2">hello@aiheroes.io</a>.</p>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Frequently asked questions</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      {FAQ.map((item) => (
+        <div class="border-b border-stone-200 pb-6">
+          <h3 class="font-bold text-brand-dark text-lg mb-2">{item.q}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
+      <h3>Looking for an AI partner in Groningen?</h3>
+      <p>Schedule a no-strings introduction. We will think along on where AI creates value for your organisation, whether you want to start with an <a href="/en/services/ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">AI readiness assessment</a>, team training, or building right away.</p>
+    </div>
+  </div>
+</SubpageLayout>

@@ -1,0 +1,149 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import { PROFESSIONAL_SERVICE_SCHEMA } from '../../../data/schema';
+
+const FAQ = [
+  {
+    q: 'Wat doet een AI consultancy?',
+    a: 'Een AI consultancy helpt organisaties bepalen waar AI waarde oplevert en hoe je dat realiseert. Bij AI Heroes betekent dat: een AI-readiness scan om te zien waar je staat, een roadmap met business cases, en begeleiding bij de implementatie. We trainen je team en bouwen waar nodig de software erbij.',
+  },
+  {
+    q: 'Wat kost AI consultancy in Groningen?',
+    a: 'Een AI-readiness scan start vanaf EUR 3.000. Grotere consultingtrajecten zoals roadmaps en implementatiebegeleiding lopen van EUR 3.000 tot EUR 50.000 en meer, afhankelijk van de omvang. Trainingen kosten EUR 2.500 tot EUR 4.000 per dag, maatwerk software start vanaf EUR 15.000.',
+  },
+  {
+    q: 'Werken jullie alleen met bedrijven in Groningen?',
+    a: 'Onze thuisbasis is Groningen en daar zit een groot deel van onze klanten, maar we werken door heel Nederland en Europa. Voor organisaties in Groningen en Noord-Nederland zitten we letterlijk om de hoek: op locatie langskomen is bij ons standaard, geen uitzondering.',
+  },
+  {
+    q: 'Helpen jullie ook met de EU AI Act?',
+    a: 'Ja. EU AI Act compliance zit standaard in onze readiness scan en we verzorgen AI-geletterdheidstraining die invulling geeft aan artikel 4 van de AI Act. Sinds 2 februari 2025 is die geletterdheidsverplichting van kracht; vanaf 2 augustus 2026 wordt er in Nederland op gehandhaafd.',
+  },
+  {
+    q: 'Hoe snel kunnen we starten?',
+    a: 'Een kennismakingsgesprek plannen we meestal binnen een week. Een AI-readiness scan duurt 1 tot 3 dagen, een eerste workshop staat vaak binnen enkele weken gepland. Voor softwareprojecten bouwen we een werkend prototype in dagen, niet maanden: bij Trabu stond er in 6 dagen een werkend product.',
+  },
+];
+
+const PAGE_URL = 'https://aiheroes.io/nl/diensten/ai-consultancy-groningen';
+
+// Page-level org block replaces the sitewide one (BaseLayout detects ProfessionalService):
+// same entity (@id), but scoped to this page URL with explicit local service area.
+const localBusinessSchema = {
+  ...PROFESSIONAL_SERVICE_SCHEMA,
+  url: PAGE_URL,
+  areaServed: [
+    { '@type': 'City', name: 'Groningen' },
+    { '@type': 'Place', name: 'Noord-Nederland' },
+    { '@type': 'Place', name: 'European Union' },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/' },
+    { '@type': 'ListItem', position: 2, name: 'Diensten', item: 'https://aiheroes.io/nl/diensten' },
+    { '@type': 'ListItem', position: 3, name: 'AI Consultancy Groningen', item: PAGE_URL },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<SubpageLayout
+  lang="nl"
+  title="AI Consultancy Groningen"
+  subtitle="Het full-service AI bureau in de AI-hoofdstad van Europa. Training, consulting en software voor organisaties in Groningen, Noord-Nederland en daarbuiten."
+  seoTitle="AI Consultancy Groningen | Training, Advies & Software"
+  seoDescription="Op zoek naar AI consultancy in Groningen? AI Heroes is het full-service AI bureau aan de Aarhusweg: readiness scans, roadmaps, training en maatwerk software. Plan een kennismaking."
+  accentColor="red"
+  ctaLabel="Plan een kennismaking"
+  trustedBy={["Hanze", "050-IT", "Medux", "Postcode Loterij"]}
+  jsonLd={[localBusinessSchema, breadcrumbSchema, faqSchema]}
+>
+  <div class="prose prose-lg max-w-none">
+    <p class="text-xl text-stone-700 leading-relaxed mb-8">
+      AI Heroes is een AI consultancy in Groningen die organisaties helpt van eerste idee tot werkende AI-oplossing. We combineren drie disciplines onder één dak: training, strategisch advies en softwareontwikkeling. Sinds 2019 hielpen we meer dan 50 organisaties, van het mkb in Noord-Nederland tot de Tweede Kamer.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Wat een AI consultant voor je organisatie doet</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">
+      Een goede AI consultant begint bij je bedrijfsproces, en pas daarna bij de techniek. We brengen in kaart waar AI in jouw organisatie waarde oplevert, rekenen business cases door en begeleiden de implementatie tot het werkt. Omdat we ook trainen en bouwen, stopt ons advies niet bij een rapport.
+    </p>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      Het startpunt is meestal de <a href="/nl/diensten/ai-readiness-scan" class="text-brand-red underline underline-offset-2">AI Readiness Scan</a>: in 1 tot 3 dagen weet je waar je organisatie staat, welke quick wins er liggen en wat de logische volgende stap is.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10 not-prose">
+      <div class="p-6 bg-white border border-stone-200">
+        <h3 class="font-serif text-xl text-brand-dark mb-2">Consulting</h3>
+        <p class="text-sm text-stone-600 mb-4">Readiness scans, AI-roadmaps en business cases. Van EUR 3.000 tot grote implementatietrajecten.</p>
+        <a href="/nl/diensten/ai-readiness-scan" class="text-brand-red text-sm font-medium underline underline-offset-2">Bekijk consulting</a>
+      </div>
+      <div class="p-6 bg-white border border-stone-200">
+        <h3 class="font-serif text-xl text-brand-dark mb-2">Training</h3>
+        <p class="text-sm text-stone-600 mb-4">Workshops en incompany-trainingen, van AI Foundations tot verplichte AI-geletterdheid (AI Act).</p>
+        <a href="/nl/diensten/ai-foundations" class="text-brand-red text-sm font-medium underline underline-offset-2">Bekijk trainingen</a>
+      </div>
+      <div class="p-6 bg-white border border-stone-200">
+        <h3 class="font-serif text-xl text-brand-dark mb-2">Software</h3>
+        <p class="text-sm text-stone-600 mb-4">Maatwerk AI-oplossingen, van prototype in dagen tot productie. Gebouwd met jouw team.</p>
+        <a href="/nl/diensten/maatwerk-ai-oplossingen" class="text-brand-red text-sm font-medium underline underline-offset-2">Bekijk software</a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Groningen is de AI-hoofdstad van Europa</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">
+      Wie AI serieus neemt, zit in Groningen goed. Met de AI Fabriek komt er EUR 200 miljoen aan AI-rekenkracht en -infrastructuur naar de stad, operationeel vanaf 2026-2027. Daaromheen groeit een ecosysteem van kennisinstellingen, startups en gevestigde bedrijven die AI toepassen in de praktijk.
+    </p>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      AI Heroes zit middenin dat ecosysteem. We organiseren de <a href="/nl/ai-salon" class="text-brand-red underline underline-offset-2">AI Salon</a>, het maandelijkse AI-event van Groningen, werken samen met de Hanzehogeschool en helpen Noordelijke organisaties als 050-IT en Medux met concrete AI-toepassingen. Die korte lijnen merk je: we komen langs, kennen de regio en blijven betrokken na de oplevering.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Resultaten, geen beloftes</h2>
+    <ul class="mb-8">
+      <li><a href="/nl/cases/medux" class="text-brand-red underline underline-offset-2">Medux</a>: 70% lagere kosten op een arbeidsintensief proces.</li>
+      <li><a href="/nl/cases/trabu" class="text-brand-red underline underline-offset-2">Trabu</a>: van idee naar werkend prototype in 6 dagen.</li>
+      <li><a href="/nl/cases/innoenergy" class="text-brand-red underline underline-offset-2">InnoEnergy</a>: van AI-strategie naar goedkeuring door de board.</li>
+      <li>1.000+ professionals getraind, van directie tot developers.</li>
+    </ul>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Drie specialisten, één team</h2>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      Achter AI Heroes staan drie co-founders met elk een eigen pijler: Frans Hoorn (consulting), Jan Brusse (training) en David Homan (software). Wie je ook spreekt, je krijgt iemand die zelf met de materie werkt. Lees meer over <a href="/nl/over-ons/team" class="text-brand-red underline underline-offset-2">het team</a> en <a href="/nl/over-ons/aanpak" class="text-brand-red underline underline-offset-2">onze aanpak</a>.
+    </p>
+
+    <div class="bg-stone-50 p-6 md:p-8 mb-10 border-l-4 border-brand-red not-prose">
+      <h3 class="text-xl font-serif text-brand-dark mb-3">Bezoekadres</h3>
+      <p class="text-stone-600 mb-1">AI Heroes B.V.</p>
+      <p class="text-stone-600 mb-1">Aarhusweg 4-16</p>
+      <p class="text-stone-600 mb-4">9723 JJ Groningen</p>
+      <p class="text-sm text-stone-500">Koffie staat klaar. Plan een kennismaking via het formulier onderaan deze pagina of mail <a href="mailto:hello@aiheroes.io" class="text-brand-red underline underline-offset-2">hello@aiheroes.io</a>.</p>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      {FAQ.map((item) => (
+        <div class="border-b border-stone-200 pb-6">
+          <h3 class="font-bold text-brand-dark text-lg mb-2">{item.q}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
+      <h3>AI consultant nodig in Groningen?</h3>
+      <p>Plan een vrijblijvende kennismaking. We denken mee over waar AI voor jouw organisatie waarde oplevert, of je nu wilt starten met een <a href="/nl/diensten/ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">readiness scan</a>, training voor je team, of direct iets wilt laten bouwen.</p>
+    </div>
+  </div>
+</SubpageLayout>

@@ -17,6 +17,8 @@ export const SEGMENT_NL_TO_EN: Record<string, string> = {
   'ai-voor-developers': 'ai-for-developers',
   'maatwerk-ai-oplossingen': 'custom-ai-solutions',
   'ai-bureau-nederland': 'ai-agency-netherlands',
+  'ai-consultancy-groningen': 'ai-agency-groningen',
+  'ai-geletterdheid-training': 'ai-literacy-training',
   'digitale-onafhankelijkheid': 'digital-independence',
   'ai-implementatiebegeleiding': 'ai-implementation-guidance',
   procesanalyse: 'process-analysis',
