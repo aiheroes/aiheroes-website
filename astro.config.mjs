@@ -5,6 +5,7 @@ import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { NOINDEX_PATHS } from './src/data/seo.ts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +16,10 @@ export default defineConfig({
   integrations: [
     react(),
     mdx(),
-    sitemap(),
+    // Noindexed pages must not appear in the sitemap (contradictory signal).
+    sitemap({
+      filter: (page) => !NOINDEX_PATHS.includes(new URL(page).pathname),
+    }),
   ],
   vite: {
     // Tailwind 4 the recommended way for Astro (NOT @astrojs/tailwind, which is the v3 pattern).
