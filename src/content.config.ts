@@ -19,6 +19,8 @@ const articles = defineCollection({
     author: z.string().default('AI Heroes'),
     ogImage: z.string().optional(),
     draft: z.boolean().default(false),
+    // Optional FAQ; rendered visibly below the article and emitted as FAQPage JSON-LD.
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
   }),
 });
 
