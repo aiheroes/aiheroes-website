@@ -1,0 +1,138 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const FAQ = [
+  {
+    q: 'Is AI-geletterdheidstraining verplicht?',
+    a: 'Ja, voor organisaties die AI-systemen gebruiken. Artikel 4 van de EU AI Act verplicht sinds 2 februari 2025 dat medewerkers die met AI werken over voldoende AI-geletterdheid beschikken. Vanaf 2 augustus 2026 handhaven de Nederlandse toezichthouders, met de Autoriteit Persoonsgegevens als coördinerend toezichthouder. Overtredingen vallen onder artikel 99 lid 4: boetes kunnen oplopen tot EUR 15 miljoen of 3% van de wereldwijde jaaromzet.',
+  },
+  {
+    q: 'Voor wie geldt de AI-geletterdheidsplicht?',
+    a: 'Voor iedere organisatie die AI-systemen aanbiedt of gebruikt, dus ook als je team alleen met tools als ChatGPT of Copilot werkt. De verplichting geldt voor medewerkers die met AI-systemen werken of erover beslissen, afgestemd op hun rol en de risico’s van het gebruik.',
+  },
+  {
+    q: 'Wat kost een AI-geletterdheidstraining?',
+    a: 'Onze incompany trainingen kosten EUR 2.500 tot EUR 4.000 per dag, afhankelijk van groepsgrootte en maatwerk. Voor de meeste teams volstaat een dag; voor grotere organisaties stellen we een programma samen met meerdere sessies per doelgroep.',
+  },
+  {
+    q: 'Wat houdt "voldoende AI-geletterdheid" in?',
+    a: 'De AI Act vraagt om kennis en vaardigheden passend bij de rol: begrijpen wat AI-systemen doen, wat de kansen en risico’s zijn, en hoe je er verantwoord mee werkt. Een marketeer heeft andere kennis nodig dan een ontwikkelaar; de training is daarom per doelgroep opgebouwd.',
+  },
+  {
+    q: 'Krijgen deelnemers een bewijs van deelname?',
+    a: 'Ja. Na afloop ontvang je per deelnemer een certificaat en als organisatie een verslag van de behandelde onderwerpen. Daarmee kun je richting toezichthouders aantonen dat je invulling geeft aan artikel 4.',
+  },
+];
+
+const PAGE_URL = 'https://aiheroes.io/nl/diensten/ai-geletterdheid-training';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/' },
+    { '@type': 'ListItem', position: 2, name: 'Diensten', item: 'https://aiheroes.io/nl/diensten' },
+    { '@type': 'ListItem', position: 3, name: 'AI-geletterdheid Training', item: PAGE_URL },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<SubpageLayout
+  lang="nl"
+  title="AI-geletterdheid Training"
+  subtitle="Verplicht volgens artikel 4 van de EU AI Act, waardevol voor elk team. Eén training die compliance en productiviteit combineert."
+  seoTitle="AI-geletterdheid Training | Verplicht volgens de EU AI Act"
+  seoDescription="AI-geletterdheidstraining voor jouw organisatie: invulling van artikel 4 EU AI Act, handhaving vanaf 2 augustus 2026. Incompany, per doelgroep, met certificaat. Door AI Heroes."
+  accentColor="red"
+  pillarBadge="Training"
+  ctaLabel="Plan een training"
+  trustedBy={["Tweede Kamer", "Postcode Loterij", "Hanze", "Envalior"]}
+  jsonLd={[breadcrumbSchema, faqSchema]}
+>
+  <div class="prose prose-lg max-w-none">
+    <p class="text-xl text-stone-700 leading-relaxed mb-8">
+      Sinds 2 februari 2025 verplicht artikel 4 van de EU AI Act organisaties om te zorgen voor voldoende AI-geletterdheid bij medewerkers die met AI werken. Vanaf 2 augustus 2026 wordt daar in Nederland op gehandhaafd. Onze AI-geletterdheidstraining geeft praktisch invulling aan die verplichting, en levert je team direct iets op.
+    </p>
+
+    <div class="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
+      <p class="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">De deadline</p>
+      <p class="text-sm text-stone-200 mb-2">De geletterdheidsverplichting geldt al sinds <strong class="text-white">2 februari 2025</strong>. Vanaf <strong class="text-white">2 augustus 2026</strong> zijn de Nederlandse toezichthouders en het sanctieregime operationeel.</p>
+      <p class="text-sm text-stone-200">De verplichting geldt ook als je team alleen ChatGPT, Copilot of andere AI-tools gebruikt. Wie nu traint, is aantoonbaar op orde voordat de handhaving start.</p>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Wat artikel 4 van je organisatie vraagt</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">
+      Artikel 4 vraagt om AI-geletterdheid die past bij de rol van de medewerker: begrijpen wat AI-systemen doen, welke kansen en risico's er zijn, en hoe je er verantwoord mee werkt. Geen juridische theorie, maar werkende kennis. Wat dat concreet betekent verschilt per functie, en daar is de training op ingericht.
+    </p>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      De achtergrond lees je in ons artikel over <a href="/nl/resources/ai-geletterdheid" class="text-brand-red underline underline-offset-2">AI-geletterdheid en de AI Act</a>. Deze pagina gaat over de training zelf.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Hoe de training eruitziet</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      <div class="border-2 border-stone-200 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">1</span></div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">Intake en doelgroepanalyse</h4>
+            <p class="text-stone-600 text-sm leading-relaxed">Welke teams werken met AI, welke tools gebruiken ze en welke risico's horen daarbij? Daarop stemmen we de inhoud per groep af: van directie tot uitvoering.</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">2</span></div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">Training op locatie</h4>
+            <p class="text-stone-600 text-sm leading-relaxed">Een halve of hele dag per doelgroep. Hoe werken AI-systemen, waar zitten de risico's (hallucinaties, bias, privacy, datalekken), wat zegt de AI Act over jouw gebruik, en hoe werk je er productief en verantwoord mee. Veel oefenen, weinig slides.</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">3</span></div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">Certificaat en verslaglegging</h4>
+            <p class="text-stone-600 text-sm leading-relaxed">Per deelnemer een certificaat, per organisatie een verslag van de behandelde onderwerpen. Daarmee toon je richting toezichthouders aan dat je invulling geeft aan artikel 4.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-8 not-prose">
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">½-1 dag</div><div class="text-sm text-stone-500 uppercase tracking-wider">Per doelgroep</div></div>
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">Vanaf €2.500</div><div class="text-sm text-stone-500 uppercase tracking-wider">Per trainingsdag</div></div>
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">Certificaat</div><div class="text-sm text-stone-500 uppercase tracking-wider">Aantoonbaar compliant</div></div>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Meer dan een vinkje</h2>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      Compliance is de aanleiding, productiviteit is de winst. Teams die snappen hoe AI werkt, gebruiken het vaker, beter en veiliger. Wil je breder kijken dan de verplichting alleen, dan combineren we de geletterdheidstraining met onze <a href="/nl/diensten/ai-foundations" class="text-brand-red underline underline-offset-2">AI Foundations workshop</a> of een <a href="/nl/diensten/ai-readiness-scan" class="text-brand-red underline underline-offset-2">AI Readiness Scan</a> die ook je bredere AI Act-compliance meeneemt.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      {FAQ.map((item) => (
+        <div class="border-b border-stone-200 pb-6">
+          <h3 class="font-bold text-brand-dark text-lg mb-2">{item.q}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
+      <h3>Voor 2 augustus aantoonbaar op orde?</h3>
+      <p>Plan een gesprek. We brengen samen in kaart welke doelgroepen training nodig hebben en stellen een programma voor dat past bij jouw organisatie en tijdlijn.</p>
+    </div>
+  </div>
+</SubpageLayout>

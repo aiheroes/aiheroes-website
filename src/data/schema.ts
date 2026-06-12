@@ -1,7 +1,8 @@
-// Site-wide Organization schema (rendered on the homepages). Ported from index.html.
+// Site-wide Organization schema (rendered on every page via BaseLayout).
 export const PROFESSIONAL_SERVICE_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': 'https://aiheroes.io/#organization',
   name: 'AI Heroes',
   legalName: 'AI Heroes B.V.',
   taxID: '42051968',
@@ -23,6 +24,8 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   areaServed: { '@type': 'Place', name: 'European Union' },
   priceRange: '$$',
   openingHours: 'Mo-Fr 09:00-17:00',
+  // Extend as directory profiles get claimed (Wikidata QID, Clutch, Sortlist, ensun —
+  // see docs/seo-offsite-checklist.md). Only verified, live profile URLs belong here.
   sameAs: ['https://www.linkedin.com/company/aiheroes'],
   founder: [
     { '@type': 'Person', name: 'Frans Hoorn', jobTitle: 'Co-Founder, Consulting' },

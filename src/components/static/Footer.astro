@@ -18,6 +18,9 @@ const pressLabel = lang === 'nl' ? 'Pers' : 'Press';
 const companyLabel = lang === 'nl' ? 'Bedrijf' : 'Company';
 const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
 const bureauHref = lang === 'nl' ? '/nl/diensten/ai-bureau-nederland' : '/en/services/ai-agency-netherlands';
+const groningenHref = lang === 'nl' ? '/nl/diensten/ai-consultancy-groningen' : '/en/services/ai-agency-groningen';
+const incompanyHref = lang === 'nl' ? '/nl/diensten/incompany-ai-training' : '/en/services/incompany-ai-training';
+const literacyHref = lang === 'nl' ? '/nl/diensten/ai-geletterdheid-training' : '/en/services/ai-literacy-training';
 const overviewHref = lang === 'nl' ? '/nl/diensten' : '/en/services';
 
 // Technology partner logos (paths copied from the React Footer).
@@ -73,6 +76,8 @@ const software = nav.services.children?.filter((c) => c.category === 'software')
       <div>
         <h3 class="font-serif text-lg mb-4 text-white">Training</h3>
         <ul class="space-y-2">
+          <li><a href={incompanyHref} class="text-stone-400 hover:text-white transition-colors text-sm">{lang === 'nl' ? 'Incompany AI Training' : 'In-Company AI Training'}</a></li>
+          <li><a href={literacyHref} class="text-stone-400 hover:text-white transition-colors text-sm">{lang === 'nl' ? 'AI-geletterdheid (AI Act)' : 'AI Literacy (AI Act)'}</a></li>
           {training.map((item) => (
             <li><a href={item.href} class="text-stone-400 hover:text-white transition-colors text-sm">{item.label}</a></li>
           ))}
@@ -86,6 +91,7 @@ const software = nav.services.children?.filter((c) => c.category === 'software')
         </h3>
         <ul class="space-y-2">
           <li><a href={bureauHref} class="text-stone-400 hover:text-white transition-colors text-sm">{lang === 'nl' ? 'AI Bureau Nederland' : 'AI Agency Netherlands'}</a></li>
+          <li><a href={groningenHref} class="text-stone-400 hover:text-white transition-colors text-sm">{lang === 'nl' ? 'AI Consultancy Groningen' : 'AI Agency Groningen'}</a></li>
           {consulting.map((item) => (
             <li><a href={item.href} class="text-stone-400 hover:text-white transition-colors text-sm">{item.label}</a></li>
           ))}

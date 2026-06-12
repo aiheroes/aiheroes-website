@@ -1,0 +1,138 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const FAQ = [
+  {
+    q: 'Is AI literacy training mandatory?',
+    a: 'Yes, for organisations using AI systems. Article 4 of the EU AI Act has required sufficient AI literacy for staff working with AI since 2 February 2025. National enforcement regimes are coming online during 2026; in the Netherlands from 2 August 2026, coordinated by the Dutch Data Protection Authority. Violations fall under Article 99(4): fines up to EUR 15 million or 3% of global annual turnover.',
+  },
+  {
+    q: 'Who does the AI literacy obligation apply to?',
+    a: 'Every organisation that provides or uses AI systems, including teams that only work with tools like ChatGPT or Copilot. The obligation covers staff who work with AI systems or decide about their use, proportionate to their role and the risks involved.',
+  },
+  {
+    q: 'What does AI literacy training cost?',
+    a: 'Our in-company training runs from EUR 2,500 to EUR 4,000 per day, depending on group size and customisation. One day covers most teams; for larger organisations we build a programme with sessions per audience.',
+  },
+  {
+    q: 'What counts as "sufficient AI literacy"?',
+    a: 'The AI Act asks for knowledge and skills matching the role: understanding what AI systems do, their opportunities and risks, and how to work with them responsibly. A marketer needs different knowledge than a developer, so the training is structured per audience.',
+  },
+  {
+    q: 'Do participants receive proof of completion?',
+    a: 'Yes. Each participant receives a certificate and your organisation receives a record of the topics covered, so you can demonstrate to regulators that you are meeting Article 4.',
+  },
+];
+
+const PAGE_URL = 'https://aiheroes.io/en/services/ai-literacy-training';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/en' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aiheroes.io/en/services' },
+    { '@type': 'ListItem', position: 3, name: 'AI Literacy Training', item: PAGE_URL },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<SubpageLayout
+  lang="en"
+  title="AI Literacy Training"
+  subtitle="Mandatory under Article 4 of the EU AI Act, valuable for every team. One training that combines compliance and productivity."
+  seoTitle="AI Literacy Training | EU AI Act Article 4 Compliance"
+  seoDescription="AI literacy training for your organisation: meet EU AI Act Article 4, enforced in the Netherlands from 2 August 2026. In-company, per audience, with certificates. By AI Heroes."
+  accentColor="red"
+  pillarBadge="Training"
+  ctaLabel="Plan a training"
+  trustedBy={["Tweede Kamer", "Postcode Loterij", "Hanze", "Envalior"]}
+  jsonLd={[breadcrumbSchema, faqSchema]}
+>
+  <div class="prose prose-lg max-w-none">
+    <p class="text-xl text-stone-700 leading-relaxed mb-8">
+      Since 2 February 2025, Article 4 of the EU AI Act requires organisations to ensure sufficient AI literacy among staff working with AI. National enforcement follows during 2026. Our AI literacy training gives practical substance to that obligation, and gives your team something they will use every day.
+    </p>
+
+    <div class="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
+      <p class="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">The deadline</p>
+      <p class="text-sm text-stone-200 mb-2">The literacy obligation has applied since <strong class="text-white">2 February 2025</strong>. From <strong class="text-white">2 August 2026</strong>, national regulators and the sanction regime become operational.</p>
+      <p class="text-sm text-stone-200">The obligation also applies when your team only uses ChatGPT, Copilot or other AI tools. Train now and you are demonstrably compliant before enforcement starts.</p>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">What Article 4 asks of your organisation</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">
+      Article 4 asks for AI literacy that matches each employee's role: understanding what AI systems do, where the opportunities and risks sit, and how to work with them responsibly. Working knowledge rather than legal theory. What that means in practice differs per role, and the training is structured accordingly.
+    </p>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      For background, read our article on <a href="/en/resources/ai-literacy" class="text-brand-red underline underline-offset-2">AI literacy and the AI Act</a>. This page is about the training itself.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">How the training works</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      <div class="border-2 border-stone-200 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">1</span></div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">Intake and audience analysis</h4>
+            <p class="text-stone-600 text-sm leading-relaxed">Which teams work with AI, which tools do they use and which risks come with that? We tailor the content per group, from board to operations.</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">2</span></div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">On-site training</h4>
+            <p class="text-stone-600 text-sm leading-relaxed">A half or full day per audience. How AI systems work, where the risks sit (hallucinations, bias, privacy, data leakage), what the AI Act says about your use, and how to work with AI productively and responsibly. Lots of practice, few slides.</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">3</span></div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">Certificates and documentation</h4>
+            <p class="text-stone-600 text-sm leading-relaxed">A certificate per participant and a record of covered topics per organisation, so you can demonstrate Article 4 compliance to regulators.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-8 not-prose">
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">½-1 day</div><div class="text-sm text-stone-500 uppercase tracking-wider">Per audience</div></div>
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">From €2,500</div><div class="text-sm text-stone-500 uppercase tracking-wider">Per training day</div></div>
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">Certificate</div><div class="text-sm text-stone-500 uppercase tracking-wider">Demonstrably compliant</div></div>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">More than a checkbox</h2>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      Compliance is the reason, productivity is the payoff. Teams that understand how AI works use it more often, better and more safely. To go beyond the obligation, combine the literacy training with our <a href="/en/services/ai-foundations" class="text-brand-red underline underline-offset-2">AI Foundations workshop</a> or an <a href="/en/services/ai-readiness-scan" class="text-brand-red underline underline-offset-2">AI readiness assessment</a> that also covers your broader AI Act compliance.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Frequently asked questions</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      {FAQ.map((item) => (
+        <div class="border-b border-stone-200 pb-6">
+          <h3 class="font-bold text-brand-dark text-lg mb-2">{item.q}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
+      <h3>Demonstrably compliant before enforcement starts?</h3>
+      <p>Plan a conversation. Together we map which audiences need training and propose a programme that fits your organisation and timeline.</p>
+    </div>
+  </div>
+</SubpageLayout>

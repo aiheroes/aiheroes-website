@@ -1,0 +1,33 @@
+# AI Heroes
+
+> AI Heroes B.V. is a full-service AI agency in Groningen, the Netherlands (KvK 42051968). Three pillars: training, consulting and software. From change management to technical implementation, with a European focus: data sovereignty, EU AI Act compliance and no vendor lock-in. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: hello@aiheroes.io.
+
+AI Heroes is een full-service AI agency in Groningen: training, consulting en software onder één dak. Vanuit Groningen, voor heel Europa.
+
+## Services (English)
+
+- [Services overview](https://aiheroes.io/en/services): training, consulting and software offerings
+- [AI Foundations workshop](https://aiheroes.io/en/services/ai-foundations): one-day team workshop on working with AI
+- [AI Readiness Scan](https://aiheroes.io/en/services/ai-readiness-scan): assessment of where your organisation stands with AI
+- [AI Roadmap](https://aiheroes.io/en/services/ai-roadmap): strategic AI implementation plan
+- [Custom AI solutions](https://aiheroes.io/en/services/custom-ai-solutions): custom AI development, prototype to production
+- [Sovereign AI consultancy](https://aiheroes.io/en/services/eu-consultancy): European AI without vendor lock-in
+- [AI agency for the Netherlands](https://aiheroes.io/en/services/ai-agency-netherlands)
+
+## Diensten (Nederlands)
+
+- [Dienstenoverzicht](https://aiheroes.io/nl/diensten): training, consulting en software
+- [AI Foundations workshop](https://aiheroes.io/nl/diensten/ai-foundations): eendaagse teamworkshop AI
+- [AI Readiness Scan](https://aiheroes.io/nl/diensten/ai-readiness-scan): waar staat jouw organisatie met AI
+- [AI Roadmap](https://aiheroes.io/nl/diensten/ai-roadmap): strategisch AI-implementatieplan
+- [Maatwerk AI-oplossingen](https://aiheroes.io/nl/diensten/maatwerk-ai-oplossingen): AI software laten maken
+- [Soevereine AI consultancy](https://aiheroes.io/nl/diensten/eu-consultancy): Europese AI zonder lock-in
+- [AI bureau voor Nederland](https://aiheroes.io/nl/diensten/ai-bureau-nederland)
+
+## Company
+
+- [About AI Heroes](https://aiheroes.io/en/about): team, approach and the Groningen story
+- [Over AI Heroes](https://aiheroes.io/nl/over-ons)
+- [Case studies](https://aiheroes.io/en/about#cases): Medux, OLX, iFood, InnoEnergy, Trabu
+- [AI Salon Groningen](https://aiheroes.io/nl/ai-salon): monthly AI event in Groningen
+- [Resources](https://aiheroes.io/en/resources): articles on AI literacy (EU AI Act Article 4) and AI strategy

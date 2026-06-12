@@ -46,7 +46,7 @@ export const CONTENT: Record<Language, Content> = {
         href: "/nl/contact"
       },
       featured: {
-        label: "Digitale Onafhankelijkheid",
+        label: "EU AI Consultancy",
         href: "/nl/diensten/eu-consultancy",
         description: "Europese AI zonder vendor lock-in"
       }
@@ -699,7 +699,7 @@ export const CONTENT: Record<Language, Content> = {
         href: "/en/contact"
       },
       featured: {
-        label: "Digital Independence",
+        label: "EU AI Consultancy",
         href: "/en/services/eu-consultancy",
         description: "European AI without vendor lock-in"
       }

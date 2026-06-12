@@ -1,0 +1,121 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const FAQ = [
+  {
+    q: 'Wat kost een incompany AI-training?',
+    a: 'Een trainingsdag kost EUR 2.500 tot EUR 4.000, afhankelijk van groepsgrootte en de hoeveelheid maatwerk. Daar zit alles bij in: voorbereiding, materiaal en opvolging. Een halve dag kan ook; meerdaagse programma’s stemmen we af op je organisatie.',
+  },
+  {
+    q: 'Voor welke teams is de training geschikt?',
+    a: 'Voor elk team dat met AI gaat werken: van directie en management tot marketing, HR, juridisch en development. We passen inhoud en voorbeelden aan op de doelgroep. Voor ontwikkelaars is er een aparte training AI voor Developers.',
+  },
+  {
+    q: 'Trainen jullie ook buiten Groningen?',
+    a: 'Ja, we trainen door heel Nederland, op jouw locatie. Onze thuisbasis is Groningen, maar het grootste deel van onze trainingen vindt plaats bij de klant op kantoor, van Amsterdam tot Maastricht.',
+  },
+  {
+    q: 'Welke tools komen aan bod?',
+    a: 'De tools die jouw team echt gebruikt: ChatGPT, Claude, Copilot of Europese alternatieven. De training gaat over werkwijzen die toolonafhankelijk zijn: goede prompts schrijven, output beoordelen, veilig met bedrijfsdata omgaan.',
+  },
+  {
+    q: 'Telt deze training voor de AI Act-geletterdheidsplicht?',
+    a: 'De AI Foundations workshop dekt een groot deel van de kennis die artikel 4 van de EU AI Act vraagt. Wil je aantoonbaar voldoen aan de geletterdheidsplicht, kijk dan naar onze AI-geletterdheidstraining met certificaat en verslaglegging.',
+  },
+];
+
+const PAGE_URL = 'https://aiheroes.io/nl/diensten/incompany-ai-training';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/' },
+    { '@type': 'ListItem', position: 2, name: 'Diensten', item: 'https://aiheroes.io/nl/diensten' },
+    { '@type': 'ListItem', position: 3, name: 'Incompany AI Training', item: PAGE_URL },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+---
+
+<SubpageLayout
+  lang="nl"
+  title="Incompany AI Training"
+  subtitle="AI-training op jouw locatie, voor jouw team, met jouw cases. In heel Nederland, vanuit Groningen."
+  seoTitle="Incompany AI Training | Vanaf €2.500 per dag"
+  seoDescription="Incompany AI-training voor bedrijven: op locatie, afgestemd op jouw team en sector. Van AI Foundations tot Copilot en AI-geletterdheid. Heldere prijzen, door heel Nederland."
+  accentColor="red"
+  pillarBadge="Training"
+  ctaLabel="Plan een training"
+  trustedBy={["Postcode Loterij", "Banijay Benelux", "Tweede Kamer", "Philips Healthcare"]}
+  jsonLd={[breadcrumbSchema, faqSchema]}
+>
+  <div class="prose prose-lg max-w-none">
+    <p class="text-xl text-stone-700 leading-relaxed mb-8">
+      Een incompany AI-training is de snelste manier om je hele team productief te maken met AI. We komen naar jouw locatie, werken met jouw documenten en processen, en trainen tot iedereen het toepast in het eigen werk. Meer dan 1.000 professionals gingen je voor.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Waarom incompany en niet een open cursus</h2>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      Generieke AI-cursussen blijven bij algemene voorbeelden. Bij een incompany training oefent je team op de eigen praktijk: jullie offertes, jullie klantvragen, jullie data. Dat maakt de stap van training naar dagelijks gebruik klein. Bovendien kun je afspraken maken over veilig gebruik van bedrijfsdata, met het hele team tegelijk.
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Het aanbod</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-brand-red transition-colors">
+        <h4 class="font-bold text-brand-dark text-lg mb-1">AI Foundations</h4>
+        <p class="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Onze kernworkshop · 1 dag</p>
+        <p class="text-stone-600 text-sm leading-relaxed mb-3">De basis voor elk team: hoe AI-tools werken, prompts die resultaat opleveren, output kritisch beoordelen en AI inbouwen in je dagelijkse werk. Het vlaggenschip van ons trainingsaanbod.</p>
+        <a href="/nl/diensten/ai-foundations" class="text-sm font-medium text-brand-red hover:underline underline-offset-2">Meer over AI Foundations →</a>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-brand-red transition-colors">
+        <h4 class="font-bold text-brand-dark text-lg mb-1">AI-geletterdheid (EU AI Act)</h4>
+        <p class="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Verplicht vanaf 2 augustus 2026 gehandhaafd · ½-1 dag</p>
+        <p class="text-stone-600 text-sm leading-relaxed mb-3">Invulling van de geletterdheidsplicht uit artikel 4 van de AI Act, met certificaat en verslaglegging per deelnemer.</p>
+        <a href="/nl/diensten/ai-geletterdheid-training" class="text-sm font-medium text-brand-red hover:underline underline-offset-2">Meer over AI-geletterdheid →</a>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-brand-red transition-colors">
+        <h4 class="font-bold text-brand-dark text-lg mb-1">Copilot Training</h4>
+        <p class="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Microsoft 365 · ½ dag</p>
+        <p class="text-stone-600 text-sm leading-relaxed mb-3">Voor organisaties die op Microsoft draaien: productief worden met Copilot in Word, Excel, Teams en Outlook.</p>
+        <a href="/nl/diensten/copilot-basics" class="text-sm font-medium text-brand-red hover:underline underline-offset-2">Meer over Copilot Training →</a>
+      </div>
+      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-brand-red transition-colors">
+        <h4 class="font-bold text-brand-dark text-lg mb-1">AI voor Developers</h4>
+        <p class="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Technisch · 1 dag</p>
+        <p class="text-stone-600 text-sm leading-relaxed mb-3">AI-tools en -technieken voor softwareteams: van AI-ondersteund programmeren tot het bouwen met LLM-API's.</p>
+        <a href="/nl/diensten/ai-voor-developers" class="text-sm font-medium text-brand-red hover:underline underline-offset-2">Meer over AI voor Developers →</a>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-8 not-prose">
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">€2.500-4.000</div><div class="text-sm text-stone-500 uppercase tracking-wider">Per trainingsdag</div></div>
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">Op locatie</div><div class="text-sm text-stone-500 uppercase tracking-wider">In heel Nederland</div></div>
+      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">1.000+</div><div class="text-sm text-stone-500 uppercase tracking-wider">Professionals getraind</div></div>
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-6 mb-10 not-prose">
+      {FAQ.map((item) => (
+        <div class="border-b border-stone-200 pb-6">
+          <h3 class="font-bold text-brand-dark text-lg mb-2">{item.q}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed">{item.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
+      <h3>AI-training voor jouw team?</h3>
+      <p>Vertel ons over je team en doelen, dan stellen we een programma voor. Binnen een week weet je wat de training inhoudt, wat het kost en wanneer we kunnen starten.</p>
+    </div>
+  </div>
+</SubpageLayout>
