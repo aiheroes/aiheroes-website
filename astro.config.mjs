@@ -12,6 +12,10 @@ export default defineConfig({
   site: 'https://aiheroes.io',
   // output: 'static' is the default — pure SSG, deployed to dist/ on Netlify.
   trailingSlash: 'never',
+  // Emit page.html instead of page/index.html. With directory output, Netlify's
+  // Pretty URLs 301s every no-slash URL to /path/, contradicting the no-slash
+  // canonicals/sitemap/hreflang. File output serves /path directly with a 200.
+  build: { format: 'file' },
   server: { port: 3001 }, // 3000 is shared with sister project ivosw
   integrations: [
     react(),
