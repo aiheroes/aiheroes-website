@@ -111,7 +111,7 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
 
     <!-- Structured data -->
     {schemas.map((schema) => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
 
     <ClientRouter />
@@ -122,7 +122,7 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
     {!noChrome && <Footer lang={lang} path={path} />}
 
     <!-- Hidden form definitions so Netlify detects them at build time (forms post to "/"). -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="text" name="bot-field" />
       <input type="text" name="name" />
       <input type="email" name="email" />
@@ -130,7 +130,7 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
       <input type="text" name="topics" />
       <textarea name="message"></textarea>
     </form>
-    <form name="application" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+    <form name="application" data-netlify="true" data-netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input type="text" name="bot-field" />
       <input type="text" name="name" />
       <input type="email" name="email" />

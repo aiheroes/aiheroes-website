@@ -1,4 +1,3 @@
-import React from 'react';
 import { AISalonPage } from '../../../pages/AISalonPage';
 import type { Language } from '../../data/types';
 

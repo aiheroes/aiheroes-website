@@ -1,4 +1,3 @@
-import React from 'react';
 import { PersNL } from '../../../pages/nl/Pers';
 import { PressEN } from '../../../pages/en/Press';
 import type { Language } from '../../data/types';

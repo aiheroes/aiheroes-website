@@ -1,4 +1,3 @@
-import React from 'react';
 import { HomePage } from '../../../pages/HomePage';
 import type { Language } from '../../data/types';
 

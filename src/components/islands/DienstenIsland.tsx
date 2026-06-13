@@ -1,4 +1,3 @@
-import React from 'react';
 import { DienstenNL } from '../../../pages/nl/Diensten';
 import { ServicesEN } from '../../../pages/en/Services';
 import type { Language } from '../../data/types';

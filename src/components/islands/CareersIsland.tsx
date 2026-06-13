@@ -1,4 +1,3 @@
-import React from 'react';
 import { VacaturesNL } from '../../../pages/nl/Vacatures';
 import { CareersEN } from '../../../pages/en/Careers';
 import type { Language } from '../../data/types';
