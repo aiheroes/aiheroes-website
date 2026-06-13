@@ -4,7 +4,7 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CONTENT } from '../constants';
 import { useSEO } from '../hooks/useSEO';
-import { Language } from '../types';
+import type { Language } from '../types';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 const LUMA_EVENT_ID = 'evt-bgWr4oUXGdNMpms';

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Language } from '../types';
+import type { Language } from '../types';
 import { Check, Calendar } from 'lucide-react';
 import { CONTENT } from '../constants';
 

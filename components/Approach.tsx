@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content } from '../types';
+import type { Content } from '../types';
 
 interface ApproachProps {
   content: Content['approach'];

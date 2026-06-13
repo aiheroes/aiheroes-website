@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Language } from '../types';
+import type { Language } from '../types';
 import { CONTENT } from '../constants';
 import { PageContactForm } from './PageContactForm';
 import { Footer } from './Footer';

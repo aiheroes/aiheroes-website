@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CONTENT } from '../constants';
-import { Language } from '../types';
+import type { Language } from '../types';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
