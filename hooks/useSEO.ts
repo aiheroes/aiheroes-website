@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Language } from '../types';
+import type { Language } from '../types';
 
 interface SEOConfig {
   title: string;

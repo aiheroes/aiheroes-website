@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Content, Language } from '../types';
+import type { Content, Language } from '../types';
 import { ArrowRight } from 'lucide-react';
 
 interface ServicesProps {

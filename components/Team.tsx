@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Content } from '../types';
+import type { Content } from '../types';
 import { Image } from './Image';
 
 interface TeamProps {

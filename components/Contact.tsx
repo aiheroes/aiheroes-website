@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Content } from '../types';
+import type { Content } from '../types';
 import { Check, Calendar } from 'lucide-react';
 
 interface ContactProps {

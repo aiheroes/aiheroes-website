@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Language, CareersPageContent, JobPosition } from '../types';
+import type { Language, CareersPageContent, JobPosition } from '../types';
 import { Check, Upload, X, FileText } from 'lucide-react';
 
 interface ApplicationFormProps {

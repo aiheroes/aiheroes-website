@@ -3,7 +3,7 @@ import { useParams, Link, Navigate } from 'react-router-dom';
 import { PageLayout } from '../components/PageLayout';
 import { ApplicationForm } from '../components/ApplicationForm';
 import { CONTENT } from '../constants';
-import { Language, JobPosition } from '../types';
+import type { Language, JobPosition } from '../types';
 import { MapPin, Clock, Briefcase, GraduationCap, Code, Mic, ArrowLeft } from 'lucide-react';
 
 const DOMAIN = 'https://aiheroes.io';

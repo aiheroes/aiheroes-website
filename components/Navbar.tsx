@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
-import { Language, Content, NavChild } from '../types';
+import type { Language, Content, NavChild } from '../types';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 
 interface NavbarProps {

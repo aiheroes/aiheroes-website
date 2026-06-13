@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Content, Language } from '../types';
+import type { Content, Language } from '../types';
 import { Button } from './Button';
 
 interface HeroProps {

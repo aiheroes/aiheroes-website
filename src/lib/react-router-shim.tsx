@@ -20,17 +20,26 @@ export function useNavigate() {
   };
 }
 
+const SSR_LOCATION = { pathname: '/', hash: '', search: '', state: null, key: 'default' };
+
+// Hydration-safe: returns the SSR value ('/') on the server AND the first client
+// render so the two match, then updates to the real URL after mount. Without this,
+// components that branch on pathname (Footer contact link, language switcher) render
+// different HTML on server vs client and trigger a hydration mismatch that makes
+// React regenerate the whole island — which breaks the navbar's hover handlers.
+// These islands have no client-side routing, so a one-time post-mount update is enough.
 export function useLocation() {
-  if (typeof window === 'undefined') {
-    return { pathname: '/', hash: '', search: '', state: null, key: 'default' };
-  }
-  return {
-    pathname: window.location.pathname,
-    hash: window.location.hash,
-    search: window.location.search,
-    state: null,
-    key: 'default',
-  };
+  const [loc, setLoc] = React.useState(SSR_LOCATION);
+  React.useEffect(() => {
+    setLoc({
+      pathname: window.location.pathname,
+      hash: window.location.hash,
+      search: window.location.search,
+      state: null,
+      key: 'default',
+    });
+  }, []);
+  return loc;
 }
 
 export function useParams() {

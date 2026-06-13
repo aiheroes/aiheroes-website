@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 import { ArrowLeft } from 'lucide-react';
-import { Language } from '../types';
+import type { Language } from '../types';
 import { detectVisitorLang } from '../utils/routing';
 
 const CONTENT = {
