@@ -165,41 +165,49 @@ const dropdowns = [
     <nav class="px-6 py-4">
       <!-- Services accordion with pillar groups -->
       <div class="border-b border-stone-200">
-        <button type="button" data-acc-toggle class="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark">
+        <button type="button" data-acc-toggle aria-expanded="false" class="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark">
           {nav.services.label}
           <svg class="w-6 h-6 transition-transform" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div data-acc-panel class="hidden pb-4 space-y-4">
-          {pillarColumns.map((col) => (
-            <div>
-              <div class={`text-xs font-bold uppercase tracking-wider mb-2 ${col.meta.color}`}>{col.meta.label}</div>
-              <div class="pl-2 space-y-2">
-                {col.items.map((item) => (
-                  <a href={item.href} class="block text-base text-stone-600">{item.label}</a>
-                ))}
-              </div>
+        <div data-acc-panel class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out" inert>
+          <div class="overflow-hidden">
+            <div class="pb-4 space-y-4">
+              {pillarColumns.map((col) => (
+                <div>
+                  <div class={`text-xs font-bold uppercase tracking-wider mb-2 ${col.meta.color}`}>{col.meta.label}</div>
+                  <div class="pl-2 space-y-2">
+                    {col.items.map((item) => (
+                      <a href={item.href} class="block text-base text-stone-600">{item.label}</a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              {featured && (
+                <a href={featured.href} class="flex items-center gap-3 pt-3 mt-1 border-t border-stone-200">
+                  <svg viewBox="0 0 810 540" class="w-6 h-4 flex-shrink-0 rounded-[2px]" aria-label="EU"><rect width="810" height="540" fill="#003399" />{euStars.map((s) => <polygon points={euStarPoints(s)} fill="#FFCC00" />)}</svg>
+                  <span><span class="block text-base text-brand-dark">{featured.label}</span><span class="block text-xs text-stone-400">{featured.description}</span></span>
+                </a>
+              )}
             </div>
-          ))}
-          {featured && (
-            <a href={featured.href} class="flex items-center gap-3 pt-3 mt-1 border-t border-stone-200">
-              <svg viewBox="0 0 810 540" class="w-6 h-4 flex-shrink-0 rounded-[2px]" aria-label="EU"><rect width="810" height="540" fill="#003399" />{euStars.map((s) => <polygon points={euStarPoints(s)} fill="#FFCC00" />)}</svg>
-              <span><span class="block text-base text-brand-dark">{featured.label}</span><span class="block text-xs text-stone-400">{featured.description}</span></span>
-            </a>
-          )}
+          </div>
         </div>
       </div>
 
       <!-- About / Resources accordions -->
       {dropdowns.map((d) => (
         <div class="border-b border-stone-200">
-          <button type="button" data-acc-toggle class="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark">
+          <button type="button" data-acc-toggle aria-expanded="false" class="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark">
             {d.label}
             <svg class="w-6 h-6 transition-transform" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div data-acc-panel class="hidden pb-4 pl-2 space-y-3">
-            {d.items.map((item) => (
-              <a href={item.href} class="block text-base text-stone-600">{item.label}</a>
-            ))}
+          <div data-acc-panel class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out" inert>
+            <div class="overflow-hidden">
+              <div class="pb-4 pl-2 space-y-3">
+                {d.items.map((item) => (
+                  <a href={item.href} class="block text-base text-stone-600">{item.label}</a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       ))}
@@ -241,13 +249,18 @@ const dropdowns = [
       toggle.setAttribute('aria-expanded', String(hidden === false));
     });
 
-    // Accordion toggles inside the mobile menu.
+    // Accordion toggles inside the mobile menu. Animate the panel height via the
+    // grid-rows 0fr<->1fr trick (set inline so it overrides the collapsed class).
     bar.querySelectorAll('[data-acc-toggle]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const panel = btn.nextElementSibling as HTMLElement | null;
+        if (!panel) return;
         const chevron = btn.querySelector('[data-acc-chevron]');
-        const open = panel?.classList.toggle('hidden');
-        chevron?.classList.toggle('rotate-180', open === false);
+        const willOpen = panel.style.gridTemplateRows !== '1fr';
+        panel.style.gridTemplateRows = willOpen ? '1fr' : '0fr';
+        panel.toggleAttribute('inert', !willOpen);
+        btn.setAttribute('aria-expanded', String(willOpen));
+        chevron?.classList.toggle('rotate-180', willOpen);
       });
     });
   }

@@ -476,54 +476,45 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="border-b border-stone-200">
         <button
           onClick={() => setMobileExpanded(isExpanded ? null : 'services')}
+          aria-expanded={isExpanded}
           className="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark"
         >
           {content.services.label}
           <ChevronDown className={`w-6 h-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
 
-        {isExpanded && (
-          <div className="pb-4 space-y-1">
-            {/* Training sub-group */}
-            <MobilePillarGroup
-              label={pillarMeta.training.label}
-              items={trainingItems}
-              pillarKey="training"
-            />
-            {/* Consulting sub-group */}
-            <MobilePillarGroup
-              label={pillarMeta.consulting.label}
-              items={consultingItems}
-              pillarKey="consulting"
-            />
-            {/* Software sub-group */}
-            <MobilePillarGroup
-              label={pillarMeta.software.label}
-              items={softwareItems}
-              pillarKey="software"
-            />
-            {/* Featured cross-pillar link */}
-            {featured && (
-              <div className="pl-4 pt-3 mt-2 border-t border-stone-200">
-                <Link
-                  to={featured.href}
-                  className="flex items-center gap-3 py-3 group"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <EuFlagIcon className="w-6 h-4 flex-shrink-0 rounded-[2px]" />
-                  <div>
-                    <span className="text-lg text-brand-dark group-hover:text-brand-red transition-colors">
-                      {featured.label}
-                    </span>
-                    <span className="block text-xs text-stone-400 mt-0.5">
-                      {featured.description}
-                    </span>
-                  </div>
-                </Link>
-              </div>
-            )}
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+          <div className="overflow-hidden" inert={!isExpanded}>
+            <div className="pb-4 space-y-1">
+              {/* Training sub-group */}
+              {MobilePillarGroup({ label: pillarMeta.training.label, items: trainingItems, pillarKey: 'training' })}
+              {/* Consulting sub-group */}
+              {MobilePillarGroup({ label: pillarMeta.consulting.label, items: consultingItems, pillarKey: 'consulting' })}
+              {/* Software sub-group */}
+              {MobilePillarGroup({ label: pillarMeta.software.label, items: softwareItems, pillarKey: 'software' })}
+              {/* Featured cross-pillar link */}
+              {featured && (
+                <div className="pl-4 pt-3 mt-2 border-t border-stone-200">
+                  <Link
+                    to={featured.href}
+                    className="flex items-center gap-3 py-3 group"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <EuFlagIcon className="w-6 h-4 flex-shrink-0 rounded-[2px]" />
+                    <div>
+                      <span className="text-lg text-brand-dark group-hover:text-brand-red transition-colors">
+                        {featured.label}
+                      </span>
+                      <span className="block text-xs text-stone-400 mt-0.5">
+                        {featured.description}
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     );
   };
@@ -536,26 +527,29 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="pl-4">
         <button
           onClick={() => setMobilePillarExpanded(isPillarExpanded ? null : pillarKey)}
+          aria-expanded={isPillarExpanded}
           className="w-full flex justify-between items-center py-3 text-xs font-bold uppercase tracking-wider text-stone-500"
         >
           {label}
           <ChevronDown className={`w-4 h-4 transition-transform ${isPillarExpanded ? 'rotate-180' : ''}`} />
         </button>
 
-        {isPillarExpanded && (
-          <div className="pb-3 pl-2 space-y-2">
-            {items.map((item, idx) => (
-              <Link
-                key={idx}
-                to={item.href}
-                className={`block text-lg text-stone-600 hover:${hoverColor} transition-colors`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isPillarExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+          <div className="overflow-hidden" inert={!isPillarExpanded}>
+            <div className="pb-3 pl-2 space-y-2">
+              {items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  to={item.href}
+                  className={`block text-lg text-stone-600 hover:${hoverColor} transition-colors`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     );
   };
@@ -572,26 +566,29 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="border-b border-stone-200">
         <button
           onClick={() => setMobileExpanded(isExpanded ? null : type)}
+          aria-expanded={isExpanded}
           className="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark"
         >
           {label}
           <ChevronDown className={`w-6 h-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
         </button>
 
-        {isExpanded && (
-          <div className="pb-4 pl-4 space-y-3">
-            {items.map((item, idx) => (
-              <Link
-                key={idx}
-                to={item.href}
-                className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+        <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+          <div className="overflow-hidden" inert={!isExpanded}>
+            <div className="pb-4 pl-4 space-y-3">
+              {items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  to={item.href}
+                  className="block text-lg text-stone-600 hover:text-brand-red transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     );
   };
@@ -641,22 +638,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Menu Overlay */}
       <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-32 px-6 overflow-y-auto`}>
         <div className="max-w-md mx-auto">
-          {/* Diensten accordion with sub-pillars */}
-          <MobileServicesAccordion />
+          {/* Diensten accordion with sub-pillars. Rendered as function calls (not
+              <Comp/>) so the panel DOM nodes persist across renders. These components
+              are defined inside Navbar, so as JSX elements they'd get a new identity
+              each render and React would remount the panel — mounting it already-open
+              with no start state, so the grid-rows open/close transition would snap. */}
+          {MobileServicesAccordion()}
 
           {/* Over ons */}
-          <MobileAccordion
-            label={content.about.label}
-            type="about"
-            items={content.about.children || []}
-          />
+          {MobileAccordion({ label: content.about.label, type: 'about', items: content.about.children || [] })}
 
           {/* Resources */}
-          <MobileAccordion
-            label={content.resources.label}
-            type="resources"
-            items={content.resources.children || []}
-          />
+          {MobileAccordion({ label: content.resources.label, type: 'resources', items: content.resources.children || [] })}
 
           {/* AI Salon (direct link, no accordion) */}
           <Link
