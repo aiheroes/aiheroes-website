@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Content, Language } from '../types';
+import { Link } from 'react-router-dom';
+import type { Content, Language } from '../types';
 import { Logo } from './Logo';
 import { CONTENT } from '../constants';
 
@@ -67,9 +67,6 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alternateUrl }) => {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
   const scrollTo = (href: string) => {
     if (href.startsWith('#')) {
       const element = document.getElementById(href.substring(1));
@@ -207,15 +204,21 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </Link>
               </li>
               <li>
-                {isHomePage ? (
-                  <button onClick={() => scrollTo('#contact')} className="text-stone-400 hover:text-white transition-colors text-sm text-left">
-                    {nav.contact.label}
-                  </button>
-                ) : (
-                  <Link to="/#contact" className="text-stone-400 hover:text-white transition-colors text-sm">
-                    {nav.contact.label}
-                  </Link>
-                )}
+                <Link
+                  to={lang === 'en' ? '/en#contact' : '/#contact'}
+                  onClick={(e: React.MouseEvent) => {
+                    // On the homepage, smooth-scroll instead of navigating. Checked at
+                    // click time (not render) so server/client HTML stays identical.
+                    const p = window.location.pathname;
+                    if (p === '/' || p === '/en') {
+                      e.preventDefault();
+                      scrollTo('#contact');
+                    }
+                  }}
+                  className="text-stone-400 hover:text-white transition-colors text-sm"
+                >
+                  {nav.contact.label}
+                </Link>
               </li>
               <li>
                 <a
