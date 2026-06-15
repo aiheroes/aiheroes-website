@@ -197,7 +197,7 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
 // Confirmed speakers (not language-specific). Rendered ahead of the open TBA slots.
 // photo: null = portrait not supplied yet; topic: null = topic to be announced.
 const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
-  { name: 'Ruben Molenaars', topic: null, photo: '/speakers/ruben-molenaars.jpg' },
+  { name: 'Ruben Molenaars', topic: 'Keeping our minds sharp in the age of AI', photo: '/speakers/ruben-molenaars.jpg' },
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
