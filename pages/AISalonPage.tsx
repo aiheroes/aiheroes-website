@@ -9,6 +9,9 @@ import type { Language } from '../types';
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 const LUMA_EVENT_ID = 'evt-bgWr4oUXGdNMpms';
 
+// Ruben Molenaars' talk title — single source for the speaker card and the agenda.
+const RUBEN_TALK_TITLE = 'Keeping our minds sharp in the age of AI';
+
 interface AISalonPageProps {
   lang: Language;
 }
@@ -18,6 +21,7 @@ type PracticalEntry = { label: string; lines: string[]; mail?: boolean };
 type Copy = {
   meta: { title: string; description: string };
   hero: string;
+  talkLabel: string;
   lead: {
     intro: string;
     dateText: string;
@@ -28,7 +32,7 @@ type Copy = {
   metaStrip: { text: string }[];
   agenda: {
     heading: string;
-    rows: { time: string; title: string; note: boolean }[];
+    rows: { time: string; title: string; note: boolean; subtitle?: string }[];
     footnote: string;
   };
   speakers: {
@@ -65,6 +69,7 @@ const COPY: Record<Language, Copy> = {
         'AI Salon Groningen kick-off, Thursday September 3, 2026. A bimonthly community evening for AI founders, builders, investors, researchers and partners.',
     },
     hero: 'The #1 AI networking event, now in Groningen.',
+    talkLabel: 'Talk',
     lead: {
       intro: 'Join us on ',
       dateText: 'Thursday, September 3rd',
@@ -85,7 +90,7 @@ const COPY: Record<Language, Copy> = {
       heading: 'Agenda',
       rows: [
         { time: '17:30', title: 'Walk-in', note: false },
-        { time: '18:00', title: 'Ruben Molenaars', note: false },
+        { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
         { time: '18:20', title: 'Speaker TBA', note: true },
         { time: '18:40', title: 'Demo Pitches', note: true },
         { time: '19:00–21:00', title: 'Food, Drinks, Demo Tables & Open Networking', note: false },
@@ -128,6 +133,7 @@ const COPY: Record<Language, Copy> = {
         'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
     },
     hero: 'Het #1 AI netwerk-event, nu ook in Groningen.',
+    talkLabel: 'Talk',
     lead: {
       intro: 'Wees erbij op ',
       dateText: 'donderdag 3 september',
@@ -148,7 +154,7 @@ const COPY: Record<Language, Copy> = {
       heading: 'Programma',
       rows: [
         { time: '17:30', title: 'Inloop', note: false },
-        { time: '18:00', title: 'Ruben Molenaars', note: false },
+        { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
         { time: '18:20', title: 'Spreker TBA', note: true },
         { time: '18:40', title: 'Demo pitches', note: true },
         { time: '19:00–21:00', title: 'Eten, drinken, demo-tafels en open netwerken', note: false },
@@ -197,7 +203,7 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
 // Confirmed speakers (not language-specific). Rendered ahead of the open TBA slots.
 // photo: null = portrait not supplied yet; topic: null = topic to be announced.
 const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
-  { name: 'Ruben Molenaars', topic: 'Keeping our minds sharp in the age of AI', photo: '/speakers/ruben-molenaars.jpg' },
+  { name: 'Ruben Molenaars', topic: RUBEN_TALK_TITLE, photo: '/speakers/ruben-molenaars.jpg' },
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
@@ -378,6 +384,12 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
                   <span className="text-brand-dark">
                     {row.title}
                     {row.note && <span className="text-brand-red ml-0.5">*</span>}
+                    {row.subtitle && (
+                      <span className="block mt-1.5">
+                        <span className="text-brand-red text-[10px] tracking-[0.25em] uppercase">{copy.talkLabel}</span>
+                        <span className="block mt-0.5 text-brand-dark/65 text-[12px] md:text-[13px]">“{row.subtitle}”</span>
+                      </span>
+                    )}
                   </span>
                 </li>
               ))}
@@ -413,9 +425,20 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
                     <div className="text-[15px] md:text-[16px] text-white font-medium tracking-tight">
                       {speaker.name}
                     </div>
-                    <div className="mt-1 font-mono text-[11px] tracking-[0.15em] uppercase text-white/45">
-                      {speaker.topic ?? copy.speakers.topicSoon}
-                    </div>
+                    {speaker.topic ? (
+                      <div className="mt-2">
+                        <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-brand-red/90">
+                          {copy.talkLabel}
+                        </span>
+                        <p className="mt-1 text-[13px] leading-snug text-white/70">
+                          “{speaker.topic}”
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="mt-1 font-mono text-[11px] tracking-[0.15em] uppercase text-white/45">
+                        {copy.speakers.topicSoon}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
