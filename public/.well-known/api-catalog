@@ -1,0 +1,35 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://aiheroes.io/",
+      "service-doc": [
+        {
+          "href": "https://aiheroes.io/llms.txt",
+          "type": "text/plain",
+          "title": "AI Heroes — site overview and resource index for LLMs (llms.txt)"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://aiheroes.io/sitemap-index.xml",
+          "type": "application/xml",
+          "title": "Sitemap index — all public pages"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://aiheroes.io/",
+          "type": "text/html",
+          "title": "Homepage (200 OK indicates the site is reachable)"
+        }
+      ],
+      "author": [
+        {
+          "href": "https://aiheroes.io/en/about",
+          "type": "text/html",
+          "title": "About AI Heroes — team and contact (hello@aiheroes.io)"
+        }
+      ]
+    }
+  ]
+}

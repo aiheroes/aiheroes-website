@@ -1,5 +1,9 @@
 # AI Heroes - robots.txt
 User-agent: *
+# AI content-usage preferences (Content Signals — contentsignals.org,
+# draft-romm-aipref-contentsignals). AI Heroes welcomes discovery, citation and
+# training: search indexing, AI input/grounding and AI training are all allowed.
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
 Allow: /
 # Disallow internal/admin pages
 Disallow: /internal/

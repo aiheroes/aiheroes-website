@@ -251,3 +251,19 @@
 
 # Astro generates real static pages — no SPA fallback. Unknown paths fall through
 # to Astro's 404 page. (The legacy `/* -> /index.html 200` rule was removed here.)
+
+# --- Agent discovery (RFC 8288 Link headers) ---
+# Advertise machine-readable entry points to AI agents/crawlers via Link headers
+# on every response. Relation types are IANA-registered:
+#   api-catalog (RFC 9727), service-doc, sitemap.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Link = "</.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\", </llms.txt>; rel=\"service-doc\"; type=\"text/plain\", </sitemap-index.xml>; rel=\"sitemap\"; type=\"application/xml\""
+
+# The API catalog has no file extension, so pin its media type explicitly
+# (application/linkset+json per RFC 9264).
+[[headers]]
+  for = "/.well-known/api-catalog"
+  [headers.values]
+    Content-Type = "application/linkset+json"
