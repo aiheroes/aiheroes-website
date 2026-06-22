@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Content } from '../types';
 
 interface SocialProofProps {
   content: Content['socialProof'];
 }
+
+// useLayoutEffect on the client, no-op on the server (island is SSR'd to HTML).
+const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
   const logos = [
@@ -22,12 +25,42 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
 
   const testimonial = testimonials[active];
 
+  // Auto-fit: shrink the quote until the whole section fits its viewport
+  // height, so long testimonials never clip inside the h-screen section.
+  const fitRef = useRef<HTMLDivElement>(null);
+  const quoteRef = useRef<HTMLHeadingElement>(null);
+
+  useIsoLayoutEffect(() => {
+    const fit = () => {
+      const box = fitRef.current;
+      const q = quoteRef.current;
+      if (!box || !q) return;
+      q.style.fontSize = '';
+      const base = parseFloat(getComputedStyle(q).fontSize) || 24;
+      let size = base;
+      // Coarse: jump close using the overflow ratio, then fine-tune by 1px.
+      for (let i = 0; i < 6 && box.scrollHeight > box.clientHeight && size > 13; i++) {
+        size = Math.max(13, Math.floor(size * (box.clientHeight / box.scrollHeight)));
+        q.style.fontSize = `${size}px`;
+      }
+      let guard = 0;
+      while (box.scrollHeight > box.clientHeight && size > 13 && guard < 40) {
+        size -= 1;
+        q.style.fontSize = `${size}px`;
+        guard++;
+      }
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
+  }, [active, testimonial.text]);
+
   const arrowBtn =
     "flex items-center justify-center rounded-full text-stone-500 hover:text-white hover:bg-stone-800 transition-colors duration-300 shrink-0";
 
   return (
     <section className="w-full h-full py-8 md:py-20 flex flex-col justify-center items-center overflow-hidden">
-      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8 w-full flex flex-col items-center h-full justify-center pt-16 md:pt-0">
+      <div ref={fitRef} className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8 w-full flex flex-col items-center h-full justify-center pt-28 md:pt-0">
 
         {/* Testimonial slider */}
         <div className="relative w-full max-w-5xl mx-auto mb-6 md:mb-16">
@@ -60,7 +93,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
               <span className="text-6xl md:text-9xl text-stone-800 absolute -top-6 md:-top-8 left-1/2 -translate-x-1/2 font-serif z-0">
                 &ldquo;
               </span>
-              <h3 className="relative z-10 text-[clamp(1.25rem,_0.9rem+1.5vw,_3.5rem)] font-serif italic text-white leading-[1.3] tracking-tight text-balance">
+              <h3 ref={quoteRef} className="relative z-10 text-[clamp(1.25rem,_0.9rem+1.5vw,_3.5rem)] font-serif italic text-white leading-[1.3] tracking-tight text-balance">
                 {testimonial.text}
               </h3>
               <div className="mt-4 md:mt-10 relative z-10">
