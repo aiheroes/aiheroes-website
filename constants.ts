@@ -128,11 +128,17 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Een greep uit de organisaties waar we mee gewerkt hebben",
-      testimonial: {
-        text: "Frans heeft ons een fantastische workshop gegeven waar we met de theorie en de praktijk aan de slag zijn gegaan. Sinds de workshop hebben we de handvatten om AI behapbaar en toepasbaar te maken.",
-        author: "Bobby Kremer",
-        role: "Nationale Postcode Loterij"
-      }
+      testimonials: [
+        {
+          text: "Het team van AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI. Door de interactieve en hands-on workshop hebben we nu praktische tools en tips gekregen om in ons onderwijs mee aan de slag te gaan.",
+          role: "Hanzehogeschool Groningen, TBK"
+        },
+        {
+          text: "Frans heeft ons een fantastische workshop gegeven waar we met de theorie en de praktijk aan de slag zijn gegaan. Sinds de workshop hebben we de handvatten om AI behapbaar en toepasbaar te maken.",
+          author: "Bobby Kremer",
+          role: "Nationale Postcode Loterij"
+        }
+      ]
     },
     contact: {
       title: "Interesse?",
@@ -781,11 +787,17 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Some of the organizations we've worked with",
-      testimonial: {
-        text: "Frans gave us a great workshop, theory and practice combined. Since then we have the tools to actually work with AI.",
-        author: "Bobby Kremer",
-        role: "Nationale Postcode Loterij"
-      }
+      testimonials: [
+        {
+          text: "The AI Heroes team did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI. Thanks to the interactive, hands-on workshop, we now have practical tools and tips to put to work in our teaching.",
+          role: "Hanzehogeschool Groningen, TBK"
+        },
+        {
+          text: "Frans gave us a fantastic workshop where we got hands-on with both the theory and the practice. Since the workshop we have the tools to make AI manageable and applicable.",
+          author: "Bobby Kremer",
+          role: "Nationale Postcode Loterij"
+        }
+      ]
     },
     contact: {
       title: "Interested?",
