@@ -83,7 +83,7 @@ export interface SocialProofContent {
   title: string;
   testimonials: {
     text: string;
-    author: string;
+    author?: string;
     role: string;
   }[];
 }

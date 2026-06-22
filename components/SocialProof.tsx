@@ -65,7 +65,9 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
               </h3>
               <div className="mt-4 md:mt-10 relative z-10">
                 <cite className="not-italic">
-                  <span className="block font-sans font-bold text-white tracking-wide text-sm md:text-base">{testimonial.author}</span>
+                  {testimonial.author && (
+                    <span className="block font-sans font-bold text-white tracking-wide text-sm md:text-base">{testimonial.author}</span>
+                  )}
                   <span className="block font-serif text-stone-400 text-base md:text-lg mt-1">{testimonial.role}</span>
                 </cite>
               </div>
