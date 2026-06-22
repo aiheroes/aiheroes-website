@@ -81,11 +81,11 @@ export interface TeamContent {
 
 export interface SocialProofContent {
   title: string;
-  testimonial: {
+  testimonials: {
     text: string;
     author: string;
     role: string;
-  };
+  }[];
 }
 
 export interface ContactContent {
