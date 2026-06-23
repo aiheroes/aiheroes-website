@@ -255,8 +255,9 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           <Contact content={content.contact} contactFormContent={content.contactForm} />
         </section>
 
-        {/* Footer (Dark) */}
-        <section id="footer" ref={footerRef} className="md:snap-end w-full relative z-20">
+        {/* Footer (Dark). Not a snap target: it's taller than the viewport, so
+            snapping it would park the column headers behind the fixed navbar. */}
+        <section id="footer" ref={footerRef} className="w-full relative z-20">
           <Footer content={content.footer} nav={content.nav} lang={lang} setLang={handleLangChange} />
         </section>
       </main>

@@ -245,15 +245,6 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
               ))}
             </ul>
 
-            <h3 className="font-serif text-lg mb-3 mt-6 text-white">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to={`/${lang}/legal/privacy`} className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.privacy}</Link>
-              </li>
-              <li>
-                <Link to={lang === 'nl' ? '/nl/legal/voorwaarden' : '/en/legal/terms'} className="text-stone-400 hover:text-white transition-colors text-sm">{content.legal.terms}</Link>
-              </li>
-            </ul>
           </div>
         </div>
 
@@ -368,7 +359,10 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
               </p>
             </div>
 
-          <div className="flex items-center gap-6 md:pt-0.5">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:pt-0.5">
+            <Link to={`/${lang}/legal/privacy`} className="hover:text-white transition-colors">{content.legal.privacy}</Link>
+            <Link to={lang === 'nl' ? '/nl/legal/voorwaarden' : '/en/legal/terms'} className="hover:text-white transition-colors">{content.legal.terms}</Link>
+            <span className="hidden md:inline text-stone-700">|</span>
             <div className="flex gap-3">
               {alternateUrl ? (
                 <>
