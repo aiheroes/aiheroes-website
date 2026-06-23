@@ -79,6 +79,8 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
   const pressUrl = lang === 'nl' ? '/nl/pers' : '/en/press';
   const pressLabel = lang === 'nl' ? 'Pers' : 'Press';
   const companyLabel = lang === 'nl' ? 'Bedrijf' : 'Company';
+  const aiStormHref = lang === 'nl' ? '/nl/de-ai-storm' : '/en/de-ai-storm';
+  const aiStormLabel = lang === 'nl' ? 'Zoals gezien op tv' : 'As seen on TV';
 
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-8 mt-auto border-t border-stone-800 overflow-hidden">
@@ -199,8 +201,8 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </Link>
               </li>
               <li>
-                <Link to={lang === 'nl' ? '/nl/vacatures' : '/en/careers'} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {lang === 'nl' ? 'Vacatures' : 'Careers'}
+                <Link to={aiStormHref} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {aiStormLabel}
                 </Link>
               </li>
               <li>
