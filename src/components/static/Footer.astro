@@ -16,6 +16,8 @@ const altUrl = alternatePath(path, lang);
 const pressUrl = lang === 'nl' ? '/nl/pers' : '/en/press';
 const pressLabel = lang === 'nl' ? 'Pers' : 'Press';
 const companyLabel = lang === 'nl' ? 'Bedrijf' : 'Company';
+const aiStormHref = lang === 'nl' ? '/nl/de-ai-storm' : '/en/de-ai-storm';
+const aiStormLabel = lang === 'nl' ? 'Zoals gezien op tv' : 'As seen on TV';
 const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
 const bureauHref = lang === 'nl' ? '/nl/diensten/ai-bureau-nederland' : '/en/services/ai-agency-netherlands';
 const groningenHref = lang === 'nl' ? '/nl/diensten/ai-consultancy-groningen' : '/en/services/ai-agency-groningen';
@@ -127,7 +129,12 @@ const software = nav.services.children?.filter((c) => c.category === 'software')
             <li><a href={item.href} class="text-stone-400 hover:text-white transition-colors text-sm">{item.label}</a></li>
           ))}
           <li><a href={pressUrl} class="text-stone-400 hover:text-white transition-colors text-sm">{pressLabel}</a></li>
-          <li><a href={lang === 'nl' ? '/nl/vacatures' : '/en/careers'} class="text-stone-400 hover:text-white transition-colors text-sm">{lang === 'nl' ? 'Vacatures' : 'Careers'}</a></li>
+          <li>
+            <a href={aiStormHref} class="group inline-flex items-center gap-1.5 text-stone-400 hover:text-white transition-colors text-sm">
+              <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 flex-shrink-0 text-brand-red" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="m17 2-5 5-5-5"/></svg>
+              {aiStormLabel}
+            </a>
+          </li>
           <li><a href={contactHref} class="text-stone-400 hover:text-white transition-colors text-sm">{nav.contact.label}</a></li>
           <li><a href={cf.meetingUrl} target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-white transition-colors text-sm">{cf.meetingLabel}</a></li>
         </ul>
