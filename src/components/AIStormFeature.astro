@@ -1,0 +1,250 @@
+---
+import { PageContactForm } from '../../components/PageContactForm';
+import type { Lang } from '../data/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+// AI Heroes' item in De AI Storm (RTL 7 / RTL Z / Videoland).
+const VIDEO_ID = 'uq8MIcgzUR4';
+const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
+
+// Broadcaster marks shown on white chips. Official logos: RTL 7 + RTL Z as crisp
+// vectors (Wikimedia), Videoland as the current "videoland." wordmark.
+const LOGOS = [
+  { name: 'RTL 7', src: '/broadcasters/rtl7.svg' },
+  { name: 'RTL Z', src: '/broadcasters/rtlz.svg' },
+  { name: 'Videoland', src: '/broadcasters/videoland.png' },
+];
+
+type Pillar = { label: string; body: string; href: string };
+interface Copy {
+  eyebrow: string;
+  showMeta: string[];
+  h1: string;
+  lead: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  videoCaption: string;
+  videoNote: string;
+  seenOnLabel: string;
+  seenOnLine: string;
+  showHeading: string;
+  showParas: string[];
+  showPull: string;
+  bridgeHeading: string;
+  bridgeIntro: string;
+  pillars: Pillar[];
+  pillarMore: string;
+  proof: string;
+  ctaEyebrow: string;
+}
+
+const COPY: Record<Lang, Copy> = {
+  nl: {
+    eyebrow: 'Zoals te zien op televisie',
+    showMeta: ['De AI Storm', 'RTL 7', 'RTL Z', 'Videoland', '4 afleveringen'],
+    h1: 'AI Heroes in De AI Storm',
+    lead: 'RTL 7, RTL Z en Videoland laten in De AI Storm zien hoe Nederlandse organisaties AI inzetten die werkt. In onze aflevering laten we zien hoe je dat aanpakt, van eerste idee tot werkende oplossing.',
+    ctaPrimary: 'Plan een kennismaking',
+    ctaSecondary: 'Bekijk de aflevering',
+    videoCaption: 'Onze aflevering',
+    videoNote: 'De AI Storm · RTL 7, RTL Z & Videoland',
+    seenOnLabel: 'Te zien op',
+    seenOnLine: 'De AI Storm is te zien op RTL 7, RTL Z en Videoland.',
+    showHeading: 'Over De AI Storm',
+    showParas: [
+      'De AI Storm laat in vier afleveringen zien hoe kunstmatige intelligentie het werk in Nederland verandert. Van horeca en marketing tot recruitment, druktechniek en mode.',
+      'Het programma volgt organisaties die AI inzetten als gereedschap. Iets dat processen vereenvoudigt, fouten vermindert en ruimte maakt voor het werk dat er echt toe doet.',
+      'Wij zijn AI Heroes, een full-service AI-bureau uit Groningen. Onze rol in De AI Storm: laten zien hoe je AI van idee naar praktijk brengt.',
+    ],
+    showPull: 'AI werkt als je weet hoe.',
+    bridgeHeading: 'Van het scherm naar jouw organisatie',
+    bridgeIntro:
+      'Wat je in De AI Storm ziet, doen we elke dag. We begeleiden organisaties van eerste verkenning tot werkende oplossing, met training, consultancy en software onder één dak.',
+    pillars: [
+      { label: 'Training', body: 'Workshops en incompany-trainingen die teams AI-vaardig maken.', href: '/nl/diensten#training' },
+      { label: 'Consultancy', body: 'AI-readiness scans, roadmaps en business cases die richting geven.', href: '/nl/diensten#consulting' },
+      { label: 'Software', body: 'Maatwerk AI-oplossingen, van prototype tot productie.', href: '/nl/diensten#software' },
+    ],
+    pillarMore: 'Lees meer',
+    proof: '50+ organisaties geholpen sinds 2019',
+    ctaEyebrow: 'De volgende stap',
+  },
+  en: {
+    eyebrow: 'As seen on television',
+    showMeta: ['De AI Storm', 'RTL 7', 'RTL Z', 'Videoland', '4 episodes'],
+    h1: 'AI Heroes on De AI Storm',
+    lead: 'On RTL 7, RTL Z and Videoland, De AI Storm shows how Dutch organisations put AI to work. In our episode we show how it is done, from first idea to working solution.',
+    ctaPrimary: 'Book an introduction',
+    ctaSecondary: 'Watch the episode',
+    videoCaption: 'Our episode',
+    videoNote: 'De AI Storm · RTL 7, RTL Z & Videoland',
+    seenOnLabel: 'As seen on',
+    seenOnLine: 'De AI Storm airs on RTL 7, RTL Z and Videoland.',
+    showHeading: 'About De AI Storm',
+    showParas: [
+      'Across four episodes, De AI Storm shows how artificial intelligence is changing the way the Netherlands works. From hospitality and marketing to recruitment, print technology and fashion.',
+      'The show follows organisations that treat AI as a tool. Something that simplifies processes, reduces errors and frees up room for the work that genuinely matters.',
+      'We are AI Heroes, a full-service AI agency from Groningen. Our role in De AI Storm: showing how to take AI from idea to practice.',
+    ],
+    showPull: 'AI works when you know how.',
+    bridgeHeading: 'From the screen to your organisation',
+    bridgeIntro:
+      'What you see in De AI Storm is what we do every day. We guide organisations from first exploration to working solution, with training, consulting and software under one roof.',
+    pillars: [
+      { label: 'Training', body: 'Workshops and in-company training that make teams AI-capable.', href: '/en/services#training' },
+      { label: 'Consulting', body: 'AI-readiness scans, roadmaps and business cases that set direction.', href: '/en/services#consulting' },
+      { label: 'Software', body: 'Custom AI solutions, from prototype to production.', href: '/en/services#software' },
+    ],
+    pillarMore: 'Learn more',
+    proof: '50+ organisations helped since 2019',
+    ctaEyebrow: 'The next step',
+  },
+};
+
+const t = COPY[lang];
+const heading = 'font-sans text-3xl md:text-[40px] leading-[1.1] font-medium tracking-[-0.02em]';
+---
+
+<!-- Hero (dark, cinematic). pt clears the fixed white navbar. -->
+<header id="page-hero" class="relative overflow-hidden bg-brand-dark text-white">
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background-image: radial-gradient(60% 55% at 50% -5%, rgba(217,83,79,0.20), transparent 70%), radial-gradient(40% 40% at 90% 10%, rgba(37,99,235,0.10), transparent 70%);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative max-w-5xl mx-auto px-6 pt-32 pb-14 md:pt-44 md:pb-20">
+    <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-brand-red mb-8">{t.eyebrow}</p>
+    <img
+      src="/broadcasters/ai-storm-wit.png"
+      alt="De AI Storm"
+      width="1250"
+      height="250"
+      class="h-9 md:h-12 w-auto mb-10"
+      style="background-color: transparent"
+    />
+    <h1 class="font-sans font-medium tracking-[-0.02em] leading-[1.05] text-[34px] sm:text-[44px] md:text-[56px] lg:text-[64px] max-w-3xl text-balance">
+      {t.h1}
+    </h1>
+    <p class="mt-7 max-w-2xl text-[17px] md:text-[19px] leading-[1.7] text-white/75 text-pretty">{t.lead}</p>
+    <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a
+        href={contactHref}
+        class="inline-flex items-center gap-2 bg-brand-red text-white px-7 py-3.5 font-medium shadow-lg shadow-brand-red/20 hover:opacity-90 transition-opacity"
+      >
+        {t.ctaPrimary}<span aria-hidden="true">→</span>
+      </a>
+      <a
+        href="#video"
+        class="inline-flex items-center gap-2 font-medium text-white/90 underline decoration-white/30 underline-offset-[6px] hover:decoration-white transition-colors"
+      >
+        {t.ctaSecondary}
+      </a>
+    </div>
+  </div>
+
+  <div class="relative border-t border-white/10">
+    <div
+      class="max-w-5xl mx-auto px-6 py-4 font-mono text-[11px] tracking-[0.18em] uppercase text-white/60 flex flex-wrap items-center gap-x-4 gap-y-1"
+    >
+      {
+        t.showMeta.map((m, i) => (
+          <Fragment>
+            {i > 0 && <span class="text-white/25" aria-hidden="true">·</span>}
+            <span>{m}</span>
+          </Fragment>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<!-- Video (continues the dark block) — the centrepiece. -->
+<section id="video" class="bg-brand-dark text-white scroll-mt-24">
+  <div class="max-w-5xl mx-auto px-6 pb-20 md:pb-28">
+    <div class="flex items-center justify-between gap-4 mb-5">
+      <span class="font-mono text-[11px] tracking-[0.25em] uppercase text-white/55">{t.videoCaption}</span>
+      <span class="hidden sm:block font-mono text-[11px] tracking-[0.18em] uppercase text-white/35">{t.videoNote}</span>
+    </div>
+    <div class="relative aspect-video w-full overflow-hidden rounded-xl border border-white/15 bg-black shadow-2xl ring-1 ring-white/5">
+      <iframe
+        class="absolute inset-0 h-full w-full"
+        src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`}
+        title="AI Heroes · De AI Storm"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- As seen on — broadcaster trust band. -->
+<section class="bg-white border-y border-stone-200">
+  <div class="max-w-5xl mx-auto px-6 py-16 md:py-20 text-center">
+    <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-stone-400 mb-10">{t.seenOnLabel}</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 max-w-3xl mx-auto">
+      {
+        LOGOS.map((l) => (
+          <div class="h-[112px] md:h-[124px] border border-stone-200 bg-white flex items-center justify-center px-8">
+            <img
+              src={l.src}
+              alt={l.name}
+              class="max-h-[40px] md:max-h-[46px] w-auto max-w-[170px] md:max-w-[200px] object-contain"
+              style="background-color: transparent"
+            />
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-10 text-sm text-stone-500">{t.seenOnLine}</p>
+  </div>
+</section>
+
+<!-- About the show + our role. -->
+<section class="bg-brand-light">
+  <div class="max-w-3xl mx-auto px-6 py-20 md:py-28">
+    <h2 class={heading}>{t.showHeading}</h2>
+    <div class="mt-8 space-y-6 text-[17px] md:text-[18px] leading-[1.75] text-stone-700">
+      {t.showParas.map((p) => <p>{p}</p>)}
+    </div>
+    <p class="mt-12 font-serif italic text-[26px] md:text-[34px] leading-[1.35] text-brand-dark text-balance">
+      {t.showPull}
+    </p>
+  </div>
+</section>
+
+<!-- From screen to your organisation — the conversion bridge. -->
+<section class="bg-brand-sand border-t border-stone-200">
+  <div class="max-w-5xl mx-auto px-6 py-20 md:py-28">
+    <h2 class={`${heading} max-w-2xl text-balance`}>{t.bridgeHeading}</h2>
+    <p class="mt-5 max-w-2xl text-[17px] md:text-[18px] leading-[1.7] text-stone-600">{t.bridgeIntro}</p>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+      {
+        t.pillars.map((p) => (
+          <a href={p.href} class="group block bg-white border border-stone-200 p-7 hover:border-brand-red transition-colors">
+            <div class="font-mono text-[11px] tracking-[0.25em] uppercase text-brand-red mb-3">{p.label}</div>
+            <p class="text-[15px] leading-relaxed text-stone-600">{p.body}</p>
+            <span class="mt-5 inline-flex items-center gap-1 text-sm font-medium text-brand-dark group-hover:gap-2 transition-all">
+              {t.pillarMore}
+              <span aria-hidden="true">→</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+    <p class="mt-12 font-mono text-[12px] tracking-[0.2em] uppercase text-stone-500">{t.proof}</p>
+  </div>
+</section>
+
+<!-- Contact — the conversion endpoint (on-page form, lead source tagged). -->
+<section id="contact-form" class="bg-white border-t border-stone-200 scroll-mt-24">
+  <div class="max-w-3xl mx-auto px-6 py-20 md:py-28">
+    <p class="font-mono text-[11px] tracking-[0.3em] uppercase text-brand-red mb-8">{t.ctaEyebrow}</p>
+    <PageContactForm lang={lang} accentColor="red" preselectedTopic="De AI Storm" client:visible />
+  </div>
+</section>

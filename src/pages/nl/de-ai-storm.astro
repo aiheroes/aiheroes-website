@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AIStormFeature from '../../components/AIStormFeature.astro';
+
+const description =
+  'AI Heroes in De AI Storm, te zien op RTL 7, RTL Z en Videoland. Bekijk onze aflevering en ontdek hoe je AI van idee naar werkende oplossing brengt.';
+
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'AI Heroes in De AI Storm',
+  description,
+  thumbnailUrl: ['https://i.ytimg.com/vi/uq8MIcgzUR4/maxresdefault.jpg'],
+  uploadDate: '2026-05-17',
+  embedUrl: 'https://www.youtube-nocookie.com/embed/uq8MIcgzUR4',
+  contentUrl: 'https://www.youtube.com/watch?v=uq8MIcgzUR4',
+  publisher: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+};
+---
+
+<BaseLayout
+  lang="nl"
+  title="AI Heroes in De AI Storm"
+  seoTitle="AI Heroes in De AI Storm · RTL 7, RTL Z & Videoland"
+  description={description}
+  ogImage="https://i.ytimg.com/vi/uq8MIcgzUR4/maxresdefault.jpg"
+  jsonLd={videoSchema}
+>
+  <AIStormFeature lang="nl" />
+</BaseLayout>
