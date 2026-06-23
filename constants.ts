@@ -134,7 +134,7 @@ export const CONTENT: Record<Language, Content> = {
           role: "Hanzehogeschool Groningen, TBK"
         },
         {
-          text: "Frans heeft ons een fantastische workshop gegeven waar we met de theorie en de praktijk aan de slag zijn gegaan. Sinds de workshop hebben we de handvatten om AI behapbaar en toepasbaar te maken.",
+          text: "Als organisatie wilden we AI een stapje voor zijn en hebben we ons team laten trainen. Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken. Een echte aanrader!",
           author: "Bobby Kremer",
           role: "Nationale Postcode Loterij"
         }
@@ -793,7 +793,7 @@ export const CONTENT: Record<Language, Content> = {
           role: "Hanzehogeschool Groningen, TBK"
         },
         {
-          text: "Frans gave us a fantastic workshop where we got hands-on with both the theory and the practice. Since the workshop we have the tools to make AI manageable and applicable.",
+          text: "As an organization, we wanted to stay ahead of AI, so we had our team trained. Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable — highly recommended!",
           author: "Bobby Kremer",
           role: "Nationale Postcode Loterij"
         }
