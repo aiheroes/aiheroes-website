@@ -131,7 +131,8 @@ export const CONTENT: Record<Language, Content> = {
       testimonials: [
         {
           text: "Het team van AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI. Door de interactieve en hands-on workshop hebben we nu praktische tools en tips gekregen om in ons onderwijs mee aan de slag te gaan.",
-          role: "Hanzehogeschool Groningen, TBK"
+          author: "Team Technische Bedrijfskunde",
+          role: "Hanzehogeschool Groningen"
         },
         {
           text: "Als organisatie wilden we AI een stapje voor zijn en hebben we ons team laten trainen. Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken. Een echte aanrader!",
@@ -790,7 +791,8 @@ export const CONTENT: Record<Language, Content> = {
       testimonials: [
         {
           text: "The AI Heroes team did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI. Thanks to the interactive, hands-on workshop, we now have practical tools and tips to put to work in our teaching.",
-          role: "Hanzehogeschool Groningen, TBK"
+          author: "Team Technische Bedrijfskunde",
+          role: "Hanzehogeschool Groningen"
         },
         {
           text: "As an organization, we wanted to stay ahead of AI, so we had our team trained. Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable — highly recommended!",
