@@ -91,7 +91,7 @@ const COPY: Record<Language, Copy> = {
       rows: [
         { time: '17:30', title: 'Walk-in', note: false },
         { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
-        { time: '18:20', title: 'Speaker TBA', note: true },
+        { time: '18:20', title: 'Lilian Peters, PhD', note: false },
         { time: '18:40', title: 'Demo Pitches', note: true },
         { time: '19:00–21:00', title: 'Food, Drinks, Demo Tables & Open Networking', note: false },
       ],
@@ -155,7 +155,7 @@ const COPY: Record<Language, Copy> = {
       rows: [
         { time: '17:30', title: 'Inloop', note: false },
         { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
-        { time: '18:20', title: 'Spreker TBA', note: true },
+        { time: '18:20', title: 'Lilian Peters, PhD', note: false },
         { time: '18:40', title: 'Demo pitches', note: true },
         { time: '19:00–21:00', title: 'Eten, drinken, demo-tafels en open netwerken', note: false },
       ],
@@ -204,6 +204,9 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
 // photo: null = portrait not supplied yet; topic: null = topic to be announced.
 const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
   { name: 'Ruben Molenaars', topic: RUBEN_TALK_TITLE, photo: '/speakers/ruben-molenaars.jpg' },
+  // Dr. Lilian Peters — clinical epidemiologist at UMCG (Groningen), PI of FemHealthData;
+  // applies AI/NLP to women's-health EHR data. topic + portrait to be supplied.
+  { name: 'Lilian Peters, PhD', topic: null, photo: null },
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
