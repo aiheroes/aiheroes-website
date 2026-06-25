@@ -205,8 +205,8 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
 const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
   { name: 'Ruben Molenaars', topic: RUBEN_TALK_TITLE, photo: '/speakers/ruben-molenaars.jpg' },
   // Dr. Lilian Peters — clinical epidemiologist at UMCG (Groningen), PI of FemHealthData;
-  // applies AI/NLP to women's-health EHR data. topic + portrait to be supplied.
-  { name: 'Lilian Peters, PhD', topic: null, photo: null },
+  // applies AI/NLP to women's-health EHR data. Portrait greyscaled to match Ruben's; topic TBA.
+  { name: 'Lilian Peters, PhD', topic: null, photo: '/speakers/lilian-peters.jpg' },
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
