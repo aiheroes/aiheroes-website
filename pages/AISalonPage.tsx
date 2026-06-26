@@ -12,6 +12,9 @@ const LUMA_EVENT_ID = 'evt-bgWr4oUXGdNMpms';
 // Ruben Molenaars' talk title — single source for the speaker card and the agenda.
 const RUBEN_TALK_TITLE = 'Keeping our minds sharp in the age of AI';
 
+// Lilian Peters' talk title — single source for the speaker card and the agenda.
+const LILIAN_TALK_TITLE = "Using AI to improve women's health";
+
 interface AISalonPageProps {
   lang: Language;
 }
@@ -96,7 +99,7 @@ const COPY: Record<Language, Copy> = {
       rows: [
         { time: '17:30', title: 'Walk-in', note: false },
         { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
-        { time: '18:20', title: 'Lilian Peters, PhD', note: false },
+        { time: '18:20', title: 'Lilian Peters, PhD', note: false, subtitle: LILIAN_TALK_TITLE },
         { time: '18:40', title: 'Demo Pitches', note: true },
         { time: '19:00–21:00', title: 'Food, Drinks, Demo Tables & Open Networking', note: false },
       ],
@@ -164,7 +167,7 @@ const COPY: Record<Language, Copy> = {
       rows: [
         { time: '17:30', title: 'Inloop', note: false },
         { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
-        { time: '18:20', title: 'Lilian Peters, PhD', note: false },
+        { time: '18:20', title: 'Lilian Peters, PhD', note: false, subtitle: LILIAN_TALK_TITLE },
         { time: '18:40', title: 'Demo pitches', note: true },
         { time: '19:00–21:00', title: 'Eten, drinken, demo-tafels en open netwerken', note: false },
       ],
@@ -218,8 +221,8 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
 const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
   { name: 'Ruben Molenaars', topic: RUBEN_TALK_TITLE, photo: '/speakers/ruben-molenaars.jpg' },
   // Dr. Lilian Peters — clinical epidemiologist at UMCG (Groningen), PI of FemHealthData;
-  // applies AI/NLP to women's-health EHR data. Portrait greyscaled to match Ruben's; topic TBA.
-  { name: 'Lilian Peters, PhD', topic: null, photo: '/speakers/lilian-peters.jpg' },
+  // applies AI/NLP to women's-health EHR data. Portrait greyscaled to match Ruben's.
+  { name: 'Lilian Peters, PhD', topic: LILIAN_TALK_TITLE, photo: '/speakers/lilian-peters.jpg' },
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
