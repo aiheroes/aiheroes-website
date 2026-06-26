@@ -16,7 +16,12 @@ interface AISalonPageProps {
   lang: Language;
 }
 
-type PracticalEntry = { label: string; lines: string[]; mail?: boolean };
+type PracticalEntry = {
+  label: string;
+  lines: string[];
+  mail?: boolean;
+  logo?: { src: string; href: string; alt: string };
+};
 
 type Copy = {
   meta: { title: string; description: string };
@@ -82,7 +87,7 @@ const COPY: Record<Language, Copy> = {
       { text: 'AI Salon Groningen' },
       { text: 'Kick-Off' },
       { text: 'Thursday, Sep 03, 2026' },
-      { text: 'Groningen, City Centre' },
+      { text: 'Chordify · Groningen' },
       { text: 'English-spoken' },
       { text: 'Bimonthly' },
     ],
@@ -121,7 +126,11 @@ const COPY: Record<Language, Copy> = {
     about:
       'AI Salon is the global community where AI founders, builders, investors and partners connect and collaborate, with chapters around the world. Groningen is our chapter, in the AI capital of Europe.',
     practical: {
-      location: { label: 'Location', lines: ['Event location TBA', 'City centre, Groningen'] },
+      location: {
+        label: 'Location',
+        lines: ['Stationsweg 3G', '9726 AC Groningen'],
+        logo: { src: '/venue/chordify.png', href: 'https://chordify.net', alt: 'Chordify' },
+      },
       organiser: { label: 'Organiser', lines: ['AI Heroes (chapter)'] },
       contact: { label: 'Contact', lines: ['salon@aiheroes.io'], mail: true },
     },
@@ -146,7 +155,7 @@ const COPY: Record<Language, Copy> = {
       { text: 'AI Salon Groningen' },
       { text: 'Kick-Off' },
       { text: 'Donderdag 3 sep 2026' },
-      { text: 'Groningen, centrum' },
+      { text: 'Chordify · Groningen' },
       { text: 'Engelstalig' },
       { text: 'Bimonthly' },
     ],
@@ -185,7 +194,11 @@ const COPY: Record<Language, Copy> = {
     about:
       'AI Salon is de wereldwijde community waarin AI founders, builders, investeerders en partners elkaar ontmoeten en samenwerken, met chapters over de hele wereld. Groningen is ons chapter, in de AI-hoofdstad van Europa.',
     practical: {
-      location: { label: 'Locatie', lines: ['Locatie TBA', 'Centrum, Groningen'] },
+      location: {
+        label: 'Locatie',
+        lines: ['Stationsweg 3G', '9726 AC Groningen'],
+        logo: { src: '/venue/chordify.png', href: 'https://chordify.net', alt: 'Chordify' },
+      },
       organiser: { label: 'Organisator', lines: ['AI Heroes (chapter)'] },
       contact: { label: 'Contact', lines: ['salon@aiheroes.io'], mail: true },
     },
@@ -210,9 +223,19 @@ const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] =
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
-const PracticalCol: React.FC<{ label: string; lines: string[]; mail?: boolean }> = ({ label, lines, mail }) => (
+const PracticalCol: React.FC<PracticalEntry> = ({ label, lines, mail, logo }) => (
   <div>
     <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-brand-dark/45 mb-3">{label}</div>
+    {logo && (
+      <a
+        href={logo.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block mb-3 hover:opacity-70 transition-opacity"
+      >
+        <img src={logo.src} alt={logo.alt} className="h-9 w-auto" />
+      </a>
+    )}
     <div className="font-mono text-[12px] leading-[1.7] text-brand-dark/90">
       {lines.map((line, i) =>
         mail && line.includes('@') ? (
