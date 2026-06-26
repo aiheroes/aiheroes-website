@@ -15,8 +15,14 @@ const eventSchema = {
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
-    name: 'Groningen, centrum',
-    address: { '@type': 'PostalAddress', addressLocality: 'Groningen', addressCountry: 'NL' },
+    name: 'Chordify',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Stationsweg 3G',
+      postalCode: '9726 AC',
+      addressLocality: 'Groningen',
+      addressCountry: 'NL',
+    },
   },
   image: ['https://aiheroes.io/og-image.png'],
   description,
