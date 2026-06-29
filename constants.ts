@@ -657,7 +657,7 @@ export const CONTENT: Record<Language, Content> = {
         terms: "Algemene Voorwaarden"
       },
       copyright: "© 2026 AI Heroes",
-      madeIn: "| Met trots gemaakt in Groningen, AI-hoofdstad van Europa"
+      madeIn: "Met trots gemaakt in Groningen, AI-hoofdstad van Europa"
     }
   },
   en: {
@@ -1316,7 +1316,7 @@ export const CONTENT: Record<Language, Content> = {
         terms: "Terms & Conditions"
       },
       copyright: "© 2026 AI Heroes",
-      madeIn: "| Proudly made in Groningen, AI Capital of Europe"
+      madeIn: "Proudly made in Groningen, AI Capital of Europe"
     }
   }
 };
