@@ -214,6 +214,9 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
   // sane size, so there's no transparency/downscaling fringe to fight. ?v=
   // cache-busts older cached copies.
   { name: 'Drydock', src: '/sponsors/drydock.png?v=6' },
+  // Green logo flattened onto white (tile is white) to avoid the transparent-PNG
+  // downscaling fringe; Chordify is also the venue. ?v= cache-busts older copies.
+  { name: 'Chordify', src: '/sponsors/chordify.png?v=1', href: 'https://chordify.net' },
 ];
 
 // Confirmed speakers (not language-specific). Rendered ahead of the open TBA slots.
