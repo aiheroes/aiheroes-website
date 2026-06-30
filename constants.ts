@@ -137,6 +137,11 @@ export const CONTENT: Record<Language, Content> = {
           text: "Als organisatie wilden we AI een stapje voor zijn en hebben we ons team laten trainen. Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken. Een echte aanrader!",
           author: "Bobby Kremer",
           role: "Nationale Postcode Loterij"
+        },
+        {
+          text: "AI Heroes heeft ons geholpen elke stap van ons eCommerce platform te automatiseren met AI. Product enrichment, fulfillment pipelines, marketplace integratie, AI productfoto's en SEO/GEO. Het is erg fijn om met een AI partner te werken die zoveel kennis van de markt en nu ook van ons bedrijf heeft.",
+          author: "P.R. Jeeninga",
+          role: "IC Commerce"
         }
       ]
     },
@@ -796,6 +801,11 @@ export const CONTENT: Record<Language, Content> = {
           text: "As an organization, we wanted to stay ahead of AI, so we had our team trained. Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable — highly recommended!",
           author: "Bobby Kremer",
           role: "Nationale Postcode Loterij"
+        },
+        {
+          text: "AI Heroes helped us automate every step of our eCommerce platform with AI: product enrichment, fulfillment pipelines, marketplace integration, AI product photography, and SEO/GEO. It's great to work with an AI partner that knows the market so well, and now our business too.",
+          author: "P.R. Jeeninga",
+          role: "IC Commerce"
         }
       ]
     },
