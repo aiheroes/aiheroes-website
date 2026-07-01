@@ -1,0 +1,21 @@
+---
+/** Dark conversion band: heading + optional body + primary button. */
+interface Props {
+  title: string;
+  body?: string;
+  href: string;
+  label: string;
+  accent?: 'red' | 'blue';
+  class?: string;
+}
+const { title, body, href, label, accent = 'red', class: className = '' } = Astro.props;
+const accentBg = accent === 'red' ? 'bg-brand-red' : 'bg-brand-blue';
+---
+<div class={`bg-brand-dark text-white p-8 md:p-12 text-center ${className}`}>
+  <h3 class="font-serif text-2xl md:text-3xl mb-3">{title}</h3>
+  {body && <p class="text-white/70 max-w-xl mx-auto mb-6 leading-relaxed">{body}</p>}
+  <a href={href} class={`inline-flex items-center gap-2 ${accentBg} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg`}>
+    {label}
+    <span>&rarr;</span>
+  </a>
+</div>

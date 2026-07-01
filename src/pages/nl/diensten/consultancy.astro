@@ -1,0 +1,87 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+
+const offerings = [
+  { id: 'ai-readiness-scan', title: 'AI Readiness Scan', accent: 'blue' as const, description: 'Waar staat jouw organisatie met AI? We brengen maturiteit, data en cultuur in kaart en geven je een concreet actieplan. 1-3 dagen, vanaf €3.000.' },
+  { id: 'procesanalyse', title: 'Procesoptimalisatie', accent: 'blue' as const, description: 'Deep-dive in je bedrijfsprocessen. Waar liggen automatiseringskansen, welke bottlenecks kan AI oplossen? Je krijgt een geprioriteerd kansenregister. 3-5 dagen, vanaf €5.000.' },
+  { id: 'opportunity-scouting', title: 'Business Case Analyse', accent: 'red' as const, description: 'Waar laat je geld liggen? Organisatiebrede scan van waar AI het meest oplevert, met een overzicht en de top 3-5 uitgewerkte business cases. Met resultaatgarantie.' },
+  { id: 'business-case-development', title: 'Business Case Development', accent: 'red' as const, description: 'Van één AI-kans naar een onderbouwd investeringsvoorstel: ROI, kostenraming en een go/no-go. Board-ready. 1-2 weken, vanaf €5.000.' },
+  { id: 'ai-roadmap', title: 'AI Roadmap', accent: 'blue' as const, description: 'Van inzicht naar implementatieplan. Een gefaseerde roadmap: quick wins, korte en lange termijn, inclusief governance en resource planning. 2-4 weken, vanaf €5.000.' },
+  { id: 'ai-implementatiebegeleiding', title: 'Implementatiebegeleiding', accent: 'red' as const, description: 'Hands-on begeleiding tijdens de uitrol: change management, adoptietracking en coaching op de werkvloer. De brug tussen plan en werkelijkheid. 2-8 weken.' },
+];
+
+const method = [
+  { title: 'Intake en discovery', eyebrow: 'Kick-off', body: 'We beginnen waar jij staat. Interviews met stakeholders, een technische audit en een diepgaande analyse van je processen, op locatie of remote.' },
+  { title: 'Analyse en prioritering', eyebrow: 'Het werk', body: 'We brengen kansen in kaart, kwantificeren de impact en rangschikken op impact versus inspanning. Omdat we zelf AI bouwen, zijn onze kostenramingen realistisch, geen schattingen uit de lucht.' },
+  { title: 'Rapportage en actieplan', eyebrow: 'Oplevering', body: 'Een presentatie van bevindingen en een concreet actieplan aan MT of stuurgroep. Een plan dat werkt, niet een rapport dat stoft. Sluit de business case niet? Dan zeggen we dat.' },
+];
+
+const stats = [
+  { value: 'Vanaf €3.000', label: 'eerste readiness-scan' },
+  { value: '2 – 4 weken', label: 'van scan tot roadmap' },
+  { value: '70%', label: 'van AI-projecten faalt zonder begeleiding' },
+];
+
+const cases = [
+  { title: 'Medux', eyebrow: 'Case', accent: 'red' as const, href: '/nl/cases/medux', description: '70% kostenbesparing op klantenservice met voice-to-voice AI.' },
+  { title: 'InnoEnergy', eyebrow: 'Case', accent: 'blue' as const, href: '/nl/cases/innoenergy', description: 'Van visie naar board-approved prototype.' },
+  { title: 'OLX', eyebrow: 'Case', accent: 'blue' as const, href: '/nl/cases/olx', description: 'AI-gedreven transformatie van de marktplaats.' },
+];
+
+const related = [
+  { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Incompany workshops die je team van inzicht naar dagelijkse toepassing brengen.' },
+  { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Dezelfde partner die adviseert, bouwt ook wat in de roadmap staat.' },
+];
+---
+
+<SubpageLayout
+  lang="nl"
+  title="AI Consultancy"
+  subtitle="Van eerste inzicht naar werkende AI. We beginnen waar jij staat, brengen kansen in kaart en leveren een plan dat rendeert, voordat je investeert."
+  seoTitle="AI Consultancy | Readiness, business case & roadmap | AI Heroes"
+  seoDescription="AI-consultancy die van readiness-scan naar business case, roadmap en implementatiebegeleiding gaat. Een plan dat werkt, niet een rapport dat stoft. Realistische ramingen, want we bouwen zelf."
+  accentColor="blue"
+  pillarBadge="Consultancy"
+  ctaLabel="Plan een gesprek"
+  trustedBy={["Medux", "InnoEnergy", "Prosus", "Envalior", "OLX Poland", "050-IT"]}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Van eerste inzicht naar werkende AI</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      Voor organisaties die weten dat AI relevant is, maar willen weten waar te beginnen en wat het oplevert voordat ze investeren. We brengen je organisatie en processen in kaart, vertalen kansen naar onderbouwde business cases en een concrete roadmap, en begeleiden de uitrol op de werkvloer.
+    </p>
+    <p class="text-stone-600 leading-relaxed">Het unieke: dezelfde partner die adviseert, kan ook bouwen wat in de roadmap staat. Geen overdracht, geen kennislek.</p>
+    <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Het traject, stap voor stap</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Je stapt in waar het voor jou zinvol is: alleen een scan, een enkele business case, of het hele pad van inzicht tot uitrol.</p>
+    <CardGrid items={offerings} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe we werken</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="blue" eyebrow="Onze belofte" title="Een plan dat werkt, niet een rapport dat stoft">
+      <p>Omdat we zelf AI bouwen, zijn onze kostenramingen realistisch en niet uit de lucht gegrepen. We adviseren eerlijk over wat voor jouw situatie zinvol is, en als de business case niet sluit, zeggen we dat. Het doel is een actieplan dat je organisatie echt vooruit brengt.</p>
+    </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Van advies naar resultaat</h2>
+    <CardGrid items={cases} cols={3} />
+  </section>
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Verwante diensten</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>

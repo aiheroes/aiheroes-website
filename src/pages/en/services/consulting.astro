@@ -1,0 +1,87 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+
+const offerings = [
+  { id: 'ai-readiness-scan', title: 'AI Readiness Scan', accent: 'blue' as const, description: 'Where does your organisation stand with AI? We map maturity, data and culture and give you a concrete action plan. 1-3 days, from €3,000.' },
+  { id: 'process-analysis', title: 'Process Optimisation', accent: 'blue' as const, description: 'A deep-dive into your business processes. Where are the automation opportunities, which bottlenecks can AI solve? You get a prioritised opportunity register. 3-5 days, from €5,000.' },
+  { id: 'opportunity-scouting', title: 'Business Case Analysis', accent: 'red' as const, description: 'Where are you leaving money on the table? An organisation-wide scan of where AI delivers most, with an overview and the top 3-5 worked-out business cases. With a results guarantee.' },
+  { id: 'business-case-development', title: 'Business Case Development', accent: 'red' as const, description: 'From a single AI opportunity to a substantiated investment proposal: ROI, cost estimates and a go/no-go. Board-ready. 1-2 weeks, from €5,000.' },
+  { id: 'ai-roadmap', title: 'AI Roadmap', accent: 'blue' as const, description: 'From insight to implementation plan. A phased roadmap: quick wins, short and long term, including governance and resource planning. 2-4 weeks, from €5,000.' },
+  { id: 'ai-implementation-guidance', title: 'Implementation Guidance', accent: 'red' as const, description: 'Hands-on guidance during rollout: change management, adoption tracking and coaching on the work floor. The bridge between plan and reality. 2-8 weeks.' },
+];
+
+const method = [
+  { title: 'Intake and discovery', eyebrow: 'Kick-off', body: 'We start where you stand. Stakeholder interviews, a technical audit and an in-depth analysis of your processes, on-site or remote.' },
+  { title: 'Analysis and prioritisation', eyebrow: 'The work', body: 'We map opportunities, quantify the impact and rank them on impact versus effort. Because we build AI ourselves, our cost estimates are realistic, not plucked from thin air.' },
+  { title: 'Reporting and action plan', eyebrow: 'Delivery', body: 'A presentation of findings and a concrete action plan to your management or steering group. A plan that works, not a report that gathers dust. If the business case does not add up, we say so.' },
+];
+
+const stats = [
+  { value: 'From €3,000', label: 'first readiness scan' },
+  { value: '2 – 4 weeks', label: 'from scan to roadmap' },
+  { value: '70%', label: 'of AI projects fail without guidance' },
+];
+
+const cases = [
+  { title: 'Medux', eyebrow: 'Case', accent: 'red' as const, href: '/en/cases/medux', description: '70% cost saving on customer service with voice-to-voice AI.' },
+  { title: 'InnoEnergy', eyebrow: 'Case', accent: 'blue' as const, href: '/en/cases/innoenergy', description: 'From vision to board-approved prototype.' },
+  { title: 'OLX', eyebrow: 'Case', accent: 'blue' as const, href: '/en/cases/olx', description: 'AI-driven transformation of the marketplace.' },
+];
+
+const related = [
+  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from insight to daily application.' },
+  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'The same partner that advises also builds what is in the roadmap.' },
+];
+---
+
+<SubpageLayout
+  lang="en"
+  title="AI Consulting"
+  subtitle="From first insight to working AI. We start where you stand, map the opportunities and deliver a plan that pays off, before you invest."
+  seoTitle="AI Consulting | Readiness, business case & roadmap | AI Heroes"
+  seoDescription="AI consulting that goes from readiness scan to business case, roadmap and implementation guidance. A plan that works, not a report that gathers dust. Realistic estimates, because we build ourselves."
+  accentColor="blue"
+  pillarBadge="Consulting"
+  ctaLabel="Schedule a consultation"
+  trustedBy={["Medux", "InnoEnergy", "Prosus", "Envalior", "OLX Poland", "050-IT"]}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From first insight to working AI</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      For organisations that know AI is relevant but want to know where to start and what it delivers before they invest. We map your organisation and processes, translate opportunities into substantiated business cases and a concrete roadmap, and guide the rollout on the work floor.
+    </p>
+    <p class="text-stone-600 leading-relaxed">What is unique: the same partner that advises can also build what is in the roadmap. No handover, no knowledge leak.</p>
+    <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">The journey, step by step</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">You step in where it makes sense for you: just a scan, a single business case, or the whole path from insight to rollout.</p>
+    <CardGrid items={offerings} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">How we work</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="blue" eyebrow="Our promise" title="A plan that works, not a report that gathers dust">
+      <p>Because we build AI ourselves, our cost estimates are realistic and not plucked from thin air. We advise honestly about what makes sense for your situation, and if the business case does not add up, we say so. The goal is an action plan that genuinely moves your organisation forward.</p>
+    </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">From advice to results</h2>
+    <CardGrid items={cases} cols={3} />
+  </section>
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Related services</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>

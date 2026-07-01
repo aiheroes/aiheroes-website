@@ -95,15 +95,152 @@
   to = "/en#contact"
   status = 301
 
-# Redirect old SpecialistischeTracks URLs to Maatwerk/Custom pages
+# Redirect old SpecialistischeTracks URLs to the Software pillar page
 [[redirects]]
   from = "/nl/diensten/specialistische-tracks"
-  to = "/nl/diensten/maatwerk-ai-oplossingen"
+  to = "/nl/diensten/software"
   status = 301
 
 [[redirects]]
   from = "/en/services/specialized-tracks"
-  to = "/en/services/custom-ai-solutions"
+  to = "/en/services/software"
+  status = 301
+
+# --- Diensten collapse (2026-07): 15 individual service pages folded into 3
+# bespoke pillar pages. Each retired SKU 301s to its section on the pillar page. ---
+
+# Training pillar
+[[redirects]]
+  from = "/nl/diensten/ai-foundations"
+  to = "/nl/diensten/training#ai-foundations"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/copilot-basics"
+  to = "/nl/diensten/training#copilot-basics"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-voor-developers"
+  to = "/nl/diensten/training#ai-voor-developers"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-privacy-security"
+  to = "/nl/diensten/training#ai-privacy-security"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-media-literacy"
+  to = "/nl/diensten/training#ai-media-literacy"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-foundations"
+  to = "/en/services/training#ai-foundations"
+  status = 301
+[[redirects]]
+  from = "/en/services/copilot-basics"
+  to = "/en/services/training#copilot-basics"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-for-developers"
+  to = "/en/services/training#ai-for-developers"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-privacy-security"
+  to = "/en/services/training#ai-privacy-security"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-media-literacy"
+  to = "/en/services/training#ai-media-literacy"
+  status = 301
+
+# Consultancy pillar
+[[redirects]]
+  from = "/nl/diensten/ai-readiness-scan"
+  to = "/nl/diensten/consultancy#ai-readiness-scan"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/procesanalyse"
+  to = "/nl/diensten/consultancy#procesanalyse"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/opportunity-scouting"
+  to = "/nl/diensten/consultancy#opportunity-scouting"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/business-case-development"
+  to = "/nl/diensten/consultancy#business-case-development"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-roadmap"
+  to = "/nl/diensten/consultancy#ai-roadmap"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-implementatiebegeleiding"
+  to = "/nl/diensten/consultancy#ai-implementatiebegeleiding"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-readiness-scan"
+  to = "/en/services/consulting#ai-readiness-scan"
+  status = 301
+[[redirects]]
+  from = "/en/services/process-analysis"
+  to = "/en/services/consulting#process-analysis"
+  status = 301
+[[redirects]]
+  from = "/en/services/opportunity-scouting"
+  to = "/en/services/consulting#opportunity-scouting"
+  status = 301
+[[redirects]]
+  from = "/en/services/business-case-development"
+  to = "/en/services/consulting#business-case-development"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-roadmap"
+  to = "/en/services/consulting#ai-roadmap"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-implementation-guidance"
+  to = "/en/services/consulting#ai-implementation-guidance"
+  status = 301
+
+# Software pillar
+[[redirects]]
+  from = "/nl/diensten/ai-prototyping"
+  to = "/nl/diensten/software#ai-prototyping"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/maatwerk-ai-oplossingen"
+  to = "/nl/diensten/software#maatwerk-ai-oplossingen"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-integratie"
+  to = "/nl/diensten/software#ai-integratie"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/ai-development-teams"
+  to = "/nl/diensten/software#ai-development-teams"
+  status = 301
+[[redirects]]
+  from = "/nl/diensten/digital-twins"
+  to = "/nl/diensten/software#digital-twins"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-prototyping"
+  to = "/en/services/software#ai-prototyping"
+  status = 301
+[[redirects]]
+  from = "/en/services/custom-ai-solutions"
+  to = "/en/services/software#custom-ai-solutions"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-integration"
+  to = "/en/services/software#ai-integration"
+  status = 301
+[[redirects]]
+  from = "/en/services/ai-development-teams"
+  to = "/en/services/software#ai-development-teams"
+  status = 301
+[[redirects]]
+  from = "/en/services/digital-twins"
+  to = "/en/services/software#digital-twins"
   status = 301
 
 # Return 410 Gone for old WordPress pages still indexed by Google
@@ -165,12 +302,12 @@
 
 [[redirects]]
   from = "/design-track/"
-  to = "/en/services/custom-ai-solutions"
+  to = "/en/services/software"
   status = 301
 
 [[redirects]]
   from = "/ai-that-makes-your-vision-real/"
-  to = "/en/services/custom-ai-solutions"
+  to = "/en/services/software"
   status = 301
 
 [[redirects]]

@@ -1,15 +1,39 @@
 ---
 import { getCollection, render } from 'astro:content';
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
 
 export async function getStaticPaths() {
   const items = await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft);
-  return items.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+  return items.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry, items } }));
 }
 
-const { entry } = Astro.props;
+const { entry, items } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+
+const others = items
+  .filter((e) => e.data.slug !== d.slug)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3)
+  .map((e) => ({
+    title: e.data.client ?? e.data.title,
+    eyebrow: e.data.pillarBadge,
+    description: e.data.subtitle,
+    href: `/en/cases/${e.data.slug}`,
+    accent: e.data.accentColor,
+  }));
+
+const caseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  description: d.description,
+  ...(d.client ? { about: { '@type': 'Organization', name: d.client } } : {}),
+  author: { '@type': 'Organization', name: 'AI Heroes' },
+  publisher: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+  inLanguage: 'en',
+};
 ---
 
 <SubpageLayout
@@ -20,8 +44,16 @@ const d = entry.data;
   seoDescription={d.description}
   accentColor={d.accentColor}
   pillarBadge={d.pillarBadge}
+  jsonLd={caseSchema}
 >
+  <a href="/en/cases" class="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors mb-8">&larr; All cases</a>
   <div class="prose prose-lg max-w-none">
     <Content />
   </div>
+  {others.length > 0 && (
+    <section class="mt-16 pt-10 border-t border-stone-200">
+      <h2 class="font-serif text-2xl text-brand-dark mb-6">More cases</h2>
+      <CardGrid items={others} cols={3} />
+    </section>
+  )}
 </SubpageLayout>

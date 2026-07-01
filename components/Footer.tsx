@@ -234,16 +234,20 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
               </li>
             </ul>
 
-            <h3 className="font-serif text-lg mb-3 mt-6 text-white">{nav.resources.label}</h3>
-            <ul className="space-y-2">
-              {nav.resources.children?.map((item, idx) => (
-                <li key={idx}>
-                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {nav.resources && (
+              <>
+                <h3 className="font-serif text-lg mb-3 mt-6 text-white">{nav.resources.label}</h3>
+                <ul className="space-y-2">
+                  {nav.resources.children?.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
 
           </div>
         </div>

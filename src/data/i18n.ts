@@ -13,6 +13,7 @@ export const LANGS: Lang[] = ['nl', 'en'];
 // are identical on both sides and need no entry.
 export const SEGMENT_NL_TO_EN: Record<string, string> = {
   diensten: 'services',
+  consultancy: 'consulting',
   'over-ons': 'about',
   'ai-voor-developers': 'ai-for-developers',
   'maatwerk-ai-oplossingen': 'custom-ai-solutions',

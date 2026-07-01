@@ -1,0 +1,95 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+
+const offerings = [
+  { id: 'ai-prototyping', title: 'Proof of Concept', accent: 'red' as const, description: 'Valideer je AI-idee vóór je groot investeert. Een rapid proof-of-concept in een sprint van 6 dagen: bewijs dat het werkt, met herbruikbare code. Vanaf €8.000.' },
+  { id: 'maatwerk-ai-oplossingen', title: 'AI op Maat', accent: 'red' as const, description: 'Custom AI-toepassingen, van prototype tot productie: apps, RAG-pipelines, AI-assistenten, procesautomatisering. Gebouwd met jouw team. 2-12 weken, vanaf €15.000.' },
+  { id: 'ai-integratie', title: 'Systeemintegratie', accent: 'blue' as const, description: 'AI verbinden met je bestaande landschap: ERP, CRM, interne en legacy tools. AI die werkt in je dagelijkse workflow, zonder van platform te wisselen. 2-6 weken, vanaf €10.000.' },
+  { id: 'ai-development-teams', title: 'Dedicated Teams', accent: 'blue' as const, description: 'Dedicated, flexibel schaalbare ontwikkelcapaciteit: jouw team, versterkt met AI-expertise. Augmentatie, dedicated of hybride, tech lead inbegrepen. Binnen een week productief.' },
+  { id: 'digital-twins', title: 'Digital Twins', accent: 'dark' as const, description: 'Het vlaggenschip: een digitale kopie van je organisatie die zelf de beste business cases vindt en de bijbehorende agents bouwt en uitrolt. Met governance, monitoring en kill-switch. 4-10 weken, vanaf €25.000.' },
+];
+
+const method = [
+  { title: 'Scoping', eyebrow: 'Klein beginnen', body: 'We bepalen scope, data en architectuur. Begin klein, bewijs de waarde, en schaal dan op. Bij een proof of concept staat er in 6 dagen een werkend prototype.' },
+  { title: 'Bouwen', eyebrow: 'Agile sprints', body: 'Agile development in korte sprints met regelmatige demo’s, zodat je altijd ziet waar we staan. We leveren de expertise, zelfstandig of samen met jouw developers.' },
+  { title: 'Oplevering en overdracht', eyebrow: 'Onder één dak', body: 'Elke oplevering bevat werkende software, documentatie en training van je team, zodat jouw mensen zelfstandig verder kunnen. Bouwen, trainen en advies onder één dak.' },
+];
+
+const stats = [
+  { value: '6 dagen', label: 'van idee naar werkend prototype' },
+  { value: 'Vanaf €8.000', label: 'proof of concept' },
+  { value: 'Geen lock-in', label: 'open standaarden, jouw datamodel blijft van jou' },
+];
+
+const meduxStats = [
+  { value: '70%', label: 'kostenbesparing' },
+  { value: '80%', label: 'gesprekken via AI' },
+  { value: '7.8', label: 'klanttevredenheid' },
+];
+
+const cases = [
+  { title: 'Medux', eyebrow: 'Case', accent: 'red' as const, href: '/nl/cases/medux', description: 'Voice-to-voice AI-klantenservice die maandelijks zo’n 4.000 gesprekken afhandelt.' },
+  { title: 'Trabu', eyebrow: 'Case', accent: 'blue' as const, href: '/nl/cases/trabu', description: 'Van idee naar werkend prototype in 6 dagen, op tijd voor de investeerder.' },
+];
+
+const related = [
+  { title: 'Consultancy', accent: 'blue' as const, href: '/nl/diensten/consultancy', description: 'Zeker weten dat je het juiste bouwt: van readiness tot business case en roadmap.' },
+  { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Je team meenemen zodat het de oplossing zelfstandig kan gebruiken en uitbouwen.' },
+];
+---
+
+<SubpageLayout
+  lang="nl"
+  title="AI Software & Implementatie"
+  subtitle="Van idee naar werkende, geïntegreerde AI in productie. Gebouwd met jouw team, niet ernaast. Begin klein, bewijs de waarde, en schaal op."
+  seoTitle="AI Software op Maat & Implementatie | AI Heroes"
+  seoDescription="Van proof of concept tot maatwerk AI, systeemintegratie, dedicated teams en digital twins. Werkende, geïntegreerde AI in productie, gebouwd met jouw team. Geen vendor lock-in."
+  accentColor="red"
+  pillarBadge="Software & Implementatie"
+  ctaLabel="Bespreek je project"
+  trustedBy={["Medux", "OLX Poland", "iFood Brazil", "Trabu", "Prosus", "InnoEnergy"]}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Van idee naar werkende AI-oplossing</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      De bouwkant van AI Heroes. Een de-risked traject dat klein begint en opschaalt: bewijs eerst dat het werkt met een proof of concept, bouw dan de maatwerkoplossing, verbind die met je bestaande landschap en schaal ontwikkelcapaciteit flexibel bij.
+    </p>
+    <p class="text-stone-600 leading-relaxed">Voor organisaties die weten wat ze willen bouwen, maar de expertise of capaciteit missen. Het hele traject onder één dak: bouwen, trainen en advies.</p>
+    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Wat we bouwen</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Van een eerste validatie tot een zelflerend model van je organisatie. Je stapt in op het niveau dat past bij waar je nu staat.</p>
+    <CardGrid items={offerings} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe we bouwen</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Bewezen in productie</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Bij Medux handelt onze voice-to-voice AI maandelijks zo’n 4.000 klantgesprekken af.</p>
+    <StatGrid stats={meduxStats} accent="red" cols={3} />
+    <div class="mt-8">
+      <CardGrid items={cases} cols={2} />
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="light" accent="blue" eyebrow="Soeverein by design" title="Geen vendor lock-in">
+      <p>We werken met open standaarden waar mogelijk en Europese hosting waar het ertoe doet. Je krijgt een datamodel dat van jou blijft, zodat je nooit vastzit aan één leverancier.</p>
+    </Callout>
+  </section>
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Verwante diensten</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>

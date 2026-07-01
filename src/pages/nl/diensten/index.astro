@@ -1,27 +1,76 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import DienstenIsland from '../../../components/islands/DienstenIsland';
-import { CONTENT } from '../../../data/content';
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import ProofRow from '../../../components/blocks/ProofRow.astro';
 
-const faq = CONTENT.nl.dienstenPage!.faq;
+const pillars = [
+  { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Incompany workshops die je team van &ldquo;wat is AI&rdquo; naar dagelijkse toepassing brengen. Op locatie, met jouw cases. Vanaf €2.500 per dag.' },
+  { title: 'Consultancy', accent: 'blue' as const, href: '/nl/diensten/consultancy', description: 'Van AI-readiness en business cases tot roadmap en implementatiebegeleiding. Een plan dat werkt, niet een rapport dat stoft.' },
+  { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Van proof of concept tot maatwerk AI, systeemintegratie en digital twins. Werkende AI in productie, gebouwd met jouw team.' },
+];
+
+const faq = [
+  { q: 'Welke pijler heb ik nodig?', a: 'Begin bij Consultancy als je nog zoekt waar AI waarde oplevert, bij Training als je team AI wil leren gebruiken, of bij Software als je weet wat je wilt bouwen. Vaak combineren organisaties de drie.' },
+  { q: 'Werken jullie door heel Nederland?', a: 'Ja. Onze thuisbasis is Groningen, maar we werken op locatie door heel Nederland en daarbuiten.' },
+  { q: 'Kunnen jullie het hele traject doen?', a: 'Ja. Van eerste scan en training tot bouw en implementatie, onder één dak. Geen overdracht tussen partijen, geen kennislek.' },
+];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faq.items.map((item) => ({
+  mainEntity: faq.map((item) => ({
     '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
   })),
 };
 ---
 
-<BaseLayout
+<SubpageLayout
   lang="nl"
   title="AI-Diensten"
-  seoTitle="AI-Diensten voor heel Nederland: Training, Consulting & Software"
-  description="Bekijk de AI-diensten van AI Heroes voor organisaties in heel Nederland: van AI-training en consulting tot maatwerk software. Onder één dak, vanuit Groningen."
+  subtitle="Eén agency, van change management tot technische implementatie. Drie pijlers, onder één dak, vanuit Groningen voor heel Europa."
+  seoTitle="AI-Diensten: Training, Consultancy & Software | AI Heroes"
+  seoDescription="De AI-diensten van AI Heroes: van AI-training en consultancy tot maatwerk software. Onder één dak, vanuit Groningen voor heel Nederland en Europa."
+  accentColor="red"
+  ctaLabel="Plan een gesprek"
+  trustedBy={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy"]}
   jsonLd={faqSchema}
-  noChrome
 >
-  <DienstenIsland lang="nl" client:load />
-</BaseLayout>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Drie pijlers, één partner</h2>
+    <p class="text-lg text-stone-600 leading-relaxed">
+      De meeste AI-trajecten stranden op de overdracht tussen adviseur, trainer en bouwer. Bij ons zit dat onder één dak: dezelfde mensen die de strategie bepalen, trainen je team en bouwen de oplossing. Kies de pijler die past bij waar je nu staat.
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <CardGrid items={pillars} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="red" eyebrow="Europees, zonder lock-in" title="EU AI Consultancy">
+      <p>Soevereine AI voor jouw organisatie: het complete traject van risico-inventarisatie tot werkende Europese AI-oplossing, zonder vendor lock-in. <a href="/nl/diensten/eu-consultancy" class="text-white underline underline-offset-2 hover:no-underline">Lees meer over EU AI Consultancy &rarr;</a></p>
+    </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <ProofRow label="Vertrouwd door" items={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy", "OLX Poland", "Banijay Benelux"]} />
+  </section>
+</SubpageLayout>

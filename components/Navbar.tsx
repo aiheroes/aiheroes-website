@@ -16,7 +16,7 @@ interface NavbarProps {
   bottomTheme?: 'dark' | 'light';
 }
 
-type DropdownType = 'services' | 'about' | 'resources' | null;
+type DropdownType = 'services' | 'about' | null;
 
 export const Navbar: React.FC<NavbarProps> = ({
   lang,
@@ -135,8 +135,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // Pillar metadata for mega-menu column headers
   const pillarMeta = lang === 'nl'
-    ? { training: { label: 'TRAINING', subtitle: 'Workshops die bijblijven', href: '/nl/diensten#training' }, consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten#consulting' }, software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten#software' } }
-    : { training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services#training' }, consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services#consulting' }, software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services#software' } };
+    ? { training: { label: 'TRAINING', subtitle: 'Workshops die bijblijven', href: '/nl/diensten/training' }, consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten/consultancy' }, software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten/software' } }
+    : { training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services/training' }, consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services/consulting' }, software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services/software' } };
 
   const allServicesLabel = lang === 'nl' ? 'Bekijk alle diensten' : 'View all services';
   const allServicesHref = lang === 'nl' ? '/nl/diensten' : '/en/services';
@@ -285,25 +285,41 @@ export const Navbar: React.FC<NavbarProps> = ({
     </>
   );
 
-  // Simple list content for About / Resources
-  const SimpleListContent: React.FC<{ items: NavChild[] }> = ({ items }) => (
-    <div className="space-y-1">
-      {items.map((item, idx) => (
+  // Grouped mega-menu content for Over ons (columns: Bedrijf / Media / Werken bij)
+  const AboutContent: React.FC = () => (
+    <>
+      <div className="mb-4 pb-3 border-b border-stone-100">
         <Link
-          key={idx}
-          to={item.href}
+          to={content.about.href}
           onClick={() => setOpenDropdown(null)}
-          className="block px-3 py-2.5 hover:bg-stone-50 rounded transition-colors group"
+          className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors"
         >
-          <span className="font-medium text-sm text-brand-dark transition-colors group-hover:text-brand-red">
-            {item.label}
-          </span>
-          {item.description && (
-            <span className="block text-xs text-stone-500 mt-0.5">{item.description}</span>
-          )}
+          {panelTopLinks.about.label} <ArrowRight className="w-3.5 h-3.5" />
         </Link>
-      ))}
-    </div>
+      </div>
+      <div className="grid grid-cols-3 gap-6">
+        {(content.about.columns ?? []).map((col, i) => (
+          <div key={i}>
+            <div className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-3">{col.heading}</div>
+            <div className="space-y-0.5">
+              {col.items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  to={item.href}
+                  onClick={() => setOpenDropdown(null)}
+                  className="block px-2 py-1.5 rounded hover:bg-stone-50 transition-colors group"
+                >
+                  <span className="block text-sm text-brand-dark group-hover:text-brand-red transition-colors">{item.label}</span>
+                  {item.description && (
+                    <span className="block text-xs text-stone-400 mt-0.5">{item.description}</span>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 
   // Which content to show (persists briefly after close for exit animation)
@@ -314,12 +330,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const isDropdownVisible = openDropdown !== null;
   const activePanel = shownDropdown;
-  const panelWidth = activePanel === 'services' ? 720 : 340;
+  const panelWidth = activePanel === 'services' ? 720 : 600;
 
-  // Top link labels for about/resources panels (matching "Bekijk alle diensten" style)
+  // Top link label for the About mega-menu (matching "Bekijk alle diensten" style)
   const panelTopLinks = lang === 'nl'
-    ? { about: { label: 'Over AI Heroes', href: '/nl/over-ons' }, resources: { label: 'Alle resources bekijken', href: '/nl/resources' } }
-    : { about: { label: 'About AI Heroes', href: '/en/about' }, resources: { label: 'View all resources', href: '/en/resources' } };
+    ? { about: { label: 'Over AI Heroes', href: '/nl/over-ons' } }
+    : { about: { label: 'About AI Heroes', href: '/en/about' } };
 
   // Dropdown panel JSX, inlined (not a component) so React doesn't remount it
   const dropdownPanel = (
@@ -347,22 +363,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         )}
         {activePanel === 'about' && (
           <div className="p-5">
-            <div className="mb-4 pb-3 border-b border-stone-100">
-              <span className="text-sm text-stone-500">
-                {panelTopLinks.about.label}
-              </span>
-            </div>
-            <SimpleListContent items={content.about.children || []} />
-          </div>
-        )}
-        {activePanel === 'resources' && (
-          <div className="p-5">
-            <div className="mb-4 pb-3 border-b border-stone-100">
-              <span className="text-sm text-stone-500">
-                {panelTopLinks.resources.label}
-              </span>
-            </div>
-            <SimpleListContent items={content.resources.children || []} />
+            <AboutContent />
           </div>
         )}
       </div>
@@ -398,6 +399,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // AI Salon link (top-level event page, no dropdown)
   const aiSalonHref = lang === 'nl' ? '/nl/ai-salon' : '/en/ai-salon';
+  const casesHref = lang === 'nl' ? '/nl/cases' : '/en/cases';
 
   // Render nav content for a given theme
   const renderNavContent = (theme: 'dark' | 'light') => {
@@ -417,7 +419,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div ref={triggersRef} className="flex items-center space-x-8">
             <NavTrigger label={content.services.label} type="services" theme={theme} href={content.services.href} />
             <NavTrigger label={content.about.label} type="about" theme={theme} href={content.about.href} />
-            <NavTrigger label={content.resources.label} type="resources" theme={theme} href={content.resources.href} />
+            <Link
+              to={casesHref}
+              onClick={() => setOpenDropdown(null)}
+              className="text-sm font-medium hover:opacity-80 transition-opacity py-2"
+            >
+              Cases
+            </Link>
             <Link
               to={aiSalonHref}
               onClick={() => setOpenDropdown(null)}
@@ -648,8 +656,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Over ons */}
           {MobileAccordion({ label: content.about.label, type: 'about', items: content.about.children || [] })}
 
-          {/* Resources */}
-          {MobileAccordion({ label: content.resources.label, type: 'resources', items: content.resources.children || [] })}
+          {/* Cases (direct link, no accordion) */}
+          <Link
+            to={casesHref}
+            onClick={() => setIsOpen(false)}
+            className="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200"
+          >
+            Cases
+            <ArrowRight className="w-5 h-5 text-stone-400" />
+          </Link>
 
           {/* AI Salon (direct link, no accordion) */}
           <Link

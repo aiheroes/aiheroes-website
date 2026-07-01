@@ -1,0 +1,48 @@
+---
+/**
+ * Numbered step cards with an accent badge, eyebrow, body and optional link.
+ * Extracted from the eu-consultancy "Drie stappen" pattern. Accent cycles
+ * red -> blue -> stone for rhythm unless a step sets its own.
+ */
+interface Step {
+  title: string;
+  eyebrow?: string;
+  body: string;
+  href?: string;
+  hrefLabel?: string;
+  accent?: 'red' | 'blue' | 'dark';
+}
+interface Props {
+  steps: Step[];
+  class?: string;
+}
+const { steps, class: className = '' } = Astro.props;
+const cycle: Array<'red' | 'blue' | 'dark'> = ['red', 'blue', 'dark'];
+const styles = {
+  red: { hover: 'hover:border-brand-red', badgeBg: 'bg-brand-red/10', badgeText: 'text-brand-red', eyebrow: 'text-brand-red', link: 'text-brand-red' },
+  blue: { hover: 'hover:border-brand-blue', badgeBg: 'bg-brand-blue/10', badgeText: 'text-brand-blue', eyebrow: 'text-brand-blue', link: 'text-brand-blue' },
+  dark: { hover: 'hover:border-stone-400', badgeBg: 'bg-stone-100', badgeText: 'text-brand-dark', eyebrow: 'text-stone-500', link: 'text-brand-dark' },
+};
+---
+<div class={`space-y-6 ${className}`}>
+  {steps.map((step, i) => {
+    const s = styles[step.accent ?? cycle[i % cycle.length]];
+    return (
+      <div class={`border-2 border-stone-200 p-6 md:p-8 ${s.hover} transition-colors`}>
+        <div class="flex items-start gap-4">
+          <div class={`w-10 h-10 rounded-full ${s.badgeBg} flex items-center justify-center flex-shrink-0 mt-1`}>
+            <span class={`${s.badgeText} font-serif font-bold text-lg`}>{i + 1}</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-lg mb-1">{step.title}</h4>
+            {step.eyebrow && <p class={`text-xs font-bold uppercase tracking-wider ${s.eyebrow} mb-3`}>{step.eyebrow}</p>}
+            <p class="text-stone-600 text-sm leading-relaxed" set:html={step.body} />
+            {step.href && step.hrefLabel && (
+              <a href={step.href} class={`inline-block mt-3 text-sm font-medium ${s.link} hover:underline underline-offset-2`}>{step.hrefLabel} &rarr;</a>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</div>

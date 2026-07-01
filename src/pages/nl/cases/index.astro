@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProofRow from '../../../components/blocks/ProofRow.astro';
+
+const items = (await getCollection('cases', (e) => e.data.lang === 'nl' && !e.data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const cards = items.map((e) => ({
+  title: e.data.client ?? e.data.title,
+  eyebrow: e.data.pillarBadge,
+  description: e.data.subtitle,
+  href: `/nl/cases/${e.data.slug}`,
+  accent: e.data.accentColor,
+}));
+
+const listSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: items.map((e, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://aiheroes.io/nl/cases/${e.data.slug}`,
+    name: e.data.client ?? e.data.title,
+  })),
+};
+---
+
+<SubpageLayout
+  lang="nl"
+  title="Cases"
+  subtitle="Van voice-to-voice klantenservice tot board-approved prototypes. Werkende AI die we samen met onze klanten hebben gebouwd."
+  seoTitle="AI Cases & Klantverhalen | AI Heroes"
+  seoDescription="Bekijk hoe AI Heroes werkende AI-oplossingen bouwde voor Medux, OLX, Trabu en InnoEnergy. Van 70% kostenbesparing tot een prototype in 6 dagen."
+  accentColor="red"
+  ctaLabel="Plan een gesprek"
+  jsonLd={listSchema}
+>
+  <section class="mb-12">
+    <CardGrid items={cards} cols={2} />
+  </section>
+  <ProofRow label="Vertrouwd door" items={["Medux", "OLX Poland", "Trabu", "InnoEnergy", "Prosus", "Envalior"]} />
+</SubpageLayout>

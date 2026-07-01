@@ -1,0 +1,47 @@
+---
+/**
+ * Responsive grid of cards with a colored top-bar accent. Cards link out when
+ * given an href. Used for pillar service lists, related cases, resource links.
+ */
+interface Card {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  href?: string;
+  accent?: 'red' | 'blue' | 'dark';
+  id?: string;
+}
+interface Props {
+  items: Card[];
+  cols?: 2 | 3;
+  class?: string;
+}
+const { items, cols = 3, class: className = '' } = Astro.props;
+const colClass = cols === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-2 lg:grid-cols-3';
+const bar = { red: 'bg-brand-red', blue: 'bg-brand-blue', dark: 'bg-brand-dark' };
+const hover = { red: 'hover:border-brand-red', blue: 'hover:border-brand-blue', dark: 'hover:border-stone-400' };
+const eyebrowText = { red: 'text-brand-red', blue: 'text-brand-blue', dark: 'text-stone-500' };
+---
+<div class={`grid grid-cols-1 ${colClass} gap-5 ${className}`}>
+  {items.map((c) => {
+    const accent = c.accent ?? 'red';
+    const Tag = c.href ? 'a' : 'div';
+    return (
+      <Tag
+        id={c.id}
+        href={c.href}
+        class={`group block bg-white border border-stone-200 ${hover[accent]} transition-colors ${c.href ? 'cursor-pointer' : ''} scroll-mt-28`}
+      >
+        <div class={`h-1 w-full ${bar[accent]}`}></div>
+        <div class="p-6">
+          {c.eyebrow && <p class={`text-xs font-bold uppercase tracking-wider ${eyebrowText[accent]} mb-2`}>{c.eyebrow}</p>}
+          <h3 class="font-serif text-lg text-brand-dark mb-2 flex items-center justify-between gap-2">
+            <span>{c.title}</span>
+            {c.href && <span class="text-stone-300 group-hover:text-brand-dark group-hover:translate-x-0.5 transition-all">&rarr;</span>}
+          </h3>
+          {c.description && <p class="text-sm text-stone-600 leading-relaxed">{c.description}</p>}
+        </div>
+      </Tag>
+    );
+  })}
+</div>

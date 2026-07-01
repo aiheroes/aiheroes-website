@@ -7,10 +7,17 @@ export interface NavChild {
   category?: 'training' | 'consulting' | 'software';
 }
 
+export interface NavColumn {
+  heading: string;
+  items: NavChild[];
+}
+
 export interface NavItem {
   label: string;
   href: string;
   children?: NavChild[];
+  /** Optional grouped columns for a mega-menu (e.g. Over ons). */
+  columns?: NavColumn[];
 }
 
 export interface FeaturedNavLink {
@@ -22,7 +29,7 @@ export interface FeaturedNavLink {
 export interface NavStructure {
   services: NavItem;
   about: NavItem;
-  resources: NavItem;
+  resources?: NavItem;
   contact: NavItem;
   featured?: FeaturedNavLink;
 }

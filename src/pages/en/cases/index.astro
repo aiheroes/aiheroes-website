@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProofRow from '../../../components/blocks/ProofRow.astro';
+
+const items = (await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const cards = items.map((e) => ({
+  title: e.data.client ?? e.data.title,
+  eyebrow: e.data.pillarBadge,
+  description: e.data.subtitle,
+  href: `/en/cases/${e.data.slug}`,
+  accent: e.data.accentColor,
+}));
+
+const listSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: items.map((e, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://aiheroes.io/en/cases/${e.data.slug}`,
+    name: e.data.client ?? e.data.title,
+  })),
+};
+---
+
+<SubpageLayout
+  lang="en"
+  title="Cases"
+  subtitle="From voice-to-voice customer service to board-approved prototypes. Working AI we built together with our clients."
+  seoTitle="AI Cases & Client Stories | AI Heroes"
+  seoDescription="See how AI Heroes built working AI solutions for Medux, OLX, Trabu and InnoEnergy. From 70% cost saving to a working prototype in six days."
+  accentColor="red"
+  ctaLabel="Schedule a conversation"
+  jsonLd={listSchema}
+>
+  <section class="mb-12">
+    <CardGrid items={cards} cols={2} />
+  </section>
+  <ProofRow label="Trusted by" items={["Medux", "OLX Poland", "Trabu", "InnoEnergy", "Prosus", "Envalior"]} />
+</SubpageLayout>

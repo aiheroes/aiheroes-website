@@ -1,0 +1,26 @@
+---
+/**
+ * A consistent section header: uppercase mono eyebrow + serif display title +
+ * optional lead. Mirrors the type voice of the strong pages (AI Salon meta
+ * strips, De AI Storm headings).
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  accent?: 'red' | 'blue';
+  align?: 'left' | 'center';
+  onDark?: boolean;
+  class?: string;
+}
+const { eyebrow, title, lead, accent = 'red', align = 'left', onDark = false, class: className = '' } = Astro.props;
+const accentText = accent === 'red' ? 'text-brand-red' : 'text-brand-blue';
+const titleColor = onDark ? 'text-white' : 'text-brand-dark';
+const leadColor = onDark ? 'text-white/70' : 'text-stone-600';
+const alignClass = align === 'center' ? 'text-center mx-auto' : '';
+---
+<div class={`max-w-2xl ${alignClass} ${className}`}>
+  {eyebrow && <p class={`font-mono text-xs font-bold uppercase tracking-[0.2em] ${accentText} mb-3`}>{eyebrow}</p>}
+  <h2 class={`font-serif text-[clamp(1.75rem,_1.25rem+1.5vw,_2.75rem)] leading-tight ${titleColor}`}>{title}</h2>
+  {lead && <p class={`mt-4 text-lg leading-relaxed ${leadColor}`}>{lead}</p>}
+</div>

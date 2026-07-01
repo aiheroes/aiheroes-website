@@ -1,0 +1,95 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+
+const offerings = [
+  { id: 'ai-prototyping', title: 'Proof of Concept', accent: 'red' as const, description: 'Validate your AI idea before committing to a full build. A rapid proof-of-concept in a 6-day sprint: prove it works, with reusable code. From €8,000.' },
+  { id: 'custom-ai-solutions', title: 'Custom AI', accent: 'red' as const, description: 'Custom AI applications, from prototype to production: apps, RAG pipelines, AI assistants, process automation. Built with your team. 2-12 weeks, from €15,000.' },
+  { id: 'ai-integration', title: 'System Integration', accent: 'blue' as const, description: 'Connecting AI to your existing landscape: ERP, CRM, internal and legacy tools. AI that works in your daily workflow, without switching platforms. 2-6 weeks, from €10,000.' },
+  { id: 'ai-development-teams', title: 'Dedicated Teams', accent: 'blue' as const, description: 'Dedicated, flexibly scalable development capacity: your team, reinforced with AI expertise. Augmentation, dedicated or hybrid, tech lead included. Productive within a week.' },
+  { id: 'digital-twins', title: 'Digital Twins', accent: 'dark' as const, description: 'The flagship: a digital copy of your organisation that finds the best business cases itself and builds and deploys the agents that run them. With governance, monitoring and kill-switch. 4-10 weeks, from €25,000.' },
+];
+
+const method = [
+  { title: 'Scoping', eyebrow: 'Start small', body: 'We define scope, data and architecture. Start small, prove the value, then scale. With a proof of concept there is a working prototype in six days.' },
+  { title: 'Building', eyebrow: 'Agile sprints', body: 'Agile development in short sprints with regular demos, so you always see where we stand. We deliver the expertise, independently or alongside your developers.' },
+  { title: 'Delivery and handover', eyebrow: 'Under one roof', body: 'Every delivery includes working software, documentation and training for your team, so your people can continue on their own. Building, training and advice under one roof.' },
+];
+
+const stats = [
+  { value: '6 days', label: 'from idea to working prototype' },
+  { value: 'From €8,000', label: 'proof of concept' },
+  { value: 'No lock-in', label: 'open standards, your data model stays yours' },
+];
+
+const meduxStats = [
+  { value: '70%', label: 'cost saving' },
+  { value: '80%', label: 'of calls automated' },
+  { value: '7.8', label: 'customer satisfaction' },
+];
+
+const cases = [
+  { title: 'Medux', eyebrow: 'Case', accent: 'red' as const, href: '/en/cases/medux', description: 'Voice-to-voice AI customer service that handles around 4,000 calls a month.' },
+  { title: 'Trabu', eyebrow: 'Case', accent: 'blue' as const, href: '/en/cases/trabu', description: 'From idea to working prototype in six days, in time for the investor meeting.' },
+];
+
+const related = [
+  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'Make sure you build the right thing: from readiness to business case and roadmap.' },
+  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'Bring your team along so it can use and extend the solution independently.' },
+];
+---
+
+<SubpageLayout
+  lang="en"
+  title="AI Software & Implementation"
+  subtitle="From idea to working, integrated AI in production. Built with your team, not beside it. Start small, prove the value, then scale."
+  seoTitle="Custom AI Software & Implementation | AI Heroes"
+  seoDescription="From proof of concept to custom AI, system integration, dedicated teams and digital twins. Working, integrated AI in production, built with your team. No vendor lock-in."
+  accentColor="red"
+  pillarBadge="Software & Implementation"
+  ctaLabel="Discuss your project"
+  trustedBy={["Medux", "OLX Poland", "iFood Brazil", "Trabu", "Prosus", "InnoEnergy"]}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From idea to working AI solution</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      The build side of AI Heroes. A de-risked path that starts small and scales: prove it works first with a proof of concept, then build the custom solution, connect it to your existing landscape and flexibly add development capacity.
+    </p>
+    <p class="text-stone-600 leading-relaxed">For organisations that know what they want to build but lack the expertise or capacity. The full journey under one roof: building, training and advice.</p>
+    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">What we build</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">From a first validation to a self-learning model of your organisation. You step in at the level that fits where you are now.</p>
+    <CardGrid items={offerings} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">How we build</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Proven in production</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">At Medux, our voice-to-voice AI handles around 4,000 customer calls a month.</p>
+    <StatGrid stats={meduxStats} accent="red" cols={3} />
+    <div class="mt-8">
+      <CardGrid items={cases} cols={2} />
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="light" accent="blue" eyebrow="Sovereign by design" title="No vendor lock-in">
+      <p>We work with open standards where possible and European hosting where it matters. You get a data model that stays yours, so you are never tied to a single vendor.</p>
+    </Callout>
+  </section>
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Related services</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>

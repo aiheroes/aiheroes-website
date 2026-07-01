@@ -7,38 +7,47 @@ export const CONTENT: Record<Language, Content> = {
         label: "Diensten",
         href: "/nl/diensten",
         children: [
-          { label: "AI Foundations", href: "/nl/diensten/ai-foundations", description: "De eerste stap van je team in AI", category: "training" },
-          { label: "Copilot Training", href: "/nl/diensten/copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
-          { label: "AI voor Developers", href: "/nl/diensten/ai-voor-developers", description: "Technische implementatie", category: "training" },
-          { label: "Verantwoord AI-gebruik", href: "/nl/diensten/ai-privacy-security", description: "Governance & risicobeheer", category: "training" },
-          { label: "AI & Desinformatie", href: "/nl/diensten/ai-media-literacy", description: "Deepfakes & desinformatie", category: "training" },
-          { label: "Business Case Analyse", href: "/nl/diensten/opportunity-scouting", description: "Vind waar AI waarde creëert", category: "consulting" },
-          { label: "AI Readiness Scan", href: "/nl/diensten/ai-readiness-scan", description: "Waar staat jouw organisatie?", category: "consulting" },
-          { label: "AI Roadmap", href: "/nl/diensten/ai-roadmap", description: "Van inzicht naar implementatieplan", category: "consulting" },
-          { label: "Implementatiebegeleiding", href: "/nl/diensten/ai-implementatiebegeleiding", description: "Hands-on begeleiding bij AI-uitrol", category: "consulting" },
-          { label: "Procesoptimalisatie", href: "/nl/diensten/procesanalyse", description: "Ontdek waar AI waarde toevoegt", category: "consulting" },
-          { label: "AI op Maat", href: "/nl/diensten/maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
-          { label: "Proof of Concept", href: "/nl/diensten/ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
-          { label: "Systeemintegratie", href: "/nl/diensten/ai-integratie", description: "AI verbinden met je systemen", category: "software" },
-          { label: "Dedicated Teams", href: "/nl/diensten/ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" },
-          { label: "Digital Twins", href: "/nl/diensten/digital-twins", description: "Twin van je organisatie die zelf cases vindt en agents uitrolt", category: "software" }
+          { label: "AI Foundations", href: "/nl/diensten/training#ai-foundations", description: "De eerste stap van je team in AI", category: "training" },
+          { label: "Copilot Training", href: "/nl/diensten/training#copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
+          { label: "AI voor Developers", href: "/nl/diensten/training#ai-voor-developers", description: "Technische implementatie", category: "training" },
+          { label: "Verantwoord AI-gebruik", href: "/nl/diensten/training#ai-privacy-security", description: "Governance & risicobeheer", category: "training" },
+          { label: "AI & Desinformatie", href: "/nl/diensten/training#ai-media-literacy", description: "Deepfakes & desinformatie", category: "training" },
+          { label: "Business Case Analyse", href: "/nl/diensten/consultancy#opportunity-scouting", description: "Vind waar AI waarde creëert", category: "consulting" },
+          { label: "AI Readiness Scan", href: "/nl/diensten/consultancy#ai-readiness-scan", description: "Waar staat jouw organisatie?", category: "consulting" },
+          { label: "AI Roadmap", href: "/nl/diensten/consultancy#ai-roadmap", description: "Van inzicht naar implementatieplan", category: "consulting" },
+          { label: "Implementatiebegeleiding", href: "/nl/diensten/consultancy#ai-implementatiebegeleiding", description: "Hands-on begeleiding bij AI-uitrol", category: "consulting" },
+          { label: "Procesoptimalisatie", href: "/nl/diensten/consultancy#procesanalyse", description: "Ontdek waar AI waarde toevoegt", category: "consulting" },
+          { label: "AI op Maat", href: "/nl/diensten/software#maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
+          { label: "Proof of Concept", href: "/nl/diensten/software#ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
+          { label: "Systeemintegratie", href: "/nl/diensten/software#ai-integratie", description: "AI verbinden met je systemen", category: "software" },
+          { label: "Dedicated Teams", href: "/nl/diensten/software#ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" },
+          { label: "Digital Twins", href: "/nl/diensten/software#digital-twins", description: "Twin van je organisatie die zelf cases vindt en agents uitrolt", category: "software" }
         ]
       },
       about: {
         label: "Over ons",
         href: "/nl/over-ons",
+        columns: [
+          { heading: "Bedrijf", items: [
+            { label: "Onze aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
+            { label: "Het team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
+            { label: "Over AI Heroes", href: "/nl/over-ons", description: "Ons verhaal en missie" }
+          ]},
+          { heading: "Media & community", items: [
+            { label: "AI Salon", href: "/nl/ai-salon", description: "Onze maandelijkse AI-avond" },
+            { label: "Zoals gezien op TV", href: "/nl/de-ai-storm", description: "De AI Storm bij RTL" }
+          ]},
+          { heading: "Werken bij", items: [
+            { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
+          ]}
+        ],
         children: [
-          { label: "Onze Aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
-          { label: "Het Team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
+          { label: "Onze aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
+          { label: "Het team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
+          { label: "Over AI Heroes", href: "/nl/over-ons", description: "Ons verhaal en missie" },
+          { label: "AI Salon", href: "/nl/ai-salon", description: "Onze maandelijkse AI-avond" },
+          { label: "Zoals gezien op TV", href: "/nl/de-ai-storm", description: "De AI Storm bij RTL" },
           { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
-        ]
-      },
-      resources: {
-        label: "Resources",
-        href: "/nl/resources",
-        children: [
-          { label: "AI Geletterdheid", href: "/nl/resources/ai-geletterdheid", description: "Waarom het ertoe doet" },
-          { label: "AI Strategie Gids", href: "/nl/resources/ai-strategie-gids", description: "Aan de slag met AI-planning" }
         ]
       },
       contact: {
@@ -696,38 +705,47 @@ export const CONTENT: Record<Language, Content> = {
         label: "Services",
         href: "/en/services",
         children: [
-          { label: "AI Foundations", href: "/en/services/ai-foundations", description: "Your team's first step into AI", category: "training" },
-          { label: "Copilot Training", href: "/en/services/copilot-basics", description: "Microsoft 365 productivity", category: "training" },
-          { label: "AI for Developers", href: "/en/services/ai-for-developers", description: "Technical implementation", category: "training" },
-          { label: "Responsible AI Use", href: "/en/services/ai-privacy-security", description: "Governance & risk management", category: "training" },
-          { label: "AI & Disinformation", href: "/en/services/ai-media-literacy", description: "Deepfakes & misinformation", category: "training" },
-          { label: "Business Case Analysis", href: "/en/services/opportunity-scouting", description: "Find where AI creates value", category: "consulting" },
-          { label: "AI Readiness Scan", href: "/en/services/ai-readiness-scan", description: "Where does your organisation stand?", category: "consulting" },
-          { label: "AI Roadmap", href: "/en/services/ai-roadmap", description: "From insight to implementation plan", category: "consulting" },
-          { label: "Implementation Guidance", href: "/en/services/ai-implementation-guidance", description: "Hands-on guidance during AI rollout", category: "consulting" },
-          { label: "Process Optimisation", href: "/en/services/process-analysis", description: "Discover where AI adds value", category: "consulting" },
-          { label: "Custom AI", href: "/en/services/custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
-          { label: "Proof of Concept", href: "/en/services/ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
-          { label: "System Integration", href: "/en/services/ai-integration", description: "Connect AI to your systems", category: "software" },
-          { label: "Dedicated Teams", href: "/en/services/ai-development-teams", description: "Dedicated AI development capacity", category: "software" },
-          { label: "Digital Twins", href: "/en/services/digital-twins", description: "A twin of your organisation that surfaces cases and deploys agents", category: "software" }
+          { label: "AI Foundations", href: "/en/services/training#ai-foundations", description: "Your team's first step into AI", category: "training" },
+          { label: "Copilot Training", href: "/en/services/training#copilot-basics", description: "Microsoft 365 productivity", category: "training" },
+          { label: "AI for Developers", href: "/en/services/training#ai-for-developers", description: "Technical implementation", category: "training" },
+          { label: "Responsible AI Use", href: "/en/services/training#ai-privacy-security", description: "Governance & risk management", category: "training" },
+          { label: "AI & Disinformation", href: "/en/services/training#ai-media-literacy", description: "Deepfakes & misinformation", category: "training" },
+          { label: "Business Case Analysis", href: "/en/services/consulting#opportunity-scouting", description: "Find where AI creates value", category: "consulting" },
+          { label: "AI Readiness Scan", href: "/en/services/consulting#ai-readiness-scan", description: "Where does your organisation stand?", category: "consulting" },
+          { label: "AI Roadmap", href: "/en/services/consulting#ai-roadmap", description: "From insight to implementation plan", category: "consulting" },
+          { label: "Implementation Guidance", href: "/en/services/consulting#ai-implementation-guidance", description: "Hands-on guidance during AI rollout", category: "consulting" },
+          { label: "Process Optimisation", href: "/en/services/consulting#process-analysis", description: "Discover where AI adds value", category: "consulting" },
+          { label: "Custom AI", href: "/en/services/software#custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
+          { label: "Proof of Concept", href: "/en/services/software#ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
+          { label: "System Integration", href: "/en/services/software#ai-integration", description: "Connect AI to your systems", category: "software" },
+          { label: "Dedicated Teams", href: "/en/services/software#ai-development-teams", description: "Dedicated AI development capacity", category: "software" },
+          { label: "Digital Twins", href: "/en/services/software#digital-twins", description: "A twin of your organisation that surfaces cases and deploys agents", category: "software" }
         ]
       },
       about: {
         label: "About",
         href: "/en/about",
+        columns: [
+          { heading: "Company", items: [
+            { label: "Our approach", href: "/en/about/approach", description: "How we work" },
+            { label: "The team", href: "/en/about/team", description: "Meet our experts" },
+            { label: "About AI Heroes", href: "/en/about", description: "Our story and mission" }
+          ]},
+          { heading: "Media & community", items: [
+            { label: "AI Salon", href: "/en/ai-salon", description: "Our monthly AI evening" },
+            { label: "As seen on TV", href: "/en/de-ai-storm", description: "De AI Storm on RTL" }
+          ]},
+          { heading: "Join us", items: [
+            { label: "Careers", href: "/en/careers", description: "View open positions" }
+          ]}
+        ],
         children: [
-          { label: "Our Approach", href: "/en/about/approach", description: "How we work" },
-          { label: "The Team", href: "/en/about/team", description: "Meet our experts" },
+          { label: "Our approach", href: "/en/about/approach", description: "How we work" },
+          { label: "The team", href: "/en/about/team", description: "Meet our experts" },
+          { label: "About AI Heroes", href: "/en/about", description: "Our story and mission" },
+          { label: "AI Salon", href: "/en/ai-salon", description: "Our monthly AI evening" },
+          { label: "As seen on TV", href: "/en/de-ai-storm", description: "De AI Storm on RTL" },
           { label: "Careers", href: "/en/careers", description: "View open positions" }
-        ]
-      },
-      resources: {
-        label: "Resources",
-        href: "/en/resources",
-        children: [
-          { label: "Why AI Literacy Matters", href: "/en/resources/ai-literacy", description: "The case for organization-wide AI understanding" },
-          { label: "AI Strategy Starter Guide", href: "/en/resources/ai-strategy-guide", description: "Getting started with strategic AI planning" }
         ]
       },
       contact: {

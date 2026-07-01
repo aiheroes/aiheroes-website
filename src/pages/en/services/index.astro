@@ -1,27 +1,76 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import DienstenIsland from '../../../components/islands/DienstenIsland';
-import { CONTENT } from '../../../data/content';
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import ProofRow from '../../../components/blocks/ProofRow.astro';
 
-const faq = CONTENT.en.servicesPage!.faq;
+const pillars = [
+  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from &ldquo;what is AI&rdquo; to daily application. On-site, with your cases. From €2,500 per day.' },
+  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance. A plan that works, not a report that gathers dust.' },
+  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to custom AI, system integration and digital twins. Working AI in production, built with your team.' },
+];
+
+const faq = [
+  { q: 'Which pillar do I need?', a: 'Start with Consulting if you are still looking for where AI adds value, with Training if your team wants to learn to use AI, or with Software if you know what you want to build. Organisations often combine all three.' },
+  { q: 'Do you work across the Netherlands?', a: 'Yes. Our home base is Groningen, but we work on-site across the Netherlands and beyond.' },
+  { q: 'Can you do the whole journey?', a: 'Yes. From first scan and training to build and implementation, under one roof. No handover between parties, no knowledge leak.' },
+];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faq.items.map((item) => ({
+  mainEntity: faq.map((item) => ({
     '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
   })),
 };
 ---
 
-<BaseLayout
+<SubpageLayout
   lang="en"
   title="AI Services"
-  seoTitle="AI Services across the Netherlands: Training, Consulting & Software"
-  description="Explore AI Heroes' services for organisations across the Netherlands: from AI training and consulting to custom software. All under one roof, based in Groningen."
+  subtitle="One agency, from change management to technical implementation. Three pillars, under one roof, based in Groningen for all of Europe."
+  seoTitle="AI Services: Training, Consulting & Software | AI Heroes"
+  seoDescription="AI Heroes' services: from AI training and consulting to custom software. All under one roof, based in Groningen for the Netherlands and Europe."
+  accentColor="red"
+  ctaLabel="Schedule a conversation"
+  trustedBy={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy"]}
   jsonLd={faqSchema}
-  noChrome
 >
-  <DienstenIsland lang="en" client:load />
-</BaseLayout>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Three pillars, one partner</h2>
+    <p class="text-lg text-stone-600 leading-relaxed">
+      Most AI initiatives stall on the handover between advisor, trainer and builder. With us that sits under one roof: the same people who set the strategy train your team and build the solution. Choose the pillar that fits where you are now.
+    </p>
+  </section>
+
+  <section class="mb-16">
+    <CardGrid items={pillars} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="red" eyebrow="European, without lock-in" title="EU AI Consultancy">
+      <p>Sovereign AI for your organisation: the complete journey from risk assessment to a working European AI solution, without vendor lock-in. <a href="/en/services/eu-consultancy" class="text-white underline underline-offset-2 hover:no-underline">Read more about EU AI Consultancy &rarr;</a></p>
+    </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Frequently asked questions</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <ProofRow label="Trusted by" items={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy", "OLX Poland", "Banijay Benelux"]} />
+  </section>
+</SubpageLayout>

@@ -2,10 +2,19 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { PageContactForm } from '../../../../components/PageContactForm';
 import { CONTENT } from '../../../data/content';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProofRow from '../../../components/blocks/ProofRow.astro';
 
 const content = CONTENT.nl.aboutPage;
 const introParagraphs = content.intro.text.split('\n\n');
 const readMore = 'Lees meer';
+
+const pillars = [
+  { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Incompany workshops die je team van inzicht naar dagelijkse toepassing brengen.' },
+  { title: 'Consultancy', accent: 'blue' as const, href: '/nl/diensten/consultancy', description: 'Van AI-readiness en business cases tot roadmap en implementatiebegeleiding.' },
+  { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Van proof of concept tot maatwerk AI, integratie en digital twins.' },
+];
+const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalior', 'InnoEnergy', 'OLX Poland', 'Banijay Benelux'];
 ---
 
 <BaseLayout
@@ -34,6 +43,9 @@ const readMore = 'Lees meer';
               <div class="text-sm text-stone-600 uppercase tracking-wider">{stat.description}</div>
             </div>
           ))}
+        </div>
+        <div class="mt-14">
+          <ProofRow label="Vertrouwd door" items={clients} />
         </div>
       </div>
     </section>
@@ -92,6 +104,15 @@ const readMore = 'Lees meer';
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-brand-light px-6 md:px-12">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-3">Wat we doen</h2>
+        <p class="text-lg text-stone-600 mb-8">Drie pijlers, onder één dak. Van eerste inzicht tot werkende AI in productie.</p>
+        <CardGrid items={pillars} cols={3} />
+        <p class="mt-8 text-stone-600">Benieuwd naar het resultaat? <a href="/nl/cases" class="text-brand-red font-medium hover:underline underline-offset-2">Bekijk onze cases &rarr;</a></p>
       </div>
     </section>
 

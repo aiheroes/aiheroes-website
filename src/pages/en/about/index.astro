@@ -2,10 +2,19 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { PageContactForm } from '../../../../components/PageContactForm';
 import { CONTENT } from '../../../data/content';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProofRow from '../../../components/blocks/ProofRow.astro';
 
 const content = CONTENT.en.aboutPage;
 const introParagraphs = content.intro.text.split('\n\n');
 const readMore = 'Read more';
+
+const pillars = [
+  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from insight to daily application.' },
+  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance.' },
+  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to custom AI, integration and digital twins.' },
+];
+const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalior', 'InnoEnergy', 'OLX Poland', 'Banijay Benelux'];
 ---
 
 <BaseLayout
@@ -34,6 +43,9 @@ const readMore = 'Read more';
               <div class="text-sm text-stone-600 uppercase tracking-wider">{stat.description}</div>
             </div>
           ))}
+        </div>
+        <div class="mt-14">
+          <ProofRow label="Trusted by" items={clients} />
         </div>
       </div>
     </section>
@@ -92,6 +104,15 @@ const readMore = 'Read more';
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-brand-light px-6 md:px-12">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-3">What we do</h2>
+        <p class="text-lg text-stone-600 mb-8">Three pillars, under one roof. From first insight to working AI in production.</p>
+        <CardGrid items={pillars} cols={3} />
+        <p class="mt-8 text-stone-600">Curious about the results? <a href="/en/cases" class="text-brand-red font-medium hover:underline underline-offset-2">See our cases &rarr;</a></p>
       </div>
     </section>
 

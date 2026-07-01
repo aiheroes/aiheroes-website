@@ -14,6 +14,7 @@ const altUrl = alternatePath(path, lang);
 const homeHref = lang === 'nl' ? '/' : '/en';
 const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
 const aiSalonHref = lang === 'nl' ? '/nl/ai-salon' : '/en/ai-salon';
+const casesHref = lang === 'nl' ? '/nl/cases' : '/en/cases';
 const servicesHref = lang === 'nl' ? '/nl/diensten' : '/en/services';
 
 const services = nav.services.children ?? [];
@@ -24,14 +25,14 @@ const softwareItems = services.filter((c) => c.category === 'software');
 const pillarMeta =
   lang === 'nl'
     ? {
-        training: { label: 'TRAINING', subtitle: 'Workshops die bijblijven', href: '/nl/diensten#training', color: 'text-brand-red' },
-        consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten#consulting', color: 'text-brand-blue' },
-        software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten#software', color: 'text-stone-700' },
+        training: { label: 'TRAINING', subtitle: 'Workshops die bijblijven', href: '/nl/diensten/training', color: 'text-brand-red' },
+        consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten/consultancy', color: 'text-brand-blue' },
+        software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten/software', color: 'text-stone-700' },
       }
     : {
-        training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services#training', color: 'text-brand-red' },
-        consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services#consulting', color: 'text-brand-blue' },
-        software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services#software', color: 'text-stone-700' },
+        training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services/training', color: 'text-brand-red' },
+        consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services/consulting', color: 'text-brand-blue' },
+        software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services/software', color: 'text-stone-700' },
       };
 const pillarColumns = [
   { meta: pillarMeta.training, items: trainingItems, hover: 'hover:text-brand-red' },
@@ -40,10 +41,9 @@ const pillarColumns = [
 ];
 
 const allServicesLabel = lang === 'nl' ? 'Bekijk alle diensten' : 'View all services';
-const allLabels =
-  lang === 'nl'
-    ? { about: 'Over AI Heroes', resources: 'Alle resources bekijken' }
-    : { about: 'About AI Heroes', resources: 'View all resources' };
+const aboutTopLabel = lang === 'nl' ? 'Over AI Heroes' : 'About AI Heroes';
+const aboutColumns = nav.about.columns ?? [];
+const aboutItems = nav.about.children ?? [];
 
 const featured = nav.featured;
 const contactLabel = nav.contact.label;
@@ -56,13 +56,14 @@ const euStars = Array.from({ length: 12 }, (_, i) => {
 const euStarPoints = (s: { x: number; y: number }) =>
   `${s.x},${s.y - 20} ${s.x + 6},${s.y - 6} ${s.x + 19},${s.y - 6} ${s.x + 9},${s.y + 3} ${s.x + 12},${s.y + 17} ${s.x},${s.y + 9} ${s.x - 12},${s.y + 17} ${s.x - 9},${s.y + 3} ${s.x - 19},${s.y - 6} ${s.x - 6},${s.y - 6}`;
 
-const dropdowns = [
-  { key: 'about', label: nav.about.label, href: nav.about.href, top: allLabels.about, items: nav.about.children ?? [] },
-  { key: 'resources', label: nav.resources.label, href: nav.resources.href, top: allLabels.resources, items: nav.resources.children ?? [] },
-];
 ---
 
-<header id="site-navbar" data-navbar class="fixed top-0 inset-x-0 z-50 navbar-clear navbar-clear-dark">
+<header id="site-navbar" data-navbar class="fixed top-0 inset-x-0 z-50">
+  <!-- Background + blur live on a separate layer, NOT on the <header>. A non-`none`
+       backdrop-filter clips its descendants to its own box, which would hide the
+       mega-menu panels that hang below the bar. Keeping the filter on a sibling
+       layer (behind the content via z-[-10]) lets the panels overflow freely. -->
+  <div data-navbar-bg aria-hidden="true" class="absolute inset-x-0 top-0 h-24 z-[-10] navbar-clear navbar-clear-dark"></div>
   <div class="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-24">
       <a href={homeHref} class="flex items-center" aria-label="AI Heroes home">
@@ -119,28 +120,40 @@ const dropdowns = [
           </div>
         </div>
 
-        <!-- About / Resources simple dropdowns -->
-        {dropdowns.map((d) => (
-          <div class="group relative">
-            <a href={d.href} class="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white transition-colors py-2">
-              {d.label}
-              <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </a>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[340px] max-w-[calc(100vw-2rem)] opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200">
-              <div class="bg-white rounded-lg shadow-xl border border-stone-200 p-5">
-                <div class="mb-4 pb-3 border-b border-stone-100"><span class="text-sm text-stone-500">{d.top}</span></div>
-                <div class="space-y-1">
-                  {d.items.map((item) => (
-                    <a href={item.href} class="block px-3 py-2.5 hover:bg-stone-50 rounded transition-colors group/it">
-                      <span class="font-medium text-sm text-brand-dark group-hover/it:text-brand-red transition-colors">{item.label}</span>
-                      {item.description && <span class="block text-xs text-stone-500 mt-0.5">{item.description}</span>}
-                    </a>
-                  ))}
-                </div>
+        <!-- Over ons mega-menu (grouped columns) -->
+        <div class="group relative">
+          <a href={nav.about.href} class="flex items-center gap-1 text-sm font-medium text-white/90 hover:text-white transition-colors py-2">
+            {nav.about.label}
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[600px] max-w-[calc(100vw-2rem)] opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200">
+            <div class="bg-white rounded-lg shadow-xl border border-stone-200 p-5">
+              <div class="mb-4 pb-3 border-b border-stone-100">
+                <a href={nav.about.href} class="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors">
+                  {aboutTopLabel}
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </div>
+              <div class="grid grid-cols-3 gap-6">
+                {aboutColumns.map((col) => (
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-stone-400 mb-3">{col.heading}</div>
+                    <div class="space-y-0.5">
+                      {col.items.map((item) => (
+                        <a href={item.href} class="block px-2 py-1.5 rounded hover:bg-stone-50 transition-colors group/it">
+                          <span class="block text-sm text-brand-dark group-hover/it:text-brand-red transition-colors">{item.label}</span>
+                          {item.description && <span class="block text-xs text-stone-400 mt-0.5">{item.description}</span>}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        ))}
+        </div>
+
+        <a href={casesHref} class="text-sm font-medium text-white/90 hover:text-white transition-colors py-2">Cases</a>
 
         <a href={aiSalonHref} class="text-sm font-medium text-white/90 hover:text-white transition-colors py-2">AI Salon</a>
 
@@ -193,24 +206,24 @@ const dropdowns = [
         </div>
       </div>
 
-      <!-- About / Resources accordions -->
-      {dropdowns.map((d) => (
-        <div class="border-b border-stone-200">
-          <button type="button" data-acc-toggle aria-expanded="false" class="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark">
-            {d.label}
-            <svg class="w-6 h-6 transition-transform" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-          <div data-acc-panel class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out" inert>
-            <div class="overflow-hidden">
-              <div class="pb-4 pl-2 space-y-3">
-                {d.items.map((item) => (
-                  <a href={item.href} class="block text-base text-stone-600">{item.label}</a>
-                ))}
-              </div>
+      <!-- Over ons accordion -->
+      <div class="border-b border-stone-200">
+        <button type="button" data-acc-toggle aria-expanded="false" class="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark">
+          {nav.about.label}
+          <svg class="w-6 h-6 transition-transform" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div data-acc-panel class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out" inert>
+          <div class="overflow-hidden">
+            <div class="pb-4 pl-2 space-y-3">
+              {aboutItems.map((item) => (
+                <a href={item.href} class="block text-base text-stone-600">{item.label}</a>
+              ))}
             </div>
           </div>
         </div>
-      ))}
+      </div>
+
+      <a href={casesHref} class="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200">Cases</a>
 
       <a href={aiSalonHref} class="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200">AI Salon</a>
 
@@ -231,15 +244,16 @@ const dropdowns = [
   function initNavbar() {
     const bar = document.querySelector('[data-navbar]') as HTMLElement | null;
     if (!bar) return;
+    const bg = bar.querySelector('[data-navbar-bg]');
     const toggle = bar.querySelector('[data-navbar-toggle]');
     const mobile = bar.querySelector('[data-navbar-mobile]');
 
     const onScroll = () => {
       const scrolled = window.scrollY > 24;
-      bar.classList.toggle('navbar-clear', !scrolled);
-      bar.classList.toggle('navbar-clear-dark', !scrolled);
-      bar.classList.toggle('navbar-blur', scrolled);
-      bar.classList.toggle('navbar-blur-dark', scrolled);
+      bg?.classList.toggle('navbar-clear', !scrolled);
+      bg?.classList.toggle('navbar-clear-dark', !scrolled);
+      bg?.classList.toggle('navbar-blur', scrolled);
+      bg?.classList.toggle('navbar-blur-dark', scrolled);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

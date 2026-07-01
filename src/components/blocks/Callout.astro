@@ -1,0 +1,31 @@
+---
+/**
+ * Accent-bordered callout box. `light` sits on light backgrounds; `dark` and
+ * `red` are attention blocks. Optional eyebrow + title, body via slot.
+ */
+interface Props {
+  variant?: 'light' | 'dark' | 'red';
+  accent?: 'red' | 'blue';
+  eyebrow?: string;
+  title?: string;
+  class?: string;
+}
+const { variant = 'light', accent = 'red', eyebrow, title, class: className = '' } = Astro.props;
+const accentBorder = accent === 'red' ? 'border-brand-red' : 'border-brand-blue';
+const accentText = accent === 'red' ? 'text-brand-red' : 'text-brand-blue';
+const box = {
+  light: 'bg-white border border-stone-200',
+  dark: 'bg-brand-dark',
+  red: 'bg-red-950',
+}[variant];
+const onDark = variant !== 'light';
+const titleColor = onDark ? 'text-white' : 'text-brand-dark';
+const bodyColor = onDark ? 'text-stone-200' : 'text-stone-600';
+---
+<div class={`p-6 md:p-8 border-l-4 ${accentBorder} ${box} ${className}`}>
+  {eyebrow && <p class={`text-xs font-bold uppercase tracking-wider ${accentText} mb-3`}>{eyebrow}</p>}
+  {title && <h3 class={`font-serif text-xl mb-3 ${titleColor}`}>{title}</h3>}
+  <div class={`text-sm leading-relaxed ${bodyColor} [&_strong]:font-semibold ${onDark ? '[&_strong]:text-white' : '[&_strong]:text-brand-dark'} [&_p]:mb-2 [&_p:last-child]:mb-0`}>
+    <slot />
+  </div>
+</div>

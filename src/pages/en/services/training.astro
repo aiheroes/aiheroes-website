@@ -1,0 +1,111 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+
+const offerings = [
+  { id: 'ai-foundations', title: 'AI Foundations', accent: 'red' as const, description: 'The flagship. The basis for every team: how AI tools work, prompts that deliver results, judging output critically and building AI into daily work. One day, 8-20 participants.' },
+  { id: 'copilot-basics', title: 'Copilot Training', accent: 'red' as const, description: 'The fastest way to become productive with Microsoft Copilot in Word, Excel, Outlook and Teams. Half a day, hands-on, own laptop. For organisations on Microsoft 365.' },
+  { id: 'ai-privacy-security', title: 'Responsible AI Use', accent: 'red' as const, description: 'Working safely with AI: from GDPR and the EU AI Act to data governance, without losing productivity. For IT, privacy officers and compliance. You leave with a draft AI policy.' },
+  { id: 'ai-media-literacy', title: 'AI & Disinformation', accent: 'blue' as const, description: 'Deepfakes, AI-generated content and disinformation: learn to recognise what is real and what is not. With live demos, including how we built a convincing deepfake of a prime minister.' },
+  { id: 'ai-for-developers', title: 'AI for Developers', accent: 'blue' as const, description: 'From API integration to RAG and fine-tuning. Learn to build AI, not just use it. Hands-on coding in Python or JS, including a take-home repo. 1-2 days, 4-12 developers.' },
+  { title: 'AI Literacy Training', accent: 'red' as const, href: '/en/services/ai-literacy-training', description: 'Demonstrably meet Article 4 of the EU AI Act, with a certificate and documentation per participant. Compliance is the reason, productivity is the payoff.' },
+];
+
+const method = [
+  { title: 'Intake and audience analysis', eyebrow: 'Preparation', body: 'We map your team, goals and ways of working, and adapt the content and examples to the audience, from board to operations. Within a week you know what the training covers, what it costs and when we can start.' },
+  { title: 'On-site training', eyebrow: 'Learning by doing', body: 'We come to your location and work with your documents, processes and cases: your proposals, your customer questions, your data. Lots of practice, few slides, until everyone applies it in their own work.' },
+  { title: 'Certificates and documentation', eyebrow: 'Embedding', body: 'Participants leave with a reference guide and access to our community. Where needed we provide a certificate per participant and a record of the topics covered for your administration.' },
+];
+
+const stats = [
+  { value: '1,000+', label: 'professionals trained' },
+  { value: '€2,500 – 4,000', label: 'per training day' },
+  { value: 'On-site', label: 'across the Netherlands' },
+];
+
+const faq = [
+  { q: 'What does in-company AI training cost?', a: 'A training day costs EUR 2,500 to EUR 4,000, depending on group size and customisation. That includes preparation, materials and follow-up. Half-day sessions are possible; multi-day programmes are tailored to your organisation.' },
+  { q: 'Which teams is the training suitable for?', a: 'Any team that will work with AI: board and management, marketing, HR, legal and development. Content and examples are adapted per audience. For developers there is a dedicated AI for Developers training.' },
+  { q: 'Do you train outside the Netherlands?', a: 'Our home base is Groningen and most training happens on-site across the Netherlands, but we also run sessions elsewhere in Europe and remotely for distributed teams.' },
+  { q: 'Which tools are covered?', a: 'The tools your team actually uses: ChatGPT, Claude, Copilot or European alternatives. The training focuses on tool-independent skills: writing effective prompts, judging output critically and handling company data safely.' },
+  { q: 'Does this training count towards the EU AI Act literacy obligation?', a: 'The AI Foundations workshop covers much of the knowledge Article 4 of the EU AI Act asks for. If you need demonstrable compliance, look at our AI Literacy Training with certificates and documentation.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const related = [
+  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance.' },
+  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to working, integrated AI in production.' },
+];
+---
+
+<SubpageLayout
+  lang="en"
+  title="AI training for teams"
+  subtitle="In-company, at your location, with your own documents and cases. We come in and work with your team until everyone applies AI in their own work."
+  seoTitle="In-Company AI Training | From €2,500 per day | AI Heroes"
+  seoDescription="AI training at your location, for your team, with your cases. From AI Foundations and Copilot to AI for Developers and AI literacy. More than 1,000 professionals went before you."
+  accentColor="red"
+  pillarBadge="Training"
+  ctaLabel="Book a training"
+  trustedBy={["Postcode Loterij", "Banijay Benelux", "Tweede Kamer", "Philips Healthcare", "Hanze", "Envalior"]}
+  jsonLd={faqSchema}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From &ldquo;what is AI&rdquo; to daily application</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      Generic AI courses stick to generic examples. In an in-company training your team practises on its own reality. We come to your location, work with your documents and processes, and train until everyone applies it in their own work, from board and management to marketing, HR, legal and development.
+    </p>
+    <p class="text-stone-600 leading-relaxed">More than 1,000 professionals went before you.</p>
+    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Our training programme</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Six workshops, each on-site and tailored to your industry. We put together the programme that fits your team.</p>
+    <CardGrid items={offerings} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">How a training works</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="red" accent="red" eyebrow="Mandatory since 2025" title="The EU AI Act requires AI literacy">
+      <p>Article 4 of the EU AI Act has been in force since <strong>2 February 2025</strong>. From <strong>2 August 2026</strong> the Dutch Data Protection Authority enforces it, with fines up to <strong>EUR 15 million or 3% of global annual turnover</strong> (Article 99(4)). The obligation applies to every organisation that uses AI, even if that is only ChatGPT or Copilot.</p>
+      <p><a href="/en/services/ai-literacy-training" class="text-white underline underline-offset-2 hover:no-underline">See the AI Literacy Training with certification &rarr;</a></p>
+    </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Frequently asked questions</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Related services</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>

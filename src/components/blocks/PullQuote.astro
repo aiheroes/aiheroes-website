@@ -1,0 +1,23 @@
+---
+/** Serif-italic pull quote with optional attribution. */
+interface Props {
+  quote: string;
+  author?: string;
+  role?: string;
+  onDark?: boolean;
+  class?: string;
+}
+const { quote, author, role, onDark = false, class: className = '' } = Astro.props;
+const quoteColor = onDark ? 'text-white' : 'text-brand-dark';
+const metaColor = onDark ? 'text-white/60' : 'text-stone-500';
+---
+<figure class={`max-w-3xl ${className}`}>
+  <blockquote class={`font-serif italic text-[clamp(1.35rem,_1rem+1.4vw,_2rem)] leading-snug ${quoteColor}`}>
+    &ldquo;{quote}&rdquo;
+  </blockquote>
+  {(author || role) && (
+    <figcaption class={`mt-4 font-mono text-xs uppercase tracking-[0.15em] ${metaColor}`}>
+      {author}{author && role ? ' · ' : ''}{role}
+    </figcaption>
+  )}
+</figure>

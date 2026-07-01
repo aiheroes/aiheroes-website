@@ -1,0 +1,25 @@
+---
+/**
+ * Full-bleed section band with a theme + centered inner column.
+ * The building block for varied vertical rhythm (alternate light/dark/sand).
+ */
+interface Props {
+  theme?: 'light' | 'dark' | 'sand' | 'red';
+  width?: 'prose' | 'wide';
+  id?: string;
+  class?: string;
+}
+const { theme = 'light', width = 'wide', id, class: className = '' } = Astro.props;
+const themeClass = {
+  light: 'bg-brand-light text-brand-dark',
+  dark: 'bg-brand-dark text-white',
+  sand: 'bg-brand-sand text-brand-dark',
+  red: 'bg-red-950 text-white',
+}[theme];
+const inner = width === 'prose' ? 'max-w-3xl' : 'max-w-6xl';
+---
+<section id={id} class={`py-16 md:py-24 ${themeClass} ${className}`}>
+  <div class={`${inner} mx-auto px-6`}>
+    <slot />
+  </div>
+</section>

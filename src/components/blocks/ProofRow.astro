@@ -1,0 +1,19 @@
+---
+/** "Trusted by" row of client names. Understated, no introductory noise. */
+interface Props {
+  label?: string;
+  items: string[];
+  variant?: 'light' | 'dark';
+  class?: string;
+}
+const { label, items, variant = 'light', class: className = '' } = Astro.props;
+const labelColor = variant === 'dark' ? 'text-white/40' : 'text-stone-400';
+const nameColor = variant === 'dark' ? 'text-white/70' : 'text-stone-600';
+const divide = variant === 'dark' ? 'border-white/15' : 'border-stone-200';
+---
+<div class={`${label ? 'border-t pt-6 ' + divide : ''} ${className}`}>
+  {label && <p class={`text-[11px] font-bold uppercase tracking-[0.2em] ${labelColor} mb-3`}>{label}</p>}
+  <div class="flex flex-wrap gap-x-6 gap-y-1">
+    {items.map((n) => <span class={`text-sm font-medium ${nameColor}`}>{n}</span>)}
+  </div>
+</div>

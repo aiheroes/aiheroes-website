@@ -1,0 +1,111 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+
+const offerings = [
+  { id: 'ai-foundations', title: 'AI Foundations', accent: 'red' as const, description: 'Het vlaggenschip. De basis voor elk team: hoe AI-tools werken, prompts die resultaat opleveren, output kritisch beoordelen en AI inbouwen in je dagelijkse werk. 1 dag, 8-20 deelnemers.' },
+  { id: 'copilot-basics', title: 'Copilot Training', accent: 'red' as const, description: 'De snelste manier om productief te worden met Microsoft Copilot in Word, Excel, Outlook en Teams. Halve dag, hands-on, eigen laptop. Voor organisaties op Microsoft 365.' },
+  { id: 'ai-privacy-security', title: 'Verantwoord AI-gebruik', accent: 'red' as const, description: 'Veilig werken met AI: van AVG en de EU AI Act tot data governance, zonder productiviteit te verliezen. Voor IT, privacy officers en compliance. Je vertrekt met een concept AI-policy.' },
+  { id: 'ai-media-literacy', title: 'AI & Desinformatie', accent: 'blue' as const, description: 'Deepfakes, AI-content en desinformatie: leer herkennen wat echt is en wat niet. Met live demos, waaronder hoe wij een overtuigende deepfake van Mark Rutte maakten.' },
+  { id: 'ai-voor-developers', title: 'AI voor Developers', accent: 'blue' as const, description: 'Van API-integratie tot RAG en fine-tuning. Leer AI bouwen, niet alleen gebruiken. Hands-on coderen in Python of JS, inclusief take-home repo. 1-2 dagen, 4-12 developers.' },
+  { title: 'AI-geletterdheid Training', accent: 'red' as const, href: '/nl/diensten/ai-geletterdheid-training', description: 'Voldoe aantoonbaar aan artikel 4 van de EU AI Act, met certificaat en verslaglegging per deelnemer. Compliance is de aanleiding, productiviteit is de winst.' },
+];
+
+const method = [
+  { title: 'Intake en doelgroepanalyse', eyebrow: 'Voorbereiding', body: 'We brengen je team, doelen en werkpraktijk in kaart en stemmen inhoud en voorbeelden af op de doelgroep, van directie tot uitvoering. Binnen een week weet je wat de training inhoudt, wat het kost en wanneer we starten.' },
+  { title: 'Training op locatie', eyebrow: 'Leren door doen', body: 'We komen naar jouw locatie en werken met jouw documenten, processen en cases: jullie offertes, jullie klantvragen, jullie data. Veel oefenen, weinig slides, tot iedereen het toepast in het eigen werk.' },
+  { title: 'Certificaat en verslaglegging', eyebrow: 'Borging', body: 'Deelnemers gaan naar huis met een naslagwerk en toegang tot onze community. Waar nodig leveren we een certificaat per deelnemer en een verslag van de behandelde onderwerpen voor je administratie.' },
+];
+
+const stats = [
+  { value: '1.000+', label: 'professionals getraind' },
+  { value: '€2.500 – 4.000', label: 'per trainingsdag' },
+  { value: 'Op locatie', label: 'in heel Nederland' },
+];
+
+const faq = [
+  { q: 'Wat kost een incompany AI-training?', a: 'Een trainingsdag kost EUR 2.500 tot EUR 4.000, afhankelijk van groepsgrootte en de hoeveelheid maatwerk. Daar zit alles bij in: voorbereiding, materiaal en opvolging. Een halve dag kan ook; meerdaagse programma’s stemmen we af op je organisatie.' },
+  { q: 'Voor welke teams is de training geschikt?', a: 'Voor elk team dat met AI gaat werken: van directie en management tot marketing, HR, juridisch en development. We passen inhoud en voorbeelden aan op de doelgroep. Voor ontwikkelaars is er een aparte training AI voor Developers.' },
+  { q: 'Trainen jullie ook buiten Groningen?', a: 'Ja, we trainen door heel Nederland, op jouw locatie. Onze thuisbasis is Groningen, maar het grootste deel van onze trainingen vindt plaats bij de klant op kantoor, van Amsterdam tot Maastricht.' },
+  { q: 'Welke tools komen aan bod?', a: 'De tools die jouw team echt gebruikt: ChatGPT, Claude, Copilot of Europese alternatieven. De training gaat over werkwijzen die toolonafhankelijk zijn: goede prompts schrijven, output beoordelen, veilig met bedrijfsdata omgaan.' },
+  { q: 'Telt deze training voor de AI Act-geletterdheidsplicht?', a: 'De AI Foundations workshop dekt een groot deel van de kennis die artikel 4 van de EU AI Act vraagt. Wil je aantoonbaar voldoen aan de geletterdheidsplicht, kijk dan naar onze AI-geletterdheidstraining met certificaat en verslaglegging.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const related = [
+  { title: 'Consultancy', accent: 'blue' as const, href: '/nl/diensten/consultancy', description: 'Van AI-readiness en business cases tot roadmap en implementatiebegeleiding.' },
+  { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Van proof of concept naar werkende, geïntegreerde AI in productie.' },
+];
+---
+
+<SubpageLayout
+  lang="nl"
+  title="AI-training voor teams"
+  subtitle="Incompany, op jouw locatie, met jouw eigen documenten en cases. We komen langs en werken met je team tot iedereen AI toepast in het eigen werk."
+  seoTitle="Incompany AI-training | Vanaf €2.500 per dag | AI Heroes"
+  seoDescription="AI-training op jouw locatie, voor jouw team, met jouw cases. Van AI Foundations en Copilot tot AI voor Developers en AI-geletterdheid. Meer dan 1.000 professionals gingen je voor."
+  accentColor="red"
+  pillarBadge="Training"
+  ctaLabel="Plan een training"
+  trustedBy={["Postcode Loterij", "Banijay Benelux", "Tweede Kamer", "Philips Healthcare", "Hanze", "Envalior"]}
+  jsonLd={faqSchema}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Van &ldquo;wat is AI&rdquo; naar dagelijkse toepassing</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      Generieke AI-cursussen blijven bij algemene voorbeelden. Bij een incompany training oefent je team op de eigen praktijk. We komen naar jouw locatie, werken met jouw documenten en processen, en trainen tot iedereen het toepast in het eigen werk, van directie en management tot marketing, HR, juridisch en development.
+    </p>
+    <p class="text-stone-600 leading-relaxed">Meer dan 1.000 professionals gingen je voor.</p>
+    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Ons trainingsaanbod</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Zes workshops, elk op locatie en op maat van jouw sector. We stellen samen het programma samen dat past bij je team.</p>
+    <CardGrid items={offerings} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe een training verloopt</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="red" accent="red" eyebrow="Verplicht sinds 2025" title="De EU AI Act vraagt om AI-geletterdheid">
+      <p>Artikel 4 van de EU AI Act is sinds <strong>2 februari 2025</strong> van kracht. Vanaf <strong>2 augustus 2026</strong> handhaaft de Autoriteit Persoonsgegevens in Nederland, met boetes tot <strong>EUR 15 miljoen of 3% van de wereldwijde jaaromzet</strong> (artikel 99 lid 4). De verplichting geldt voor elke organisatie die AI gebruikt, ook als dat alleen ChatGPT of Copilot is.</p>
+      <p><a href="/nl/diensten/ai-geletterdheid-training" class="text-white underline underline-offset-2 hover:no-underline">Bekijk de AI-geletterdheidstraining met certificaat &rarr;</a></p>
+    </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Verwante diensten</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>
