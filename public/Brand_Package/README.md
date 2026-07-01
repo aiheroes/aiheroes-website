@@ -150,7 +150,7 @@ To rebuild, ask Claude Code to regenerate:
 2. **Phase B** (Node + `puppeteer-core` + system Chrome): render SVG → PNG at 4 sizes + 2 variants per mark → PDF + Social wrappers → PNG + favicon PNGs at 6 sizes (color + white).
 3. **Phase C** (Node + `png-to-ico`): bundle favicon 16/32/48 PNGs → multi-res `favicon.ico` (both color and white variants).
 
-The aiheroes-internal project at `C:\Users\Frans Jorden\Documents\claude-projects\aiheroes-internal` has `puppeteer-core` + `@sparticuz/chromium` in its dependencies — reuse them; don't duplicate.
+The aiheroes-internal project at `C:\Users\Frans Jorden\Projects\aiheroes-internal` has `puppeteer-core` + `@sparticuz/chromium` in its dependencies — reuse them; don't duplicate.
 
 **Important:** the build script starts by `rmtree(Brand_Package)`. Preserve `README.md` and `_favicon_test.html` before the wipe (existing script already does this).
 
