@@ -653,8 +653,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               with no start state, so the grid-rows open/close transition would snap. */}
           {MobileServicesAccordion()}
 
-          {/* Over ons */}
-          {MobileAccordion({ label: content.about.label, type: 'about', items: content.about.children || [] })}
+          {/* Over ons — full grouped set (incl. AI Salon + TV), from columns */}
+          {MobileAccordion({ label: content.about.label, type: 'about', items: (content.about.columns ?? []).flatMap((c) => c.items) })}
 
           {/* Cases (direct link, no accordion) */}
           <Link

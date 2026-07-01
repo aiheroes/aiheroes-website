@@ -44,10 +44,16 @@ export const CONTENT: Record<Language, Content> = {
         children: [
           { label: "Onze aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
           { label: "Het team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
-          { label: "Over AI Heroes", href: "/nl/over-ons", description: "Ons verhaal en missie" },
-          { label: "AI Salon", href: "/nl/ai-salon", description: "Onze maandelijkse AI-avond" },
-          { label: "Zoals gezien op TV", href: "/nl/de-ai-storm", description: "De AI Storm bij RTL" },
           { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
+        ]
+      },
+      resources: {
+        label: "Resources",
+        href: "/nl/resources",
+        children: [
+          { label: "AI Geletterdheid", href: "/nl/resources/ai-geletterdheid", description: "Waarom het ertoe doet" },
+          { label: "AI Strategie Gids", href: "/nl/resources/ai-strategie-gids", description: "Aan de slag met AI-planning" },
+          { label: "Alle resources", href: "/nl/resources", description: "Bekijk alle artikelen" }
         ]
       },
       contact: {
@@ -742,10 +748,16 @@ export const CONTENT: Record<Language, Content> = {
         children: [
           { label: "Our approach", href: "/en/about/approach", description: "How we work" },
           { label: "The team", href: "/en/about/team", description: "Meet our experts" },
-          { label: "About AI Heroes", href: "/en/about", description: "Our story and mission" },
-          { label: "AI Salon", href: "/en/ai-salon", description: "Our monthly AI evening" },
-          { label: "As seen on TV", href: "/en/de-ai-storm", description: "De AI Storm on RTL" },
           { label: "Careers", href: "/en/careers", description: "View open positions" }
+        ]
+      },
+      resources: {
+        label: "Resources",
+        href: "/en/resources",
+        children: [
+          { label: "Why AI Literacy Matters", href: "/en/resources/ai-literacy", description: "The case for organization-wide AI understanding" },
+          { label: "AI Strategy Starter Guide", href: "/en/resources/ai-strategy-guide", description: "Getting started with strategic AI planning" },
+          { label: "All resources", href: "/en/resources", description: "Browse all articles" }
         ]
       },
       contact: {

@@ -43,7 +43,9 @@ const pillarColumns = [
 const allServicesLabel = lang === 'nl' ? 'Bekijk alle diensten' : 'View all services';
 const aboutTopLabel = lang === 'nl' ? 'Over AI Heroes' : 'About AI Heroes';
 const aboutColumns = nav.about.columns ?? [];
-const aboutItems = nav.about.children ?? [];
+// Mobile accordion shows the full grouped set (incl. AI Salon + TV), not the
+// lean footer-facing children.
+const aboutItems = aboutColumns.flatMap((c) => c.items);
 
 const featured = nav.featured;
 const contactLabel = nav.contact.label;
