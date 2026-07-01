@@ -81,8 +81,17 @@ export interface TeamContent {
 
 export interface SocialProofContent {
   title: string;
+  // Section heading above the reference wall.
+  heading?: string;
+  // Label for the back button in the expanded (full-review) view.
+  back?: string;
+  // Subtle "read full review" affordance shown on each reference card.
+  readMore?: string;
   testimonials: {
     text: string;
+    // Short, scannable pull-quote shown on the homepage reference wall.
+    // Falls back to `text` when absent. Full `text` is kept for case studies.
+    highlight?: string;
     author?: string;
     role: string;
   }[];

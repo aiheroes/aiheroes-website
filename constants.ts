@@ -128,20 +128,45 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Een greep uit de organisaties waar we mee gewerkt hebben",
+      heading: "Wat onze klanten zeggen",
+      back: "Terug",
+      readMore: "Lees meer",
       testimonials: [
         {
           text: "Het team van AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI. Door de interactieve en hands-on workshop hebben we nu praktische tools en tips gekregen om in ons onderwijs mee aan de slag te gaan.",
+          highlight: "AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI.",
+          author: "Remi Thüss",
           role: "Hanzehogeschool Groningen, TBK"
         },
         {
           text: "Als organisatie wilden we AI een stapje voor zijn en hebben we ons team laten trainen. Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken. Een echte aanrader!",
+          highlight: "Een fantastische, hands-on workshop met theorie én praktijk. Een echte aanrader!",
           author: "Bobby Kremer",
           role: "Nationale Postcode Loterij"
         },
         {
-          text: "AI Heroes heeft ons geholpen elke stap van ons eCommerce platform te automatiseren met AI. Product enrichment, fulfillment pipelines, marketplace integratie, AI productfoto's en SEO/GEO. Het is erg fijn om met een AI partner te werken die zoveel kennis van de markt en nu ook van ons bedrijf heeft.",
+          text: "AI Heroes heeft ons geholpen elke stap van ons eCommerce platform te automatiseren met AI. Het is erg fijn om met een AI partner te werken die zoveel kennis van de markt en nu ook van ons bedrijf heeft.",
+          highlight: "AI Heroes hielp ons elke stap van ons eCommerce platform te automatiseren met AI.",
           author: "P.R. Jeeninga",
           role: "IC Commerce"
+        },
+        {
+          text: "De manier waarop AI Heroes samenwerkt met externe stakeholders tijdens onze projecten is mooi om te zien. Groot of klein, onze projecten worden met veel ervaring aangestuurd, en met zo'n flexibel team is het altijd leuk om samen nieuwe dingen in AI te verkennen.",
+          highlight: "Met zo'n flexibel team is het altijd leuk om samen nieuwe dingen in AI te verkennen.",
+          author: "Saad Saleem",
+          role: "Project Manager, Cloud Primero"
+        },
+        {
+          text: "Ondanks alle tegenslagen heeft het team van AI Heroes ons onberispelijke AI-software geleverd. Binnen de afgesproken deadline gingen ze verder dan verwacht en maakten ze al onze verwachtingen waar.",
+          highlight: "Onberispelijke AI-software, binnen de deadline en verder dan verwacht.",
+          author: "Baran Erdogan",
+          role: "CTO, Jogo"
+        },
+        {
+          text: "Bij de ontwikkeling van onze nieuwste optische zorgtoepassing heeft AI Heroes ons enorm geholpen met de analyse en de technische realisatie.",
+          highlight: "AI Heroes hielp ons enorm met de analyse en technische realisatie van onze optische zorgtoepassing.",
+          author: "Igor Stalpers-Croeze",
+          role: "Manager Research & Development, Avics B.V."
         }
       ]
     },
@@ -792,20 +817,45 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Some of the organizations we've worked with",
+      heading: "What our clients say",
+      back: "Back",
+      readMore: "Read more",
       testimonials: [
         {
           text: "The AI Heroes team did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI. Thanks to the interactive, hands-on workshop, we now have practical tools and tips to put to work in our teaching.",
+          highlight: "AI Heroes did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI.",
+          author: "Remi Thüss",
           role: "Hanzehogeschool Groningen, TBK"
         },
         {
           text: "As an organization, we wanted to stay ahead of AI, so we had our team trained. Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable — highly recommended!",
+          highlight: "A fantastic, hands-on workshop of both theory and practice. Highly recommended!",
           author: "Bobby Kremer",
           role: "Nationale Postcode Loterij"
         },
         {
-          text: "AI Heroes helped us automate every step of our eCommerce platform with AI: product enrichment, fulfillment pipelines, marketplace integration, AI product photography, and SEO/GEO. It's great to work with an AI partner that knows the market so well, and now our business too.",
+          text: "AI Heroes helped us automate every step of our eCommerce platform with AI. It's great to work with an AI partner that knows the market so well, and now our business too.",
+          highlight: "AI Heroes helped us automate every step of our eCommerce platform with AI.",
           author: "P.R. Jeeninga",
           role: "IC Commerce"
+        },
+        {
+          text: "The way AI Heroes integrate with external stakeholders while working on our projects is satisfying to watch. Whether big or small, our projects are led with great experience, and with a team this flexible it's always fun to explore new things in AI together.",
+          highlight: "With a team this flexible, it's always fun to explore new things in AI together.",
+          author: "Saad Saleem",
+          role: "Project Manager, Cloud Primero"
+        },
+        {
+          text: "The team at AI Heroes has, despite any adversity thrown at them, provided us with impeccable AI software. In the timeline we gave them they went above and beyond and managed all our expectations.",
+          highlight: "Impeccable AI software, delivered on deadline and going above and beyond.",
+          author: "Baran Erdogan",
+          role: "CTO, Jogo"
+        },
+        {
+          text: "In developing our latest optical healthcare application, AI Heroes has helped us enormously with the analysis and technical realization.",
+          highlight: "AI Heroes helped us enormously with the analysis and technical realization of our optical healthcare app.",
+          author: "Igor Stalpers-Croeze",
+          role: "Manager Research & Development, Avics B.V."
         }
       ]
     },

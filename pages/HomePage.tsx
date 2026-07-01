@@ -245,8 +245,9 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
            <Team content={content.team} />
         </section>
 
-        {/* Social Proof (Dark) */}
-        <section id="social-proof" className="md:snap-start h-screen w-full flex items-center bg-brand-dark overflow-hidden">
+        {/* Social Proof (Dark). min-h-screen (not fixed h-screen) so the desktop
+            reference wall can grow past the viewport on short displays instead of clipping. */}
+        <section id="social-proof" className="md:snap-start min-h-screen w-full flex bg-brand-dark">
            <SocialProof content={content.socialProof} />
         </section>
 
