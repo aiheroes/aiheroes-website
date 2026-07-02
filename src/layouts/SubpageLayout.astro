@@ -16,13 +16,32 @@ interface Props {
   ctaLabel?: string;
   trustedBy?: string[];
   showContactForm?: boolean;
+  heroImage?: 'general' | 'training' | 'consulting' | 'software';
 }
 
 const {
   lang, title, subtitle, seoTitle, seoDescription,
   noindex, jsonLd, accentColor = 'red', pillarBadge, ctaLabel, trustedBy,
-  showContactForm = true,
+  showContactForm = true, heroImage,
 } = Astro.props;
+
+// Same hero photography as the homepage slides. Explicit heroImage wins;
+// otherwise derive the pillar from the badge ("Training", "Consultancy"/
+// "Consulting", "Software & ..."); everything else gets the general shot.
+const HERO_IMAGES = {
+  general: '/hero/summit.webp',
+  training: '/hero/road.webp',
+  consulting: '/hero/glass.webp',
+  software: '/hero-bg.webp',
+} as const;
+const badge = (pillarBadge ?? '').toLowerCase();
+const heroKey: keyof typeof HERO_IMAGES =
+  heroImage ??
+  (badge.startsWith('training') ? 'training'
+    : badge.startsWith('consult') ? 'consulting'
+    : badge.startsWith('software') ? 'software'
+    : 'general');
+const heroSrc = HERO_IMAGES[heroKey];
 
 const accentBorder = accentColor === 'red' ? 'border-brand-red' : 'border-brand-blue';
 const accentBg = accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue';
@@ -33,8 +52,13 @@ const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
 
 <BaseLayout lang={lang} title={title} seoTitle={seoTitle} description={seoDescription} noindex={noindex} jsonLd={jsonLd}>
   <!-- Hero (id is a landmark for the navbar scroll-theme island, ported later) -->
-  <header id="page-hero" class={`pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}>
-    <div class="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
+  <header id="page-hero" class={`relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}>
+    <img src={heroSrc} alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" />
+    <!-- Overlay recipe mirrors the homepage hero (Hero.tsx) for a consistent look -->
+    <div class="absolute inset-0 bg-stone-950/45" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" aria-hidden="true"></div>
+    <div class="relative max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
       {pillarBadge && (
         <span class="inline-block text-xs font-bold uppercase tracking-widest text-white/70 border border-white/30 px-3 py-1 mb-4">{pillarBadge}</span>
       )}
