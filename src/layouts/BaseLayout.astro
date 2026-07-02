@@ -4,10 +4,11 @@ import { ClientRouter } from 'astro:transitions';
 import { hreflangPaths, alternatePath, type Lang } from '../data/i18n';
 import { PROFESSIONAL_SERVICE_SCHEMA } from '../data/schema';
 import { CONTENT } from '../data/content';
-import Navbar from '../components/static/Navbar.astro';
-// Single source of truth for the footer: the React component, rendered here
-// server-side with NO client directive (static HTML, zero JS). The language
-// toggle uses alternateUrl (a plain <a href>) so it works without hydration.
+// Single source of truth for the navbar AND footer: the legacy React
+// components. The navbar hydrates (client:load) for dropdowns, mobile menu and
+// the scroll-split theming; the footer stays server-rendered with NO client
+// directive (static HTML, zero JS) — its language toggle is a plain <a href>.
+import NavbarIsland from '../components/islands/NavbarIsland';
 import { Footer } from '../../components/Footer';
 
 export interface Props {
@@ -121,7 +122,7 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
     <ClientRouter />
   </head>
   <body class="min-h-screen bg-brand-light text-brand-dark font-sans overflow-x-hidden">
-    {!noChrome && <Navbar lang={lang} path={path} />}
+    {!noChrome && <NavbarIsland client:load lang={lang} alternateUrl={alternatePath(path, lang)} />}
     <slot />
     {!noChrome && (
       <Footer
