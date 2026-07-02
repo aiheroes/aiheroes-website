@@ -34,7 +34,6 @@ export const CONTENT: Record<Language, Content> = {
             { label: "Over AI Heroes", href: "/nl/over-ons", description: "Ons verhaal en missie" }
           ]},
           { heading: "Media & community", items: [
-            { label: "AI Salon", href: "/nl/ai-salon", description: "Onze maandelijkse AI-avond" },
             { label: "Zoals gezien op TV", href: "/nl/de-ai-storm", description: "De AI Storm bij RTL" }
           ]},
           { heading: "Werken bij", items: [
@@ -738,7 +737,6 @@ export const CONTENT: Record<Language, Content> = {
             { label: "About AI Heroes", href: "/en/about", description: "Our story and mission" }
           ]},
           { heading: "Media & community", items: [
-            { label: "AI Salon", href: "/en/ai-salon", description: "Our monthly AI evening" },
             { label: "As seen on TV", href: "/en/de-ai-storm", description: "De AI Storm on RTL" }
           ]},
           { heading: "Join us", items: [
