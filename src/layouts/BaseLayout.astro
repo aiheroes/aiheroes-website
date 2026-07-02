@@ -120,6 +120,42 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
     ))}
 
     <ClientRouter />
+
+    <script>
+      // Anchor deep-links (mega-menu SKU items, retired-SKU 301s) teleport
+      // straight into the middle of pillar pages, which reads as "landing
+      // mid-page" with no context. Instead: start at the top and run a fast
+      // animated scroll down to the section. Skips back/forward navigation so
+      // the browser's scroll restoration keeps working.
+      let navDirection = 'forward';
+      document.addEventListener('astro:before-swap', (e: any) => {
+        navDirection = e.direction ?? 'forward';
+      });
+
+      function animateToAnchor() {
+        if (navDirection !== 'forward' || !location.hash) return;
+        const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (!target) return;
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+        // Fast ease-out scroll (~450ms) — snappier than native smooth scroll.
+        const startY = 0;
+        const endY = target.getBoundingClientRect().top - 96; // clear the fixed navbar
+        const duration = 450;
+        const start = performance.now();
+        function step(now: number) {
+          const t = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t, 3);
+          window.scrollTo(0, startY + (endY - startY) * eased);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      // Client-side (view transition) navigations + full page loads.
+      document.addEventListener('astro:after-swap', animateToAnchor);
+      if (document.readyState === 'complete') animateToAnchor();
+      else window.addEventListener('load', animateToAnchor);
+    </script>
   </head>
   <body class="min-h-screen bg-brand-light text-brand-dark font-sans overflow-x-hidden">
     {!noChrome && <NavbarIsland client:load lang={lang} alternateUrl={alternatePath(path, lang)} />}
