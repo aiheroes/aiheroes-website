@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Tailwind v4 gates hover:/group-hover: behind @media (hover: hover), which is
+   FALSE on touch-capable Windows laptops (Chromium can classify the primary
+   pointer as touch) and in DevTools device emulation — killing the mega-menu
+   dropdowns entirely. Restore the v3 behavior: hover styles always apply. */
+@custom-variant hover (&:hover);
+
 /* Custom theme extending Tailwind defaults */
 @theme {
   /* Font families */
