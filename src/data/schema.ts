@@ -66,3 +66,15 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
     ],
   },
 };
+
+// WebSite entity (homepage only, NL + EN): names the site and grounds it to the
+// organization for search engines and AI assistants.
+export const WEBSITE_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://aiheroes.io/#website',
+  name: 'AI Heroes',
+  url: 'https://aiheroes.io',
+  inLanguage: ['nl', 'en'],
+  publisher: { '@id': 'https://aiheroes.io/#organization' },
+};

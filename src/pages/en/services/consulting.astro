@@ -36,6 +36,37 @@ const related = [
   { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from insight to daily application.' },
   { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'The same partner that advises also builds what is in the roadmap.' },
 ];
+
+const faq = [
+  { q: 'What does AI consulting cost?', a: 'The entry point is an AI readiness scan of 1 to 3 days, from EUR 3,000. A process analysis or business case development starts from EUR 5,000, and a full AI roadmap takes 2 to 4 weeks of work from EUR 5,000. You know the cost up front; surprises afterwards are not part of the deal.' },
+  { q: 'Where should my organisation start with AI?', a: 'For most organisations the AI readiness scan is the logical starting point. In 1 to 3 days we map maturity, data and culture, and you get a concrete action plan: where you stand, which quick wins are available and what the logical next step is.' },
+  { q: 'How long does it take from scan to roadmap?', a: 'On average 2 to 4 weeks. A standalone readiness scan is done in a few days; a full roadmap with quantified business cases, governance and resource planning takes a few weeks. You step in at the level that fits your situation.' },
+  { q: 'What makes AI Heroes different from other consultancies?', a: 'We build AI ourselves. That makes our cost estimates realistic, and the same partner that advises can also build what is in the roadmap. No handover to an external builder, no knowledge leak. And if the business case does not add up, we say so honestly.' },
+  { q: 'Do you also guide the implementation?', a: 'Yes. Around 70% of AI projects fail without guidance, so we do not stop at the report. With implementation guidance (2 to 8 weeks) we support the rollout on the work floor: change management, adoption tracking and coaching, until AI is part of the daily work.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI Consulting',
+  serviceType: 'AI consulting',
+  description: 'AI consulting from readiness scan and business case to roadmap and implementation guidance, for organisations across the Netherlands.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Country', name: 'Netherlands' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '3000' },
+  url: 'https://aiheroes.io/en/services/consulting',
+};
 ---
 
 <SubpageLayout
@@ -48,6 +79,7 @@ const related = [
   pillarBadge="Consulting"
   ctaLabel="Schedule a consultation"
   trustedBy={["Medux", "InnoEnergy", "Prosus", "Envalior", "OLX Poland", "050-IT"]}
+  jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From first insight to working AI</h2>
@@ -78,6 +110,21 @@ const related = [
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">From advice to results</h2>
     <CardGrid items={cases} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Frequently asked questions</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
   </section>
 
   <section>

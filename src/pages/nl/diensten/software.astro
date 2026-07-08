@@ -40,6 +40,37 @@ const related = [
   { title: 'Consultancy', accent: 'blue' as const, href: '/nl/diensten/consultancy', description: 'Zeker weten dat je het juiste bouwt: van readiness tot business case en roadmap.' },
   { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Je team meenemen zodat het de oplossing zelfstandig kan gebruiken en uitbouwen.' },
 ];
+
+const faq = [
+  { q: 'Wat kost het om AI-software te laten maken?', a: 'Een proof of concept kost vanaf EUR 8.000 en staat in 6 dagen. Maatwerk AI-toepassingen kosten 2 tot 12 weken werk vanaf EUR 15.000, systeemintegratie vanaf EUR 10.000 en een digital twin vanaf EUR 25.000. Door klein te beginnen weet je wat het oplevert voordat je groot investeert.' },
+  { q: 'Hoe snel staat er een werkend prototype?', a: 'In 6 dagen. Een rapid proof of concept bewijst dat je AI-idee werkt, met herbruikbare code die de basis vormt voor het vervolg. Bij Trabu stond het prototype op tijd voor de investeerdersronde.' },
+  { q: 'Werken jullie samen met ons eigen developmentteam?', a: 'Ja, dat kan op drie manieren: augmentatie van je bestaande team, een volledig dedicated team, of hybride. Een tech lead is inbegrepen en het team is binnen een week productief. Elke oplevering bevat documentatie en training, zodat jouw mensen zelfstandig verder kunnen.' },
+  { q: 'Hoe voorkomen jullie vendor lock-in?', a: 'We bouwen met open standaarden waar mogelijk en Europese hosting waar het ertoe doet. Het datamodel blijft van jou, zodat je nooit vastzit aan één leverancier, ook niet aan ons.' },
+  { q: 'Draait jullie werk echt in productie?', a: 'Ja. Bij Medux handelt onze voice-to-voice AI maandelijks zo’n 4.000 klantgesprekken af, met 70% kostenbesparing en een klanttevredenheid van 7,8. We bouwen voor productie, niet voor de demo.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI Software & Implementatie',
+  serviceType: 'Custom AI software development',
+  description: 'Maatwerk AI-software: van proof of concept in 6 dagen tot maatwerkoplossingen, systeemintegratie, dedicated teams en digital twins.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Country', name: 'Netherlands' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '8000' },
+  url: 'https://aiheroes.io/nl/diensten/software',
+};
 ---
 
 <SubpageLayout
@@ -52,6 +83,7 @@ const related = [
   pillarBadge="Software & Implementatie"
   ctaLabel="Bespreek je project"
   trustedBy={["Medux", "OLX Poland", "iFood Brazil", "Trabu", "Prosus", "InnoEnergy"]}
+  jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Van idee naar werkende AI-oplossing</h2>
@@ -86,6 +118,21 @@ const related = [
     <Callout variant="light" accent="blue" eyebrow="Soeverein by design" title="Geen vendor lock-in">
       <p>We werken met open standaarden waar mogelijk en Europese hosting waar het ertoe doet. Je krijgt een datamodel dat van jou blijft, zodat je nooit vastzit aan één leverancier.</p>
     </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
   </section>
 
   <section>

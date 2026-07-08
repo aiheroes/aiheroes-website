@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HomeIsland from '../../components/islands/HomeIsland';
-import { PROFESSIONAL_SERVICE_SCHEMA } from '../../data/schema';
+import { PROFESSIONAL_SERVICE_SCHEMA, WEBSITE_SCHEMA } from '../../data/schema';
 ---
 
 <BaseLayout
@@ -9,7 +9,7 @@ import { PROFESSIONAL_SERVICE_SCHEMA } from '../../data/schema';
   title="Full-Service AI Agency Netherlands"
   seoTitle="Full-Service AI Agency Netherlands | Training, Consulting & Software"
   description="AI Heroes is a full-service AI agency in the Netherlands, based in Groningen. From change management to technical implementation: AI training, consulting and software."
-  jsonLd={PROFESSIONAL_SERVICE_SCHEMA}
+  jsonLd={[PROFESSIONAL_SERVICE_SCHEMA, WEBSITE_SCHEMA]}
   noChrome
 >
   <HomeIsland lang="en" client:load />

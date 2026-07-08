@@ -7,27 +7,42 @@ AI Heroes is een full-service AI agency in Groningen: training, consulting en so
 ## Services (English)
 
 - [Services overview](https://aiheroes.io/en/services): training, consulting and software offerings
-- [AI Foundations workshop](https://aiheroes.io/en/services/ai-foundations): one-day team workshop on working with AI
-- [AI Readiness Scan](https://aiheroes.io/en/services/ai-readiness-scan): assessment of where your organisation stands with AI
-- [AI Roadmap](https://aiheroes.io/en/services/ai-roadmap): strategic AI implementation plan
-- [Custom AI solutions](https://aiheroes.io/en/services/custom-ai-solutions): custom AI development, prototype to production
+- [AI training for teams](https://aiheroes.io/en/services/training): in-company workshops, from AI Foundations to AI for Developers, from EUR 2,500 per day
+- [AI consulting](https://aiheroes.io/en/services/consulting): readiness scan, business cases, roadmap and implementation guidance, from EUR 3,000
+- [AI software & implementation](https://aiheroes.io/en/services/software): proof of concept (6 days, from EUR 8,000), custom AI, system integration, digital twins
+- [AI literacy training](https://aiheroes.io/en/services/ai-literacy-training): EU AI Act Article 4 compliance training with certificate; Dutch enforcement starts 2 August 2026
+- [In-company AI training](https://aiheroes.io/en/services/incompany-ai-training): on-site training across the Netherlands
 - [Sovereign AI consultancy](https://aiheroes.io/en/services/eu-consultancy): European AI without vendor lock-in
+- [Digital independence](https://aiheroes.io/en/services/digital-independence): training, consultancy and development for European alternatives and compliance
 - [AI agency for the Netherlands](https://aiheroes.io/en/services/ai-agency-netherlands)
+- [AI agency in Groningen](https://aiheroes.io/en/services/ai-agency-groningen): based in Groningen, the AI capital of Europe
 
 ## Diensten (Nederlands)
 
 - [Dienstenoverzicht](https://aiheroes.io/nl/diensten): training, consulting en software
-- [AI Foundations workshop](https://aiheroes.io/nl/diensten/ai-foundations): eendaagse teamworkshop AI
-- [AI Readiness Scan](https://aiheroes.io/nl/diensten/ai-readiness-scan): waar staat jouw organisatie met AI
-- [AI Roadmap](https://aiheroes.io/nl/diensten/ai-roadmap): strategisch AI-implementatieplan
-- [Maatwerk AI-oplossingen](https://aiheroes.io/nl/diensten/maatwerk-ai-oplossingen): AI software laten maken
+- [AI-training voor teams](https://aiheroes.io/nl/diensten/training): incompany workshops, van AI Foundations tot AI voor Developers, vanaf EUR 2.500 per dag
+- [AI consultancy](https://aiheroes.io/nl/diensten/consultancy): readiness scan, business cases, roadmap en implementatiebegeleiding, vanaf EUR 3.000
+- [AI software & implementatie](https://aiheroes.io/nl/diensten/software): proof of concept (6 dagen, vanaf EUR 8.000), maatwerk AI, systeemintegratie, digital twins
+- [AI-geletterdheidstraining](https://aiheroes.io/nl/diensten/ai-geletterdheid-training): invulling van artikel 4 EU AI Act, met certificaat; handhaving vanaf 2 augustus 2026
+- [Incompany AI-training](https://aiheroes.io/nl/diensten/incompany-ai-training): training op locatie, door heel Nederland
 - [Soevereine AI consultancy](https://aiheroes.io/nl/diensten/eu-consultancy): Europese AI zonder lock-in
+- [Digitale onafhankelijkheid](https://aiheroes.io/nl/diensten/digitale-onafhankelijkheid): training, consultancy en development voor Europese alternatieven en compliance
 - [AI bureau voor Nederland](https://aiheroes.io/nl/diensten/ai-bureau-nederland)
+- [AI consultancy in Groningen](https://aiheroes.io/nl/diensten/ai-consultancy-groningen): thuisbasis Groningen, de AI-hoofdstad van Europa
 
 ## Company
 
 - [About AI Heroes](https://aiheroes.io/en/about): team, approach and the Groningen story
 - [Over AI Heroes](https://aiheroes.io/nl/over-ons)
-- [Case studies](https://aiheroes.io/en/about#cases): Medux, OLX, iFood, InnoEnergy, Trabu
+- [Case studies](https://aiheroes.io/en/cases): Medux (70% lower customer-service costs), OLX, InnoEnergy, Trabu (prototype in 6 days)
 - [AI Salon Groningen](https://aiheroes.io/nl/ai-salon): monthly AI event in Groningen
-- [Resources](https://aiheroes.io/en/resources): articles on AI literacy (EU AI Act Article 4) and AI strategy
+- [De AI Storm](https://aiheroes.io/nl/de-ai-storm): as featured on Dutch television (RTL 7, RTL Z, Videoland)
+
+## Resources
+
+- [Resources overview](https://aiheroes.io/en/resources) / [NL](https://aiheroes.io/nl/resources)
+- [What does AI implementation cost?](https://aiheroes.io/en/resources/ai-implementation-costs) / [Wat kost AI-implementatie?](https://aiheroes.io/nl/resources/wat-kost-ai-implementatie)
+- [EU AI Act compliance guide](https://aiheroes.io/en/resources/eu-ai-act-compliance) / [NL](https://aiheroes.io/nl/resources/eu-ai-act-compliance)
+- [AI literacy and EU AI Act Article 4](https://aiheroes.io/en/resources/ai-literacy) / [AI-geletterdheid](https://aiheroes.io/nl/resources/ai-geletterdheid)
+- [Top 10 AI consultancies Netherlands](https://aiheroes.io/en/resources/top-10-ai-consultancy-netherlands) / [NL](https://aiheroes.io/nl/resources/top-10-ai-consultancy-nederland)
+- [Sovereign AI](https://aiheroes.io/en/resources/sovereign-ai) / [Soevereine AI](https://aiheroes.io/nl/resources/soevereine-ai)

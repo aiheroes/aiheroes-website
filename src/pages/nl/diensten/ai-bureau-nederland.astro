@@ -1,5 +1,15 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/' },
+    { '@type': 'ListItem', position: 2, name: 'Diensten', item: 'https://aiheroes.io/nl/diensten' },
+    { '@type': 'ListItem', position: 3, name: 'AI Bureau Nederland', item: 'https://aiheroes.io/nl/diensten/ai-bureau-nederland' },
+  ],
+};
 ---
 
 <SubpageLayout
@@ -11,6 +21,7 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
   accentColor="blue"
   ctaLabel="Plan een kennismaking"
   trustedBy={["Postcode Loterij", "Banijay", "Prosus", "Medux", "Envalior"]}
+  jsonLd={breadcrumbSchema}
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-stone-700 leading-relaxed mb-8">
@@ -26,17 +37,17 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
       <div class="p-6 bg-white border border-stone-200">
         <h3 class="font-serif text-xl text-brand-dark mb-2">Training</h3>
         <p class="text-sm text-stone-600 mb-4">Workshops en incompany-trainingen die je team AI-vaardig maken, van directie tot developers.</p>
-        <a href="/nl/diensten/ai-foundations" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk trainingen</a>
+        <a href="/nl/diensten/training#ai-foundations" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk trainingen</a>
       </div>
       <div class="p-6 bg-white border border-stone-200">
         <h3 class="font-serif text-xl text-brand-dark mb-2">Consulting</h3>
         <p class="text-sm text-stone-600 mb-4">AI-readiness scans, roadmaps en business cases die ambitie vertalen naar een concreet plan.</p>
-        <a href="/nl/diensten/ai-readiness-scan" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk consulting</a>
+        <a href="/nl/diensten/consultancy#ai-readiness-scan" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk consulting</a>
       </div>
       <div class="p-6 bg-white border border-stone-200">
         <h3 class="font-serif text-xl text-brand-dark mb-2">Software</h3>
         <p class="text-sm text-stone-600 mb-4">Maatwerk AI-oplossingen die echte bedrijfsproblemen oplossen, van prototype tot productie.</p>
-        <a href="/nl/diensten/maatwerk-ai-oplossingen" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk software</a>
+        <a href="/nl/diensten/software#maatwerk-ai-oplossingen" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk software</a>
       </div>
     </div>
 
@@ -61,7 +72,7 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 
     <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
       <h3>Op zoek naar een AI bureau in Nederland?</h3>
-      <p>Plan een vrijblijvende kennismaking. We denken mee over waar AI voor jouw organisatie waarde oplevert, of je nu wilt starten met training, een <a href="/nl/diensten/ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">readiness scan</a> wilt, of direct iets wilt laten bouwen.</p>
+      <p>Plan een vrijblijvende kennismaking. We denken mee over waar AI voor jouw organisatie waarde oplevert, of je nu wilt starten met training, een <a href="/nl/diensten/consultancy#ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">readiness scan</a> wilt, of direct iets wilt laten bouwen.</p>
     </div>
   </div>
 </SubpageLayout>

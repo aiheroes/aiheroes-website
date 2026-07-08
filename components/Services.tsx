@@ -29,7 +29,7 @@ const CARD_CONFIG = {
     arrowRestText: 'text-brand-blue',
     arrowBorder: 'border-brand-blue',
     glowColor: 'rgba(37, 99, 235, 0.20)',
-    target: { nl: '/nl/diensten/ai-readiness-scan', en: '/en/services/ai-readiness-scan' },
+    target: { nl: '/nl/diensten/consultancy#ai-readiness-scan', en: '/en/services/consulting#ai-readiness-scan' },
     tag: { nl: 'Consultancy', en: 'Consulting' },
     tooltip: { nl: 'Start een scan', en: 'Start a scan' },
   },

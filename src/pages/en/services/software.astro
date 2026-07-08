@@ -40,6 +40,37 @@ const related = [
   { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'Make sure you build the right thing: from readiness to business case and roadmap.' },
   { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'Bring your team along so it can use and extend the solution independently.' },
 ];
+
+const faq = [
+  { q: 'What does custom AI software cost?', a: 'A proof of concept starts from EUR 8,000 and is ready in 6 days. Custom AI applications take 2 to 12 weeks from EUR 15,000, system integration starts from EUR 10,000 and a digital twin from EUR 25,000. By starting small you know what it delivers before you invest big.' },
+  { q: 'How fast can you build a working prototype?', a: 'In 6 days. A rapid proof of concept proves your AI idea works, with reusable code that forms the basis for what comes next. At Trabu the prototype was ready in time for the investor meeting.' },
+  { q: 'Do you work alongside our own development team?', a: 'Yes, in three ways: augmentation of your existing team, a fully dedicated team, or hybrid. A tech lead is included and the team is productive within a week. Every delivery includes documentation and training, so your people can continue on their own.' },
+  { q: 'How do you prevent vendor lock-in?', a: 'We build with open standards where possible and European hosting where it matters. The data model stays yours, so you are never tied to a single vendor, including us.' },
+  { q: 'Does your work actually run in production?', a: 'Yes. At Medux our voice-to-voice AI handles around 4,000 customer calls a month, with a 70% cost saving and a 7.8 customer satisfaction score. We build for production, not for the demo.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI Software & Implementation',
+  serviceType: 'Custom AI software development',
+  description: 'Custom AI software: from proof of concept in 6 days to custom solutions, system integration, dedicated teams and digital twins.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Country', name: 'Netherlands' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '8000' },
+  url: 'https://aiheroes.io/en/services/software',
+};
 ---
 
 <SubpageLayout
@@ -52,6 +83,7 @@ const related = [
   pillarBadge="Software & Implementation"
   ctaLabel="Discuss your project"
   trustedBy={["Medux", "OLX Poland", "iFood Brazil", "Trabu", "Prosus", "InnoEnergy"]}
+  jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From idea to working AI solution</h2>
@@ -86,6 +118,21 @@ const related = [
     <Callout variant="light" accent="blue" eyebrow="Sovereign by design" title="No vendor lock-in">
       <p>We work with open standards where possible and European hosting where it matters. You get a data model that stays yours, so you are never tied to a single vendor.</p>
     </Callout>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Frequently asked questions</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
   </section>
 
   <section>

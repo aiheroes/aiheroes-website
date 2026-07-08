@@ -1,5 +1,15 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/en' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aiheroes.io/en/services' },
+    { '@type': 'ListItem', position: 3, name: 'AI Agency Netherlands', item: 'https://aiheroes.io/en/services/ai-agency-netherlands' },
+  ],
+};
 ---
 
 <SubpageLayout
@@ -11,6 +21,7 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
   accentColor="blue"
   ctaLabel="Plan an intro call"
   trustedBy={["Postcode Loterij", "Banijay", "Prosus", "Medux", "Envalior"]}
+  jsonLd={breadcrumbSchema}
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-stone-700 leading-relaxed mb-8">AI Heroes is a full-service AI agency from Groningen, active across the Netherlands. Since 2019 we have helped more than 50 organisations with the full AI journey: from training and strategic advice to building custom software. Three pillars, one partner, from change management to technical implementation.</p>
@@ -19,9 +30,9 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
     <p class="text-stone-600 leading-relaxed mb-8">Most agencies do one thing: they train, or they advise, or they build. We do all three, under one roof. Nothing falls through the cracks between the advice and the delivery, and you work with a team that knows your organisation from start to finish.</p>
 
     <div class="grid md:grid-cols-3 gap-6 mb-10 not-prose">
-      <div class="p-6 bg-white border border-stone-200"><h3 class="font-serif text-xl text-brand-dark mb-2">Training</h3><p class="text-sm text-stone-600 mb-4">Workshops and in-company training that make your team AI-capable, from leadership to developers.</p><a href="/en/services/ai-foundations" class="text-brand-blue text-sm font-medium underline underline-offset-2">View training</a></div>
-      <div class="p-6 bg-white border border-stone-200"><h3 class="font-serif text-xl text-brand-dark mb-2">Consulting</h3><p class="text-sm text-stone-600 mb-4">AI-readiness scans, roadmaps and business cases that turn ambition into a concrete plan.</p><a href="/en/services/ai-readiness-scan" class="text-brand-blue text-sm font-medium underline underline-offset-2">View consulting</a></div>
-      <div class="p-6 bg-white border border-stone-200"><h3 class="font-serif text-xl text-brand-dark mb-2">Software</h3><p class="text-sm text-stone-600 mb-4">Custom AI solutions that solve real business problems, from prototype to production.</p><a href="/en/services/custom-ai-solutions" class="text-brand-blue text-sm font-medium underline underline-offset-2">View software</a></div>
+      <div class="p-6 bg-white border border-stone-200"><h3 class="font-serif text-xl text-brand-dark mb-2">Training</h3><p class="text-sm text-stone-600 mb-4">Workshops and in-company training that make your team AI-capable, from leadership to developers.</p><a href="/en/services/training#ai-foundations" class="text-brand-blue text-sm font-medium underline underline-offset-2">View training</a></div>
+      <div class="p-6 bg-white border border-stone-200"><h3 class="font-serif text-xl text-brand-dark mb-2">Consulting</h3><p class="text-sm text-stone-600 mb-4">AI-readiness scans, roadmaps and business cases that turn ambition into a concrete plan.</p><a href="/en/services/consulting#ai-readiness-scan" class="text-brand-blue text-sm font-medium underline underline-offset-2">View consulting</a></div>
+      <div class="p-6 bg-white border border-stone-200"><h3 class="font-serif text-xl text-brand-dark mb-2">Software</h3><p class="text-sm text-stone-600 mb-4">Custom AI solutions that solve real business problems, from prototype to production.</p><a href="/en/services/software#custom-ai-solutions" class="text-brand-blue text-sm font-medium underline underline-offset-2">View software</a></div>
     </div>
 
     <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Across the Netherlands, based in Groningen</h2>
@@ -43,7 +54,7 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 
     <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
       <h3>Looking for an AI agency in the Netherlands?</h3>
-      <p>Plan a no-obligation intro call. We will think along about where AI creates value for your organisation, whether you want to start with training, a <a href="/en/services/ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">readiness scan</a>, or to build something straight away.</p>
+      <p>Plan a no-obligation intro call. We will think along about where AI creates value for your organisation, whether you want to start with training, a <a href="/en/services/consulting#ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">readiness scan</a>, or to build something straight away.</p>
     </div>
   </div>
 </SubpageLayout>

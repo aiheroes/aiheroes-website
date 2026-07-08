@@ -50,8 +50,9 @@ export const CONTENT: Record<Language, Content> = {
         label: "Resources",
         href: "/nl/resources",
         children: [
-          { label: "AI Geletterdheid", href: "/nl/resources/ai-geletterdheid", description: "Waarom het ertoe doet" },
-          { label: "AI Strategie Gids", href: "/nl/resources/ai-strategie-gids", description: "Aan de slag met AI-planning" },
+          { label: "AI Geletterdheid", href: "/nl/resources/ai-geletterdheid", description: "Verplicht volgens de EU AI Act" },
+          { label: "Wat kost AI-implementatie?", href: "/nl/resources/wat-kost-ai-implementatie", description: "Realistische prijzen en voorbeelden" },
+          { label: "EU AI Act Compliance", href: "/nl/resources/eu-ai-act-compliance", description: "Stappenplan richting 2 augustus 2026" },
           { label: "Alle resources", href: "/nl/resources", description: "Bekijk alle artikelen" }
         ]
       },
@@ -92,7 +93,7 @@ export const CONTENT: Record<Language, Content> = {
           headline: "<red>Weet</red> waar AI\n<blue>waarde</blue> creëert",
           subhead: "AI-readiness scans, roadmaps\nen business cases.",
           ctaLabel: "Start met een scan",
-          ctaTarget: "/nl/diensten/ai-readiness-scan",
+          ctaTarget: "/nl/diensten/consultancy#ai-readiness-scan",
           image: "/hero/glass.webp"
         },
         {
@@ -753,8 +754,9 @@ export const CONTENT: Record<Language, Content> = {
         label: "Resources",
         href: "/en/resources",
         children: [
-          { label: "Why AI Literacy Matters", href: "/en/resources/ai-literacy", description: "The case for organization-wide AI understanding" },
-          { label: "AI Strategy Starter Guide", href: "/en/resources/ai-strategy-guide", description: "Getting started with strategic AI planning" },
+          { label: "Why AI Literacy Matters", href: "/en/resources/ai-literacy", description: "Mandatory under the EU AI Act" },
+          { label: "AI Implementation Costs", href: "/en/resources/ai-implementation-costs", description: "Realistic prices and examples" },
+          { label: "EU AI Act Compliance", href: "/en/resources/eu-ai-act-compliance", description: "Step-by-step plan towards 2 August 2026" },
           { label: "All resources", href: "/en/resources", description: "Browse all articles" }
         ]
       },
@@ -795,7 +797,7 @@ export const CONTENT: Record<Language, Content> = {
           headline: "<red>Know</red> where AI\ncreates <blue>value</blue>",
           subhead: "AI-readiness scans, roadmaps\nand business cases.",
           ctaLabel: "Start with a scan",
-          ctaTarget: "/en/services/ai-readiness-scan",
+          ctaTarget: "/en/services/consulting#ai-readiness-scan",
           image: "/hero/glass.webp"
         },
         {

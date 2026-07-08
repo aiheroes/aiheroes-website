@@ -36,6 +36,37 @@ const related = [
   { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Incompany workshops die je team van inzicht naar dagelijkse toepassing brengen.' },
   { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Dezelfde partner die adviseert, bouwt ook wat in de roadmap staat.' },
 ];
+
+const faq = [
+  { q: 'Wat kost AI-consultancy?', a: 'De instap is een AI Readiness Scan van 1 tot 3 dagen, vanaf EUR 3.000. Een procesanalyse of business case development start vanaf EUR 5.000, een volledige AI-roadmap kost 2 tot 4 weken werk vanaf EUR 5.000. Je weet vooraf wat het kost; verrassingen achteraf horen er niet bij.' },
+  { q: 'Waar moet mijn organisatie beginnen met AI?', a: 'Voor de meeste organisaties is de AI Readiness Scan het logische startpunt. In 1 tot 3 dagen brengen we maturiteit, data en cultuur in kaart en krijg je een concreet actieplan: waar je staat, welke quick wins er liggen en wat de logische volgende stap is.' },
+  { q: 'Hoe lang duurt een traject van scan tot roadmap?', a: 'Gemiddeld 2 tot 4 weken. Een losse readiness scan is in enkele dagen klaar; een volledige roadmap met doorgerekende business cases, governance en resource planning vraagt een paar weken. Je stapt in op het niveau dat bij je situatie past.' },
+  { q: 'Wat maakt AI Heroes anders dan andere adviesbureaus?', a: 'We bouwen zelf AI. Daardoor zijn onze kostenramingen realistisch en kan dezelfde partner die adviseert ook bouwen wat in de roadmap staat. Geen overdracht naar een externe bouwer, geen kennislek. En als de business case niet sluit, zeggen we dat eerlijk.' },
+  { q: 'Begeleiden jullie ook de implementatie?', a: 'Ja. Zo’n 70% van AI-projecten faalt zonder begeleiding, dus we stoppen niet bij het rapport. Met implementatiebegeleiding (2 tot 8 weken) begeleiden we de uitrol op de werkvloer: change management, adoptietracking en coaching, tot AI onderdeel is van het dagelijkse werk.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI Consultancy',
+  serviceType: 'AI consultancy',
+  description: 'AI-consultancy van readiness scan en business case tot roadmap en implementatiebegeleiding, voor organisaties in heel Nederland.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Country', name: 'Netherlands' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '3000' },
+  url: 'https://aiheroes.io/nl/diensten/consultancy',
+};
 ---
 
 <SubpageLayout
@@ -48,6 +79,7 @@ const related = [
   pillarBadge="Consultancy"
   ctaLabel="Plan een gesprek"
   trustedBy={["Medux", "InnoEnergy", "Prosus", "Envalior", "OLX Poland", "050-IT"]}
+  jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Van eerste inzicht naar werkende AI</h2>
@@ -78,6 +110,21 @@ const related = [
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Van advies naar resultaat</h2>
     <CardGrid items={cases} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Veelgestelde vragen</h2>
+    <div class="space-y-3">
+      {faq.map((f) => (
+        <details class="group border border-stone-200 bg-white">
+          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+            <span>{f.q}</span>
+            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
   </section>
 
   <section>

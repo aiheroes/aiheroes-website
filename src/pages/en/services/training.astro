@@ -48,6 +48,19 @@ const related = [
   { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance.' },
   { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to working, integrated AI in production.' },
 ];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI training for teams',
+  serviceType: 'In-company AI training',
+  description: 'In-company AI training on location, from AI Foundations and Copilot to AI for Developers and AI literacy under the EU AI Act.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Country', name: 'Netherlands' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '2500' },
+  url: 'https://aiheroes.io/en/services/training',
+};
 ---
 
 <SubpageLayout
@@ -60,7 +73,7 @@ const related = [
   pillarBadge="Training"
   ctaLabel="Book a training"
   trustedBy={["Postcode Loterij", "Banijay Benelux", "Tweede Kamer", "Philips Healthcare", "Hanze", "Envalior"]}
-  jsonLd={faqSchema}
+  jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From &ldquo;what is AI&rdquo; to daily application</h2>

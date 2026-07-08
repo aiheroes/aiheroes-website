@@ -1,15 +1,27 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/en' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aiheroes.io/en/services' },
+    { '@type': 'ListItem', position: 3, name: 'Digital Independence', item: 'https://aiheroes.io/en/services/digital-independence' },
+  ],
+};
 ---
 
 <SubpageLayout
   lang="en"
   title="Digital Independence"
   subtitle="Data, platforms and European law. Take control of your digital environment in three steps."
+  seoTitle="Digital Independence | European alternatives & sovereignty"
   seoDescription="Digital Independence: take control of your digital environment. Training, consultancy and development for European compliance and sovereignty. By AI Heroes."
   accentColor="blue"
   ctaLabel="Schedule a consultation"
   trustedBy={["Tweede Kamer", "Envalior", "050-IT"]}
+  jsonLd={breadcrumbSchema}
 >
   <div class="prose prose-lg max-w-none">
     <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Data, platforms and European law</h2>

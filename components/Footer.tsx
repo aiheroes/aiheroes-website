@@ -125,6 +125,16 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to={lang === 'nl' ? '/nl/diensten/ai-geletterdheid-training' : '/en/services/ai-literacy-training'} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {lang === 'nl' ? 'AI-geletterdheid Training' : 'AI Literacy Training'}
+                </Link>
+              </li>
+              <li>
+                <Link to={lang === 'nl' ? '/nl/diensten/incompany-ai-training' : '/en/services/incompany-ai-training'} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {lang === 'nl' ? 'Incompany AI-training' : 'In-company AI Training'}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -148,6 +158,16 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to={lang === 'nl' ? '/nl/diensten/ai-consultancy-groningen' : '/en/services/ai-agency-groningen'} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {lang === 'nl' ? 'AI Consultancy Groningen' : 'AI Agency Groningen'}
+                </Link>
+              </li>
+              <li>
+                <Link to={lang === 'nl' ? '/nl/diensten/digitale-onafhankelijkheid' : '/en/services/digital-independence'} className="text-stone-400 hover:text-white transition-colors text-sm">
+                  {lang === 'nl' ? 'Digitale onafhankelijkheid' : 'Digital independence'}
+                </Link>
+              </li>
             </ul>
           </div>
 
