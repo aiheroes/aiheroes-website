@@ -106,6 +106,16 @@ body {
   display: none; /* Chrome/Safari */
 }
 
+/* Firefox refuses to leave a scroll-snap section unless a single wheel
+   gesture exceeds a pixel threshold (Bugzilla 1753188), so mice that scroll
+   1 line per notch get permanently stuck on the homepage. Disable snapping
+   in Firefox only; other browsers keep the snap-scroll feel. */
+@supports (-moz-appearance: none) {
+  .snap-container {
+    scroll-snap-type: none !important;
+  }
+}
+
 /* Text wrap utilities for preventing orphans */
 .text-balance {
   text-wrap: balance;
