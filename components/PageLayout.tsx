@@ -190,7 +190,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       {/* Hero Section */}
       <header
         ref={heroRef}
-        className={`pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}
+        className={`pt-24 pb-12 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}
       >
         <div className="max-w-4xl mx-auto px-6">
           {pillarBadge && (
@@ -212,7 +212,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
             </button>
           )}
           {trustedBy && trustedBy.length > 0 && (
-            <div className="mt-10 pt-6 border-t border-white/15">
+            <div className="mt-8 md:mt-10 pt-6 border-t border-white/15">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
                 {lang === 'nl' ? 'Vertrouwd door' : 'Trusted by'}
               </p>

@@ -411,7 +411,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto flex justify-between items-center">
         {/* Logo */}
         <a href={homeUrl} onClick={handleLogoClick} className="flex items-center cursor-pointer">
-          <Logo className="h-20 w-auto" variant="wordmark" colorVariant={logoColor} />
+          <Logo className="h-12 md:h-20 w-auto" variant="wordmark" colorVariant={logoColor} />
         </a>
 
         {/* Desktop Nav */}
@@ -471,7 +471,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   // When mobile menu is open, never hide the navbar
   const shouldHide = hidden && !isOpen;
-  const baseNavClass = `fixed top-0 left-0 right-0 z-50 p-6 transition-all duration-300 ease-out ${shouldHide ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  const baseNavClass = `fixed top-0 left-0 right-0 z-50 px-6 py-4 md:p-6 transition-all duration-300 ease-out ${shouldHide ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
   // Mobile: sub-expanded state for pillar groups inside Diensten
   const [mobilePillarExpanded, setMobilePillarExpanded] = useState<string | null>(null);
@@ -644,7 +644,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-32 px-6 overflow-y-auto`}>
+      <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-24 px-6 overflow-y-auto`}>
         <div className="max-w-md mx-auto">
           {/* Diensten accordion with sub-pillars. Rendered as function calls (not
               <Comp/>) so the panel DOM nodes persist across renders. These components
