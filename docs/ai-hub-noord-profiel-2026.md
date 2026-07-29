@@ -39,6 +39,16 @@ en thuisbasis van de AI Fabriek — werken we nauw samen met het noordelijke eco
 3. **Software & Implementatie** — Van plan naar werkende oplossing. Custom
    AI-toepassingen op Europese infrastructuur, gebouwd met jouw team.
 
+**AI Salon Groningen**
+
+Naast ons werk voor klanten bouwen we actief aan het noordelijke AI-ecosysteem
+met de AI Salon Groningen: een tweemaandelijkse community-avond voor AI founders,
+builders, investeerders, onderzoekers en partners uit heel Europa. Eén chapter in
+het wereldwijde AI Salon-netwerk, georganiseerd vanuit Groningen, de AI-hoofdstad
+van Europa. De kick-off is op donderdag 3 september 2026 bij Chordify (Stationsweg
+3G, Groningen). Deelname is gratis; aanmelden via https://lu.ma/aisalongroningen
+of meer info op https://aiheroes.io/nl/ai-salon.
+
 ### Contactgegevens
 
 - **Contactpersoon:** Frans Hoorn (Co-Founder)
