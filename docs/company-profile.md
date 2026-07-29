@@ -86,6 +86,7 @@ From €3,000 per engagement.
 - **Procesanalyse** — 3–5 days, from €5,000
 - **Business case analyse** — with the guarantee: "Als we niks waardevols vinden, betaal je niks."
 - **Implementatiebegeleiding** — 2–8 weeks on site
+- **Compliance-advies** (in development, 2026) — EU AI Act and AI-governance advisory, growing toward ISO 42001/27001 implementation support once AI Heroes' own certification is complete (see §11). Externally the pillar is already presented as "Consulting & Compliance" in some partner listings.
 - Method in practice: employee survey → interactive branded report → talking-points-driven follow-up session with management.
 
 ### Software & Implementatie — David Homan (Forged Black)
@@ -163,7 +164,7 @@ Internal role logic maps to client maturity: Jan serves clients who know nothing
 - Grow the MKB core through the network flywheel: workshops as entry, scan → roadmap → build as the path, subsidies lowering the threshold.
 - Build the **Groningen ecosystem position**: AI Salon as community flagship, visible partner of AI Fabriek/RUG/Hanze, "the local agency that's already there" when the AI capital claim materialises.
 - Scale **training nationally** through the ZZP trainer network; develop a "Community of Learners" concept for recurring advanced trainings (agentic engineering, Claude Code, open-source models).
-- Pursue **government and tender work** as a deliberate long game, supported by ISO 9001/27001 certification plans.
+- Build out the **compliance proposition**: first get AI Heroes itself certified for ISO 42001 (AI management) and ISO 27001 (information security), then help clients implement those standards — turning the company's own certification journey into a repeatable service. This also supports **government and tender work** as a deliberate long game.
 - Incubate **product bets** alongside services (R&D under WBSO): Tender Helper (AI tender-response assistant, public launch targeted at AI Salon on 3 September 2026), EU-hosted AI offerings, plus internal tools (transcription/task extraction, LLM-output evaluation) that may mature into products.
 - Deepen the **EU-sovereignty proposition** as more organisations demand European infrastructure — offered as an option, never an ultimatum.
 
