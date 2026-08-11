@@ -218,7 +218,18 @@ export const CONTENT: Record<Language, Content> = {
       phone: "050-200 3373",
       phoneHref: "tel:+31502003373",
       meetingLabel: "Plan een kennismaking",
-      meetingUrl: "https://calendar.app.google/juFpF3MDmikH4BVS8"
+      meetings: [
+        {
+          name: "Frans Hoorn",
+          url: "https://calendar.app.google/juFpF3MDmikH4BVS8",
+          photo: "/team/frans.webp"
+        },
+        {
+          name: "Jan Brusse",
+          url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
+          photo: "/team/jan.webp"
+        }
+      ]
     },
     aboutPage: {
       hero: {
@@ -921,8 +932,19 @@ export const CONTENT: Record<Language, Content> = {
       phoneLabel: "",
       phone: "050-200 3373",
       phoneHref: "tel:+31502003373",
-      meetingLabel: "Schedule an introduction",
-      meetingUrl: "https://calendar.app.google/juFpF3MDmikH4BVS8"
+      meetingLabel: "Book an introduction",
+      meetings: [
+        {
+          name: "Frans Hoorn",
+          url: "https://calendar.app.google/juFpF3MDmikH4BVS8",
+          photo: "/team/frans.webp"
+        },
+        {
+          name: "Jan Brusse",
+          url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
+          photo: "/team/jan.webp"
+        }
+      ]
     },
     aboutPage: {
       hero: {

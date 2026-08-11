@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { Language } from '../types';
-import { Check, Calendar } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { CONTENT } from '../constants';
+import { MeetingChooser } from './MeetingChooser';
 
 interface PageContactFormProps {
   lang: Language;
@@ -148,16 +149,11 @@ export const PageContactForm: React.FC<PageContactFormProps> = ({
           <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-blue"></span>
         </a>
       </p>
-      <a
-        href={contactFormContent.meetingUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 mb-8 text-sm font-medium text-brand-dark hover:text-brand-red transition-colors group"
-      >
-        <Calendar className="w-4 h-4 text-stone-400 group-hover:text-brand-red transition-colors" />
-        {contactFormContent.meetingLabel}
-        <span className="transition-transform group-hover:translate-x-1">→</span>
-      </a>
+      <MeetingChooser
+        label={contactFormContent.meetingLabel}
+        meetings={contactFormContent.meetings}
+        className="mb-8"
+      />
 
       <form name="contact" method="POST" onSubmit={handleSubmit} className="space-y-6">
         <input

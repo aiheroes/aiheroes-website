@@ -3,6 +3,7 @@ import { PageLayout } from '../../components/PageLayout';
 import { Link, useLocation } from 'react-router-dom';
 import { CONTENT } from '../../constants';
 import { ChevronDown, ArrowRight, Check } from 'lucide-react';
+import { MeetingChooser } from '../../components/MeetingChooser';
 
 export const ServicesEN: React.FC = () => {
   const content = CONTENT.en.servicesPage!;
@@ -422,15 +423,12 @@ export const ServicesEN: React.FC = () => {
                 {CONTENT.en.contactForm.phone}
               </a>
             </p>
-            <a
-              href={CONTENT.en.contactForm.meetingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-brand-dark hover:text-brand-red transition-colors group"
-            >
-              {CONTENT.en.contactForm.meetingLabel}
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
+            <MeetingChooser
+              label={CONTENT.en.contactForm.meetingLabel}
+              meetings={CONTENT.en.contactForm.meetings}
+              align="center"
+              className="mt-3"
+            />
           </div>
 
           {/* Contact Form */}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { Content, Language } from '../types';
 import { Logo } from './Logo';
 import { CONTENT } from '../constants';
+import { MeetingChooser } from './MeetingChooser';
 
 // Technology partner SVG logo paths
 const TECH_PARTNERS = [
@@ -243,14 +244,11 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </Link>
               </li>
               <li>
-                <a
-                  href={CONTENT[lang].contactForm.meetingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-stone-400 hover:text-white transition-colors text-sm"
-                >
-                  {CONTENT[lang].contactForm.meetingLabel}
-                </a>
+                <MeetingChooser
+                  label={CONTENT[lang].contactForm.meetingLabel}
+                  meetings={CONTENT[lang].contactForm.meetings}
+                  variant="dark"
+                />
               </li>
             </ul>
 

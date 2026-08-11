@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { Content } from '../types';
-import { Check, Calendar } from 'lucide-react';
+import { Check } from 'lucide-react';
+import { MeetingChooser } from './MeetingChooser';
 
 interface ContactProps {
   content: Content['contact'];
@@ -139,16 +140,11 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
                  <span className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-brand-blue"></span>
                </a>
              </p>
-             <a
-               href={contactFormContent.meetingUrl}
-               target="_blank"
-               rel="noopener noreferrer"
-               className="inline-flex items-center gap-2 mt-4 md:mt-6 text-sm md:text-base font-medium text-brand-dark hover:text-brand-red transition-colors group"
-             >
-               <Calendar className="w-4 h-4 md:w-5 md:h-5 text-stone-400 group-hover:text-brand-red transition-colors" />
-               {contactFormContent.meetingLabel}
-               <span className="transition-transform group-hover:translate-x-1">→</span>
-             </a>
+              <MeetingChooser
+                label={contactFormContent.meetingLabel}
+                meetings={contactFormContent.meetings}
+                className="mt-4 md:mt-6"
+              />
 
              <p className="mt-8 md:mt-12 pt-4 border-t border-stone-300/60 max-w-xs text-[11px] text-stone-500 leading-relaxed">
                AI Heroes B.V. <span className="text-stone-400">·</span> KvK 42051968 <span className="text-stone-400">·</span> BTW NL869486263B01

@@ -192,6 +192,12 @@ export interface DienstenContent {
   };
 }
 
+export type MeetingOption = {
+  name: string;
+  url: string;
+  photo: string;
+};
+
 export interface ContactFormContent {
   title: string;
   subtitle: string;
@@ -201,7 +207,7 @@ export interface ContactFormContent {
   phone: string;
   phoneHref: string;
   meetingLabel: string;
-  meetingUrl: string;
+  meetings: MeetingOption[];
 }
 
 export interface AboutPageContent {
