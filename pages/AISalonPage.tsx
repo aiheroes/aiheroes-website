@@ -103,7 +103,7 @@ const COPY: Record<Language, Copy> = {
         { time: '18:40', title: 'Demo Pitches', note: true },
         { time: '19:00–21:00', title: 'Food, Drinks, Demo Tables & Open Networking', note: false },
       ],
-      footnote: 'by you? Email salon@aiheroes.io to apply.',
+      footnote: 'by you? Email frans@aiheroes.io to apply.',
     },
     speakers: {
       heading: 'Speakers',
@@ -124,7 +124,7 @@ const COPY: Record<Language, Copy> = {
     cta: 'Register now (free) →',
     rsvp: {
       heading: 'Save your spot for the first edition.',
-      note: 'Want to pitch a demo or sponsor a future edition? Email salon@aiheroes.io.',
+      note: 'Want to pitch a demo or sponsor a future edition? Email frans@aiheroes.io.',
     },
     about:
       'AI Salon is the global community where AI founders, builders, investors and partners connect and collaborate, with chapters around the world. Groningen is our chapter, in the AI capital of Europe.',
@@ -135,7 +135,7 @@ const COPY: Record<Language, Copy> = {
         logo: { src: '/venue/chordify.png', href: 'https://chordify.net', alt: 'Chordify' },
       },
       organiser: { label: 'Organiser', lines: ['AI Heroes (chapter)'] },
-      contact: { label: 'Contact', lines: ['salon@aiheroes.io'], mail: true },
+      contact: { label: 'Contact', lines: ['frans@aiheroes.io'], mail: true },
     },
   },
   nl: {
@@ -171,7 +171,7 @@ const COPY: Record<Language, Copy> = {
         { time: '18:40', title: 'Demo pitches', note: true },
         { time: '19:00–21:00', title: 'Eten, drinken, demo-tafels en open netwerken', note: false },
       ],
-      footnote: 'door jou? Mail salon@aiheroes.io om je aan te melden.',
+      footnote: 'door jou? Mail frans@aiheroes.io om je aan te melden.',
     },
     speakers: {
       heading: 'Sprekers',
@@ -192,7 +192,7 @@ const COPY: Record<Language, Copy> = {
     cta: 'Nu aanmelden (gratis) →',
     rsvp: {
       heading: 'Reserveer je plek voor de eerste editie.',
-      note: 'Wil je een demo pitchen of een volgende editie sponsoren? Mail salon@aiheroes.io.',
+      note: 'Wil je een demo pitchen of een volgende editie sponsoren? Mail frans@aiheroes.io.',
     },
     about:
       'AI Salon is de wereldwijde community waarin AI founders, builders, investeerders en partners elkaar ontmoeten en samenwerken, met chapters over de hele wereld. Groningen is ons chapter, in de AI-hoofdstad van Europa.',
@@ -203,7 +203,7 @@ const COPY: Record<Language, Copy> = {
         logo: { src: '/venue/chordify.png', href: 'https://chordify.net', alt: 'Chordify' },
       },
       organiser: { label: 'Organisator', lines: ['AI Heroes (chapter)'] },
-      contact: { label: 'Contact', lines: ['salon@aiheroes.io'], mail: true },
+      contact: { label: 'Contact', lines: ['frans@aiheroes.io'], mail: true },
     },
   },
 };
@@ -477,7 +477,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
               {Array.from({ length: Math.max(0, SPEAKER_SLOTS - SPEAKERS.length) }).map((_, i) => (
                 <a
                   key={i}
-                  href={`mailto:salon@aiheroes.io?subject=${encodeURIComponent(copy.speakers.mailtoSubject)}`}
+                  href={`mailto:frans@aiheroes.io?subject=${encodeURIComponent(copy.speakers.mailtoSubject)}`}
                   className="group flex flex-col gap-3"
                 >
                   <div className="relative w-[200px] sm:w-[220px] h-[260px] sm:h-[290px] border border-white/20 bg-white/[0.03] flex items-center justify-center font-mono text-[11px] tracking-[0.3em] uppercase text-white/35 group-hover:border-brand-red group-hover:text-brand-red group-hover:bg-white/[0.06] transition-colors">
@@ -537,7 +537,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
               {Array.from({ length: Math.max(0, copy.sponsors.slots - SPONSOR_LOGOS.length) }).map((_, i) => (
                 <a
                   key={i}
-                  href={`mailto:salon@aiheroes.io?subject=${encodeURIComponent(copy.sponsors.mailtoSubject)}`}
+                  href={`mailto:frans@aiheroes.io?subject=${encodeURIComponent(copy.sponsors.mailtoSubject)}`}
                   className="group relative h-[110px] md:h-[130px] border border-brand-dark/20 bg-brand-sand/30 flex items-center justify-center font-mono text-[10px] tracking-[0.25em] uppercase text-brand-dark/35 hover:border-brand-red hover:text-brand-red hover:bg-white transition-colors"
                 >
                   <span className="group-hover:opacity-0 transition-opacity">
