@@ -191,15 +191,15 @@ const COPY: Record<Language, Copy> = {
     },
     speakers: {
       heading: 'Sprekers',
-      body: "Twee korte talks per editie, zo'n 20 minuten elk. Wil je spreken? Laat van je horen.",
+      body: "Elke editie twee korte talks van zo'n twintig minuten. Heb je zelf iets te vertellen over wat je bouwt of onderzoekt? Mail frans@aiheroes.io.",
       mailtoSubject: 'AI Salon Groningen Kick-Off · Spreken',
       spotLabel: 'TBA',
       spotHover: 'Word spreker →',
       topicSoon: 'Onderwerp volgt',
     },
     sponsors: {
-      heading: 'Gesponsord door jou?',
-      body: 'Krijg je logo op de wand en een moment om hallo te zeggen. Wil je sponsoren? Laat van je horen.',
+      heading: 'Jouw logo hier?',
+      body: 'Dankzij de sponsors blijft de avond gratis. Je logo op de wand, een kort moment voor de zaal. Interesse? Kies een open plek of mail frans@aiheroes.io.',
       mailtoSubject: 'AI Salon Groningen Kick-Off · Sponsoring',
       spotLabel: 'Jouw logo',
       spotHover: 'Word sponsor →',
