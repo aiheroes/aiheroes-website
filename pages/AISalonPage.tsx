@@ -241,10 +241,11 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
   // Green logo flattened onto white (tile is white) to avoid the transparent-PNG
   // downscaling fringe; Chordify is also the venue. ?v= cache-busts older copies.
   { name: 'Chordify', src: '/sponsors/chordify.png?v=1', href: 'https://chordify.net' },
-  // Gold lockup on a baked-in white background (matches the white tile). The SVG's
-  // <text> webfonts fall back to Georgia/Arial inside an <img>; swap for an
-  // outlined-text variant from their brand package when we get one.
-  { name: 'Helm', src: '/sponsors/helm.svg' },
+  // Gold lockup, transparent background (the baked-in white rect caused hairline
+  // seams at the img edges on the white tile — removed). The SVG's <text> webfonts
+  // fall back to Georgia/Arial inside an <img>; swap for an outlined-text variant
+  // from their brand package when we get one. ?v= cache-busts the rect version.
+  { name: 'Helm', src: '/sponsors/helm.svg?v=2' },
 ];
 
 // Confirmed speakers (not language-specific). Rendered ahead of the open TBA slots.
