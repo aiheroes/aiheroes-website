@@ -9,6 +9,9 @@ import type { Language } from '../types';
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 const LUMA_EVENT_ID = 'evt-bgWr4oUXGdNMpms';
 
+// Edition #2 (Thu 5 Nov 2026, AI Fabriek) runs on its own Luma event page.
+const LUMA_EDITION_2_URL = 'https://luma.com/AI-Salon-Gro-2';
+
 // Ruben Molenaars' talk title — single source for the speaker card and the agenda.
 const RUBEN_TALK_TITLE = 'Keeping our minds sharp in the age of AI';
 
@@ -60,6 +63,11 @@ type Copy = {
     slots: number;
   };
   cta: string;
+  editions: {
+    heading: string;
+    registerLabel: string;
+    rows: { date: string; title: string; venue: string; status?: string; href?: string }[];
+  };
   rsvp: { heading: string; note: string };
   about: string;
   practical: {
@@ -84,7 +92,7 @@ const COPY: Record<Language, Copy> = {
       between: ', for the very first ',
       linkText: 'AI Salon Groningen',
       after:
-        " event. Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. Don't miss the kick-off. Space is limited, so RSVP now to secure your spot.",
+        " event. Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. Don't miss the kick-off. The first edition is almost full, so RSVP now to grab one of the last spots.",
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
@@ -122,6 +130,14 @@ const COPY: Record<Language, Copy> = {
       slots: 6,
     },
     cta: 'Register now (free) →',
+    editions: {
+      heading: 'Coming up',
+      registerLabel: 'Register →',
+      rows: [
+        { date: 'Thu, Sep 3', title: 'Kick-Off', venue: 'Chordify · Groningen', status: 'Almost full' },
+        { date: 'Thu, Nov 5', title: 'Edition #2', venue: 'AI Fabriek · Groningen', href: LUMA_EDITION_2_URL },
+      ],
+    },
     rsvp: {
       heading: 'Save your spot for the first edition.',
       note: 'Want to pitch a demo or sponsor a future edition? Email frans@aiheroes.io.',
@@ -152,7 +168,7 @@ const COPY: Record<Language, Copy> = {
       between: ' voor de allereerste editie van ',
       linkText: 'AI Salon Groningen',
       after:
-        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. Mis de kick-off niet. Beperkt aantal plekken, dus RSVP nu om er zeker bij te zijn.',
+        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. Mis de kick-off niet. De eerste editie zit bijna vol, dus RSVP nu voor een van de laatste plekken.',
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
@@ -190,6 +206,14 @@ const COPY: Record<Language, Copy> = {
       slots: 6,
     },
     cta: 'Nu aanmelden (gratis) →',
+    editions: {
+      heading: 'Op de planning',
+      registerLabel: 'Aanmelden →',
+      rows: [
+        { date: 'Do 3 sep', title: 'Kick-off', venue: 'Chordify · Groningen', status: 'Bijna vol' },
+        { date: 'Do 5 nov', title: 'Editie #2', venue: 'AI Fabriek · Groningen', href: LUMA_EDITION_2_URL },
+      ],
+    },
     rsvp: {
       heading: 'Reserveer je plek voor de eerste editie.',
       note: 'Wil je een demo pitchen of een volgende editie sponsoren? Mail frans@aiheroes.io.',
@@ -223,8 +247,8 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
 // photo: null = portrait not supplied yet; topic: null = topic to be announced.
 const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
   { name: 'Ruben Molenaars', topic: RUBEN_TALK_TITLE, photo: '/speakers/ruben-molenaars.jpg' },
-  // Dr. Lilian Peters — clinical epidemiologist at UMCG (Groningen), PI of FemHealthData;
-  // applies AI/NLP to women's-health EHR data. Portrait greyscaled to match Ruben's.
+  // Dr. Lilian Peters — epidemiologist & associate professor at UMCG (Groningen), group
+  // leader of FemHealthData; applies AI/NLP to women's-health GP data. Portrait greyscaled.
   { name: 'Dr. Lilian Peters', topic: LILIAN_TALK_TITLE, photo: '/speakers/lilian-peters.jpg' },
 ];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
@@ -573,6 +597,48 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
             <p className="mt-10 font-mono text-[12px] leading-relaxed text-brand-dark/55 max-w-md">
               {copy.rsvp.note}
             </p>
+          </div>
+        </section>
+
+        {/* Editions — kick-off status + edition #2 (AI Fabriek) with its own Luma page */}
+        <section className="border-t border-brand-dark/10">
+          <div className="max-w-6xl mx-auto px-6 py-20 md:py-24 w-full">
+            <h2 className="font-sans text-3xl md:text-[40px] leading-[1.1] text-brand-dark font-medium tracking-[-0.02em] mb-12">
+              {copy.editions.heading}
+            </h2>
+            <ul className="divide-y divide-brand-dark/10 max-w-3xl">
+              {copy.editions.rows.map((row) => (
+                <li
+                  key={row.date}
+                  className="grid grid-cols-[90px_1fr] sm:grid-cols-[140px_1fr] md:grid-cols-[180px_1fr] gap-6 py-5 items-baseline font-mono text-[13px] md:text-[15px]"
+                >
+                  <span className="text-brand-dark/55 tabular-nums">{row.date}</span>
+                  <span className="flex flex-wrap items-baseline gap-x-5 gap-y-1.5 text-brand-dark">
+                    <span>
+                      {row.title}
+                      <span className="block mt-0.5 text-brand-dark/65 text-[12px] md:text-[13px]">{row.venue}</span>
+                    </span>
+                    {row.status && (
+                      <span className="text-[10px] tracking-[0.25em] uppercase text-brand-red">{row.status}</span>
+                    )}
+                    {row.href ? (
+                      <a
+                        href={row.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-brand-dark/40 underline-offset-4 hover:text-brand-red hover:decoration-brand-red transition-colors"
+                      >
+                        {copy.editions.registerLabel}
+                      </a>
+                    ) : (
+                      <LumaLink className="underline decoration-brand-dark/40 underline-offset-4 hover:text-brand-red hover:decoration-brand-red transition-colors">
+                        {copy.editions.registerLabel}
+                      </LumaLink>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

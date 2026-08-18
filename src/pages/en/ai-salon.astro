@@ -35,13 +35,39 @@ const eventSchema = {
     url: 'https://lu.ma/aisalongroningen',
   },
 };
+
+// Edition #2 — date + venue known (5 Nov, AI Fabriek); times TBA, so date-only startDate.
+const edition2Schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'AI Salon Groningen · Edition #2',
+  startDate: '2026-11-05',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'AI Fabriek',
+    address: { '@type': 'PostalAddress', addressLocality: 'Groningen', addressCountry: 'NL' },
+  },
+  image: ['https://aiheroes.io/og-image.png'],
+  description:
+    'Second edition of AI Salon Groningen, Thursday 5 November 2026 at the AI Fabriek. Free community evening for AI founders, builders, investors, researchers and partners.',
+  organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: 'https://luma.com/AI-Salon-Gro-2',
+  },
+};
 ---
 
 <BaseLayout
   lang="en"
   title="AI Salon Groningen · Kick-Off"
   description={description}
-  jsonLd={eventSchema}
+  jsonLd={[eventSchema, edition2Schema]}
   noChrome
 >
   <AISalonIsland lang="en" client:load />
