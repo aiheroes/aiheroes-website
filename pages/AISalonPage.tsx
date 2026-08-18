@@ -66,7 +66,7 @@ type Copy = {
   editions: {
     heading: string;
     registerLabel: string;
-    rows: { date: string; title: string; venue: string; status?: string; href?: string }[];
+    rows: { date: string; title: string; venue: string; status?: string; href?: string; linkLabel?: string }[];
   };
   rsvp: { heading: string; note: string };
   about: string;
@@ -92,7 +92,7 @@ const COPY: Record<Language, Copy> = {
       between: ', for the very first ',
       linkText: 'AI Salon Groningen',
       after:
-        " event. Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. Don't miss the kick-off. The first edition is almost full, so RSVP now to grab one of the last spots.",
+        " event. Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. The kick-off is full, but spots free up regularly: join the waitlist, or sign up for edition #2 on November 5.",
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
@@ -129,17 +129,17 @@ const COPY: Record<Language, Copy> = {
       spotHover: 'Become a sponsor →',
       slots: 6,
     },
-    cta: 'Register now (free) →',
+    cta: 'Join the waitlist →',
     editions: {
       heading: 'Coming up',
       registerLabel: 'Register →',
       rows: [
-        { date: 'Thu, Sep 3', title: 'Kick-Off', venue: 'Chordify · Groningen', status: 'Almost full' },
+        { date: 'Thu, Sep 3', title: 'Kick-Off', venue: 'Chordify · Groningen', status: 'Full', linkLabel: 'Waitlist →' },
         { date: 'Thu, Nov 5', title: 'Edition #2', venue: 'AI Fabriek · Groningen', href: LUMA_EDITION_2_URL },
       ],
     },
     rsvp: {
-      heading: 'Save your spot for the first edition.',
+      heading: 'The first edition is full. The waitlist is open.',
       note: 'Want to pitch a demo or sponsor a future edition? Email frans@aiheroes.io.',
     },
     about:
@@ -168,7 +168,7 @@ const COPY: Record<Language, Copy> = {
       between: ' voor de allereerste editie van ',
       linkText: 'AI Salon Groningen',
       after:
-        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. Mis de kick-off niet. De eerste editie zit bijna vol, dus RSVP nu voor een van de laatste plekken.',
+        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. De kick-off is vol, maar er komen geregeld plekken vrij: zet jezelf op de wachtlijst, of meld je aan voor editie #2 op 5 november.',
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
@@ -205,17 +205,17 @@ const COPY: Record<Language, Copy> = {
       spotHover: 'Word sponsor →',
       slots: 6,
     },
-    cta: 'Nu aanmelden (gratis) →',
+    cta: 'Zet je op de wachtlijst →',
     editions: {
       heading: 'Op de planning',
       registerLabel: 'Aanmelden →',
       rows: [
-        { date: 'Do 3 sep', title: 'Kick-off', venue: 'Chordify · Groningen', status: 'Bijna vol' },
+        { date: 'Do 3 sep', title: 'Kick-off', venue: 'Chordify · Groningen', status: 'Vol', linkLabel: 'Wachtlijst →' },
         { date: 'Do 5 nov', title: 'Editie #2', venue: 'AI Fabriek · Groningen', href: LUMA_EDITION_2_URL },
       ],
     },
     rsvp: {
-      heading: 'Reserveer je plek voor de eerste editie.',
+      heading: 'De eerste editie is vol. De wachtlijst is open.',
       note: 'Wil je een demo pitchen of een volgende editie sponsoren? Mail frans@aiheroes.io.',
     },
     about:
@@ -628,11 +628,11 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
                         rel="noopener noreferrer"
                         className="underline decoration-brand-dark/40 underline-offset-4 hover:text-brand-red hover:decoration-brand-red transition-colors"
                       >
-                        {copy.editions.registerLabel}
+                        {row.linkLabel ?? copy.editions.registerLabel}
                       </a>
                     ) : (
                       <LumaLink className="underline decoration-brand-dark/40 underline-offset-4 hover:text-brand-red hover:decoration-brand-red transition-colors">
-                        {copy.editions.registerLabel}
+                        {row.linkLabel ?? copy.editions.registerLabel}
                       </LumaLink>
                     )}
                   </span>
