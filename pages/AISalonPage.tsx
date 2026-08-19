@@ -237,7 +237,7 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
   // Navy logo flattened onto white (the tile is white anyway) and resized to a
   // sane size, so there's no transparency/downscaling fringe to fight. ?v=
   // cache-busts older cached copies.
-  { name: 'Drydock', src: '/sponsors/drydock.png?v=6' },
+  { name: 'Drydock', src: '/sponsors/drydock.png?v=6', href: 'https://www.drydock.nl/' },
   // Green logo flattened onto white (tile is white) to avoid the transparent-PNG
   // downscaling fringe; Chordify is also the venue. ?v= cache-busts older copies.
   { name: 'Chordify', src: '/sponsors/chordify.png?v=1', href: 'https://chordify.net' },
