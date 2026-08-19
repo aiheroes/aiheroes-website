@@ -12,7 +12,7 @@ export const Image: React.FC<ImageProps> = ({ src, alt, className = '', ...props
     <img
       src={src}
       alt={alt}
-      className={`${className} ${isLoaded ? 'loaded' : ''}`}
+      className={`img-placeholder ${className} ${isLoaded ? 'loaded' : ''}`}
       onLoad={() => setIsLoaded(true)}
       {...props}
     />

@@ -265,20 +265,15 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Image loading styles */
-img {
+/* Image loading placeholder — opt-in only via the Image component (see
+   src/styles/global.css for the full rationale; a bare `img` rule painted a
+   permanent dark box behind every transparent logo). */
+img.img-placeholder {
   background-color: #1c1917; /* AIH-dark color as placeholder */
 }
 
 img.loaded {
   animation: image-fade 0.6s ease-out both;
-}
-
-/* Don't apply the dark image placeholder to third-party widget images injected
-   outside our control (e.g. Luma's modal + close-button X icon), where it would
-   show a dark box behind a transparent SVG. */
-.luma-checkout--overlay img,
-.luma-checkout--close-btn img {
   background-color: transparent;
 }
 

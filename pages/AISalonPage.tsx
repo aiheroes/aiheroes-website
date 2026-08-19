@@ -542,10 +542,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    // bg-white overrides the global `img { background-color: #1c1917 }`
-                    // loading placeholder, which shows through transparent logos and as
-                    // hairline slivers around object-contain letterboxing.
-                    className="max-h-[96px] md:max-h-[116px] max-w-[90%] w-auto object-contain bg-white"
+                    className="max-h-[96px] md:max-h-[116px] max-w-[90%] w-auto object-contain"
                   />
                 );
                 const base =
