@@ -1,0 +1,57 @@
+---
+// Art. 50 disclosure page (SDD D10). Draft: copy pending founder sign-off (SDD §13).
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+---
+
+<SubpageLayout
+  lang="nl"
+  title="Over onze AI-assistent"
+  subtitle="Hoe de assistent op deze site werkt, wat hij wel en niet kan, en hoe we met je gegevens omgaan."
+  seoDescription="Uitleg over de AI-assistent van AI Heroes: mogelijkheden, beperkingen, gegevensverwerking en hoe je een mens bereikt."
+  accentColor="blue"
+  showContactForm={false}
+  noindex
+>
+  <div class="prose prose-lg max-w-none">
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Je chat met AI</h2>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      De chatassistent op aiheroes.io is een AI-systeem, gebouwd door AI Heroes zelf. Dat melden
+      we ook in het gesprek: je weet altijd dat je met AI praat, zoals de Europese
+      AI-verordening (artikel 50) voorschrijft. De assistent is een voorbeeld van wat we voor
+      klanten bouwen.
+    </p>
+
+    <div class="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue not-prose">
+      <h3 class="text-xl font-serif text-brand-dark mb-3">In het kort</h3>
+      <ul class="space-y-2 text-stone-600 list-disc ml-5">
+        <li>De assistent beantwoordt vragen op basis van onze eigen site-informatie en verwijst naar bronnen</li>
+        <li>Antwoorden kunnen onvolledig of onjuist zijn; controleer belangrijke informatie op de gelinkte pagina's</li>
+        <li>Een mens is altijd bereikbaar via "Praat met een mens" in de chat</li>
+        <li>Verwerking en opslag gebeuren binnen de EU</li>
+        <li>We vragen alleen om je naam en e-mailadres als jij het gesprek wilt doorzetten naar het team, met jouw toestemming</li>
+      </ul>
+    </div>
+
+    <h2 class="text-2xl font-serif text-brand-dark mb-4">Wat de assistent kan</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">
+      Vragen beantwoorden over onze diensten, cases, team, artikelen en de AI Salon; je naar de
+      juiste pagina brengen; een gesprek met het team inplannen; en het gesprek overdragen aan
+      een mens. De assistent geeft alleen prijsinformatie die ook op de site staat.
+    </p>
+
+    <h2 class="text-2xl font-serif text-brand-dark mb-4">Gegevens en bewaartermijn</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">
+      Je chatgeschiedenis staat in je eigen browser. Op onze servers bewaren we gesprekken
+      pseudoniem (zonder naam, IP-adres of profiel) voor kwaliteitsverbetering, maximaal 30
+      dagen. Pas als je zelf je naam en e-mailadres achterlaat om contact te krijgen, verwerken
+      we persoonsgegevens; dat doen we volgens ons
+      <a href="/nl/legal/privacy">privacybeleid</a>.
+    </p>
+
+    <h2 class="text-2xl font-serif text-brand-dark mb-4">Liever direct een mens?</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">
+      Gebruik "Praat met een mens" in de chat, of mail ons via het
+      <a href="/#contact">contactformulier</a>. Binnen kantooruren reageren we binnen 4 uur.
+    </p>
+  </div>
+</SubpageLayout>

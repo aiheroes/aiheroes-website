@@ -9,4 +9,6 @@ export const NOINDEX_PATHS = [
   '/nl/legal/voorwaarden',
   '/en/legal/privacy',
   '/en/legal/terms',
+  '/nl/legal/ai-assistent',
+  '/en/legal/ai-assistant',
 ];

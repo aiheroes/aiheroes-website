@@ -10,6 +10,7 @@ import { CONTENT } from '../data/content';
 // directive (static HTML, zero JS) — its language toggle is a plain <a href>.
 import NavbarIsland from '../components/islands/NavbarIsland';
 import { Footer } from '../../components/Footer';
+import ChatWidget from '../components/chat/ChatWidget';
 
 export interface Props {
   lang: Lang;
@@ -51,6 +52,10 @@ const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 const ORG_TYPES = ['ProfessionalService', 'LocalBusiness', 'Organization'];
 const hasOwnOrgSchema = pageSchemas.some((s) => ORG_TYPES.includes(s['@type']));
 const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ...pageSchemas];
+// Chat assistant (SDD D1): build-time flag; ?chat=1 also enables it per browser
+// (handled client-side in the widget), so deploy previews can demo it on any env.
+const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
+const chatBookingUrl = import.meta.env.PUBLIC_CHAT_BOOKING_URL || null;
 ---
 
 <!doctype html>
@@ -168,6 +173,18 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
         alternateUrl={alternatePath(path, lang)}
       />
     )}
+
+    <!-- Chat assistant island: persists across view transitions so the open
+         conversation survives navigation (SDD D1/D6). client:idle keeps it off the
+         critical path; the panel bundle loads only on first open. -->
+    <ChatWidget
+      client:idle
+      transition:persist="aih-chat"
+      locale={lang}
+      path={path}
+      enabled={chatEnabled}
+      bookingUrl={chatBookingUrl}
+    />
 
     <!-- Hidden form definitions so Netlify detects them at build time (forms post to "/"). -->
     <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
