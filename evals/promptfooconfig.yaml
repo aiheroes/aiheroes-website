@@ -3,9 +3,10 @@
 #
 #   npx promptfoo@latest eval -c evals/promptfooconfig.yaml
 #
-# Needs a model credential (dev: ANTHROPIC_API_KEY). CI gate: run on every change to
-# prompts, tools or the index pipeline. Starter set — founders extend toward ~60
-# golden questions (SDD §13; Jan reviews the NL register).
+# Needs a model credential (dev: GOOGLE_GENERATIVE_AI_API_KEY — runs the production
+# model, gemini-3.7-flash). CI gate: run on every change to prompts, tools or the
+# index pipeline. Starter set — founders extend toward ~60 golden questions
+# (SDD §13; Jan reviews the NL register).
 
 description: AI Heroes website assistant — golden set + guardrails
 
@@ -15,8 +16,8 @@ providers:
 
 defaultTest:
   options:
-    # Keep rubric grading on the same dev credential family.
-    provider: anthropic:messages:claude-opus-5
+    # Rubric grading on the same dev credential (Gemini API key).
+    provider: google:gemini-3.7-flash
 
 tests:
   # --- NL golden set (grounding + register) ---

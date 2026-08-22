@@ -217,19 +217,34 @@ for (const doc of SHAREABLE_DOCS) {
 
 const chunks = pages.flatMap(chunkPage);
 
-// Optional enrichment (contextual lines + embeddings) requires Vertex creds at build
-// time; without them we ship BM25-only and SAY SO — no silent capability downgrade.
-const vertexReady = Boolean(process.env.GOOGLE_VERTEX_PROJECT);
-if (!vertexReady) {
+// Optional enrichment. Embeddings run when a Google credential exists at build time
+// (Vertex EU in CI/production; a Gemini API key also works — build-time input is
+// public site content only, so non-EU processing is acceptable here, unlike for
+// user queries). Without creds we ship BM25-only and SAY SO — no silent downgrade.
+// TODO(M0): hash-diffed contextual-retrieval lines via the aux model.
+let embeddingModelName: string | null = null;
+const { getEmbeddingModel } = await import('../../server/provider');
+const embeddingModel = await getEmbeddingModel().catch(() => null);
+if (embeddingModel) {
+  const { embedMany } = await import('ai');
+  const { embeddings } = await embedMany({
+    model: embeddingModel,
+    values: chunks.map((c) => `${c.title} — ${c.heading}\n${c.text}`),
+  });
+  chunks.forEach((chunk, i) => {
+    chunk.embedding = embeddings[i];
+  });
+  embeddingModelName = process.env.CHAT_EMBEDDING_MODEL ?? 'gemini-embedding-001';
+  console.log(`build-index: embedded ${chunks.length} chunks (${embeddingModelName}).`);
+} else {
   console.log(
-    'build-index: no GOOGLE_VERTEX_PROJECT — shipping BM25-only index (no embeddings, no contextual lines).',
+    'build-index: no Google credential — shipping BM25-only index (no embeddings, no contextual lines).',
   );
 }
-// TODO(M0, needs GCP): hash-diffed contextual-retrieval lines + embedMany via Vertex EU.
 
 const indexOut: KnowledgeIndex = {
   builtAt: new Date().toISOString(),
-  embeddingModel: null,
+  embeddingModel: embeddingModelName,
   chunks,
   stats: { nl: computeStats(chunks, 'nl'), en: computeStats(chunks, 'en') },
 };

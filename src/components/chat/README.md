@@ -17,10 +17,13 @@ The AI Heroes website assistant (design: internal SDD, not in this repo). Map:
 ## Local dev
 
 ```bash
-cp .env.example .env   # set ANTHROPIC_API_KEY (dev provider)
-npm run build          # produces dist/ + the knowledge index
+cp .env.example .env   # set GOOGLE_GENERATIVE_AI_API_KEY (AI Studio, paid tier)
+npm run build          # produces dist/ + the knowledge index (embeds if key present)
 netlify dev            # serves the site + functions on one port
 ```
+
+Dev runs the production model (`gemini-3.7-flash`) via the Gemini API — full model
+parity with production; only the substrate differs (production adds Vertex + EU).
 
 Then open any page with `?chat=1` (the flag sticks per browser). Without any
 persistence/Slack env vars everything degrades gracefully: in-memory rate limits,

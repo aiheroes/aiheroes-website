@@ -10,8 +10,13 @@ const int = (v: string | undefined, fallback: number) => {
 
 export const config = {
   // --- model routing (D4) ---
-  // 'anthropic' is the dev-only path; production is 'vertex' (Gemini 3.7 Flash, EU).
-  provider: (process.env.CHAT_MODEL_PROVIDER ?? 'anthropic') as 'anthropic' | 'vertex',
+  // 'vertex'    = production: Gemini 3.7 Flash on Vertex AI, EU region.
+  // 'google'    = dev default: the SAME model via the Gemini API (AI Studio key,
+  //               no GCP project needed) — full model parity for dev + evals.
+  //               Not EU-guaranteed, so dev only. Use a paid-tier key: the free
+  //               tier may use prompts for product improvement.
+  // 'anthropic' = optional dev fallback (Claude, US inference).
+  provider: (process.env.CHAT_MODEL_PROVIDER ?? 'google') as 'google' | 'anthropic' | 'vertex',
   vertex: {
     project: process.env.GOOGLE_VERTEX_PROJECT ?? '',
     // EU processing is load-bearing (V4) — see SDD D4.

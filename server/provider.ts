@@ -4,8 +4,10 @@
 //                                    bounded thinkingBudget) on Vertex AI EU;
 //                                    CHAT_USE_FRONTIER=true flips to Claude Sonnet 5
 //                                    on the same substrate.
-//  CHAT_MODEL_PROVIDER=anthropic  -> dev only (first-party API processes in the US;
-//                                    never production — SDD D4).
+//  CHAT_MODEL_PROVIDER=google     -> dev default: the same Gemini model via the
+//                                    Gemini API (AI Studio key, no GCP project).
+//                                    Not EU-guaranteed -> dev only.
+//  CHAT_MODEL_PROVIDER=anthropic  -> optional dev fallback (Claude, US inference).
 
 import type { LanguageModel } from 'ai';
 import { config } from './config';
@@ -49,6 +51,20 @@ export async function getModel(): Promise<ModelRoute> {
     };
   }
 
+  if (config.provider === 'google') {
+    const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
+    const google = createGoogleGenerativeAI({
+      apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+    });
+    return {
+      model: google(config.vertex.model),
+      providerOptions: {
+        google: { thinkingConfig: { thinkingBudget: config.vertex.thinkingBudget } },
+      },
+      costPerMTokCents: { input: 150, output: 750 },
+    };
+  }
+
   const { createAnthropic } = await import('@ai-sdk/anthropic');
   const anthropic = createAnthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
   return {
@@ -57,20 +73,36 @@ export async function getModel(): Promise<ModelRoute> {
   };
 }
 
-/** Embed a query for hybrid retrieval. Returns null when no embedding provider is configured. */
-export async function embedQuery(query: string): Promise<number[] | null> {
-  if (config.provider !== 'vertex' || !config.vertex.project) return null;
-  try {
+/**
+ * Embedding model on the active substrate: Vertex EU in production, Gemini API in dev.
+ * Returns null when neither is configured.
+ */
+export async function getEmbeddingModel() {
+  if (config.provider === 'vertex' && config.vertex.project) {
     const { createVertex } = await import('@ai-sdk/google-vertex');
-    const { embed } = await import('ai');
     const vertex = createVertex({
       project: config.vertex.project,
       location: config.vertex.location,
     });
-    const { embedding } = await embed({
-      model: vertex.embeddingModel(config.vertex.embeddingModel),
-      value: query,
+    return vertex.embeddingModel(config.vertex.embeddingModel);
+  }
+  if (process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+    const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
+    const google = createGoogleGenerativeAI({
+      apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
     });
+    return google.embeddingModel(config.vertex.embeddingModel);
+  }
+  return null;
+}
+
+/** Embed a query for hybrid retrieval. Returns null when no embedding provider is configured. */
+export async function embedQuery(query: string): Promise<number[] | null> {
+  try {
+    const model = await getEmbeddingModel();
+    if (!model) return null;
+    const { embed } = await import('ai');
+    const { embedding } = await embed({ model, value: query });
     return embedding;
   } catch {
     return null; // degrade to BM25-only rather than failing the request
