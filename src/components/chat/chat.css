@@ -1,0 +1,63 @@
+/* Chat widget motion vocabulary (UX audit P1). This is the COMPLETE animation set:
+   panel in/out, message entrance, nothing else. All compositor-only
+   (transform/opacity), interruptible, and collapsed to a fast fade under
+   prefers-reduced-motion. */
+
+@keyframes aih-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes aih-panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes aih-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes aih-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes aih-msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.aih-panel-in {
+  transform-origin: bottom right;
+  animation: aih-panel-in 180ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.aih-panel-out {
+  transform-origin: bottom right;
+  animation: aih-panel-out 140ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.aih-msg-in {
+  animation: aih-msg-in 150ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aih-panel-in {
+    animation: aih-fade-in 80ms ease-out;
+  }
+  .aih-panel-out {
+    animation: aih-fade-out 80ms ease-out forwards;
+  }
+  .aih-msg-in {
+    animation: aih-fade-in 80ms ease-out;
+  }
+}

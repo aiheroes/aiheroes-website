@@ -54,6 +54,11 @@ export function getConversationId(): string {
   return id;
 }
 
+/** Restore a previous conversation id (used by the "undo clear" flow). */
+export function restoreConversationId(id: string): void {
+  write(KEYS.conversation, id);
+}
+
 export function resetConversation(): string {
   const id = uuid();
   write(KEYS.conversation, id);

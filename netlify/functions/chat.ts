@@ -5,6 +5,7 @@ import type { Config, Context } from '@netlify/functions';
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
+  smoothStream,
   stepCountIs,
   streamText,
   toUIMessageStream,
@@ -138,6 +139,9 @@ export default async function handler(request: Request, _context: Context): Prom
     messages: await convertToModelMessages(windowed, { tools }),
     tools,
     stopWhen: stepCountIs(4),
+    // Buttery streaming cadence (UX audit P1): word-level chunks at a steady pace
+    // instead of raw network bursts.
+    experimental_transform: smoothStream({ delayInMs: 15, chunking: 'word' }),
     maxOutputTokens: appConfig.maxOutputTokens,
     providerOptions: route.providerOptions as never,
     abortSignal: request.signal, // D9: nobody pays for tokens no one receives

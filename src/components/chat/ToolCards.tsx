@@ -7,9 +7,11 @@ import { STRINGS, type ChatLocale } from './strings';
 
 const SALON_URL = 'https://lu.ma/aisalongroningen';
 const cardClass =
-  'mt-2 rounded-lg border border-stone-200 bg-white p-3 text-sm shadow-sm dark:border-stone-700 dark:bg-stone-800';
+  'mt-2 rounded-lg border border-stone-200 bg-white p-3 text-sm shadow-sm';
 const ctaClass =
-  'mt-2 inline-flex items-center gap-1.5 rounded-md bg-brand-dark px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-dark/85';
+  'mt-2 inline-flex items-center gap-1.5 rounded-md bg-brand-dark px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-dark/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2';
+const inputClass =
+  'mt-0.5 w-full rounded-md border border-stone-300 px-2 py-1.5 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25';
 
 export function PageCard({
   locale,
@@ -31,7 +33,7 @@ export function PageCard({
   return (
     <div className={cardClass}>
       <p className="font-semibold">{input.title ?? href}</p>
-      {input.reason && <p className="mt-0.5 text-stone-500 dark:text-stone-400">{input.reason}</p>}
+      {input.reason && <p className="mt-0.5 text-stone-500">{input.reason}</p>}
       <a href={href} className={ctaClass}>
         {t.pageCta} <ArrowRight size={12} aria-hidden />
       </a>
@@ -150,14 +152,14 @@ export function EscalationForm({
       <p className="flex items-center gap-1.5 font-semibold">
         <Mail size={14} aria-hidden /> {t.escalateTitle}
       </p>
-      <p className="mt-0.5 text-stone-500 dark:text-stone-400">{t.escalateIntro}</p>
+      <p className="mt-0.5 text-stone-500">{t.escalateIntro}</p>
       <label className="mt-2 block text-xs font-medium">
         {t.escalateName}
         <input
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-0.5 w-full rounded-md border border-stone-300 px-2 py-1.5 text-sm dark:border-stone-600 dark:bg-stone-900"
+          className={inputClass}
           autoComplete="name"
         />
       </label>
@@ -168,7 +170,7 @@ export function EscalationForm({
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-0.5 w-full rounded-md border border-stone-300 px-2 py-1.5 text-sm dark:border-stone-600 dark:bg-stone-900"
+          className={inputClass}
           autoComplete="email"
         />
       </label>
