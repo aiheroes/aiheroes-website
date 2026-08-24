@@ -39,6 +39,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "promptfoo": "^0.122.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "tsx": "^4.23.12",

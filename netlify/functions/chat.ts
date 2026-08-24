@@ -104,13 +104,15 @@ export default async function handler(request: Request, _context: Context): Prom
     }),
     show_page: tool({
       description:
-        'Show a link card for one page of aiheroes.io as the natural next step, after answering in text.',
+        'Show a link card for one page of aiheroes.io as the natural next step. Only AFTER answering in text — never call this instead of answering.',
       inputSchema: z.object({
         url: z.string().describe('Absolute aiheroes.io URL from the sources'),
         title: z.string().max(80),
         reason: z.string().max(140).describe("One short sentence in the visitor's language"),
       }),
-      // No execute: rendered as a card by the widget.
+      // Deterministic text-first backstop: the widget renders the card from the
+      // tool input; this result steers the model into writing the answer too.
+      execute: async () => ({ shown: true, note: 'Card rendered. Now write your textual answer in this same turn.' }),
     }),
     book_meeting: tool({
       description:
@@ -118,6 +120,7 @@ export default async function handler(request: Request, _context: Context): Prom
       inputSchema: z.object({
         topic: z.string().max(120).describe("Short topic in the visitor's language"),
       }),
+      execute: async () => ({ shown: true, note: 'Card rendered. Now write your textual answer in this same turn.' }),
     }),
     register_salon: tool({
       description: 'Show the AI Salon registration card when the visitor is interested in attending.',
@@ -126,6 +129,7 @@ export default async function handler(request: Request, _context: Context): Prom
       inputSchema: z.object({
         note: z.string().max(80).optional().describe('Optional one-line context'),
       }),
+      execute: async () => ({ shown: true, note: 'Card rendered. Now write your textual answer in this same turn.' }),
     }),
     escalate_to_human: tool({
       description:
