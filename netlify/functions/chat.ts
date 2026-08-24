@@ -121,7 +121,11 @@ export default async function handler(request: Request, _context: Context): Prom
     }),
     register_salon: tool({
       description: 'Show the AI Salon registration card when the visitor is interested in attending.',
-      inputSchema: z.object({}),
+      // Gemini rejects empty object schemas for function declarations — one dummy
+      // optional field keeps the declaration valid on every provider.
+      inputSchema: z.object({
+        note: z.string().max(80).optional().describe('Optional one-line context'),
+      }),
     }),
     escalate_to_human: tool({
       description:
@@ -142,9 +146,14 @@ export default async function handler(request: Request, _context: Context): Prom
     // Buttery streaming cadence (UX audit P1): word-level chunks at a steady pace
     // instead of raw network bursts.
     experimental_transform: smoothStream({ delayInMs: 15, chunking: 'word' }),
-    maxOutputTokens: appConfig.maxOutputTokens,
+    maxOutputTokens: route.maxOutputTokens,
     providerOptions: route.providerOptions as never,
     abortSignal: request.signal, // D9: nobody pays for tokens no one receives
+    // Server-side error visibility (function logs only; the client gets a masked
+    // error part). Without this, model failures are silent — unacceptable ops-wise.
+    onError: ({ error }) => {
+      console.error('chat model error:', error instanceof Error ? error.message : String(error));
+    },
     onFinish: ({ usage, text }) => {
       void recordSpend(usageToCents(route, usage));
       persistTurn({
@@ -162,6 +171,10 @@ export default async function handler(request: Request, _context: Context): Prom
     stream: toUIMessageStream({
       stream: result.stream,
       tools,
+      // Temporary debug passthrough: with x-chat-debug:1 the error part carries the
+      // real message instead of the masked default. Remove before launch.
+      onError: (error) =>
+        request.headers.get('x-chat-debug') === '1' ? String(error).slice(0, 600) : 'error',
       originalMessages: windowed,
       // The widget renders source chips from this deterministic set (D5):
       messageMetadata: () => ({ sources: sources.map((s) => ({ url: s.url, title: s.title })) }),

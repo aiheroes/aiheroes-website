@@ -17,6 +17,12 @@ export interface ModelRoute {
   providerOptions?: Record<string, Record<string, unknown>>;
   /** rough €-cents per 1M input/output tokens, for the spend breaker */
   costPerMTokCents: { input: number; output: number };
+  /**
+   * Effective per-response token ceiling. On Gemini, THINKING TOKENS COUNT toward
+   * maxOutputTokens — the ceiling must be answer budget + thinkingBudget, or the
+   * model burns the whole allowance on thoughts and emits zero visible text.
+   */
+  maxOutputTokens: number;
 }
 
 export async function getModel(): Promise<ModelRoute> {
@@ -36,6 +42,7 @@ export async function getModel(): Promise<ModelRoute> {
       return {
         model: anthropic(config.vertex.frontierModel),
         costPerMTokCents: { input: 300, output: 1500 },
+        maxOutputTokens: config.maxOutputTokens,
       };
     }
     return {
@@ -48,6 +55,7 @@ export async function getModel(): Promise<ModelRoute> {
       },
       // Post-promo Gemini 3.7 Flash pricing (promo halves this through 2026-12-31).
       costPerMTokCents: { input: 150, output: 750 },
+      maxOutputTokens: config.maxOutputTokens + config.vertex.thinkingBudget,
     };
   }
 
@@ -62,6 +70,7 @@ export async function getModel(): Promise<ModelRoute> {
         google: { thinkingConfig: { thinkingBudget: config.vertex.thinkingBudget } },
       },
       costPerMTokCents: { input: 150, output: 750 },
+      maxOutputTokens: config.maxOutputTokens + config.vertex.thinkingBudget,
     };
   }
 
@@ -70,6 +79,7 @@ export async function getModel(): Promise<ModelRoute> {
   return {
     model: anthropic(config.anthropicDevModel),
     costPerMTokCents: { input: 500, output: 2500 },
+    maxOutputTokens: config.maxOutputTokens,
   };
 }
 

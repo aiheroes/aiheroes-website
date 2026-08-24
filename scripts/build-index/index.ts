@@ -226,16 +226,25 @@ let embeddingModelName: string | null = null;
 const { getEmbeddingModel } = await import('../../server/provider');
 const embeddingModel = await getEmbeddingModel().catch(() => null);
 if (embeddingModel) {
-  const { embedMany } = await import('ai');
-  const { embeddings } = await embedMany({
-    model: embeddingModel,
-    values: chunks.map((c) => `${c.title} — ${c.heading}\n${c.text}`),
-  });
-  chunks.forEach((chunk, i) => {
-    chunk.embedding = embeddings[i];
-  });
-  embeddingModelName = process.env.CHAT_EMBEDDING_MODEL ?? 'gemini-embedding-001';
-  console.log(`build-index: embedded ${chunks.length} chunks (${embeddingModelName}).`);
+  // Embedding failure (rate limits, quota, outage) must never break the site build:
+  // degrade to BM25-only and say so.
+  try {
+    const { embedMany } = await import('ai');
+    const { embeddings } = await embedMany({
+      model: embeddingModel,
+      values: chunks.map((c) => `${c.title} — ${c.heading}\n${c.text}`),
+      maxRetries: 1,
+    });
+    chunks.forEach((chunk, i) => {
+      chunk.embedding = embeddings[i];
+    });
+    embeddingModelName = process.env.CHAT_EMBEDDING_MODEL ?? 'gemini-embedding-001';
+    console.log(`build-index: embedded ${chunks.length} chunks (${embeddingModelName}).`);
+  } catch (error) {
+    console.warn(
+      `build-index: embedding FAILED (${error instanceof Error ? error.message.slice(0, 140) : 'unknown'}) — shipping BM25-only index. Note: the free Gemini tier caps embeddings at 100/day; the corpus needs ${chunks.length}.`,
+    );
+  }
 } else {
   console.log(
     'build-index: no Google credential — shipping BM25-only index (no embeddings, no contextual lines).',
