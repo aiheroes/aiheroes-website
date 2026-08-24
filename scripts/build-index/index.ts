@@ -224,7 +224,11 @@ const chunks = pages.flatMap(chunkPage);
 // TODO(M0): hash-diffed contextual-retrieval lines via the aux model.
 let embeddingModelName: string | null = null;
 const { getEmbeddingModel } = await import('../../server/provider');
-const embeddingModel = await getEmbeddingModel().catch(() => null);
+const { config: appConfig } = await import('../../server/config');
+// Embed on Netlify builds (deployed index is always hybrid-ready) or when forced
+// with CHAT_EMBED=1; plain local builds stay fast and diff-free (BM25-only).
+const shouldEmbed = process.env.NETLIFY === 'true' || process.env.CHAT_EMBED === '1';
+const embeddingModel = shouldEmbed ? await getEmbeddingModel().catch(() => null) : null;
 if (embeddingModel) {
   // Embedding failure (rate limits, quota, outage) must never break the site build:
   // degrade to BM25-only and say so.
@@ -234,9 +238,11 @@ if (embeddingModel) {
       model: embeddingModel,
       values: chunks.map((c) => `${c.title} — ${c.heading}\n${c.text}`),
       maxRetries: 1,
+      providerOptions: { google: { outputDimensionality: appConfig.vertex.embeddingDim } },
     });
     chunks.forEach((chunk, i) => {
-      chunk.embedding = embeddings[i];
+      // 5 decimals is plenty for cosine similarity and halves the JSON size.
+      chunk.embedding = embeddings[i].map((v) => Math.round(v * 1e5) / 1e5);
     });
     embeddingModelName = process.env.CHAT_EMBEDDING_MODEL ?? 'gemini-embedding-001';
     console.log(`build-index: embedded ${chunks.length} chunks (${embeddingModelName}).`);

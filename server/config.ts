@@ -26,6 +26,9 @@ export const config = {
     useFrontier: process.env.CHAT_USE_FRONTIER === 'true',
     thinkingBudget: int(process.env.CHAT_THINKING_BUDGET, 2048),
     embeddingModel: process.env.CHAT_EMBEDDING_MODEL ?? 'gemini-embedding-001',
+    // Matryoshka truncation: 768 dims keeps the bundled index ~4x smaller than the
+    // model's native 3072 at negligible retrieval cost. Build & query must match.
+    embeddingDim: int(process.env.CHAT_EMBEDDING_DIM, 768),
   },
   anthropicDevModel: process.env.CHAT_DEV_MODEL ?? 'claude-opus-5',
   maxOutputTokens: int(process.env.CHAT_MAX_OUTPUT_TOKENS, 1024),

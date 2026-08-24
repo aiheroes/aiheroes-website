@@ -12,6 +12,30 @@
 import type { LanguageModel } from 'ai';
 import { config } from './config';
 
+/**
+ * Service-account credentials for Vertex from env (Netlify has no key file).
+ * GOOGLE_VERTEX_CREDENTIALS_B64 holds the base64-encoded service-account JSON —
+ * one shell-safe token, no PEM quoting hazards.
+ */
+function vertexAuthOptions() {
+  const b64 = process.env.GOOGLE_VERTEX_CREDENTIALS_B64;
+  if (!b64) return {};
+  try {
+    const parsed = JSON.parse(Buffer.from(b64, 'base64').toString('utf8')) as {
+      client_email?: string;
+      private_key?: string;
+    };
+    if (!parsed.client_email || !parsed.private_key) return {};
+    return {
+      googleAuthOptions: {
+        credentials: { client_email: parsed.client_email, private_key: parsed.private_key },
+      },
+    };
+  } catch {
+    return {};
+  }
+}
+
 export interface ModelRoute {
   model: LanguageModel;
   providerOptions?: Record<string, Record<string, unknown>>;
@@ -31,6 +55,7 @@ export async function getModel(): Promise<ModelRoute> {
     const vertex = createVertex({
       project: config.vertex.project,
       location: config.vertex.location,
+      ...vertexAuthOptions(),
     });
     if (config.vertex.useFrontier) {
       // Claude on Vertex speaks the Anthropic API shape via the anthropic sub-provider.
@@ -38,6 +63,7 @@ export async function getModel(): Promise<ModelRoute> {
       const anthropic = createVertexAnthropic({
         project: config.vertex.project,
         location: config.vertex.location,
+        ...vertexAuthOptions(),
       });
       return {
         model: anthropic(config.vertex.frontierModel),
@@ -93,6 +119,7 @@ export async function getEmbeddingModel() {
     const vertex = createVertex({
       project: config.vertex.project,
       location: config.vertex.location,
+      ...vertexAuthOptions(),
     });
     return vertex.embeddingModel(config.vertex.embeddingModel);
   }
@@ -112,7 +139,11 @@ export async function embedQuery(query: string): Promise<number[] | null> {
     const model = await getEmbeddingModel();
     if (!model) return null;
     const { embed } = await import('ai');
-    const { embedding } = await embed({ model, value: query });
+    const { embedding } = await embed({
+      model,
+      value: query,
+      providerOptions: { google: { outputDimensionality: config.vertex.embeddingDim } },
+    });
     return embedding;
   } catch {
     return null; // degrade to BM25-only rather than failing the request
