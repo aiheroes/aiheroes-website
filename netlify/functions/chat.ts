@@ -129,10 +129,12 @@ export default async function handler(request: Request, _context: Context): Prom
     }),
     escalate_to_human: tool({
       description:
-        'Hand the conversation to the AI Heroes team. Use IMMEDIATELY when the visitor asks for a human in any phrasing, after two failed attempts on the same question, or on clear frustration.',
+        "Forward the conversation to the AI Heroes team (they reply by email; there is no live chat). Call this AFTER the visitor has given their email address in the conversation — it renders a one-tap confirmation with that email. Use for any human request, after two failed attempts, or on clear frustration.",
       inputSchema: z.object({
         reason: z.enum(['visitor_request', 'no_answer', 'frustration']),
         summary: z.string().max(300).describe('One-paragraph summary of the conversation so far'),
+        email: z.string().max(200).optional().describe("The visitor's email address, exactly as they gave it"),
+        name: z.string().max(120).optional().describe("The visitor's name, if they mentioned it"),
       }),
     }),
   };

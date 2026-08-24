@@ -85,8 +85,15 @@ export function SalonCard({ locale }: { locale: ChatLocale }) {
 export interface EscalationPayload {
   reason: string;
   summary: string;
+  email?: string;
+  name?: string;
 }
 
+/**
+ * Conversational escalation confirm (SDD D7, revised 2026-08-24): the assistant asks
+ * for the email in the conversation; this card is only the one-tap confirmation.
+ * Sending IS the consent action; the micro-line states what it means.
+ */
 export function EscalationForm({
   locale,
   payload,
@@ -103,16 +110,14 @@ export function EscalationForm({
   transcript: { role: 'user' | 'assistant'; text: string }[];
 }) {
   const t = STRINGS[locale];
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [consent, setConsent] = useState(false);
+  const [email, setEmail] = useState(payload.email ?? '');
   const [state, setState] = useState<'idle' | 'sending' | 'done-office' | 'done-closed' | 'error'>(
     'idle',
   );
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
-    if (!consent || state === 'sending') return;
+    if (state === 'sending') return;
     setState('sending');
     try {
       const res = await fetch('/api/escalate', {
@@ -121,7 +126,7 @@ export function EscalationForm({
         body: JSON.stringify({
           sessionId,
           conversationId,
-          name,
+          name: payload.name ?? '',
           email,
           reason: payload.reason || 'visitor_request',
           summary: payload.summary ?? '',
@@ -152,41 +157,26 @@ export function EscalationForm({
       <p className="flex items-center gap-1.5 font-semibold">
         <Mail size={14} aria-hidden /> {t.escalateTitle}
       </p>
-      <p className="mt-0.5 text-stone-500">{t.escalateIntro}</p>
-      <label className="mt-2 block text-xs font-medium">
-        {t.escalateName}
-        <input
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className={inputClass}
-          autoComplete="name"
-        />
-      </label>
-      <label className="mt-2 block text-xs font-medium">
-        {t.escalateEmail}
+      <div className="mt-2 flex items-center gap-2">
         <input
           required
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={inputClass}
+          aria-label={t.escalateEmail}
+          placeholder={t.escalateEmail}
+          className={`${inputClass} mt-0 flex-1`}
           autoComplete="email"
         />
-      </label>
-      <label className="mt-2 flex items-start gap-2 text-xs">
-        <input
-          required
-          type="checkbox"
-          checked={consent}
-          onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5"
-        />
-        <span>{t.escalateConsent}</span>
-      </label>
-      <button type="submit" disabled={state === 'sending'} className={`${ctaClass} disabled:opacity-50`}>
-        {t.escalateSend}
-      </button>
+        <button
+          type="submit"
+          disabled={state === 'sending'}
+          className={`${ctaClass} mt-0 shrink-0 disabled:opacity-50`}
+        >
+          {t.escalateSend}
+        </button>
+      </div>
+      <p className="mt-1.5 text-[0.68rem] leading-snug text-stone-400">{t.escalateConsent}</p>
       {state === 'error' && <p className="mt-1 text-xs text-brand-red">{t.errorGeneric}</p>}
     </form>
   );

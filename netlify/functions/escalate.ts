@@ -16,7 +16,7 @@ export const config: Config = {
 const bodySchema = z.object({
   sessionId: z.string().uuid(),
   conversationId: z.string().uuid(),
-  name: z.string().min(1).max(120),
+  name: z.string().max(120).default(''),
   email: z.string().email().max(200),
   reason: z.string().max(40).default('visitor_request'),
   summary: z.string().max(2000).default(''),
@@ -56,7 +56,7 @@ export default async function handler(request: Request): Promise<Response> {
   await notifySlack(
     [
       `:speech_balloon: *Chat-escalatie* (${body.reason})`,
-      `Van: ${body.name} <${body.email}>`,
+      `Van: ${body.name || 'Onbekend'} <${body.email}>`,
       body.summary ? `Samenvatting: ${body.summary}` : null,
       transcript ? `\`\`\`${transcript.slice(0, 2800)}\`\`\`` : null,
     ]

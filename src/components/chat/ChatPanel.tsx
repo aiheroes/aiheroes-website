@@ -5,7 +5,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
-import { ArrowDown, ChevronDown, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
+import { ArrowDown, BookOpen, ChevronDown, Headset, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
 import { ChatMarkdown } from './Markdown';
 import './chat.css';
 import {
@@ -57,7 +57,6 @@ export default function ChatPanel({
   const t = STRINGS[locale];
   const [token, setToken] = useState<string | null>(null);
   const [conversationId, setConversationId] = useState(() => getConversationId());
-  const [manualEscalation, setManualEscalation] = useState(false);
   const [feedbackGiven, setFeedbackGiven] = useState<Record<string, 'up' | 'down'>>({});
   const [pinned, setPinned] = useState(true);
   const [announcement, setAnnouncement] = useState('');
@@ -222,7 +221,6 @@ export default function ChatPanel({
     if (messages.length === 0) return;
     setUndoState({ messages, convId: conversationId });
     const id = resetConversation();
-    setManualEscalation(false);
     setConversationId(id);
   }
 
@@ -427,6 +425,12 @@ export default function ChatPanel({
                 <div className="mr-4 min-w-0">
                   {message.parts.map((part, i) => renderPart(part, i))}
                   {(() => {
+                    // Sources belong under a FINISHED answer — the metadata arrives
+                    // at stream start, but showing chips before text reads as noise.
+                    const isActive =
+                      (status === 'streaming' || status === 'submitted') &&
+                      message.id === messages[messages.length - 1]?.id;
+                    if (isActive || !textOf(message).trim()) return null;
                     const sources = (message.metadata as { sources?: MessageSources } | undefined)
                       ?.sources;
                     if (!sources?.length) return null;
@@ -435,9 +439,7 @@ export default function ChatPanel({
                     );
                     return (
                       <div className="mt-1.5 flex flex-wrap items-center gap-1">
-                        <span className="text-[0.65rem] uppercase tracking-wide text-stone-400">
-                          {t.sources}
-                        </span>
+                        <BookOpen size={12} aria-label={t.sources} className="text-stone-400" />
                         {unique.slice(0, 3).map((s) => (
                           <a
                             key={s.url}
@@ -478,9 +480,11 @@ export default function ChatPanel({
           ))}
 
           {status === 'submitted' && (
-            <div>
-              <p className="text-sm text-stone-500 motion-safe:animate-pulse">{t.thinking}</p>
-              {slow && <p className="mt-1 text-xs text-stone-400">{t.slow}</p>}
+            <div className="text-stone-400">
+              <span className="aih-dots" role="img" aria-label={t.thinking}>
+                <span /><span /><span />
+              </span>
+              {slow && <p className="mt-0.5 text-xs">{t.slow}</p>}
             </div>
           )}
 
@@ -507,7 +511,7 @@ export default function ChatPanel({
               )}
             </div>
           )}
-          {(errorKind === 'budget' || manualEscalation) && (
+          {errorKind === 'budget' && (
             <EscalationForm
               locale={locale}
               payload={{ reason: 'visitor_request', summary: '' }}
@@ -593,13 +597,16 @@ export default function ChatPanel({
             </button>
           )}
         </div>
-        {/* The human escape hatch is always visible (SDD D7, must-do #2). */}
+        {/* The human escape hatch is always visible (SDD D7): the headset sends a
+            normal message, so the handoff happens inside the conversation. */}
         <button
           type="button"
-          onClick={() => setManualEscalation(true)}
-          className={`mt-1.5 text-xs text-stone-500 underline underline-offset-2 hover:text-brand-dark ${RING}`}
+          onClick={() => submit(t.humanRequestMessage)}
+          aria-label={t.talkToHuman}
+          title={t.talkToHuman}
+          className={`mt-1 rounded-md p-1.5 text-stone-400 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
         >
-          {t.talkToHuman}
+          <Headset size={16} aria-hidden />
         </button>
       </form>
       </div>

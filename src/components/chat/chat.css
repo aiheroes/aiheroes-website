@@ -112,3 +112,40 @@
     transition: none;
   }
 }
+
+/* Typing indicator: three quiet dots, no words. */
+.aih-dots {
+  display: inline-flex;
+  gap: 4px;
+  padding: 6px 2px;
+}
+.aih-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.3;
+  animation: aih-dot 1.2s infinite ease-in-out;
+}
+.aih-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.aih-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes aih-dot {
+  0%, 60%, 100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 0.9;
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aih-dots span {
+    animation: none;
+    opacity: 0.5;
+  }
+}
