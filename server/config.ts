@@ -19,8 +19,10 @@ export const config = {
   provider: (process.env.CHAT_MODEL_PROVIDER ?? 'google') as 'google' | 'anthropic' | 'vertex',
   vertex: {
     project: process.env.GOOGLE_VERTEX_PROJECT ?? '',
-    // EU processing is load-bearing (V4) — see SDD D4.
-    location: process.env.GOOGLE_VERTEX_LOCATION ?? 'europe-west4',
+    // EU processing is load-bearing (V4) — see SDD D4. Gemini 3.7 Flash serves from
+    // the 'eu' multi-region; embeddings need a specific EU region (probed 2026-08-24).
+    location: process.env.GOOGLE_VERTEX_LOCATION ?? 'eu',
+    embeddingLocation: process.env.GOOGLE_VERTEX_EMBEDDING_LOCATION ?? 'europe-west4',
     model: process.env.CHAT_MODEL ?? 'gemini-3.7-flash',
     frontierModel: process.env.CHAT_FRONTIER_MODEL ?? 'claude-sonnet-5',
     useFrontier: process.env.CHAT_USE_FRONTIER === 'true',

@@ -17,7 +17,7 @@ providers:
 defaultTest:
   options:
     # Rubric grading on the same dev credential (Gemini API key).
-    provider: google:gemini-3.7-flash
+    provider: vertex:gemini-3.7-flash
 
 tests:
   # --- NL golden set (grounding + register) ---

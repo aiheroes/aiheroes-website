@@ -118,7 +118,7 @@ export async function getEmbeddingModel() {
     const { createVertex } = await import('@ai-sdk/google-vertex');
     const vertex = createVertex({
       project: config.vertex.project,
-      location: config.vertex.location,
+      location: config.vertex.embeddingLocation,
       ...vertexAuthOptions(),
     });
     return vertex.embeddingModel(config.vertex.embeddingModel);
