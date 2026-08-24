@@ -112,7 +112,7 @@ export default async function handler(request: Request, _context: Context): Prom
       }),
       // Deterministic text-first backstop: the widget renders the card from the
       // tool input; this result steers the model into writing the answer too.
-      execute: async () => ({ shown: true, note: 'Card rendered. Now write your textual answer in this same turn.' }),
+      execute: async () => ({ shown: true, note: 'Card rendered and visible. If you already wrote your answer this turn, output nothing further and end your turn. Only if you have not answered in text yet, write the answer now.' }),
     }),
     book_meeting: tool({
       description:
@@ -120,7 +120,7 @@ export default async function handler(request: Request, _context: Context): Prom
       inputSchema: z.object({
         topic: z.string().max(120).describe("Short topic in the visitor's language"),
       }),
-      execute: async () => ({ shown: true, note: 'Card rendered. Now write your textual answer in this same turn.' }),
+      execute: async () => ({ shown: true, note: 'Card rendered and visible. If you already wrote your answer this turn, output nothing further and end your turn. Only if you have not answered in text yet, write the answer now.' }),
     }),
     register_salon: tool({
       description: 'Show the AI Salon registration card when the visitor is interested in attending.',
@@ -129,7 +129,7 @@ export default async function handler(request: Request, _context: Context): Prom
       inputSchema: z.object({
         note: z.string().max(80).optional().describe('Optional one-line context'),
       }),
-      execute: async () => ({ shown: true, note: 'Card rendered. Now write your textual answer in this same turn.' }),
+      execute: async () => ({ shown: true, note: 'Card rendered and visible. If you already wrote your answer this turn, output nothing further and end your turn. Only if you have not answered in text yet, write the answer now.' }),
     }),
     escalate_to_human: tool({
       description:
