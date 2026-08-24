@@ -232,24 +232,54 @@ const embeddingModel = shouldEmbed ? await getEmbeddingModel().catch(() => null)
 if (embeddingModel) {
   // Embedding failure (rate limits, quota, outage) must never break the site build:
   // degrade to BM25-only and say so.
-  try {
-    const { embedMany } = await import('ai');
-    const { embeddings } = await embedMany({
-      model: embeddingModel,
-      values: chunks.map((c) => `${c.title} — ${c.heading}\n${c.text}`),
-      maxRetries: 1,
-      providerOptions: { google: { outputDimensionality: appConfig.vertex.embeddingDim } },
-    });
-    chunks.forEach((chunk, i) => {
-      // 5 decimals is plenty for cosine similarity and halves the JSON size.
-      chunk.embedding = embeddings[i].map((v) => Math.round(v * 1e5) / 1e5);
-    });
+  // Quota-aware pacing: the embed endpoint enforces a per-minute request limit
+  // (free tier: 100 RPM). Embed in slices; on a quota error, wait out the window
+  // and retry the slice. Slower build, never a failed one.
+  const { embedMany } = await import('ai');
+  const SLICE = 90;
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  const values = chunks.map((c) => `${c.title} — ${c.heading}\n${c.text}`);
+  let embedded = 0;
+  let failed = false;
+  for (let offset = 0; offset < values.length && !failed; offset += SLICE) {
+    const slice = values.slice(offset, offset + SLICE);
+    let attempts = 0;
+    for (;;) {
+      try {
+        const { embeddings } = await embedMany({
+          model: embeddingModel,
+          values: slice,
+          maxRetries: 0,
+          providerOptions: { google: { outputDimensionality: appConfig.vertex.embeddingDim } },
+        });
+        embeddings.forEach((vec, i) => {
+          // 5 decimals is plenty for cosine similarity and halves the JSON size.
+          chunks[offset + i].embedding = vec.map((v) => Math.round(v * 1e5) / 1e5);
+        });
+        embedded += slice.length;
+        break;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        attempts += 1;
+        if (/quota|429|rate/i.test(message) && attempts <= 3) {
+          console.log(
+            `build-index: embed quota window hit at chunk ${offset} — waiting 65s (attempt ${attempts}/3)…`,
+          );
+          await sleep(65_000);
+          continue;
+        }
+        console.warn(
+          `build-index: embedding FAILED at chunk ${offset} (${message.slice(0, 140)}) — shipping BM25-only index.`,
+        );
+        chunks.forEach((c) => delete c.embedding);
+        failed = true;
+        break;
+      }
+    }
+  }
+  if (!failed && embedded === chunks.length) {
     embeddingModelName = process.env.CHAT_EMBEDDING_MODEL ?? 'gemini-embedding-001';
-    console.log(`build-index: embedded ${chunks.length} chunks (${embeddingModelName}).`);
-  } catch (error) {
-    console.warn(
-      `build-index: embedding FAILED (${error instanceof Error ? error.message.slice(0, 140) : 'unknown'}) — shipping BM25-only index. Note: the free Gemini tier caps embeddings at 100/day; the corpus needs ${chunks.length}.`,
-    );
+    console.log(`build-index: embedded ${embedded} chunks (${embeddingModelName}).`);
   }
 } else {
   console.log(
