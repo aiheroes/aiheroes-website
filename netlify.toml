@@ -2,6 +2,11 @@
   command = "npm run build"
   publish = "dist"
 
+# Chat assistant functions (SDD D3): TypeScript v2 functions, bundled with esbuild.
+# Each function pins region "fra" (Frankfurt) in-source — EU compute is load-bearing.
+[functions]
+  node_bundler = "esbuild"
+
 # Astro 5 requires a modern Node. Pin it so Netlify preview/branch builds don't fail.
 [build.environment]
   NODE_VERSION = "20"

@@ -1,0 +1,55 @@
+---
+// Art. 50 disclosure page (SDD D10). Draft: copy pending founder sign-off (SDD §13).
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+---
+
+<SubpageLayout
+  lang="en"
+  title="About our AI assistant"
+  subtitle="How the assistant on this site works, what it can and cannot do, and how we handle your data."
+  seoDescription="About the AI Heroes AI assistant: capabilities, limits, data handling and how to reach a human."
+  accentColor="blue"
+  showContactForm={false}
+  noindex
+>
+  <div class="prose prose-lg max-w-none">
+    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">You are chatting with AI</h2>
+    <p class="text-stone-600 leading-relaxed mb-8">
+      The chat assistant on aiheroes.io is an AI system, built by AI Heroes itself. We also say
+      so in the conversation: you always know you are talking to AI, as required by the EU AI
+      Act (Article 50). The assistant is an example of what we build for clients.
+    </p>
+
+    <div class="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue not-prose">
+      <h3 class="text-xl font-serif text-brand-dark mb-3">In short</h3>
+      <ul class="space-y-2 text-stone-600 list-disc ml-5">
+        <li>The assistant answers from our own site content and links its sources</li>
+        <li>Answers can be incomplete or wrong; verify important information on the linked pages</li>
+        <li>A human is always reachable via "Talk to a human" in the chat</li>
+        <li>Processing and storage happen within the EU</li>
+        <li>We only ask for your name and email when you choose to hand the conversation to the team, with your consent</li>
+      </ul>
+    </div>
+
+    <h2 class="text-2xl font-serif text-brand-dark mb-4">What the assistant can do</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">
+      Answer questions about our services, cases, team, articles and the AI Salon; take you to
+      the right page; help you book a conversation with the team; and hand the conversation to
+      a human. It only quotes pricing that is published on this site.
+    </p>
+
+    <h2 class="text-2xl font-serif text-brand-dark mb-4">Data and retention</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">
+      Your chat history lives in your own browser. On our servers, conversations are stored
+      pseudonymously (no name, no IP address, no profile) for quality improvement, for at most
+      30 days. Only when you leave your name and email to get in touch do we process personal
+      data, in line with our <a href="/en/legal/privacy">privacy policy</a>.
+    </p>
+
+    <h2 class="text-2xl font-serif text-brand-dark mb-4">Prefer a human right away?</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">
+      Use "Talk to a human" in the chat, or reach us via the
+      <a href="/en#contact">contact form</a>. During office hours we respond within 4 hours.
+    </p>
+  </div>
+</SubpageLayout>
