@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { ArrowRight, CalendarDays, Mail, Sparkles } from 'lucide-react';
 import { STRINGS, type ChatLocale } from './strings';
 
-const SALON_URL = 'https://lu.ma/aisalongroningen';
 const cardClass =
   'mt-2 rounded-xl border border-stone-200 bg-white p-3.5 text-sm shadow-sm';
 const ctaClass =
@@ -70,12 +69,15 @@ export function BookingCard({
 
 export function SalonCard({ locale }: { locale: ChatLocale }) {
   const t = STRINGS[locale];
+  // Internal link on purpose: the salon page always carries the current
+  // registration state (Luma event URLs rot — the 2026-08 kick-off link 404s).
+  const href = locale === 'nl' ? '/nl/ai-salon' : '/en/ai-salon';
   return (
     <div className={cardClass}>
       <p className="flex items-center gap-1.5 font-semibold">
         <Sparkles size={14} aria-hidden /> {t.salonTitle}
       </p>
-      <a href={SALON_URL} target="_blank" rel="noopener noreferrer" className={ctaClass}>
+      <a href={href} className={ctaClass}>
         {t.salonCta} <ArrowRight size={12} aria-hidden />
       </a>
     </div>
