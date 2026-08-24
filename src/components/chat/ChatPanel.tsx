@@ -64,6 +64,8 @@ export default function ChatPanel({
   const [undoState, setUndoState] = useState<{ messages: UIMessage[]; convId: string } | null>(
     null,
   );
+  const [slow, setSlow] = useState(false);
+  const [silentFail, setSilentFail] = useState(false);
   const sessionId = useMemo(() => getSessionId(), []);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -136,9 +138,25 @@ export default function ChatPanel({
     ) {
       const last = messages[messages.length - 1];
       if (last?.role === 'assistant') setAnnouncement(textOf(last));
+      // A stream that ended without any assistant content is a silent failure
+      // (throttled upstream, killed function) — surface the retry UI, never nothing.
+      const hasContent =
+        last?.role === 'assistant' &&
+        (textOf(last).trim().length > 0 || last.parts.some((p) => p.type.startsWith('tool-')));
+      setSilentFail(!hasContent);
     }
     prevStatus.current = status;
   }, [status, messages, t.thinking]);
+
+  // Honest waiting: after 15s without an answer, say it's slower than usual.
+  useEffect(() => {
+    if (status !== 'submitted') {
+      setSlow(false);
+      return;
+    }
+    const timer = setTimeout(() => setSlow(true), 15_000);
+    return () => clearTimeout(timer);
+  }, [status]);
 
   // Basic focus trap + Escape to close.
   const onKeyDown = useCallback(
@@ -171,6 +189,7 @@ export default function ChatPanel({
       if (!trimmed || busy) return;
       setInput('');
       setPinned(true);
+      setSilentFail(false);
       void sendMessage({ text: trimmed });
     },
     [busy, sendMessage],
@@ -459,10 +478,13 @@ export default function ChatPanel({
           ))}
 
           {status === 'submitted' && (
-            <p className="text-sm text-stone-500 motion-safe:animate-pulse">{t.thinking}</p>
+            <div>
+              <p className="text-sm text-stone-500 motion-safe:animate-pulse">{t.thinking}</p>
+              {slow && <p className="mt-1 text-xs text-stone-400">{t.slow}</p>}
+            </div>
           )}
 
-          {errorKind && (
+          {(errorKind || silentFail) && (
             <div className="mb-2 rounded-lg bg-brand-red/10 p-3 text-xs text-brand-red">
               <p>
                 {errorKind === 'budget'
@@ -471,10 +493,13 @@ export default function ChatPanel({
                     ? t.errorRate
                     : t.errorGeneric}
               </p>
-              {errorKind === 'generic' && (
+              {(errorKind === 'generic' || (silentFail && !errorKind)) && (
                 <button
                   type="button"
-                  onClick={() => void regenerate()}
+                  onClick={() => {
+                    setSilentFail(false);
+                    void regenerate();
+                  }}
                   className={`mt-1.5 rounded-md bg-brand-red px-2.5 py-1 text-[0.7rem] font-semibold text-white hover:bg-brand-red/85 ${RING}`}
                 >
                   {t.retry}

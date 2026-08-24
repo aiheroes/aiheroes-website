@@ -28,6 +28,7 @@ export const STRINGS = {
     expand: 'Vergroten',
     collapse: 'Verkleinen',
     minimize: 'Minimaliseren',
+    slow: 'Dit duurt langer dan normaal…',
     errorBudget:
       'De assistent is even niet beschikbaar. Laat je e-mailadres achter en we nemen contact met je op.',
     errorRate: 'Even rustig aan. Probeer het over een minuut opnieuw.',
@@ -86,6 +87,7 @@ export const STRINGS = {
     expand: 'Expand',
     collapse: 'Shrink',
     minimize: 'Minimize',
+    slow: 'This is taking longer than usual…',
     errorBudget: 'The assistant is briefly unavailable. Leave your email and we will get back to you.',
     errorRate: 'Easy does it. Try again in a minute.',
     escalateTitle: 'We will take it from here',

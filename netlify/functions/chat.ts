@@ -148,6 +148,11 @@ export default async function handler(request: Request, _context: Context): Prom
     experimental_transform: smoothStream({ delayInMs: 15, chunking: 'word' }),
     maxOutputTokens: route.maxOutputTokens,
     providerOptions: route.providerOptions as never,
+    // Fail fast instead of stalling: a throttled/stalled model must become a visible
+    // error with a retry button, never an endless typing indicator. Budgets sit well
+    // under Netlify's 60s streamed-function ceiling.
+    maxRetries: 1,
+    timeout: { firstChunkMs: 20_000, totalMs: 50_000 },
     abortSignal: request.signal, // D9: nobody pays for tokens no one receives
     // Server-side error visibility (function logs only; the client gets a masked
     // error part). Without this, model failures are silent — unacceptable ops-wise.
