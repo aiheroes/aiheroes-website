@@ -182,10 +182,6 @@ export default async function handler(request: Request, _context: Context): Prom
     stream: toUIMessageStream({
       stream: result.stream,
       tools,
-      // Temporary debug passthrough: with x-chat-debug:1 the error part carries the
-      // real message instead of the masked default. Remove before launch.
-      onError: (error) =>
-        request.headers.get('x-chat-debug') === '1' ? String(error).slice(0, 600) : 'error',
       originalMessages: windowed,
       // The widget renders source chips from this deterministic set (D5):
       messageMetadata: () => ({ sources: sources.map((s) => ({ url: s.url, title: s.title })) }),

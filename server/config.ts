@@ -55,11 +55,11 @@ export const config = {
   supabaseUrl: process.env.CHAT_SUPABASE_URL ?? '',
   supabaseServiceKey: process.env.CHAT_SUPABASE_SERVICE_KEY ?? '',
   bookingUrl: process.env.CHAT_BOOKING_URL ?? '', // Cal.com link; empty -> contact-form fallback
-  salonLumaUrl: 'https://lu.ma/aisalongroningen',
+  salonLumaUrl: 'https://luma.com/AI-Salon-Groningen-September-2026',
   siteOrigin: process.env.URL ?? 'https://aiheroes.io',
 
   // Render-layer link allowlist (D9 layer 7). The widget refuses to link anything else.
-  linkAllowlist: ['aiheroes.io', 'lu.ma', 'cal.com'],
+  linkAllowlist: ['aiheroes.io', 'lu.ma', 'luma.com', 'cal.com'],
 } as const;
 
 export function isOfficeHours(now = new Date()): boolean {
