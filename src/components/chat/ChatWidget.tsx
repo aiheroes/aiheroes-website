@@ -61,7 +61,7 @@ export default function ChatWidget({ locale, path, enabled, bookingUrl = null }:
           onMouseEnter={prewarm}
           onFocus={prewarm}
           aria-label={t.launcherLabel}
-          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex size-[3.25rem] touch-manipulation items-center justify-center rounded-full bg-brand-dark text-white shadow-lg transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
+          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex size-[3.25rem] touch-manipulation items-center justify-center rounded-full bg-brand-blue text-white shadow-lg transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
         >
           <MessageCircle size={22} aria-hidden />
         </button>

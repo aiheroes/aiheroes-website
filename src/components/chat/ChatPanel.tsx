@@ -5,7 +5,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
-import { ArrowDown, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
+import { ArrowDown, ChevronDown, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
 import { ChatMarkdown } from './Markdown';
 import './chat.css';
 import {
@@ -70,6 +70,11 @@ export default function ChatPanel({
   const panelRef = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState('');
   const [showDisclosure] = useState(() => !wasDisclosed());
+  // Mobile sheet state: two snap heights + drag-to-dismiss/expand on the grabber.
+  const [maximized, setMaximized] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const dragStartY = useRef<number | null>(null);
+  const dragDelta = useRef(0);
 
   useEffect(() => {
     void ensureToken().then(setToken); // idempotent; the launcher already prewarmed on hover
@@ -225,7 +230,14 @@ export default function ChatPanel({
 
   function renderPart(part: UIMessage['parts'][number], index: number) {
     if (part.type === 'text') {
-      return <ChatMarkdown key={index} text={part.text} />;
+      return (
+        <div
+          key={index}
+          className="mb-1 rounded-2xl rounded-bl-md border border-stone-200/80 bg-white px-3.5 py-2.5 shadow-sm last:mb-0"
+        >
+          <ChatMarkdown text={part.text} />
+        </div>
+      );
     }
     if (part.type === 'tool-show_page' && 'input' in part && part.input) {
       return <PageCard key={index} locale={locale} input={part.input as never} />;
@@ -254,27 +266,71 @@ export default function ChatPanel({
 
   const suggestions = suggestionsForPath(locale, path);
 
+  // Drag on the grabber (mobile): follow the finger; release decides —
+  // down >120px dismisses, up >60px maximizes, otherwise snap back.
+  // Tap and buttons remain the non-gesture alternatives.
+  const onGrabberPointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
+    dragStartY.current = e.clientY;
+    dragDelta.current = 0;
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+  const onGrabberPointerMove = (e: React.PointerEvent) => {
+    if (dragStartY.current === null) return;
+    dragDelta.current = e.clientY - dragStartY.current;
+    setDragOffset(Math.max(0, dragDelta.current));
+  };
+  const onGrabberPointerUp = () => {
+    const delta = dragDelta.current;
+    dragStartY.current = null;
+    dragDelta.current = 0;
+    setDragOffset(0);
+    if (delta > 120) onCloseRequest();
+    else if (delta < -60) setMaximized(true);
+  };
+
   return (
-    <div
-      ref={panelRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={t.title}
-      onKeyDown={onKeyDown}
-      onAnimationEnd={(e) => {
-        if (closing && e.target === panelRef.current) onClosed();
-      }}
-      className={`${closing ? 'aih-panel-out' : 'aih-panel-in'} fixed inset-0 z-[95] flex touch-manipulation flex-col bg-white pb-[env(safe-area-inset-bottom)] text-brand-dark shadow-2xl [-webkit-tap-highlight-color:transparent] sm:inset-auto sm:right-5 sm:bottom-5 sm:h-[38rem] sm:max-h-[calc(100vh-3rem)] sm:w-[25rem] sm:rounded-2xl sm:border sm:border-stone-200 sm:pb-0`}
-    >
+    <>
+      {/* Backdrop scrim (mobile only): the page stays visible behind the sheet —
+          unmistakably a layer, not a new page. Tap to minimize. */}
+      <div
+        aria-hidden="true"
+        onClick={onCloseRequest}
+        className={`${closing ? 'aih-backdrop-out' : 'aih-backdrop'} fixed inset-0 z-[94] bg-brand-dark/30 sm:hidden`}
+      />
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t.title}
+        onKeyDown={onKeyDown}
+        onAnimationEnd={(e) => {
+          if (closing && e.target === panelRef.current) onClosed();
+        }}
+        style={dragOffset > 0 ? { transform: `translateY(${dragOffset}px)` } : undefined}
+        className={`${closing ? 'aih-panel-out' : 'aih-panel-in'} aih-sheet ${dragOffset > 0 ? 'aih-dragging' : ''} fixed inset-x-0 bottom-0 z-[95] flex ${maximized ? 'h-[calc(100dvh-0.75rem)]' : 'h-[85dvh]'} touch-manipulation flex-col rounded-t-2xl bg-brand-light pb-[env(safe-area-inset-bottom)] text-brand-dark shadow-2xl [-webkit-tap-highlight-color:transparent] sm:inset-x-auto sm:right-5 sm:bottom-5 sm:h-[38rem] sm:max-h-[calc(100vh-3rem)] sm:w-[25rem] sm:rounded-2xl sm:border sm:border-stone-200 sm:pb-0`}
+      >
+        {/* Grabber (mobile): tap toggles size, drag dismisses or expands. */}
+        <button
+          type="button"
+          aria-label={maximized ? t.collapse : t.expand}
+          onClick={() => setMaximized((m) => !m)}
+          onPointerDown={onGrabberPointerDown}
+          onPointerMove={onGrabberPointerMove}
+          onPointerUp={onGrabberPointerUp}
+          onPointerCancel={onGrabberPointerUp}
+          className={`flex w-full touch-none items-center justify-center pt-2.5 pb-1.5 sm:hidden ${RING}`}
+        >
+          <span className="h-1 w-9 rounded-full bg-stone-300" aria-hidden />
+        </button>
       {/* Screen-reader status channel (audit P0). */}
       <div className="sr-only" role="status" aria-live="polite">
         {announcement}
       </div>
 
       {/* Header with the always-visible AI badge (SDD D10). */}
-      <header className="flex items-center justify-between gap-2 border-b border-stone-200 px-4 py-3">
+      <header className="flex items-center justify-between gap-2 border-b border-stone-200 px-4 pt-1 pb-3 sm:pt-3">
         <div>
-          <p className="font-serif text-[0.95rem] font-semibold">{t.title}</p>
+          <p className="font-serif text-base font-semibold">{t.title}</p>
           <p className="text-[0.68rem] font-medium uppercase tracking-wide text-stone-500">
             {t.aiBadge}
           </p>
@@ -291,13 +347,16 @@ export default function ChatPanel({
               <RotateCcw size={16} aria-hidden />
             </button>
           )}
+          {/* Mobile: minimizing to the bubble, not leaving — the conversation stays. */}
           <button
             type="button"
             onClick={onCloseRequest}
-            aria-label={t.close}
+            aria-label={t.minimize}
+            title={t.minimize}
             className={`rounded-md p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
           >
-            <X size={18} aria-hidden />
+            <ChevronDown size={20} aria-hidden className="sm:hidden" />
+            <X size={18} aria-hidden className="hidden sm:block" />
           </button>
         </div>
       </header>
@@ -310,7 +369,7 @@ export default function ChatPanel({
           className="flex-1 overflow-y-auto overscroll-contain px-4 py-3"
         >
           {showDisclosure && (
-            <div className="mb-3 rounded-lg bg-stone-100 p-3 text-xs text-stone-600">
+            <div className="mb-3 rounded-xl border border-stone-200 bg-white p-3 text-xs leading-relaxed text-stone-600">
               {t.disclosure}{' '}
               <a
                 href={DISCLOSURE_PATH[locale]}
@@ -322,15 +381,15 @@ export default function ChatPanel({
           )}
 
           {messages.length === 0 && (
-            <div className="mt-2">
-              <p className="mb-2 text-sm font-semibold">{t.suggestionsTitle}</p>
-              <div className="flex flex-col items-start gap-1.5">
+            <div className="mt-3">
+              <p className="mb-3 font-serif text-xl text-balance">{t.suggestionsTitle}</p>
+              <div className="flex flex-col items-start gap-2">
                 {suggestions.map((s) => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => submit(s)}
-                    className={`rounded-full border border-stone-300 px-3 py-1.5 text-left text-xs hover:border-brand-blue hover:text-brand-blue ${RING}`}
+                    className={`rounded-2xl border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm shadow-sm hover:border-brand-blue hover:text-brand-blue ${RING}`}
                   >
                     {s}
                   </button>
@@ -342,7 +401,7 @@ export default function ChatPanel({
           {messages.map((message) => (
             <div key={message.id} className="aih-msg-in mb-3">
               {message.role === 'user' ? (
-                <div className="ml-8 min-w-0 break-words rounded-2xl rounded-br-sm bg-brand-dark px-3 py-2 text-sm text-white">
+                <div className="ml-8 min-w-0 break-words rounded-2xl rounded-br-md bg-brand-blue px-3.5 py-2.5 text-[0.95rem] text-white">
                   {textOf(message)}
                 </div>
               ) : (
@@ -400,7 +459,7 @@ export default function ChatPanel({
           ))}
 
           {status === 'submitted' && (
-            <p className="text-xs text-stone-400 motion-safe:animate-pulse">{t.thinking}</p>
+            <p className="text-sm text-stone-500 motion-safe:animate-pulse">{t.thinking}</p>
           )}
 
           {errorKind && (
@@ -449,7 +508,7 @@ export default function ChatPanel({
 
       {/* Undo bar for a cleared conversation (audit P2). */}
       {undoState && (
-        <div className="flex items-center justify-between gap-2 border-t border-stone-200 bg-stone-50 px-4 py-2 text-xs text-stone-600">
+        <div className="flex items-center justify-between gap-2 border-t border-stone-200 bg-white px-4 py-2 text-xs text-stone-600">
           <span>{t.cleared}</span>
           <button
             type="button"
@@ -487,7 +546,7 @@ export default function ChatPanel({
             maxLength={2000}
             placeholder={t.inputPlaceholder}
             aria-label={t.inputPlaceholder}
-            className="max-h-28 flex-1 resize-none rounded-lg border border-stone-300 px-3 py-2 text-sm field-sizing-content focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25"
+            className="max-h-28 flex-1 resize-none rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 text-base field-sizing-content focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25 sm:text-sm"
           />
           {busy ? (
             <button
@@ -513,11 +572,12 @@ export default function ChatPanel({
         <button
           type="button"
           onClick={() => setManualEscalation(true)}
-          className={`mt-1.5 text-[0.7rem] text-stone-500 underline underline-offset-2 hover:text-brand-dark ${RING}`}
+          className={`mt-1.5 text-xs text-stone-500 underline underline-offset-2 hover:text-brand-dark ${RING}`}
         >
           {t.talkToHuman}
         </button>
       </form>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,7 +1,7 @@
-/* Chat widget motion vocabulary (UX audit P1). This is the COMPLETE animation set:
-   panel in/out, message entrance, nothing else. All compositor-only
-   (transform/opacity), interruptible, and collapsed to a fast fade under
-   prefers-reduced-motion. */
+/* Chat widget motion vocabulary (UX audit P1 + mobile-sheet revision). This is the
+   COMPLETE animation set: panel/sheet in-out, backdrop fade, message entrance —
+   nothing else. Compositor-only where possible, interruptible, and collapsed to a
+   fast fade under prefers-reduced-motion. */
 
 @keyframes aih-panel-in {
   from {
@@ -14,6 +14,18 @@
   to {
     opacity: 0;
     transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes aih-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes aih-sheet-out {
+  to {
+    transform: translateY(100%);
   }
 }
 
@@ -50,6 +62,36 @@
   animation: aih-msg-in 150ms ease-out;
 }
 
+.aih-backdrop {
+  animation: aih-fade-in 180ms ease-out;
+}
+
+.aih-backdrop-out {
+  animation: aih-fade-out 140ms ease-out forwards;
+}
+
+/* Mobile (< sm): the panel is a bottom sheet — slide up/down, springy snap between
+   its two heights, drag-follow handled inline (transition disabled while dragging). */
+@media (max-width: 639px) {
+  .aih-panel-in {
+    transform-origin: center bottom;
+    animation-name: aih-sheet-in;
+    animation-duration: 260ms;
+  }
+  .aih-panel-out {
+    animation-name: aih-sheet-out;
+    animation-duration: 200ms;
+  }
+  .aih-sheet {
+    transition:
+      transform 200ms cubic-bezier(0.32, 0.72, 0, 1),
+      height 220ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .aih-sheet.aih-dragging {
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .aih-panel-in {
     animation: aih-fade-in 80ms ease-out;
@@ -59,5 +101,14 @@
   }
   .aih-msg-in {
     animation: aih-fade-in 80ms ease-out;
+  }
+  .aih-backdrop {
+    animation: aih-fade-in 80ms ease-out;
+  }
+  .aih-backdrop-out {
+    animation: aih-fade-out 80ms ease-out forwards;
+  }
+  .aih-sheet {
+    transition: none;
   }
 }

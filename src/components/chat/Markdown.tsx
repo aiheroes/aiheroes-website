@@ -32,7 +32,7 @@ function isExternal(href: string): boolean {
 
 export const ChatMarkdown = React.memo(function ChatMarkdown({ text }: { text: string }) {
   return (
-    <div className="chat-prose text-[0.9rem] leading-relaxed [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:mb-2 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:mb-2 [&_ol]:list-decimal [&_ol]:pl-4 [&_li]:mb-1 [&_strong]:font-semibold">
+    <div className="chat-prose text-[0.95rem] leading-relaxed [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:mb-2 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:mb-2 [&_ol]:list-decimal [&_ol]:pl-4 [&_li]:mb-1 [&_strong]:font-semibold">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
