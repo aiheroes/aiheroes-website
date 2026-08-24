@@ -8,7 +8,6 @@ import { persistFeedback } from '../../server/persist';
 
 export const config: Config = {
   path: '/api/feedback',
-  region: 'fra',
 };
 
 const bodySchema = z.object({

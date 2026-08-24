@@ -25,9 +25,10 @@ import { retrieve } from '../../server/search';
 
 export const config: Config = {
   path: '/api/chat',
-  // EU compute is load-bearing (SDD D3). Region selection requires Netlify Pro;
-  // if the deploy rejects this, the plan check in SDD §13 has its answer.
-  region: 'fra',
+  // TODO(SDD D3/V4): restore region: 'fra' after upgrading Netlify to Pro (the
+  // current plan rejects function-region config and FAILS the production build).
+  // Until then the function runs in Netlify's default US region; model inference
+  // and embeddings remain on Vertex EU. Alternative: Hono service on Vercel fra1.
 };
 
 const bodySchema = z.object({

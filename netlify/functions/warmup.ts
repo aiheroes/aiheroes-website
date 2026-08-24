@@ -9,7 +9,6 @@ import { checkOrigin, issueToken, newSessionId } from '../../server/guards';
 
 export const config: Config = {
   path: '/api/warmup',
-  region: 'fra',
 };
 
 const bodySchema = z.object({ sessionId: z.string().uuid().optional() });

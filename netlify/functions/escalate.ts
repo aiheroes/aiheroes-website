@@ -10,7 +10,6 @@ import { persistEscalation } from '../../server/persist';
 
 export const config: Config = {
   path: '/api/escalate',
-  region: 'fra',
 };
 
 const bodySchema = z.object({
