@@ -588,23 +588,30 @@ export default function ChatPanel({
             aria-label={t.inputPlaceholder}
             className="max-h-28 flex-1 resize-none rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 text-base field-sizing-content focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25 sm:text-sm"
           />
+          {/* Buttons mirror the textarea's vertical metrics (padding + border +
+              line-height-sized icon box), so they match its height exactly and
+              stay square at every breakpoint. */}
           {busy ? (
             <button
               type="button"
               onClick={() => stop()}
               aria-label={t.stop}
-              className={`rounded-lg bg-stone-200 p-2.5 text-stone-700 hover:bg-stone-300 ${RING}`}
+              className={`rounded-xl border border-transparent bg-stone-200 p-2.5 text-stone-700 hover:bg-stone-300 ${RING}`}
             >
-              <Square size={16} aria-hidden />
+              <span className="flex h-6 w-6 items-center justify-center sm:h-5 sm:w-5" aria-hidden>
+                <Square size={16} />
+              </span>
             </button>
           ) : (
             <button
               type="submit"
               aria-label={t.send}
               disabled={!input.trim()}
-              className={`rounded-lg bg-brand-red p-2.5 text-white hover:bg-brand-red/85 disabled:opacity-40 ${RING}`}
+              className={`rounded-xl border border-transparent bg-brand-red p-2.5 text-white hover:bg-brand-red/85 disabled:opacity-40 ${RING}`}
             >
-              <Send size={16} aria-hidden />
+              <span className="flex h-6 w-6 items-center justify-center sm:h-5 sm:w-5" aria-hidden>
+                <Send size={17} />
+              </span>
             </button>
           )}
         </div>
