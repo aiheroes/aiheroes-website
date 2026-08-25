@@ -253,8 +253,9 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         />
       </footer>
 
-      {/* Sticky CTA - only show when hero button is scrolled out */}
-      {showContactForm && (
+      {/* Sticky CTA - only show when hero button is scrolled out. Suppressed while
+          the chat assistant is live: it occupies the same corner (launch plan A5). */}
+      {showContactForm && import.meta.env.PUBLIC_CHAT_ENABLED !== 'true' && (
         <div
           className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
             showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'

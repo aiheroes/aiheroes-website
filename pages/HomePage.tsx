@@ -263,10 +263,13 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
       </main>
 
-      {/* Sticky CTA - only show when hero is scrolled out */}
+      {/* Sticky CTA - only show when hero is scrolled out. Suppressed while the
+          chat assistant is live: it occupies the same corner (launch plan A5). */}
       <div
         className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
-          showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+          showStickyCta && import.meta.env.PUBLIC_CHAT_ENABLED !== 'true'
+            ? 'translate-y-0 opacity-100'
+            : 'translate-y-20 opacity-0 pointer-events-none'
         }`}
       >
         <button

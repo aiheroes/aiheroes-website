@@ -14,9 +14,16 @@ interface Props {
   path: string;
   enabled: boolean;
   bookingUrl?: string | null;
+  sourceChips?: boolean;
 }
 
-export default function ChatWidget({ locale, path, enabled, bookingUrl = null }: Props) {
+export default function ChatWidget({
+  locale,
+  path,
+  enabled,
+  bookingUrl = null,
+  sourceChips = true,
+}: Props) {
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -72,6 +79,7 @@ export default function ChatWidget({ locale, path, enabled, bookingUrl = null }:
             locale={locale}
             path={path}
             bookingUrl={bookingUrl}
+            sourceChips={sourceChips}
             closing={closing}
             onCloseRequest={requestClose}
             onClosed={finalizeClose}

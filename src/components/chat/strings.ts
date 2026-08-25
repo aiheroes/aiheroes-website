@@ -6,11 +6,13 @@ export type ChatLocale = 'nl' | 'en';
 export const STRINGS = {
   nl: {
     launcherLabel: 'Stel je vraag',
-    title: 'AI Heroes assistent',
+    // Header dedupe (David 25-08): title + badge no longer both say "assistent".
+    title: 'AI Heroes',
     aiBadge: 'AI-assistent',
     // EU AI Act Art. 50: perceivable in the interaction itself (SDD D10).
+    // Rewritten 25-08 (David/Frans): shorter, factual, no "mens binnen handbereik".
     disclosure:
-      'Je chat met de AI-assistent van AI Heroes. Antwoorden komen uit onze eigen site-informatie en kunnen onvolledig zijn. Een mens is altijd binnen handbereik.',
+      'Je chat met de AI-assistent van AI Heroes. Antwoorden komen uit onze eigen site-informatie en kunnen fouten bevatten.',
     disclosureLink: 'Hoe dit werkt',
     inputPlaceholder: 'Typ je vraag…',
     send: 'Versturen',
@@ -66,10 +68,10 @@ export const STRINGS = {
   },
   en: {
     launcherLabel: 'Ask a question',
-    title: 'AI Heroes assistant',
+    title: 'AI Heroes',
     aiBadge: 'AI assistant',
     disclosure:
-      "You're chatting with the AI Heroes AI assistant. Answers come from our own site content and may be incomplete. A human is always one message away.",
+      "You're chatting with the AI Heroes AI assistant. Answers come from our own site content and may contain mistakes.",
     disclosureLink: 'How this works',
     inputPlaceholder: 'Type your question…',
     send: 'Send',

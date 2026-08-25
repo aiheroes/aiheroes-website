@@ -16,7 +16,6 @@ import {
   markDisclosed,
   markEscalated,
   resetConversation,
-  restoreConversationId,
   saveMessages,
   wasDisclosed,
   wasEscalated,
@@ -28,6 +27,8 @@ interface Props {
   locale: ChatLocale;
   path: string;
   bookingUrl: string | null;
+  /** Source chips under answers: on for demos, off at public launch (David 25-08). */
+  sourceChips: boolean;
   closing: boolean;
   onCloseRequest: () => void;
   onClosed: () => void;
@@ -52,6 +53,7 @@ export default function ChatPanel({
   locale,
   path,
   bookingUrl,
+  sourceChips,
   closing,
   onCloseRequest,
   onClosed,
@@ -61,9 +63,6 @@ export default function ChatPanel({
   const [conversationId, setConversationId] = useState(() => getConversationId());
   const [pinned, setPinned] = useState(true);
   const [announcement, setAnnouncement] = useState('');
-  const [undoState, setUndoState] = useState<{ messages: UIMessage[]; convId: string } | null>(
-    null,
-  );
   const [slow, setSlow] = useState(false);
   const [silentFail, setSilentFail] = useState(false);
   // A forwarded conversation is a closed thread: the composer locks (handoff best
@@ -232,26 +231,12 @@ export default function ChatPanel({
     [messages],
   );
 
-  // Undo-able clear (audit P2): stash the thread, restore on undo within 6s.
+  // Direct clear, no undo bar (David 25-08 — conscious deviation from the audit's
+  // destructive-action guideline; the founders prefer a quiet UI).
   function newConversation() {
     if (messages.length === 0) return;
-    setUndoState({ messages, convId: conversationId });
     const id = resetConversation();
     setConversationId(id);
-  }
-
-  useEffect(() => {
-    if (!undoState) return;
-    const timer = setTimeout(() => setUndoState(null), 6000);
-    return () => clearTimeout(timer);
-  }, [undoState]);
-
-  function restoreUndo() {
-    if (!undoState) return;
-    restoreConversationId(undoState.convId);
-    saveMessages(undoState.messages);
-    setConversationId(undoState.convId);
-    setUndoState(null);
   }
 
   const errorKind = useMemo(() => {
@@ -443,6 +428,7 @@ export default function ChatPanel({
                 <div className="mr-4 min-w-0">
                   {message.parts.map((part, i) => renderPart(part, i))}
                   {(() => {
+                    if (!sourceChips) return null;
                     // Sources belong under a FINISHED answer — the metadata arrives
                     // at stream start, but showing chips before text reads as noise.
                     const isActive =
@@ -531,20 +517,6 @@ export default function ChatPanel({
           </button>
         )}
       </div>
-
-      {/* Undo bar for a cleared conversation (audit P2). */}
-      {undoState && (
-        <div className="flex items-center justify-between gap-2 border-t border-stone-200 bg-white px-4 py-2 text-xs text-stone-600">
-          <span>{t.cleared}</span>
-          <button
-            type="button"
-            onClick={restoreUndo}
-            className={`font-semibold text-brand-blue underline underline-offset-2 ${RING}`}
-          >
-            {t.undo}
-          </button>
-        </div>
-      )}
 
       {/* Composer — or, after a forward, a closed-thread bar with a fresh start. */}
       {escalated ? (

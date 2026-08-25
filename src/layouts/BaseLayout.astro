@@ -56,6 +56,8 @@ const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ..
 // (handled client-side in the widget), so deploy previews can demo it on any env.
 const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
 const chatBookingUrl = import.meta.env.PUBLIC_CHAT_BOOKING_URL || null;
+// Source chips: on unless explicitly disabled (demo shows RAG; launch turns them off).
+const chatSourceChips = import.meta.env.PUBLIC_CHAT_SOURCE_CHIPS !== 'false';
 ---
 
 <!doctype html>
@@ -184,6 +186,7 @@ const chatBookingUrl = import.meta.env.PUBLIC_CHAT_BOOKING_URL || null;
       path={path}
       enabled={chatEnabled}
       bookingUrl={chatBookingUrl}
+      sourceChips={chatSourceChips}
     />
 
     <!-- Hidden form definitions so Netlify detects them at build time (forms post to "/"). -->
