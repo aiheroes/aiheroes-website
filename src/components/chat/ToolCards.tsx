@@ -103,6 +103,7 @@ export function EscalationForm({
   conversationId,
   token,
   transcript,
+  onDone,
 }: {
   locale: ChatLocale;
   payload: EscalationPayload;
@@ -110,6 +111,7 @@ export function EscalationForm({
   conversationId: string;
   token: string | null;
   transcript: { role: 'user' | 'assistant'; text: string }[];
+  onDone?: () => void;
 }) {
   const t = STRINGS[locale];
   const [email, setEmail] = useState(payload.email ?? '');
@@ -139,6 +141,7 @@ export function EscalationForm({
       if (!res.ok) throw new Error('failed');
       const data = (await res.json()) as { officeHours: boolean };
       setState(data.officeHours ? 'done-office' : 'done-closed');
+      onDone?.();
     } catch {
       setState('error');
     }

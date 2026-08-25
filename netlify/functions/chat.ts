@@ -141,6 +141,12 @@ export default async function handler(request: Request, _context: Context): Prom
         email: z.string().max(200).optional().describe("The visitor's email address, exactly as they gave it"),
         name: z.string().max(120).optional().describe("The visitor's name, if they mentioned it"),
       }),
+      // Execute keeps the tool call answered in history — a dangling call makes
+      // every follow-up request invalid on Gemini (functionCall without response).
+      execute: async () => ({
+        shown: true,
+        note: 'Confirmation card rendered; the visitor confirms in the UI. If you have not yet told them to confirm below, say so in one short sentence; otherwise end your turn.',
+      }),
     }),
   };
 

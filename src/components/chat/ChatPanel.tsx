@@ -5,7 +5,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
-import { ArrowDown, BookOpen, ChevronDown, Headset, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
+import { ArrowDown, BookOpen, Check, ChevronDown, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
 import { ChatMarkdown } from './Markdown';
 import './chat.css';
 import {
@@ -14,10 +14,12 @@ import {
   getSessionId,
   loadMessages,
   markDisclosed,
+  markEscalated,
   resetConversation,
   restoreConversationId,
   saveMessages,
   wasDisclosed,
+  wasEscalated,
 } from './session';
 import { DISCLOSURE_PATH, STRINGS, suggestionsForPath, type ChatLocale } from './strings';
 import { BookingCard, EscalationForm, PageCard, SalonCard, type EscalationPayload } from './ToolCards';
@@ -65,6 +67,19 @@ export default function ChatPanel({
   );
   const [slow, setSlow] = useState(false);
   const [silentFail, setSilentFail] = useState(false);
+  // A forwarded conversation is a closed thread: the composer locks (handoff best
+  // practice — confirmation, expectation, clean break; anything typed after the
+  // forward would never reach the team).
+  const [escalated, setEscalated] = useState(() => wasEscalated(getConversationId()));
+
+  useEffect(() => {
+    setEscalated(wasEscalated(conversationId));
+  }, [conversationId]);
+
+  const onEscalated = useCallback(() => {
+    markEscalated(conversationId);
+    setEscalated(true);
+  }, [conversationId]);
   const sessionId = useMemo(() => getSessionId(), []);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -290,6 +305,7 @@ export default function ChatPanel({
           conversationId={conversationId}
           token={token}
           transcript={transcript}
+          onDone={onEscalated}
         />
       );
     }
@@ -535,6 +551,7 @@ export default function ChatPanel({
               conversationId={conversationId}
               token={token}
               transcript={transcript}
+              onDone={onEscalated}
             />
           )}
         </div>
@@ -565,7 +582,21 @@ export default function ChatPanel({
         </div>
       )}
 
-      {/* Composer */}
+      {/* Composer — or, after a forward, a closed-thread bar with a fresh start. */}
+      {escalated ? (
+        <div className="flex items-center justify-between gap-3 border-t border-stone-200 px-4 py-3">
+          <span className="flex items-center gap-1.5 text-sm text-stone-600">
+            <Check size={15} aria-hidden className="text-brand-blue" /> {t.escalatedBar}
+          </span>
+          <button
+            type="button"
+            onClick={newConversation}
+            className={`rounded-lg bg-brand-dark px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark/85 ${RING}`}
+          >
+            {t.newChat}
+          </button>
+        </div>
+      ) : (
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -613,18 +644,8 @@ export default function ChatPanel({
             </button>
           )}
         </div>
-        {/* The human escape hatch is always visible (SDD D7): the headset sends a
-            normal message, so the handoff happens inside the conversation. */}
-        <button
-          type="button"
-          onClick={() => submit(t.humanRequestMessage)}
-          aria-label={t.talkToHuman}
-          title={t.talkToHuman}
-          className={`mt-1 rounded-md p-1.5 text-stone-400 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
-        >
-          <Headset size={16} aria-hidden />
-        </button>
       </form>
+      )}
       </div>
     </>
   );

@@ -131,6 +131,15 @@ export function isChatEnabled(buildFlag: boolean): boolean {
   }
 }
 
+/** Escalated conversations are closed threads: the composer locks (audit follow-up). */
+export function markEscalated(conversationId: string): void {
+  write(`aih-chat-escalated-${conversationId}`, '1');
+}
+
+export function wasEscalated(conversationId: string): boolean {
+  return read(`aih-chat-escalated-${conversationId}`) === '1';
+}
+
 export function wasDisclosed(): boolean {
   return read(KEYS.disclosed) === '1';
 }
