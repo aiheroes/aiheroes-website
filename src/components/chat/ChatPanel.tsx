@@ -5,7 +5,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
-import { ArrowDown, BookOpen, Check, ChevronDown, RotateCcw, Send, Square, ThumbsDown, ThumbsUp, X } from 'lucide-react';
+import { ArrowDown, BookOpen, Check, ChevronDown, RotateCcw, Send, Square, X } from 'lucide-react';
 import { ChatMarkdown } from './Markdown';
 import './chat.css';
 import {
@@ -59,7 +59,6 @@ export default function ChatPanel({
   const t = STRINGS[locale];
   const [token, setToken] = useState<string | null>(null);
   const [conversationId, setConversationId] = useState(() => getConversationId());
-  const [feedbackGiven, setFeedbackGiven] = useState<Record<string, 'up' | 'down'>>({});
   const [pinned, setPinned] = useState(true);
   const [announcement, setAnnouncement] = useState('');
   const [undoState, setUndoState] = useState<{ messages: UIMessage[]; convId: string } | null>(
@@ -233,17 +232,6 @@ export default function ChatPanel({
     [messages],
   );
 
-  async function giveFeedback(messageId: string, rating: 'up' | 'down') {
-    setFeedbackGiven((prev) => ({ ...prev, [messageId]: rating }));
-    try {
-      await fetch('/api/feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-chat-token': token ?? '' },
-        body: JSON.stringify({ sessionId, conversationId, messageId, rating }),
-      });
-    } catch {
-      /* feedback loss is acceptable */
-    }
   }
 
   // Undo-able clear (audit P2): stash the thread, restore on undo within 6s.
@@ -484,28 +472,6 @@ export default function ChatPanel({
                       </div>
                     );
                   })()}
-                  {textOf(message) && status !== 'streaming' && (
-                    <div className="mt-1 flex gap-1">
-                      <button
-                        type="button"
-                        aria-label={t.helpful}
-                        disabled={Boolean(feedbackGiven[message.id])}
-                        onClick={() => giveFeedback(message.id, 'up')}
-                        className={`rounded p-1 ${RING} ${feedbackGiven[message.id] === 'up' ? 'text-brand-blue' : 'text-stone-400 hover:text-stone-600'}`}
-                      >
-                        <ThumbsUp size={13} aria-hidden />
-                      </button>
-                      <button
-                        type="button"
-                        aria-label={t.notHelpful}
-                        disabled={Boolean(feedbackGiven[message.id])}
-                        onClick={() => giveFeedback(message.id, 'down')}
-                        className={`rounded p-1 ${RING} ${feedbackGiven[message.id] === 'down' ? 'text-brand-red' : 'text-stone-400 hover:text-stone-600'}`}
-                      >
-                        <ThumbsDown size={13} aria-hidden />
-                      </button>
-                    </div>
-                  )}
                 </div>
               )}
             </div>
