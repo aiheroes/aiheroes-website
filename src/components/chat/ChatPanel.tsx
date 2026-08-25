@@ -182,6 +182,21 @@ export default function ChatPanel({
 
   const busy = status === 'submitted' || status === 'streaming';
 
+  // Mobile: tapping an internal link minimizes the sheet so the visitor actually
+  // sees the page they navigated to (the full-screen sheet would cover it).
+  // Desktop keeps the corner panel open next to the new page. New-tab links are
+  // left alone on both. The conversation survives either way (transition:persist).
+  const onPanelClick = useCallback(
+    (event: React.MouseEvent) => {
+      const anchor = (event.target as HTMLElement).closest?.('a');
+      if (!anchor || anchor.target === '_blank') return;
+      const href = anchor.getAttribute('href') ?? '';
+      if (!href || href.startsWith('#')) return;
+      if (window.matchMedia('(max-width: 639px)').matches) onCloseRequest();
+    },
+    [onCloseRequest],
+  );
+
   const submit = useCallback(
     (text: string) => {
       const trimmed = text.trim();
@@ -320,6 +335,7 @@ export default function ChatPanel({
         aria-modal="true"
         aria-label={t.title}
         onKeyDown={onKeyDown}
+        onClick={onPanelClick}
         onAnimationEnd={(e) => {
           if (closing && e.target === panelRef.current) onClosed();
         }}
