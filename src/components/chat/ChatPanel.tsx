@@ -160,16 +160,6 @@ export default function ChatPanel({
     prevStatus.current = status;
   }, [status, messages, t.thinking]);
 
-  // Honest waiting: after 15s without an answer, say it's slower than usual.
-  useEffect(() => {
-    if (status !== 'submitted') {
-      setSlow(false);
-      return;
-    }
-    const timer = setTimeout(() => setSlow(true), 15_000);
-    return () => clearTimeout(timer);
-  }, [status]);
-
   // Basic focus trap + Escape to close.
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
@@ -194,6 +184,27 @@ export default function ChatPanel({
   );
 
   const busy = status === 'submitted' || status === 'streaming';
+
+  // The typing dots must reflect what the visitor SEES, not the stream state:
+  // our stream emits metadata instantly, flipping status to "streaming" before any
+  // visible content — so keying the indicator on `submitted` kills it prematurely.
+  const lastMsg = messages[messages.length - 1];
+  const awaitingContent =
+    busy &&
+    !(
+      lastMsg?.role === 'assistant' &&
+      (textOf(lastMsg).trim().length > 0 || lastMsg.parts.some((p) => p.type.startsWith('tool-')))
+    );
+
+  // Honest waiting: after 15s without visible content, say it's slower than usual.
+  useEffect(() => {
+    if (!awaitingContent) {
+      setSlow(false);
+      return;
+    }
+    const timer = setTimeout(() => setSlow(true), 15_000);
+    return () => clearTimeout(timer);
+  }, [awaitingContent]);
 
   // Mobile: tapping an internal link minimizes the sheet so the visitor actually
   // sees the page they navigated to (the full-screen sheet would cover it).
@@ -461,7 +472,7 @@ export default function ChatPanel({
             </div>
           ))}
 
-          {status === 'submitted' && (
+          {awaitingContent && (
             <div className="text-stone-400">
               <span className="aih-dots" role="img" aria-label={t.thinking}>
                 <span /><span /><span />
