@@ -232,8 +232,6 @@ export default function ChatPanel({
     [messages],
   );
 
-  }
-
   // Undo-able clear (audit P2): stash the thread, restore on undo within 6s.
   function newConversation() {
     if (messages.length === 0) return;
