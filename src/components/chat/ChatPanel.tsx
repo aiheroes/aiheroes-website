@@ -49,6 +49,19 @@ function textOf(message: UIMessage): string {
     .join('\n');
 }
 
+/**
+ * Whether an assistant message shows anything ON SCREEN. search_knowledge renders
+ * nothing (server-side retrieval), so it must not count — or the typing indicator
+ * dies during the invisible search step while the visitor stares at a blank gap.
+ */
+function hasVisibleContent(message: UIMessage | undefined): boolean {
+  return (
+    message?.role === 'assistant' &&
+    (textOf(message).trim().length > 0 ||
+      message.parts.some((p) => p.type.startsWith('tool-') && p.type !== 'tool-search_knowledge'))
+  );
+}
+
 export default function ChatPanel({
   locale,
   path,
@@ -150,12 +163,10 @@ export default function ChatPanel({
     ) {
       const last = messages[messages.length - 1];
       if (last?.role === 'assistant') setAnnouncement(textOf(last));
-      // A stream that ended without any assistant content is a silent failure
-      // (throttled upstream, killed function) — surface the retry UI, never nothing.
-      const hasContent =
-        last?.role === 'assistant' &&
-        (textOf(last).trim().length > 0 || last.parts.some((p) => p.type.startsWith('tool-')));
-      setSilentFail(!hasContent);
+      // A stream that ended without any VISIBLE assistant content is a silent
+      // failure (throttled upstream, killed function, search-only step) —
+      // surface the retry UI, never nothing.
+      setSilentFail(!hasVisibleContent(last));
     }
     prevStatus.current = status;
   }, [status, messages, t.thinking]);
@@ -186,15 +197,8 @@ export default function ChatPanel({
   const busy = status === 'submitted' || status === 'streaming';
 
   // The typing dots must reflect what the visitor SEES, not the stream state:
-  // our stream emits metadata instantly, flipping status to "streaming" before any
-  // visible content — so keying the indicator on `submitted` kills it prematurely.
-  const lastMsg = messages[messages.length - 1];
-  const awaitingContent =
-    busy &&
-    !(
-      lastMsg?.role === 'assistant' &&
-      (textOf(lastMsg).trim().length > 0 || lastMsg.parts.some((p) => p.type.startsWith('tool-')))
-    );
+  // metadata and invisible search steps arrive long before visible content.
+  const awaitingContent = busy && !hasVisibleContent(messages[messages.length - 1]);
 
   // Honest waiting: after 15s without visible content, say it's slower than usual.
   useEffect(() => {
