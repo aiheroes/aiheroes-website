@@ -10,8 +10,10 @@ register();
 let modules = null;
 async function load() {
   if (!modules) {
-    const [{ default: handler }, { issueToken }] = await Promise.all([
-      import('../netlify/functions/chat.ts'),
+    // The Vercel function is the source of truth since the cutover (api/chat); the
+    // Netlify copy is retired after the 7-day rollback window.
+    const [{ POST: handler }, { issueToken }] = await Promise.all([
+      import('../api/chat/index.ts'),
       import('../server/guards.ts'),
     ]);
     modules = { handler, issueToken };
@@ -59,7 +61,7 @@ export default class ChatPipelineProvider {
       body: JSON.stringify({ messages, sessionId, conversationId, locale, path: '/' }),
     });
 
-    const response = await handler(request, {});
+    const response = await handler(request);
     if (!response.ok) {
       return { error: `HTTP ${response.status}: ${await response.text()}` };
     }
