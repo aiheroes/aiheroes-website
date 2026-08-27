@@ -11,5 +11,5 @@
     "noEmit": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["server/**/*.ts", "netlify/functions/**/*.ts", "scripts/build-index/**/*.ts"]
+  "include": ["server/**/*.ts", "netlify/functions/**/*.ts", "api/**/*.ts", "scripts/build-index/**/*.ts"]
 }

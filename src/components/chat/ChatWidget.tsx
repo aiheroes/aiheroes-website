@@ -34,6 +34,17 @@ export default function ChatWidget({
     setVisible(isChatEnabled(enabled));
   }, [enabled]);
 
+  // The site's sticky "Start gesprek" CTA opens the chat while the assistant is
+  // live (decision A5 26-08): one conversation entry point instead of two buttons.
+  useEffect(() => {
+    const open = () => {
+      setVisible(true);
+      setOpen(true);
+    };
+    window.addEventListener('aih:open-chat', open);
+    return () => window.removeEventListener('aih:open-chat', open);
+  }, []);
+
   // Prewarm on intent (audit P1): hovering/focusing the launcher warms the function
   // and fetches the widget token before the click. Idempotent and model-call-free.
   const prewarm = useCallback(() => {

@@ -28,25 +28,28 @@ export function persistTurn(opts: {
   userText: string;
   assistantText: string;
   sources: { url: string; title: string }[];
-}): void {
-  // Deliberately not awaited by callers on the hot path.
-  void insert('conversations', {
-    id: opts.conversationId,
-    locale: opts.locale,
-    first_path: opts.pagePath,
-    last_at: new Date().toISOString(),
-  });
-  void insert('messages', {
-    conversation_id: opts.conversationId,
-    role: 'user',
-    content: { text: opts.userText },
-  });
-  void insert('messages', {
-    conversation_id: opts.conversationId,
-    role: 'assistant',
-    content: { text: opts.assistantText },
-    sources: opts.sources,
-  });
+}): Promise<void> {
+  // Never awaited on the hot path; on serverless runtimes the caller hands this
+  // promise to waitUntil() so the write survives the response ending.
+  return Promise.all([
+    insert('conversations', {
+      id: opts.conversationId,
+      locale: opts.locale,
+      first_path: opts.pagePath,
+      last_at: new Date().toISOString(),
+    }),
+    insert('messages', {
+      conversation_id: opts.conversationId,
+      role: 'user',
+      content: { text: opts.userText },
+    }),
+    insert('messages', {
+      conversation_id: opts.conversationId,
+      role: 'assistant',
+      content: { text: opts.assistantText },
+      sources: opts.sources,
+    }),
+  ]).then(() => undefined);
 }
 
 export function persistEscalation(opts: {

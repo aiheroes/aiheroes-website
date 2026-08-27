@@ -63,8 +63,16 @@ The islands reuse legacy React components via `src/lib/react-router-shim.tsx`, a
 
 ## Preview workflow
 
-The agent environment can't reach the user's `localhost`. To share a preview, either open a PR (auto Netlify deploy preview) or run a Netlify **draft** deploy (never `--prod`):
+Hosting moved from Netlify to **Vercel** (team `ai-heroes`, project `aiheroes-website`, functions in `api/`
+pinned to `fra1`; see `vercel.json`). Deploys run through the org's GitHub Actions workflow
+(`.github/workflows/vercel.yml`: `npm run check` gates every deploy; PRs get preview deployments).
+Manual previews from a local checkout:
 
 ```bash
-netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
+vercel deploy            # preview URL (noindex by default)
+vercel deploy --prod     # production — only from master, only after the parity suite is green
+node scripts/check-parity.mjs <preview-url>   # SEO/behaviour parity vs https://aiheroes.io
 ```
+
+Forms (`/api/contact`, `/api/apply`) and chat escalation mail go through Resend from `send.aiheroes.io`.
+`netlify.toml` and `netlify/` are kept only until the post-cutover rollback window closes.

@@ -189,23 +189,5 @@ const chatSourceChips = import.meta.env.PUBLIC_CHAT_SOURCE_CHIPS !== 'false';
       sourceChips={chatSourceChips}
     />
 
-    <!-- Hidden form definitions so Netlify detects them at build time (forms post to "/"). -->
-    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-      <input type="text" name="bot-field" />
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="organization" />
-      <input type="text" name="topics" />
-      <textarea name="message"></textarea>
-    </form>
-    <form name="application" data-netlify="true" data-netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-      <input type="text" name="bot-field" />
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <input type="text" name="position" />
-      <textarea name="motivation"></textarea>
-      <input type="file" name="cv" />
-    </form>
   </body>
 </html>

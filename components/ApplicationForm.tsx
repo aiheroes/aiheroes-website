@@ -85,7 +85,6 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     }
 
     const data = new FormData();
-    data.append('form-name', 'application');
     data.append('bot-field', honeypot);
     data.append('name', formData.name);
     data.append('email', formData.email);
@@ -97,7 +96,8 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
     }
 
     try {
-      const response = await fetch('/', {
+      // Cutover plan F1: Resend-backed function (CV attached) instead of Netlify Forms.
+      const response = await fetch('/api/apply', {
         method: 'POST',
         body: data,
       });

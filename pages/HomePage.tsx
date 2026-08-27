@@ -263,17 +263,22 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
       </main>
 
-      {/* Sticky CTA - only show when hero is scrolled out. Suppressed while the
-          chat assistant is live: it occupies the same corner (launch plan A5). */}
+            {/* Sticky CTA - only show when hero is scrolled out. While the chat assistant
+          is live it OPENS the chat (one floating entry, decision A5 26-08); otherwise
+          it scrolls to the contact form as before. */}
       <div
-        className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
-          showStickyCta && import.meta.env.PUBLIC_CHAT_ENABLED !== 'true'
-            ? 'translate-y-0 opacity-100'
-            : 'translate-y-20 opacity-0 pointer-events-none'
+        className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
+          showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
         }`}
       >
         <button
-          onClick={scrollToContact}
+          onClick={() => {
+            if (import.meta.env.PUBLIC_CHAT_ENABLED === 'true') {
+              window.dispatchEvent(new CustomEvent('aih:open-chat'));
+            } else {
+              scrollToContact();
+            }
+          }}
           className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
         >
           <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>

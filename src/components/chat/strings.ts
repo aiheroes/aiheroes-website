@@ -137,4 +137,4 @@ export function suggestionsForPath(locale: ChatLocale, path: string): readonly s
 export const DISCLOSURE_PATH = { nl: '/nl/legal/ai-assistent', en: '/en/legal/ai-assistant' } as const;
 
 // Render-layer link allowlist (SDD D9 layer 7) — keep in sync with server/config.ts.
-export const LINK_ALLOWLIST = ['aiheroes.io', 'lu.ma', 'luma.com', 'cal.com'];
+export const LINK_ALLOWLIST = ['aiheroes.io', 'lu.ma', 'luma.com', 'cal.com', 'calendar.app.google'];

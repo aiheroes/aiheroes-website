@@ -59,21 +59,19 @@ export const Contact: React.FC<ContactProps> = ({ content, contactFormContent })
       return;
     }
 
-    const submitData = new URLSearchParams({
-      'form-name': 'contact',
-      'bot-field': honeypot,
-      name: formData.name,
-      email: formData.email,
-      organization: formData.organization,
-      topics: selectedTopics.join(', '),
-      message: formData.message
-    });
-
+    // Cutover plan F1: Resend-backed function instead of Netlify Forms.
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: submitData.toString(),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          botField: honeypot,
+          name: formData.name,
+          email: formData.email,
+          organization: formData.organization,
+          topics: selectedTopics.join(', '),
+          message: formData.message,
+        }),
       });
 
       if (response.ok) {
