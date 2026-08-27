@@ -1,7 +1,7 @@
 // Pseudonymous transcript persistence (SDD D6): fire-and-forget writes to Supabase EU.
 // No Supabase configured -> silent no-op; the visitor experience never depends on this.
 
-import { config } from './config';
+import { config } from './config.js';
 
 async function insert(table: string, row: Record<string, unknown>): Promise<void> {
   if (!config.supabaseUrl || !config.supabaseServiceKey) return;

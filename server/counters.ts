@@ -7,7 +7,7 @@
 //    unreachable: rate limiting still works per function instance, which is strictly
 //    better than failing open with no limits at all.
 
-import { config } from './config';
+import { config } from './config.js';
 
 type Window = { key: string; windowStart: number; count: number };
 

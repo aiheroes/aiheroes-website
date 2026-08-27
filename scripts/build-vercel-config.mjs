@@ -70,9 +70,12 @@ const config = {
   cleanUrls: true,
   trailingSlash: false,
   regions: ['fra1'],
+  // The functions validator only accepts directory-scoped globs, so chat lives in
+  // api/chat/index.ts (still /api/chat) to carry the cancellation flag alone — never
+  // on the form/mail functions, where a disconnect mid-send would lose the email.
   functions: {
     'api/*.ts': { maxDuration: 60 },
-    'api/chat.ts': { maxDuration: 60, supportsCancellation: true },
+    'api/chat/*.ts': { maxDuration: 60, supportsCancellation: true },
   },
   redirects,
   rewrites,

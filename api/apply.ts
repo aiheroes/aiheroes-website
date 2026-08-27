@@ -3,9 +3,9 @@
 // storage, so no retention question: the CV lives in the team's inbox only.
 
 import { z } from 'zod';
-import { increment } from '../server/counters';
-import { checkOrigin, hashIp } from '../server/guards';
-import { sendMail } from '../server/mail';
+import { increment } from '../server/counters.js';
+import { checkOrigin, hashIp } from '../server/guards.js';
+import { sendMail } from '../server/mail.js';
 
 const MAX_CV_BYTES = 8 * 1024 * 1024;
 const ALLOWED_CV_TYPES = new Set([

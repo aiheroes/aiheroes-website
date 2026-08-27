@@ -2,7 +2,7 @@
 // (CV attached), and the email copy of chat escalations. No API key -> honest
 // {sent:false} so callers can surface a real error instead of a fake success.
 
-import { config } from './config';
+import { config } from './config.js';
 
 export interface MailAttachment {
   filename: string;

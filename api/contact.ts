@@ -4,9 +4,9 @@
 // sees the error state instead of a fake success.
 
 import { z } from 'zod';
-import { increment } from '../server/counters';
-import { checkOrigin, hashIp } from '../server/guards';
-import { sendMail } from '../server/mail';
+import { increment } from '../server/counters.js';
+import { checkOrigin, hashIp } from '../server/guards.js';
+import { sendMail } from '../server/mail.js';
 
 const bodySchema = z.object({
   name: z.string().trim().min(1).max(120),

@@ -3,11 +3,11 @@
 // escalation can never be missed. Vercel function, region fra1.
 
 import { z } from 'zod';
-import { config as appConfig, isOfficeHours } from '../server/config';
-import { increment, notifySlack } from '../server/counters';
-import { checkOrigin, hashIp, verifyToken } from '../server/guards';
-import { sendMail } from '../server/mail';
-import { persistEscalation } from '../server/persist';
+import { config as appConfig, isOfficeHours } from '../server/config.js';
+import { increment, notifySlack } from '../server/counters.js';
+import { checkOrigin, hashIp, verifyToken } from '../server/guards.js';
+import { sendMail } from '../server/mail.js';
+import { persistEscalation } from '../server/persist.js';
 
 const bodySchema = z.object({
   sessionId: z.string().uuid(),

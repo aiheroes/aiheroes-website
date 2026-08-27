@@ -1,7 +1,7 @@
 // Request guards for the chat endpoint (SDD D9 layers 1-4).
 
 import { createHmac, timingSafeEqual, randomUUID } from 'node:crypto';
-import { config } from './config';
+import { config } from './config.js';
 
 function secret(): string {
   if (config.tokenSecret) return config.tokenSecret;

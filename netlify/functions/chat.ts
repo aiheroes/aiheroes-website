@@ -14,14 +14,14 @@ import {
   type UIMessage,
 } from 'ai';
 import { z } from 'zod';
-import { config as appConfig } from '../../server/config';
-import { checkRateLimits } from '../../server/counters';
-import { recordSpend } from '../../server/counters';
-import { checkOrigin, hashIp, validateUserText, verifyToken } from '../../server/guards';
-import { persistTurn } from '../../server/persist';
-import { buildSystemPrompt, formatSources } from '../../server/prompt';
-import { getModel, usageToCents } from '../../server/provider';
-import { retrieve } from '../../server/search';
+import { config as appConfig } from '../../server/config.js';
+import { checkRateLimits } from '../../server/counters.js';
+import { recordSpend } from '../../server/counters.js';
+import { checkOrigin, hashIp, validateUserText, verifyToken } from '../../server/guards.js';
+import { persistTurn } from '../../server/persist.js';
+import { buildSystemPrompt, formatSources } from '../../server/prompt.js';
+import { getModel, usageToCents } from '../../server/provider.js';
+import { retrieve } from '../../server/search.js';
 
 export const config: Config = {
   path: '/api/chat',

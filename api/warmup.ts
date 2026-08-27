@@ -4,7 +4,7 @@
 // hammering it is harmless.
 
 import { z } from 'zod';
-import { checkOrigin, issueToken, newSessionId } from '../server/guards';
+import { checkOrigin, issueToken, newSessionId } from '../server/guards.js';
 
 const bodySchema = z.object({ sessionId: z.string().uuid().optional() });
 

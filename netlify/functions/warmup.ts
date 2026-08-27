@@ -5,7 +5,7 @@
 
 import type { Config } from '@netlify/functions';
 import { z } from 'zod';
-import { checkOrigin, issueToken, newSessionId } from '../../server/guards';
+import { checkOrigin, issueToken, newSessionId } from '../../server/guards.js';
 
 export const config: Config = {
   path: '/api/warmup',

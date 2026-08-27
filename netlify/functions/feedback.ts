@@ -2,9 +2,9 @@
 
 import type { Config } from '@netlify/functions';
 import { z } from 'zod';
-import { increment } from '../../server/counters';
-import { checkOrigin, hashIp, verifyToken } from '../../server/guards';
-import { persistFeedback } from '../../server/persist';
+import { increment } from '../../server/counters.js';
+import { checkOrigin, hashIp, verifyToken } from '../../server/guards.js';
+import { persistFeedback } from '../../server/persist.js';
 
 export const config: Config = {
   path: '/api/feedback',
