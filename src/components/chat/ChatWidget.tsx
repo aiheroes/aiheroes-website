@@ -1,6 +1,6 @@
 // Widget island root (SDD D1 + UX audit): a tiny launcher; the panel bundle loads on
-// first open. Prewarms the backend on hover/focus intent. Gated by
-// PUBLIC_CHAT_ENABLED at build time, or per-browser via ?chat=1 (preview).
+// first open. Prewarms the backend on hover/focus intent. On by default; gated by
+// PUBLIC_CHAT_ENABLED=false at build time (kill switch), or re-enabled per browser via ?chat=1.
 
 import React, { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { MessageCircle } from 'lucide-react';

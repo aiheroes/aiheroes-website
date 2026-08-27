@@ -12,6 +12,7 @@ import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { useSEO } from '../hooks/useSEO';
 import { ArrowRight } from 'lucide-react';
+import { CHAT_ENABLED } from '../src/data/chat-flags';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
 
@@ -273,7 +274,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
       >
         <button
           onClick={() => {
-            if (import.meta.env.PUBLIC_CHAT_ENABLED === 'true') {
+            if (CHAT_ENABLED) {
               window.dispatchEvent(new CustomEvent('aih:open-chat'));
             } else {
               scrollToContact();

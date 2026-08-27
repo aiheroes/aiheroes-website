@@ -7,6 +7,7 @@ import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 import { useSEO, calculateAlternatePath } from '../hooks/useSEO';
 import { ArrowRight } from 'lucide-react';
+import { CHAT_ENABLED } from '../src/data/chat-flags';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -264,7 +265,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         >
           <button
             onClick={() => {
-              if (import.meta.env.PUBLIC_CHAT_ENABLED === 'true') {
+              if (CHAT_ENABLED) {
                 window.dispatchEvent(new CustomEvent('aih:open-chat'));
               } else {
                 scrollToContact();

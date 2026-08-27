@@ -11,6 +11,7 @@ import { CONTENT } from '../data/content';
 import NavbarIsland from '../components/islands/NavbarIsland';
 import { Footer } from '../../components/Footer';
 import ChatWidget from '../components/chat/ChatWidget';
+import { CHAT_ENABLED, CHAT_BOOKING_URL, CHAT_SOURCE_CHIPS } from '../data/chat-flags';
 
 export interface Props {
   lang: Lang;
@@ -54,10 +55,11 @@ const hasOwnOrgSchema = pageSchemas.some((s) => ORG_TYPES.includes(s['@type']));
 const schemas = hasOwnOrgSchema ? pageSchemas : [PROFESSIONAL_SERVICE_SCHEMA, ...pageSchemas];
 // Chat assistant (SDD D1): build-time flag; ?chat=1 also enables it per browser
 // (handled client-side in the widget), so deploy previews can demo it on any env.
-const chatEnabled = import.meta.env.PUBLIC_CHAT_ENABLED === 'true';
-const chatBookingUrl = import.meta.env.PUBLIC_CHAT_BOOKING_URL || null;
-// Source chips: on unless explicitly disabled (demo shows RAG; launch turns them off).
-const chatSourceChips = import.meta.env.PUBLIC_CHAT_SOURCE_CHIPS !== 'false';
+// Flags resolve in src/data/chat-flags.ts: ON by default, PUBLIC_CHAT_ENABLED=false
+// is the kill switch (Vercel "sensitive" env vars arrive empty in CI builds).
+const chatEnabled = CHAT_ENABLED;
+const chatBookingUrl = CHAT_BOOKING_URL;
+const chatSourceChips = CHAT_SOURCE_CHIPS;
 ---
 
 <!doctype html>
