@@ -12,7 +12,10 @@ const bodySchema = z.object({
   rating: z.enum(['up', 'down']),
 });
 
-export default async function handler(request: Request): Promise<Response> {
+// Vercel treats a module as a Web-API function only when it exports HTTP-method
+// handlers (GET/POST/...); a default export is invoked with the Node (req, res)
+// signature and a returned Response is silently dropped (504).
+export async function POST(request: Request): Promise<Response> {
   if (request.method !== 'POST') return new Response(null, { status: 405 });
   if (!checkOrigin(request)) return new Response(null, { status: 403 });
 

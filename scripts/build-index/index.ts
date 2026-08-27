@@ -227,7 +227,8 @@ const { getEmbeddingModel } = await import('../../server/provider');
 const { config: appConfig } = await import('../../server/config');
 // Embed on Netlify builds (deployed index is always hybrid-ready) or when forced
 // with CHAT_EMBED=1; plain local builds stay fast and diff-free (BM25-only).
-const shouldEmbed = process.env.NETLIFY === 'true' || process.env.CHAT_EMBED === '1';
+const shouldEmbed =
+  process.env.NETLIFY === 'true' || process.env.VERCEL === '1' || process.env.CHAT_EMBED === '1';
 const embeddingModel = shouldEmbed ? await getEmbeddingModel().catch(() => null) : null;
 if (embeddingModel) {
   // Embedding failure (rate limits, quota, outage) must never break the site build:

@@ -39,7 +39,10 @@ const json = (status: number, body: unknown) =>
     headers: { 'Content-Type': 'application/json' },
   });
 
-export default async function handler(request: Request): Promise<Response> {
+// Vercel treats a module as a Web-API function only when it exports HTTP-method
+// handlers (GET/POST/...); a default export is invoked with the Node (req, res)
+// signature and a returned Response is silently dropped (504).
+export async function POST(request: Request): Promise<Response> {
   if (request.method !== 'POST') return json(405, { error: 'method_not_allowed' });
   if (!checkOrigin(request)) return json(403, { error: 'forbidden' });
 

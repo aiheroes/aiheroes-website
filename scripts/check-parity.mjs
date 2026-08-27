@@ -2,7 +2,7 @@
 // assertion against a target deployment; run it on the preview and again on
 // production after the DNS flip.
 //
-//   node scripts/check-parity.mjs <target-base> [reference-base]
+//   [VERCEL_BYPASS=<automation-bypass-secret>] node scripts/check-parity.mjs <target-base> [reference-base]
 //   e.g. node scripts/check-parity.mjs https://aiheroes-website-xyz.vercel.app https://aiheroes.io
 //
 // Checks: (1) every netlify.toml redirect rule, (2) old-sitemap fixture, (3) live
@@ -30,6 +30,21 @@ function check(ok, label, detail = '') {
 }
 const head = (url, init = {}) => fetch(url, { redirect: 'manual', ...init });
 
+// Preview deployments sit behind Vercel Authentication; VERCEL_BYPASS carries the
+// project's "Protection Bypass for Automation" secret (never commit it). Only sent
+// to the target, never to the reference.
+const bypass = process.env.VERCEL_BYPASS;
+if (bypass) {
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (url, init = {}) => {
+    const href = typeof url === 'string' ? url : (url.url ?? String(url));
+    if (!href.startsWith(target)) return realFetch(url, init);
+    const headers = new Headers(init.headers ?? {});
+    headers.set('x-vercel-protection-bypass', bypass);
+    return realFetch(url, { ...init, headers });
+  };
+}
+
 // ---------- (1) redirect matrix from netlify.toml ----------
 const toml = readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
 const rules = [];
@@ -50,11 +65,21 @@ for (const rule of rules) {
     check(res.status === 410, `410 ${samplePath}`, `got ${res.status}`);
     continue;
   }
-  const loc = res.headers.get('location') ?? '';
+  // Vercel normalises a trailing slash (308) before the redirect table runs, so a
+  // legacy "/foo/" rule answers in two permanent hops. Follow one extra permanent
+  // hop and assert the final location; a 302/307 anywhere fails the rule.
+  let hop = res;
+  let loc = hop.headers.get('location') ?? '';
+  const hops = [hop.status];
+  if ((hop.status === 301 || hop.status === 308) && loc.startsWith('/') && loc !== expectedLoc && loc !== expectedLoc.replace(/\/$/, '')) {
+    hop = await head(target + loc);
+    loc = hop.headers.get('location') ?? '';
+    hops.push(hop.status);
+  }
   const locPath = loc.startsWith('http') ? new URL(loc).pathname + new URL(loc).hash : loc;
-  const okStatus = res.status === 301 || res.status === 308;
+  const okStatus = hops.every((st) => st === 301 || st === 308);
   const okLoc = locPath === expectedLoc || locPath === expectedLoc.replace(/\/$/, '');
-  check(okStatus && okLoc, `301 ${samplePath} -> ${expectedLoc}`, `got ${res.status} ${loc}`);
+  check(okStatus && okLoc, `301 ${samplePath} -> ${expectedLoc}`, `got ${hops.join('->')} ${loc}`);
 }
 
 // ---------- (2) old-sitemap fixture: 200 or redirect chain to 200 ----------
@@ -121,7 +146,10 @@ for (const path of ['/', '/en']) {
   check((cat.headers.get('content-type') ?? '').startsWith('application/linkset+json'), 'api-catalog content-type', cat.headers.get('content-type') ?? '');
   for (const file of ['/robots.txt', '/llms.txt', '/sitemap-index.xml']) {
     const [ta, ra] = await Promise.all([fetch(target + file).then((r) => r.text()), fetch(reference + file).then((r) => r.text())]);
-    check(ta.trim() === ra.trim(), `static identical ${file}`);
+    // Line endings normalised: a Windows-side `vercel deploy --prebuilt` uploads CRLF
+    // public files; CI (Linux) does not. Content must match otherwise.
+    const norm = (t) => t.replace(/\r\n/g, '\n').trim();
+    check(norm(ta) === norm(ra), `static identical ${file}`);
   }
 }
 
