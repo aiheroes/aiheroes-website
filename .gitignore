@@ -31,3 +31,6 @@ dist-ssr
 
 progress-overview.html
 .vercel
+
+# promptfoo eval outputs
+.evalout*.json
