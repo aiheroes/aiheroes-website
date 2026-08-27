@@ -1,0 +1,24 @@
+# Type-check gate on every push and PR (launch plan D2). Lives in its own workflow
+# so it runs even while vercel.yml cannot start: a reusable workflow with a
+# required secret (VERCEL_TOKEN) fails validation before any job runs when the
+# secret is missing, which would otherwise hide this gate too.
+
+name: Check
+
+on:
+  push:
+    branches: [master, feat/**]
+  pull_request:
+    branches: [master]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
