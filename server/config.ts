@@ -54,7 +54,7 @@ export const config = {
   slackWebhookUrl: process.env.CHAT_SLACK_WEBHOOK_URL ?? '',
   supabaseUrl: process.env.CHAT_SUPABASE_URL ?? '',
   supabaseServiceKey: process.env.CHAT_SUPABASE_SERVICE_KEY ?? '',
-  bookingUrl: process.env.CHAT_BOOKING_URL ?? '', // booking link; empty -> contact-form fallback
+  bookingUrl: process.env.CHAT_BOOKING_URL ?? 'https://calendar.app.google/GV4mwWWbdzJJJBfW9', // public booking link (same default as chat-flags.ts)
   salonLumaUrl: 'https://luma.com/AI-Salon-Groningen-September-2026',
   // Netlify exposes URL; Vercel exposes VERCEL_PROJECT_PRODUCTION_URL (host only).
   siteOrigin:
