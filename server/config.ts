@@ -63,10 +63,12 @@ export const config = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : 'https://aiheroes.io'),
 
-  // Transactional mail (Resend, sending subdomain send.aiheroes.io, region eu-west-1).
+  // Transactional mail (Resend, region eu-west-1). The verified domain is the root
+  // aiheroes.io (Resend's return-path records live on send.aiheroes.io, so root
+  // mail records stay untouched for the Cirrux migration); From must be @aiheroes.io.
   mail: {
     apiKey: process.env.RESEND_API_KEY ?? '',
-    from: process.env.MAIL_FROM ?? 'AI Heroes <noreply@send.aiheroes.io>',
+    from: process.env.MAIL_FROM ?? 'AI Heroes <noreply@aiheroes.io>',
     to: process.env.MAIL_TO ?? 'hello@aiheroes.io',
   },
 
