@@ -169,7 +169,11 @@ export async function POST(request: Request): Promise<Response> {
     onError: ({ error }) => {
       console.error('chat model error:', error instanceof Error ? error.message : String(error));
     },
-    onFinish: ({ usage, text }) => {
+    onFinish: ({ usage, text, steps }) => {
+      // `text` is the FINAL step only; with display tools the final step is often
+      // empty (the model answers, calls a card tool, then ends). Persist what the
+      // visitor actually saw: every step's text.
+      const fullText = steps.map((s) => s.text).filter(Boolean).join('\n\n') || text;
       // Post-response work must outlive the response on Vercel (SDD D6/D9).
       waitUntil(recordSpend(usageToCents(route, usage)));
       waitUntil(persistTurn({
@@ -177,7 +181,7 @@ export async function POST(request: Request): Promise<Response> {
         locale: body.locale,
         pagePath: body.path,
         userText: lastUserText,
-        assistantText: text,
+        assistantText: fullText,
         sources: sources.map((s) => ({ url: s.url, title: s.title })),
       }));
     },
