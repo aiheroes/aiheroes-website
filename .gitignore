@@ -37,3 +37,4 @@ progress-overview.html
 
 # tool-installed agent skills (vercel integration add drops these)
 .agents/
+skills-lock.json
