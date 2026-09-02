@@ -30,3 +30,11 @@ dist-ssr
 .netlify
 
 progress-overview.html
+.vercel
+
+# promptfoo eval outputs
+.evalout*.json
+
+# tool-installed agent skills (vercel integration add drops these)
+.agents/
+skills-lock.json

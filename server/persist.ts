@@ -1,7 +1,7 @@
 // Pseudonymous transcript persistence (SDD D6): fire-and-forget writes to Supabase EU.
 // No Supabase configured -> silent no-op; the visitor experience never depends on this.
 
-import { config } from './config';
+import { config } from './config.js';
 
 async function insert(table: string, row: Record<string, unknown>): Promise<void> {
   if (!config.supabaseUrl || !config.supabaseServiceKey) return;
@@ -28,25 +28,28 @@ export function persistTurn(opts: {
   userText: string;
   assistantText: string;
   sources: { url: string; title: string }[];
-}): void {
-  // Deliberately not awaited by callers on the hot path.
-  void insert('conversations', {
-    id: opts.conversationId,
-    locale: opts.locale,
-    first_path: opts.pagePath,
-    last_at: new Date().toISOString(),
-  });
-  void insert('messages', {
-    conversation_id: opts.conversationId,
-    role: 'user',
-    content: { text: opts.userText },
-  });
-  void insert('messages', {
-    conversation_id: opts.conversationId,
-    role: 'assistant',
-    content: { text: opts.assistantText },
-    sources: opts.sources,
-  });
+}): Promise<void> {
+  // Never awaited on the hot path; on serverless runtimes the caller hands this
+  // promise to waitUntil() so the write survives the response ending.
+  return Promise.all([
+    insert('conversations', {
+      id: opts.conversationId,
+      locale: opts.locale,
+      first_path: opts.pagePath,
+      last_at: new Date().toISOString(),
+    }),
+    insert('messages', {
+      conversation_id: opts.conversationId,
+      role: 'user',
+      content: { text: opts.userText },
+    }),
+    insert('messages', {
+      conversation_id: opts.conversationId,
+      role: 'assistant',
+      content: { text: opts.assistantText },
+      sources: opts.sources,
+    }),
+  ]).then(() => undefined);
 }
 
 export function persistEscalation(opts: {

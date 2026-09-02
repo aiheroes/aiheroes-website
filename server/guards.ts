@@ -1,7 +1,7 @@
 // Request guards for the chat endpoint (SDD D9 layers 1-4).
 
 import { createHmac, timingSafeEqual, randomUUID } from 'node:crypto';
-import { config } from './config';
+import { config } from './config.js';
 
 function secret(): string {
   if (config.tokenSecret) return config.tokenSecret;
@@ -36,13 +36,14 @@ export function verifyToken(token: string | null, sessionId: string): boolean {
 /** Salted, truncated IP hash — never store or log raw IPs (V4). */
 export function hashIp(request: Request): string {
   const ip =
-    request.headers.get('x-nf-client-connection-ip') ??
+    request.headers.get('x-real-ip') ?? // Vercel
+    request.headers.get('x-nf-client-connection-ip') ?? // Netlify (until decommissioned)
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
     'unknown';
   return createHmac('sha256', config.ipSalt).update(ip).digest('hex').slice(0, 16);
 }
 
-/** Same-origin check (D9 layer 1). Netlify deploy previews get their own origins. */
+/** Same-origin check (D9 layer 1). Preview deployments get their own origins. */
 export function checkOrigin(request: Request): boolean {
   const origin = request.headers.get('origin') ?? request.headers.get('referer');
   if (!origin) return false;
@@ -51,6 +52,7 @@ export function checkOrigin(request: Request): boolean {
     return (
       host === 'aiheroes.io' ||
       host.endsWith('.aiheroes.io') ||
+      host.endsWith('.vercel.app') ||
       host.endsWith('.netlify.app') ||
       host === 'localhost' ||
       host === '127.0.0.1'

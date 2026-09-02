@@ -2,8 +2,8 @@
 // The charter is deliberately compact: a small stable prefix caches well and keeps
 // self-hosted or thinking-billed models affordable.
 
-import type { RetrievedSource } from './search';
-import { isOfficeHours } from './config';
+import type { RetrievedSource } from './search.js';
+import { isOfficeHours } from './config.js';
 
 export function buildSystemPrompt(siteLang: 'nl' | 'en', pagePath: string): string {
   const office = isOfficeHours();

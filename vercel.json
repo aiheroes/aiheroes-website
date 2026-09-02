@@ -1,0 +1,446 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "regions": [
+    "fra1"
+  ],
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 60
+    },
+    "api/chat/*.ts": {
+      "maxDuration": 60,
+      "supportsCancellation": true
+    }
+  },
+  "redirects": [
+    {
+      "source": "/diensten",
+      "destination": "/nl/diensten",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/:path*",
+      "destination": "/nl/diensten/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/services",
+      "destination": "/en/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/:path*",
+      "destination": "/en/services/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/over-ons",
+      "destination": "/nl/over-ons",
+      "statusCode": 301
+    },
+    {
+      "source": "/over-ons/:path*",
+      "destination": "/nl/over-ons/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "/en/about",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/:path*",
+      "destination": "/en/about/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/vacatures",
+      "destination": "/nl/vacatures",
+      "statusCode": 301
+    },
+    {
+      "source": "/vacatures/:path*",
+      "destination": "/nl/vacatures/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/careers",
+      "destination": "/en/careers",
+      "statusCode": 301
+    },
+    {
+      "source": "/careers/:path*",
+      "destination": "/en/careers/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/pers",
+      "destination": "/nl/pers",
+      "statusCode": 301
+    },
+    {
+      "source": "/press",
+      "destination": "/en/press",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-salon",
+      "destination": "/nl/ai-salon",
+      "statusCode": 301
+    },
+    {
+      "source": "/resources",
+      "destination": "/nl/resources",
+      "statusCode": 301
+    },
+    {
+      "source": "/cases/:path*",
+      "destination": "/nl/cases/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/contact",
+      "destination": "/#contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/contact",
+      "destination": "/en#contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/specialistische-tracks",
+      "destination": "/nl/diensten/software",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/specialized-tracks",
+      "destination": "/en/services/software",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-foundations",
+      "destination": "/nl/diensten/training#ai-foundations",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/copilot-basics",
+      "destination": "/nl/diensten/training#copilot-basics",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-voor-developers",
+      "destination": "/nl/diensten/training#ai-voor-developers",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-privacy-security",
+      "destination": "/nl/diensten/training#ai-privacy-security",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-media-literacy",
+      "destination": "/nl/diensten/training#ai-media-literacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-foundations",
+      "destination": "/en/services/training#ai-foundations",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/copilot-basics",
+      "destination": "/en/services/training#copilot-basics",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-for-developers",
+      "destination": "/en/services/training#ai-for-developers",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-privacy-security",
+      "destination": "/en/services/training#ai-privacy-security",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-media-literacy",
+      "destination": "/en/services/training#ai-media-literacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-readiness-scan",
+      "destination": "/nl/diensten/consultancy#ai-readiness-scan",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/procesanalyse",
+      "destination": "/nl/diensten/consultancy#procesanalyse",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/opportunity-scouting",
+      "destination": "/nl/diensten/consultancy#opportunity-scouting",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/business-case-development",
+      "destination": "/nl/diensten/consultancy#business-case-development",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-roadmap",
+      "destination": "/nl/diensten/consultancy#ai-roadmap",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-implementatiebegeleiding",
+      "destination": "/nl/diensten/consultancy#ai-implementatiebegeleiding",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-readiness-scan",
+      "destination": "/en/services/consulting#ai-readiness-scan",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/process-analysis",
+      "destination": "/en/services/consulting#process-analysis",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/opportunity-scouting",
+      "destination": "/en/services/consulting#opportunity-scouting",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/business-case-development",
+      "destination": "/en/services/consulting#business-case-development",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-roadmap",
+      "destination": "/en/services/consulting#ai-roadmap",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-implementation-guidance",
+      "destination": "/en/services/consulting#ai-implementation-guidance",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-prototyping",
+      "destination": "/nl/diensten/software#ai-prototyping",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/maatwerk-ai-oplossingen",
+      "destination": "/nl/diensten/software#maatwerk-ai-oplossingen",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-integratie",
+      "destination": "/nl/diensten/software#ai-integratie",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-development-teams",
+      "destination": "/nl/diensten/software#ai-development-teams",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/digital-twins",
+      "destination": "/nl/diensten/software#digital-twins",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-prototyping",
+      "destination": "/en/services/software#ai-prototyping",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/custom-ai-solutions",
+      "destination": "/en/services/software#custom-ai-solutions",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-integration",
+      "destination": "/en/services/software#ai-integration",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-development-teams",
+      "destination": "/en/services/software#ai-development-teams",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/digital-twins",
+      "destination": "/en/services/software#digital-twins",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-we-work/:path*",
+      "destination": "/nl/over-ons/aanpak",
+      "statusCode": 301
+    },
+    {
+      "source": "/consultancy-track/:path*",
+      "destination": "/nl/diensten",
+      "statusCode": 301
+    },
+    {
+      "source": "/industries/:path*",
+      "destination": "/nl/diensten",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/become-a-hero/:path*",
+      "destination": "/nl/vacatures",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/success-stories/:path*",
+      "destination": "/nl/diensten",
+      "statusCode": 301
+    },
+    {
+      "source": "/general-terms-and-conditions/:path*",
+      "destination": "/en/legal/terms",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-cookies-policy/:path*",
+      "destination": "/en/legal/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-team",
+      "destination": "/en/about/team",
+      "statusCode": 301
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/home-nederlands",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/#contact",
+      "statusCode": 301
+    },
+    {
+      "source": "/design-track",
+      "destination": "/en/services/software",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-that-makes-your-vision-real",
+      "destination": "/en/services/software",
+      "statusCode": 301
+    },
+    {
+      "source": "/making-text-more-inclusive-with-ai",
+      "destination": "/en/resources/ai-literacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/5-ways-generative-(.*)",
+      "destination": "/en/resources/ai-strategy-guide",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-to-get-started-(.*)",
+      "destination": "/en/resources/ai-strategy-guide",
+      "statusCode": 301
+    },
+    {
+      "source": "/mastermind-form/:path*",
+      "destination": "/#contact",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/category/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/case-study-category/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/whats-new-in-ai-(.*)",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ai-agents-(.*)",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/how-getfanatic-(.*)",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/culinary-adventures-(.*)",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/from-the-founders-(.*)",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ai-search-(.*)",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/guess-the-movie/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/signatures/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/api/gone"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\", </llms.txt>; rel=\"service-doc\"; type=\"text/plain\", </sitemap-index.xml>; rel=\"sitemap\"; type=\"application/xml\""
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/api-catalog",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/linkset+json"
+        }
+      ]
+    }
+  ],
+  "git": {
+    "deploymentEnabled": false
+  }
+}

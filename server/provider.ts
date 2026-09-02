@@ -10,7 +10,7 @@
 //  CHAT_MODEL_PROVIDER=anthropic  -> optional dev fallback (Claude, US inference).
 
 import type { LanguageModel } from 'ai';
-import { config } from './config';
+import { config } from './config.js';
 
 /**
  * Service-account credentials for Vertex from env (Netlify has no key file).

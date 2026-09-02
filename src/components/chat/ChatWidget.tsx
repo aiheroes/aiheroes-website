@@ -1,6 +1,6 @@
 // Widget island root (SDD D1 + UX audit): a tiny launcher; the panel bundle loads on
-// first open. Prewarms the backend on hover/focus intent. Gated by
-// PUBLIC_CHAT_ENABLED at build time, or per-browser via ?chat=1 (preview).
+// first open. Prewarms the backend on hover/focus intent. On by default; gated by
+// PUBLIC_CHAT_ENABLED=false at build time (kill switch), or re-enabled per browser via ?chat=1.
 
 import React, { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
@@ -33,6 +33,17 @@ export default function ChatWidget({
   useEffect(() => {
     setVisible(isChatEnabled(enabled));
   }, [enabled]);
+
+  // The site's sticky "Start gesprek" CTA opens the chat while the assistant is
+  // live (decision A5 26-08): one conversation entry point instead of two buttons.
+  useEffect(() => {
+    const open = () => {
+      setVisible(true);
+      setOpen(true);
+    };
+    window.addEventListener('aih:open-chat', open);
+    return () => window.removeEventListener('aih:open-chat', open);
+  }, []);
 
   // Prewarm on intent (audit P1): hovering/focusing the launcher warms the function
   // and fetches the widget token before the click. Idempotent and model-call-free.

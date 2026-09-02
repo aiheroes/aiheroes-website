@@ -1,7 +1,7 @@
-// Streaming chat endpoint (SDD D3/D5/D9). One request path:
+// Streaming chat endpoint (SDD D3/D5/D9) — Vercel function, region fra1. One request path:
 // guards -> in-process retrieval -> model on the EU substrate -> SSE stream back.
 
-import type { Config, Context } from '@netlify/functions';
+import { waitUntil } from '@vercel/functions';
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
@@ -23,13 +23,7 @@ import { buildSystemPrompt, formatSources } from '../../server/prompt.js';
 import { getModel, usageToCents } from '../../server/provider.js';
 import { retrieve } from '../../server/search.js';
 
-export const config: Config = {
-  path: '/api/chat',
-  // TODO(SDD D3/V4): restore region: 'fra' after upgrading Netlify to Pro (the
-  // current plan rejects function-region config and FAILS the production build).
-  // Until then the function runs in Netlify's default US region; model inference
-  // and embeddings remain on Vertex EU. Alternative: Hono service on Vercel fra1.
-};
+// Region (fra1), duration and cancellation are configured in vercel.json.
 
 const bodySchema = z.object({
   messages: z.array(z.unknown()).min(1).max(80),
@@ -45,7 +39,10 @@ const json = (status: number, body: unknown) =>
     headers: { 'Content-Type': 'application/json' },
   });
 
-export default async function handler(request: Request, _context: Context): Promise<Response> {
+// Vercel treats a module as a Web-API function only when it exports HTTP-method
+// handlers (GET/POST/...); a default export is invoked with the Node (req, res)
+// signature and a returned Response is silently dropped (504).
+export async function POST(request: Request): Promise<Response> {
   if (request.method !== 'POST') return json(405, { error: 'method_not_allowed' });
   if (!checkOrigin(request)) return json(403, { error: 'forbidden' });
 
@@ -172,16 +169,21 @@ export default async function handler(request: Request, _context: Context): Prom
     onError: ({ error }) => {
       console.error('chat model error:', error instanceof Error ? error.message : String(error));
     },
-    onFinish: ({ usage, text }) => {
-      void recordSpend(usageToCents(route, usage));
-      persistTurn({
+    onFinish: ({ usage, text, steps }) => {
+      // `text` is the FINAL step only; with display tools the final step is often
+      // empty (the model answers, calls a card tool, then ends). Persist what the
+      // visitor actually saw: every step's text.
+      const fullText = steps.map((s) => s.text).filter(Boolean).join('\n\n') || text;
+      // Post-response work must outlive the response on Vercel (SDD D6/D9).
+      waitUntil(recordSpend(usageToCents(route, usage)));
+      waitUntil(persistTurn({
         conversationId: body.conversationId,
         locale: body.locale,
         pagePath: body.path,
         userText: lastUserText,
-        assistantText: text,
+        assistantText: fullText,
         sources: sources.map((s) => ({ url: s.url, title: s.title })),
-      });
+      }));
     },
   });
 

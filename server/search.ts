@@ -1,12 +1,12 @@
 // In-process hybrid retrieval (SDD D5): BM25 + optional dense cosine, fused with RRF.
 // The index ships inside the function bundle — no network hop, no drift.
 
-import type { IndexChunk, KnowledgeIndex } from './index-types';
-import { tokenize } from './tokenize';
-import { embedQuery } from './provider';
+import type { IndexChunk, KnowledgeIndex } from './index-types.js';
+import { tokenize } from './tokenize.js';
+import { embedQuery } from './provider.js';
 // Generated at build time by scripts/build-index; a committed stub keeps dev working
 // before the first real build.
-import indexData from './index-data/index.json';
+import indexData from './index-data/index.json' with { type: 'json' };
 
 const index = indexData as unknown as KnowledgeIndex;
 

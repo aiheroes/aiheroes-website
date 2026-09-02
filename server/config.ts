@@ -52,14 +52,31 @@ export const config = {
 
   // --- integrations ---
   slackWebhookUrl: process.env.CHAT_SLACK_WEBHOOK_URL ?? '',
-  supabaseUrl: process.env.CHAT_SUPABASE_URL ?? '',
-  supabaseServiceKey: process.env.CHAT_SUPABASE_SERVICE_KEY ?? '',
-  bookingUrl: process.env.CHAT_BOOKING_URL ?? '', // Cal.com link; empty -> contact-form fallback
+  // CHAT_* wins; the bare names are what the Vercel Marketplace Supabase
+  // integration injects automatically (decided 01-09: Supabase via Vercel).
+  supabaseUrl: process.env.CHAT_SUPABASE_URL ?? process.env.SUPABASE_URL ?? '',
+  supabaseServiceKey:
+    process.env.CHAT_SUPABASE_SERVICE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
+  bookingUrl: process.env.CHAT_BOOKING_URL ?? 'https://calendar.app.google/GV4mwWWbdzJJJBfW9', // public booking link (same default as chat-flags.ts)
   salonLumaUrl: 'https://luma.com/AI-Salon-Groningen-September-2026',
-  siteOrigin: process.env.URL ?? 'https://aiheroes.io',
+  // Netlify exposes URL; Vercel exposes VERCEL_PROJECT_PRODUCTION_URL (host only).
+  siteOrigin:
+    process.env.URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : 'https://aiheroes.io'),
+
+  // Transactional mail (Resend, region eu-west-1). The verified domain is the root
+  // aiheroes.io (Resend's return-path records live on send.aiheroes.io, so root
+  // mail records stay untouched for the Cirrux migration); From must be @aiheroes.io.
+  mail: {
+    apiKey: process.env.RESEND_API_KEY ?? '',
+    from: process.env.MAIL_FROM ?? 'AI Heroes <noreply@aiheroes.io>',
+    to: process.env.MAIL_TO ?? 'hello@aiheroes.io',
+  },
 
   // Render-layer link allowlist (D9 layer 7). The widget refuses to link anything else.
-  linkAllowlist: ['aiheroes.io', 'lu.ma', 'luma.com', 'cal.com'],
+  linkAllowlist: ['aiheroes.io', 'lu.ma', 'luma.com', 'cal.com', 'calendar.app.google'],
 } as const;
 
 export function isOfficeHours(now = new Date()): boolean {
