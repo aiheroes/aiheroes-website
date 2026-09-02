@@ -34,3 +34,6 @@ progress-overview.html
 
 # promptfoo eval outputs
 .evalout*.json
+
+# tool-installed agent skills (vercel integration add drops these)
+.agents/
