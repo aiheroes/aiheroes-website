@@ -222,12 +222,20 @@ export const CONTENT: Record<Language, Content> = {
         {
           name: "Frans Hoorn",
           url: "https://calendar.app.google/juFpF3MDmikH4BVS8",
-          photo: "/team/frans.webp"
+          photo: "/team/frans.webp",
+          hint: "Strategie, roadmap, partnerships"
         },
         {
           name: "Jan Brusse",
           url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
-          photo: "/team/jan.webp"
+          photo: "/team/jan.webp",
+          hint: "Training, use cases, AI-pipelines"
+        },
+        {
+          name: "David Homan",
+          url: "https://calendar.app.google/GcA1oBNwzyFZtW5W6",
+          photo: "/team/david.webp",
+          hint: "Software-implementatie, compliance"
         }
       ]
     },
@@ -937,12 +945,20 @@ export const CONTENT: Record<Language, Content> = {
         {
           name: "Frans Hoorn",
           url: "https://calendar.app.google/juFpF3MDmikH4BVS8",
-          photo: "/team/frans.webp"
+          photo: "/team/frans.webp",
+          hint: "Strategy, roadmap, partnerships"
         },
         {
           name: "Jan Brusse",
           url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
-          photo: "/team/jan.webp"
+          photo: "/team/jan.webp",
+          hint: "Training, use cases, AI pipelines"
+        },
+        {
+          name: "David Homan",
+          url: "https://calendar.app.google/GcA1oBNwzyFZtW5W6",
+          photo: "/team/david.webp",
+          hint: "Software implementation, compliance"
         }
       ]
     },

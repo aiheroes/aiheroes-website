@@ -41,7 +41,7 @@ export const MeetingChooser = ({
       </summary>
 
       <div
-        className={`mt-3 w-52 overflow-hidden rounded-lg border p-1 ${
+        className={`mt-3 w-72 overflow-hidden rounded-lg border p-1 ${
           align === 'center' ? 'mx-auto' : ''
         } ${isDark ? 'border-white/15 bg-white/5' : 'border-stone-200 bg-white shadow-sm'}`}
       >
@@ -51,7 +51,7 @@ export const MeetingChooser = ({
             href={meeting.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center gap-3 rounded-md px-3 py-2 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red ${
+            className={`group/item flex items-center gap-3 rounded-md px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red ${
               isDark
                 ? 'text-stone-300 hover:bg-white/10 hover:text-white'
                 : 'text-brand-dark hover:bg-stone-100 hover:text-brand-red'
@@ -60,12 +60,18 @@ export const MeetingChooser = ({
             <img
               src={meeting.photo}
               alt=""
-              width={28}
-              height={28}
+              width={32}
+              height={32}
               loading="lazy"
-              className="h-7 w-7 rounded-full object-cover"
+              className="h-8 w-8 shrink-0 rounded-full object-cover"
             />
-            <span>{meeting.name}</span>
+            <span className="min-w-0 leading-tight">
+              <span className="block text-sm font-medium">{meeting.name}</span>
+              {/* Why you would pick this person; without it the choice is a coin flip. */}
+              <span className={`mt-0.5 block text-xs ${isDark ? 'text-stone-400 group-hover/item:text-stone-200' : 'text-stone-600 group-hover/item:text-brand-red/80'}`}>
+                {meeting.hint}
+              </span>
+            </span>
           </a>
         ))}
       </div>

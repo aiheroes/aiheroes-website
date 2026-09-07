@@ -196,6 +196,8 @@ export type MeetingOption = {
   name: string;
   url: string;
   photo: string;
+  // Why you would pick this person, in a few words.
+  hint: string;
 };
 
 export interface ContactFormContent {
