@@ -99,7 +99,7 @@ const COPY: Record<Language, Copy> = {
       heading: 'Agenda',
       rows: [
         { time: '17:30', title: 'Walk-in', note: false },
-        { time: '18:00', title: 'Two talks · speakers TBA', note: false },
+        { time: '18:00', title: 'Two talks · Ilse Gosliga + speaker TBA', note: false },
         { time: '18:40', title: '60-second pitches', note: true },
         { time: '19:00–21:00', title: 'Food, Drinks & Open Networking', note: false },
       ],
@@ -173,7 +173,7 @@ const COPY: Record<Language, Copy> = {
       heading: 'Programma',
       rows: [
         { time: '17:30', title: 'Inloop', note: false },
-        { time: '18:00', title: 'Twee talks · sprekers volgen', note: false },
+        { time: '18:00', title: 'Twee talks · Ilse Gosliga + spreker volgt', note: false },
         { time: '18:40', title: '60-secondenpitches', note: true },
         { time: '19:00–21:00', title: 'Eten, drinken en open netwerken', note: false },
       ],
@@ -227,9 +227,12 @@ const COPY: Record<Language, Copy> = {
 const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [];
 
 // Confirmed speakers for edition #2 (not language-specific). Rendered ahead of the open
-// TBA slots. Empty for now: both slots are open. photo: null = portrait not supplied yet;
-// topic: null = topic to be announced.
-const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [];
+// TBA slots. photo: null = portrait not supplied yet; topic: null = topic to be announced.
+const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
+  // Ilse Gosliga — founder/director of Energiso (energy management, ISO 50001). Topic TBA.
+  // Portrait from energiso.nl, greyscaled like the other speaker portraits.
+  { name: 'Ilse Gosliga', topic: null, photo: '/speakers/ilse-gosliga.jpg' },
+];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
 const PracticalCol: React.FC<PracticalEntry> = ({ label, lines, mail, logo }) => (
