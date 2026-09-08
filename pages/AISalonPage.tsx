@@ -115,7 +115,7 @@ const COPY: Record<Language, Copy> = {
     },
     sponsors: {
       heading: 'Sponsored by you?',
-      body: 'Get your logo on the wall and a moment to say hi. Pick a spot to start the conversation.',
+      body: 'Sponsors keep the salon free, edition after edition. Sponsoring is deliberately affordable, so small and mid-size companies can join too. Email frans@aiheroes.io.',
       mailtoSubject: 'AI Salon Groningen Edition #2 · Sponsorship',
       spotLabel: 'Your logo',
       spotHover: 'Become a sponsor →',
@@ -189,7 +189,7 @@ const COPY: Record<Language, Copy> = {
     },
     sponsors: {
       heading: 'Sponsors',
-      body: 'Sponsors maken de avond gratis. Ook sponsoren? Mail frans@aiheroes.io.',
+      body: 'Sponsors houden de salon gratis, editie na editie. De bijdrage is bewust laagdrempelig, zodat ook kleine en middelgrote bedrijven kunnen aanhaken. Mail frans@aiheroes.io.',
       mailtoSubject: 'AI Salon Groningen Editie #2 · Sponsoring',
       spotLabel: 'Jouw logo',
       spotHover: 'Word sponsor →',
