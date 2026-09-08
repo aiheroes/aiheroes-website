@@ -189,7 +189,7 @@ const COPY: Record<Language, Copy> = {
     },
     sponsors: {
       heading: 'Sponsors',
-      body: 'Dankzij hen is de avond gratis. Ook sponsoren? Mail frans@aiheroes.io.',
+      body: 'Sponsors maken de avond gratis. Ook sponsoren? Mail frans@aiheroes.io.',
       mailtoSubject: 'AI Salon Groningen Editie #2 · Sponsoring',
       spotLabel: 'Jouw logo',
       spotHover: 'Word sponsor →',
@@ -221,21 +221,10 @@ const COPY: Record<Language, Copy> = {
   },
 };
 
-// Confirmed sponsors (not language-specific). Rendered ahead of the open slots.
-const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
-  // Navy logo flattened onto white (the tile is white anyway) and resized to a
-  // sane size, so there's no transparency/downscaling fringe to fight. ?v=
-  // cache-busts older cached copies.
-  { name: 'Drydock', src: '/sponsors/drydock.png?v=6', href: 'https://www.drydock.nl/' },
-  // Green logo flattened onto white (tile is white) to avoid the transparent-PNG
-  // downscaling fringe; Chordify is also the venue. ?v= cache-busts older copies.
-  { name: 'Chordify', src: '/sponsors/chordify.png?v=1', href: 'https://chordify.net' },
-  // Gold lockup, transparent background (the baked-in white rect caused hairline
-  // seams at the img edges on the white tile — removed). The SVG's <text> webfonts
-  // fall back to Georgia/Arial inside an <img>; swap for an outlined-text variant
-  // from their brand package when we get one. ?v= cache-busts the rect version.
-  { name: 'Helm', src: '/sponsors/helm.svg?v=2' },
-];
+// Confirmed sponsors for edition #2 (not language-specific). Rendered ahead of the open
+// slots. Empty for now: edition #2 starts with a clean sponsor list (kick-off sponsors were
+// Drydock, Chordify and Helm — re-add entries here as they confirm).
+const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [];
 
 // Confirmed speakers for edition #2 (not language-specific). Rendered ahead of the open
 // TBA slots. Empty for now: both slots are open. photo: null = portrait not supplied yet;
