@@ -3,55 +3,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AISalonIsland from '../../components/islands/AISalonIsland';
 
 const description =
-  'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.';
+  'AI Salon Groningen editie #2, donderdag 5 november 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.';
 
-const eventSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Event',
-  name: 'AI Salon Groningen · Kick-Off',
-  startDate: '2026-09-03T17:30:00+02:00',
-  endDate: '2026-09-03T21:00:00+02:00',
-  eventStatus: 'https://schema.org/EventScheduled',
-  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  location: {
-    '@type': 'Place',
-    name: 'Chordify',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Stationsweg 3G',
-      postalCode: '9726 AC',
-      addressLocality: 'Groningen',
-      addressCountry: 'NL',
-    },
-  },
-  image: ['https://aiheroes.io/og-image.png'],
-  description,
-  organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/SoldOut',
-    url: 'https://luma.com/AI-Salon-Groningen-September-2026',
-  },
-};
-
-// Editie #2 — datum + locatie bekend (5 nov, AI Fabriek); tijden volgen, dus alleen startDate als datum.
+// Editie #2 — datum + tijd bekend (5 nov, 18:00); de geplande locatie viel af, dus alleen de stad.
 const edition2Schema = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: 'AI Salon Groningen · Editie #2',
-  startDate: '2026-11-05',
+  startDate: '2026-11-05T18:00:00+01:00',
+  endDate: '2026-11-05T21:00:00+01:00',
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
-    name: 'AI Fabriek',
+    name: 'Groningen',
     address: { '@type': 'PostalAddress', addressLocality: 'Groningen', addressCountry: 'NL' },
   },
   image: ['https://aiheroes.io/og-image.png'],
   description:
-    'Tweede editie van AI Salon Groningen, donderdag 5 november 2026 in de AI Fabriek. Gratis community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
+    'Tweede editie van AI Salon Groningen, donderdag 5 november 2026. Locatie volgt. Gratis community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
   organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
   offers: {
     '@type': 'Offer',
@@ -65,9 +35,9 @@ const edition2Schema = {
 
 <BaseLayout
   lang="nl"
-  title="AI Salon Groningen · Kick-Off"
+  title="AI Salon Groningen · Editie #2"
   description={description}
-  jsonLd={[eventSchema, edition2Schema]}
+  jsonLd={[edition2Schema]}
   noChrome
 >
   <AISalonIsland lang="nl" client:load />

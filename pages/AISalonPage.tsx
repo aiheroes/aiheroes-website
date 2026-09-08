@@ -7,16 +7,9 @@ import { useSEO } from '../hooks/useSEO';
 import type { Language } from '../types';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
-const LUMA_EVENT_ID = 'evt-bgWr4oUXGdNMpms';
+const LUMA_EVENT_ID = 'evt-IyAX8Koq2RAY8V3'; // Edition #2 · Thu 5 Nov 2026
 
-// Edition #2 (Thu 5 Nov 2026, AI Fabriek) runs on its own Luma event page.
-const LUMA_EDITION_2_URL = 'https://luma.com/AI-Salon-Gro-2';
-
-// Ruben Molenaars' talk title — single source for the speaker card and the agenda.
-const RUBEN_TALK_TITLE = 'Keeping our minds sharp in the age of AI';
-
-// Dr. Lilian Peters' talk title — single source for the speaker card and the agenda.
-const LILIAN_TALK_TITLE = 'FemHealthData: using AI to improve women’s health';
+// The venue for edition #2 is TBA (the planned venue fell through); the page carries a want-to-host call.
 
 interface AISalonPageProps {
   lang: Language;
@@ -80,25 +73,25 @@ type Copy = {
 const COPY: Record<Language, Copy> = {
   en: {
     meta: {
-      title: 'AI Salon Groningen · Kick-Off',
+      title: 'AI Salon Groningen · Edition #2',
       description:
-        'AI Salon Groningen kick-off, Thursday September 3, 2026. A bimonthly community evening for AI founders, builders, investors, researchers and partners.',
+        'AI Salon Groningen edition #2, Thursday November 5, 2026. A bimonthly community evening for AI founders, builders, investors, researchers and partners.',
     },
     hero: 'The #1 AI networking event, now in Groningen.',
     talkLabel: 'Talk',
     lead: {
       intro: 'Join us on ',
-      dateText: 'Thursday, September 3rd',
-      between: ', for the very first ',
+      dateText: 'Thursday, November 5th',
+      between: ', for edition #2 of ',
       linkText: 'AI Salon Groningen',
       after:
-        " event. Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. The kick-off is full, but spots free up regularly: join the waitlist, or sign up for edition #2 on November 5.",
+        ". Every two months we bring together AI founders, builders, investors, researchers and partners from across Europe to connect, collaborate and show what's next, all from Groningen, the AI capital of Europe. It's one chapter in the global AI Salon network. The kick-off sold out with 70+ attendees, so don't wait too long: registration for edition #2 is open.",
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
-      { text: 'Kick-Off' },
-      { text: 'Thursday, Sep 03, 2026' },
-      { text: 'Chordify · Groningen' },
+      { text: 'Edition #2' },
+      { text: 'Thursday, Nov 05, 2026' },
+      { text: 'Venue TBA · Groningen' },
       { text: 'English-spoken' },
       { text: 'Bimonthly' },
     ],
@@ -106,17 +99,16 @@ const COPY: Record<Language, Copy> = {
       heading: 'Agenda',
       rows: [
         { time: '17:30', title: 'Walk-in', note: false },
-        { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
-        { time: '18:20', title: 'Dr. Lilian Peters', note: false, subtitle: LILIAN_TALK_TITLE },
-        { time: '18:40', title: 'Demo Pitches', note: true },
-        { time: '19:00–21:00', title: 'Food, Drinks, Demo Tables & Open Networking', note: false },
+        { time: '18:00', title: 'Two talks · speakers TBA', note: false },
+        { time: '18:40', title: '60-second pitches', note: true },
+        { time: '19:00–21:00', title: 'Food, Drinks & Open Networking', note: false },
       ],
       footnote: 'by you? Email frans@aiheroes.io to apply.',
     },
     speakers: {
       heading: 'Speakers',
       body: 'Two short talks per edition, around 20 minutes each. Pick a slot to start the conversation.',
-      mailtoSubject: 'AI Salon Groningen Kick-Off · Speaking',
+      mailtoSubject: 'AI Salon Groningen Edition #2 · Speaking',
       spotLabel: 'TBA',
       spotHover: 'Become a speaker →',
       topicSoon: 'Topic coming soon',
@@ -124,31 +116,30 @@ const COPY: Record<Language, Copy> = {
     sponsors: {
       heading: 'Sponsored by you?',
       body: 'Get your logo on the wall and a moment to say hi. Pick a spot to start the conversation.',
-      mailtoSubject: 'AI Salon Groningen Kick-Off · Sponsorship',
+      mailtoSubject: 'AI Salon Groningen Edition #2 · Sponsorship',
       spotLabel: 'Your logo',
       spotHover: 'Become a sponsor →',
       slots: 6,
     },
-    cta: 'Join the waitlist →',
+    cta: 'Register for edition #2 →',
     editions: {
       heading: 'Coming up',
       registerLabel: 'Register →',
       rows: [
-        { date: 'Thu, Sep 3', title: 'Kick-Off', venue: 'Chordify · Groningen', status: 'Full', linkLabel: 'Waitlist →' },
-        { date: 'Thu, Nov 5', title: 'Edition #2', venue: 'AI Fabriek · Groningen', href: LUMA_EDITION_2_URL },
+        { date: 'Thu, Sep 3', title: 'Kick-Off', venue: 'Chordify · Groningen', status: 'Sold out' },
+        { date: 'Thu, Nov 5', title: 'Edition #2', venue: 'Venue TBA · Groningen' },
       ],
     },
     rsvp: {
-      heading: 'The first edition is full. The waitlist is open.',
-      note: 'Want to pitch a demo or sponsor a future edition? Email frans@aiheroes.io.',
+      heading: 'Edition #2 · Thursday, November 5. Registration is open.',
+      note: 'The venue will be announced soon. Want to host edition #2, give a 60-second pitch or sponsor? Email frans@aiheroes.io.',
     },
     about:
       'AI Salon is the global community where AI founders, builders, investors and partners connect and collaborate, with chapters around the world. Groningen is our chapter, in the AI capital of Europe.',
     practical: {
       location: {
         label: 'Location',
-        lines: ['Stationsweg 3G', '9726 AC Groningen'],
-        logo: { src: '/venue/chordify.png', href: 'https://chordify.net', alt: 'Chordify' },
+        lines: ['To be announced', 'Groningen'],
       },
       organiser: { label: 'Organiser', lines: ['AI Heroes (chapter)'] },
       contact: { label: 'Contact', lines: ['frans@aiheroes.io'], mail: true },
@@ -156,25 +147,25 @@ const COPY: Record<Language, Copy> = {
   },
   nl: {
     meta: {
-      title: 'AI Salon Groningen · Kick-Off',
+      title: 'AI Salon Groningen · Editie #2',
       description:
-        'AI Salon Groningen kick-off, donderdag 3 september 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
+        'AI Salon Groningen editie #2, donderdag 5 november 2026. Een tweemaandelijkse community-avond voor AI founders, builders, investeerders, onderzoekers en partners.',
     },
     hero: 'Het #1 AI netwerk-event, nu ook in Groningen.',
     talkLabel: 'Talk',
     lead: {
       intro: 'Wees erbij op ',
-      dateText: 'donderdag 3 september',
-      between: ' voor de allereerste editie van ',
+      dateText: 'donderdag 5 november',
+      between: ' voor editie #2 van ',
       linkText: 'AI Salon Groningen',
       after:
-        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. De kick-off is vol, maar er komen geregeld plekken vrij: zet jezelf op de wachtlijst, of meld je aan voor editie #2 op 5 november.',
+        '. Elke twee maanden brengen we AI founders, builders, investeerders, onderzoekers en partners uit heel Europa samen om te connecten, samen te werken en te laten zien waar ze mee bezig zijn, allemaal vanuit Groningen, de AI-hoofdstad van Europa. Het is één chapter in het wereldwijde AI Salon-netwerk. De kick-off zat vol met ruim 70 gasten, dus wacht niet te lang: de aanmelding voor editie #2 is open.',
     },
     metaStrip: [
       { text: 'AI Salon Groningen' },
-      { text: 'Kick-Off' },
-      { text: 'Donderdag 3 sep 2026' },
-      { text: 'Chordify · Groningen' },
+      { text: 'Editie #2' },
+      { text: 'Donderdag 5 nov 2026' },
+      { text: 'Locatie volgt · Groningen' },
       { text: 'Engelstalig' },
       { text: 'Bimonthly' },
     ],
@@ -182,17 +173,16 @@ const COPY: Record<Language, Copy> = {
       heading: 'Programma',
       rows: [
         { time: '17:30', title: 'Inloop', note: false },
-        { time: '18:00', title: 'Ruben Molenaars', note: false, subtitle: RUBEN_TALK_TITLE },
-        { time: '18:20', title: 'Dr. Lilian Peters', note: false, subtitle: LILIAN_TALK_TITLE },
-        { time: '18:40', title: 'Demo pitches', note: true },
-        { time: '19:00–21:00', title: 'Eten, drinken, demo-tafels en open netwerken', note: false },
+        { time: '18:00', title: 'Twee talks · sprekers volgen', note: false },
+        { time: '18:40', title: '60-secondenpitches', note: true },
+        { time: '19:00–21:00', title: 'Eten, drinken en open netwerken', note: false },
       ],
       footnote: 'door jou? Mail frans@aiheroes.io om je aan te melden.',
     },
     speakers: {
       heading: 'Sprekers',
       body: "Twee talks van zo'n twintig minuten per editie. Spreken? Mail frans@aiheroes.io.",
-      mailtoSubject: 'AI Salon Groningen Kick-Off · Spreken',
+      mailtoSubject: 'AI Salon Groningen Editie #2 · Spreken',
       spotLabel: 'TBA',
       spotHover: 'Word spreker →',
       topicSoon: 'Onderwerp volgt',
@@ -200,31 +190,30 @@ const COPY: Record<Language, Copy> = {
     sponsors: {
       heading: 'Sponsors',
       body: 'Dankzij hen is de avond gratis. Ook sponsoren? Mail frans@aiheroes.io.',
-      mailtoSubject: 'AI Salon Groningen Kick-Off · Sponsoring',
+      mailtoSubject: 'AI Salon Groningen Editie #2 · Sponsoring',
       spotLabel: 'Jouw logo',
       spotHover: 'Word sponsor →',
       slots: 6,
     },
-    cta: 'Zet je op de wachtlijst →',
+    cta: 'Meld je aan voor editie #2 →',
     editions: {
       heading: 'Op de planning',
       registerLabel: 'Aanmelden →',
       rows: [
-        { date: 'Do 3 sep', title: 'Kick-off', venue: 'Chordify · Groningen', status: 'Vol', linkLabel: 'Wachtlijst →' },
-        { date: 'Do 5 nov', title: 'Editie #2', venue: 'AI Fabriek · Groningen', href: LUMA_EDITION_2_URL },
+        { date: 'Do 3 sep', title: 'Kick-off', venue: 'Chordify · Groningen', status: 'Uitverkocht' },
+        { date: 'Do 5 nov', title: 'Editie #2', venue: 'Locatie volgt · Groningen' },
       ],
     },
     rsvp: {
-      heading: 'De eerste editie is vol. De wachtlijst is open.',
-      note: 'Wil je een demo pitchen of een volgende editie sponsoren? Mail frans@aiheroes.io.',
+      heading: 'Editie #2 · donderdag 5 november. De aanmelding is open.',
+      note: 'De locatie volgt binnenkort. Wil je editie #2 hosten, een 60-secondenpitch geven of sponsoren? Mail frans@aiheroes.io.',
     },
     about:
       'AI Salon is de wereldwijde community waarin AI founders, builders, investeerders en partners elkaar ontmoeten en samenwerken, met chapters over de hele wereld. Groningen is ons chapter, in de AI-hoofdstad van Europa.',
     practical: {
       location: {
         label: 'Locatie',
-        lines: ['Stationsweg 3G', '9726 AC Groningen'],
-        logo: { src: '/venue/chordify.png', href: 'https://chordify.net', alt: 'Chordify' },
+        lines: ['Wordt bekendgemaakt', 'Groningen'],
       },
       organiser: { label: 'Organisator', lines: ['AI Heroes (chapter)'] },
       contact: { label: 'Contact', lines: ['frans@aiheroes.io'], mail: true },
@@ -248,14 +237,10 @@ const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [
   { name: 'Helm', src: '/sponsors/helm.svg?v=2' },
 ];
 
-// Confirmed speakers (not language-specific). Rendered ahead of the open TBA slots.
-// photo: null = portrait not supplied yet; topic: null = topic to be announced.
-const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
-  { name: 'Ruben Molenaars', topic: RUBEN_TALK_TITLE, photo: '/speakers/ruben-molenaars.jpg' },
-  // Dr. Lilian Peters — epidemiologist & associate professor at UMCG (Groningen), group
-  // leader of FemHealthData; applies AI/NLP to women's-health GP data. Portrait greyscaled.
-  { name: 'Dr. Lilian Peters', topic: LILIAN_TALK_TITLE, photo: '/speakers/lilian-peters.jpg' },
-];
+// Confirmed speakers for edition #2 (not language-specific). Rendered ahead of the open
+// TBA slots. Empty for now: both slots are open. photo: null = portrait not supplied yet;
+// topic: null = topic to be announced.
+const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [];
 const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
 
 const PracticalCol: React.FC<PracticalEntry> = ({ label, lines, mail, logo }) => (
@@ -605,7 +590,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
           </div>
         </section>
 
-        {/* Editions — kick-off status + edition #2 (AI Fabriek) with its own Luma page */}
+        {/* Editions — the sold-out kick-off + edition #2 (venue TBA) */}
         <section className="border-t border-brand-dark/10">
           <div className="max-w-6xl mx-auto px-6 py-20 md:py-24 w-full">
             <h2 className="font-sans text-3xl md:text-[40px] leading-[1.1] text-brand-dark font-medium tracking-[-0.02em] mb-12">
@@ -635,7 +620,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
                       >
                         {row.linkLabel ?? copy.editions.registerLabel}
                       </a>
-                    ) : (
+                    ) : row.status ? null : ( // a status (sold out / past) means no register link
                       <LumaLink className="underline decoration-brand-dark/40 underline-offset-4 hover:text-brand-red hover:decoration-brand-red transition-colors">
                         {row.linkLabel ?? copy.editions.registerLabel}
                       </LumaLink>
