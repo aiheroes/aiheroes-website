@@ -68,14 +68,14 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       headline: "Van <red>ambitie</red>\ntot <blue>implementatie</blue>",
-      subhead: "Eén agency van change management tot technische implementatie.\nVanuit Groningen, voor heel Europa.",
+      subhead: "Eén vaste partner voor alles AI.\nVanuit Groningen, voor heel Europa.",
       primaryBtn: "Laten we praten",
       secondaryBtn: "Wat we doen",
       slides: [
         {
           label: "Alles van A tot I",
           headline: "Van <red>ambitie</red>\ntot <blue>implementatie</blue>",
-          subhead: "Eén agency van change management tot technische implementatie.\nVanuit Groningen, voor heel Europa.",
+          subhead: "Eén vaste partner voor alles AI.\nVanuit Groningen, voor heel Europa.",
           ctaLabel: "Laten we praten",
           ctaTarget: "#contact",
           image: "/hero/summit.webp"
@@ -791,14 +791,14 @@ export const CONTENT: Record<Language, Content> = {
     },
     hero: {
       headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
-      subhead: "One agency from change management to technical implementation.\nFrom Groningen, for all of Europe.",
+      subhead: "One dedicated partner for all things AI.\nFrom Groningen, for all of Europe.",
       primaryBtn: "Let's talk",
       secondaryBtn: "What we do",
       slides: [
         {
           label: "Everything A to I",
           headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
-          subhead: "One agency from change management to technical implementation.\nFrom Groningen, for all of Europe.",
+          subhead: "One dedicated partner for all things AI.\nFrom Groningen, for all of Europe.",
           ctaLabel: "Let's talk",
           ctaTarget: "#contact",
           image: "/hero/summit.webp"
