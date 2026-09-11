@@ -49,9 +49,9 @@ interface HomePageProps {
 const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
-  { id: 'approach', theme: 'dark' },
-  { id: 'team', theme: 'light' }, // On desktop, whole team section is light
   { id: 'social-proof', theme: 'dark' },
+  { id: 'team', theme: 'light' }, // On desktop, whole team section is light
+  { id: 'approach', theme: 'dark' },
   { id: 'contact', theme: 'light' },
   { id: 'footer', theme: 'dark' },
 ];
@@ -59,10 +59,10 @@ const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
 const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
-  { id: 'approach', theme: 'dark' },
+  { id: 'social-proof', theme: 'dark' },
   { id: 'team-image', theme: 'dark' },   // Team image needs dark navbar (mobile stacked)
   { id: 'team-content', theme: 'light' }, // Team text needs light navbar
-  { id: 'social-proof', theme: 'dark' },
+  { id: 'approach', theme: 'dark' },
   { id: 'contact', theme: 'light' },
   { id: 'footer', theme: 'dark' },
 ];
@@ -236,9 +236,10 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           <Services content={content.services} lang={lang} />
         </section>
 
-        {/* Approach (Dark) */}
-        <section id="approach" className="md:snap-start h-screen w-full flex items-center bg-brand-dark overflow-hidden">
-           <Approach content={content.approach} />
+        {/* Social Proof (Dark). min-h-screen (not fixed h-screen) so the desktop
+            reference wall can grow past the viewport on short displays instead of clipping. */}
+        <section id="social-proof" className="md:snap-start min-h-screen w-full flex bg-brand-dark">
+           <SocialProof content={content.socialProof} />
         </section>
 
         {/* Team (Light) */}
@@ -246,10 +247,9 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
            <Team content={content.team} />
         </section>
 
-        {/* Social Proof (Dark). min-h-screen (not fixed h-screen) so the desktop
-            reference wall can grow past the viewport on short displays instead of clipping. */}
-        <section id="social-proof" className="md:snap-start min-h-screen w-full flex bg-brand-dark">
-           <SocialProof content={content.socialProof} />
+        {/* Approach (Dark) */}
+        <section id="approach" className="md:snap-start h-screen w-full flex items-center bg-brand-dark overflow-hidden">
+           <Approach content={content.approach} />
         </section>
 
         {/* Contact (Light) */}
