@@ -67,14 +67,14 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     hero: {
-      headline: "AI <red>werkt</red> als je\nweet <blue>hoe</blue>",
+      headline: "Van <red>ambitie</red>\ntot <blue>implementatie</blue>",
       subhead: "Eén agency van change management tot technische implementatie.\nVanuit Groningen, voor heel Europa.",
       primaryBtn: "Laten we praten",
       secondaryBtn: "Wat we doen",
       slides: [
         {
           label: "Alles van A tot I",
-          headline: "AI <red>werkt</red> als je\nweet <blue>hoe</blue>",
+          headline: "Van <red>ambitie</red>\ntot <blue>implementatie</blue>",
           subhead: "Eén agency van change management tot technische implementatie.\nVanuit Groningen, voor heel Europa.",
           ctaLabel: "Laten we praten",
           ctaTarget: "#contact",
@@ -790,14 +790,14 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     hero: {
-      headline: "AI <red>works</red> if you\nknow <blue>how</blue>",
+      headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
       subhead: "One agency from change management to technical implementation.\nFrom Groningen, for all of Europe.",
       primaryBtn: "Let's talk",
       secondaryBtn: "What we do",
       slides: [
         {
           label: "Everything A to I",
-          headline: "AI <red>works</red> if you\nknow <blue>how</blue>",
+          headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
           subhead: "One agency from change management to technical implementation.\nFrom Groningen, for all of Europe.",
           ctaLabel: "Let's talk",
           ctaTarget: "#contact",
