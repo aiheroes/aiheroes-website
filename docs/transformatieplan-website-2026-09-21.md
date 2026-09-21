@@ -1,6 +1,6 @@
 # Transformatieplan website: van drie pijlers naar één belofte
 
-**Status:** plan met genomen beslissingen (§12), geen code gewijzigd.
+**Status:** fase 1 tot en met 4 zijn uitgevoerd op de branch `claude/agency-positioning-messaging-bufx4y` (21 september 2026). Fase 5 (meten) begint na livegang. Dit document is de onderbouwing; de site zelf is de bron van waarheid voor de copy.
 **Datum:** 21 september 2026.
 **Basis:** het positioneringsgesprek van 21 september en een volledige copy-inventaris van de site (bijlage: `docs/copy-inventaris-2026-09-21.md`, 1.560 regels, elke pagina, elk onderdeel van `constants.ts`, alle artikelen en cases, de chatprompt, de schema's en de API-mails).
 **Leeswijzer:** §1 en §2 zijn de basis (wat we worden en wat de site nu zegt). §3 en §4 zijn de regels en de structuur. §5 en §6 zijn de homepage en de hero's, in detail. §7 tot en met §10 zijn het werk per pagina. §11 tot en met §13 zijn volgorde, beslissingen en meetlat.
