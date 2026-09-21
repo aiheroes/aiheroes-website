@@ -1,6 +1,6 @@
 # Transformatieplan website: van drie pijlers naar één belofte
 
-**Status:** plan ter bespreking, geen code gewijzigd.
+**Status:** plan met genomen beslissingen (§12), geen code gewijzigd.
 **Datum:** 21 september 2026.
 **Basis:** het positioneringsgesprek van 21 september en een volledige copy-inventaris van de site (bijlage: `docs/copy-inventaris-2026-09-21.md`, 1.560 regels, elke pagina, elk onderdeel van `constants.ts`, alle artikelen en cases, de chatprompt, de schema's en de API-mails).
 **Leeswijzer:** §1 en §2 zijn de basis (wat we worden en wat de site nu zegt). §3 en §4 zijn de regels en de structuur. §5 en §6 zijn de homepage en de hero's, in detail. §7 tot en met §10 zijn het werk per pagina. §11 tot en met §13 zijn volgorde, beslissingen en meetlat.
@@ -15,9 +15,9 @@
 
 **Drie ingangen** (de vragen waarmee klanten nu al binnenkomen):
 
-1. **Iets nieuws bouwen.** "Kunnen jullie dit voor ons bouwen?" Bewijs: Medux, Trabu, InnoEnergy.
-2. **Vervangen wat niet meer voldoet.** "We willen af van ons huidige pakket." Bewijs: IC Commerce, Avics, Jogo.
-3. **In eigen beheer draaien.** "Kan het op onze eigen servers, binnen Europa?" Bewijs: Tweede Kamer, Envalior, onze eigen stack.
+1. **Iets nieuws bouwen.** "Kunnen jullie dit voor ons bouwen?" Bewijs: INQ22, Kwakkel BV (prototype in zes dagen), IC Commerce.
+2. **Vervangen wat niet meer voldoet.** "We willen af van ons huidige pakket." Bewijs: Strive. Tweede case gezocht.
+3. **In eigen beheer draaien.** "Kan het op onze eigen servers, binnen Europa?" Bewijs: onze eigen stack (de chatassistent op deze site), de logo's van Tweede Kamer, Envalior en UMCG.
 
 **De AI Heroes-standaard** (bij elke bouw inbegrepen; hier gaan de oude pijlers in op):
 
@@ -30,7 +30,7 @@
 
 **De klant.** Organisaties van 50 tot 2.000 medewerkers met een concreet proces, product of systeem dat geld kost of groei tegenhoudt, en een eigenaar die kan beslissen. Budget vanaf €8.000 voor de eerste stap, €15.000 tot ruim €100.000 voor de bouw. Niet: "de directie wil iets met AI", "we vragen tien bureaus om een trainingsofferte", een keynote.
 
-**Besloten in het gesprek:** ook software zonder AI hoort op de voorpagina ("software en AI"). **Nog open:** de namen "startsprint" en "AI Heroes-standaard" (§12).
+**Besloten op 21 september** (het interview over de open punten staat in §12): de namen zijn "startsprint" en "de AI Heroes-standaard"; ook software zonder AI hoort op de voorpagina ("software en AI"); en er geldt een bewijsregel: alleen werk van het huidige team (sinds de overname eind 2025) staat vooraan. Medux, Trabu, OLX en InnoEnergy zijn klanten van het oude AI Heroes en blijven als casepagina bestaan, maar komen niet in de hero, niet op de dienstenkaarten en niet als eerste referentie.
 
 ---
 
@@ -66,7 +66,7 @@ De inventaris is compleet (zie bijlage). Dit zijn de conclusies die het plan dra
 
 ### 2.3 Wat er al goed staat
 
-- **De softwarepagina** heeft de juiste toon en het juiste bewijs: Medux-cijfers, PoC in zes dagen, "gebouwd voor productie, niet voor de demo", geen lock-in. Dit is het model voor de rest.
+- **De softwarepagina** heeft de juiste toon: PoC in zes dagen, "gebouwd voor productie, niet voor de demo", geen lock-in. Dit is het model voor de rest. Het bewijs erop (Medux, Trabu) moet wel worden vervangen door werk van het huidige team (§12.1).
 - **`/nl/menu`**, de printbare menukaart, heeft de nieuwe positionering al: kop "Wat wij bouwen", categorieën agents, automation, webdevelopment, dashboards, documentverwerking, business case & PoC, compliance & governance. Training komt er niet in voor.
 - **De consultancypagina zegt al waarom het werkt:** "dezelfde partner die adviseert, kan ook bouwen wat in de roadmap staat". Dat argument verhuist naar de voorkant.
 - **De compliance-content is actueel en goed** (AI Act-gids, artikel 4, soevereiniteit), alleen gedateerd op een verstreken deadline.
@@ -80,7 +80,7 @@ De inventaris is compleet (zie bijlage). Dit zijn de conclusies die het plan dra
 1. **Elke pagina beantwoordt drie vragen, in deze volgorde:** wat bouwen jullie voor mij, hoe beginnen we, waar is het bewijs.
 2. **Eén knop, overal dezelfde:** *Plan een startsprint.* Tweede knop, waar nodig: *Bekijk wat we bouwden.* Alleen de trainingspagina's krijgen een tekstlink voor wie alleen een training wil.
 3. **Prijzen alleen voor de startsprint en de bouw.** "Vanaf €2.500 per dag" komt nergens meer boven de vouw en verdwijnt uit seoTitles van pagina's in het menu.
-4. **Bewijs begint met productiecijfers.** Medux eerst, dan Jogo, IC Commerce, Avics. Workshopreferenties als laatste.
+4. **Bewijs begint met werk van het huidige team.** Kwakkel BV, IC Commerce, Strive en INQ22 eerst. De oudere cases (Medux, Trabu, OLX, InnoEnergy) en de oudere testimonials (Jogo, Avics, Cloud Primero) blijven staan als verdieping, nooit als eerste bewijs. Workshopreferenties als laatste; trainingsklanten leveren logo's, geen quotes vooraan.
 5. **Verboden woorden en zinnen:** full-service, drie pijlers, onder één dak, alles van A tot I, stap in waar je wilt, van change management tot technische implementatie, het hele AI-traject. Ze mogen alleen nog in `company-profile.md` staan als "wat we vroeger zeiden".
 6. **De pijlers worden fasen.** Training, business case en compliance worden nooit meer als losse producten genoemd zonder de zin "onderdeel van elke bouw".
 7. **Nederlands eerst, dan Engels.** Alle tekst wordt in het Nederlands geschreven en daarna vertaald. Nederlandse werkwoorden (bouwen, koppelen, draaien, overdragen). Engelse termen alleen waar de markt ze zelf gebruikt: business case, compliance, AI Act, proof of concept, hosting, ERP, CRM.
@@ -165,7 +165,7 @@ Beslispunt voor de kop van slide 3 en 4: de rood/blauw-onderstreping vraagt om t
 
 | Kaart | Tag | Titel | Tekst | Link |
 |---|---|---|---|---|
-| 1 | Nieuw | Iets nieuws bouwen | Een assistent, een werkstroom, een tool die er nog niet is. Van prototype in zes dagen tot systeem in productie. Zoals bij Medux: 4.000 gesprekken per maand, afgehandeld door AI die wij bouwden. | /nl/diensten/software |
+| 1 | Nieuw | Iets nieuws bouwen | Een assistent, een werkstroom, een tool die er nog niet is. Van prototype in zes dagen tot systeem in productie. Zoals bij Kwakkel BV: in zes dagen een werkend prototype. | /nl/diensten/software |
 | 2 | Vervangen | Vervangen wat niet meer voldoet | Software die te duur, te traag of te oud is, vervangen door iets dat past. Gekoppeld aan je ERP, CRM en de rest van je landschap. | /nl/diensten/software-vervangen |
 | 3 | Eigen beheer | In eigen beheer draaien | AI en software op je eigen servers of bij een Europese partij. Zonder Amerikaanse cloud, met de AI Act ingebouwd. | /nl/diensten/eu-consultancy |
 
@@ -190,9 +190,9 @@ Bouw: nieuw component `components/Standard.tsx` (vier kolommen, cijfer, kop, twe
 
 **Nu.** Logowand plus zes testimonials. Volgorde: Hanzehogeschool (workshop), Postcode Loterij (workshop), IC Commerce (bouw), Cloud Primero (samenwerking), Jogo (software), Avics (bouw). De eerste twee die een bezoeker leest, gaan over een workshop.
 
-**Straks.** Kop: **Wat we bouwden, en wat het opleverde.** Volgorde: Medux (nieuw toe te voegen als testimonial of als cijferkaart: 4.000 gesprekken per maand, 70% lagere kosten, 80% automatisch afgehandeld), Jogo, IC Commerce, Avics, Cloud Primero, dan pas Postcode Loterij en Hanze. De logowand blijft ongewijzigd: enterprise-logo's zijn bewijs, ook als ze uit trainingen komen.
+**Straks.** Kop: **Wat we bouwden, en wat het opleverde.** Volgorde: IC Commerce (bestaande quote), dan nieuwe quotes van Kwakkel BV, Strive en INQ22 (op te halen in fase 1), dan Jogo, Avics en Cloud Primero, en pas daarna Postcode Loterij en Hanze. De logowand blijft en groeit: enterprise-logo's zijn bewijs, ook als ze uit trainingen komen. UMCG komt erbij als logo, zonder tekst, tot het project verder is.
 
-Als er een Medux-quote beschikbaar is, wordt dat de eerste. Zo niet, dan opent de sectie met een cijferkaart (StatGrid-stijl) boven de quotes.
+Zolang de nieuwe quotes er nog niet zijn, opent de sectie met IC Commerce en een cijferkaart (StatGrid-stijl): 6 dagen tot prototype · 50+ organisaties sinds 2019 · 1.000+ professionals getraind.
 
 ### 5.5 Team (`components/Team.tsx`, copy in `team`)
 
@@ -269,9 +269,9 @@ De Engelse pagina volgt in elke rij de Nederlandse; de EN-inventaris laat zien d
 | URL (NL / EN) | Verkoopt nu | Lot | Nieuwe rol, titel en knop | Fase |
 |---|---|---|---|---|
 | /nl/diensten · /en/services | catch-all: "Drie pijlers, één partner", kaart Training met "Vanaf €2.500 per dag" vooraan, FAQ "Welke pijler heb ik nodig?" | **herschrijven** | Wordt de overzichtspagina "Wat we bouwen" (§10.3) op deze URL, zodat backlinks en ranking blijven. Titel **Wat we bouwen**. Subtitel *Software en AI die in productie draait. Drie manieren om te beginnen, één voordeur.* Kaarten: de drie ingangen. Dan het standaard-blok, cases, FAQ ("Bouwen jullie ook software zonder AI?", "Hoe beginnen we?", "Wat als we eerst willen leren wat AI kan?"). Knop *Plan een startsprint*. `/nl/bouwen` komt er niet als aparte URL; `diensten` is de bouwpagina. | 1 |
-| /nl/diensten/software · /en/services/software | software build; sterkste pagina van de site (Medux-cijfers, PoC €8.000, "gebouwd voor productie, niet voor de demo") | **herschrijven** tot de bouwpagina **Iets nieuws bouwen** (§10.2) | Zelfde URL. Titel **Iets nieuws bouwen**. Badge *Iets nieuws bouwen*. De vijf aanbodkaarten (PoC, AI op maat, systeemintegratie, dedicated teams, digital twins) blijven als "Wat we bouwen", maar de PoC-kaart wordt de startsprint en de tekst "Bouwen, trainen en advies onder één dak" (:19, :93) en "Je stapt in op het niveau dat past" (:99) vervallen. Verwante diensten-blok wordt de twee andere ingangen. | 2 |
+| /nl/diensten/software · /en/services/software | software build; sterkste pagina van de site (PoC €8.000, "gebouwd voor productie, niet voor de demo"; het bewijs erop is Medux en Trabu) | **herschrijven** tot de bouwpagina **Iets nieuws bouwen** (§10.2) | Zelfde URL. Titel **Iets nieuws bouwen**. Badge *Iets nieuws bouwen*. De vijf aanbodkaarten (PoC, AI op maat, systeemintegratie, dedicated teams, digital twins) blijven als "Wat we bouwen", maar de PoC-kaart wordt de startsprint en de tekst "Bouwen, trainen en advies onder één dak" (:19, :93) en "Je stapt in op het niveau dat past" (:99) vervallen. Bewijs wordt Kwakkel BV, INQ22 en IC Commerce; Medux en Trabu verhuizen naar een blok "Eerdere cases" onderaan. Verwante diensten-blok wordt de twee andere ingangen. | 2 |
 | /nl/diensten/consultancy · /en/services/consulting | consultancy; zes losse producten met prijzen (scan €3.000, roadmap €5.000), "Je stapt in waar het voor jou zinvol is" (:95) | **herkaderen** tot fasepagina **Business case en scoping** | Zelfde URL, uit het menu. Nieuwe opening: *Elke bouw begint bij ons met een business case. Deze pagina beschrijft hoe we die maken.* De zes producten blijven als verdieping (ze ranken en er wordt op gezocht), maar de eerste die genoemd wordt is de startsprint; de readiness scan en business case-analyse worden beschreven als "wat er in de startsprint zit". Prijzen onder de vouw. Knop *Plan een startsprint*. Badge *Onderdeel van de AI Heroes-standaard*. | 3 |
-| /nl/diensten/training · /en/services/training | training; zes workshops, "Vanaf €2.500 per dag" in de seoTitle, hero-knop "Plan een training" | **herkaderen** tot fasepagina **Training van je team** | Zelfde URL, uit het menu, seoTitle behouden voor de vindbaarheid. Nieuwe opening: *Bij elke bouw trainen we het team dat ermee gaat werken. Dat is de training die het meest oplevert: op jouw systeem, met jouw data. Losse trainingen doen we ook; hieronder staat wat we aanbieden en wat het kost.* De zes workshops blijven. Prijs blijft, maar na de opening. Knop *Plan een startsprint* met tweede tekstlink *Alleen een training? Vraag hem hier aan* naar het formulier onderaan met onderwerp Training. Hier hoort ook de zin over lagere tarieven voor onderwijs en non-profit. | 3 |
+| /nl/diensten/training · /en/services/training | training; zes workshops, "Vanaf €2.500 per dag" in de seoTitle, hero-knop "Plan een training" | **herkaderen** tot fasepagina **Training van je team** | Zelfde URL, uit het menu, seoTitle behouden voor de vindbaarheid. Nieuwe opening: *Bij elke bouw trainen we het team dat ermee gaat werken. Dat is de training die het meest oplevert: op jouw systeem, met jouw data. Losse trainingen doen we ook; hieronder staat wat we aanbieden en wat het kost.* De zes workshops blijven, met kennismakingsgesprek vooraf zoals nu (besluit 4 in §12). Prijs blijft, maar na de opening. Knop *Plan een startsprint* met tweede tekstlink *Alleen een training? Vraag hem hier aan* naar het formulier onderaan met onderwerp Training. Hier hoort ook de zin over lagere tarieven voor onderwijs en non-profit. | 3 |
 | /nl/diensten/incompany-ai-training · /en/services/incompany-ai-training | training; ~90% duplicaat van training (zelfde FAQ, zelfde prijs), twee dode links (copilot-basics, ai-voor-developers) | **opgaan in** training | 301 naar /nl/diensten/training. Als de pagina op "incompany AI training" rankt: laten staan, herkaderen als training, dode links repareren. Beslissen op Search Console-data. | 3 |
 | /nl/diensten/ai-geletterdheid-training · /en/services/ai-literacy-training | training, compliance-gedreven; "Voor 2 augustus aantoonbaar op orde?" | **herkaderen** | Zelfde URL. De deadline van 2 augustus 2026 is verstreken; de tekst gaat van "voor de deadline" naar "de toezichthouder is actief". Opening: *Artikel 4 vraagt om aantoonbare AI-geletterdheid. Bouwen wij voor je, dan zit die training in het traject en krijg je het bewijs erbij. Alleen de training kan ook.* Blijft als los product boekbaar, dit is het ene compliance-product dat zichzelf verkoopt. Knop *Plan een training*, blijft. | 3 |
 | /nl/diensten/eu-consultancy · /en/services/eu-consultancy | catch-all in EU-vorm: "3 pijlers · Training · Scan · Bouw", "Je kunt instappen waar je wilt" | **opgaan in** bouwpagina **In eigen beheer draaien** | Deze URL wordt de bouwpagina voor de derde ingang (§10.2), omdat hij al rankt op "soevereine AI" en het uitgelichte menu-item was. Titel **In eigen beheer draaien**. De drie stappen (bewustwording, scan, implementatie) worden: startsprint met hostingontwerp en risicobeoordeling, bouw en migratie, training van je team. De CLOUD Act-uitleg blijft als "Waarom dit speelt". | 2 |
@@ -285,7 +285,7 @@ De Engelse pagina volgt in elke rij de Nederlandse; de EN-inventaris laat zien d
 
 | URL | Verkoopt nu | Lot | Nieuwe rol | Fase |
 |---|---|---|---|---|
-| /nl/over-ons · /en/about | catch-all; hero "full-service AI agency … van change management tot technische implementatie", stat "3 expertises onder één dak", sectie "Wat we doen" met drie pijlers, Engelstalige kaartkop "Practice over theory, results over reports" | **herschrijven** (copy in `constants.ts` aboutPage) | Hero-subtitel wordt de kernzin. Intro: het oprichtingsverhaal blijft (de markt is gefragmenteerd), maar de conclusie wordt "daarom bouwen wij, en nemen we business case, compliance en training mee". Stats: 50+ organisaties · sinds 2019 · 4.000 gesprekken per maand bij Medux. Teamrollen volgen het traject (§9.4). "Wat we doen" wordt de drie ingangen. Waarden blijven. Engelse kaartkop vertalen. | 3 |
+| /nl/over-ons · /en/about | catch-all; hero "full-service AI agency … van change management tot technische implementatie", stat "3 expertises onder één dak", sectie "Wat we doen" met drie pijlers, Engelstalige kaartkop "Practice over theory, results over reports" | **herschrijven** (copy in `constants.ts` aboutPage) | Hero-subtitel wordt de kernzin. Intro: het oprichtingsverhaal blijft (de markt is gefragmenteerd), maar de conclusie wordt "daarom bouwen wij, en nemen we business case, compliance en training mee". Stats: 50+ organisaties · sinds 2019 · 1.000+ professionals getraind. Het verhaal noemt de overname eind 2025 en het huidige team als de makers van het werk dat vooraan staat. Teamrollen volgen het traject (§9.4). "Wat we doen" wordt de drie ingangen. Waarden blijven. Engelse kaartkop vertalen. | 3 |
 | /nl/over-ons/aanpak · /en/about/approach | catch-all; het manifest: "Drie pijlers, één traject", "Instappen waar je wilt", "De natuurlijke volgorde is Training → Consultancy → Software", tarievenblok met alle drie prijzen | **herschrijven** tot **Hoe we werken** (§10.4) | Zelfde URL (geen nieuwe slug nodig; menu-label wordt "Hoe we werken"). Volledig nieuwe tekst: het traject in volgorde, de standaard uitgelegd, principes blijven. Tarievenblok: alleen startsprint en "bouw vanaf €15.000". seoTitle toevoegen (ontbreekt nu). | 2 |
 | /nl/over-ons/team · /en/about/team | catch-all; rollen wijken af van constants.ts, slot "Of je nu een workshop wilt boeken of wilt sparren" | **herkaderen** | Rollen gelijktrekken met §9.4 op alle drie plekken (teampagina, over-ons, schema). Slot wordt *Vertel wat je wilt bouwen.* seoTitle toevoegen. | 3 |
 
@@ -320,15 +320,19 @@ De Engelse pagina volgt in elke rij de Nederlandse; de EN-inventaris laat zien d
 
 ### 8.1 Cases (`src/content/cases/{nl,en}/*.mdx`)
 
-De cases zijn het sterkste bezit van de site en het minst goed ingezet. Wat de inventaris laat zien: alle vier zijn bouwcases, alleen Medux heeft harde cijfers, OLX (het grootste merk) heeft geen enkel cijfer en geen quote, Trabu telt in de tekst acht dagen (twee dagen prototyping plus zes dagen sprint) waar de titel zes dagen claimt, en alle acht bestanden hebben hetzelfde hardgecodeerde slotblok "Wil je vergelijkbare resultaten?" met links naar een anker `#software` dat op de dienstenpagina niet bestaat.
+De cases zijn het sterkste bezit van de site en het minst goed ingezet, met één complicatie die uit het interview kwam: alle vier de huidige cases (Medux, OLX, Trabu, InnoEnergy) zijn werk van het oude AI Heroes, en het Medux-project is niet netjes afgesloten. Ze blijven bestaan, maar het huidige team heeft eigen bewijs nodig dat vooraan kan staan. Dat bewijs bestaat (Strive, INQ22, Kwakkel BV, IC Commerce), maar staat nog nergens op de site. Wat de inventaris verder laat zien: alle vier zijn bouwcases, alleen Medux heeft harde cijfers, OLX (het grootste merk) heeft geen enkel cijfer en geen quote, Trabu telt in de tekst acht dagen (twee dagen prototyping plus zes dagen sprint) waar de titel zes dagen claimt, en alle acht bestanden hebben hetzelfde hardgecodeerde slotblok "Wil je vergelijkbare resultaten?" met links naar een anker `#software` dat op de dienstenpagina niet bestaat.
 
 | Case | Nu | Straks |
 |---|---|---|
-| Medux | badge "Software & Implementatie", 70% / 80% / 7.8 / 4.000 per maand, slotlink naar software-diensten als tekstlink | Badge **Iets nieuws bouwen**. Blijft het vlaggenschip. Eén alinea toevoegen over de standaard in de praktijk: welke business case eraan voorafging, hoe logging en doorschakeling de compliance-eis invullen, hoe het klantenserviceteam is getraind. Dat maakt Medux het bewijs voor de hele belofte, niet alleen voor de bouw. |
+| Medux | badge "Software & Implementatie", 70% / 80% / 7.8 / 4.000 per maand, slotlink naar software-diensten als tekstlink | Badge **Iets nieuws bouwen**, `order` achter de nieuwe cases. Pagina blijft, tekst blijft. De cijfers verdwijnen uit hero, dienstenkaarten, startsprintpagina en referentiesectie (besluit §12). Geen uitbreiding. |
 | OLX | badge "Consultancy + Software", geen cijfers, geen quote | Badge **Iets nieuws bouwen**. Cijfers opvragen bij OLX (zoekconversie, gebruik van visual search). Lukt dat niet, dan de case korter maken en eerlijk als productcase presenteren: "wat we bouwden" in plaats van "de resultaten". |
-| Trabu | badge "Software & Implementatie", 6 dagen, enige klantquote | Badge **Iets nieuws bouwen**. Dagentelling gelijktrekken (zes werkdagen sprint na een tweedaagse voorbereiding, en dat ook zo zeggen). Wordt de standaardillustratie van de startsprint. |
+| Trabu | badge "Software & Implementatie", 6 dagen, enige klantquote | Badge **Iets nieuws bouwen**, `order` achter de nieuwe cases. Dagentelling gelijktrekken (zes werkdagen sprint na een tweedaagse voorbereiding, en dat ook zo zeggen). Niet meer de illustratie van de startsprint; dat wordt Kwakkel BV. |
 | InnoEnergy | badge "Software & Implementatie", geen KPI's, klikbaar prototype | Badge **Iets nieuws bouwen**. Eerlijk als prototypecase: "van visie naar goedgekeurd prototype in [x] weken". Weken opvragen. |
-| Nieuw: IC Commerce, Jogo, Avics | alleen testimonial | Drie korte cases van één scherm voor ingang 2, **Vervangen wat niet meer voldoet**. Zonder deze cases heeft de tweede ingang geen bewijs op de site. Materiaal: de bestaande testimonials plus één gesprek per klant. |
+| Nieuw: Kwakkel BV | staat nergens op de site | Case van één scherm, ingang **Iets nieuws bouwen**, `order: 1`. Prototype in zes dagen met het huidige team. Dit is de illustratie van de startsprint op elke pagina waar die uitgelegd wordt. Eén alinea is toegestaan (besluit §12). |
+| Nieuw: INQ22 | staat nergens op de site | Case van één scherm, ingang **Iets nieuws bouwen**, `order: 2`. Inhoud ophalen bij David: wat is gebouwd, wat draait er, welk cijfer mag genoemd. |
+| Nieuw: Strive | staat nergens op de site | Case van één scherm, ingang **Vervangen wat niet meer voldoet**, `order: 3`. Het enige bewijs voor ingang 2; inhoud ophalen bij David. Een tweede vervangcase is gezocht. |
+| Nieuw: IC Commerce | alleen testimonial | Case van één scherm, ingang **Iets nieuws bouwen**, `order: 4`, gebouwd op de bestaande quote ("elke stap van ons eCommerce platform automatiseren"). |
+| UMCG | staat nergens op de site | Alleen logo in de logowand. Geen case, geen tekst, tot het project verder is (besluit §12). |
 | Nieuw: eigen stack | alleen in de disclosure van de chat | Korte case **In eigen beheer draaien**: de chatassistent op aiheroes.io draait op Europese infrastructuur, met Supabase EU, model-routing en retentiebeleid. Het is het enige bewijs voor ingang 3 dat zonder klanttoestemming te publiceren is. |
 
 Sjabloonwijzigingen (`src/pages/{nl,en}/cases/[slug].astro`): het slotblok "Wil je vergelijkbare resultaten?" verhuist uit de acht MDX-bestanden naar de template, met de tekst *Zoiets laten bouwen? Een startsprint is de eerste stap.* en de knop naar `/nl/startsprint`. `pillarBadge` wordt in het schema hernoemd naar `entry` met drie toegestane waarden. `seoTitle` invullen per case (staat in het schema, wordt nergens gezet). ProofRow op de cases-index: Prosus en Envalior eruit zolang er geen case van is.
@@ -366,7 +370,7 @@ De artikelen zijn goed geschreven en ranken; ze blijven allemaal. Drie ingrepen,
 |---|---|---|
 | Wat we bouwen | /nl/diensten | Iets nieuws bouwen · Bestaande software vervangen · In eigen beheer draaien · uitgelicht: De startsprint |
 | Hoe we werken | /nl/over-ons/aanpak | De AI Heroes-standaard · Business case · Compliance · Training van je team |
-| Cases | /nl/cases | Medux · OLX · InnoEnergy · Trabu |
+| Cases | /nl/cases | Kwakkel BV · INQ22 · Strive · IC Commerce (tot die er zijn: de huidige vier) |
 | Over ons | /nl/over-ons | Het team · Vacatures · AI Salon · Zoals gezien op TV · Resources |
 | Plan een startsprint | /nl/startsprint | (knop, accentkleur) |
 
@@ -418,11 +422,11 @@ Drie soorten pagina's bestaan nu niet en dragen de nieuwe positionering. Zonder 
 De enige voordeur, dus de best gebouwde pagina na de homepage. Zelfde kwaliteitslat als de homepage en AI Salon (eigen hero, eigen ritme, geen prose-dump).
 
 - **Hero.** Badge: *De voordeur*. Titel: **De startsprint.** Subtitel: *Eén week. Vast bedrag. Aan het eind weet je of het kan, wat het kost en hoe het eruitziet.* Knop: *Plan een startsprint* (scrolt naar het formulier op deze pagina).
-- **Wat je krijgt.** Drie kaarten, per ingang: bij iets nieuws bouwen een werkend prototype (Trabu: zes dagen, op tijd voor de investeerders); bij vervangen een architectuur en migratieplan met de koppelingen benoemd; bij eigen beheer een hostingontwerp en risicobeoordeling. Altijd: de business case op één A4.
+- **Wat je krijgt.** Drie kaarten, per ingang: bij iets nieuws bouwen een werkend prototype (Kwakkel BV: in zes dagen van vraag naar werkend prototype); bij vervangen een architectuur en migratieplan met de koppelingen benoemd; bij eigen beheer een hostingontwerp en risicobeoordeling. Altijd: de business case op één A4.
 - **Hoe de week eruitziet.** Dag 1 intake en scope. Dag 2 en 3 bouwen of ontwerpen. Dag 4 koppelen aan je echte data of systemen. Dag 5 demo, business case en go/no-go. (`ProcessSteps`-blok.)
 - **Prijs.** Vanaf €8.000, vast bedrag, vooraf bekend. Gaat de bouw door, dan is de startsprint de eerste fase van het traject. Gaat hij niet door, dan houd je het prototype, het plan en de business case.
 - **Voor wie.** Drie zinnen die de ICP beschrijven en de niet-ICP laten voelen: *Voor organisaties met een concreet proces, product of systeem, en een eigenaar die kan beslissen. Niet voor een eerste kennismaking met AI; daarvoor is een training een betere eerste stap.*
-- **Bewijs.** StatGrid: 6 dagen tot prototype · 4.000 gesprekken per maand bij Medux · 50+ organisaties sinds 2019.
+- **Bewijs.** StatGrid: 6 dagen tot prototype (Kwakkel BV) · Vast bedrag, vooraf bekend · 50+ organisaties sinds 2019.
 - **Veelgestelde vragen.** Wat als het niet lukt in een week? Moeten wij iemand vrijmaken? Wat gebeurt er na de sprint? Kunnen we ook zonder sprint starten? Werkt dit ook voor software zonder AI?
 - **Formulier.** Het kwalificerende formulier van §5.7, met de ingang voorgeselecteerd als de bezoeker via een bouwpagina kwam.
 - **Schema.** `Service` met `offers.price: 8000`, plus `FAQPage`.
@@ -436,7 +440,7 @@ Eén sjabloon, drie invullingen. Elke pagina beantwoordt de drie vragen uit de t
 | Hero-titel | Iets nieuws bouwen | Vervangen wat niet meer voldoet | In eigen beheer draaien |
 | Herkenbare vraag (eerste alinea) | "Kunnen jullie dit voor ons bouwen?" | "We zijn ons huidige pakket zat. We willen iets dat past." | "Kan het ook op onze eigen servers? Onze data mag Europa niet uit." |
 | Wat we bouwen | Assistenten, werkstromen, spraak-AI, interne tools, klantportalen, zoek- en documentsystemen | Vervanging van verouderde maatwerksystemen en te dure SaaS, gekoppeld aan ERP, CRM, Microsoft 365, legacy | Lokale modellen, Europese cloud (Mistral, Aleph Alpha, Nederlandse hosting), migratie weg van Amerikaanse processors |
-| Bewijs | Medux, Trabu, InnoEnergy | IC Commerce, Avics, Jogo | Tweede Kamer (training), Envalior, eigen stack (de chat op deze site draait Europees) |
+| Bewijs | Kwakkel BV, INQ22, IC Commerce; Medux, Trabu en InnoEnergy als "eerdere cases" onderaan | Strive; Jogo en Avics als oudere referenties onderaan | Eigen stack (de chat op deze site draait Europees, "practice what you preach"); logo's van UMCG, Tweede Kamer en Envalior |
 | Startsprint-uitkomst | Werkend prototype | Architectuur en migratieplan | Hostingontwerp en risicobeoordeling |
 | Standaard-blok | ja | ja | ja, met compliance vooraan |
 | FAQ | kosten, doorlooptijd, eigen developers, productie | datamigratie, doorlooptijd, koppelingen, lock-in | welke modellen, prestaties, kosten van eigen hardware, AI Act |
@@ -464,14 +468,14 @@ De volgorde is gekozen zodat elke fase op zichzelf online kan en de lead-kwalite
 - Contactformulier met kwalificatievelden, API erbij (§9.3).
 - `SubpageLayout`: standaardknop en badge-logica (§6).
 - Chatprompt (§9.6), schema (§9.5), `company-profile.md` (§9.7).
-- Testimonials herschikt (§5.4).
+- Testimonials herschikt (§5.4); quotes opvragen bij Kwakkel BV, Strive en INQ22.
 - Parity-check en `npm run check` groen; preview delen.
 
 **Fase 2: de bouwpagina's (één PR).**
 - Drie bouwpagina's en de overzichtspagina (§10.2, §10.3).
 - Hoe we werken (§10.4).
 - Bestaande software-, EU- en aanpakpagina's krijgen hun lot uit §7 (herschrijven, samenvoegen, doorverwijzen).
-- Cases-index prominent, Medux-cijfers overal waar bewijs staat.
+- Vier nieuwe cases (Kwakkel BV, INQ22, Strive, IC Commerce) vóór de oude in de index; de oude vier krijgen een hogere `order`.
 
 **Fase 3: de rest van de dienstenpagina's (één PR, of per pagina).**
 - Training, consultancy, AI-geletterdheid, incompany, EU-training en de SEO-landers: openingsalinea en knop herschrijven naar "onderdeel van een bouwtraject", uit het menu, prijzen onder de vouw.
@@ -482,20 +486,46 @@ De volgorde is gekozen zodat elke fase op zichzelf online kan en de lead-kwalite
 
 **Fase 5: meten en bijsturen (zes weken na fase 1).** Zie §13.
 
-## 12. Open beslissingen
+## 12. Beslissingen
 
-| # | Beslissing | Voorstel | Wie |
-|---|---|---|---|
-| 1 | Naam van de voordeur | Startsprint | Frans, Jan, David |
-| 2 | Naam van de inbegrepen laag | De AI Heroes-standaard | idem |
-| 3 | Prijs en duur van de startsprint | Eén week, vanaf €8.000, vast bedrag | David (haalbaarheid), Frans (prijs) |
-| 4 | Workshop als los product | Blijft leverbaar, alleen te boeken via de trainingspagina met vaste prijs en zonder kennismakingsgesprek | Jan |
-| 5 | Nieuwe URL voor "Vervangen wat niet meer voldoet" | `/nl/diensten/software-vervangen` en `/en/services/replace-software`; alternatief is de inhoud op de softwarepagina houden met een anker, maar dan heeft ingang 2 geen eigen vindbare pagina | Frans |
-| 6 | Software zonder AI op de voorpagina | Ja, "software en AI" in de kernzin (besloten in het gesprek van 21 september) | besloten |
-| 7 | Medux-testimonial | Vragen aan Medux om een quote van één zin; anders cijferkaart | Frans |
-| 8 | Koppen slide 3 en 4 van de hero | "Weg met software die je tegenhoudt" of het rustiger "Van verouderd naar passend" | Frans |
-| 9 | Budgetvraag in het formulier | Vier bandbreedtes plus "nog geen idee" | Frans |
-| 10 | Bedrijfsprofiel en offerings bible | In dezelfde week herschrijven, anders schrijft elke AI-tool de oude positionering terug | Frans |
+Genomen op 21 september, in een interview met Frans over de tien open punten uit de eerste versie van dit plan.
+
+| # | Beslissing | Uitkomst |
+|---|---|---|
+| 1 | Naam van de voordeur | **Startsprint.** Knop overal: *Plan een startsprint.* |
+| 2 | Naam van de inbegrepen laag | **De AI Heroes-standaard.** Sectiekop: *Bij elke bouw inbegrepen.* |
+| 3 | Prijs en duur van de startsprint | **Eén week, vanaf €8.000, vast bedrag.** Op elke pagina waar de startsprint staat. |
+| 4 | Workshop als los product | **Blijft zoals nu, alleen minder zichtbaar.** Het kennismakingsgesprek vooraf blijft. Uit het menu en van de homepage; boekbaar via de trainingspagina. Gevolg voor §13: de verkoopkosten van workshops worden apart bijgehouden, want dit besluit lost ze niet op. |
+| 5 | URL voor "Vervangen wat niet meer voldoet" | **`/nl/diensten/software-vervangen`** en `/en/services/replace-software`. |
+| 6 | Software zonder AI op de voorpagina | **Ja.** "Software en AI" in de kernzin. |
+| 7 | Medux als bewijs | **Casepagina blijft, cijfers weg van home en hero.** Medux was klant van het oude AI Heroes en het project is niet netjes afgesloten. Noemen mag, pronken niet. |
+| 8 | Koppen hero-slide 3 en 4 | **Stellig.** "Weg met software die je tegenhoudt" en "AI op eigen grond, Europees gehost". |
+| 9 | Budgetvraag in het formulier | **Vier bandbreedtes plus "nog geen idee"**, als keuzeknoppen, niet verplicht. |
+| 10 | `docs/company-profile.md` | **In dezelfde PR als de homepage.** |
+
+### 12.1 De bewijsregel
+
+Uit het interview kwam een onderscheid dat de eerste versie van dit plan niet kende: welk werk is van het huidige team (sinds de overname eind 2025) en welk werk is van het oude AI Heroes. Alleen het eerste staat vooraan.
+
+**Van het huidige team, mag vooraan:**
+
+- **Kwakkel BV**: prototype in zes dagen. Wordt de illustratie van de startsprint. Eén alinea toegestaan.
+- **INQ22**: iets nieuws gebouwd. Inhoud ophalen bij David.
+- **Strive**: bestaande software vervangen. Het enige bewijs voor ingang 2.
+- **IC Commerce**: automatisering van het e-commerceplatform; bestaande quote.
+- **Eigen stack**: de chatassistent op aiheroes.io, Europees gehost, zelf gebouwd. Bewijs voor ingang 3 zonder klanttoestemming.
+- **UMCG**: samenwerking op software in een vroeg stadium. Alleen logo, geen tekst.
+- **Trainingsklanten** (Tweede Kamer, Postcode Loterij, Envalior, Philips Healthcare, Banijay, Prosus, Hanze): logo's, geen quotes vooraan.
+
+**Van het oude AI Heroes, blijft staan maar niet vooraan:** Medux, Trabu, OLX en InnoEnergy als casepagina's; Jogo, Avics en Cloud Primero als testimonials (niet als nieuw genoemd in het interview; aanname dat ze onder dezelfde regel vallen, te bevestigen door Frans).
+
+**Gevolg voor het plan:** hero-slide 2 en dienstenkaart 1 verwijzen naar Kwakkel BV in plaats van Medux; de startsprintpagina gebruikt Kwakkel BV; de referentiesectie opent met IC Commerce; §8.1 voegt vier nieuwe cases toe die vóór de oude komen; de softwarepagina en de bouwpagina's zetten de oude cases in een blok "Eerdere cases" onderaan. De claim "50+ organisaties sinds 2019" blijft, want de merknaam en het klantenbestand zijn overgenomen; de tekst op de over-onspagina zegt dat ook zo.
+
+### 12.2 Wat nog open staat
+
+- Inhoud van de cases INQ22 en Strive (wat is gebouwd, welk cijfer mag genoemd, wie geeft de quote). Eigenaar: David.
+- Bevestiging dat Jogo, Avics en Cloud Primero onder de "oude" regel vallen. Eigenaar: Frans.
+- Een tweede case voor ingang 2. Tot die er is, draagt Strive de ingang alleen.
 
 ## 13. Meetlat
 
@@ -504,5 +534,5 @@ Het doel is betere aanvragen. Meer bezoekers is geen doel. Dus meten we de aanvr
 - **Per aanvraag:** ingang gekozen, budgetband, eigenaarschap, en of hij via de startsprintpagina kwam. Dit zit in de e-mail zodra §9.3 live is; een simpel logboek (spreadsheet) per maand volstaat.
 - **Doel na zes weken:** de meerderheid van de aanvragen noemt een concreet proces of systeem, en minstens een derde geeft een budgetband van €10.000 of hoger op.
 - **Tegenindicator:** aantal aanvragen dat alleen om een workshop of dagtarief vraagt. Dat mag dalen; als het naar nul gaat zonder dat bouwaanvragen stijgen, is de toon te afstotend en moet de trainingspagina zichtbaarder.
-- **Verkoopkosten:** aantal gesprekken per getekende startsprint. Nu onbekend; vanaf fase 1 bijhouden.
+- **Verkoopkosten:** aantal gesprekken per getekende startsprint, en apart het aantal kennismakingsgesprekken per verkochte workshop (besluit 4 laat dat gesprek bestaan). Nu onbekend; vanaf fase 1 bijhouden.
 - **Vindbaarheid:** posities van de bestaande trainings- en consultancypagina's mogen niet instorten; ze blijven live met dezelfde URL. Controleren met de bestaande parity-suite en Search Console.
