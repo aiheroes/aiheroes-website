@@ -8,7 +8,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   taxID: '42051968',
   vatID: 'NL869486263B01',
   description:
-    'Full-service AI agency met drie pijlers: training, consulting en software. Van change management tot technische implementatie, vanuit Groningen voor heel Europa.',
+    'AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Ontwerpen, bouwen en implementeren, met een sluitende business case, compliance vanaf de tekentafel en training van het team dat ermee werkt. Vanuit Groningen, voor heel Europa.',
   url: 'https://aiheroes.io',
   logo: 'https://aiheroes.io/logo.svg',
   image: 'https://aiheroes.io/og-image.png',
@@ -28,39 +28,44 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   // see docs/seo-offsite-checklist.md). Only verified, live profile URLs belong here.
   sameAs: ['https://www.linkedin.com/company/aiheroes'],
   founder: [
-    { '@type': 'Person', name: 'Frans Hoorn', jobTitle: 'Co-Founder, Consulting' },
-    { '@type': 'Person', name: 'David Homan', jobTitle: 'Co-Founder, Software' },
-    { '@type': 'Person', name: 'Jan Brusse', jobTitle: 'Co-Founder, Training' },
+    { '@type': 'Person', name: 'Frans Hoorn', jobTitle: 'Co-Founder, Business case & scoping' },
+    { '@type': 'Person', name: 'David Homan', jobTitle: 'Co-Founder, Bouw & compliance' },
+    { '@type': 'Person', name: 'Jan Brusse', jobTitle: 'Co-Founder, Adoptie & training' },
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'AI Services',
+    name: 'Wat we bouwen',
     itemListElement: [
       {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Startsprint',
+          description: 'Eén week, vast bedrag. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case op één A4.',
+          url: 'https://aiheroes.io/nl/startsprint',
+        },
+        price: '8000',
+        priceCurrency: 'EUR',
+      },
+      {
         '@type': 'OfferCatalog',
-        name: 'Training',
+        name: 'Iets nieuws bouwen',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Foundations Workshop', description: '1-dag workshop om je team te leren werken met AI' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Copilot Training', description: 'Microsoft 365 Copilot productiviteitstraining' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI voor Developers', description: 'AI-tools en technieken voor softwareontwikkelaars' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maatwerksoftware en AI', description: 'Assistenten, werkstromen, spraak-AI, interne tools en klantportalen, van prototype tot systeem in productie', url: 'https://aiheroes.io/nl/diensten/software' } },
         ],
       },
       {
         '@type': 'OfferCatalog',
-        name: 'Consulting',
+        name: 'Vervangen wat niet meer voldoet',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Business Case Analyse', description: 'Strategische analyse om AI-kansen in je organisatie te identificeren' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Readiness Scan', description: 'Beoordeling van AI-gereedheid met concreet actieplan' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Roadmap', description: 'Strategisch AI-implementatieplan met business cases en prioritering' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Software vervangen', description: 'Verouderde maatwerksystemen en te dure SaaS vervangen door eigen software, gekoppeld aan ERP, CRM en het bestaande landschap', url: 'https://aiheroes.io/nl/diensten/software-vervangen' } },
         ],
       },
       {
         '@type': 'OfferCatalog',
-        name: 'Software & Implementatie',
+        name: 'In eigen beheer draaien',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI op Maat', description: 'Custom AI-software op maat van prototype tot productie' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Proof of Concept', description: 'Snel werkend AI-prototype om je idee te valideren' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Systeemintegratie', description: 'AI-modellen integreren in bestaande bedrijfssystemen' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Soevereine AI en hosting', description: 'AI en software op eigen servers of bij een Europese partij, zonder Amerikaanse cloud, met de AI Act ingebouwd', url: 'https://aiheroes.io/nl/diensten/eu-consultancy' } },
         ],
       },
     ],

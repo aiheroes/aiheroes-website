@@ -5,12 +5,12 @@ import type { Language } from '../types';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
+import { Standard } from '../components/Standard';
 import { Approach } from '../components/Approach';
 import { Team } from '../components/Team';
 import { SocialProof } from '../components/SocialProof';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
-import { useSEO } from '../hooks/useSEO';
 import { ArrowRight } from 'lucide-react';
 import { CHAT_ENABLED } from '../src/data/chat-flags';
 
@@ -49,6 +49,7 @@ interface HomePageProps {
 const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
+  { id: 'standard', theme: 'light' },
   { id: 'social-proof', theme: 'dark' },
   { id: 'team', theme: 'light' }, // On desktop, whole team section is light
   { id: 'approach', theme: 'dark' },
@@ -59,6 +60,7 @@ const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
 const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
+  { id: 'standard', theme: 'light' },
   { id: 'social-proof', theme: 'dark' },
   { id: 'team-image', theme: 'dark' },   // Team image needs dark navbar (mobile stacked)
   { id: 'team-content', theme: 'light' }, // Team text needs light navbar
@@ -66,18 +68,6 @@ const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'contact', theme: 'light' },
   { id: 'footer', theme: 'dark' },
 ];
-
-// SEO content per language
-const SEO_CONTENT = {
-  nl: {
-    title: 'Full-Service AI Agency Nederland | Training, Consulting & Software',
-    description: 'AI Heroes is een full-service AI bureau uit Groningen, actief in heel Nederland en Europa. Van change management tot technische implementatie: training, consulting en software.'
-  },
-  en: {
-    title: 'Full-Service AI Agency Netherlands | Training, Consulting & Software',
-    description: 'AI Heroes is a full-service AI agency in the Netherlands, based in Groningen. From change management to technical implementation: AI training, consulting and software.'
-  }
-};
 
 export function HomePage({ defaultLang }: HomePageProps = {}) {
   const navigate = useNavigate();
@@ -107,15 +97,6 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
       navigate(newLang === 'nl' ? '/' : '/en');
     }
   };
-
-  // SEO for homepage
-  useSEO({
-    title: SEO_CONTENT[lang].title,
-    description: SEO_CONTENT[lang].description,
-    lang,
-    path: lang === 'nl' ? '/' : '/en',
-    alternatePath: lang === 'nl' ? '/en' : '/'
-  });
 
   useEffect(() => {
     localStorage.setItem(LANG_STORAGE_KEY, lang);
@@ -232,8 +213,14 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
 
         {/* Services (Light) */}
-        <section id="services" className="md:snap-start md:h-screen w-full flex items-center bg-brand-light overflow-y-auto md:overflow-hidden scrollbar-hide">
-          <Services content={content.services} lang={lang} />
+        <section id="services" className="md:snap-start md:min-h-screen w-full flex items-center bg-brand-light">
+          <Services content={content.services} />
+        </section>
+
+        {/* Standard (Light): what every build includes. Not a snap target so it reads
+            as the second half of the services story rather than a separate screen. */}
+        <section id="standard" className="w-full bg-white">
+          <Standard content={content.standard} />
         </section>
 
         {/* Social Proof (Dark). min-h-screen (not fixed h-screen) so the desktop
@@ -282,7 +269,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           }}
           className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
         >
-          <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
+          <span>{lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?'}</span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>

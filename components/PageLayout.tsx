@@ -208,7 +208,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
               onClick={scrollToContact}
               className={`group ${accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue'} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl`}
             >
-              <span>{ctaLabel || (lang === 'nl' ? 'Start gesprek' : 'Start conversation')}</span>
+              <span>{ctaLabel || CONTENT[lang].nav.cta.label}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           )}
@@ -239,7 +239,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       {showContactForm && (
         <section id="contact-form" className="py-16 md:py-24 bg-white border-t border-stone-200">
           <div className="max-w-4xl mx-auto px-6">
-            <PageContactForm lang={lang} accentColor={accentColor} preselectedTopic={pillarBadge} />
+            <PageContactForm lang={lang} accentColor={accentColor} />
           </div>
         </section>
       )}
@@ -273,7 +273,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
             }}
             className={`group ${accentColor === 'red' ? 'bg-brand-blue hover:shadow-brand-blue/30' : 'bg-brand-red hover:shadow-brand-red/30'} text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105`}
           >
-            <span>{ctaLabel || (lang === 'nl' ? 'Start gesprek' : 'Start conversation')}</span>
+            <span>{ctaLabel || CONTENT[lang].nav.cta.label}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

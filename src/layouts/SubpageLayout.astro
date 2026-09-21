@@ -1,7 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import StandardBand from '../components/blocks/StandardBand.astro';
 import { PageContactForm } from '../../components/PageContactForm';
+import { CONTENT } from '../data/content';
 import type { Lang } from '../data/i18n';
+import type { Entry } from '../data/types';
 
 interface Props {
   lang: Lang;
@@ -12,46 +15,43 @@ interface Props {
   noindex?: boolean;
   jsonLd?: object | object[];
   accentColor?: 'red' | 'blue';
-  pillarBadge?: string;
+  /** Small uppercase label above the title (the entry, a phase, or a case). */
+  badge?: string;
+  /** Which of the three entries this page belongs to. Picks the hero photo and
+   *  preselects the matching chip in the contact form. */
+  entry?: Entry;
+  /** Override the hero button label. It always links to the startsprint page. */
   ctaLabel?: string;
   trustedBy?: string[];
   showContactForm?: boolean;
-  heroImage?: 'general' | 'training' | 'consulting' | 'software';
+  /** Show the "Bij elke bouw inbegrepen" band above the contact form. */
+  showStandard?: boolean;
 }
 
 const {
   lang, title, subtitle, seoTitle, seoDescription,
-  noindex, jsonLd, accentColor = 'red', pillarBadge, ctaLabel, trustedBy,
-  showContactForm = true, heroImage,
+  noindex, jsonLd, accentColor = 'red', badge, entry, ctaLabel, trustedBy,
+  showContactForm = true, showStandard = false,
 } = Astro.props;
 
-// Same hero photography as the homepage slides. Explicit heroImage wins;
-// otherwise derive the pillar from the badge ("Training", "Consultancy"/
-// "Consulting", "Software & ..."); everything else gets the general shot.
-const HERO_IMAGES = {
+// Same hero photography as the homepage slides, keyed by entry.
+const HERO_IMAGES: Record<Entry | 'general', string> = {
   general: '/hero/summit.webp',
-  training: '/hero/road.webp',
-  consulting: '/hero/glass.webp',
-  software: '/hero-bg.webp',
-} as const;
-const badge = (pillarBadge ?? '').toLowerCase();
-const heroKey: keyof typeof HERO_IMAGES =
-  heroImage ??
-  (badge.startsWith('training') ? 'training'
-    : badge.startsWith('consult') ? 'consulting'
-    : badge.startsWith('software') ? 'software'
-    : 'general');
-const heroSrc = HERO_IMAGES[heroKey];
+  nieuw: '/hero-bg.webp',
+  vervangen: '/hero/glass.webp',
+  'eigen-beheer': '/hero/road.webp',
+};
+const heroSrc = HERO_IMAGES[entry ?? 'general'];
 
 const accentBorder = accentColor === 'red' ? 'border-brand-red' : 'border-brand-blue';
 const accentBg = accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue';
-const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
-const cta = ctaLabel ?? (lang === 'nl' ? 'Start gesprek' : 'Start conversation');
+const cta = CONTENT[lang].nav.cta;
+const ctaText = ctaLabel ?? cta.label;
 const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
 ---
 
 <BaseLayout lang={lang} title={title} seoTitle={seoTitle} description={seoDescription} noindex={noindex} jsonLd={jsonLd}>
-  <!-- Hero (id is a landmark for the navbar scroll-theme island, ported later) -->
+  <!-- Hero (id is a landmark for the navbar scroll-theme island) -->
   <header id="page-hero" class={`relative overflow-hidden pt-24 pb-12 md:pt-40 md:pb-24 bg-brand-dark border-b-4 ${accentBorder}`}>
     <img src={heroSrc} alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high" />
     <!-- Overlay recipe mirrors the homepage hero (Hero.tsx) for a consistent look -->
@@ -59,12 +59,14 @@ const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
     <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" aria-hidden="true"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" aria-hidden="true"></div>
     <div class="relative max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
-      {pillarBadge && (
-        <span class="inline-block text-xs font-bold uppercase tracking-widest text-white/70 border border-white/30 px-3 py-1 mb-4">{pillarBadge}</span>
+      {badge && (
+        <span class="inline-block text-xs font-bold uppercase tracking-widest text-white/70 border border-white/30 px-3 py-1 mb-4">{badge}</span>
       )}
       <h1 class="text-[clamp(1.875rem,_1.25rem+1.5vw,_3.75rem)] font-serif text-white mb-4">{title}</h1>
       {subtitle && <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{subtitle}</p>}
-      <a href={contactHref} class={`inline-flex items-center gap-3 ${accentBg} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg`}>{cta}</a>
+      {showContactForm && (
+        <a href={cta.href} class={`inline-flex items-center gap-3 ${accentBg} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg`}>{ctaText}</a>
+      )}
       {trustedBy && trustedBy.length > 0 && (
         <div class="mt-8 md:mt-10 pt-6 border-t border-white/15">
           <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">{trustedLabel}</p>
@@ -79,13 +81,14 @@ const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
   <main class="py-16 md:py-24">
     <div class="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
       <slot />
+      {showStandard && <StandardBand lang={lang} class="mt-16" />}
     </div>
   </main>
 
   {showContactForm && (
     <section id="contact-form" class="py-16 md:py-24 bg-white border-t border-stone-200">
       <div class="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
-        <PageContactForm lang={lang} accentColor={accentColor} preselectedTopic={pillarBadge} client:visible />
+        <PageContactForm lang={lang} accentColor={accentColor} entry={entry} client:visible />
       </div>
     </section>
   )}

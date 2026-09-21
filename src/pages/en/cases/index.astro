@@ -4,12 +4,15 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 import CardGrid from '../../../components/blocks/CardGrid.astro';
 import ProofRow from '../../../components/blocks/ProofRow.astro';
 
+const ENTRY_LABEL = { nieuw: 'Build something new', vervangen: 'Replace what no longer fits', 'eigen-beheer': 'Run it on your own terms' } as const;
+const ERA_LABEL = 'Earlier case';
+
 const items = (await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
 const cards = items.map((e) => ({
   title: e.data.client ?? e.data.title,
-  eyebrow: e.data.pillarBadge,
+  eyebrow: e.data.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[e.data.entry],
   description: e.data.subtitle,
   href: `/en/cases/${e.data.slug}`,
   accent: e.data.accentColor,

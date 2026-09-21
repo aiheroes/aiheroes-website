@@ -42,7 +42,10 @@ const cases = defineCollection({
     seoTitle: z.string().optional(),
     description: z.string(),
     accentColor: z.enum(['red', 'blue']).default('red'),
-    pillarBadge: z.string().optional(),
+    // Which of the three entries the case proves; shown as the card eyebrow and hero badge.
+    entry: z.enum(['nieuw', 'vervangen', 'eigen-beheer']).default('nieuw'),
+    // Work by the current team (since the end of 2025) or by the earlier AI Heroes.
+    era: z.enum(['huidig', 'eerder']).default('huidig'),
     client: z.string().optional(),
     order: z.number().default(0),
     draft: z.boolean().default(false),

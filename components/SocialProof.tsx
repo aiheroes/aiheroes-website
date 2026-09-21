@@ -13,14 +13,12 @@ const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : use
 const AUTO_ADVANCE_MS = 7000;
 
 export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
-  const logos = [
-    "Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Locatiqs"
-  ];
+  const logos = content.logos;
 
   const testimonials = content.testimonials;
   const hasMultiple = testimonials.length > 1;
-  const backLabel = content.back ?? 'Terug';
-  const readMore = content.readMore ?? 'Lees meer';
+  const backLabel = content.back;
+  const readMore = content.readMore;
 
   // Desktop/tablet shows the whole wall at once; only the mobile carousel rotates.
   const [active, setActive] = useState(0);
@@ -141,7 +139,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                     key={idx}
                     type="button"
                     onClick={() => openExpanded(idx)}
-                    aria-label={t.author ? `Lees de volledige review van ${t.author}` : 'Lees de volledige review'}
+                    aria-label={t.author ? `${readMore}: ${t.author}` : readMore}
                     className="group block w-full text-left break-inside-avoid mb-5 lg:mb-6 rounded-2xl border border-stone-800 bg-stone-900/40 p-6 lg:p-7 cursor-pointer transition-colors duration-300 hover:border-stone-600 hover:bg-stone-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
                   >
                     <span className="block font-serif italic text-stone-100 text-lg lg:text-xl leading-snug text-balance">
@@ -168,7 +166,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                 type="button"
                 key={active}
                 onClick={() => openExpanded(active)}
-                aria-label={activeTestimonial.author ? `Lees de volledige review van ${activeTestimonial.author}` : 'Lees de volledige review'}
+                aria-label={activeTestimonial.author ? `${readMore}: ${activeTestimonial.author}` : readMore}
                 className="block w-full text-center px-2 animate-fadeIn min-h-[12rem] cursor-pointer"
               >
                 <span className="relative flex flex-col justify-center min-h-[12rem]">
@@ -196,7 +194,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                   <button
                     type="button"
                     onClick={() => goTo(active - 1)}
-                    aria-label="Vorige"
+                    aria-label={content.prev}
                     className={`${arrowBtn} w-9 h-9`}
                   >
                     <ChevronLeft className="w-6 h-6" />
@@ -210,7 +208,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                           key={idx}
                           type="button"
                           onClick={() => goTo(idx)}
-                          aria-label={`Ga naar referentie ${idx + 1}`}
+                          aria-label={`${idx + 1}`}
                           aria-current={isActive ? 'true' : undefined}
                           className={`relative h-2 rounded-full overflow-hidden transition-all duration-300 ${
                             isActive ? 'w-6 bg-stone-600' : 'w-2 bg-stone-600 hover:bg-stone-400'
@@ -231,7 +229,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                   <button
                     type="button"
                     onClick={() => goTo(active + 1)}
-                    aria-label="Volgende"
+                    aria-label={content.next}
                     className={`${arrowBtn} w-9 h-9`}
                   >
                     <ChevronRight className="w-6 h-6" />

@@ -56,10 +56,10 @@ export const PressEN: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes is a full-service AI agency based in Groningen, AI Capital of Europe. From change management to technical implementation: training, consulting and software under one roof.
+                  AI Heroes builds software and AI for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it. From Groningen, AI Capital of Europe.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  We help 50+ organisations with AI: from teams that don't know what AI is yet, to companies ready to build. Wherever you stand, we can help.
+                  Three ways in: build something new, replace what no longer fits, or run AI on your own terms. The front door is always the start sprint: one week, fixed fee, after which you know whether it can be done, what it costs and what it looks like.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
@@ -71,9 +71,9 @@ export const PressEN: React.FC = () => {
                   <li><strong>Visiting address:</strong> Aarhusweg 4-16, 9723 JJ Groningen</li>
                   <li><strong>KvK (CoC):</strong> 42051968</li>
                   <li><strong>VAT:</strong> NL869486263B01</li>
-                  <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
+                  <li><strong>Focus:</strong> Software and AI that runs in production</li>
                   <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
-                  <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders, each a specialist in one pillar</Link></li>
+                  <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders: business case, build and adoption</Link></li>
                 </ul>
               </div>
             </div>
@@ -83,7 +83,7 @@ export const PressEN: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Our logo reads like a line diagram. The frame connects the letters "AI" with "HEROES" in one continuous line, like a circuit representing our three pillars. The red line starts at the I (training, the starting point), runs through the frame (software, the infrastructure) and ends in the A: an upward arrow (consulting, progress). The upward arrow also references the send button of an AI prompt. The journey can start at any pillar; the line runs full circle.
+              Our logo reads like a line diagram. The frame connects the letters "AI" with "HEROES" in one continuous line, like a circuit: from ambition to implementation. The red line starts at the I (the question you arrive with), runs through the frame (the build) and ends in the A: an upward arrow, the system that runs. The upward arrow also references the send button of an AI prompt.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Wordmark</h3>
@@ -117,7 +117,7 @@ export const PressEN: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Brand Colors</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Each colour in our palette represents a pillar of AI Heroes. Together they form the identity of our brand.
+              Our palette has four colours. Together they form the identity of our brand.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -126,7 +126,7 @@ export const PressEN: React.FC = () => {
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
                   <h4 className="font-bold text-brand-dark text-sm">Foundry Red</h4>
                   <p className="text-xs text-stone-500 font-mono">#D9534F</p>
-                  <p className="text-xs text-stone-400 mt-1">Training</p>
+                  <p className="text-xs text-stone-400 mt-1">Accent and action</p>
                 </div>
               </div>
 
@@ -135,7 +135,7 @@ export const PressEN: React.FC = () => {
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
                   <h4 className="font-bold text-brand-dark text-sm">Catalyst Blue</h4>
                   <p className="text-xs text-stone-500 font-mono">#2563EB</p>
-                  <p className="text-xs text-stone-400 mt-1">Consulting</p>
+                  <p className="text-xs text-stone-400 mt-1">Accent and depth</p>
                 </div>
               </div>
 
@@ -144,7 +144,7 @@ export const PressEN: React.FC = () => {
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
                   <h4 className="font-bold text-brand-dark text-sm">Forged Black</h4>
                   <p className="text-xs text-stone-500 font-mono">#1C1917</p>
-                  <p className="text-xs text-stone-400 mt-1">Software</p>
+                  <p className="text-xs text-stone-400 mt-1">Text and dark surfaces</p>
                 </div>
               </div>
 
@@ -174,7 +174,7 @@ export const PressEN: React.FC = () => {
                   Used for headlines and display text. Elegant serifs convey expertise and authority.
                 </p>
                 <div className="mt-6 pt-6 border-t border-stone-100">
-                  <p className="font-serif text-2xl text-brand-dark">AI works if you know how</p>
+                  <p className="font-serif text-2xl text-brand-dark">From ambition to implementation</p>
                 </div>
               </div>
 
@@ -205,21 +205,21 @@ export const PressEN: React.FC = () => {
 
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Training</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Build something new</p>
                   <p className="text-stone-700 font-medium">
-                    We teach your team what AI can do. And what it can't.
+                    From idea to system in production. A working prototype in six days.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Consulting</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Replace what no longer fits</p>
                   <p className="text-stone-700 font-medium">
-                    We map your opportunities and make a concrete plan.
+                    Outdated or overpriced software out, something that fits in its place.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-dark">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Software</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Run it on your own terms</p>
                   <p className="text-stone-700 font-medium">
-                    We build AI solutions. With your team or independently.
+                    On your own servers or with a European provider, with the AI Act built in.
                   </p>
                 </div>
               </div>

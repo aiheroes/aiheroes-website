@@ -9,6 +9,8 @@ export async function getStaticPaths() {
 }
 
 const { entry, items } = Astro.props;
+const ENTRY_LABEL = { nieuw: 'Iets nieuws bouwen', vervangen: 'Vervangen wat niet meer voldoet', 'eigen-beheer': 'In eigen beheer draaien' } as const;
+const ERA_LABEL = 'Eerdere case';
 const { Content } = await render(entry);
 const d = entry.data;
 
@@ -18,7 +20,7 @@ const others = items
   .slice(0, 3)
   .map((e) => ({
     title: e.data.client ?? e.data.title,
-    eyebrow: e.data.pillarBadge,
+    eyebrow: e.data.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[e.data.entry],
     description: e.data.subtitle,
     href: `/nl/cases/${e.data.slug}`,
     accent: e.data.accentColor,
@@ -43,12 +45,18 @@ const caseSchema = {
   seoTitle={d.seoTitle}
   seoDescription={d.description}
   accentColor={d.accentColor}
-  pillarBadge={d.pillarBadge}
+  badge={d.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[d.entry]}
+  entry={d.entry}
   jsonLd={caseSchema}
 >
   <a href="/nl/cases" class="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors mb-8">&larr; Alle cases</a>
   <div class="prose prose-lg max-w-none">
     <Content />
+  </div>
+  <div class="mt-12 bg-brand-dark text-white p-8 md:p-10 border-l-4 border-brand-red">
+    <h2 class="font-serif text-2xl mb-2">Zoiets laten bouwen?</h2>
+    <p class="text-white/70 mb-5 max-w-xl">Een startsprint is de eerste stap: één week, vast bedrag, een werkend prototype of bouwplan. Altijd met de business case op één A4.</p>
+    <a href="/nl/startsprint" class="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-medium hover:bg-red-600 transition-colors">Plan een startsprint &rarr;</a>
   </div>
   {others.length > 0 && (
     <section class="mt-16 pt-10 border-t border-stone-200">

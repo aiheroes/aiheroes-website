@@ -98,25 +98,8 @@ export const Hero: React.FC<HeroProps> = ({ content, lang }) => {
   const handleCtaClick = (slide: typeof slides[0]) => {
     const target = slide.ctaTarget;
     if (target.startsWith('#')) {
-      // Parse hash and optional query params (e.g. #contact?topic=0)
-      const [hash, query] = target.split('?');
-      scrollTo(hash.replace('#', ''));
-
-      // If topic param is present, preselect it in the contact form
-      if (query) {
-        const params = new URLSearchParams(query);
-        const topicIndex = params.get('topic');
-        if (topicIndex !== null) {
-          setTimeout(() => {
-            const idx = parseInt(topicIndex, 10);
-            window.dispatchEvent(new CustomEvent('selectTopic', {
-              detail: { topicIndex: idx, chipColor: idx >= 2 ? 'blue' : 'red' }
-            }));
-          }, 300);
-        }
-      }
+      scrollTo(target.slice(1));
     } else {
-      // Navigate to a different page
       navigate(target);
     }
   };

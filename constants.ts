@@ -3,135 +3,163 @@ import type { Content, Language } from './types';
 export const CONTENT: Record<Language, Content> = {
   nl: {
     nav: {
-      services: {
-        label: "Diensten",
+      build: {
+        label: "Wat we bouwen",
         href: "/nl/diensten",
         children: [
-          { label: "AI Foundations", href: "/nl/diensten/training#ai-foundations", description: "De eerste stap van je team in AI", category: "training" },
-          { label: "Copilot Training", href: "/nl/diensten/training#copilot-basics", description: "Microsoft 365 productiviteit", category: "training" },
-          { label: "AI voor Developers", href: "/nl/diensten/training#ai-voor-developers", description: "Technische implementatie", category: "training" },
-          { label: "Verantwoord AI-gebruik", href: "/nl/diensten/training#ai-privacy-security", description: "Governance & risicobeheer", category: "training" },
-          { label: "AI & Desinformatie", href: "/nl/diensten/training#ai-media-literacy", description: "Deepfakes & desinformatie", category: "training" },
-          { label: "Business Case Analyse", href: "/nl/diensten/consultancy#opportunity-scouting", description: "Vind waar AI waarde creëert", category: "consulting" },
-          { label: "AI Readiness Scan", href: "/nl/diensten/consultancy#ai-readiness-scan", description: "Waar staat jouw organisatie?", category: "consulting" },
-          { label: "AI Roadmap", href: "/nl/diensten/consultancy#ai-roadmap", description: "Van inzicht naar implementatieplan", category: "consulting" },
-          { label: "Implementatiebegeleiding", href: "/nl/diensten/consultancy#ai-implementatiebegeleiding", description: "Hands-on begeleiding bij AI-uitrol", category: "consulting" },
-          { label: "Procesoptimalisatie", href: "/nl/diensten/consultancy#procesanalyse", description: "Ontdek waar AI waarde toevoegt", category: "consulting" },
-          { label: "AI op Maat", href: "/nl/diensten/software#maatwerk-ai-oplossingen", description: "Custom AI, gebouwd met jouw team", category: "software" },
-          { label: "Proof of Concept", href: "/nl/diensten/software#ai-prototyping", description: "Valideer je idee in 6 dagen", category: "software" },
-          { label: "Systeemintegratie", href: "/nl/diensten/software#ai-integratie", description: "AI verbinden met je systemen", category: "software" },
-          { label: "Dedicated Teams", href: "/nl/diensten/software#ai-development-teams", description: "Dedicated AI-ontwikkelcapaciteit", category: "software" },
-          { label: "Digital Twins", href: "/nl/diensten/software#digital-twins", description: "Twin van je organisatie die zelf cases vindt en agents uitrolt", category: "software" }
+          { label: "Iets nieuws bouwen", href: "/nl/diensten/software", description: "Van idee naar systeem in productie" },
+          { label: "Vervangen wat niet meer voldoet", href: "/nl/diensten/software-vervangen", description: "Verouderde of te dure software eruit, iets dat past ervoor in de plaats" },
+          { label: "In eigen beheer draaien", href: "/nl/diensten/eu-consultancy", description: "Op je eigen servers of bij een Europese partij" }
         ]
+      },
+      how: {
+        label: "Hoe we werken",
+        href: "/nl/over-ons/aanpak",
+        children: [
+          { label: "De startsprint", href: "/nl/startsprint", description: "Eén week, vast bedrag, werkend prototype of bouwplan" },
+          { label: "De AI Heroes-standaard", href: "/nl/over-ons/aanpak#standaard", description: "Wat bij elke bouw inbegrepen is" },
+          { label: "Business case en scoping", href: "/nl/diensten/consultancy", description: "Weten wat het kost en oplevert vóór we bouwen" },
+          { label: "Compliance vanaf de tekentafel", href: "/nl/over-ons/aanpak#compliance", description: "AI Act, logging, toezicht en hosting in het ontwerp" },
+          { label: "Training van je team", href: "/nl/diensten/training", description: "Je mensen leren werken met wat we bouwen" }
+        ]
+      },
+      cases: {
+        label: "Cases",
+        href: "/nl/cases"
       },
       about: {
         label: "Over ons",
         href: "/nl/over-ons",
         columns: [
           { heading: "Bedrijf", items: [
-            { label: "Onze aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
-            { label: "Het team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
-            { label: "Over AI Heroes", href: "/nl/over-ons", description: "Ons verhaal en missie" }
+            { label: "Over AI Heroes", href: "/nl/over-ons", description: "Wie we zijn en waarom we bouwen" },
+            { label: "Het team", href: "/nl/over-ons/team", description: "Frans, David en Jan" },
+            { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
           ]},
           { heading: "Media & community", items: [
-            { label: "Zoals gezien op TV", href: "/nl/de-ai-storm", description: "De AI Storm bij RTL" }
+            { label: "AI Salon Groningen", href: "/nl/ai-salon", description: "Tweemaandelijkse community-avond" },
+            { label: "Zoals gezien op TV", href: "/nl/de-ai-storm", description: "De AI Storm bij RTL" },
+            { label: "Pers", href: "/nl/pers", description: "Logo, huisstijl en perscontact" }
           ]},
-          { heading: "Werken bij", items: [
-            { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
+          { heading: "Kennis", items: [
+            { label: "Wat kost AI-implementatie?", href: "/nl/resources/wat-kost-ai-implementatie", description: "Echte prijzen en prijsbanden" },
+            { label: "EU AI Act compliance", href: "/nl/resources/eu-ai-act-compliance", description: "Stappenplan voor Nederlandse organisaties" },
+            { label: "Alle resources", href: "/nl/resources", description: "Alle artikelen en gidsen" }
           ]}
         ],
         children: [
-          { label: "Onze aanpak", href: "/nl/over-ons/aanpak", description: "Hoe wij werken" },
-          { label: "Het team", href: "/nl/over-ons/team", description: "Ontmoet onze experts" },
-          { label: "Vacatures", href: "/nl/vacatures", description: "Bekijk openstaande posities" }
+          { label: "Over AI Heroes", href: "/nl/over-ons" },
+          { label: "Het team", href: "/nl/over-ons/team" },
+          { label: "Vacatures", href: "/nl/vacatures" },
+          { label: "AI Salon Groningen", href: "/nl/ai-salon" },
+          { label: "Zoals gezien op TV", href: "/nl/de-ai-storm" },
+          { label: "Resources", href: "/nl/resources" }
         ]
       },
-      resources: {
-        label: "Resources",
-        href: "/nl/resources",
-        children: [
-          { label: "AI Geletterdheid", href: "/nl/resources/ai-geletterdheid", description: "Verplicht volgens de EU AI Act" },
-          { label: "Wat kost AI-implementatie?", href: "/nl/resources/wat-kost-ai-implementatie", description: "Realistische prijzen en voorbeelden" },
-          { label: "EU AI Act Compliance", href: "/nl/resources/eu-ai-act-compliance", description: "Stappenplan richting 2 augustus 2026" },
-          { label: "Alle resources", href: "/nl/resources", description: "Bekijk alle artikelen" }
-        ]
-      },
-      contact: {
-        label: "Contact",
-        href: "/nl/contact"
+      cta: {
+        label: "Plan een startsprint",
+        href: "/nl/startsprint"
       },
       featured: {
-        label: "EU AI Consultancy",
-        href: "/nl/diensten/eu-consultancy",
-        description: "Europese AI zonder vendor lock-in"
+        label: "De startsprint",
+        href: "/nl/startsprint",
+        description: "Eén week, vast bedrag. Daarna weet je of het kan, wat het kost en hoe het eruitziet."
       }
     },
     hero: {
-      headline: "Van <red>ambitie</red>\ntot <blue>implementatie</blue>",
-      subhead: "Eén vaste partner voor alles AI.\nVanuit Groningen, voor heel Europa.",
-      primaryBtn: "Laten we praten",
-      secondaryBtn: "Wat we doen",
       slides: [
         {
-          label: "Alles van A tot I",
-          headline: "Van <red>ambitie</red>\ntot <blue>implementatie</blue>",
-          subhead: "Eén vaste partner voor alles AI.\nVanuit Groningen, voor heel Europa.",
-          ctaLabel: "Laten we praten",
-          ctaTarget: "#contact",
+          label: "Van A naar I",
+          headline: "Van <red>ambitie</red>\nnaar <blue>implementatie</blue>",
+          subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is.\nWij bouwen wat je nodig hebt en zorgen dat het draait.",
+          ctaLabel: "Plan een startsprint",
+          ctaTarget: "/nl/startsprint",
           image: "/hero/summit.webp"
         },
         {
-          label: "Training & Workshops",
-          headline: "Maak je <blue>team</blue>\nAI-<red>vaardig</red>",
-          subhead: "Van boardroom tot werkvloer.\nPraktische workshops die bijblijven.",
-          ctaLabel: "Plan een workshop",
-          ctaTarget: "#contact?topic=0",
-          image: "/hero/road.webp"
+          label: "Iets nieuws bouwen",
+          headline: "Van <red>idee</red> naar\n<blue>werkend systeem</blue>",
+          subhead: "Een assistent, een werkstroom, een tool die er nog niet is.\nIn zes dagen een werkend prototype, daarna door naar productie.",
+          ctaLabel: "Plan een startsprint",
+          ctaTarget: "/nl/startsprint",
+          image: "/hero-bg.webp"
         },
         {
-          label: "AI Consultancy",
-          headline: "<red>Weet</red> waar AI\n<blue>waarde</blue> creëert",
-          subhead: "AI-readiness scans, roadmaps\nen business cases.",
-          ctaLabel: "Start met een scan",
-          ctaTarget: "/nl/diensten/consultancy#ai-readiness-scan",
+          label: "Vervangen wat niet meer voldoet",
+          headline: "<red>Weg</red> met software\ndie je <blue>tegenhoudt</blue>",
+          subhead: "Verouderde of te dure systemen vervangen door iets dat wél past.\nGekoppeld aan je ERP, CRM en de rest van je landschap.",
+          ctaLabel: "Plan een startsprint",
+          ctaTarget: "/nl/startsprint",
           image: "/hero/glass.webp"
         },
         {
-          label: "Software & Implementatie",
-          headline: "Van <red>plan</red> naar\n<blue>oplossing</blue>",
-          subhead: "Custom AI-oplossingen,\ngebouwd met jouw team.",
-          ctaLabel: "Bespreek je project",
-          ctaTarget: "#contact?topic=2",
-          image: "/hero-bg.webp"
+          label: "In eigen beheer draaien",
+          headline: "AI op <red>eigen</red> grond,\n<blue>Europees</blue> gehost",
+          subhead: "Op je eigen servers of bij een Europese partij.\nZonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd.",
+          ctaLabel: "Plan een startsprint",
+          ctaTarget: "/nl/startsprint",
+          image: "/hero/road.webp"
         }
       ]
     },
     services: {
-      title: "Alles van A tot I",
-      items: {
-        training: {
-          title: "Training & Workshops",
-          description: "Maak je team AI-vaardig. Van AI Foundations tot EU AI Act compliance: praktische workshops die bijblijven."
+      title: "Wat we voor je bouwen",
+      intro: "Drie manieren om te beginnen, één voordeur.",
+      cta: "Lees meer",
+      items: [
+        {
+          entry: "nieuw",
+          tag: "Nieuw",
+          title: "Iets nieuws bouwen",
+          description: "Een assistent, een werkstroom, een tool die er nog niet is. Van prototype in zes dagen tot systeem in productie. Zoals bij Kwakkel BV: in zes dagen een werkend prototype.",
+          href: "/nl/diensten/software"
         },
-        consulting: {
-          title: "AI Consultancy",
-          description: "Van inzicht naar strategie. AI-readiness scans, roadmaps en change management, zodat AI landt in je hele organisatie."
+        {
+          entry: "vervangen",
+          tag: "Vervangen",
+          title: "Vervangen wat niet meer voldoet",
+          description: "Software die te duur, te traag of te oud is, vervangen door iets dat past. Gekoppeld aan je ERP, CRM en de rest van je landschap. Zoals bij Strive: een te duur SaaS-pakket eruit, eigen software ervoor in de plaats.",
+          href: "/nl/diensten/software-vervangen"
         },
-        software: {
-          title: "Software & Implementatie",
-          description: "Van plan naar werkende oplossing. Custom AI-toepassingen op Europese infrastructuur, gebouwd met jouw team."
+        {
+          entry: "eigen-beheer",
+          tag: "Eigen beheer",
+          title: "In eigen beheer draaien",
+          description: "AI en software op je eigen servers of bij een Europese partij. Zonder Amerikaanse cloud, met de AI Act ingebouwd. Zoals de AI-assistent op deze site: door ons gebouwd, Europees gehost.",
+          href: "/nl/diensten/eu-consultancy"
         }
-      }
+      ]
+    },
+    standard: {
+      eyebrow: "De AI Heroes-standaard",
+      title: "Bij elke bouw inbegrepen",
+      subtitle: "We noemen het de AI Heroes-standaard. Vier dingen die je nooit apart hoeft te kopen.",
+      items: [
+        {
+          title: "Business case vooraf",
+          description: "Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient. Op één A4, klaar voor de directie."
+        },
+        {
+          title: "Compliance vanaf de tekentafel",
+          description: "AI Act-classificatie, logging, menselijk toezicht en Europese hosting zitten in het ontwerp. Achteraf repareren is niet nodig."
+        },
+        {
+          title: "Je mensen kunnen ermee werken",
+          description: "Het team dat het systeem gaat gebruiken, trainen we op dat systeem. Zo landt het op de werkvloer en voldoe je meteen aan artikel 4 van de AI Act."
+        },
+        {
+          title: "Overdracht zonder lock-in",
+          description: "Broncode, documentatie en datamodel zijn van jou. Je kunt zonder ons verder als je dat wilt."
+        }
+      ]
     },
     approach: {
-      title: "Hoe we werken",
-      p1: "",
-      p2: "AI raakt <red>alles</red>\nJe strategie, je mensen, je technologie\n\nVan change management tot technische implementatie\n\nEén agency voor het hele traject\nWe adviseren, trainen, bouwen\nen zorgen dat het <blue>werkt</blue>"
+      text: "Wij bouwen <red>software</red> die werkt\nop de dag dat we vertrekken\n\nMet een business case die klopt,\ncompliance die vanaf dag één meeloopt\nen mensen die ermee overweg kunnen\n\nVan ambitie naar <blue>implementatie</blue>\nEén partner, één traject"
     },
     team: {
       title: "Geboren probleemoplossers",
       location: "Groningen, AI-hoofdstad van Europa",
-      body: "Drie oprichters, één gedeelde passie voor AI.\nVanuit het hart van Europa's AI-hoofdstad.",
+      body: "Drie oprichters, één gedeelde passie voor AI.\nFrans maakt de business case, David bouwt, Jan zorgt dat je mensen ermee kunnen werken.",
       cta: {
         text: "Leer ons kennen",
         href: "/nl/over-ons/team"
@@ -143,33 +171,18 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Een greep uit de organisaties waar we mee gewerkt hebben",
-      heading: "Wat onze klanten zeggen",
+      heading: "Wat we bouwden, en wat het opleverde",
       back: "Terug",
       readMore: "Lees meer",
+      prev: "Vorige",
+      next: "Volgende",
+      logos: ["IC Commerce", "Strive", "INQ22", "Kwakkel BV", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior", "Banijay", "Prosus", "Hanze"],
       testimonials: [
-        {
-          text: "Het team van AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI. Door de interactieve en hands-on workshop hebben we nu praktische tools en tips gekregen om in ons onderwijs mee aan de slag te gaan.",
-          highlight: "AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI.",
-          author: "Remi Thüss",
-          role: "Hanzehogeschool Groningen, TBK"
-        },
-        {
-          text: "Als organisatie wilden we AI een stapje voor zijn en hebben we ons team laten trainen. Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken. Een echte aanrader!",
-          highlight: "Een fantastische, hands-on workshop met theorie én praktijk. Een echte aanrader!",
-          author: "Bobby Kremer",
-          role: "Nationale Postcode Loterij"
-        },
         {
           text: "AI Heroes heeft ons geholpen elke stap van ons eCommerce platform te automatiseren met AI. Het is erg fijn om met een AI partner te werken die zoveel kennis van de markt en nu ook van ons bedrijf heeft.",
           highlight: "AI Heroes hielp ons elke stap van ons eCommerce platform te automatiseren met AI.",
           author: "P.R. Jeeninga",
           role: "IC Commerce"
-        },
-        {
-          text: "De manier waarop AI Heroes samenwerkt met externe stakeholders tijdens onze projecten is mooi om te zien. Groot of klein, onze projecten worden met veel ervaring aangestuurd, en met zo'n flexibel team is het altijd leuk om samen nieuwe dingen in AI te verkennen.",
-          highlight: "Met zo'n flexibel team is het altijd leuk om samen nieuwe dingen in AI te verkennen.",
-          author: "Saad Saleem",
-          role: "Project Manager, Cloud Primero"
         },
         {
           text: "Ondanks alle tegenslagen heeft het team van AI Heroes ons onberispelijke AI-software geleverd. Binnen de afgesproken deadline gingen ze verder dan verwacht en maakten ze al onze verwachtingen waar.",
@@ -182,39 +195,62 @@ export const CONTENT: Record<Language, Content> = {
           highlight: "AI Heroes hielp ons enorm met de analyse en technische realisatie van onze optische zorgtoepassing.",
           author: "Igor Stalpers-Croeze",
           role: "Manager Research & Development, Avics B.V."
+        },
+        {
+          text: "De manier waarop AI Heroes samenwerkt met externe stakeholders tijdens onze projecten is mooi om te zien. Groot of klein, onze projecten worden met veel ervaring aangestuurd, en met zo'n flexibel team is het altijd leuk om samen nieuwe dingen in AI te verkennen.",
+          highlight: "Met zo'n flexibel team is het altijd leuk om samen nieuwe dingen in AI te verkennen.",
+          author: "Saad Saleem",
+          role: "Project Manager, Cloud Primero"
+        },
+        {
+          text: "Als organisatie wilden we AI een stapje voor zijn en hebben we ons team laten trainen. Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken. Een echte aanrader!",
+          highlight: "Een fantastische, hands-on workshop met theorie én praktijk. Een echte aanrader!",
+          author: "Bobby Kremer",
+          role: "Nationale Postcode Loterij"
+        },
+        {
+          text: "Het team van AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI. Door de interactieve en hands-on workshop hebben we nu praktische tools en tips gekregen om in ons onderwijs mee aan de slag te gaan.",
+          highlight: "AI Heroes heeft ons als docenten Technische Bedrijfskunde goed meegenomen in de wereld van AI.",
+          author: "Remi Thüss",
+          role: "Hanzehogeschool Groningen, TBK"
         }
       ]
     },
     contact: {
-      title: "Interesse?",
-      subtitle: "Laat je gegevens achter en we nemen contact op. Of mail ons direct:",
-      educationNote: "Voor scholen en non-profits hebben we lagere tarieven.",
       form: {
         name: "Naam",
         email: "E-mail",
         org: "Organisatie",
-        topic: "Onderwerp",
+        topic: "Waar gaat het om?",
         topicOptions: [
-          "Training",
-          "Consultancy",
-          "Software & Implementatie",
-          "Iets anders"
+          "Iets nieuws bouwen",
+          "Bestaande software vervangen",
+          "In eigen beheer draaien",
+          "Weet ik nog niet"
         ],
-        message: "Je bericht",
-        submit: "Verstuur"
+        budget: {
+          label: "Aan welk budget denk je?",
+          options: ["Onder €10.000", "€10.000 tot €25.000", "€25.000 tot €100.000", "Meer dan €100.000", "Nog geen idee"]
+        },
+        owner: {
+          label: "Wie beslist hierover?",
+          options: ["Ik beslis zelf", "Ik beslis mee", "Ik oriënteer me voor iemand anders"]
+        },
+        message: "Wat wil je bouwen?",
+        submit: "Verstuur",
+        error: "Er ging iets mis. Probeer het opnieuw of mail ons direct."
       },
       success: {
         title: "Ontvangen",
-        message: "We nemen snel contact met je op.",
+        message: "We reageren binnen 24 uur, meestal met een voorstel voor een startsprint.",
         sendAnother: "Nog een versturen"
       }
     },
     contactForm: {
-      title: "Start vandaag met AI",
-      subtitle: "Laat je gegevens achter en we nemen binnen 24 uur contact op.",
+      title: "Vertel wat je wilt bouwen",
+      subtitle: "We reageren binnen 24 uur. Meestal met een voorstel voor een startsprint.",
       emailLabel: "Of neem direct contact op:",
       email: "hello@aiheroes.io",
-      phoneLabel: "",
       phone: "050-200 3373",
       phoneHref: "tel:+31502003373",
       meetingLabel: "Plan een kennismaking",
@@ -223,66 +259,66 @@ export const CONTENT: Record<Language, Content> = {
           name: "Frans Hoorn",
           url: "https://calendar.app.google/juFpF3MDmikH4BVS8",
           photo: "/team/frans.webp",
-          hint: "Strategie, roadmap, partnerships"
-        },
-        {
-          name: "Jan Brusse",
-          url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
-          photo: "/team/jan.webp",
-          hint: "Training, use cases, AI-pipelines"
+          hint: "Business case en scoping"
         },
         {
           name: "David Homan",
           url: "https://calendar.app.google/GcA1oBNwzyFZtW5W6",
           photo: "/team/david.webp",
-          hint: "Software-implementatie, compliance"
+          hint: "Bouw, hosting en compliance"
+        },
+        {
+          name: "Jan Brusse",
+          url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
+          photo: "/team/jan.webp",
+          hint: "Adoptie en training bij je team"
         }
       ]
     },
     aboutPage: {
       hero: {
         title: "Over AI Heroes",
-        subtitle: "AI Heroes is een full-service AI agency die organisaties door het hele AI-traject begeleidt, van change management tot technische implementatie. Vanuit Groningen, voor heel Europa."
+        subtitle: "AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
       },
       intro: {
-        text: "We zijn in 2019 begonnen vanuit een simpele observatie: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Niemand pakt het hele spectrum: van organisatieverandering tot technische implementatie.\n\nVanuit Groningen, epicentrum van AI in Europa en thuisbasis van de AI Fabriek, werken we met organisaties door heel Europa. Van startups tot Fortune 500 bedrijven, van gemeenten tot media-organisaties. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in.",
+        text: "De merknaam AI Heroes bestaat sinds 2019. Eind 2025 namen Frans Hoorn, David Homan en Jan Brusse het merk en de klantrelaties over en begonnen ze opnieuw, met één observatie als uitgangspunt: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Bijna niemand levert software die op de dag van oplevering werkt én blijft werken.\n\nDaarom bouwen wij. Elke bouw begint met een business case, heeft compliance in het ontwerp en eindigt met een team dat ermee kan werken. Vanuit Groningen, epicentrum van AI in Europa en thuisbasis van de AI Fabriek, voor organisaties door heel Nederland en Europa. Met een Europese aanpak: datasoevereiniteit, EU AI Act-compliance en geen vendor lock-in.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
-          { metric: "Sinds 2019", description: "Groningen, AI-hoofdstad van Europa" },
-          { metric: "3", description: "Expertises onder één dak" }
+          { metric: "1.000+", description: "Professionals getraind" },
+          { metric: "6 dagen", description: "Van vraag naar werkend prototype" }
         ]
       },
       team: {
         title: "Het team",
-        subtitle: "Drie achtergronden, één gedeelde passie voor AI",
+        subtitle: "Drie oprichters, één traject: van business case tot overdracht",
         members: [
           {
             name: "Frans Hoorn",
-            role: "Co-Founder · AI Consultancy",
-            description: "Combineert strategisch denken met een scherp oog voor gebruikerservaring. Leidt onze consultancy-pijler: AI-readiness scans, roadmaps en business cases die organisaties vooruit helpen."
+            role: "Co-Founder · Business case & scoping",
+            description: "Combineert strategisch denken met een scherp oog voor gebruikerservaring. Leidt de startsprint en de business case: wat kost het, wat levert het op en wanneer verdient het zich terug."
           },
           {
             name: "David Homan",
-            role: "Co-Founder · Software & Implementatie",
-            description: "De schakel tussen techniek en boardroom. Leidt onze software-pijler: custom AI-oplossingen gebouwd met jouw team. Van prototype tot productie."
+            role: "Co-Founder · Bouw & compliance",
+            description: "De schakel tussen techniek en directiekamer. Leidt de bouw: van prototype tot systeem in productie, gekoppeld aan jouw landschap, met AI Act-classificatie, logging en hosting in het ontwerp."
           },
           {
             name: "Jan Brusse",
-            role: "Co-Founder · Training & Workshops",
-            description: "Specialist in het toegankelijk maken van complexe technologie. Leidt onze training-pijler: van AI Foundations tot EU AI Act compliance, praktische workshops die bijblijven."
+            role: "Co-Founder · Adoptie & training",
+            description: "Specialist in het toegankelijk maken van complexe technologie. Zorgt dat het team dat met het systeem gaat werken er ook mee kan werken: training op het systeem zelf, op de werkvloer."
           }
         ]
       },
       cards: [
         {
-          title: "Onze Aanpak",
-          description: "Practice over theory, results over reports",
+          title: "Hoe we werken",
+          description: "De startsprint, de AI Heroes-standaard en het traject van business case tot overdracht",
           href: "/nl/over-ons/aanpak",
           icon: "target"
         },
         {
-          title: "Het Team",
-          description: "Ontmoet Frans, Jan en David - lees hun volledige profielen",
+          title: "Het team",
+          description: "Ontmoet Frans, David en Jan en lees hun volledige profielen",
           href: "/nl/over-ons/team",
           icon: "users"
         }
@@ -292,15 +328,15 @@ export const CONTENT: Record<Language, Content> = {
         items: [
           {
             title: "Eerlijkheid boven verkoop",
-            description: "Als AI niet de oplossing is, zeggen we dat. We verkopen alleen wat echt waarde toevoegt."
+            description: "Als AI niet de oplossing is, zeggen we dat. Als de business case niet klopt, bouwen we niet."
           },
           {
-            title: "Maatwerk boven standaard",
-            description: "Elke organisatie is anders. We passen onze aanpak aan jouw situatie, niet andersom."
+            title: "Werkend boven af",
+            description: "We meten succes in wat er draait op de dag dat we vertrekken, en in wat er een jaar later nog draait."
           },
           {
             title: "Practitioners die meedoen",
-            description: "We adviseren niet alleen, we bouwen ook. Kennis uit de praktijk, rechtstreeks toegepast in jouw organisatie."
+            description: "We adviseren niet alleen, we bouwen ook. Onze eigen AI-assistent draait op deze site, Europees gehost."
           },
           {
             title: "Groningen, AI-hoofdstad van Europa",
@@ -309,188 +345,17 @@ export const CONTENT: Record<Language, Content> = {
         ]
       }
     },
-    resourcesPage: {
-      hero: {
-        title: "Resources",
-        subtitle: "Praktische kennis over AI-strategie en geletterdheid. Gratis beschikbaar voor iedereen die AI begrijpt en toepast."
-      },
-      intro: {
-        text: "AI heeft steeds meer impact op organisaties en samenleving. Het is dus belangrijk dat iedereen begrijpt hoe deze technologie werkt, ook buiten het tech-team.\n\nDaarom delen we onze kennis openlijk. Deze resources helpen je de basis te leggen voor AI-geletterdheid in je organisatie en een strategische koers uit te zetten.",
-        stats: [
-          { metric: "72%", description: "AI-adoptie onder bedrijven" },
-          { metric: "2025", description: "EU AI Act verplicht" },
-          { metric: "4 pijlers", description: "Van AI-geletterdheid" }
-        ]
-      },
-      cards: [
-        {
-          title: "AI Geletterdheid",
-          description: "Vanaf 2025 is begrip van AI niet langer optioneel door de EU AI Act",
-          href: "/nl/resources/ai-geletterdheid",
-          icon: "book"
-        },
-        {
-          title: "AI Strategie Gids",
-          description: "4-stappenplan om je AI-strategie praktisch vorm te geven",
-          href: "/nl/resources/ai-strategie-gids",
-          icon: "map"
-        }
-      ],
-      why: {
-        title: "Waarom deze resources",
-        items: [
-          {
-            title: "Educatie voor implementatie",
-            description: "Voordat je AI implementeert, moet je team begrijpen waar ze mee werken. Investeren in begrip voorkomt dure misstappen."
-          },
-          {
-            title: "Transparantie en kennisdeling",
-            description: "Wij geloven dat kennis over AI toegankelijk moet zijn. Geen marketing-praat, geen vendor lock-in, gewoon praktische info."
-          },
-          {
-            title: "AI-geletterde organisaties bouwen",
-            description: "Organisaties die succesvol zijn met AI hebben één ding gemeen: breed gedragen begrip van de mogelijkheden én beperkingen."
-          },
-          {
-            title: "EU AI Act compliance",
-            description: "Vanaf 2025 verplicht de EU AI Act organisaties om AI-geletterdheid aan te tonen. Begin nu met de basis leggen."
-          }
-        ]
-      }
-    },
-    dienstenPage: {
-      hero: {
-        title: "Onze Diensten",
-        subtitle: "Van change management tot technische implementatie, onder één dak. Waar je ook staat met AI, wij helpen je verder.",
-        cta1: "Bekijk diensten",
-        cta2: "Direct contact",
-        credibility: "50+ organisaties geholpen sinds 2019"
-      },
-      valueProps: {
-        title: "Waarom AI Heroes",
-        items: [
-          {
-            title: "Wij bouwen zelf AI",
-            description: "We bouwen zelf AI-producten en -systemen. Kennis uit de praktijk, rechtstreeks toegepast."
-          },
-          {
-            title: "Praktijk boven theorie",
-            description: "Elke workshop is hands-on. Je team werkt met echte tools aan echte use cases. Direct toepasbaar."
-          },
-          {
-            title: "Focus op resultaat",
-            description: "We leveren concrete skills en inzichten. Meetbare impact staat voorop."
-          }
-        ]
-      },
-      stats: [
-        {
-          metric: "70% minder kosten",
-          description: "Medux reduceerde AI-kosten met 70% na ons traject"
-        },
-        {
-          metric: "6 dagen tot prototype",
-          description: "Gemiddelde tijd van eerste gesprek tot werkend prototype"
-        },
-        {
-          metric: "3 expertises, 1 partner",
-          description: "Training, consulting en software onder één dak"
-        }
-      ],
-      heroServices: [
-        {
-          title: "Training & Workshops",
-          description: "Maak je team AI-vaardig",
-          benefit: "Van AI Foundations tot EU AI Act compliance. Praktische workshops van boardroom tot werkvloer die bijblijven."
-        },
-        {
-          title: "AI Consultancy",
-          description: "Van inzicht naar strategie",
-          benefit: "AI-readiness scans, roadmaps en business cases. Weet precies waar AI waarde toevoegt in jouw organisatie."
-        },
-        {
-          title: "Software & Implementatie",
-          description: "Van plan naar werkende oplossing",
-          benefit: "Custom AI-toepassingen, gebouwd met jouw team. Van prototype tot productie."
-        }
-      ],
-      process: {
-        title: "Wat gebeurt er als je contact opneemt",
-        timeline: "Van eerste gesprek tot resultaat: gemiddeld 2 weken",
-        steps: [
-          {
-            title: "Kennismakingsgesprek",
-            description: "We luisteren naar je situatie, uitdagingen en doelen. Verstaan wat je nodig hebt staat voorop."
-          },
-          {
-            title: "Voorstel op maat",
-            description: "We stellen een aanpak voor die past bij je team, budget en tijdlijn. Transparant over kosten en verwachte resultaten."
-          },
-          {
-            title: "Directe impact",
-            description: "We gaan aan de slag met training, advies of ontwikkeling. Meetbare resultaten die direct waarde opleveren."
-          }
-        ]
-      },
-      guarantees: {
-        title: "Onze garanties",
-        items: [
-          {
-            title: "Geen vendor lock-in",
-            description: "We leren je werken met algemene AI-tools. Je bent niet afhankelijk van één platform of leverancier."
-          },
-          {
-            title: "Eerlijk advies",
-            description: "Als AI niet de oplossing is, zeggen we dat. We verkopen alleen wat echt waarde toevoegt."
-          }
-        ]
-      },
-      faq: {
-        title: "Veelgestelde vragen",
-        items: [
-          {
-            question: "Hoe lang duurt een workshop?",
-            answer: "De meeste workshops duren een dag (6-8 uur). Voor meerdaagse trajecten plannen we sessies in overleg."
-          },
-          {
-            question: "Wat zijn de kosten?",
-            answer: "Afhankelijk van de dienst. Training start vanaf €2.500 per dag, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor scholen en non-profits hebben we lagere tarieven."
-          },
-          {
-            question: "Wat als AI niet geschikt blijkt?",
-            answer: "Dan zeggen we dat eerlijk. Bij onze consulting trajecten krijg je altijd een helder advies, ook als dat betekent dat AI nog niet de juiste fit is."
-          },
-          {
-            question: "Werken jullie op locatie of online?",
-            answer: "Beiden. We geven voorkeur aan on-site voor betere interactie, maar online werkt ook uitstekend."
-          },
-          {
-            question: "Wat is een AI-readiness scan?",
-            answer: "Een scan van jouw organisatie: waar staan jullie met AI, waar liggen kansen, en wat is de beste eerste stap? Je ontvangt een concreet rapport met aanbevelingen."
-          },
-          {
-            question: "Bouwen jullie ook software?",
-            answer: "Ja. Via onze software-pijler bouwen we custom AI-oplossingen. Van prototype tot productie, zelfstandig of samen met jouw ontwikkelteam."
-          }
-        ]
-      },
-      contactSection: {
-        title: "Start vandaag met AI",
-        subtitle: "Laat je gegevens achter en we nemen binnen 24 uur contact op.",
-        altCta: "Of mail ons direct:"
-      }
-    },
     careersPage: {
       hero: {
         title: "Werken bij AI Heroes",
-        subtitle: "Wij groeien. Sluit je aan bij een ambitieus team dat organisaties door heel Europa helpt met AI: van strategie tot implementatie."
+        subtitle: "Wij groeien. Sluit je aan bij een team dat software en AI bouwt voor organisaties door heel Europa, en zorgt dat het werkt."
       },
       growth: {
-        text: "Sinds 2019 helpen we organisaties door heel Europa met het hele AI-traject. Van boardroom-workshops tot custom software, ons team groeit mee met de vraag. We zoeken mensen die net zo gedreven zijn als wij om AI toegankelijk en impactvol te maken.",
+        text: "Wij bouwen software en AI die in productie draait, met een business case vooraf, compliance vanaf de tekentafel en training van het team dat ermee gaat werken. Ons team groeit mee met de vraag. We zoeken mensen die net zo graag als wij iets bouwen dat werkt op de dag dat we vertrekken.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
           { metric: "1000+", description: "Professionals getraind" },
-          { metric: "3", description: "Expertiseteams" },
+          { metric: "3", description: "Oprichters, één traject" },
           { metric: "2019", description: "Opgericht" }
         ],
         trustedBy: ["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Envalior"]
@@ -526,22 +391,22 @@ export const CONTENT: Record<Language, Content> = {
       },
       departments: {
         title: "Onze teams",
-        subtitle: "AI Heroes bestaat uit drie gespecialiseerde teams die nauw samenwerken.",
+        subtitle: "Elk traject wordt gedragen door drie rollen die samenwerken van business case tot overdracht.",
         items: [
           {
-            name: "Training & Workshops",
+            name: "Adoptie & training",
             pillar: "training",
-            description: "Ons Training team ontwikkelt en levert workshops en programma's voor organisaties van MKB tot multinational. Van AI Foundations voor beginners tot gespecialiseerde tracks voor developers en beleidsmakers."
+            description: "Zorgt dat het team van de klant kan werken met wat we bouwen: training op het systeem zelf, AI-geletterdheid volgens artikel 4 van de AI Act en begeleiding op de werkvloer."
           },
           {
-            name: "AI Consultancy",
+            name: "Business case & scoping",
             pillar: "consulting",
-            description: "Ons Consultancy team helpt organisaties hun AI-strategie te bepalen. Van readiness scans en roadmaps tot implementatiebegeleiding: we vertalen ambitie naar actie."
+            description: "Bepaalt vóór de bouw wat het kost, wat het oplevert en wanneer het zich terugverdient. Leidt de startsprint en houdt de scope scherp."
           },
           {
-            name: "Software & Implementatie",
+            name: "Bouw & compliance",
             pillar: "software",
-            description: "Ons Software team bouwt custom AI-oplossingen. Van rapid prototypes in 6 dagen tot enterprise-grade integraties, altijd in samenwerking met het team van de klant."
+            description: "Bouwt de software en AI, koppelt die aan het landschap van de klant en zorgt dat AI Act-classificatie, logging, toezicht en hosting in het ontwerp zitten. Van prototype in zes dagen tot systeem in productie."
           }
         ]
       },
@@ -710,14 +575,17 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "Full-service AI agency. Van change management tot technische implementatie, met een Europese aanpak.",
-      caseStudies: {
-        title: "Case Studies",
-        items: ["Medux", "OLX", "Trabu", "InnoEnergy"]
+      tagline: "Wij bouwen software en AI die in productie draait. Business case, compliance en training inbegrepen.",
+      columns: {
+        build: "Wat we bouwen",
+        how: "Hoe we werken",
+        cases: "Cases",
+        company: "Bedrijf",
+        knowledge: "Kennis"
       },
-      partnerships: "Development Partnerships",
+      partnersLabel: "We werken met",
       legal: {
-        privacy: "Privacy Policy",
+        privacy: "Privacybeleid",
         terms: "Algemene Voorwaarden"
       },
       copyright: "© 2026 AI Heroes",
@@ -726,135 +594,163 @@ export const CONTENT: Record<Language, Content> = {
   },
   en: {
     nav: {
-      services: {
-        label: "Services",
+      build: {
+        label: "What we build",
         href: "/en/services",
         children: [
-          { label: "AI Foundations", href: "/en/services/training#ai-foundations", description: "Your team's first step into AI", category: "training" },
-          { label: "Copilot Training", href: "/en/services/training#copilot-basics", description: "Microsoft 365 productivity", category: "training" },
-          { label: "AI for Developers", href: "/en/services/training#ai-for-developers", description: "Technical implementation", category: "training" },
-          { label: "Responsible AI Use", href: "/en/services/training#ai-privacy-security", description: "Governance & risk management", category: "training" },
-          { label: "AI & Disinformation", href: "/en/services/training#ai-media-literacy", description: "Deepfakes & misinformation", category: "training" },
-          { label: "Business Case Analysis", href: "/en/services/consulting#opportunity-scouting", description: "Find where AI creates value", category: "consulting" },
-          { label: "AI Readiness Scan", href: "/en/services/consulting#ai-readiness-scan", description: "Where does your organisation stand?", category: "consulting" },
-          { label: "AI Roadmap", href: "/en/services/consulting#ai-roadmap", description: "From insight to implementation plan", category: "consulting" },
-          { label: "Implementation Guidance", href: "/en/services/consulting#ai-implementation-guidance", description: "Hands-on guidance during AI rollout", category: "consulting" },
-          { label: "Process Optimisation", href: "/en/services/consulting#process-analysis", description: "Discover where AI adds value", category: "consulting" },
-          { label: "Custom AI", href: "/en/services/software#custom-ai-solutions", description: "Custom AI, built with your team", category: "software" },
-          { label: "Proof of Concept", href: "/en/services/software#ai-prototyping", description: "Validate your idea in 6 days", category: "software" },
-          { label: "System Integration", href: "/en/services/software#ai-integration", description: "Connect AI to your systems", category: "software" },
-          { label: "Dedicated Teams", href: "/en/services/software#ai-development-teams", description: "Dedicated AI development capacity", category: "software" },
-          { label: "Digital Twins", href: "/en/services/software#digital-twins", description: "A twin of your organisation that surfaces cases and deploys agents", category: "software" }
+          { label: "Build something new", href: "/en/services/software", description: "From idea to system in production" },
+          { label: "Replace what no longer fits", href: "/en/services/replace-software", description: "Outdated or overpriced software out, something that fits in" },
+          { label: "Run it on your own terms", href: "/en/services/eu-consultancy", description: "On your own servers or with a European provider" }
         ]
+      },
+      how: {
+        label: "How we work",
+        href: "/en/about/approach",
+        children: [
+          { label: "The start sprint", href: "/en/start-sprint", description: "One week, fixed fee, working prototype or build plan" },
+          { label: "The AI Heroes standard", href: "/en/about/approach#standard", description: "What every build includes" },
+          { label: "Business case and scoping", href: "/en/services/consulting", description: "Knowing the cost and the return before we build" },
+          { label: "Compliance from the drawing board", href: "/en/about/approach#compliance", description: "AI Act, logging, oversight and hosting in the design" },
+          { label: "Training your team", href: "/en/services/training", description: "Your people learn to work with what we build" }
+        ]
+      },
+      cases: {
+        label: "Cases",
+        href: "/en/cases"
       },
       about: {
         label: "About",
         href: "/en/about",
         columns: [
           { heading: "Company", items: [
-            { label: "Our approach", href: "/en/about/approach", description: "How we work" },
-            { label: "The team", href: "/en/about/team", description: "Meet our experts" },
-            { label: "About AI Heroes", href: "/en/about", description: "Our story and mission" }
+            { label: "About AI Heroes", href: "/en/about", description: "Who we are and why we build" },
+            { label: "The team", href: "/en/about/team", description: "Frans, David and Jan" },
+            { label: "Careers", href: "/en/careers", description: "View open positions" }
           ]},
           { heading: "Media & community", items: [
-            { label: "As seen on TV", href: "/en/de-ai-storm", description: "De AI Storm on RTL" }
+            { label: "AI Salon Groningen", href: "/en/ai-salon", description: "Bimonthly community evening" },
+            { label: "As seen on TV", href: "/en/de-ai-storm", description: "De AI Storm on RTL" },
+            { label: "Press", href: "/en/press", description: "Logo, brand and press contact" }
           ]},
-          { heading: "Join us", items: [
-            { label: "Careers", href: "/en/careers", description: "View open positions" }
+          { heading: "Knowledge", items: [
+            { label: "AI implementation costs", href: "/en/resources/ai-implementation-costs", description: "Real prices and price bands" },
+            { label: "EU AI Act compliance", href: "/en/resources/eu-ai-act-compliance", description: "Step-by-step guide for Dutch organisations" },
+            { label: "All resources", href: "/en/resources", description: "All articles and guides" }
           ]}
         ],
         children: [
-          { label: "Our approach", href: "/en/about/approach", description: "How we work" },
-          { label: "The team", href: "/en/about/team", description: "Meet our experts" },
-          { label: "Careers", href: "/en/careers", description: "View open positions" }
+          { label: "About AI Heroes", href: "/en/about" },
+          { label: "The team", href: "/en/about/team" },
+          { label: "Careers", href: "/en/careers" },
+          { label: "AI Salon Groningen", href: "/en/ai-salon" },
+          { label: "As seen on TV", href: "/en/de-ai-storm" },
+          { label: "Resources", href: "/en/resources" }
         ]
       },
-      resources: {
-        label: "Resources",
-        href: "/en/resources",
-        children: [
-          { label: "Why AI Literacy Matters", href: "/en/resources/ai-literacy", description: "Mandatory under the EU AI Act" },
-          { label: "AI Implementation Costs", href: "/en/resources/ai-implementation-costs", description: "Realistic prices and examples" },
-          { label: "EU AI Act Compliance", href: "/en/resources/eu-ai-act-compliance", description: "Step-by-step plan towards 2 August 2026" },
-          { label: "All resources", href: "/en/resources", description: "Browse all articles" }
-        ]
-      },
-      contact: {
-        label: "Contact",
-        href: "/en/contact"
+      cta: {
+        label: "Plan a start sprint",
+        href: "/en/start-sprint"
       },
       featured: {
-        label: "EU AI Consultancy",
-        href: "/en/services/eu-consultancy",
-        description: "European AI without vendor lock-in"
+        label: "The start sprint",
+        href: "/en/start-sprint",
+        description: "One week, fixed fee. Then you know whether it can be done, what it costs and what it looks like."
       }
     },
     hero: {
-      headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
-      subhead: "One dedicated partner for all things AI.\nFrom Groningen, for all of Europe.",
-      primaryBtn: "Let's talk",
-      secondaryBtn: "What we do",
       slides: [
         {
-          label: "Everything A to I",
+          label: "From A to I",
           headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
-          subhead: "One dedicated partner for all things AI.\nFrom Groningen, for all of Europe.",
-          ctaLabel: "Let's talk",
-          ctaTarget: "#contact",
+          subhead: "You have an idea, a process that could work better, or software that needs replacing.\nWe build what you need and make sure it runs.",
+          ctaLabel: "Plan a start sprint",
+          ctaTarget: "/en/start-sprint",
           image: "/hero/summit.webp"
         },
         {
-          label: "Training & Workshops",
-          headline: "Make your <blue>team</blue>\nAI-<red>ready</red>",
-          subhead: "From boardroom to work floor.\nPractical workshops that stick.",
-          ctaLabel: "Plan a workshop",
-          ctaTarget: "#contact?topic=0",
-          image: "/hero/road.webp"
+          label: "Build something new",
+          headline: "From <red>idea</red> to\n<blue>running system</blue>",
+          subhead: "An assistant, a workflow, a tool that does not exist yet.\nA working prototype in six days, then on to production.",
+          ctaLabel: "Plan a start sprint",
+          ctaTarget: "/en/start-sprint",
+          image: "/hero-bg.webp"
         },
         {
-          label: "AI Consultancy",
-          headline: "<red>Know</red> where AI\ncreates <blue>value</blue>",
-          subhead: "AI-readiness scans, roadmaps\nand business cases.",
-          ctaLabel: "Start with a scan",
-          ctaTarget: "/en/services/consulting#ai-readiness-scan",
+          label: "Replace what no longer fits",
+          headline: "<red>Out</red> with software\nthat <blue>holds you back</blue>",
+          subhead: "Replace outdated or overpriced systems with something that fits.\nConnected to your ERP, CRM and the rest of your landscape.",
+          ctaLabel: "Plan a start sprint",
+          ctaTarget: "/en/start-sprint",
           image: "/hero/glass.webp"
         },
         {
-          label: "Software & Implementation",
-          headline: "From <red>plan</red> to\n<blue>solution</blue>",
-          subhead: "Custom AI solutions,\nbuilt with your team.",
-          ctaLabel: "Discuss your project",
-          ctaTarget: "#contact?topic=2",
-          image: "/hero-bg.webp"
+          label: "Run it on your own terms",
+          headline: "AI on <red>your own</red> ground,\n<blue>hosted in Europe</blue>",
+          subhead: "On your own servers or with a European provider.\nNo dependency on US cloud, with the AI Act built in.",
+          ctaLabel: "Plan a start sprint",
+          ctaTarget: "/en/start-sprint",
+          image: "/hero/road.webp"
         }
       ]
     },
     services: {
-      title: "Everything A to I",
-      items: {
-        training: {
-          title: "Training & Workshops",
-          description: "Get your team AI-ready. From AI Foundations to EU AI Act compliance: practical workshops that stick."
+      title: "What we build for you",
+      intro: "Three ways to start, one front door.",
+      cta: "Read more",
+      items: [
+        {
+          entry: "nieuw",
+          tag: "New",
+          title: "Build something new",
+          description: "An assistant, a workflow, a tool that does not exist yet. From prototype in six days to system in production. As at Kwakkel BV: a working prototype in six days.",
+          href: "/en/services/software"
         },
-        consulting: {
-          title: "AI Consulting",
-          description: "From insight to strategy. AI-readiness scans, roadmaps and change management, so AI lands across your entire organisation."
+        {
+          entry: "vervangen",
+          tag: "Replace",
+          title: "Replace what no longer fits",
+          description: "Software that is too expensive, too slow or too old, replaced by something that fits. Connected to your ERP, CRM and the rest of your landscape. As at Strive: an overpriced SaaS package out, custom software in.",
+          href: "/en/services/replace-software"
         },
-        software: {
-          title: "Software & Implementation",
-          description: "From plan to working solution. Custom AI applications on European infrastructure, built with your team."
+        {
+          entry: "eigen-beheer",
+          tag: "Own terms",
+          title: "Run it on your own terms",
+          description: "AI and software on your own servers or with a European provider. No US cloud, with the AI Act built in. Like the AI assistant on this site: built by us, hosted in Europe.",
+          href: "/en/services/eu-consultancy"
         }
-      }
+      ]
+    },
+    standard: {
+      eyebrow: "The AI Heroes standard",
+      title: "Included in every build",
+      subtitle: "We call it the AI Heroes standard. Four things you never have to buy separately.",
+      items: [
+        {
+          title: "Business case first",
+          description: "Before we build, you know what it costs, what it returns and when it pays back. On one page, ready for the board."
+        },
+        {
+          title: "Compliance from the drawing board",
+          description: "AI Act classification, logging, human oversight and European hosting are part of the design. No repairs afterwards."
+        },
+        {
+          title: "Your people can work with it",
+          description: "We train the team that will use the system on that system. It lands on the work floor, and you meet Article 4 of the AI Act at the same time."
+        },
+        {
+          title: "Handover without lock-in",
+          description: "Source code, documentation and data model are yours. You can carry on without us if you want to."
+        }
+      ]
     },
     approach: {
-      title: "How we work",
-      p1: "",
-      p2: "AI touches <red>everything</red>\nYour strategy, your people, your technology\n\nFrom change management to technical implementation\n\nOne agency for the entire journey\nWe advise, train, build\nand make sure it <blue>works</blue>"
+      text: "We build <red>software</red> that works\nthe day we leave\n\nWith a business case that adds up,\ncompliance that runs from day one\nand people who know how to use it\n\nFrom ambition to <blue>implementation</blue>\nOne partner, one path"
     },
     team: {
       title: "Born problem-solvers",
       location: "Groningen, AI Capital of Europe",
-      body: "Three founders, one shared passion for AI.\nBased in the heart of Europe's AI Capital.",
+      body: "Three founders, one shared passion for AI.\nFrans makes the business case, David builds, Jan makes sure your people can work with it.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"
@@ -866,33 +762,18 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Some of the organizations we've worked with",
-      heading: "What our clients say",
+      heading: "What we built, and what it delivered",
       back: "Back",
       readMore: "Read more",
+      prev: "Previous",
+      next: "Next",
+      logos: ["IC Commerce", "Strive", "INQ22", "Kwakkel BV", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior", "Banijay", "Prosus", "Hanze"],
       testimonials: [
-        {
-          text: "The AI Heroes team did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI. Thanks to the interactive, hands-on workshop, we now have practical tools and tips to put to work in our teaching.",
-          highlight: "AI Heroes did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI.",
-          author: "Remi Thüss",
-          role: "Hanzehogeschool Groningen, TBK"
-        },
-        {
-          text: "As an organization, we wanted to stay ahead of AI, so we had our team trained. Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable — highly recommended!",
-          highlight: "A fantastic, hands-on workshop of both theory and practice. Highly recommended!",
-          author: "Bobby Kremer",
-          role: "Nationale Postcode Loterij"
-        },
         {
           text: "AI Heroes helped us automate every step of our eCommerce platform with AI. It's great to work with an AI partner that knows the market so well, and now our business too.",
           highlight: "AI Heroes helped us automate every step of our eCommerce platform with AI.",
           author: "P.R. Jeeninga",
           role: "IC Commerce"
-        },
-        {
-          text: "The way AI Heroes integrate with external stakeholders while working on our projects is satisfying to watch. Whether big or small, our projects are led with great experience, and with a team this flexible it's always fun to explore new things in AI together.",
-          highlight: "With a team this flexible, it's always fun to explore new things in AI together.",
-          author: "Saad Saleem",
-          role: "Project Manager, Cloud Primero"
         },
         {
           text: "The team at AI Heroes has, despite any adversity thrown at them, provided us with impeccable AI software. In the timeline we gave them they went above and beyond and managed all our expectations.",
@@ -905,40 +786,63 @@ export const CONTENT: Record<Language, Content> = {
           highlight: "AI Heroes helped us enormously with the analysis and technical realization of our optical healthcare app.",
           author: "Igor Stalpers-Croeze",
           role: "Manager Research & Development, Avics B.V."
+        },
+        {
+          text: "The way AI Heroes integrate with external stakeholders while working on our projects is satisfying to watch. Whether big or small, our projects are led with great experience, and with a team this flexible it's always fun to explore new things in AI together.",
+          highlight: "With a team this flexible, it's always fun to explore new things in AI together.",
+          author: "Saad Saleem",
+          role: "Project Manager, Cloud Primero"
+        },
+        {
+          text: "As an organization, we wanted to stay ahead of AI, so we had our team trained. Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable. Highly recommended!",
+          highlight: "A fantastic, hands-on workshop of both theory and practice. Highly recommended!",
+          author: "Bobby Kremer",
+          role: "Nationale Postcode Loterij"
+        },
+        {
+          text: "The AI Heroes team did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI. Thanks to the interactive, hands-on workshop, we now have practical tools and tips to put to work in our teaching.",
+          highlight: "AI Heroes did a great job introducing us, as lecturers in Industrial Engineering, to the world of AI.",
+          author: "Remi Thüss",
+          role: "Hanzehogeschool Groningen, TBK"
         }
       ]
     },
     contact: {
-      title: "Interested?",
-      subtitle: "Leave your details and we'll get back to you. Or mail us directly:",
-      educationNote: "For schools and non-profits we have lower rates.",
       form: {
         name: "Name",
         email: "Email",
         org: "Organization",
-        topic: "Topic",
+        topic: "What is it about?",
         topicOptions: [
-          "Training",
-          "Consulting",
-          "Software & Implementation",
-          "Something else"
+          "Build something new",
+          "Replace existing software",
+          "Run it on our own terms",
+          "Not sure yet"
         ],
-        message: "Your message",
-        submit: "Send"
+        budget: {
+          label: "What budget do you have in mind?",
+          options: ["Under €10,000", "€10,000 to €25,000", "€25,000 to €100,000", "More than €100,000", "No idea yet"]
+        },
+        owner: {
+          label: "Who decides on this?",
+          options: ["I decide", "I share the decision", "I am exploring for someone else"]
+        },
+        message: "What do you want to build?",
+        submit: "Send",
+        error: "Something went wrong. Please try again or email us directly."
       },
       success: {
         title: "Received",
-        message: "We will be in touch shortly.",
+        message: "We reply within 24 hours, usually with a proposal for a start sprint.",
         sendAnother: "Send another"
       }
     },
     contactForm: {
-      title: "Start with AI today",
-      subtitle: "Leave your details and we'll contact you within 24 hours.",
+      title: "Tell us what you want to build",
+      subtitle: "We reply within 24 hours. Usually with a proposal for a start sprint.",
       emailLabel: "Or reach out directly:",
       email: "hello@aiheroes.io",
-      phoneLabel: "",
-      phone: "050-200 3373",
+      phone: "+31 50 200 3373",
       phoneHref: "tel:+31502003373",
       meetingLabel: "Book an introduction",
       meetings: [
@@ -946,66 +850,66 @@ export const CONTENT: Record<Language, Content> = {
           name: "Frans Hoorn",
           url: "https://calendar.app.google/juFpF3MDmikH4BVS8",
           photo: "/team/frans.webp",
-          hint: "Strategy, roadmap, partnerships"
-        },
-        {
-          name: "Jan Brusse",
-          url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
-          photo: "/team/jan.webp",
-          hint: "Training, use cases, AI pipelines"
+          hint: "Business case and scoping"
         },
         {
           name: "David Homan",
           url: "https://calendar.app.google/GcA1oBNwzyFZtW5W6",
           photo: "/team/david.webp",
-          hint: "Software implementation, compliance"
+          hint: "Build, hosting and compliance"
+        },
+        {
+          name: "Jan Brusse",
+          url: "https://calendar.app.google/un3fLvb7ht4f7PBWA",
+          photo: "/team/jan.webp",
+          hint: "Adoption and training for your team"
         }
       ]
     },
     aboutPage: {
       hero: {
         title: "About AI Heroes",
-        subtitle: "AI Heroes is a full-service AI agency that guides organisations through the entire AI journey, from change management to technical implementation. Based in Groningen, serving all of Europe."
+        subtitle: "AI Heroes builds software and AI for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it."
       },
       intro: {
-        text: "We started in 2019 with a simple observation: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Nobody covers the full spectrum: from organisational change to technical implementation.\n\nBased in Groningen, the epicentre of AI in Europe and home to the AI Fabriek, we work with organisations across Europe. From startups to Fortune 500 companies, from municipalities to media organisations. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in.",
+        text: "The AI Heroes brand dates back to 2019. At the end of 2025, Frans Hoorn, David Homan and Jan Brusse took over the brand and its client relationships and started again, with one observation as the starting point: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Almost nobody delivers software that works on the day of delivery and keeps working.\n\nSo we build. Every build starts with a business case, has compliance in the design and ends with a team that can work with it. From Groningen, the epicentre of AI in Europe and home of the AI Fabriek (AI Factory), for organisations across the Netherlands and Europe. With a European approach: data sovereignty, EU AI Act compliance and no vendor lock-in.",
         stats: [
-          { metric: "50+", description: "Organizations helped" },
-          { metric: "Since 2019", description: "Groningen, AI Capital of Europe" },
-          { metric: "3", description: "Expertises under one roof" }
+          { metric: "50+", description: "Organisations helped" },
+          { metric: "1,000+", description: "Professionals trained" },
+          { metric: "6 days", description: "From question to working prototype" }
         ]
       },
       team: {
         title: "The team",
-        subtitle: "Three backgrounds, one shared passion for AI",
+        subtitle: "Three founders, one path: from business case to handover",
         members: [
           {
             name: "Frans Hoorn",
-            role: "Co-Founder · AI Consulting",
-            description: "Combines strategic thinking with a sharp eye for user experience. Leads our consulting pillar: AI-readiness scans, roadmaps and business cases that move organisations forward."
+            role: "Co-Founder · Business case & scoping",
+            description: "Combines strategic thinking with a sharp eye for user experience. Leads the start sprint and the business case: what it costs, what it returns and when it pays back."
           },
           {
             name: "David Homan",
-            role: "Co-Founder · Software & Implementation",
-            description: "The link between tech and boardroom. Leads our software pillar: custom AI solutions built with your team. From prototype to production."
+            role: "Co-Founder · Build & compliance",
+            description: "The link between technology and the boardroom. Leads the build: from prototype to system in production, connected to your landscape, with AI Act classification, logging and hosting in the design."
           },
           {
             name: "Jan Brusse",
-            role: "Co-Founder · Training & Workshops",
-            description: "Specialist in making complex technology accessible. Leads our training pillar: from AI Foundations to EU AI Act compliance, practical workshops that stick."
+            role: "Co-Founder · Adoption & training",
+            description: "Specialist in making complex technology accessible. Makes sure the team that will work with the system actually can: training on the system itself, on the work floor."
           }
         ]
       },
       cards: [
         {
-          title: "Our Approach",
-          description: "Practice over theory, results over reports",
+          title: "How we work",
+          description: "The start sprint, the AI Heroes standard and the path from business case to handover",
           href: "/en/about/approach",
           icon: "target"
         },
         {
-          title: "The Team",
-          description: "Meet Frans, Jan and David - read their full profiles",
+          title: "The team",
+          description: "Meet Frans, David and Jan and read their full profiles",
           href: "/en/about/team",
           icon: "users"
         }
@@ -1015,205 +919,34 @@ export const CONTENT: Record<Language, Content> = {
         items: [
           {
             title: "Honesty over sales",
-            description: "If AI isn't the solution, we'll tell you. We only sell what truly adds value."
+            description: "If AI isn't the solution, we'll tell you. If the business case does not add up, we do not build."
           },
           {
-            title: "Custom over standard",
-            description: "Every organization is different. We adapt our approach to your situation, not the other way around."
+            title: "Working over finished",
+            description: "We measure success by what runs on the day we leave, and by what still runs a year later."
           },
           {
             title: "Practitioners who do the work",
-            description: "We don't just advise, we also build. Knowledge from practice, directly applied in your organization."
+            description: "We don't just advise, we build. Our own AI assistant runs on this site, hosted in Europe."
           },
           {
             title: "Groningen, AI Capital of Europe",
-            description: "Rooted in Groningen, home to the AI Fabriek (a €200M investment). Local base, European reach."
+            description: "Rooted in Groningen, home of the AI Fabriek (AI Factory), a €200M investment. Local base, European reach."
           }
         ]
-      }
-    },
-    resourcesPage: {
-      hero: {
-        title: "Resources",
-        subtitle: "Practical knowledge about AI strategy and literacy. Free for everyone who wants to understand and apply AI."
-      },
-      intro: {
-        text: "AI has growing impact on organisations and society. Understanding how this technology works matters across the whole organisation, well beyond the tech team.\n\nThat's why we share our knowledge openly. These resources help you lay the foundation for AI literacy in your organization and chart a strategic course.",
-        stats: [
-          { metric: "72%", description: "AI adoption among companies" },
-          { metric: "2025", description: "EU AI Act mandatory" },
-          { metric: "4 pillars", description: "Of AI literacy" }
-        ]
-      },
-      cards: [
-        {
-          title: "Why AI Literacy Matters",
-          description: "From 2025, understanding AI is no longer optional due to the EU AI Act",
-          href: "/en/resources/ai-literacy",
-          icon: "book"
-        },
-        {
-          title: "AI Strategy Starter Guide",
-          description: "4-step practical guide to building your AI strategy",
-          href: "/en/resources/ai-strategy-guide",
-          icon: "map"
-        }
-      ],
-      why: {
-        title: "Why these resources",
-        items: [
-          {
-            title: "Education before implementation",
-            description: "Before you implement AI, your team needs to understand what they're working with. Investing in understanding prevents expensive mistakes."
-          },
-          {
-            title: "Transparency and knowledge sharing",
-            description: "We believe knowledge about AI should be accessible. No marketing speak, no vendor lock-in, just practical information."
-          },
-          {
-            title: "Building AI-literate organizations",
-            description: "Organizations that succeed with AI have one thing in common: widely supported understanding of both possibilities and limitations."
-          },
-          {
-            title: "EU AI Act compliance",
-            description: "From 2025, the EU AI Act requires organizations to demonstrate AI literacy. Start laying the foundation now."
-          }
-        ]
-      }
-    },
-    servicesPage: {
-      hero: {
-        title: "Our Services",
-        subtitle: "From change management to technical implementation, under one roof. Wherever you stand with AI, we help you forward.",
-        cta1: "View services",
-        cta2: "Get in touch",
-        credibility: "50+ organizations helped since 2019"
-      },
-      valueProps: {
-        title: "Why AI Heroes",
-        items: [
-          {
-            title: "We build AI ourselves",
-            description: "We build AI products and systems ourselves. Knowledge from practice, applied directly."
-          },
-          {
-            title: "Practice over theory",
-            description: "Every workshop is hands-on. Your team works with real tools on real use cases. Immediately applicable."
-          },
-          {
-            title: "Focus on results",
-            description: "We deliver concrete skills and insights. Measurable impact comes first."
-          }
-        ]
-      },
-      stats: [
-        {
-          metric: "70% lower costs",
-          description: "Medux reduced AI costs by 70% after our engagement"
-        },
-        {
-          metric: "6 days to prototype",
-          description: "Average time from first conversation to working prototype"
-        },
-        {
-          metric: "3 expertises, 1 partner",
-          description: "Training, consulting and software under one roof"
-        }
-      ],
-      heroServices: [
-        {
-          title: "Training & Workshops",
-          description: "Get your team AI-ready",
-          benefit: "From AI Foundations to EU AI Act compliance. Practical workshops from boardroom to work floor that stick."
-        },
-        {
-          title: "AI Consulting",
-          description: "From insight to strategy",
-          benefit: "AI-readiness scans, roadmaps and business cases. Know exactly where AI adds value in your organisation."
-        },
-        {
-          title: "Software & Implementation",
-          description: "From plan to working solution",
-          benefit: "Custom AI applications, built with your team. From prototype to production."
-        }
-      ],
-      process: {
-        title: "What happens when you reach out",
-        timeline: "From first conversation to results: average 2 weeks",
-        steps: [
-          {
-            title: "Discovery call",
-            description: "We listen to your situation, challenges and goals. Understanding what you need comes first."
-          },
-          {
-            title: "Tailored proposal",
-            description: "We propose an approach that fits your team, budget and timeline. Transparent about costs and expected results."
-          },
-          {
-            title: "Immediate impact",
-            description: "We get to work on training, advice or development. Measurable results that deliver immediate value."
-          }
-        ]
-      },
-      guarantees: {
-        title: "Our guarantees",
-        items: [
-          {
-            title: "No vendor lock-in",
-            description: "We teach you to work with general AI tools. You're not dependent on one platform or vendor."
-          },
-          {
-            title: "Honest advice",
-            description: "If AI isn't the solution, we'll tell you. We only sell what truly adds value."
-          }
-        ]
-      },
-      faq: {
-        title: "Frequently asked questions",
-        items: [
-          {
-            question: "How long does a workshop take?",
-            answer: "Most workshops last one day (6-8 hours). For multi-day programmes we schedule sessions in consultation."
-          },
-          {
-            question: "What are the costs?",
-            answer: "Depends on the service. Training starts at €2,500 per day, consulting from €3,000 per engagement, software from €15,000 per project. We have lower rates for schools and non-profits."
-          },
-          {
-            question: "What if AI turns out not to be suitable?",
-            answer: "Then we'll tell you honestly. With our consulting engagements you always get clear advice, even if that means AI isn't the right fit yet."
-          },
-          {
-            question: "Do you work on-site or online?",
-            answer: "Both. We prefer on-site for better interaction, but online works excellently too."
-          },
-          {
-            question: "What is an AI-readiness scan?",
-            answer: "A scan of your organisation: where do you stand with AI, where are the opportunities, and what's the best first step? You receive a concrete report with recommendations."
-          },
-          {
-            question: "Do you also build software?",
-            answer: "Yes. Through our software pillar we build custom AI solutions. From prototype to production, independently or alongside your development team."
-          }
-        ]
-      },
-      contactSection: {
-        title: "Start with AI today",
-        subtitle: "Leave your details and we'll contact you within 24 hours.",
-        altCta: "Or email us directly:"
       }
     },
     careersPage: {
       hero: {
         title: "Work at AI Heroes",
-        subtitle: "We're growing. Join an ambitious team helping organisations across Europe with AI: from strategy to implementation."
+        subtitle: "We are growing. Join a team that builds software and AI for organisations across Europe, and makes sure it works."
       },
       growth: {
-        text: "Since 2019, we've been helping organisations across Europe with the full AI journey. From boardroom workshops to custom software, our team grows with the demand. We're looking for people who are just as driven as we are to make AI accessible and impactful.",
+        text: "We build software and AI that runs in production, with a business case first, compliance from the drawing board and training for the team that will use it. Our team grows with demand. We are looking for people who, like us, want to build something that works the day we leave.",
         stats: [
           { metric: "50+", description: "Organisations helped" },
           { metric: "1,000+", description: "Professionals trained" },
-          { metric: "3", description: "Expert teams" },
+          { metric: "3", description: "Founders, one path" },
           { metric: "2019", description: "Founded" }
         ],
         trustedBy: ["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Envalior"]
@@ -1249,22 +982,22 @@ export const CONTENT: Record<Language, Content> = {
       },
       departments: {
         title: "Our teams",
-        subtitle: "AI Heroes consists of three specialised teams that work closely together.",
+        subtitle: "Every project is carried by three roles that work together from business case to handover.",
         items: [
           {
-            name: "Training & Workshops",
+            name: "Adoption & training",
             pillar: "training",
-            description: "Our Training team develops and delivers workshops and programmes for organisations from SMEs to multinationals. From AI Foundations for beginners to specialised tracks for developers and policymakers."
+            description: "Makes sure the client's team can work with what we build: training on the system itself, AI literacy under Article 4 of the AI Act and guidance on the work floor."
           },
           {
-            name: "AI Consulting",
+            name: "Business case & scoping",
             pillar: "consulting",
-            description: "Our Consulting team helps organisations define their AI strategy. From readiness scans and roadmaps to implementation guidance: we translate ambition into action."
+            description: "Establishes before the build what it costs, what it returns and when it pays back. Leads the start sprint and keeps the scope sharp."
           },
           {
-            name: "Software & Implementation",
+            name: "Build & compliance",
             pillar: "software",
-            description: "Our Software team builds custom AI solutions. From rapid prototypes in 6 days to enterprise-grade integrations, always in collaboration with the client's team."
+            description: "Builds the software and AI, connects it to the client's landscape and makes sure AI Act classification, logging, oversight and hosting are part of the design. From prototype in six days to system in production."
           }
         ]
       },
@@ -1433,12 +1166,15 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "Full-service AI agency. From change management to technical implementation, with a European approach.",
-      caseStudies: {
-        title: "Case Studies",
-        items: ["Medux", "OLX", "Trabu", "InnoEnergy"]
+      tagline: "We build software and AI that runs in production. Business case, compliance and training included.",
+      columns: {
+        build: "What we build",
+        how: "How we work",
+        cases: "Cases",
+        company: "Company",
+        knowledge: "Knowledge"
       },
-      partnerships: "Development Partnerships",
+      partnersLabel: "We work with",
       legal: {
         privacy: "Privacy Policy",
         terms: "Terms & Conditions"
