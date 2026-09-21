@@ -255,7 +255,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           is live it OPENS the chat (one floating entry, decision A5 26-08); otherwise
           it scrolls to the contact form as before. */}
       <div
-        className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
+        className={`fixed bottom-6 right-24 z-[96] transition-all duration-500 ${
           showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
         }`}
       >

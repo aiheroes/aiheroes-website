@@ -259,7 +259,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
           to the contact form as before. */}
       {showContactForm && (
         <div
-          className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
+          className={`fixed bottom-6 right-24 z-[96] transition-all duration-500 ${
             showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
           }`}
         >
