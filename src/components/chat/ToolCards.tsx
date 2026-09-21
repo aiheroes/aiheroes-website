@@ -48,7 +48,7 @@ export function BookingCard({
   bookingUrl: string | null;
 }) {
   const t = STRINGS[locale];
-  const contactHref = locale === 'nl' ? '/#contact' : '/en#contact';
+  const contactHref = locale === 'nl' ? '/nl/startsprint' : '/en/start-sprint';
   return (
     <div className={cardClass}>
       <p className="flex items-center gap-1.5 font-semibold">

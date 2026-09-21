@@ -105,17 +105,17 @@
     },
     {
       "source": "/contact",
-      "destination": "/#contact",
+      "destination": "/nl/startsprint",
       "statusCode": 301
     },
     {
       "source": "/nl/contact",
-      "destination": "/#contact",
+      "destination": "/nl/startsprint",
       "statusCode": 301
     },
     {
       "source": "/en/contact",
-      "destination": "/en#contact",
+      "destination": "/en/start-sprint",
       "statusCode": 301
     },
     {
@@ -240,52 +240,52 @@
     },
     {
       "source": "/nl/diensten/ai-prototyping",
-      "destination": "/nl/diensten/software#ai-prototyping",
+      "destination": "/nl/startsprint",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/maatwerk-ai-oplossingen",
-      "destination": "/nl/diensten/software#maatwerk-ai-oplossingen",
+      "destination": "/nl/diensten/software",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-integratie",
-      "destination": "/nl/diensten/software#ai-integratie",
+      "destination": "/nl/diensten/software-vervangen",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-development-teams",
-      "destination": "/nl/diensten/software#ai-development-teams",
+      "destination": "/nl/diensten/software#dedicated-teams",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/digital-twins",
-      "destination": "/nl/diensten/software#digital-twins",
+      "destination": "/nl/diensten/software",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-prototyping",
-      "destination": "/en/services/software#ai-prototyping",
+      "destination": "/en/start-sprint",
       "statusCode": 301
     },
     {
       "source": "/en/services/custom-ai-solutions",
-      "destination": "/en/services/software#custom-ai-solutions",
+      "destination": "/en/services/software",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-integration",
-      "destination": "/en/services/software#ai-integration",
+      "destination": "/en/services/replace-software",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-development-teams",
-      "destination": "/en/services/software#ai-development-teams",
+      "destination": "/en/services/software#dedicated-teams",
       "statusCode": 301
     },
     {
       "source": "/en/services/digital-twins",
-      "destination": "/en/services/software#digital-twins",
+      "destination": "/en/services/software",
       "statusCode": 301
     },
     {
@@ -340,7 +340,7 @@
     },
     {
       "source": "/contact-us",
-      "destination": "/#contact",
+      "destination": "/nl/startsprint",
       "statusCode": 301
     },
     {
@@ -370,7 +370,27 @@
     },
     {
       "source": "/mastermind-form/:path*",
-      "destination": "/#contact",
+      "destination": "/nl/startsprint",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/eu-development",
+      "destination": "/nl/diensten/eu-consultancy",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/eu-development",
+      "destination": "/en/services/eu-consultancy",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/digitale-onafhankelijkheid",
+      "destination": "/nl/diensten/eu-consultancy",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/digital-independence",
+      "destination": "/en/services/eu-consultancy",
       "statusCode": 301
     }
   ],

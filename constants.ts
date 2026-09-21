@@ -358,7 +358,7 @@ export const CONTENT: Record<Language, Content> = {
           { metric: "3", description: "Oprichters, één traject" },
           { metric: "2019", description: "Opgericht" }
         ],
-        trustedBy: ["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Envalior"]
+        trustedBy: ["Kwakkel BV", "INQ22", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior"]
       },
       culture: {
         title: "Waarom AI Heroes?",
@@ -949,7 +949,7 @@ export const CONTENT: Record<Language, Content> = {
           { metric: "3", description: "Founders, one path" },
           { metric: "2019", description: "Founded" }
         ],
-        trustedBy: ["Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Envalior"]
+        trustedBy: ["Kwakkel BV", "INQ22", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior"]
       },
       culture: {
         title: "Why AI Heroes?",

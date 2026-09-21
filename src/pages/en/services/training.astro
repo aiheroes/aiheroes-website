@@ -31,7 +31,7 @@ const faq = [
   { q: 'Which teams is the training suitable for?', a: 'Any team that will work with AI: board and management, marketing, HR, legal and development. Content and examples are adapted per audience. For developers there is a dedicated AI for Developers training.' },
   { q: 'Do you train outside the Netherlands?', a: 'Our home base is Groningen and most training happens on-site across the Netherlands, but we also run sessions elsewhere in Europe and remotely for distributed teams.' },
   { q: 'Which tools are covered?', a: 'The tools your team actually uses: ChatGPT, Claude, Copilot or European alternatives. The training focuses on tool-independent skills: writing effective prompts, judging output critically and handling company data safely.' },
-  { q: 'Does this training count towards the EU AI Act literacy obligation?', a: 'The AI Foundations workshop covers much of the knowledge Article 4 of the EU AI Act asks for. If you need demonstrable compliance, look at our AI Literacy Training with certificates and documentation.' },
+  { q: 'Does this training count towards the EU AI Act literacy obligation?', a: 'The AI Foundations workshop covers much of the knowledge Article 4 of the EU AI Act asks for. If you need demonstrable compliance, look at our AI Literacy Training with certificates and documentation. If we build for you, that training is part of the project and you get the proof with it.' },
 ];
 
 const faqSchema = {
@@ -45,8 +45,8 @@ const faqSchema = {
 };
 
 const related = [
-  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance.' },
-  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to working, integrated AI in production.' },
+  { title: 'The start sprint', accent: 'red' as const, href: '/en/start-sprint', description: 'One week, fixed price, a working prototype or build plan. The first step of every build.' },
+  { title: 'How we work', accent: 'blue' as const, href: '/en/about/approach', description: 'The project from business case to handover, with training your team as a fixed phase.' },
 ];
 
 const serviceSchema = {
@@ -70,17 +70,16 @@ const serviceSchema = {
   seoTitle="In-Company AI Training | From €2,500 per day | AI Heroes"
   seoDescription="AI training at your location, for your team, with your cases. From AI Foundations and Copilot to AI for Developers and AI literacy. More than 1,000 professionals went before you."
   accentColor="red"
-  badge="Training"
-  ctaLabel="Book a training"
+  badge="Training your team"
   trustedBy={["Postcode Loterij", "Banijay Benelux", "Tweede Kamer", "Philips Healthcare", "Hanze", "Envalior"]}
   jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From &ldquo;what is AI&rdquo; to daily application</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">In every build we train the team that will work with it</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      Generic AI courses stick to generic examples. In an in-company training your team practises on its own reality. We come to your location, work with your documents and processes, and train until everyone applies it in their own work, from board and management to marketing, HR, legal and development.
+      That is the training that pays off most: on your system, with your data, on the work floor. It is part of every build and it is the reason what we deliver actually gets used. We also run stand-alone trainings. Below is what we offer and what it costs.
     </p>
-    <p class="text-stone-600 leading-relaxed">More than 1,000 professionals went before you.</p>
+    <p class="text-stone-600 leading-relaxed">We come to your location, work with your documents and processes, and train until everyone applies it in their own work. More than 1,000 professionals went before you. Just a training? <a href="#contact-form" class="text-brand-red underline underline-offset-2 hover:no-underline">Request it below</a>; for education and non-profit we charge lower rates.</p>
     <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
   </section>
 
@@ -97,7 +96,7 @@ const serviceSchema = {
 
   <section class="mb-16">
     <Callout variant="red" accent="red" eyebrow="Mandatory since 2025" title="The EU AI Act requires AI literacy">
-      <p>Article 4 of the EU AI Act has been in force since <strong>2 February 2025</strong>. From <strong>2 August 2026</strong> the Dutch Data Protection Authority enforces it, with fines up to <strong>EUR 15 million or 3% of global annual turnover</strong> (Article 99(4)). The obligation applies to every organisation that uses AI, even if that is only ChatGPT or Copilot.</p>
+      <p>Article 4 of the EU AI Act has been in force since <strong>2 February 2025</strong>. Since <strong>2 August 2026</strong> the Dutch Data Protection Authority has enforced it, with fines up to <strong>EUR 15 million or 3% of global annual turnover</strong> (Article 99(4)). The obligation applies to every organisation that uses AI, even if that is only ChatGPT or Copilot.</p>
       <p><a href="/en/services/ai-literacy-training" class="text-white underline underline-offset-2 hover:no-underline">See the AI Literacy Training with certification &rarr;</a></p>
     </Callout>
   </section>
@@ -118,7 +117,7 @@ const serviceSchema = {
   </section>
 
   <section>
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Related services</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">How this fits in a build</h2>
     <CardGrid items={related} cols={2} />
   </section>
 </SubpageLayout>

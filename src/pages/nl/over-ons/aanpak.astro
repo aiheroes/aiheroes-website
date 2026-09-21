@@ -1,56 +1,75 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import StandardBand from '../../../components/blocks/StandardBand.astro';
+
+const path = [
+  { title: 'De startsprint', eyebrow: 'Week 1', body: 'Eén week, vast bedrag. We zitten met de eigenaar van het probleem, bouwen een prototype op jouw data of ontwerpen de architectuur, en leggen de business case op één A4 naast je. Daarna beslis jij.', href: '/nl/startsprint', hrefLabel: 'Meer over de startsprint' },
+  { title: 'Business case en scoping', eyebrow: 'Vóór de bouw', body: 'Wat kost het, wat levert het op, wanneer verdient het zich terug. Omdat wij zelf bouwen, zijn onze ramingen realistisch. Sluit de business case niet, dan bouwen we niet.', href: '/nl/diensten/consultancy', hrefLabel: 'Hoe we de business case maken' },
+  { title: 'Bouwen in sprints', eyebrow: 'Week 2 tot 12', body: 'Korte sprints met een demo aan het eind van elke sprint, zodat je altijd ziet waar we staan. Zelfstandig of samen met jouw developers. Gekoppeld aan je ERP, CRM en de rest van je landschap.' },
+  { title: 'Compliance vanaf de tekentafel', eyebrow: 'Tijdens de bouw', body: 'We classificeren het systeem onder de AI Act, bouwen logging en menselijk toezicht in en kiezen hosting die past bij je data. Achteraf repareren is niet nodig.' },
+  { title: 'Training van je team', eyebrow: 'Vóór de overstap', body: 'Het team dat het systeem gaat gebruiken, trainen we op dat systeem, op de werkvloer. Zo landt het, en voldoe je meteen aan artikel 4 van de AI Act.', href: '/nl/diensten/training', hrefLabel: 'Hoe we trainen' },
+  { title: 'Overdracht zonder lock-in', eyebrow: 'Oplevering', body: 'Broncode, documentatie en datamodel zijn van jou. Je kunt zonder ons verder als je dat wilt. Wil je dat niet, dan blijven we beheren en doorontwikkelen.' },
+];
+
+const principles = [
+  { title: 'Werkend boven af', description: 'We meten succes in wat er draait op de dag dat we vertrekken, en in wat er een jaar later nog draait.' },
+  { title: 'Eerlijkheid boven verkoop', description: 'Als AI niet de oplossing is, zeggen we dat. Als de business case niet klopt, bouwen we niet.' },
+  { title: 'Klein beginnen, dan opschalen', description: 'Eerst een week, dan een besluit, dan een bouw. Nooit een groot bedrag op een vermoeden.' },
+  { title: 'Zelf doen wat we adviseren', description: 'Onze eigen assistent draait op deze site, Europees gehost. We automatiseren ons eigen werk met wat we voor klanten bouwen.' },
+];
 ---
 
 <SubpageLayout
   lang="nl"
-  title="Onze Aanpak"
-  subtitle="Van change management tot technische implementatie. Drie pijlers, één agency, het hele AI-traject."
+  title="Hoe we werken"
+  subtitle="Van ambitie naar implementatie, in één traject. Eerst een week, dan een besluit, dan een bouw die werkt op de dag dat we vertrekken."
+  seoTitle="Hoe we werken: startsprint, business case, bouw, compliance, training, overdracht"
+  seoDescription="Zo werkt AI Heroes: een startsprint van één week, een business case vóór de bouw, bouwen in sprints, compliance vanaf de tekentafel, training van je team en overdracht zonder lock-in. De AI Heroes-standaard, uitgelegd."
   accentColor="red"
-  seoDescription="Onze aanpak: van change management tot technische implementatie als full-service AI agency. Drie pijlers, één Europese partner."
+  badge="Hoe we werken"
+  showStandard={false}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Het probleem dat we oplossen</h2>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Het probleem dat we oplossen</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      De AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten die in laden belanden. Trainingsbureaus trainen en vertrekken. Techbedrijven bouwen tools die niemand gebruikt. Bijna niemand levert software die op de dag van oplevering werkt én blijft werken.
+    </p>
+    <p class="text-stone-600 leading-relaxed">Daarom bouwen wij, en nemen we alles mee wat een bouw laat slagen: de business case ervoor, de compliance erin en de training erna. Dat is geen menu waar je uit kiest; het is wat elke bouw bevat.</p>
+  </section>
 
-    <p class="text-stone-600 leading-relaxed mb-8">De AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten die in laden belanden. Trainingsbureaus trainen en vertrekken. Techbedrijven bouwen tools die niemand gebruikt. Niemand pakt het hele spectrum: van organisatieverandering tot technische implementatie.</p>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Het traject, in volgorde</h2>
+    <ProcessSteps steps={path} />
+  </section>
 
-    <p class="text-stone-600 leading-relaxed mb-8">AI Heroes doet dat wel. Als full-service AI agency combineren we change management, training, consulting en software onder één dak. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Klanten kunnen op elk punt instappen. Je hoeft niet bij pijler 1 te beginnen.</p>
+  <StandardBand lang="nl" class="mb-16" />
 
-    <div class="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
-      <h3 class="text-xl font-serif text-brand-dark mb-3">Onze principes</h3>
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>Praktijk boven theorie: je leert door te doen</li>
-        <li>Resultaat boven rapport: we meten succes in wat er daadwerkelijk verandert</li>
-        <li>Eerlijkheid boven sales: als AI niet de oplossing is, zeggen we dat</li>
-        <li>Maatwerk boven standaard: elke organisatie is anders</li>
-      </ul>
-    </div>
+  <section id="compliance" class="mb-16 scroll-mt-28">
+    <Callout variant="dark" accent="blue" eyebrow="Compliance vanaf de tekentafel" title="Wat dat in de praktijk betekent">
+      <p><strong>Classificatie.</strong> Elk systeem dat we bouwen krijgt een plek onder de AI Act: minimaal, beperkt of hoog risico. Dat bepaalt wat er in het ontwerp moet.</p>
+      <p><strong>Logging en toezicht.</strong> Elke beslissing van het systeem is terug te vinden, en een mens kan altijd ingrijpen. Bij een assistent betekent dat doorschakeling; bij een werkstroom een controlestap.</p>
+      <p><strong>Hosting.</strong> Data die Europa niet uit mag, blijft in Europa. Op je eigen servers als dat moet, bij een Europese partij als dat kan.</p>
+      <p><strong>Geletterdheid.</strong> Het team dat ermee werkt is getraind op het systeem. Daarmee voldoe je aan artikel 4, met het bewijs erbij.</p>
+    </Callout>
+  </section>
 
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Drie pijlers, één traject</h3>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Waar we ons aan houden</h2>
+    <CardGrid items={principles} cols={2} />
+  </section>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-8 not-prose">
-      <a href="/nl/diensten#training" class="p-6 bg-white border-2 border-stone-200 hover:border-brand-red transition-colors group no-underline"><div class="w-12 h-1 bg-brand-red mb-4"></div><h4 class="font-bold text-brand-dark group-hover:text-brand-red transition-colors mb-2">1. Training</h4><p class="text-sm text-stone-600">We leren je team wat AI kan, en waar je op moet letten. Van boardroom tot werkvloer.</p></a>
-      <a href="/nl/diensten#consulting" class="p-6 bg-white border-2 border-stone-200 hover:border-brand-blue transition-colors group no-underline"><div class="w-12 h-1 bg-brand-blue mb-4"></div><h4 class="font-bold text-brand-dark group-hover:text-brand-blue transition-colors mb-2">2. Consultancy</h4><p class="text-sm text-stone-600">We brengen kansen in kaart en maken je AI-roadmap. Van readiness scan tot business case.</p></a>
-      <a href="/nl/diensten#software" class="p-6 bg-white border-2 border-stone-200 hover:border-stone-700 transition-colors group no-underline"><div class="w-12 h-1 bg-brand-dark mb-4"></div><h4 class="font-bold text-brand-dark group-hover:text-stone-700 transition-colors mb-2">3. Software</h4><p class="text-sm text-stone-600">We bouwen en implementeren AI-oplossingen samen met jouw team. Van prototype tot productie.</p></a>
-    </div>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Wat het kost</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">De startsprint kost vanaf €8.000, vast bedrag, vooraf bekend. Een maatwerkbouw daarna begint vanaf €15.000. Wat jouw bouw precies kost, staat aan het eind van de startsprint op één A4, samen met wat hij oplevert en wanneer hij zich terugverdient.</p>
+    <p class="text-stone-600 leading-relaxed">Losse trainingen zijn er ook, vanaf €2.500 per dag; je vindt ze bij <a href="/nl/diensten/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training van je team</a>. Voor onderwijs en non-profit hanteren we lagere tarieven.</p>
+  </section>
 
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Instappen waar je wilt</h3>
-    <p class="text-stone-600 leading-relaxed mb-8">De natuurlijke volgorde is Training → Consultancy → Software. Maar niet elke organisatie begint bij het begin. Sommige weten al wat ze willen bouwen. Anderen hebben eerst een strategisch plan nodig. Wij ontmoeten je waar je staat.</p>
-
-    <div class="grid md:grid-cols-2 gap-6 mb-8 not-prose">
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Voorbereiding</h4><p class="text-sm text-stone-600">We spreken vooraf met key stakeholders om te begrijpen wat er speelt. Zo passen we onze aanpak aan jullie context aan.</p></div>
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Kennisoverdracht</h4><p class="text-sm text-stone-600">Elk traject is zo opgezet dat je team zonder ons verder kan. Jij houdt de regie.</p></div>
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Nazorg</h4><p class="text-sm text-stone-600">Na afloop krijg je toegang tot onze community en materialen. Vragen die later opkomen? Gewoon stellen.</p></div>
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Resultaatgarantie</h4><p class="text-sm text-stone-600">Als je niet tevreden bent, praten we erover. We staan achter ons werk.</p></div>
-    </div>
-
-    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 mb-8 not-prose">
-      <h3>Waarom AI Heroes?</h3>
-      <p>Wij zijn practitioners die meedoen. Van change management tot technische implementatie. We adviseren niet alleen, we bouwen ook. Eén agency, drie pijlers, het hele AI-traject.</p>
-    </div>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Tarieven</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">We werken met transparante tarieven. Training vanaf €2.500 per dag, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor onderwijs en non-profit organisaties hanteren we gereduceerde tarieven.</p>
-    <p class="text-stone-600 leading-relaxed">Benieuwd wat we voor jou kunnen betekenen? Neem contact op voor een vrijblijvend gesprek.</p>
-  </div>
+  <section>
+    <Callout variant="light" accent="red" eyebrow="Volgende stap" title="Vertel wat je wilt bouwen">
+      <p>Een startsprint is de eerste stap. Hieronder kun je vertellen waar het om gaat; we reageren binnen 24 uur, meestal met een voorstel voor een startsprint.</p>
+    </Callout>
+  </section>
 </SubpageLayout>

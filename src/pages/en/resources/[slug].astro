@@ -1,15 +1,27 @@
 ---
 import { getCollection, render } from 'astro:content';
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles', (e) => e.data.lang === 'en' && !e.data.draft);
-  return articles.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+  return articles.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry, articles } }));
 }
 
-const { entry } = Astro.props;
+const { entry, articles } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+
+const others = articles
+  .filter((e) => e.data.slug !== d.slug)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3)
+  .map((e) => ({
+    title: e.data.title,
+    description: e.data.description,
+    href: `/en/resources/${e.data.slug}`,
+    accent: e.data.accentColor,
+  }));
 
 const iso = (date: Date) => date.toISOString().split('T')[0];
 const fmt = (date: Date) =>
@@ -67,6 +79,17 @@ const jsonLd = faqSchema ? [articleSchema, faqSchema] : [articleSchema];
             </div>
           ))}
         </div>
+      </section>
+    )}
+    <div class="mt-12 bg-brand-dark text-white p-8 md:p-10 border-l-4 border-brand-red not-prose">
+      <h2 class="font-serif text-2xl mb-2">Want this built instead of reading about it?</h2>
+      <p class="text-white/70 mb-5 max-w-xl">A start sprint is the first step: one week, fixed fee, a working prototype or build plan. Always with the business case on one page.</p>
+      <a href="/en/start-sprint" class="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-medium hover:bg-red-600 transition-colors">Plan a start sprint &rarr;</a>
+    </div>
+    {others.length > 0 && (
+      <section class="mt-16 pt-10 border-t border-stone-200 not-prose">
+        <h2 class="font-serif text-2xl text-brand-dark mb-6">More articles</h2>
+        <CardGrid items={others} cols={3} />
       </section>
     )}
   </div>

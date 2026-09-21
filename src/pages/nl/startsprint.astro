@@ -1,0 +1,99 @@
+---
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../components/blocks/StatGrid.astro';
+import Callout from '../../components/blocks/Callout.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import StandardBand from '../../components/blocks/StandardBand.astro';
+
+const outcomes = [
+  { title: 'Iets nieuws bouwen', eyebrow: 'Uitkomst: werkend prototype', accent: 'red' as const, href: '/nl/diensten/software', description: 'Aan het eind van de week staat er een prototype dat werkt op jouw data. Zoals bij Kwakkel BV: in zes dagen van vraag naar werkend prototype voor de automatisering van de administratie.' },
+  { title: 'Vervangen wat niet meer voldoet', eyebrow: 'Uitkomst: architectuur en migratieplan', accent: 'blue' as const, href: '/nl/diensten/software-vervangen', description: 'Welke koppelingen er nodig zijn, hoe de data overgaat, wat er in fasen kan. Een bouwplan waar je een besluit op kunt nemen.' },
+  { title: 'In eigen beheer draaien', eyebrow: 'Uitkomst: hostingontwerp en risicobeoordeling', accent: 'dark' as const, href: '/nl/diensten/eu-consultancy', description: 'Welk model, welke hardware of Europese cloud, wat het kost en wat de AI Act van je vraagt. Getest op jouw situatie.' },
+];
+
+const week = [
+  { title: 'Intake en scope', eyebrow: 'Dag 1', body: 'We zitten met de eigenaar van het probleem en de mensen die ermee werken. Wat moet het doen, welke data is er, wat is de eerste versie die al waarde heeft.' },
+  { title: 'Bouwen of ontwerpen', eyebrow: 'Dag 2 en 3', body: 'Bij iets nieuws bouwen we het prototype. Bij vervangen of eigen beheer ontwerpen we de architectuur en testen we de kritieke onderdelen.' },
+  { title: 'Koppelen aan je echte omgeving', eyebrow: 'Dag 4', body: 'Echte data, echte systemen, echte gebruikers. Hier blijkt of het werkt buiten de demo.' },
+  { title: 'Demo, business case en go/no-go', eyebrow: 'Dag 5', body: 'We laten zien wat er staat en leggen de business case op één A4 naast je: wat het kost, wat het oplevert, wanneer het zich terugverdient. Daarna beslis jij.' },
+];
+
+const stats = [
+  { value: '1 week', label: 'van vraag naar besluit' },
+  { value: 'Vanaf €8.000', label: 'vast bedrag, vooraf bekend' },
+  { value: '6 dagen', label: 'tot werkend prototype bij Kwakkel BV' },
+];
+
+const faq = [
+  { q: 'Wat als het niet lukt in een week?', a: 'Dan weet je dat aan het eind van de week, en weet je ook waarom. Je houdt het prototype of het plan, de business case en een eerlijk advies over wat er wél kan. Dat is precies waar de startsprint voor is: een klein bedrag om een groot besluit goed te nemen.' },
+  { q: 'Moeten wij iemand vrijmaken?', a: 'Ja, beperkt. We hebben de eigenaar van het probleem nodig op dag 1 en dag 5, en een paar uur van iemand die de data en systemen kent. De rest doen wij.' },
+  { q: 'Wat gebeurt er na de sprint?', a: 'Gaat de bouw door, dan is de startsprint de eerste fase van het traject en bouwen we in sprints verder tot het in productie draait. Gaat hij niet door, dan houd je alles wat er gemaakt is. Geen verplichtingen.' },
+  { q: 'Kunnen we ook zonder startsprint beginnen?', a: 'Als je al precies weet wat je wilt bouwen en de business case al hebt, kan dat. In de praktijk levert de week bijna altijd inzichten op die de bouw korter en goedkoper maken, dus we raden hem aan.' },
+  { q: 'Werkt dit ook voor software zonder AI?', a: 'Ja. Een webwinkel, een klantportaal, een intern systeem: we bouwen software, met AI waar dat waarde heeft en zonder waar dat niet zo is. INQ22 is daar een voorbeeld van: een maatwerkwebwinkel die gewoon live draait.' },
+  { q: 'Wat is het verschil met een workshop of een readiness scan?', a: 'Een workshop leert je team wat AI kan. Een scan zegt waar kansen liggen. De startsprint bouwt er een, op jouw data, en zegt wat het kost. Als je nog geen concreet proces of systeem hebt, is een training of scan een betere eerste stap; die vind je onder Hoe we werken.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Startsprint',
+  serviceType: 'Software and AI discovery sprint',
+  description: 'Eén week, vast bedrag vanaf EUR 8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case op één A4.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Place', name: 'European Union' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'Offer', priceCurrency: 'EUR', price: '8000', url: 'https://aiheroes.io/nl/startsprint' },
+  url: 'https://aiheroes.io/nl/startsprint',
+};
+---
+
+<SubpageLayout
+  lang="nl"
+  title="De startsprint"
+  subtitle="Eén week. Vast bedrag. Aan het eind weet je of het kan, wat het kost en hoe het eruitziet."
+  seoTitle="De startsprint: in één week van vraag naar werkend prototype of bouwplan"
+  seoDescription="De startsprint van AI Heroes: één week, vast bedrag vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case op één A4. De eerste stap van elke bouw."
+  accentColor="red"
+  badge="De voordeur"
+  ctaLabel="Plan een startsprint"
+  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG"]}
+  jsonLd={[serviceSchema, faqSchema]}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Eén week om een groot besluit goed te nemen</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      Je hebt een proces dat geld kost, een systeem dat aan vervanging toe is of een idee waarvan je wilt weten of het kan. De startsprint is de manier om dat in één week te leren, met iets tastbaars in handen: een werkend prototype op jouw data of een bouwplan waar je op kunt beslissen. Altijd met de business case op één A4.
+    </p>
+    <p class="text-stone-600 leading-relaxed">Voor organisaties met een concreet proces, product of systeem, en een eigenaar die kan beslissen. Wil je eerst kennismaken met wat AI kan? Dan is een <a href="/nl/diensten/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training</a> een betere eerste stap.</p>
+    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Wat je aan het eind van de week hebt</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">De uitkomst hangt af van de ingang waarmee je binnenkomt.</p>
+    <CardGrid items={outcomes} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe de week eruitziet</h2>
+    <ProcessSteps steps={week} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="red" eyebrow="Prijs" title="Vanaf €8.000, vast bedrag, vooraf bekend">
+      <p>Gaat de bouw door, dan is de startsprint de eerste fase van het traject. Gaat hij niet door, dan houd je het prototype, het plan en de business case. Een maatwerkbouw daarna begint vanaf €15.000; wat het precies wordt, staat aan het eind van de week op papier.</p>
+    </Callout>
+  </section>
+
+  <StandardBand lang="nl" class="mb-16" />
+
+  <Faq items={faq} title="Veelgestelde vragen" />
+</SubpageLayout>

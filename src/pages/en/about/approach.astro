@@ -1,56 +1,75 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import StandardBand from '../../../components/blocks/StandardBand.astro';
+
+const path = [
+  { title: 'The start sprint', eyebrow: 'Week 1', body: 'One week, fixed fee. We sit down with the owner of the problem, build a prototype on your data or design the architecture, and put the business case on one page next to it. Then you decide.', href: '/en/start-sprint', hrefLabel: 'More about the start sprint' },
+  { title: 'Business case and scoping', eyebrow: 'Before the build', body: 'What it costs, what it returns, when it pays back. Because we build ourselves, our estimates are realistic. If the business case does not add up, we do not build.', href: '/en/services/consulting', hrefLabel: 'How we make the business case' },
+  { title: 'Build in sprints', eyebrow: 'Weeks 2 to 12', body: 'Short sprints with a demo at the end of each sprint, so you always see where we are. Independently or together with your developers. Connected to your ERP, CRM and the rest of your landscape.' },
+  { title: 'Compliance from the drawing board', eyebrow: 'During the build', body: 'We classify the system under the AI Act, build in logging and human oversight and choose hosting that fits your data. No repairs needed afterwards.' },
+  { title: 'Training your team', eyebrow: 'Before the switch', body: 'We train the team that will use the system on that system, on the work floor. That is how it lands, and you meet Article 4 of the AI Act straight away.', href: '/en/services/training', hrefLabel: 'How we train' },
+  { title: 'Handover without lock-in', eyebrow: 'Delivery', body: 'Source code, documentation and data model are yours. You can carry on without us if you want to. If you would rather not, we keep managing and developing it.' },
+];
+
+const principles = [
+  { title: 'Working over finished', description: 'We measure success by what runs on the day we leave, and by what still runs a year later.' },
+  { title: 'Honesty over sales', description: 'If AI is not the solution, we say so. If the business case does not add up, we do not build.' },
+  { title: 'Start small, then scale', description: 'First a week, then a decision, then a build. Never a large sum on a hunch.' },
+  { title: 'We do what we advise', description: 'Our own assistant runs on this site, hosted in Europe. We automate our own work with what we build for clients.' },
+];
 ---
 
 <SubpageLayout
   lang="en"
-  title="Our Approach"
-  subtitle="From change management to technical implementation. Three pillars, one agency, the entire AI journey."
+  title="How we work"
+  subtitle="From ambition to implementation, in one journey. First a week, then a decision, then a build that works on the day we leave."
+  seoTitle="How we work: start sprint, business case, build, compliance, training, handover"
+  seoDescription="How AI Heroes works: a start sprint of one week, a business case before the build, building in sprints, compliance from the drawing board, training your team and handover without lock-in. The AI Heroes standard, explained."
   accentColor="red"
-  seoDescription="Our approach: from change management to technical implementation as a full-service AI agency. Three pillars, one European partner."
+  badge="How we work"
+  showStandard={false}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">The problem we solve</h2>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">The problem we solve</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      The AI market is fragmented. Advisory firms write reports that end up in drawers. Training bureaus train and leave. Tech companies build tools nobody uses. Almost nobody delivers software that works on the day of delivery and keeps working.
+    </p>
+    <p class="text-stone-600 leading-relaxed">That is why we build, and bring along everything that makes a build succeed: the business case before it, the compliance inside it and the training after it. It is what every build contains, rather than a menu to pick from.</p>
+  </section>
 
-    <p class="text-stone-600 leading-relaxed mb-8">The AI market is fragmented. Advisory firms write reports that end up in drawers. Training bureaus train and leave. Tech companies build tools nobody uses. Nobody covers the full spectrum: from organisational change to technical implementation.</p>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">The journey, in order</h2>
+    <ProcessSteps steps={path} />
+  </section>
 
-    <p class="text-stone-600 leading-relaxed mb-8">AI Heroes does. As a full-service AI agency, we combine change management, training, consulting and software under one roof. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. Clients can enter at any point. You don't need to start at pillar 1.</p>
+  <StandardBand lang="en" id="standard" class="mb-16" />
 
-    <div class="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
-      <h3 class="text-xl font-serif text-brand-dark mb-3">Our principles</h3>
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>Practice over theory: you learn by doing</li>
-        <li>Results over reports: we measure success by what actually changes</li>
-        <li>Honesty over sales: if AI isn't the solution, we'll tell you</li>
-        <li>Custom over standard: every organization is different</li>
-      </ul>
-    </div>
+  <section id="compliance" class="mb-16 scroll-mt-28">
+    <Callout variant="dark" accent="blue" eyebrow="Compliance from the drawing board" title="What that means in practice">
+      <p><strong>Classification.</strong> Every system we build gets a place under the AI Act: minimal, limited or high risk. That determines what has to be in the design.</p>
+      <p><strong>Logging and oversight.</strong> Every decision the system makes can be traced, and a human can always step in. For an assistant that means handover to a person; for a workflow, a review step.</p>
+      <p><strong>Hosting.</strong> Data that may not leave Europe stays in Europe. On your own servers if it has to be, with a European provider if it can be.</p>
+      <p><strong>Literacy.</strong> The team that works with it is trained on the system. That means you meet Article 4, with the evidence to show for it.</p>
+    </Callout>
+  </section>
 
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Three pillars, one journey</h3>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">What we hold ourselves to</h2>
+    <CardGrid items={principles} cols={2} />
+  </section>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-8 not-prose">
-      <a href="/en/services#training" class="p-6 bg-white border-2 border-stone-200 hover:border-brand-red transition-colors group no-underline"><div class="w-12 h-1 bg-brand-red mb-4"></div><h4 class="font-bold text-brand-dark group-hover:text-brand-red transition-colors mb-2">1. Training</h4><p class="text-sm text-stone-600">We teach your team what AI can do, and what to watch out for. From boardroom to work floor.</p></a>
-      <a href="/en/services#consulting" class="p-6 bg-white border-2 border-stone-200 hover:border-brand-blue transition-colors group no-underline"><div class="w-12 h-1 bg-brand-blue mb-4"></div><h4 class="font-bold text-brand-dark group-hover:text-brand-blue transition-colors mb-2">2. Consulting</h4><p class="text-sm text-stone-600">We map opportunities and build your AI roadmap. From readiness scan to business case.</p></a>
-      <a href="/en/services#software" class="p-6 bg-white border-2 border-stone-200 hover:border-stone-700 transition-colors group no-underline"><div class="w-12 h-1 bg-brand-dark mb-4"></div><h4 class="font-bold text-brand-dark group-hover:text-stone-700 transition-colors mb-2">3. Software</h4><p class="text-sm text-stone-600">We build and implement AI solutions with your team. From prototype to production.</p></a>
-    </div>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">What it costs</h2>
+    <p class="text-stone-600 leading-relaxed mb-4">The start sprint costs from €8,000, fixed fee, known up front. A custom build after that starts from €15,000. What your build will cost exactly is on one page at the end of the start sprint, together with what it returns and when it pays back.</p>
+    <p class="text-stone-600 leading-relaxed">Standalone trainings are available too, from €2,500 per day; you will find them under <a href="/en/services/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training your team</a>. For education and non-profit organisations we apply lower rates.</p>
+  </section>
 
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Enter where you want</h3>
-    <p class="text-stone-600 leading-relaxed mb-8">The natural flow is Training → Consulting → Software. But not every organisation starts at the beginning. Some already know what they want to build. Others need a strategic plan first. We meet you where you stand.</p>
-
-    <div class="grid md:grid-cols-2 gap-6 mb-8 not-prose">
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Preparation</h4><p class="text-sm text-stone-600">We speak with key stakeholders beforehand to understand what's going on. This allows us to tailor our approach to your context.</p></div>
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Knowledge transfer</h4><p class="text-sm text-stone-600">Every engagement is set up so your team can continue without us. You own the capability, end to end.</p></div>
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Follow-up</h4><p class="text-sm text-stone-600">Afterwards you get access to our community and materials. Questions that come up later? Just ask.</p></div>
-      <div class="p-6 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Results guarantee</h4><p class="text-sm text-stone-600">If you're not satisfied, we'll talk about it. We stand behind our work.</p></div>
-    </div>
-
-    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 mb-8 not-prose">
-      <h3>Why AI Heroes?</h3>
-      <p>We are practitioners who do the work. From change management to technical implementation. We don't just advise, we also build. One agency, three pillars, the entire AI journey.</p>
-    </div>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Pricing</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">We work with transparent pricing. Training from €2,500 per day, consulting from €3,000 per engagement, software from €15,000 per project. For education and non-profit organizations, we offer reduced rates.</p>
-    <p class="text-stone-600 leading-relaxed">Curious what we can do for you? Get in touch for a no-obligation conversation.</p>
-  </div>
+  <section>
+    <Callout variant="light" accent="red" eyebrow="Next step" title="Tell us what you want to build">
+      <p>A start sprint is the first step. Below you can tell us what it is about; we respond within 24 hours, usually with a proposal for a start sprint.</p>
+    </Callout>
+  </section>
 </SubpageLayout>

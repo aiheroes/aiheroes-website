@@ -34,7 +34,7 @@ export default function ChatWidget({
     setVisible(isChatEnabled(enabled));
   }, [enabled]);
 
-  // The site's sticky "Start gesprek" CTA opens the chat while the assistant is
+  // The site's sticky "Wat wil je bouwen?" CTA opens the chat while the assistant is
   // live (decision A5 26-08): one conversation entry point instead of two buttons.
   useEffect(() => {
     const open = () => {

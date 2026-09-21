@@ -9,7 +9,7 @@ const { lang } = Astro.props;
 
 // AI Heroes' item in De AI Storm (RTL 7 / RTL Z / Videoland).
 const VIDEO_ID = 'uq8MIcgzUR4';
-const contactHref = lang === 'nl' ? '/#contact' : '/en#contact';
+const contactHref = lang === 'nl' ? '/nl/startsprint' : '/en/start-sprint';
 
 // Official broadcaster marks, shown once as logos (the trust signal). RTL 7 + RTL Z
 // as crisp vectors; Videoland as the current "videoland." wordmark.
@@ -35,17 +35,17 @@ const COPY: Record<Lang, Copy> = {
   nl: {
     h1: 'Zoals gezien op nationale televisie.',
     lead: 'AI Heroes in De AI Storm, over hoe Nederlandse organisaties AI inzetten die werkt. Bekijk de aflevering hieronder.',
-    cta: 'Plan een kennismaking',
+    cta: 'Plan een startsprint',
     bridgeHeading: 'Van het scherm naar jouw organisatie',
     bridgeParas: [
       'De AI Storm laat in vier afleveringen zien hoe organisaties AI inzetten als gereedschap. Iets dat processen vereenvoudigt, fouten vermindert en ruimte maakt voor het werk dat er echt toe doet.',
-      'Wat je in onze aflevering ziet, doen we elke dag. We begeleiden organisaties van eerste verkenning tot werkende oplossing, met training, consultancy en software onder één dak.',
+      'Wat je in onze aflevering ziet, doen we elke dag. We bouwen software en AI die in productie draait, met een business case vooraf, compliance vanaf de tekentafel en training van het team dat ermee gaat werken.',
     ],
-    pull: 'AI werkt als je weet hoe.',
+    pull: 'Van ambitie naar implementatie.',
     offerings: [
-      { title: 'Training', body: 'Workshops en incompany-trainingen die teams AI-vaardig maken.' },
-      { title: 'Consultancy', body: 'AI-readiness scans, roadmaps en business cases die richting geven.' },
-      { title: 'Software', body: 'Maatwerk AI-oplossingen, van prototype tot productie.' },
+      { title: 'Iets nieuws bouwen', body: 'Van idee naar systeem in productie. In zes dagen een werkend prototype.' },
+      { title: 'Vervangen wat niet meer voldoet', body: 'Verouderde of te dure software eruit, iets dat past ervoor in de plaats.' },
+      { title: 'In eigen beheer draaien', body: 'Op je eigen servers of bij een Europese partij, met de AI Act ingebouwd.' },
     ],
     statNumber: '50+',
     statLabel: 'organisaties geholpen sinds 2019',
@@ -53,17 +53,17 @@ const COPY: Record<Lang, Copy> = {
   en: {
     h1: 'As seen on national television.',
     lead: 'AI Heroes on De AI Storm, on how Dutch organisations put AI to work. Watch the episode below.',
-    cta: 'Book an introduction',
+    cta: 'Plan a start sprint',
     bridgeHeading: 'From the screen to your organisation',
     bridgeParas: [
       'Across four episodes, De AI Storm shows how organisations treat AI as a tool. Something that simplifies processes, reduces errors and frees up room for the work that genuinely matters.',
-      'What you see in our episode is what we do every day. We guide organisations from first exploration to working solution, with training, consulting and software under one roof.',
+      'What you see in our episode is what we do every day. We build software and AI that runs in production, with a business case first, compliance from the drawing board and training for the team that will use it.',
     ],
-    pull: 'AI works when you know how.',
+    pull: 'From ambition to implementation.',
     offerings: [
-      { title: 'Training', body: 'Workshops and in-company training that make teams AI-capable.' },
-      { title: 'Consulting', body: 'AI-readiness scans, roadmaps and business cases that set direction.' },
-      { title: 'Software', body: 'Custom AI solutions, from prototype to production.' },
+      { title: 'Build something new', body: 'From idea to system in production. A working prototype in six days.' },
+      { title: 'Replace what no longer fits', body: 'Outdated or overpriced software out, something that fits in its place.' },
+      { title: 'Run it on your own terms', body: 'On your own servers or with a European provider, with the AI Act built in.' },
     ],
     statNumber: '50+',
     statLabel: 'organisations helped since 2019',

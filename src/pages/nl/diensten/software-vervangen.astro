@@ -1,0 +1,117 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import Faq from '../../../components/blocks/Faq.astro';
+
+const replaces = [
+  { id: 'saas', title: 'Te duur SaaS-pakket', accent: 'blue' as const, description: 'Een abonnement waarvan je 20% gebruikt en 100% betaalt, met functies die je organisatie in een keurslijf dwingen. Zoals bij Strive: het pakket eruit, eigen software ervoor in de plaats.' },
+  { id: 'maatwerk', title: 'Verouderd maatwerksysteem', accent: 'blue' as const, description: 'Het systeem dat ooit door een leverancier is gebouwd en waar niemand meer aan durft te komen. Opnieuw gebouwd, met de kennis van nu en met de koppelingen die het eerste systeem nooit had.' },
+  { id: 'spreadsheets', title: 'Spreadsheets en losse tools', accent: 'red' as const, description: 'De planning in Excel, de klantgegevens in drie mailboxen, de werkbonnen op papier. Eén systeem dat het werk volgt, in plaats van andersom.' },
+  { id: 'platform', title: 'Platform dat niet meegroeit', accent: 'red' as const, description: 'Een webwinkel of portaal dat niet meer aankan wat de organisatie inmiddels doet. Zoals bij IC Commerce: het e-commerceplatform stap voor stap geautomatiseerd.' },
+];
+
+const method = [
+  { title: 'Startsprint', eyebrow: 'Week 1', body: 'We brengen in kaart wat het huidige systeem doet, wat ervan gebruikt wordt en waar het aan gekoppeld is. Uitkomst: een architectuur, een migratieplan in fasen en de business case op één A4.', href: '/nl/startsprint', hrefLabel: 'Meer over de startsprint' },
+  { title: 'Bouwen naast het oude', eyebrow: 'Week 2 tot 12', body: 'Het nieuwe systeem groeit in sprints, naast het oude. Koppelingen aan ERP, CRM en de rest van het landschap eerst, zodat de overgang geen big bang is. Data gaat in delen over, met controle.' },
+  { title: 'Overstappen en overdragen', eyebrow: 'Oplevering', body: 'Het team dat ermee werkt is getraind vóór de overstap. Het oude systeem gaat uit als het nieuwe draait. Broncode, documentatie en datamodel zijn van jou.' },
+];
+
+const stats = [
+  { value: '1 week', label: 'tot architectuur en migratieplan' },
+  { value: 'In fasen', label: 'nooit een big bang' },
+  { value: 'Van jou', label: 'broncode, documentatie en datamodel' },
+];
+
+const cases = [
+  { title: 'Strive', eyebrow: 'Vervangen wat niet meer voldoet', accent: 'blue' as const, href: '/nl/cases/strive', description: 'Een te duur SaaS-pakket vervangen door eigen software.' },
+  { title: 'IC Commerce', eyebrow: 'Vervangen wat niet meer voldoet', accent: 'red' as const, href: '/nl/cases/ic-commerce', description: 'Elke stap van het e-commerceplatform geautomatiseerd met AI.' },
+];
+
+const related = [
+  { title: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/diensten/software', description: 'Een assistent, een werkstroom, een tool die er nog niet is.' },
+  { title: 'In eigen beheer draaien', accent: 'dark' as const, href: '/nl/diensten/eu-consultancy', description: 'Op je eigen servers of bij een Europese partij, met de AI Act ingebouwd.' },
+];
+
+const faq = [
+  { q: 'Is vervangen niet duurder dan het abonnement houden?', a: 'Dat rekenen we uit in de startsprint, en soms is het antwoord nee. Meestal niet: een pakket dat de hele organisatie gebruikt, kost per jaar vaak meer dan een eigen bouw in twee jaar. In de business case staat het terugverdienmoment op één A4.' },
+  { q: 'Hoe gaat de data over?', a: 'In delen, met controle. We beginnen met de koppelingen en een kopie van de data, laten het nieuwe systeem meedraaien en stappen pas over als de cijfers kloppen. Het oude systeem blijft aan tot dat moment.' },
+  { q: 'Wat als het oude systeem aan alles vastzit?', a: 'Dat is precies waarom we in de startsprint eerst de koppelingen in kaart brengen. ERP, CRM, Microsoft 365, boekhouding: we bouwen de koppelingen eerst, zodat het nieuwe systeem in het landschap past voordat het iets vervangt.' },
+  { q: 'Hoe lang duurt een vervanging?', a: 'Een startsprint van een week voor het plan, daarna meestal twee tot twaalf weken bouwen, afhankelijk van de omvang. Het plan uit de startsprint noemt de fasen en de doorlooptijd per fase.' },
+  { q: 'Zitten we straks niet weer vast, maar dan aan jullie?', a: 'Nee. Broncode, documentatie en datamodel zijn van jou, gebouwd op open standaarden. Elke oplevering bevat training van je team, zodat jullie zonder ons verder kunnen als jullie dat willen.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Vervangen wat niet meer voldoet: software vervangen',
+  serviceType: 'Software replacement and modernisation',
+  description: 'Verouderde maatwerksystemen, te dure SaaS-pakketten en losse tools vervangen door eigen software die past, gekoppeld aan ERP, CRM en het bestaande landschap. In fasen, zonder big bang.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Place', name: 'European Union' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '8000' },
+  url: 'https://aiheroes.io/nl/diensten/software-vervangen',
+};
+---
+
+<SubpageLayout
+  lang="nl"
+  title="Vervangen wat niet meer voldoet"
+  subtitle="Software die te duur, te traag of te oud is, vervangen door iets dat past. Gekoppeld aan je ERP, CRM en de rest van je landschap. In fasen, zonder big bang."
+  seoTitle="Software vervangen: verouderd maatwerk en te dure SaaS eruit"
+  seoDescription="Verouderde maatwerksystemen, te dure SaaS-pakketten en losse tools vervangen door eigen software die past. AI Heroes bouwt in fasen naast het oude, gekoppeld aan ERP en CRM. Startsprint in één week, business case inbegrepen."
+  accentColor="blue"
+  badge="Vervangen wat niet meer voldoet"
+  entry="vervangen"
+  trustedBy={["Strive", "IC Commerce", "UMCG"]}
+  jsonLd={[serviceSchema, faqSchema]}
+  showStandard
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“We zijn ons huidige pakket zat. We willen iets dat past.”</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      Het systeem is te duur voor wat het doet, te traag voor hoe jullie inmiddels werken, of zo oud dat niemand er meer aan durft te komen. Wij bouwen wat er wél past, naast het oude, en zetten het oude pas uit als het nieuwe draait.
+    </p>
+    <p class="text-stone-600 leading-relaxed">Voor organisaties met een systeem dat groei tegenhoudt en een eigenaar die de vervanging kan besluiten.</p>
+    <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Wat we vervangen</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Vier situaties die we vaak tegenkomen.</p>
+    <CardGrid items={replaces} cols={2} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe we vervangen</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Waar we het bewezen</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Werk van het huidige team.</p>
+    <CardGrid items={cases} cols={2} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="blue" eyebrow="Koppelingen" title="Eerst het landschap, dan het systeem">
+      <p>De meeste vervangingen mislukken op de koppelingen, niet op het nieuwe systeem. Daarom brengen we die in de startsprint als eerste in kaart en bouwen we ze als eerste. ERP, CRM, Microsoft 365, boekhouding, de tool van die ene afdeling: het nieuwe systeem past in het landschap voordat het iets vervangt.</p>
+    </Callout>
+  </section>
+
+  <Faq items={faq} title="Veelgestelde vragen" class="mb-16" />
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">De andere ingangen</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>
