@@ -71,7 +71,6 @@ export interface ServicesContent {
 }
 
 export interface StandardContent {
-  eyebrow: string;
   title: string;
   subtitle: string;
   items: { title: string; description: string }[];

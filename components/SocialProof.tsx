@@ -2,6 +2,10 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Content } from '../types';
 
+// Client logos in the strip. A name with a file here renders as an image (white on the
+// dark band); a name without one renders as text until the file lands in public/logos/.
+const LOGO_FILES: Record<string, string> = {};
+
 interface SocialProofProps {
   content: Content['socialProof'];
 }
@@ -244,11 +248,22 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                 {content.title}
               </p>
               <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-16 gap-y-3 md:gap-y-6 opacity-40 hover:opacity-100 transition-opacity duration-500">
-                {logos.map((logo, idx) => (
-                  <span key={idx} className="text-lg md:text-2xl font-serif text-stone-300 cursor-default">
-                    {logo}
-                  </span>
-                ))}
+                {logos.map((logo, idx) => {
+                  const file = LOGO_FILES[logo];
+                  return file ? (
+                    <img
+                      key={idx}
+                      src={file}
+                      alt={logo}
+                      loading="lazy"
+                      className="h-7 md:h-9 w-auto object-contain brightness-0 invert"
+                    />
+                  ) : (
+                    <span key={idx} className="text-lg md:text-2xl font-serif text-stone-300 cursor-default">
+                      {logo}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </>

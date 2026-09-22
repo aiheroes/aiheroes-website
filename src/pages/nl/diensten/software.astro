@@ -8,8 +8,8 @@ import Faq from '../../../components/blocks/Faq.astro';
 
 const builds = [
   { id: 'assistenten', title: 'Assistenten en spraak-AI', accent: 'red' as const, description: 'Een assistent die vragen van klanten of medewerkers beantwoordt op jouw documenten, of een telefoonlijn die de eerste vraag zelf afhandelt. Met doorschakeling naar een mens en logging van elk gesprek.' },
-  { id: 'werkstromen', title: 'Werkstromen en administratie', accent: 'red' as const, description: 'Offertes, werkbonnen, aanvragen, facturen: het werk dat nu handmatig door drie systemen gaat, automatisch verwerkt. Zoals het prototype voor Kwakkel BV, in zes dagen.' },
-  { id: 'interne-tools', title: 'Interne tools en klantportalen', accent: 'blue' as const, description: 'Een planningsysteem, een dashboard, een portaal waar klanten hun eigen zaken regelen. Software die er nog niet is en die past bij hoe jullie werken.' },
+  { id: 'werkstromen', title: 'Werkstromen en administratie', accent: 'red' as const, description: 'Offertes, werkbonnen, aanvragen, facturen: het werk dat nu handmatig door drie systemen gaat, automatisch verwerkt.' },
+  { id: 'interne-tools', title: 'Interne tools en klantportalen', accent: 'blue' as const, description: 'Een planningsysteem, een dashboard, een portaal waar klanten hun eigen zaken regelen. Software die past bij hoe jullie werken.' },
   { id: 'webapplicaties', title: 'Webapplicaties en webwinkels', accent: 'blue' as const, description: 'Ook zonder AI. INQ22 kreeg een maatwerkwebwinkel die gewoon live draait. AI is bij ons gereedschap, geen doel.' },
   { id: 'zoeken-en-documenten', title: 'Zoeken en documentverwerking', accent: 'dark' as const, description: 'Zoeken door al je documenten met een gewone vraag, contracten en rapporten automatisch uitlezen, samenvattingen die kloppen. Op jouw data, binnen jouw muren als dat moet.' },
   { id: 'dedicated-teams', title: 'Extra bouwcapaciteit', accent: 'dark' as const, description: 'Heb je zelf developers, dan versterken we jouw team met AI-expertise: een tech lead en één tot vijf developers, binnen een week productief.' },
@@ -17,7 +17,7 @@ const builds = [
 
 const method = [
   { title: 'Startsprint', eyebrow: 'Week 1', body: 'Eén week, vast bedrag. Intake, prototype op jouw data, demo en de business case op één A4. Daarna beslis je of we doorgaan.', href: '/nl/startsprint', hrefLabel: 'Meer over de startsprint' },
-  { title: 'Bouwen in sprints', eyebrow: 'Week 2 tot 12', body: 'Korte sprints met een demo aan het eind van elke sprint, zodat je altijd ziet waar we staan. Compliance loopt mee vanaf de tekentafel: AI Act-classificatie, logging, menselijk toezicht en hosting zitten in het ontwerp.' },
+  { title: 'Bouwen in sprints', eyebrow: 'Week 2 tot 12', body: 'Korte sprints met een demo aan het eind van elke sprint, zodat je altijd ziet waar we staan. Compliance zit vanaf de tekentafel in het ontwerp: AI Act-classificatie, logging, menselijk toezicht en hosting.' },
   { title: 'In productie en overgedragen', eyebrow: 'Oplevering', body: 'Het systeem draait, gekoppeld aan je landschap. Het team dat ermee werkt is erop getraind. Broncode, documentatie en datamodel zijn van jou.' },
 ];
 
@@ -44,7 +44,7 @@ const related = [
 ];
 
 const faq = [
-  { q: 'Wat kost het om software of AI te laten bouwen?', a: 'De startsprint kost vanaf €8.000 en duurt één week. Een maatwerkbouw daarna begint vanaf €15.000 en loopt tot ruim €100.000 voor grote systemen. Aan het eind van de startsprint staat op één A4 wat jouw bouw kost, wat hij oplevert en wanneer hij zich terugverdient.' },
+  { q: 'Wat kost het om software of AI te laten bouwen?', a: 'De startsprint kost vanaf €8.000 en duurt één week. Een maatwerkbouw daarna begint vanaf €15.000 en loopt tot ruim €100.000 voor grote systemen. Aan het eind van de startsprint weet je wat jouw bouw kost, wat hij oplevert en wanneer hij zich terugverdient.' },
   { q: 'Hoe snel staat er iets?', a: 'In de startsprint staat binnen een week een werkend prototype op jouw data. Bij Kwakkel BV stond het prototype voor de administratie-automatisering na zes dagen. Een productiesysteem volgt daarna in sprints van twee weken.' },
   { q: 'Bouwen jullie ook software zonder AI?', a: 'Ja. INQ22 kreeg een maatwerkwebwinkel die live draait. We bouwen software; AI zetten we in waar het waarde heeft en laten we weg waar het dat niet heeft.' },
   { q: 'Werken jullie samen met ons eigen developmentteam?', a: 'Ja, op drie manieren: wij bouwen zelfstandig, wij versterken jouw team met een tech lead en developers, of hybride. Elke oplevering bevat documentatie en training, zodat jouw mensen zelfstandig verder kunnen.' },
@@ -75,7 +75,7 @@ const serviceSchema = {
 <SubpageLayout
   lang="nl"
   title="Iets nieuws bouwen"
-  subtitle="Een assistent, een werkstroom, een tool die er nog niet is. Van prototype in zes dagen tot systeem in productie, gebouwd met jouw team en gekoppeld aan jouw landschap."
+  subtitle="Een assistent, een werkstroom of een tool die je nu mist. Van prototype in zes dagen tot systeem in productie, gebouwd met jouw team en gekoppeld aan jouw landschap."
   seoTitle="Software en AI laten bouwen: van prototype in 6 dagen tot productie"
   seoDescription="Iets nieuws laten bouwen door AI Heroes: assistenten, werkstromen, interne tools, webapplicaties en documentverwerking. Startsprint in één week, maatwerk vanaf €15.000. Business case, compliance en training inbegrepen."
   accentColor="red"
@@ -88,7 +88,7 @@ const serviceSchema = {
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“Kunnen jullie dit voor ons bouwen?”</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      Meestal komt de vraag zo binnen. Er is een proces dat te veel handwerk kost, een idee voor een assistent, een tool die het team al jaren mist. Wij bouwen het: eerst in één week een prototype op jouw data, daarna in sprints door tot het in productie draait.
+      Er is een proces dat te veel handwerk kost, een idee voor een assistent, een tool die het team al jaren mist. Wij bouwen het: eerst in één week een prototype op jouw data, daarna in sprints door tot het in productie draait.
     </p>
     <p class="text-stone-600 leading-relaxed">Met AI waar dat waarde heeft, en zonder waar dat niet zo is. Voor organisaties die weten wat ze willen bouwen en een eigenaar hebben die kan beslissen.</p>
     <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />

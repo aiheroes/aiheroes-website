@@ -41,7 +41,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
         itemOffered: {
           '@type': 'Service',
           name: 'Startsprint',
-          description: 'Eén week, vast bedrag. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case op één A4.',
+          description: 'Eén week, vast bedrag. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
           url: 'https://aiheroes.io/nl/startsprint',
         },
         price: '8000',

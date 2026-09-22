@@ -7,10 +7,10 @@ import Callout from '../../../components/blocks/Callout.astro';
 import Faq from '../../../components/blocks/Faq.astro';
 
 const replaces = [
-  { id: 'saas', title: 'Te duur SaaS-pakket', accent: 'blue' as const, description: 'Een abonnement waarvan je 20% gebruikt en 100% betaalt, met functies die je organisatie in een keurslijf dwingen. Zoals bij Strive: het pakket eruit, eigen software ervoor in de plaats.' },
+  { id: 'saas', title: 'Te duur SaaS-pakket', accent: 'blue' as const, description: 'Een abonnement waarvan je 20% gebruikt en 100% betaalt, met functies die je organisatie in een keurslijf dwingen.' },
   { id: 'maatwerk', title: 'Verouderd maatwerksysteem', accent: 'blue' as const, description: 'Het systeem dat ooit door een leverancier is gebouwd en waar niemand meer aan durft te komen. Opnieuw gebouwd, met de kennis van nu en met de koppelingen die het eerste systeem nooit had.' },
   { id: 'spreadsheets', title: 'Spreadsheets en losse tools', accent: 'red' as const, description: 'De planning in Excel, de klantgegevens in drie mailboxen, de werkbonnen op papier. Eén systeem dat het werk volgt, in plaats van andersom.' },
-  { id: 'platform', title: 'Platform dat niet meegroeit', accent: 'red' as const, description: 'Een webwinkel of portaal dat niet meer aankan wat de organisatie inmiddels doet. Zoals bij IC Commerce: het e-commerceplatform stap voor stap geautomatiseerd.' },
+  { id: 'platform', title: 'Platform dat niet meegroeit', accent: 'red' as const, description: 'Een webwinkel of portaal dat niet meer aankan wat de organisatie inmiddels doet.' },
 ];
 
 const method = [
@@ -31,15 +31,15 @@ const cases = [
 ];
 
 const related = [
-  { title: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/diensten/software', description: 'Een assistent, een werkstroom, een tool die er nog niet is.' },
+  { title: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/diensten/software', description: 'Een assistent, een werkstroom of een tool die je nu mist.' },
   { title: 'In eigen beheer draaien', accent: 'dark' as const, href: '/nl/diensten/eu-consultancy', description: 'Op je eigen servers of bij een Europese partij, met de AI Act ingebouwd.' },
 ];
 
 const faq = [
-  { q: 'Is vervangen niet duurder dan het abonnement houden?', a: 'Dat rekenen we uit in de startsprint, en soms is het antwoord nee. Meestal niet: een pakket dat de hele organisatie gebruikt, kost per jaar vaak meer dan een eigen bouw in twee jaar. In de business case staat het terugverdienmoment op één A4.' },
+  { q: 'Is vervangen niet duurder dan het abonnement houden?', a: 'Dat rekenen we uit in de startsprint. Soms is het antwoord nee. Vaker kost een pakket dat de hele organisatie gebruikt per jaar meer dan een eigen bouw in twee jaar. In de business case staat wanneer het zich terugverdient.' },
   { q: 'Hoe gaat de data over?', a: 'In delen, met controle. We beginnen met de koppelingen en een kopie van de data, laten het nieuwe systeem meedraaien en stappen pas over als de cijfers kloppen. Het oude systeem blijft aan tot dat moment.' },
   { q: 'Wat als het oude systeem aan alles vastzit?', a: 'Dat is precies waarom we in de startsprint eerst de koppelingen in kaart brengen. ERP, CRM, Microsoft 365, boekhouding: we bouwen de koppelingen eerst, zodat het nieuwe systeem in het landschap past voordat het iets vervangt.' },
-  { q: 'Hoe lang duurt een vervanging?', a: 'Een startsprint van een week voor het plan, daarna meestal twee tot twaalf weken bouwen, afhankelijk van de omvang. Het plan uit de startsprint noemt de fasen en de doorlooptijd per fase.' },
+  { q: 'Hoe lang duurt een vervanging?', a: 'Een startsprint van een week voor het plan, daarna twee tot twaalf weken bouwen, afhankelijk van de omvang. Het plan uit de startsprint noemt de fasen en de doorlooptijd per fase.' },
   { q: 'Zitten we straks niet weer vast, maar dan aan jullie?', a: 'Nee. Broncode, documentatie en datamodel zijn van jou, gebouwd op open standaarden. Elke oplevering bevat training van je team, zodat jullie zonder ons verder kunnen als jullie dat willen.' },
 ];
 
@@ -79,7 +79,7 @@ const serviceSchema = {
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“We zijn ons huidige pakket zat. We willen iets dat past.”</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      Het systeem is te duur voor wat het doet, te traag voor hoe jullie inmiddels werken, of zo oud dat niemand er meer aan durft te komen. Wij bouwen wat er wél past, naast het oude, en zetten het oude pas uit als het nieuwe draait.
+      Het systeem is te duur voor wat het doet, te traag voor hoe jullie inmiddels werken, of zo oud dat niemand er meer aan durft te komen. Wij bouwen wat er past, naast het oude, en zetten het oude pas uit als het nieuwe draait.
     </p>
     <p class="text-stone-600 leading-relaxed">Voor organisaties met een systeem dat groei tegenhoudt en een eigenaar die de vervanging kan besluiten.</p>
     <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />

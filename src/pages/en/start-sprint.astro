@@ -8,7 +8,7 @@ import Faq from '../../components/blocks/Faq.astro';
 import StandardBand from '../../components/blocks/StandardBand.astro';
 
 const outcomes = [
-  { title: 'Build something new', eyebrow: 'Outcome: working prototype', accent: 'red' as const, href: '/en/services/software', description: 'By the end of the week there is a prototype that works on your data. As at Kwakkel BV: from question to working prototype for administrative automation in six days.' },
+  { title: 'Build something new', eyebrow: 'Outcome: working prototype', accent: 'red' as const, href: '/en/services/software', description: 'By the end of the week there is a prototype that works on your data. At Kwakkel BV it was ready after six days.' },
   { title: 'Replace what no longer fits', eyebrow: 'Outcome: architecture and migration plan', accent: 'blue' as const, href: '/en/services/replace-software', description: 'Which integrations are needed, how the data moves over, what can be done in phases. A build plan you can decide on.' },
   { title: 'Run it on your own terms', eyebrow: 'Outcome: hosting design and risk assessment', accent: 'dark' as const, href: '/en/services/eu-consultancy', description: 'Which model, which hardware or European cloud, what it costs and what the AI Act asks of you. Tested on your situation.' },
 ];
@@ -46,7 +46,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Start sprint',
   serviceType: 'Software and AI discovery sprint',
-  description: 'One week, fixed fee from EUR 8,000. Outcome: a working prototype or a build plan, always with the business case on one page.',
+  description: 'One week, fixed fee from EUR 8,000. Outcome: a working prototype or a build plan, always with the business case included.',
   provider: { '@id': 'https://aiheroes.io/#organization' },
   areaServed: { '@type': 'Place', name: 'European Union' },
   availableLanguage: ['Dutch', 'English'],
@@ -60,9 +60,9 @@ const serviceSchema = {
   title="The start sprint"
   subtitle="One week. Fixed fee. At the end you know whether it can be done, what it costs and what it looks like."
   seoTitle="The start sprint: from question to working prototype or build plan in one week"
-  seoDescription="The AI Heroes start sprint: one week, fixed fee from €8,000. Outcome: a working prototype or a build plan, always with the business case on one page. The first step of every build."
+  seoDescription="The AI Heroes start sprint: one week, fixed fee from €8,000. Outcome: a working prototype or a build plan, always with the business case included. The first step of every build."
   accentColor="red"
-  badge="The front door"
+  badge="The first step"
   ctaLabel="Plan a start sprint"
   trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG"]}
   jsonLd={[serviceSchema, faqSchema]}
@@ -70,7 +70,7 @@ const serviceSchema = {
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">One week to take a big decision well</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      You have a process that costs money, a system that needs replacing or an idea you want to test. The start sprint is how you find out in one week, with something tangible in hand: a working prototype on your data or a build plan you can decide on. Always with the business case on one page.
+      You have a process that costs money, a system that needs replacing or an idea you want to test. The start sprint is how you find out in one week, with something tangible in hand: a working prototype on your data or a build plan you can decide on. Always with the business case included.
     </p>
     <p class="text-stone-600 leading-relaxed">For organisations with a concrete process, product or system, and an owner who can decide. Want to get to know what AI can do first? Then a <a href="/en/services/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training</a> is a better first step.</p>
     <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />

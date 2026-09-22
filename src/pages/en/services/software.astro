@@ -9,7 +9,7 @@ import Faq from '../../../components/blocks/Faq.astro';
 const builds = [
   { id: 'assistenten', title: 'Assistants and voice AI', accent: 'red' as const, description: 'An assistant that answers questions from customers or staff based on your documents, or a phone line that handles the first question itself. With handover to a human and logging of every conversation.' },
   { id: 'werkstromen', title: 'Workflows and administration', accent: 'red' as const, description: 'Quotes, work orders, requests, invoices: the work that now goes through three systems by hand, processed automatically. Like the prototype for Kwakkel BV, in six days.' },
-  { id: 'interne-tools', title: 'Internal tools and customer portals', accent: 'blue' as const, description: 'A planning system, a dashboard, a portal where customers manage their own affairs. Software that does not exist yet and that fits the way you work.' },
+  { id: 'interne-tools', title: 'Internal tools and customer portals', accent: 'blue' as const, description: 'A planning system, a dashboard, a portal where customers manage their own affairs. Software that fits the way you work.' },
   { id: 'webapplicaties', title: 'Web applications and web shops', accent: 'blue' as const, description: 'Also without AI. INQ22 got a custom web shop that simply runs live. For us AI is a tool, never the goal in itself.' },
   { id: 'zoeken-en-documenten', title: 'Search and document processing', accent: 'dark' as const, description: 'Search all your documents with a plain question, read contracts and reports automatically, summaries that are correct. On your data, within your own walls if it has to be.' },
   { id: 'dedicated-teams', title: 'Extra build capacity', accent: 'dark' as const, description: 'If you have developers of your own, we strengthen your team with AI expertise: a tech lead and one to five developers, productive within a week.' },
@@ -17,7 +17,7 @@ const builds = [
 
 const method = [
   { title: 'Start sprint', eyebrow: 'Week 1', body: 'One week, fixed fee. Intake, prototype on your data, demo and the business case on one page. Then you decide whether we continue.', href: '/en/start-sprint', hrefLabel: 'More about the start sprint' },
-  { title: 'Build in sprints', eyebrow: 'Weeks 2 to 12', body: 'Short sprints with a demo at the end of each sprint, so you always see where we are. Compliance runs alongside from the drawing board: AI Act classification, logging, human oversight and hosting are part of the design.' },
+  { title: 'Build in sprints', eyebrow: 'Weeks 2 to 12', body: 'Short sprints with a demo at the end of each sprint, so you always see where we are. Compliance is in the design from the drawing board: AI Act classification, logging, human oversight and hosting.' },
   { title: 'In production and handed over', eyebrow: 'Delivery', body: 'The system runs, connected to your landscape. The team that works with it has been trained on it. Source code, documentation and data model are yours.' },
 ];
 
@@ -44,7 +44,7 @@ const related = [
 ];
 
 const faq = [
-  { q: 'What does it cost to have software or AI built?', a: 'The start sprint costs from €8,000 and takes one week. A custom build after that starts from €15,000 and runs to well over €100,000 for large systems. At the end of the start sprint, one page states what your build costs, what it returns and when it pays back.' },
+  { q: 'What does it cost to have software or AI built?', a: 'The start sprint costs from €8,000 and takes one week. A custom build after that starts from €15,000 and runs to well over €100,000 for large systems. At the end of the start sprint you know what your build costs, what it returns and when it pays back.' },
   { q: 'How fast is there something to see?', a: 'In the start sprint there is a working prototype on your data within a week. At Kwakkel BV the prototype for the administrative automation was there after six days. A production system follows in sprints of two weeks.' },
   { q: 'Do you also build software without AI?', a: 'Yes. INQ22 got a custom web shop that runs live. We build software; we use AI where it adds value and leave it out where it does not.' },
   { q: 'Do you work together with our own development team?', a: 'Yes, in three ways: we build independently, we strengthen your team with a tech lead and developers, or a hybrid of the two. Every delivery includes documentation and training, so your people can carry on independently.' },
@@ -75,7 +75,7 @@ const serviceSchema = {
 <SubpageLayout
   lang="en"
   title="Build something new"
-  subtitle="An assistant, a workflow, a tool that does not exist yet. From prototype in six days to system in production, built with your team and connected to your landscape."
+  subtitle="An assistant, a workflow or a tool you are missing today. From prototype in six days to system in production, built with your team and connected to your landscape."
   seoTitle="Have software and AI built: from prototype in 6 days to production"
   seoDescription="Have something new built by AI Heroes: assistants, workflows, internal tools, web applications and document processing. Start sprint in one week, custom builds from €15,000. Business case, compliance and training included."
   accentColor="red"
@@ -88,7 +88,7 @@ const serviceSchema = {
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“Can you build this for us?”</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      That is usually how the question comes in. There is a process that takes too much manual work, an idea for an assistant, a tool the team has been missing for years. We build it: first a prototype on your data in one week, then on in sprints until it runs in production.
+      There is a process that takes too much manual work, an idea for an assistant, a tool the team has been missing for years. We build it: first a prototype on your data in one week, then on in sprints until it runs in production.
     </p>
     <p class="text-stone-600 leading-relaxed">With AI where it adds value, and without it where it does not. For organisations that know what they want to build and have an owner who can decide.</p>
     <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />

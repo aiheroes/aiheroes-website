@@ -59,7 +59,7 @@ export const PersNL: React.FC = () => {
                   AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Vanuit Groningen, AI-hoofdstad van Europa.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De voordeur is altijd de startsprint: één week, vast bedrag, daarna weet je of het kan, wat het kost en hoe het eruitziet.
+                  Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De eerste stap is altijd de startsprint: één week, vast bedrag, daarna weet je of het kan, wat het kost en hoe het eruitziet.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">

@@ -69,33 +69,33 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       slides: [
         {
-          label: "Van A naar I",
-          headline: "Van <red>ambitie</red>\nnaar <blue>implementatie</blue>",
-          subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is.\nWij bouwen wat je nodig hebt en zorgen dat het draait.",
+          label: "Wat we bouwen",
+          headline: "Van <red>ambitie</red> naar <blue>implementatie</blue>",
+          subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is. Wij bouwen het en zetten het in productie.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero/summit.webp"
         },
         {
-          label: "Iets nieuws bouwen",
-          headline: "Van <red>idee</red> naar\n<blue>werkend systeem</blue>",
-          subhead: "Een assistent, een werkstroom, een tool die er nog niet is.\nIn zes dagen een werkend prototype, daarna door naar productie.",
+          label: "Nieuw bouwen",
+          headline: "Van <red>idee</red> naar <blue>werkend systeem</blue>",
+          subhead: "Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna door naar productie.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero-bg.webp"
         },
         {
-          label: "Vervangen wat niet meer voldoet",
-          headline: "<red>Weg</red> met software\ndie je <blue>tegenhoudt</blue>",
-          subhead: "Verouderde of te dure systemen vervangen door iets dat wél past.\nGekoppeld aan je ERP, CRM en de rest van je landschap.",
+          label: "Vervangen",
+          headline: "<red>Weg</red> met software die je <blue>tegenhoudt</blue>",
+          subhead: "Verouderde of te dure systemen vervangen door software die past bij hoe je werkt. Gekoppeld aan je ERP, CRM en de rest van je systemen.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero/glass.webp"
         },
         {
-          label: "In eigen beheer draaien",
-          headline: "AI op <red>eigen</red> grond,\n<blue>Europees</blue> gehost",
-          subhead: "Op je eigen servers of bij een Europese partij.\nZonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd.",
+          label: "Eigen beheer",
+          headline: "AI op <red>eigen</red> grond, <blue>Europees</blue> gehost",
+          subhead: "Op je eigen servers of bij een Europese partij. Zonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero/road.webp"
@@ -104,64 +104,63 @@ export const CONTENT: Record<Language, Content> = {
     },
     services: {
       title: "Wat we voor je bouwen",
-      intro: "Drie manieren om te beginnen, één voordeur.",
+      intro: "Kies wat bij je vraag past. De eerste stap is altijd een startsprint van één week.",
       cta: "Lees meer",
       items: [
         {
           entry: "nieuw",
           tag: "Nieuw",
           title: "Iets nieuws bouwen",
-          description: "Een assistent, een werkstroom, een tool die er nog niet is. Van prototype in zes dagen tot systeem in productie. Zoals bij Kwakkel BV: in zes dagen een werkend prototype.",
+          description: "Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna door naar productie.",
           href: "/nl/diensten/software"
         },
         {
           entry: "vervangen",
           tag: "Vervangen",
           title: "Vervangen wat niet meer voldoet",
-          description: "Software die te duur, te traag of te oud is, vervangen door iets dat past. Gekoppeld aan je ERP, CRM en de rest van je landschap. Zoals bij Strive: een te duur SaaS-pakket eruit, eigen software ervoor in de plaats.",
+          description: "Software die te duur of te oud is, vervangen door software die past bij hoe je werkt. Gekoppeld aan je ERP, CRM en de rest van je systemen.",
           href: "/nl/diensten/software-vervangen"
         },
         {
           entry: "eigen-beheer",
           tag: "Eigen beheer",
           title: "In eigen beheer draaien",
-          description: "AI en software op je eigen servers of bij een Europese partij. Zonder Amerikaanse cloud, met de AI Act ingebouwd. Zoals de AI-assistent op deze site: door ons gebouwd, Europees gehost.",
+          description: "AI en software op je eigen servers of bij een Europese partij. Zonder Amerikaanse cloud, met de AI Act ingebouwd.",
           href: "/nl/diensten/eu-consultancy"
         }
       ]
     },
     standard: {
-      eyebrow: "De AI Heroes-standaard",
       title: "Bij elke bouw inbegrepen",
-      subtitle: "We noemen het de AI Heroes-standaard. Vier dingen die je nooit apart hoeft te kopen.",
+      subtitle: "De AI Heroes-standaard",
       items: [
         {
           title: "Business case vooraf",
-          description: "Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient. Op één A4, klaar voor de directie."
+          description: "Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient."
         },
         {
           title: "Compliance vanaf de tekentafel",
-          description: "AI Act-classificatie, logging, menselijk toezicht en Europese hosting zitten in het ontwerp. Achteraf repareren is niet nodig."
+          description: "AI Act-classificatie, logging, menselijk toezicht en Europese hosting zitten in het ontwerp."
         },
         {
           title: "Je mensen kunnen ermee werken",
-          description: "Het team dat het systeem gaat gebruiken, trainen we op dat systeem. Zo landt het op de werkvloer en voldoe je meteen aan artikel 4 van de AI Act."
+          description: "Het team dat het systeem gaat gebruiken, trainen we op dat systeem. Zo voldoe je meteen aan artikel 4 van de AI Act."
         },
         {
           title: "Overdracht zonder lock-in",
-          description: "Broncode, documentatie en datamodel zijn van jou. Je kunt zonder ons verder als je dat wilt."
+          description: "Broncode, documentatie en datamodel zijn van jou, vanaf de eerste sprint."
         }
       ]
     },
     approach: {
-      text: "Wij bouwen <red>software</red> die werkt\nop de dag dat we vertrekken\n\nMet een business case die klopt,\ncompliance die vanaf dag één meeloopt\nen mensen die ermee overweg kunnen\n\nVan ambitie naar <blue>implementatie</blue>\nEén partner, één traject"
+      text: "Wij bouwen <red>software</red> en AI\ndie in productie draait\n\nMet de business case vooraf,\ncompliance in het ontwerp\nen een team dat ermee kan werken\n\nVan ambitie naar <blue>implementatie</blue>"
     },
     team: {
-      title: "Geboren probleemoplossers",
-      location: "Groningen, AI-hoofdstad van Europa",
-      body: "Drie oprichters, één gedeelde passie voor AI.\nFrans maakt de business case, David bouwt, Jan zorgt dat je mensen ermee kunnen werken.",
+      title: "Gebouwd in Groningen",
+      location: "AI-hoofdstad van Europa",
+      body: "Met de AI Fabriek komt er 200 miljoen euro aan AI-rekenkracht naar Groningen. Daaromheen groeit een ecosysteem van kennisinstellingen, startups en bedrijven die AI toepassen. AI Heroes zit daar middenin, aan de Aarhusweg. Van daaruit bouwen we voor organisaties in heel Nederland en Europa.",
       cta: {
-        text: "Leer ons kennen",
+        text: "Ontmoet het team",
         href: "/nl/over-ons/team"
       },
       image: {
@@ -171,12 +170,12 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Een greep uit de organisaties waar we mee gewerkt hebben",
-      heading: "Wat we bouwden, en wat het opleverde",
+      heading: "Wat klanten over ons zeggen",
       back: "Terug",
       readMore: "Lees meer",
       prev: "Vorige",
       next: "Volgende",
-      logos: ["IC Commerce", "Strive", "INQ22", "Kwakkel BV", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior", "Banijay", "Prosus", "Hanze"],
+      logos: ["UMCG", "Tweede Kamer", "Nationale Postcode Loterij", "Envalior", "Banijay Benelux", "Prosus", "Hanzehogeschool"],
       testimonials: [
         {
           text: "AI Heroes heeft ons geholpen elke stap van ons eCommerce platform te automatiseren met AI. Het is erg fijn om met een AI partner te werken die zoveel kennis van de markt en nu ook van ons bedrijf heeft.",
@@ -242,13 +241,13 @@ export const CONTENT: Record<Language, Content> = {
       },
       success: {
         title: "Ontvangen",
-        message: "We reageren binnen 24 uur, meestal met een voorstel voor een startsprint.",
+        message: "Binnen 24 uur hoor je van ons.",
         sendAnother: "Nog een versturen"
       }
     },
     contactForm: {
       title: "Vertel wat je wilt bouwen",
-      subtitle: "We reageren binnen 24 uur. Meestal met een voorstel voor een startsprint.",
+      subtitle: "Vertel wat je wilt bouwen. Binnen 24 uur hoor je van ons.",
       emailLabel: "Of neem direct contact op:",
       email: "hello@aiheroes.io",
       phone: "050-200 3373",
@@ -290,7 +289,7 @@ export const CONTENT: Record<Language, Content> = {
       },
       team: {
         title: "Het team",
-        subtitle: "Drie oprichters, één traject: van business case tot overdracht",
+        subtitle: "Het team achter elke bouw, van business case tot overdracht",
         members: [
           {
             name: "Frans Hoorn",
@@ -332,7 +331,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Werkend boven af",
-            description: "We meten succes in wat er draait op de dag dat we vertrekken, en in wat er een jaar later nog draait."
+            description: "We meten succes in wat er draait bij de oplevering, en in wat er een jaar later nog draait."
           },
           {
             title: "Practitioners die meedoen",
@@ -351,11 +350,11 @@ export const CONTENT: Record<Language, Content> = {
         subtitle: "Wij groeien. Sluit je aan bij een team dat software en AI bouwt voor organisaties door heel Europa, en zorgt dat het werkt."
       },
       growth: {
-        text: "Wij bouwen software en AI die in productie draait, met een business case vooraf, compliance vanaf de tekentafel en training van het team dat ermee gaat werken. Ons team groeit mee met de vraag. We zoeken mensen die net zo graag als wij iets bouwen dat werkt op de dag dat we vertrekken.",
+        text: "Wij bouwen software en AI die in productie draait, met een business case vooraf, compliance vanaf de tekentafel en training van het team dat ermee gaat werken. Ons team groeit mee met de vraag. We zoeken mensen die net zo graag als wij iets bouwen dat bij de oplevering werkt en een jaar later nog draait.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
           { metric: "1000+", description: "Professionals getraind" },
-          { metric: "3", description: "Oprichters, één traject" },
+          { metric: "3", description: "Oprichters" },
           { metric: "2019", description: "Opgericht" }
         ],
         trustedBy: ["Kwakkel BV", "INQ22", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior"]
@@ -660,33 +659,33 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       slides: [
         {
-          label: "From A to I",
-          headline: "From <red>ambition</red>\nto <blue>implementation</blue>",
-          subhead: "You have an idea, a process that could work better, or software that needs replacing.\nWe build what you need and make sure it runs.",
+          label: "What we build",
+          headline: "From <red>ambition</red> to <blue>implementation</blue>",
+          subhead: "You have an idea, a process that could work better, or software that needs replacing. We build it and put it into production.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero/summit.webp"
         },
         {
-          label: "Build something new",
-          headline: "From <red>idea</red> to\n<blue>running system</blue>",
-          subhead: "An assistant, a workflow, a tool that does not exist yet.\nA working prototype in six days, then on to production.",
+          label: "Build new",
+          headline: "From <red>idea</red> to <blue>running system</blue>",
+          subhead: "An assistant, a workflow or a tool you are missing today. A working prototype in six days, then on to production.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero-bg.webp"
         },
         {
-          label: "Replace what no longer fits",
-          headline: "<red>Out</red> with software\nthat <blue>holds you back</blue>",
-          subhead: "Replace outdated or overpriced systems with something that fits.\nConnected to your ERP, CRM and the rest of your landscape.",
+          label: "Replace",
+          headline: "<red>Out</red> with software that <blue>holds you back</blue>",
+          subhead: "Replace outdated or overpriced systems with software that fits the way you work. Connected to your ERP, CRM and the rest of your systems.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero/glass.webp"
         },
         {
-          label: "Run it on your own terms",
-          headline: "AI on <red>your own</red> ground,\n<blue>hosted in Europe</blue>",
-          subhead: "On your own servers or with a European provider.\nNo dependency on US cloud, with the AI Act built in.",
+          label: "Run in-house",
+          headline: "AI on <red>your own</red> ground, <blue>hosted in Europe</blue>",
+          subhead: "On your own servers or with a European provider. No dependency on US cloud, with the AI Act built in.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero/road.webp"
@@ -695,62 +694,61 @@ export const CONTENT: Record<Language, Content> = {
     },
     services: {
       title: "What we build for you",
-      intro: "Three ways to start, one front door.",
+      intro: "Pick the entry that fits your question. The first step is always a one-week start sprint.",
       cta: "Read more",
       items: [
         {
           entry: "nieuw",
           tag: "New",
           title: "Build something new",
-          description: "An assistant, a workflow, a tool that does not exist yet. From prototype in six days to system in production. As at Kwakkel BV: a working prototype in six days.",
+          description: "An assistant, a workflow or a tool you are missing today. A working prototype in six days, then on to production.",
           href: "/en/services/software"
         },
         {
           entry: "vervangen",
           tag: "Replace",
           title: "Replace what no longer fits",
-          description: "Software that is too expensive, too slow or too old, replaced by something that fits. Connected to your ERP, CRM and the rest of your landscape. As at Strive: an overpriced SaaS package out, custom software in.",
+          description: "Software that is too expensive or too old, replaced by software that fits the way you work. Connected to your ERP, CRM and the rest of your systems.",
           href: "/en/services/replace-software"
         },
         {
           entry: "eigen-beheer",
           tag: "Own terms",
           title: "Run it on your own terms",
-          description: "AI and software on your own servers or with a European provider. No US cloud, with the AI Act built in. Like the AI assistant on this site: built by us, hosted in Europe.",
+          description: "AI and software on your own servers or with a European provider. No US cloud, with the AI Act built in.",
           href: "/en/services/eu-consultancy"
         }
       ]
     },
     standard: {
-      eyebrow: "The AI Heroes standard",
       title: "Included in every build",
-      subtitle: "We call it the AI Heroes standard. Four things you never have to buy separately.",
+      subtitle: "The AI Heroes standard",
       items: [
         {
           title: "Business case first",
-          description: "Before we build, you know what it costs, what it returns and when it pays back. On one page, ready for the board."
+          description: "Before we build, you know what it costs, what it returns and when it pays back."
         },
         {
           title: "Compliance from the drawing board",
-          description: "AI Act classification, logging, human oversight and European hosting are part of the design. No repairs afterwards."
+          description: "AI Act classification, logging, human oversight and European hosting are part of the design."
         },
         {
           title: "Your people can work with it",
-          description: "We train the team that will use the system on that system. It lands on the work floor, and you meet Article 4 of the AI Act at the same time."
+          description: "We train the team that will use the system on that system. That also meets Article 4 of the EU AI Act."
         },
         {
           title: "Handover without lock-in",
-          description: "Source code, documentation and data model are yours. You can carry on without us if you want to."
+          description: "Source code, documentation and data model are yours, from the first sprint."
         }
       ]
     },
     approach: {
-      text: "We build <red>software</red> that works\nthe day we leave\n\nWith a business case that adds up,\ncompliance that runs from day one\nand people who know how to use it\n\nFrom ambition to <blue>implementation</blue>\nOne partner, one path"
+      text: "We build <red>software</red> and AI\nthat runs in production\n\nWith the business case first,\ncompliance in the design\nand a team that can work with it\n\nFrom ambition to <blue>implementation</blue>"
     },
     team: {
-      title: "Born problem-solvers",
-      location: "Groningen, AI Capital of Europe",
-      body: "Three founders, one shared passion for AI.\nFrans makes the business case, David builds, Jan makes sure your people can work with it.",
+      title: "Built in Groningen",
+      location: "AI Capital of Europe",
+      body: "The AI Factory brings 200 million euros of AI computing power to Groningen. Around it grows an ecosystem of research institutions, start-ups and companies putting AI to work. AI Heroes sits in the middle of it, on the Aarhusweg. From there we build for organisations across the Netherlands and Europe.",
       cta: {
         text: "Meet the team",
         href: "/en/about/team"
@@ -762,12 +760,12 @@ export const CONTENT: Record<Language, Content> = {
     },
     socialProof: {
       title: "Some of the organizations we've worked with",
-      heading: "What we built, and what it delivered",
+      heading: "What clients say about us",
       back: "Back",
       readMore: "Read more",
       prev: "Previous",
       next: "Next",
-      logos: ["IC Commerce", "Strive", "INQ22", "Kwakkel BV", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior", "Banijay", "Prosus", "Hanze"],
+      logos: ["UMCG", "Tweede Kamer", "Nationale Postcode Loterij", "Envalior", "Banijay Benelux", "Prosus", "Hanzehogeschool"],
       testimonials: [
         {
           text: "AI Heroes helped us automate every step of our eCommerce platform with AI. It's great to work with an AI partner that knows the market so well, and now our business too.",
@@ -833,13 +831,13 @@ export const CONTENT: Record<Language, Content> = {
       },
       success: {
         title: "Received",
-        message: "We reply within 24 hours, usually with a proposal for a start sprint.",
+        message: "You will hear from us within 24 hours.",
         sendAnother: "Send another"
       }
     },
     contactForm: {
       title: "Tell us what you want to build",
-      subtitle: "We reply within 24 hours. Usually with a proposal for a start sprint.",
+      subtitle: "Tell us what you want to build. You will hear from us within 24 hours.",
       emailLabel: "Or reach out directly:",
       email: "hello@aiheroes.io",
       phone: "+31 50 200 3373",
@@ -881,7 +879,7 @@ export const CONTENT: Record<Language, Content> = {
       },
       team: {
         title: "The team",
-        subtitle: "Three founders, one path: from business case to handover",
+        subtitle: "The team behind every build, from business case to handover",
         members: [
           {
             name: "Frans Hoorn",
@@ -923,7 +921,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             title: "Working over finished",
-            description: "We measure success by what runs on the day we leave, and by what still runs a year later."
+            description: "We measure success by what runs at handover, and by what still runs a year later."
           },
           {
             title: "Practitioners who do the work",
@@ -942,11 +940,11 @@ export const CONTENT: Record<Language, Content> = {
         subtitle: "We are growing. Join a team that builds software and AI for organisations across Europe, and makes sure it works."
       },
       growth: {
-        text: "We build software and AI that runs in production, with a business case first, compliance from the drawing board and training for the team that will use it. Our team grows with demand. We are looking for people who, like us, want to build something that works the day we leave.",
+        text: "We build software and AI that runs in production, with a business case first, compliance from the drawing board and training for the team that will use it. Our team grows with demand. We are looking for people who, like us, want to build something that works at handover and still runs a year later.",
         stats: [
           { metric: "50+", description: "Organisations helped" },
           { metric: "1,000+", description: "Professionals trained" },
-          { metric: "3", description: "Founders, one path" },
+          { metric: "3", description: "Founders" },
           { metric: "2019", description: "Founded" }
         ],
         trustedBy: ["Kwakkel BV", "INQ22", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior"]

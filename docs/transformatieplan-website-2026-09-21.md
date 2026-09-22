@@ -87,6 +87,16 @@ De inventaris is compleet (zie bijlage). Dit zijn de conclusies die het plan dra
 8. **Huisstijl blijft:** je-vorm, korte zinnen, geen gedachtestreepjes, geen "geen X maar Y", geen hypewoorden, geen moraliserend slot.
 9. **De toets per pagina:** voelt een COO met een vastgelopen proces zich aangesproken, en voelt een HR-manager die een bewustwordingsworkshop zoekt dat ze hier verkeerd zit? Allebei moet waar zijn.
 
+Toegevoegd op 22 september, na de eerste leesronde van de homepage. Zeven patronen die in de eerste versie overal zaten en die nergens meer mogen:
+
+10. **Geen slogan-zinnen met een komma-wending.** Niet "Drie manieren om te beginnen, één voordeur", niet "Op één A4, klaar voor de directie", niet "Resultaten, geen beloftes". Een kop of intro zegt één ding en heeft geen komma.
+11. **Geen geruststelling als tweede zin.** "Achteraf repareren is niet nodig", "die je nooit apart hoeft te kopen", "je kunt zonder ons verder als je dat wilt": de eerste zin zegt het al. Een zin die alleen een zorg wegneemt, gaat weg.
+12. **Letterlijke woorden voor letterlijke dingen.** Geen "voordeur", "landt op de werkvloer", "meeloopt", "op de dag dat we vertrekken", "om de hoek", "aan tafel". Waar een feit kan staan (artikel 4, de oplevering, Groningen), staat het feit. De enige beelden die blijven zijn de namen die zo gekozen zijn: "compliance vanaf de tekentafel", "de startsprint".
+13. **Geen "Zoals ..."-voorbeeldzin aan een kaart.** Een kaart is een titel en één of twee zinnen. Bewijs staat in de cases en de referenties, niet aan elke kaart vastgeniet.
+14. **Geen hedges in koppen, knoppen en beloftes.** "Meestal" en "vaak" alleen in een FAQ-antwoord waar ze waar en nuttig zijn. Nooit bij de knop.
+15. **Een motief hoogstens één keer per pagina.** "Op één A4" stond 23 keer op de site, "in productie draait" 9 keer, "die er nog niet is" 6 keer. Eén keer is een motief, tien keer is een tic.
+16. **De site praat over wat we bouwen en waar we staan, niet over hoeveel we zijn.** Geen "drie oprichters, één passie", geen "klein team", geen rolverdeling per naam op de homepage. Groningen en het werk, niet de hoofden.
+
 ---
 
 ## 4. Nieuwe structuur

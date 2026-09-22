@@ -8,7 +8,7 @@ import Faq from '../../components/blocks/Faq.astro';
 import StandardBand from '../../components/blocks/StandardBand.astro';
 
 const outcomes = [
-  { title: 'Iets nieuws bouwen', eyebrow: 'Uitkomst: werkend prototype', accent: 'red' as const, href: '/nl/diensten/software', description: 'Aan het eind van de week staat er een prototype dat werkt op jouw data. Zoals bij Kwakkel BV: in zes dagen van vraag naar werkend prototype voor de automatisering van de administratie.' },
+  { title: 'Iets nieuws bouwen', eyebrow: 'Uitkomst: werkend prototype', accent: 'red' as const, href: '/nl/diensten/software', description: 'Aan het eind van de week staat er een prototype dat werkt op jouw data. Bij Kwakkel BV stond het er na zes dagen.' },
   { title: 'Vervangen wat niet meer voldoet', eyebrow: 'Uitkomst: architectuur en migratieplan', accent: 'blue' as const, href: '/nl/diensten/software-vervangen', description: 'Welke koppelingen er nodig zijn, hoe de data overgaat, wat er in fasen kan. Een bouwplan waar je een besluit op kunt nemen.' },
   { title: 'In eigen beheer draaien', eyebrow: 'Uitkomst: hostingontwerp en risicobeoordeling', accent: 'dark' as const, href: '/nl/diensten/eu-consultancy', description: 'Welk model, welke hardware of Europese cloud, wat het kost en wat de AI Act van je vraagt. Getest op jouw situatie.' },
 ];
@@ -27,7 +27,7 @@ const stats = [
 ];
 
 const faq = [
-  { q: 'Wat als het niet lukt in een week?', a: 'Dan weet je dat aan het eind van de week, en weet je ook waarom. Je houdt het prototype of het plan, de business case en een eerlijk advies over wat er wél kan. Dat is precies waar de startsprint voor is: een klein bedrag om een groot besluit goed te nemen.' },
+  { q: 'Wat als het niet lukt in een week?', a: 'Dan weet je dat aan het eind van de week, en weet je ook waarom. Je houdt het prototype of het plan, de business case en een eerlijk advies over wat er wel kan. Dat is precies waar de startsprint voor is: een klein bedrag om een groot besluit goed te nemen.' },
   { q: 'Moeten wij iemand vrijmaken?', a: 'Ja, beperkt. We hebben de eigenaar van het probleem nodig op dag 1 en dag 5, en een paar uur van iemand die de data en systemen kent. De rest doen wij.' },
   { q: 'Wat gebeurt er na de sprint?', a: 'Gaat de bouw door, dan is de startsprint de eerste fase van het traject en bouwen we in sprints verder tot het in productie draait. Gaat hij niet door, dan houd je alles wat er gemaakt is. Geen verplichtingen.' },
   { q: 'Kunnen we ook zonder startsprint beginnen?', a: 'Als je al precies weet wat je wilt bouwen en de business case al hebt, kan dat. In de praktijk levert de week bijna altijd inzichten op die de bouw korter en goedkoper maken, dus we raden hem aan.' },
@@ -46,7 +46,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Startsprint',
   serviceType: 'Software and AI discovery sprint',
-  description: 'Eén week, vast bedrag vanaf EUR 8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case op één A4.',
+  description: 'Eén week, vast bedrag vanaf EUR 8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
   provider: { '@id': 'https://aiheroes.io/#organization' },
   areaServed: { '@type': 'Place', name: 'European Union' },
   availableLanguage: ['Dutch', 'English'],
@@ -60,9 +60,9 @@ const serviceSchema = {
   title="De startsprint"
   subtitle="Eén week. Vast bedrag. Aan het eind weet je of het kan, wat het kost en hoe het eruitziet."
   seoTitle="De startsprint: in één week van vraag naar werkend prototype of bouwplan"
-  seoDescription="De startsprint van AI Heroes: één week, vast bedrag vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case op één A4. De eerste stap van elke bouw."
+  seoDescription="De startsprint van AI Heroes: één week, vast bedrag vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij. De eerste stap van elke bouw."
   accentColor="red"
-  badge="De voordeur"
+  badge="De eerste stap"
   ctaLabel="Plan een startsprint"
   trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG"]}
   jsonLd={[serviceSchema, faqSchema]}
@@ -70,7 +70,7 @@ const serviceSchema = {
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Eén week om een groot besluit goed te nemen</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      Je hebt een proces dat geld kost, een systeem dat aan vervanging toe is of een idee waarvan je wilt weten of het kan. De startsprint is de manier om dat in één week te leren, met iets tastbaars in handen: een werkend prototype op jouw data of een bouwplan waar je op kunt beslissen. Altijd met de business case op één A4.
+      Je hebt een proces dat geld kost, een systeem dat aan vervanging toe is of een idee waarvan je wilt weten of het kan. De startsprint is de manier om dat in één week te leren, met iets tastbaars in handen: een werkend prototype op jouw data of een bouwplan waar je op kunt beslissen. Altijd met de business case erbij.
     </p>
     <p class="text-stone-600 leading-relaxed">Voor organisaties met een concreet proces, product of systeem, en een eigenaar die kan beslissen. Wil je eerst kennismaken met wat AI kan? Dan is een <a href="/nl/diensten/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training</a> een betere eerste stap.</p>
     <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />

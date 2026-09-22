@@ -59,7 +59,7 @@ export const PressEN: React.FC = () => {
                   AI Heroes builds software and AI for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it. From Groningen, AI Capital of Europe.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  Three ways in: build something new, replace what no longer fits, or run AI on your own terms. The front door is always the start sprint: one week, fixed fee, after which you know whether it can be done, what it costs and what it looks like.
+                  Three ways in: build something new, replace what no longer fits, or run AI on your own terms. The first step is always the start sprint: one week, fixed fee, after which you know whether it can be done, what it costs and what it looks like.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">

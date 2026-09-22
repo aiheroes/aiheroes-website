@@ -4,13 +4,13 @@ Datum: 22 september 2026
 Status: goedgekeurd in interview, nog niet uitgevoerd
 Hoort bij: `docs/transformatieplan-website-2026-09-21.md` (de positionering) en `docs/company-profile.md` (het profiel)
 
-De site vertelt sinds 21 september één verhaal: wij bouwen software en AI die in productie draait, met de startsprint als voordeur. Drie dingen lopen daar nog niet in mee, en ze hangen aan elkaar vast:
+De site vertelt sinds 21 september één verhaal: wij bouwen software en AI die in productie draait, met de startsprint als eerste stap. Drie dingen lopen daar nog niet in mee, en ze hangen aan elkaar vast:
 
 1. **De domeinen van Frans, David en Jan.** De site verdeelt het traject in drie fasen en hangt elke fase aan één persoon. Dat is niet hoe jullie werken: iedereen doet alles. De bezoeker die een afspraak boekt, kiest nu uit drie agenda's op basis van een verdeling die niet bestaat. Die afspraak is de eerste conversie, dus dit is geen detail.
 2. **De vacatures.** Twee van de vier zijn er om groter te lijken dan jullie zijn. Alle vier vertellen het oude verhaal van training, consultancy en development. Jullie willen wél vacatures die de richting laten zien: AI-first developers, en op termijn mensen die jullie kunnen detacheren.
 3. **LinkedIn en het Google-bedrijfsprofiel.** Beide vertellen nog het verhaal van voor de transformatie. Wie de site vindt via Google of LinkedIn, leest daar iets anders dan op de site.
 
-Dit plan legt vast wat er verandert, waar, in welke volgorde, en welke teksten daarvoor nodig zijn. Copy volgt de tekstregels uit §3 van het transformatieplan: je-vorm, stellig, geen "geen X maar Y", geen gedachtestreepjes, Nederlands eerst.
+Dit plan legt vast wat er verandert, waar, in welke volgorde, en welke teksten daarvoor nodig zijn. Copy volgt de tekstregels uit §3 van het transformatieplan, inclusief de zeven regels die op 22 september zijn toegevoegd (geen komma-slogans, geen geruststelling, geen beeldspraak, geen "Zoals"-zinnen, geen hedges, één motief per pagina, niet over hoeveel we zijn).
 
 ---
 
@@ -91,7 +91,7 @@ Buiten de repo, dus niet geïnventariseerd. De aanname: beide dragen nog de tagl
 
 De rol is voor alle drie hetzelfde en staat in één zin, overal waar het team voorkomt:
 
-> Drie mede-eigenaars, één traject. Wie je spreekt bij de kennismaking, zit ook aan tafel bij de bouw en de overdracht.
+> Drie mede-eigenaars. Wie je spreekt bij de kennismaking, werkt ook mee aan de bouw en de overdracht.
 
 De bio's verschillen in achtergrond, niet in rol. Conceptteksten (te scherpen bij uitvoering, Frans leest mee):
 
@@ -113,7 +113,7 @@ Wat verdwijnt: elke zin die een fase aan een persoon hangt, inclusief "Leidt de 
 | Bestand | Verandering |
 |---|---|
 | `constants.ts` `team.body` (nl/en) | De ene zin uit §3.1 |
-| `constants.ts` `aboutPage.team` (nl/en) | Subtitel "Drie mede-eigenaars, één traject"; `role: "Mede-eigenaar"`; nieuwe `description` per persoon |
+| `constants.ts` `aboutPage.team` (nl/en) | Subtitel "Drie mede-eigenaars"; `role: "Mede-eigenaar"`; nieuwe `description` per persoon |
 | `src/pages/nl/over-ons/team.astro`, `en/about/team.astro` | Intro, rollen, bio's, `seoDescription` zonder fasen. De bio's komen uit `constants.ts` (nu staan ze dubbel: verkort in `aboutPage.team`, lang op de teampagina; na dit plan één bron, de teampagina leest `aboutPage.team.members`) |
 | `src/data/schema.ts` `founder[]` | `jobTitle: 'Mede-eigenaar'` (Engelse variant niet nodig, JSON-LD is één taal per site) |
 | `pages/nl/Pers.tsx`, `pages/en/Press.tsx` | Kerngegeven "Team: drie mede-eigenaars" |
@@ -190,7 +190,7 @@ Engels: zelfde vijf, vertaald. Titels in het Engels: "AI-first developer", "AI-f
 
 | Onderdeel | Nu | Wordt |
 |---|---|---|
-| Hero | "Werken bij AI Heroes" / "Wij groeien. Sluit je aan bij een team dat..." | "Werken bij AI Heroes" / "Een klein team dat software en AI bouwt die in productie draait. Drie mede-eigenaars en de mensen die met ons bouwen." |
+| Hero | "Werken bij AI Heroes" / "Wij groeien. Sluit je aan bij een team dat..." | "Werken bij AI Heroes" / "Bouw mee aan software en AI die bij klanten in productie draait. Vanuit Groningen, voor heel Nederland en Europa." |
 | Intro (`growth.text`) | "Ons team groeit mee met de vraag..." | "Wie hier werkt, bouwt mee aan het hele traject: de startsprint, de bouw in sprints, de overdracht. Je ziet je werk in productie bij de klant, en je hoort wat ervan terechtkomt." |
 | Stats | 50+ · 1000+ getraind · 3 oprichters · 2019 | `6 dagen` van vraag naar prototype (Kwakkel BV) · `5` cases van het huidige team · `3` mede-eigenaars · `Groningen` AI-hoofdstad van Europa |
 | trustedBy | Kwakkel BV, INQ22, UMCG, Tweede Kamer, Postcode Loterij, Envalior | Kwakkel BV, INQ22, Strive, IC Commerce, UMCG (bewijsregel: huidig team vooraan) |
@@ -259,11 +259,11 @@ Alles hieronder is tekst om te plakken. Plaatsen doen jullie; de teksten komen o
 >
 > Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien op eigen servers of Europese hosting. Heb je zelf developers, dan werkt een AI-first developer van ons mee in jouw team.
 >
-> De voordeur is altijd de startsprint: één week, vast bedrag vanaf € 8.000. Aan het eind heb je een werkend prototype of een bouwplan, en de business case op één A4. Daarna beslis je of we doorgaan.
+> De eerste stap is altijd de startsprint: één week, vast bedrag vanaf € 8.000. Aan het eind heb je een werkend prototype of een bouwplan, en de business case op één A4. Daarna beslis je of we doorgaan.
 >
 > Bij elke bouw inbegrepen: business case vooraf, compliance vanaf de tekentafel (AI Act-classificatie, logging, menselijk toezicht, Europese hosting), training van het team dat ermee gaat werken, overdracht zonder lock-in.
 >
-> Drie mede-eigenaars, één traject: wie je spreekt bij de kennismaking, zit ook aan tafel bij de bouw en de overdracht. Vanuit Groningen, AI-hoofdstad van Europa, voor heel Nederland en Europa.
+> Drie mede-eigenaars: wie je spreekt bij de kennismaking, werkt ook mee aan de bouw en de overdracht. Vanuit Groningen, AI-hoofdstad van Europa, voor heel Nederland en Europa.
 >
 > Plan een kennismaking: aiheroes.io/nl/startsprint
 
@@ -393,5 +393,5 @@ Vijf vacatures, vacaturepagina, types, schema, redirects, navigatie. De detacher
 - Elke afspraakknop op de site wijst naar dezelfde link; boeken kost één klik en één formulier.
 - Vacatures: vijf, allemaal echt, allemaal met dezelfde openingszin. `ai-engineer` en `ai-trainer` geven een 301.
 - Detachering: één pagina, één chip in het formulier, één regel in het schema, geen bedrag.
-- LinkedIn en Google zeggen letterlijk wat de site zegt: dezelfde kernzin, dezelfde drie ingangen, dezelfde voordeur.
+- LinkedIn en Google zeggen letterlijk wat de site zegt: dezelfde kernzin, dezelfde drie ingangen, dezelfde eerste stap.
 - Binnen zes weken na fase C: minstens vier nieuwe Google-reviews (de vier huidige klanten) en een eerste meting van boekingen via de startsprintpagina.
