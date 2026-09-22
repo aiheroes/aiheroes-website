@@ -69,7 +69,7 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       slides: [
         {
-          label: "Wat we bouwen",
+          label: "Van A tot I",
           headline: "Van <red>ambitie</red> naar <blue>implementatie</blue>",
           subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is. Wij bouwen het en zetten het in productie.",
           ctaLabel: "Plan een startsprint",
@@ -77,7 +77,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/summit.webp"
         },
         {
-          label: "Nieuw bouwen",
+          label: "Bouwen",
           headline: "Van <red>idee</red> naar <blue>werkend systeem</blue>",
           subhead: "Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna door naar productie.",
           ctaLabel: "Plan een startsprint",
@@ -659,7 +659,7 @@ export const CONTENT: Record<Language, Content> = {
     hero: {
       slides: [
         {
-          label: "What we build",
+          label: "From A to I",
           headline: "From <red>ambition</red> to <blue>implementation</blue>",
           subhead: "You have an idea, a process that could work better, or software that needs replacing. We build it and put it into production.",
           ctaLabel: "Plan a start sprint",
@@ -667,7 +667,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/summit.webp"
         },
         {
-          label: "Build new",
+          label: "Build",
           headline: "From <red>idea</red> to <blue>running system</blue>",
           subhead: "An assistant, a workflow or a tool you are missing today. A working prototype in six days, then on to production.",
           ctaLabel: "Plan a start sprint",
