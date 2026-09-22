@@ -1,7 +1,7 @@
 // Single source of truth for the bilingual URL structure.
 // Replaces three previous copies of this knowledge:
 //   - calculateAlternatePath() in hooks/useSEO.ts (the 23-pair slug map)
-//   - NL_ONLY_SEGMENTS / EN_ONLY_SEGMENTS in utils/routing.ts
+//   - the NL/EN-only segment lists of the old SPA router
 // Drives: page routing, the <head> hreflang block (BaseLayout), and sitemap alternates.
 
 export type Lang = 'nl' | 'en';
@@ -13,14 +13,16 @@ export const LANGS: Lang[] = ['nl', 'en'];
 // are identical on both sides and need no entry.
 export const SEGMENT_NL_TO_EN: Record<string, string> = {
   diensten: 'services',
+  startsprint: 'start-sprint',
+  'software-vervangen': 'replace-software',
   consultancy: 'consulting',
   'over-ons': 'about',
   'ai-voor-developers': 'ai-for-developers',
   'maatwerk-ai-oplossingen': 'custom-ai-solutions',
+  'ai-assistent': 'ai-assistant',
   'ai-bureau-nederland': 'ai-agency-netherlands',
   'ai-consultancy-groningen': 'ai-agency-groningen',
   'ai-geletterdheid-training': 'ai-literacy-training',
-  'digitale-onafhankelijkheid': 'digital-independence',
   'ai-implementatiebegeleiding': 'ai-implementation-guidance',
   procesanalyse: 'process-analysis',
   'ai-integratie': 'ai-integration',

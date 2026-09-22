@@ -42,7 +42,7 @@ export const STRINGS = {
     escalateDoneClosed: 'Doorgestuurd. Je hoort de eerstvolgende werkdag van ons.',
     humanRequestMessage: 'Ik wil graag met een mens spreken.',
     escalatedBar: 'Doorgestuurd naar het team',
-    bookTitle: 'Plan een gesprek',
+    bookTitle: 'Plan een startsprint',
     bookCta: 'Kies een moment',
     bookFallbackCta: 'Naar het contactformulier',
     salonTitle: 'AI Salon Groningen',
@@ -53,14 +53,14 @@ export const STRINGS = {
     close: 'Sluiten',
     suggestions: {
       default: [
-        'Wat doet AI Heroes precies?',
-        'Hoe helpen jullie met de EU AI Act?',
-        'Wat is de AI Salon?',
+        'Wat wil je bouwen?',
+        'Wat is een startsprint?',
+        'Wat zit er in de AI Heroes-standaard?',
       ],
       diensten: [
-        'Welke dienst past bij mijn organisatie?',
-        'Wat kost een AI-readiness scan?',
-        'Hoe ziet een incompany training eruit?',
+        'Welke ingang past bij ons?',
+        'Wat kost een startsprint?',
+        'Bouwen jullie ook software zonder AI?',
       ],
       cases: ['Welke resultaten halen jullie klanten?', 'Hebben jullie cases in mijn sector?'],
       salon: ['Wanneer is de volgende AI Salon?', 'Hoe meld ik me aan voor de AI Salon?'],
@@ -100,7 +100,7 @@ export const STRINGS = {
     escalateDoneClosed: 'Forwarded. You will hear from us the next working day.',
     humanRequestMessage: 'I would like to talk to a human.',
     escalatedBar: 'Forwarded to the team',
-    bookTitle: 'Book a conversation',
+    bookTitle: 'Plan a start sprint',
     bookCta: 'Pick a time',
     bookFallbackCta: 'Go to the contact form',
     salonTitle: 'AI Salon Groningen',
@@ -111,14 +111,14 @@ export const STRINGS = {
     close: 'Close',
     suggestions: {
       default: [
-        'What does AI Heroes do exactly?',
-        'How do you help with the EU AI Act?',
-        'What is the AI Salon?',
+        'What do you want to build?',
+        'What is a start sprint?',
+        'What is in the AI Heroes standard?',
       ],
       diensten: [
-        'Which service fits my organisation?',
-        'What does an AI readiness scan cost?',
-        'What does an in-company training look like?',
+        'Which entry fits us?',
+        'What does a start sprint cost?',
+        'Do you also build software without AI?',
       ],
       cases: ['What results do your clients get?', 'Do you have cases in my sector?'],
       salon: ['When is the next AI Salon?', 'How do I register for the AI Salon?'],
@@ -128,7 +128,7 @@ export const STRINGS = {
 
 export function suggestionsForPath(locale: ChatLocale, path: string): readonly string[] {
   const s = STRINGS[locale].suggestions;
-  if (/\/(diensten|services)/.test(path)) return s.diensten;
+  if (/\/(diensten|services|startsprint|start-sprint)/.test(path)) return s.diensten;
   if (/\/cases/.test(path)) return s.cases;
   if (/ai-salon/.test(path)) return s.salon;
   return s.default;

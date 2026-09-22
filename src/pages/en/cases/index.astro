@@ -4,12 +4,15 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 import CardGrid from '../../../components/blocks/CardGrid.astro';
 import ProofRow from '../../../components/blocks/ProofRow.astro';
 
+const ENTRY_LABEL = { nieuw: 'Build something new', vervangen: 'Replace what no longer fits', 'eigen-beheer': 'Run it on your own terms' } as const;
+const ERA_LABEL = 'Earlier case';
+
 const items = (await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
 const cards = items.map((e) => ({
   title: e.data.client ?? e.data.title,
-  eyebrow: e.data.pillarBadge,
+  eyebrow: e.data.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[e.data.entry],
   description: e.data.subtitle,
   href: `/en/cases/${e.data.slug}`,
   accent: e.data.accentColor,
@@ -30,15 +33,14 @@ const listSchema = {
 <SubpageLayout
   lang="en"
   title="Cases"
-  subtitle="From voice-to-voice customer service to board-approved prototypes. Working AI we built together with our clients."
-  seoTitle="AI Cases & Client Stories | AI Heroes"
-  seoDescription="See how AI Heroes built working AI solutions for Medux, OLX, Trabu and InnoEnergy. From 70% cost saving to a working prototype in six days."
+  subtitle="Work by the current team first: Kwakkel BV, INQ22, Strive and IC Commerce. Then the cases from before the takeover."
+  seoTitle="Cases: software and AI that runs in production"
+  seoDescription="See what AI Heroes built: administrative automation at Kwakkel BV, a custom web shop for INQ22, a SaaS package replaced at Strive, e-commerce automated at IC Commerce, and our own European-hosted assistant."
   accentColor="red"
-  ctaLabel="Schedule a conversation"
   jsonLd={listSchema}
 >
   <section class="mb-12">
     <CardGrid items={cards} cols={2} />
   </section>
-  <ProofRow label="Trusted by" items={["Medux", "OLX Poland", "Trabu", "InnoEnergy", "Prosus", "Envalior"]} />
+  <ProofRow label="Trusted by" items={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer"]} />
 </SubpageLayout>

@@ -75,26 +75,25 @@ netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
 <!-- ccsync:index file=MEMORY.md body=md eol=lf finalnl=1 hash=sha256:c8635021e675dda88ed5b18f66e16d14445c267b61b6000a4afe887dddfbab98 -->
 # AI Heroes Website — Project Memory
 
-## Business Context
-- AI Heroes is a **full-service AI agency** (NOT "consultancy" — updated 2026-03-24)
-- Legal entity is **AI Heroes B.V.** (KvK 42051968, BTW NL869486263B01) — see [Legal entity](project_legal_entity.md). Replaced earlier "handelsnaam van Lucidium" structure.
-- Three **Co-Founders** (title updated 2026-04-22): Frans Hoorn (Consulting), Jan Brusse (Training), David Homan (Software) — see [Founder titles](project_founder_titles.md)
-- Based in Groningen — positioned as "AI-hoofdstad van Europa" / "AI Capital of Europe" (present tense, no hedging). Office address **Aarhusweg 4-16, 9723 JJ Groningen** is published on legal pages, footer, press kits and JSON-LD (added 2026-05-28). Hero/careers/SEO copy still uses generic "Groningen" as positioning.
-- Tagline: "AI werkt als je weet hoe"
-- European focus: data sovereignty, EU AI Act compliance, no vendor lock-in
+## Business Context (repositioned 2026-09-21)
+- AI Heroes **builds software and AI for organisations and puts it into production**. Never "full-service AI agency", never "consultancy", never "drie pijlers" (all retired 2026-09-21; see `docs/company-profile.md` §3 and `docs/transformatieplan-website-2026-09-21.md`).
+- Legal entity is **AI Heroes B.V.** (KvK 42051968, BTW NL869486263B01) — see [Legal entity](project_legal_entity.md).
+- Three **Co-Founders**, each carrying one phase of the same path: Frans Hoorn (business case & scoping), David Homan (build & compliance), Jan Brusse (adoption & training). The former pillar mapping (Consulting/Training/Software) is retired.
+- Based in Groningen — positioned as "AI-hoofdstad van Europa" / "AI Capital of Europe" (present tense, no hedging). Office address **Aarhusweg 4-16, 9723 JJ Groningen** is published on legal pages, footer, press kits and JSON-LD.
+- Slogan: "Van ambitie naar implementatie" / "From ambition to implementation" (replaces "AI werkt als je weet hoe").
+- European by default: data sovereignty, EU AI Act compliance, no vendor lock-in; the site's own assistant runs on EU infrastructure.
 
-## Core Messaging (updated 2026-03-24)
-Four interconnected concepts woven across entire site:
-1. **"Full-service AI agency"** — replaces "AI consultancy" as company descriptor
-2. **"Change management tot technical implementation"** — names the full spectrum
-3. **"Groningen = AI-hoofdstad van Europa / AI Capital of Europe"** — present-tense claim, AI Fabriek €200M as proof not condition
-4. **"EU focus"** — European-first approach
-- "AI Consultancy" is still used as the **pillar/service name** — only the company descriptor changed
+## Core Messaging (updated 2026-09-21)
+1. **Kernzin:** "AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
+2. **Three ways in:** Iets nieuws bouwen (`/nl/diensten/software`) · Vervangen wat niet meer voldoet (`/nl/diensten/software-vervangen`) · In eigen beheer draaien (`/nl/diensten/eu-consultancy`).
+3. **One front door:** de startsprint (`/nl/startsprint`): one week, fixed fee from €8,000, working prototype or build plan plus business case. The only CTA on the site is "Plan een startsprint".
+4. **The included layer:** de AI Heroes-standaard ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board · your people trained on it · handover without lock-in. Training and consulting are phases of a build, kept as pages (`/nl/diensten/training`, `/nl/diensten/consultancy`) but out of the menu and never on the homepage.
+5. **Proof rule:** only current-team work at the front (Kwakkel BV, INQ22, Strive, IC Commerce, own stack). Medux, Trabu, OLX, InnoEnergy are "eerdere cases" (earlier AI Heroes), never first proof.
 
-## Three Pillars (core offering structure)
-1. **Training** (Jan) — workshops, incompany trainings, EUR 2.5-4k/day
-2. **Consulting** (Frans) — AI-readiness scans, roadmaps, business cases, EUR 3-50k+
-3. **Software** (David) — custom AI solutions via dev-pool, EUR 15-100k+
+## Content structure (2026-09-21)
+- Copy lives in `constants.ts` (`nav.build/how/cases/about/cta/featured`, `hero.slides`, `services.items` keyed by `entry`, `standard`, `approach.text`, `socialProof.logos`, `contact.form.budget/owner`).
+- `Entry = 'nieuw' | 'vervangen' | 'eigen-beheer'` (types.ts) drives cards, hero images, case badges (`entry`/`era` in the cases collection) and the contact-form chip preselect.
+- `SubpageLayout` props: `badge`, `entry`, `showStandard`; the hero button always links to the startsprint page.
 
 ## Website Revamp (COMPLETED 2026-03-06)
 - Repositioned from training-focused to full 3-pillar consultancy
@@ -244,7 +243,7 @@ When removing an em-dash, pick by what the original was doing:
 - **Two related independent clauses** ("Een losse dienst — het loopt door alles heen") → semicolon: "Een losse dienst; het loopt door alles heen"
 - **Second clause stands alone** ("Training, advies of ontwikkeling — meetbare resultaten") → period: "Training, advies of ontwikkeling. Meetbare resultaten."
 - **Parenthetical with optional context** ("Proudly made in Groningen — AI Capital of Europe") → parentheses: "Proudly made in Groningen (AI Capital of Europe)"
-- **Browser titles / SEO `<title>`** ("AI Heroes — AI werkt als je weet hoe") → pipe: "AI Heroes | AI werkt als je weet hoe"
+- **Browser titles / SEO `<title>`** use a pipe before the brand: "… | AI Heroes"
 - **JSON-LD `jobTitle`** ("Co-Founder — Consulting") → comma: "Co-Founder, Consulting"
 - **Attribution dash in blockquote** ("— Trabu Team") → drop dash, rely on styling: "Trabu Team"
 - **Inline `<strong>X</strong> — Y` lists** → colon inside the bold: `<strong>X:</strong> Y`

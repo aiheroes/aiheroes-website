@@ -2,75 +2,75 @@
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 import CardGrid from '../../../components/blocks/CardGrid.astro';
 import Callout from '../../../components/blocks/Callout.astro';
+import Faq from '../../../components/blocks/Faq.astro';
 import ProofRow from '../../../components/blocks/ProofRow.astro';
+import { CONTENT } from '../../../data/content';
 
-const pillars = [
-  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from “what is AI” to daily application. On-site, with your cases. From €2,500 per day.' },
-  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance. A plan that works, not a report that gathers dust.' },
-  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to custom AI, system integration and digital twins. Working AI in production, built with your team.' },
+const entries = CONTENT.en.services.items.map((item, i) => ({
+  title: item.title,
+  eyebrow: item.tag,
+  accent: (['red', 'blue', 'dark'] as const)[i],
+  href: item.href,
+  description: item.description,
+}));
+
+const cases = [
+  { title: 'Kwakkel BV', eyebrow: 'Build something new', accent: 'red' as const, href: '/en/cases/kwakkel', description: 'Automation of the administration. From question to working prototype in six days.' },
+  { title: 'INQ22', eyebrow: 'Build something new', accent: 'red' as const, href: '/en/cases/inq22', description: 'A custom web shop, live at inq22.com.' },
+  { title: 'Strive', eyebrow: 'Replace what no longer fits', accent: 'blue' as const, href: '/en/cases/strive', description: 'An overpriced SaaS package replaced by custom software.' },
 ];
 
 const faq = [
-  { q: 'Which pillar do I need?', a: 'Start with Consulting if you are still looking for where AI adds value, with Training if your team wants to learn to use AI, or with Software if you know what you want to build. Organisations often combine all three.' },
-  { q: 'Do you work across the Netherlands?', a: 'Yes. Our home base is Groningen, but we work on-site across the Netherlands and beyond.' },
-  { q: 'Can you do the whole journey?', a: 'Yes. From first scan and training to build and implementation, under one roof. No handover between parties, no knowledge leak.' },
+  { q: 'Do you also build software without AI?', a: 'Yes. A web shop, a customer portal, an internal system: we build software, with AI where it adds value and without it where it does not. INQ22 got a custom web shop that simply runs live.' },
+  { q: 'How do we start?', a: 'With the start sprint: one week, fixed fee from €8,000. At the end you have a working prototype or a build plan, always with the business case included. Then you decide whether we continue.' },
+  { q: 'What if we want to learn what AI can do first?', a: 'Then a training is a better first step than a start sprint. In every build we train the team that will work with it; it is available on its own as well. You will find it under How we work.' },
+  { q: 'Do you work across the Netherlands?', a: 'Yes. Our home base is Groningen, and we work on-site and remotely across the Netherlands and beyond.' },
 ];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
 };
 ---
 
 <SubpageLayout
   lang="en"
-  title="AI Services"
-  subtitle="One agency, from change management to technical implementation. Three pillars, under one roof, based in Groningen for all of Europe."
-  seoTitle="AI Services: Training, Consulting & Software | AI Heroes"
-  seoDescription="AI Heroes' services: from AI training and consulting to custom software. All under one roof, based in Groningen for the Netherlands and Europe."
+  title="What we build"
+  subtitle="Software and AI that runs in production. Pick the entry that fits your question. The first step is always a one-week start sprint."
+  seoTitle="What we build: software and AI, from prototype to production"
+  seoDescription="AI Heroes builds software and AI for organisations that want to go beyond a pilot. Build something new, replace software or run AI on your own terms. Business case, compliance and training included."
   accentColor="red"
-  ctaLabel="Schedule a conversation"
-  trustedBy={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy"]}
+  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer"]}
   jsonLd={faqSchema}
+  showStandard
 >
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Three pillars, one partner</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Three ways to come in</h2>
     <p class="text-lg text-stone-600 leading-relaxed">
-      Most AI initiatives stall on the handover between advisor, trainer and builder. With us that sits under one roof: the same people who set the strategy train your team and build the solution. Choose the pillar that fits where you are now.
+      You have an idea, a process that could be better or software that is due for replacement. We build what you need and make sure it runs: with a business case that adds up, compliance from the drawing board and a team that can work with it. Choose the entry that fits your question.
     </p>
   </section>
 
   <section class="mb-16">
-    <CardGrid items={pillars} cols={3} />
+    <CardGrid items={entries} cols={3} />
   </section>
 
   <section class="mb-16">
-    <Callout variant="dark" accent="red" eyebrow="European, without lock-in" title="EU AI Consultancy">
-      <p>Sovereign AI for your organisation: the complete journey from risk assessment to a working European AI solution, without vendor lock-in. <a href="/en/services/eu-consultancy" class="text-white underline underline-offset-2 hover:no-underline">Read more about EU AI Consultancy &rarr;</a></p>
+    <Callout variant="dark" accent="red" eyebrow="The first step" title="The start sprint">
+      <p>One week, fixed fee from €8,000. At the end you know whether it can be done, what it costs and what it looks like: a working prototype or a build plan, always with the business case on one page. <a href="/en/start-sprint" class="text-white underline underline-offset-2 hover:no-underline">Read what the week looks like &rarr;</a></p>
     </Callout>
   </section>
 
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Frequently asked questions</h2>
-    <div class="space-y-3">
-      {faq.map((f) => (
-        <details class="group border border-stone-200 bg-white">
-          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
-            <span>{f.q}</span>
-            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
-          </summary>
-          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
-        </details>
-      ))}
-    </div>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Where we have proved it</h2>
+    <CardGrid items={cases} cols={3} />
+    <p class="mt-6 text-sm"><a href="/en/cases" class="text-brand-red underline underline-offset-2 hover:no-underline">All cases &rarr;</a></p>
   </section>
 
+  <Faq items={faq} title="Frequently asked questions" class="mb-16" />
+
   <section>
-    <ProofRow label="Trusted by" items={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy", "OLX Poland", "Banijay Benelux"]} />
+    <ProofRow label="Trusted by" items={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior"]} />
   </section>
 </SubpageLayout>

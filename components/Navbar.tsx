@@ -16,7 +16,7 @@ interface NavbarProps {
   bottomTheme?: 'dark' | 'light';
 }
 
-type DropdownType = 'services' | 'about' | null;
+type DropdownType = 'build' | 'how' | 'about' | null;
 
 export const Navbar: React.FC<NavbarProps> = ({
   lang,
@@ -35,19 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
-
-  // Handle hash navigation after arriving at homepage
-  useEffect(() => {
-    if ((location.pathname === '/' || location.pathname === '/en') && location.hash === '#contact') {
-      setTimeout(() => {
-        const element = document.getElementById('contact');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, [location]);
+  const isHomePage = location.pathname === '/' || location.pathname === '/en';
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -69,20 +57,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     setMobileExpanded(null);
   }, [location.pathname]);
 
-  const handleContactClick = () => {
-    setIsOpen(false);
-    setOpenDropdown(null);
-    const onHome = location.pathname === '/' || location.pathname === '/en';
-    if (onHome) {
-      const element = document.getElementById('contact');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      navigate(lang === 'en' ? '/en#contact' : '/#contact');
-    }
-  };
-
   // Get language-aware home URL
   const homeUrl = lang === 'en' ? '/en' : '/';
 
@@ -92,17 +66,15 @@ export const Navbar: React.FC<NavbarProps> = ({
     setOpenDropdown(null);
 
     // If already on homepage, scroll to top (hero section)
-    if (isHomePage || location.pathname === '/en') {
+    if (isHomePage) {
       const hero = document.getElementById('hero');
       if (hero) {
         hero.scrollIntoView({ behavior: 'smooth' });
       } else {
-        // Fallback: try both window and any scroll container
         window.scrollTo({ top: 0, behavior: 'smooth' });
         document.querySelector('.snap-container')?.scrollTo({ top: 0, behavior: 'smooth' });
       }
     } else {
-      // Navigate to homepage
       navigate(homeUrl);
     }
   };
@@ -133,26 +105,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const topClipPath = splitPosition !== null ? `inset(0 0 ${100 - splitPosition}% 0)` : undefined;
   const bottomClipPath = splitPosition !== null ? `inset(${splitPosition}% 0 0 0)` : undefined;
 
-  // Pillar metadata for mega-menu column headers
-  const pillarMeta = lang === 'nl'
-    ? { training: { label: 'TRAINING', subtitle: 'Workshops die bijblijven', href: '/nl/diensten/training' }, consulting: { label: 'CONSULTANCY', subtitle: 'Van inzicht naar strategie', href: '/nl/diensten/consultancy' }, software: { label: 'SOFTWARE', subtitle: 'Van plan naar oplossing', href: '/nl/diensten/software' } }
-    : { training: { label: 'TRAINING', subtitle: 'Workshops that stick', href: '/en/services/training' }, consulting: { label: 'CONSULTING', subtitle: 'From insight to strategy', href: '/en/services/consulting' }, software: { label: 'SOFTWARE', subtitle: 'From plan to solution', href: '/en/services/software' } };
-
-  const allServicesLabel = lang === 'nl' ? 'Bekijk alle diensten' : 'View all services';
-  const allServicesHref = lang === 'nl' ? '/nl/diensten' : '/en/services';
-
-  // Group children by category
-  const trainingItems = content.services.children?.filter(c => c.category === 'training') || [];
-  const consultingItems = content.services.children?.filter(c => c.category === 'consulting') || [];
-  const softwareItems = content.services.children?.filter(c => c.category === 'software') || [];
-
   const panelRef = useRef<HTMLDivElement>(null);
   const triggersRef = useRef<HTMLDivElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout>>();
   const openIntentRef = useRef<ReturnType<typeof setTimeout>>();
   const [panelCenter, setPanelCenter] = useState<number | null>(null);
 
-  // Measure center of the 3 nav triggers
+  // Measure center of the nav triggers
   useEffect(() => {
     const measure = () => {
       if (triggersRef.current) {
@@ -189,103 +148,77 @@ export const Navbar: React.FC<NavbarProps> = ({
     closeTimerRef.current = setTimeout(() => setOpenDropdown(null), 100);
   };
 
-  // Featured nav link (EU / Digital Independence)
   const featured = content.featured;
 
-  // EU flag inline SVG for featured link
-  const EuFlagIcon: React.FC<{ className?: string }> = ({ className }) => {
-    const stars = Array.from({ length: 12 }, (_, i) => {
-      const angle = (i * 30 - 90) * (Math.PI / 180);
-      return { x: 405 + 140 * Math.cos(angle), y: 270 + 140 * Math.sin(angle) };
-    });
-    return (
-      <svg viewBox="0 0 810 540" className={className} aria-label="EU Flag">
-        <rect width="810" height="540" fill="#003399" />
-        {stars.map((s, i) => (
-          <polygon key={i} points={`${s.x},${s.y - 20} ${s.x + 6},${s.y - 6} ${s.x + 19},${s.y - 6} ${s.x + 9},${s.y + 3} ${s.x + 12},${s.y + 17} ${s.x},${s.y + 9} ${s.x - 12},${s.y + 17} ${s.x - 9},${s.y + 3} ${s.x - 19},${s.y - 6} ${s.x - 6},${s.y - 6}`} fill="#FFCC00" />
-        ))}
-      </svg>
-    );
-  };
-
-  // Services content
-  const ServicesContent: React.FC = () => (
-    <>
-      <div className="mb-4 pb-3 border-b border-stone-100">
+  // Panel: a plain list of links with descriptions, plus an optional top link.
+  const LinkList: React.FC<{ items: NavChild[]; hover?: string }> = ({ items, hover = 'group-hover:text-brand-red' }) => (
+    <div className="space-y-0.5">
+      {items.map((item, idx) => (
         <Link
-          to={allServicesHref}
+          key={idx}
+          to={item.href}
+          onClick={() => setOpenDropdown(null)}
+          className="block px-3 py-2.5 rounded hover:bg-stone-50 transition-colors group"
+        >
+          <span className={`block text-sm font-medium text-brand-dark ${hover} transition-colors`}>{item.label}</span>
+          {item.description && (
+            <span className="block text-xs text-stone-400 mt-0.5">{item.description}</span>
+          )}
+        </Link>
+      ))}
+    </div>
+  );
+
+  // "Wat we bouwen": the three entries, with the startsprint highlighted below.
+  const BuildContent: React.FC = () => (
+    <>
+      <div className="mb-3 pb-3 border-b border-stone-100">
+        <Link
+          to={content.build.href}
           onClick={() => setOpenDropdown(null)}
           className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors"
         >
-          {allServicesLabel} <ArrowRight className="w-3.5 h-3.5" />
+          {content.build.label} <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
-      <div className="grid grid-cols-3 gap-6">
-        <div>
-          <Link to={pillarMeta.training.href} onClick={() => setOpenDropdown(null)} className="block mb-3">
-            <span className="text-xs font-bold tracking-wider text-brand-red">{pillarMeta.training.label}</span>
-            <span className="block text-xs text-stone-400 mt-0.5">{pillarMeta.training.subtitle}</span>
-          </Link>
-          <div className="space-y-0.5">
-            {trainingItems.map((item, idx) => (
-              <Link key={idx} to={item.href} onClick={() => setOpenDropdown(null)}
-                className="block px-2 py-1.5 text-sm text-brand-dark hover:text-brand-red hover:bg-stone-50 rounded transition-colors"
-              >{item.label}</Link>
-            ))}
+      <LinkList items={content.build.children ?? []} />
+      <div className="mt-3 pt-3 border-t border-stone-100">
+        <Link
+          to={featured.href}
+          onClick={() => setOpenDropdown(null)}
+          className="group flex items-center gap-3 px-3 py-2.5 rounded bg-stone-50 hover:bg-brand-red/5 transition-colors border-l-2 border-brand-red"
+        >
+          <div className="flex-1 min-w-0">
+            <span className="text-sm font-medium text-brand-dark group-hover:text-brand-red transition-colors">
+              {featured.label}
+            </span>
+            <span className="block text-xs text-stone-400 mt-0.5">
+              {featured.description}
+            </span>
           </div>
-        </div>
-        <div>
-          <Link to={pillarMeta.consulting.href} onClick={() => setOpenDropdown(null)} className="block mb-3">
-            <span className="text-xs font-bold tracking-wider text-brand-blue">{pillarMeta.consulting.label}</span>
-            <span className="block text-xs text-stone-400 mt-0.5">{pillarMeta.consulting.subtitle}</span>
-          </Link>
-          <div className="space-y-0.5">
-            {consultingItems.map((item, idx) => (
-              <Link key={idx} to={item.href} onClick={() => setOpenDropdown(null)}
-                className="block px-2 py-1.5 text-sm text-brand-dark hover:text-brand-blue hover:bg-stone-50 rounded transition-colors"
-              >{item.label}</Link>
-            ))}
-          </div>
-        </div>
-        <div>
-          <Link to={pillarMeta.software.href} onClick={() => setOpenDropdown(null)} className="block mb-3">
-            <span className="text-xs font-bold tracking-wider text-stone-700">{pillarMeta.software.label}</span>
-            <span className="block text-xs text-stone-400 mt-0.5">{pillarMeta.software.subtitle}</span>
-          </Link>
-          <div className="space-y-0.5">
-            {softwareItems.map((item, idx) => (
-              <Link key={idx} to={item.href} onClick={() => setOpenDropdown(null)}
-                className="block px-2 py-1.5 text-sm text-brand-dark hover:text-stone-900 hover:bg-stone-50 rounded transition-colors"
-              >{item.label}</Link>
-            ))}
-          </div>
-        </div>
+          <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-brand-red group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+        </Link>
       </div>
-      {featured && (
-        <div className="mt-4 pt-4 border-t border-stone-100">
-          <Link
-            to={featured.href}
-            onClick={() => setOpenDropdown(null)}
-            className="group flex items-center gap-3 px-3 py-2.5 rounded hover:bg-stone-50 transition-colors border-l-2 border-transparent hover:border-l-2"
-            style={{ borderImage: 'linear-gradient(to bottom, #E63946, #1D4ED8) 1' }}
-          >
-            <EuFlagIcon className="w-6 h-4 flex-shrink-0 rounded-[2px]" />
-            <div className="flex-1 min-w-0">
-              <span className="text-sm font-medium text-brand-dark group-hover:text-brand-red transition-colors">
-                {featured.label}
-              </span>
-              <span className="block text-xs text-stone-400 mt-0.5">
-                {featured.description}
-              </span>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-brand-red group-hover:translate-x-0.5 transition-all flex-shrink-0" />
-          </Link>
-        </div>
-      )}
     </>
   );
 
-  // Grouped mega-menu content for Over ons (columns: Bedrijf / Media / Werken bij)
+  // "Hoe we werken": the startsprint, the standard and the phases.
+  const HowContent: React.FC = () => (
+    <>
+      <div className="mb-3 pb-3 border-b border-stone-100">
+        <Link
+          to={content.how.href}
+          onClick={() => setOpenDropdown(null)}
+          className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-blue transition-colors"
+        >
+          {content.how.label} <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
+      <LinkList items={content.how.children ?? []} hover="group-hover:text-brand-blue" />
+    </>
+  );
+
+  // "Over ons": grouped columns (Bedrijf / Media & community / Kennis)
   const AboutContent: React.FC = () => (
     <>
       <div className="mb-4 pb-3 border-b border-stone-100">
@@ -294,7 +227,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setOpenDropdown(null)}
           className="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors"
         >
-          {panelTopLinks.about.label} <ArrowRight className="w-3.5 h-3.5" />
+          {content.about.label} <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
       <div className="grid grid-cols-3 gap-6">
@@ -330,12 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const isDropdownVisible = openDropdown !== null;
   const activePanel = shownDropdown;
-  const panelWidth = activePanel === 'services' ? 720 : 600;
-
-  // Top link label for the About mega-menu (matching "Bekijk alle diensten" style)
-  const panelTopLinks = lang === 'nl'
-    ? { about: { label: 'Over AI Heroes', href: '/nl/over-ons' } }
-    : { about: { label: 'About AI Heroes', href: '/en/about' } };
+  const panelWidth = activePanel === 'about' ? 640 : 400;
 
   // Dropdown panel JSX, inlined (not a component) so React doesn't remount it
   const dropdownPanel = (
@@ -356,9 +284,14 @@ export const Navbar: React.FC<NavbarProps> = ({
       }}
     >
       <div className="bg-white rounded-lg shadow-xl border border-stone-200 overflow-hidden">
-        {activePanel === 'services' && (
-          <div className="p-5">
-            <ServicesContent />
+        {activePanel === 'build' && (
+          <div className="p-4">
+            <BuildContent />
+          </div>
+        )}
+        {activePanel === 'how' && (
+          <div className="p-4">
+            <HowContent />
           </div>
         )}
         {activePanel === 'about' && (
@@ -397,9 +330,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   };
 
-  // AI Salon link (top-level event page, no dropdown)
-  const aiSalonHref = lang === 'nl' ? '/nl/ai-salon' : '/en/ai-salon';
-  const casesHref = lang === 'nl' ? '/nl/cases' : '/en/cases';
+  const menuLabel = lang === 'nl' ? 'Menu' : 'Menu';
+  const closeLabel = lang === 'nl' ? 'Sluiten' : 'Close';
 
   // Render nav content for a given theme
   const renderNavContent = (theme: 'dark' | 'light') => {
@@ -417,30 +349,25 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Desktop Nav */}
         <div ref={dropdownRef} className={`hidden md:flex items-center space-x-8 ${navTextClass}`}>
           <div ref={triggersRef} className="flex items-center space-x-8">
-            <NavTrigger label={content.services.label} type="services" theme={theme} href={content.services.href} />
+            <NavTrigger label={content.build.label} type="build" theme={theme} href={content.build.href} />
+            <NavTrigger label={content.how.label} type="how" theme={theme} href={content.how.href} />
+            <Link
+              to={content.cases.href}
+              onClick={() => setOpenDropdown(null)}
+              className="text-sm font-medium hover:opacity-80 transition-opacity py-2"
+            >
+              {content.cases.label}
+            </Link>
             <NavTrigger label={content.about.label} type="about" theme={theme} href={content.about.href} />
-            <Link
-              to={casesHref}
-              onClick={() => setOpenDropdown(null)}
-              className="text-sm font-medium hover:opacity-80 transition-opacity py-2"
-            >
-              Cases
-            </Link>
-            <Link
-              to={aiSalonHref}
-              onClick={() => setOpenDropdown(null)}
-              className="text-sm font-medium hover:opacity-80 transition-opacity py-2"
-            >
-              AI Salon
-            </Link>
           </div>
 
-          <button
-            onClick={handleContactClick}
-            className="bg-white text-brand-dark px-5 py-2 text-sm font-medium rounded-sm hover:bg-stone-200 transition-colors"
+          <Link
+            to={content.cta.href}
+            onClick={() => setOpenDropdown(null)}
+            className="bg-brand-red text-white px-5 py-2 text-sm font-medium rounded-sm hover:bg-red-600 transition-colors"
           >
-            {content.contact.label}
-          </button>
+            {content.cta.label}
+          </Link>
 
           <div className="flex gap-2 text-xs font-bold uppercase tracking-wider">
             <button
@@ -461,7 +388,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Mobile Menu Button */}
         <div className={`md:hidden flex items-center ${navTextClass}`}>
-          <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Close menu" : "Open menu"}>
+          <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? closeLabel : menuLabel} aria-expanded={isOpen}>
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -473,101 +400,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   const shouldHide = hidden && !isOpen;
   const baseNavClass = `fixed top-0 left-0 right-0 z-50 px-6 py-4 md:p-6 transition-all duration-300 ease-out ${shouldHide ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
-  // Mobile: sub-expanded state for pillar groups inside Diensten
-  const [mobilePillarExpanded, setMobilePillarExpanded] = useState<string | null>(null);
-
-  // Mobile services accordion with sub-pillars
-  const MobileServicesAccordion: React.FC = () => {
-    const isExpanded = mobileExpanded === 'services';
-
-    return (
-      <div className="border-b border-stone-200">
-        <button
-          onClick={() => setMobileExpanded(isExpanded ? null : 'services')}
-          aria-expanded={isExpanded}
-          className="w-full flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark"
-        >
-          {content.services.label}
-          <ChevronDown className={`w-6 h-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-        </button>
-
-        <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
-          <div className="overflow-hidden" inert={!isExpanded}>
-            <div className="pb-4 space-y-1">
-              {/* Training sub-group */}
-              {MobilePillarGroup({ label: pillarMeta.training.label, items: trainingItems, pillarKey: 'training' })}
-              {/* Consulting sub-group */}
-              {MobilePillarGroup({ label: pillarMeta.consulting.label, items: consultingItems, pillarKey: 'consulting' })}
-              {/* Software sub-group */}
-              {MobilePillarGroup({ label: pillarMeta.software.label, items: softwareItems, pillarKey: 'software' })}
-              {/* Featured cross-pillar link */}
-              {featured && (
-                <div className="pl-4 pt-3 mt-2 border-t border-stone-200">
-                  <Link
-                    to={featured.href}
-                    className="flex items-center gap-3 py-3 group"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <EuFlagIcon className="w-6 h-4 flex-shrink-0 rounded-[2px]" />
-                    <div>
-                      <span className="text-lg text-brand-dark group-hover:text-brand-red transition-colors">
-                        {featured.label}
-                      </span>
-                      <span className="block text-xs text-stone-400 mt-0.5">
-                        {featured.description}
-                      </span>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const MobilePillarGroup: React.FC<{ label: string; items: NavChild[]; pillarKey: string }> = ({ label, items, pillarKey }) => {
-    const isPillarExpanded = mobilePillarExpanded === pillarKey;
-    const hoverColor = pillarKey === 'training' ? 'text-brand-red' : pillarKey === 'consulting' ? 'text-brand-blue' : 'text-stone-900';
-
-    return (
-      <div className="pl-4">
-        <button
-          onClick={() => setMobilePillarExpanded(isPillarExpanded ? null : pillarKey)}
-          aria-expanded={isPillarExpanded}
-          className="w-full flex justify-between items-center py-3 text-xs font-bold uppercase tracking-wider text-stone-500"
-        >
-          {label}
-          <ChevronDown className={`w-4 h-4 transition-transform ${isPillarExpanded ? 'rotate-180' : ''}`} />
-        </button>
-
-        <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isPillarExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
-          <div className="overflow-hidden" inert={!isPillarExpanded}>
-            <div className="pb-3 pl-2 space-y-2">
-              {items.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item.href}
-                  className={`block text-lg text-stone-600 hover:${hoverColor} transition-colors`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  // Mobile simple accordion
+  // Mobile accordion: label plus a flat list of links (optionally with a highlighted last item)
   const MobileAccordion: React.FC<{
     label: string;
     type: DropdownType;
     items: NavChild[];
-  }> = ({ label, type, items }) => {
+    highlight?: NavChild;
+  }> = ({ label, type, items, highlight }) => {
     const isExpanded = mobileExpanded === type;
 
     return (
@@ -594,6 +433,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {item.label}
                 </Link>
               ))}
+              {highlight && (
+                <Link
+                  to={highlight.href}
+                  className="block text-lg text-brand-red font-medium pt-2 border-t border-stone-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {highlight.label}
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -646,43 +494,31 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Menu Overlay */}
       <div className={`fixed inset-0 z-40 bg-brand-light transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden pt-24 px-6 overflow-y-auto`}>
         <div className="max-w-md mx-auto">
-          {/* Diensten accordion with sub-pillars. Rendered as function calls (not
-              <Comp/>) so the panel DOM nodes persist across renders. These components
-              are defined inside Navbar, so as JSX elements they'd get a new identity
-              each render and React would remount the panel — mounting it already-open
-              with no start state, so the grid-rows open/close transition would snap. */}
-          {MobileServicesAccordion()}
-
-          {/* Over ons — full grouped set (incl. AI Salon + TV), from columns */}
-          {MobileAccordion({ label: content.about.label, type: 'about', items: (content.about.columns ?? []).flatMap((c) => c.items) })}
+          {/* Accordions are rendered as function calls (not <Comp/>) so the panel DOM
+              nodes persist across renders and the grid-rows open/close transition runs. */}
+          {MobileAccordion({ label: content.build.label, type: 'build', items: content.build.children ?? [], highlight: { label: featured.label, href: featured.href } })}
+          {MobileAccordion({ label: content.how.label, type: 'how', items: content.how.children ?? [] })}
 
           {/* Cases (direct link, no accordion) */}
           <Link
-            to={casesHref}
+            to={content.cases.href}
             onClick={() => setIsOpen(false)}
             className="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200"
           >
-            Cases
+            {content.cases.label}
             <ArrowRight className="w-5 h-5 text-stone-400" />
           </Link>
 
-          {/* AI Salon (direct link, no accordion) */}
+          {MobileAccordion({ label: content.about.label, type: 'about', items: (content.about.columns ?? []).flatMap((c) => c.items) })}
+
+          {/* Call to action */}
           <Link
-            to={aiSalonHref}
+            to={content.cta.href}
             onClick={() => setIsOpen(false)}
-            className="flex justify-between items-center py-4 text-2xl font-serif font-medium text-brand-dark border-b border-stone-200"
-          >
-            AI Salon
-            <ArrowRight className="w-5 h-5 text-stone-400" />
-          </Link>
-
-          {/* Contact CTA Button */}
-          <button
-            onClick={handleContactClick}
             className="block w-full bg-brand-red text-white text-center py-4 text-xl font-medium mt-6"
           >
-            {content.contact.label}
-          </button>
+            {content.cta.label}
+          </Link>
 
           {/* Language Switcher */}
           <div className="mt-8 flex gap-4 text-lg font-sans border-t border-stone-300 pt-8">

@@ -1,0 +1,117 @@
+---
+import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import Faq from '../../../components/blocks/Faq.astro';
+
+const replaces = [
+  { id: 'saas', title: 'Overpriced SaaS package', accent: 'blue' as const, description: 'A subscription where you use 20% and pay for 100%, with features that force your organisation into a straitjacket.' },
+  { id: 'maatwerk', title: 'Outdated custom system', accent: 'blue' as const, description: 'The system a supplier built once and that nobody dares to touch any more. Rebuilt, with the knowledge of today and with the integrations the first system never had.' },
+  { id: 'spreadsheets', title: 'Spreadsheets and loose tools', accent: 'red' as const, description: 'The planning in Excel, the customer details in three mailboxes, the work orders on paper. One system that follows the work, rather than the other way round.' },
+  { id: 'platform', title: 'Platform that does not grow with you', accent: 'red' as const, description: 'A web shop or portal that can no longer handle what the organisation now does.' },
+];
+
+const method = [
+  { title: 'Start sprint', eyebrow: 'Week 1', body: 'We map what the current system does, what parts of it are used and what it is connected to. Outcome: an architecture, a phased migration plan and the business case on one page.', href: '/en/start-sprint', hrefLabel: 'More about the start sprint' },
+  { title: 'Build alongside the old', eyebrow: 'Weeks 2 to 12', body: 'The new system grows in sprints, alongside the old one. Integrations with ERP, CRM and the rest of the landscape first, so the transition is no big bang. Data moves over in parts, under control.' },
+  { title: 'Switch over and hand over', eyebrow: 'Delivery', body: 'The team that works with it is trained before the switch. The old system goes off once the new one runs. Source code, documentation and data model are yours.' },
+];
+
+const stats = [
+  { value: '1 week', label: 'to architecture and migration plan' },
+  { value: 'In phases', label: 'never a big bang' },
+  { value: 'Yours', label: 'source code, documentation and data model' },
+];
+
+const cases = [
+  { title: 'Strive', eyebrow: 'Replace what no longer fits', accent: 'blue' as const, href: '/en/cases/strive', description: 'An overpriced SaaS package replaced by custom software.' },
+  { title: 'IC Commerce', eyebrow: 'Replace what no longer fits', accent: 'red' as const, href: '/en/cases/ic-commerce', description: 'Every step of the e-commerce platform automated with AI.' },
+];
+
+const related = [
+  { title: 'Build something new', accent: 'red' as const, href: '/en/services/software', description: 'An assistant, a workflow or a tool you are missing today.' },
+  { title: 'Run it on your own terms', accent: 'dark' as const, href: '/en/services/eu-consultancy', description: 'On your own servers or with a European provider, with the AI Act built in.' },
+];
+
+const faq = [
+  { q: 'Is replacing not more expensive than keeping the subscription?', a: 'We work that out in the start sprint. Sometimes the answer is no. More often a package the whole organisation uses costs more per year than a custom build does in two years. The business case states when it pays back.' },
+  { q: 'How does the data move over?', a: 'In parts, under control. We start with the integrations and a copy of the data, run the new system alongside and only switch over once the numbers match. The old system stays on until that moment.' },
+  { q: 'What if the old system is tied to everything?', a: 'That is exactly why we map the integrations first in the start sprint. ERP, CRM, Microsoft 365, accounting: we build the integrations first, so the new system fits into the landscape before it replaces anything.' },
+  { q: 'How long does a replacement take?', a: 'A start sprint of one week for the plan, then two to twelve weeks of building, depending on the size. The plan from the start sprint names the phases and the lead time per phase.' },
+  { q: 'Will we end up tied to you instead?', a: 'No. Source code, documentation and data model are yours, built on open standards. Every delivery includes training for your team, so you can carry on without us if you want to.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Replace what no longer fits: software replacement',
+  serviceType: 'Software replacement and modernisation',
+  description: 'Outdated custom systems, overpriced SaaS packages and loose tools replaced by custom software that fits, connected to ERP, CRM and the existing landscape. In phases, without a big bang.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Place', name: 'European Union' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '8000' },
+  url: 'https://aiheroes.io/en/services/replace-software',
+};
+---
+
+<SubpageLayout
+  lang="en"
+  title="Replace what no longer fits"
+  subtitle="Software that is too expensive, too slow or too old, replaced by something that fits. Connected to your ERP, CRM and the rest of your landscape. In phases, without a big bang."
+  seoTitle="Replace software: outdated custom systems and overpriced SaaS out"
+  seoDescription="Outdated custom systems, overpriced SaaS packages and loose tools replaced by custom software that fits. AI Heroes builds in phases alongside the old, connected to ERP and CRM. Start sprint in one week, business case included."
+  accentColor="blue"
+  badge="Replace what no longer fits"
+  entry="vervangen"
+  trustedBy={["Strive", "IC Commerce", "UMCG"]}
+  jsonLd={[serviceSchema, faqSchema]}
+  showStandard
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“We are done with our current package. We want something that fits.”</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      The system is too expensive for what it does, too slow for how you now work, or so old that nobody dares to touch it any more. We build what does fit, alongside the old one, and only switch the old one off once the new one runs.
+    </p>
+    <p class="text-stone-600 leading-relaxed">For organisations with a system that holds back growth and an owner who can decide on the replacement.</p>
+    <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">What we replace</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Four situations we come across often.</p>
+    <CardGrid items={replaces} cols={2} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">How we replace</h2>
+    <ProcessSteps steps={method} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Where we have proved it</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Work by the current team.</p>
+    <CardGrid items={cases} cols={2} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="blue" eyebrow="Integrations" title="The landscape first, then the system">
+      <p>Most replacements fail on the integrations rather than on the new system. That is why we map them first in the start sprint and build them first. ERP, CRM, Microsoft 365, accounting, the tool of that one department: the new system fits into the landscape before it replaces anything.</p>
+    </Callout>
+  </section>
+
+  <Faq items={faq} title="Frequently asked questions" class="mb-16" />
+
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">The other entries</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
+</SubpageLayout>

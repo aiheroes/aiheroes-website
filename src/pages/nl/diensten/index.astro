@@ -2,75 +2,75 @@
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 import CardGrid from '../../../components/blocks/CardGrid.astro';
 import Callout from '../../../components/blocks/Callout.astro';
+import Faq from '../../../components/blocks/Faq.astro';
 import ProofRow from '../../../components/blocks/ProofRow.astro';
+import { CONTENT } from '../../../data/content';
 
-const pillars = [
-  { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Incompany workshops die je team van “wat is AI” naar dagelijkse toepassing brengen. Op locatie, met jouw cases. Vanaf €2.500 per dag.' },
-  { title: 'Consultancy', accent: 'blue' as const, href: '/nl/diensten/consultancy', description: 'Van AI-readiness en business cases tot roadmap en implementatiebegeleiding. Een plan dat werkt, niet een rapport dat stoft.' },
-  { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Van proof of concept tot maatwerk AI, systeemintegratie en digital twins. Werkende AI in productie, gebouwd met jouw team.' },
+const entries = CONTENT.nl.services.items.map((item, i) => ({
+  title: item.title,
+  eyebrow: item.tag,
+  accent: (['red', 'blue', 'dark'] as const)[i],
+  href: item.href,
+  description: item.description,
+}));
+
+const cases = [
+  { title: 'Kwakkel BV', eyebrow: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/cases/kwakkel', description: 'Automatisering van de administratie. In zes dagen van vraag naar werkend prototype.' },
+  { title: 'INQ22', eyebrow: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/cases/inq22', description: 'Een maatwerkwebwinkel, live op inq22.com.' },
+  { title: 'Strive', eyebrow: 'Vervangen wat niet meer voldoet', accent: 'blue' as const, href: '/nl/cases/strive', description: 'Een te duur SaaS-pakket vervangen door eigen software.' },
 ];
 
 const faq = [
-  { q: 'Welke pijler heb ik nodig?', a: 'Begin bij Consultancy als je nog zoekt waar AI waarde oplevert, bij Training als je team AI wil leren gebruiken, of bij Software als je weet wat je wilt bouwen. Vaak combineren organisaties de drie.' },
-  { q: 'Werken jullie door heel Nederland?', a: 'Ja. Onze thuisbasis is Groningen, maar we werken op locatie door heel Nederland en daarbuiten.' },
-  { q: 'Kunnen jullie het hele traject doen?', a: 'Ja. Van eerste scan en training tot bouw en implementatie, onder één dak. Geen overdracht tussen partijen, geen kennislek.' },
+  { q: 'Bouwen jullie ook software zonder AI?', a: 'Ja. Een webwinkel, een klantportaal, een intern systeem: we bouwen software, met AI waar dat waarde heeft en zonder waar dat niet zo is. INQ22 kreeg een maatwerkwebwinkel die gewoon live draait.' },
+  { q: 'Hoe beginnen we?', a: 'Met de startsprint: één week, vast bedrag vanaf €8.000. Aan het eind heb je een werkend prototype of een bouwplan, altijd met de business case erbij. Daarna beslis je of we doorgaan.' },
+  { q: 'Wat als we eerst willen leren wat AI kan?', a: 'Dan is een training een betere eerste stap dan een startsprint. Bij elke bouw trainen we het team dat ermee gaat werken; los kan het ook. Je vindt het onder Hoe we werken.' },
+  { q: 'Werken jullie door heel Nederland?', a: 'Ja. Onze thuisbasis is Groningen, we werken op locatie en op afstand door heel Nederland en daarbuiten.' },
 ];
 
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
 };
 ---
 
 <SubpageLayout
   lang="nl"
-  title="AI-Diensten"
-  subtitle="Eén agency, van change management tot technische implementatie. Drie pijlers, onder één dak, vanuit Groningen voor heel Europa."
-  seoTitle="AI-Diensten: Training, Consultancy & Software | AI Heroes"
-  seoDescription="De AI-diensten van AI Heroes: van AI-training en consultancy tot maatwerk software. Onder één dak, vanuit Groningen voor heel Nederland en Europa."
+  title="Wat we bouwen"
+  subtitle="Software en AI die in productie draait. Kies wat bij je vraag past. De eerste stap is altijd een startsprint van één week."
+  seoTitle="Wat we bouwen: software en AI, van prototype tot productie"
+  seoDescription="AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Iets nieuws bouwen, software vervangen of AI in eigen beheer draaien. Business case, compliance en training inbegrepen."
   accentColor="red"
-  ctaLabel="Plan een gesprek"
-  trustedBy={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy"]}
+  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer"]}
   jsonLd={faqSchema}
+  showStandard
 >
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Drie pijlers, één partner</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Drie manieren om binnen te komen</h2>
     <p class="text-lg text-stone-600 leading-relaxed">
-      De meeste AI-trajecten stranden op de overdracht tussen adviseur, trainer en bouwer. Bij ons zit dat onder één dak: dezelfde mensen die de strategie bepalen, trainen je team en bouwen de oplossing. Kies de pijler die past bij waar je nu staat.
+      Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is. Wij bouwen wat je nodig hebt en zorgen dat het draait: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Kies de ingang die past bij je vraag.
     </p>
   </section>
 
   <section class="mb-16">
-    <CardGrid items={pillars} cols={3} />
+    <CardGrid items={entries} cols={3} />
   </section>
 
   <section class="mb-16">
-    <Callout variant="dark" accent="red" eyebrow="Europees, zonder lock-in" title="EU AI Consultancy">
-      <p>Soevereine AI voor jouw organisatie: het complete traject van risico-inventarisatie tot werkende Europese AI-oplossing, zonder vendor lock-in. <a href="/nl/diensten/eu-consultancy" class="text-white underline underline-offset-2 hover:no-underline">Lees meer over EU AI Consultancy &rarr;</a></p>
+    <Callout variant="dark" accent="red" eyebrow="De eerste stap" title="De startsprint">
+      <p>Eén week, vast bedrag vanaf €8.000. Aan het eind weet je of het kan, wat het kost en hoe het eruitziet: een werkend prototype of een bouwplan, altijd met de business case op één A4. <a href="/nl/startsprint" class="text-white underline underline-offset-2 hover:no-underline">Lees hoe de week eruitziet &rarr;</a></p>
     </Callout>
   </section>
 
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Veelgestelde vragen</h2>
-    <div class="space-y-3">
-      {faq.map((f) => (
-        <details class="group border border-stone-200 bg-white">
-          <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
-            <span>{f.q}</span>
-            <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
-          </summary>
-          <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
-        </details>
-      ))}
-    </div>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Waar we het bewezen</h2>
+    <CardGrid items={cases} cols={3} />
+    <p class="mt-6 text-sm"><a href="/nl/cases" class="text-brand-red underline underline-offset-2 hover:no-underline">Alle cases &rarr;</a></p>
   </section>
 
+  <Faq items={faq} title="Veelgestelde vragen" class="mb-16" />
+
   <section>
-    <ProofRow label="Vertrouwd door" items={["Postcode Loterij", "Tweede Kamer", "Prosus", "Medux", "Envalior", "InnoEnergy", "OLX Poland", "Banijay Benelux"]} />
+    <ProofRow label="Vertrouwd door" items={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer", "Postcode Loterij", "Envalior"]} />
   </section>
 </SubpageLayout>

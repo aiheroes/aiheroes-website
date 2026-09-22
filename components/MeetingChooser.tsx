@@ -17,9 +17,17 @@ export const MeetingChooser = ({
   className = ''
 }: MeetingChooserProps) => {
   const isDark = variant === 'dark';
+  // The panel is wider than a footer column on phones. It stays in normal flow
+  // (so it pushes content down instead of covering it); src/scripts/meeting-chooser.ts
+  // nudges it back inside the viewport when it opens past the screen edge. That
+  // script hangs on the data attributes below, so the fix also works where this
+  // component is server-rendered without React (the static-page footer).
 
   return (
-    <details className={`group ${align === 'center' ? 'text-center' : 'text-left'} ${className}`}>
+    <details
+      data-meeting-chooser
+      className={`group ${align === 'center' ? 'text-center' : 'text-left'} ${className}`}
+    >
       <summary
         className={`inline-flex cursor-pointer list-none items-center gap-2 rounded-sm text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden ${
           isDark
@@ -41,9 +49,10 @@ export const MeetingChooser = ({
       </summary>
 
       <div
-        className={`mt-3 w-72 overflow-hidden rounded-lg border p-1 ${
+        data-meeting-panel
+        className={`mt-3 w-72 max-w-[calc(100vw-2rem)] overflow-hidden rounded-lg border p-1 ${
           align === 'center' ? 'mx-auto' : ''
-        } ${isDark ? 'border-white/15 bg-white/5' : 'border-stone-200 bg-white shadow-sm'}`}
+        } ${isDark ? 'border-white/15 bg-brand-dark shadow-lg shadow-black/30' : 'border-stone-200 bg-white shadow-sm'}`}
       >
         {meetings.map((meeting) => (
           <a

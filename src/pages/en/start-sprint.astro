@@ -1,0 +1,99 @@
+---
+import SubpageLayout from '../../layouts/SubpageLayout.astro';
+import CardGrid from '../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../components/blocks/StatGrid.astro';
+import Callout from '../../components/blocks/Callout.astro';
+import Faq from '../../components/blocks/Faq.astro';
+import StandardBand from '../../components/blocks/StandardBand.astro';
+
+const outcomes = [
+  { title: 'Build something new', eyebrow: 'Outcome: working prototype', accent: 'red' as const, href: '/en/services/software', description: 'By the end of the week there is a prototype that works on your data. At Kwakkel BV it was ready after six days.' },
+  { title: 'Replace what no longer fits', eyebrow: 'Outcome: architecture and migration plan', accent: 'blue' as const, href: '/en/services/replace-software', description: 'Which integrations are needed, how the data moves over, what can be done in phases. A build plan you can decide on.' },
+  { title: 'Run it on your own terms', eyebrow: 'Outcome: hosting design and risk assessment', accent: 'dark' as const, href: '/en/services/eu-consultancy', description: 'Which model, which hardware or European cloud, what it costs and what the AI Act asks of you. Tested on your situation.' },
+];
+
+const week = [
+  { title: 'Intake and scope', eyebrow: 'Day 1', body: 'We sit down with the owner of the problem and the people who work with it. What it has to do, what data there is, what the first version is that already delivers value.' },
+  { title: 'Build or design', eyebrow: 'Days 2 and 3', body: 'For something new we build the prototype. For replacement or self-hosting we design the architecture and test the critical parts.' },
+  { title: 'Connect to your real environment', eyebrow: 'Day 4', body: 'Real data, real systems, real users. This is where it shows whether it works outside the demo.' },
+  { title: 'Demo, business case and go/no-go', eyebrow: 'Day 5', body: 'We show what is there and put the business case on one page next to it: what it costs, what it returns, when it pays back. Then you decide.' },
+];
+
+const stats = [
+  { value: '1 week', label: 'from question to decision' },
+  { value: 'From €8,000', label: 'fixed fee, known up front' },
+  { value: '6 days', label: 'to working prototype at Kwakkel BV' },
+];
+
+const faq = [
+  { q: 'What if it cannot be done in a week?', a: 'Then you know that at the end of the week, and you know why. You keep the prototype or the plan, the business case and honest advice on what can be done. That is exactly what the start sprint is for: a small fee to take a big decision well.' },
+  { q: 'Do we need to free up people?', a: 'Yes, a little. We need the owner of the problem on day 1 and day 5, and a few hours from someone who knows the data and systems. We do the rest.' },
+  { q: 'What happens after the sprint?', a: 'If the build goes ahead, the start sprint is the first phase and we keep building in sprints until it runs in production. If it does not, you keep everything that was made. No obligations.' },
+  { q: 'Can we start without a start sprint?', a: 'If you already know exactly what you want to build and have the business case, yes. In practice the week almost always yields insights that make the build shorter and cheaper, so we recommend it.' },
+  { q: 'Does this work for software without AI?', a: 'Yes. A web shop, a customer portal, an internal system: we build software, with AI where it adds value and without it where it does not. INQ22 is an example: a custom web shop that simply runs live.' },
+  { q: 'How is this different from a workshop or a readiness scan?', a: 'A workshop teaches your team what AI can do. A scan says where the opportunities are. The start sprint builds one, on your data, and tells you what it costs. If you do not have a concrete process or system yet, a training or scan is a better first step; you will find those under How we work.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Start sprint',
+  serviceType: 'Software and AI discovery sprint',
+  description: 'One week, fixed fee from EUR 8,000. Outcome: a working prototype or a build plan, always with the business case included.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Place', name: 'European Union' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'Offer', priceCurrency: 'EUR', price: '8000', url: 'https://aiheroes.io/en/start-sprint' },
+  url: 'https://aiheroes.io/en/start-sprint',
+};
+---
+
+<SubpageLayout
+  lang="en"
+  title="The start sprint"
+  subtitle="One week. Fixed fee. At the end you know whether it can be done, what it costs and what it looks like."
+  seoTitle="The start sprint: from question to working prototype or build plan in one week"
+  seoDescription="The AI Heroes start sprint: one week, fixed fee from €8,000. Outcome: a working prototype or a build plan, always with the business case included. The first step of every build."
+  accentColor="red"
+  badge="The first step"
+  ctaLabel="Plan a start sprint"
+  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG"]}
+  jsonLd={[serviceSchema, faqSchema]}
+>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">One week to take a big decision well</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      You have a process that costs money, a system that needs replacing or an idea you want to test. The start sprint is how you find out in one week, with something tangible in hand: a working prototype on your data or a build plan you can decide on. Always with the business case included.
+    </p>
+    <p class="text-stone-600 leading-relaxed">For organisations with a concrete process, product or system, and an owner who can decide. Want to get to know what AI can do first? Then a <a href="/en/services/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training</a> is a better first step.</p>
+    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">What you have at the end of the week</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">The outcome depends on the entry you come in through.</p>
+    <CardGrid items={outcomes} cols={3} />
+  </section>
+
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">What the week looks like</h2>
+    <ProcessSteps steps={week} />
+  </section>
+
+  <section class="mb-16">
+    <Callout variant="dark" accent="red" eyebrow="Price" title="From €8,000, fixed fee, known up front">
+      <p>If the build goes ahead, the start sprint is the first phase of the project. If it does not, you keep the prototype, the plan and the business case. A custom build after that starts from €15,000; what it will be exactly is on paper at the end of the week.</p>
+    </Callout>
+  </section>
+
+  <StandardBand lang="en" id="standard" class="mb-16" />
+
+  <Faq items={faq} title="Frequently asked questions" />
+</SubpageLayout>

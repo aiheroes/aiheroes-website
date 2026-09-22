@@ -4,7 +4,7 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 const FAQ = [
   {
     q: 'Is AI literacy training mandatory?',
-    a: 'Yes, for organisations using AI systems. Article 4 of the EU AI Act has required sufficient AI literacy for staff working with AI since 2 February 2025. National enforcement regimes are coming online during 2026; in the Netherlands from 2 August 2026, coordinated by the Dutch Data Protection Authority. Violations fall under Article 99(4): fines up to EUR 15 million or 3% of global annual turnover.',
+    a: 'Yes, for organisations using AI systems. Article 4 of the EU AI Act has required sufficient AI literacy for staff working with AI since 2 February 2025. Since 2 August 2026 Dutch supervision and the sanction regime have been operational, coordinated by the Dutch Data Protection Authority. Violations fall under Article 99(4): fines up to EUR 15 million or 3% of global annual turnover.',
   },
   {
     q: 'Who does the AI literacy obligation apply to?',
@@ -31,7 +31,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/en' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://aiheroes.io/en/services' },
+    { '@type': 'ListItem', position: 2, name: 'What we build', item: 'https://aiheroes.io/en/services' },
     { '@type': 'ListItem', position: 3, name: 'AI Literacy Training', item: PAGE_URL },
   ],
 };
@@ -50,24 +50,24 @@ const faqSchema = {
 <SubpageLayout
   lang="en"
   title="AI Literacy Training"
-  subtitle="Mandatory under Article 4 of the EU AI Act, valuable for every team. One training that combines compliance and productivity."
+  subtitle="Mandatory under Article 4 of the EU AI Act, enforced in the Netherlands since 2 August 2026. One training that combines compliance and productivity."
   seoTitle="AI Literacy Training | EU AI Act Article 4 Compliance"
-  seoDescription="AI literacy training for your organisation: meet EU AI Act Article 4, enforced in the Netherlands from 2 August 2026. In-company, per audience, with certificates. By AI Heroes."
+  seoDescription="AI literacy training for your organisation: meet EU AI Act Article 4, enforced in the Netherlands since 2 August 2026. In-company, per audience, with certificates. By AI Heroes."
   accentColor="red"
-  pillarBadge="Training"
+  badge="Training your team"
   ctaLabel="Plan a training"
   trustedBy={["Tweede Kamer", "Postcode Loterij", "Hanze", "Envalior"]}
   jsonLd={[breadcrumbSchema, faqSchema]}
 >
   <div class="prose prose-lg max-w-none">
     <p class="text-xl text-stone-700 leading-relaxed mb-8">
-      Since 2 February 2025, Article 4 of the EU AI Act requires organisations to ensure sufficient AI literacy among staff working with AI. National enforcement follows during 2026. Our AI literacy training gives practical substance to that obligation, and gives your team something they will use every day.
+      Since 2 February 2025, Article 4 of the EU AI Act requires organisations to ensure sufficient AI literacy among staff working with AI. Since 2 August 2026 Dutch supervision and the sanction regime have been operational. If we build for you, training your team is part of the project and you get the proof with it. The training on its own is also possible; this page describes what it looks like.
     </p>
 
     <div class="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
-      <p class="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">The deadline</p>
-      <p class="text-sm text-stone-200 mb-2">The literacy obligation has applied since <strong class="text-white">2 February 2025</strong>. From <strong class="text-white">2 August 2026</strong>, national regulators and the sanction regime become operational.</p>
-      <p class="text-sm text-stone-200">The obligation also applies when your team only uses ChatGPT, Copilot or other AI tools. Train now and you are demonstrably compliant before enforcement starts.</p>
+      <p class="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">The obligation</p>
+      <p class="text-sm text-stone-200 mb-2">The literacy obligation has applied since <strong class="text-white">2 February 2025</strong>. Since <strong class="text-white">2 August 2026</strong> Dutch supervision and the sanction regime have been operational.</p>
+      <p class="text-sm text-stone-200">The obligation also applies when your team only uses ChatGPT, Copilot or other AI tools. Those who train are demonstrably compliant, with a certificate and a record per participant.</p>
     </div>
 
     <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">What Article 4 asks of your organisation</h2>
@@ -131,8 +131,8 @@ const faqSchema = {
     </div>
 
     <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
-      <h3>Demonstrably compliant before enforcement starts?</h3>
-      <p>Plan a conversation. Together we map which audiences need training and propose a programme that fits your organisation and timeline.</p>
+      <h3>Demonstrably compliant?</h3>
+      <p>Tell us below which teams it concerns. Together we map which audiences need training and propose a programme that fits your organisation and timeline. If we also build for you, we schedule the training within the project.</p>
     </div>
   </div>
 </SubpageLayout>

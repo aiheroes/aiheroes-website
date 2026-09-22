@@ -2,9 +2,17 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 // Blog / resource articles. Authored as Markdown/MDX in src/content/articles/.
-// One file per language; `alternateSlug` links the NL<->EN pair for hreflang.
+// One file per language. Hreflang pairs are derived from the slug map in src/data/i18n.ts;
+// the optional `alternateSlug` frontmatter is informational only.
 const articles = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
+  // The glob loader would otherwise use the frontmatter `slug` as the entry id, so an
+  // NL/EN pair sharing a slug (eu-ai-act-compliance) collapsed into one entry and the
+  // English page was never built. Derive the id from the file path instead.
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/articles',
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),
+  }),
   schema: z.object({
     lang: z.enum(['nl', 'en']),
     slug: z.string(),
@@ -42,7 +50,10 @@ const cases = defineCollection({
     seoTitle: z.string().optional(),
     description: z.string(),
     accentColor: z.enum(['red', 'blue']).default('red'),
-    pillarBadge: z.string().optional(),
+    // Which of the three entries the case proves; shown as the card eyebrow and hero badge.
+    entry: z.enum(['nieuw', 'vervangen', 'eigen-beheer']).default('nieuw'),
+    // Work by the current team (since the end of 2025) or by the earlier AI Heroes.
+    era: z.enum(['huidig', 'eerder']).default('huidig'),
     client: z.string().optional(),
     order: z.number().default(0),
     draft: z.boolean().default(false),

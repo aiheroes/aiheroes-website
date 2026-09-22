@@ -4,12 +4,15 @@ import SubpageLayout from '../../../layouts/SubpageLayout.astro';
 import CardGrid from '../../../components/blocks/CardGrid.astro';
 import ProofRow from '../../../components/blocks/ProofRow.astro';
 
+const ENTRY_LABEL = { nieuw: 'Iets nieuws bouwen', vervangen: 'Vervangen wat niet meer voldoet', 'eigen-beheer': 'In eigen beheer draaien' } as const;
+const ERA_LABEL = 'Eerdere case';
+
 const items = (await getCollection('cases', (e) => e.data.lang === 'nl' && !e.data.draft))
   .sort((a, b) => a.data.order - b.data.order);
 
 const cards = items.map((e) => ({
   title: e.data.client ?? e.data.title,
-  eyebrow: e.data.pillarBadge,
+  eyebrow: e.data.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[e.data.entry],
   description: e.data.subtitle,
   href: `/nl/cases/${e.data.slug}`,
   accent: e.data.accentColor,
@@ -30,15 +33,14 @@ const listSchema = {
 <SubpageLayout
   lang="nl"
   title="Cases"
-  subtitle="Van voice-to-voice klantenservice tot board-approved prototypes. Werkende AI die we samen met onze klanten hebben gebouwd."
-  seoTitle="AI Cases & Klantverhalen | AI Heroes"
-  seoDescription="Bekijk hoe AI Heroes werkende AI-oplossingen bouwde voor Medux, OLX, Trabu en InnoEnergy. Van 70% kostenbesparing tot een prototype in 6 dagen."
+  subtitle="Werk van het huidige team eerst: Kwakkel BV, INQ22, Strive en IC Commerce. Daarna de cases uit de tijd vóór de overname."
+  seoTitle="Cases: software en AI die in productie draait"
+  seoDescription="Bekijk wat AI Heroes bouwde: administratie-automatisering bij Kwakkel BV, een maatwerkwebwinkel voor INQ22, een SaaS-pakket vervangen bij Strive, e-commerce geautomatiseerd bij IC Commerce, en onze eigen Europees gehoste assistent."
   accentColor="red"
-  ctaLabel="Plan een gesprek"
   jsonLd={listSchema}
 >
   <section class="mb-12">
     <CardGrid items={cards} cols={2} />
   </section>
-  <ProofRow label="Vertrouwd door" items={["Medux", "OLX Poland", "Trabu", "InnoEnergy", "Prosus", "Envalior"]} />
+  <ProofRow label="Vertrouwd door" items={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer"]} />
 </SubpageLayout>

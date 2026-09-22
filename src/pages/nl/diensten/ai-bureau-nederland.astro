@@ -1,78 +1,81 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import { CONTENT } from '../../../data/content';
+
+const entries = CONTENT.nl.services.items.map((item, i) => ({
+  title: item.title,
+  eyebrow: item.tag,
+  accent: (['red', 'blue', 'dark'] as const)[i],
+  href: item.href,
+  description: item.description,
+}));
+
+const stats = [
+  { value: '50+', label: 'organisaties geholpen' },
+  { value: '6 dagen', label: 'van vraag naar werkend prototype' },
+  { value: '1.000+', label: 'professionals getraind' },
+];
+
+const cases = [
+  { title: 'Kwakkel BV', eyebrow: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/cases/kwakkel', description: 'Automatisering van de administratie, prototype in zes dagen.' },
+  { title: 'INQ22', eyebrow: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/cases/inq22', description: 'Een maatwerkwebwinkel, live op inq22.com.' },
+  { title: 'Strive', eyebrow: 'Vervangen wat niet meer voldoet', accent: 'blue' as const, href: '/nl/cases/strive', description: 'Een te duur SaaS-pakket vervangen door eigen software.' },
+];
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aiheroes.io/' },
-    { '@type': 'ListItem', position: 2, name: 'Diensten', item: 'https://aiheroes.io/nl/diensten' },
-    { '@type': 'ListItem', position: 3, name: 'AI Bureau Nederland', item: 'https://aiheroes.io/nl/diensten/ai-bureau-nederland' },
+    { '@type': 'ListItem', position: 2, name: 'Wat we bouwen', item: 'https://aiheroes.io/nl/diensten' },
+    { '@type': 'ListItem', position: 3, name: 'AI-bureau Nederland', item: 'https://aiheroes.io/nl/diensten/ai-bureau-nederland' },
   ],
 };
 ---
 
 <SubpageLayout
   lang="nl"
-  title="AI Bureau voor heel Nederland"
-  subtitle="AI Heroes is het full-service AI bureau uit Groningen dat organisaties door heel Nederland helpt met training, consulting en maatwerk software."
-  seoTitle="AI Bureau Nederland | Training, Consulting & Software"
-  seoDescription="Op zoek naar een AI bureau in Nederland? AI Heroes helpt organisaties met AI-training, consulting en maatwerk software. Van strategie tot implementatie, vanuit Groningen."
+  title="AI-bureau voor heel Nederland"
+  subtitle="Op zoek naar een AI-bureau dat bouwt? AI Heroes bouwt software en AI voor organisaties door heel Nederland en zet die in productie. Vanuit Groningen."
+  seoTitle="AI-bureau Nederland | Software en AI laten bouwen, van prototype tot productie"
+  seoDescription="Op zoek naar een AI-bureau in Nederland? AI Heroes bouwt software en AI die in productie draait, met business case, compliance en training inbegrepen. Startsprint in één week, door heel Nederland, vanuit Groningen."
   accentColor="blue"
-  ctaLabel="Plan een kennismaking"
-  trustedBy={["Postcode Loterij", "Banijay", "Prosus", "Medux", "Envalior"]}
+  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer"]}
   jsonLd={breadcrumbSchema}
+  showStandard
 >
-  <div class="prose prose-lg max-w-none">
-    <p class="text-xl text-stone-700 leading-relaxed mb-8">
-      AI Heroes is een full-service AI bureau uit Groningen, actief in heel Nederland. Sinds 2019 helpen we meer dan 50 organisaties met het hele AI-traject: van training en strategisch advies tot het bouwen van maatwerk software. Drie pijlers, één partner, van change management tot technische implementatie.
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Een AI-bureau dat bouwt</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      De meeste AI-bureaus adviseren of trainen. Wij bouwen: software en AI die op de dag van oplevering werkt en blijft werken, gekoppeld aan je ERP, CRM en de rest van je landschap. De business case ervoor, de compliance erin en de training van je team erna zitten in elke bouw. Dat noemen we de AI Heroes-standaard.
     </p>
+    <p class="text-stone-600 leading-relaxed">Voor organisaties met een concreet proces, product of systeem, en een eigenaar die kan beslissen. Door heel Nederland, op locatie en op afstand.</p>
+    <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
+  </section>
 
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Wat een full-service AI bureau voor je doet</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">
-      De meeste bureaus doen één ding: ze trainen, of ze adviseren, of ze bouwen. Wij doen alle drie, onder één dak. Daardoor blijft er niets liggen tussen het advies en de uitvoering, en werk je met een team dat jouw organisatie van begin tot eind kent.
-    </p>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Drie manieren om binnen te komen</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Kies de ingang die past bij je vraag.</p>
+    <CardGrid items={entries} cols={3} />
+  </section>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-10 not-prose">
-      <div class="p-6 bg-white border border-stone-200">
-        <h3 class="font-serif text-xl text-brand-dark mb-2">Training</h3>
-        <p class="text-sm text-stone-600 mb-4">Workshops en incompany-trainingen die je team AI-vaardig maken, van directie tot developers.</p>
-        <a href="/nl/diensten/training#ai-foundations" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk trainingen</a>
-      </div>
-      <div class="p-6 bg-white border border-stone-200">
-        <h3 class="font-serif text-xl text-brand-dark mb-2">Consulting</h3>
-        <p class="text-sm text-stone-600 mb-4">AI-readiness scans, roadmaps en business cases die ambitie vertalen naar een concreet plan.</p>
-        <a href="/nl/diensten/consultancy#ai-readiness-scan" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk consulting</a>
-      </div>
-      <div class="p-6 bg-white border border-stone-200">
-        <h3 class="font-serif text-xl text-brand-dark mb-2">Software</h3>
-        <p class="text-sm text-stone-600 mb-4">Maatwerk AI-oplossingen die echte bedrijfsproblemen oplossen, van prototype tot productie.</p>
-        <a href="/nl/diensten/software#maatwerk-ai-oplossingen" class="text-brand-blue text-sm font-medium underline underline-offset-2">Bekijk software</a>
-      </div>
-    </div>
+  <section class="mb-16">
+    <Callout variant="dark" accent="red" eyebrow="De eerste stap" title="De startsprint">
+      <p>Eén week, vast bedrag vanaf €8.000. Aan het eind weet je of het kan, wat het kost en hoe het eruitziet: een werkend prototype of een bouwplan, altijd met de business case op één A4. <a href="/nl/startsprint" class="text-white underline underline-offset-2 hover:no-underline">Lees hoe de week eruitziet &rarr;</a></p>
+    </Callout>
+  </section>
 
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Door heel Nederland, met basis in Groningen</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">
-      Onze klanten zitten door het hele land, van de Randstad tot het noorden. We werken op locatie en remote, en geven trainingen waar jouw team ook zit. Onze thuisbasis is <a href="/nl/diensten/ai-consultancy-groningen" class="text-brand-blue underline underline-offset-2">Groningen, de AI-hoofdstad van Europa</a>, met de AI Fabriek en een groeiend ecosysteem van AI-talent op de stoep.
-    </p>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Resultaten bij Nederlandse organisaties</h2>
+    <CardGrid items={cases} cols={3} />
+    <p class="mt-6 text-sm"><a href="/nl/cases" class="text-brand-blue underline underline-offset-2 hover:no-underline">Alle cases &rarr;</a></p>
+  </section>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-10 not-prose">
-      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-blue mb-2">50+</div><div class="text-sm text-stone-500 uppercase tracking-wider">Organisaties geholpen</div></div>
-      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-blue mb-2">1.000+</div><div class="text-sm text-stone-500 uppercase tracking-wider">Professionals getraind</div></div>
-      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-blue mb-2">Sinds 2019</div><div class="text-sm text-stone-500 uppercase tracking-wider">AI in de praktijk</div></div>
-    </div>
-
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Resultaten bij Nederlandse organisaties</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">We laten liever zien wat we doen dan dat we het beloven. Een paar voorbeelden:</p>
-    <ul class="mb-8">
-      <li><a href="/nl/cases/medux" class="text-brand-blue underline underline-offset-2">Medux</a>: 70% lagere kosten op een arbeidsintensief proces.</li>
-      <li><a href="/nl/cases/trabu" class="text-brand-blue underline underline-offset-2">Trabu</a>: van idee naar werkend prototype in 6 dagen.</li>
-      <li><a href="/nl/cases/innoenergy" class="text-brand-blue underline underline-offset-2">InnoEnergy</a>: van AI-strategie naar goedkeuring door de board.</li>
-    </ul>
-
-    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-red my-8 not-prose">
-      <h3>Op zoek naar een AI bureau in Nederland?</h3>
-      <p>Plan een vrijblijvende kennismaking. We denken mee over waar AI voor jouw organisatie waarde oplevert, of je nu wilt starten met training, een <a href="/nl/diensten/consultancy#ai-readiness-scan" class="text-white underline underline-offset-2 hover:text-white/80">readiness scan</a> wilt, of direct iets wilt laten bouwen.</p>
-    </div>
-  </div>
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Door heel Nederland, met basis in Groningen</h2>
+    <p class="text-stone-600 leading-relaxed">Onze klanten zitten door het hele land, van de Randstad tot het noorden. We werken op locatie en op afstand. Onze thuisbasis is <a href="/nl/diensten/ai-consultancy-groningen" class="text-brand-blue underline underline-offset-2">Groningen, de AI-hoofdstad van Europa</a>, met de AI Fabriek en een groeiend ecosysteem van AI-talent op de stoep.</p>
+  </section>
 </SubpageLayout>

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository
 
-GitHub: https://github.com/AIHeroes/aiheroes-website — **public**, owned by the AIHeroes org. Auto-deploys to Netlify on push to `master`.
+GitHub: https://github.com/AIHeroes/aiheroes-website — **public**, owned by the AIHeroes org. Deploys to Vercel through the GitHub Actions workflow on push to `master` (see Preview workflow below).
 
 ## Commands
 
@@ -21,7 +21,7 @@ No unit-test framework is configured; `npm run check` is the gate.
 
 **Tech Stack:** Astro 5 (static output / SSG), React 19 islands via `@astrojs/react`, Tailwind CSS 4 via `@tailwindcss/vite`, MDX content collections via `@astrojs/mdx`, `@astrojs/sitemap`, `@astrojs/netlify`.
 
-**Deployment:** Netlify, pure static. `astro.config.mjs` sets `site: 'https://aiheroes.io'`, `trailingSlash: 'never'`, and `build.format: 'file'` (emits `page.html`, not `page/index.html`, so Netlify serves no-slash URLs with a 200 instead of 301ing to a trailing slash — this matches the no-slash canonicals/sitemap/hreflang).
+**Deployment:** Vercel, static pages plus a few functions in `api/`. `astro.config.mjs` sets `site: 'https://aiheroes.io'`, `trailingSlash: 'never'`, and `build.format: 'file'` (emits `page.html`, not `page/index.html`, so the host serves no-slash URLs with a 200 instead of 301ing to a trailing slash — this matches the no-slash canonicals/sitemap/hreflang).
 
 ### Routing
 
@@ -40,13 +40,13 @@ The islands reuse legacy React components via `src/lib/react-router-shim.tsx`, a
 
 ### Layouts & SEO
 
-- `src/layouts/BaseLayout.astro` reproduces the old `useSEO` hook at **build time**: title/seoTitle/description/OG/Twitter/canonical/hreflang/robots/JSON-LD, plus the two hidden Netlify form definitions (`contact`, `application`) and `<ClientRouter />` view transitions. Props include `seoTitle`, `jsonLd`, `noindex`, `noChrome`.
-- `src/layouts/SubpageLayout.astro` = static Navbar/Footer + hero + `<slot/>` + `PageContactForm` island.
+- `src/layouts/BaseLayout.astro` reproduces the old `useSEO` hook at **build time**: title/seoTitle/description/OG/Twitter/canonical/hreflang/robots/JSON-LD and `<ClientRouter />` view transitions. Props include `seoTitle`, `jsonLd`, `noindex`, `noChrome`.
+- `src/layouts/SubpageLayout.astro` = static Navbar/Footer + hero (`badge`, `entry` picks the photo and preselects the contact chip, the button always links to the startsprint page) + `<slot/>` + optional `StandardBand` (`showStandard`) + `PageContactForm` island. Forms post to `/api/contact` (budget and ownership chips included).
 - Noindexed paths live in `src/data/seo.ts` (`NOINDEX_PATHS`) and are filtered out of the sitemap.
 
 ### Content & data
 
-- **`constants.ts` (root)** is still the single source of all bilingual UI copy (`CONTENT` keyed by `'nl'`/`'en'`), re-exported through `src/data/content.ts` during the migration. `types.ts` (root) likewise via `src/data/types.ts`.
+- **`constants.ts` (root)** is still the single source of all bilingual UI copy (`CONTENT` keyed by `'nl'`/`'en'`), re-exported through `src/data/content.ts` during the migration. `types.ts` (root) likewise via `src/data/types.ts`. Positioning (three entries, the startsprint, the AI Heroes standard, proof rule) is documented in `docs/company-profile.md`; the site copy follows it and `docs/transformatieplan-website-2026-09-21.md` explains why.
 - `src/data/i18n.ts` — single slug-map source (`alternatePath`, `SEGMENT_NL_TO_EN`) driving language switching + hreflang. (Replaced the old three duplicated copies in `useSEO.ts` / `PageLayout.tsx`.)
 - `src/data/schema.ts` — JSON-LD builders (e.g. `ProfessionalService`).
 - **Content Collections** (`src/content.config.ts`): `articles` and `cases` as MDX with frontmatter schemas. Routes: `src/pages/{nl,en}/resources/[slug].astro` and `cases/[slug].astro` via `getStaticPaths`, with auto Article schema. The cases loader sets `generateId` to include the lang subfolder so `nl/x.mdx` and `en/x.mdx` don't collide.
@@ -57,7 +57,7 @@ The islands reuse legacy React components via `src/lib/react-router-shim.tsx`, a
 
 ## Adding pages / content
 
-- **New static page:** create `src/pages/{nl,en}/.../x.astro` using `SubpageLayout`; copy the old `PageLayout` props + body, converting `className`→`class`, `<Link to>`→`<a href>`. Add UI copy to `constants.ts`. If URL segments differ between languages, update the slug map in `src/data/i18n.ts`.
+- **New static page:** create `src/pages/{nl,en}/.../x.astro` using `SubpageLayout` and the blocks in `src/components/blocks/`. Write the Dutch page first, then the English mirror. Add shared UI copy to `constants.ts`. If URL segments differ between languages, update the slug map in `src/data/i18n.ts`.
 - **New article/case:** add an MDX file under the matching content collection folder with valid frontmatter; the `[slug]` route and schema generate automatically.
 - **Navbar gotcha:** the logo must be `variant="wordmark"` at `h-16` (`variant="logo"` is invalid and falls back to a tiny icon).
 

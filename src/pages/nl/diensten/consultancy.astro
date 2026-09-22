@@ -10,7 +10,7 @@ const offerings = [
   { id: 'procesanalyse', title: 'Procesoptimalisatie', accent: 'blue' as const, description: 'Deep-dive in je bedrijfsprocessen. Waar liggen automatiseringskansen, welke bottlenecks kan AI oplossen? Je krijgt een geprioriteerd kansenregister. 3-5 dagen, vanaf €5.000.' },
   { id: 'opportunity-scouting', title: 'Business Case Analyse', accent: 'red' as const, description: 'Waar laat je geld liggen? Organisatiebrede scan van waar AI het meest oplevert, met een overzicht en de top 3-5 uitgewerkte business cases. Met resultaatgarantie.' },
   { id: 'business-case-development', title: 'Business Case Development', accent: 'red' as const, description: 'Van één AI-kans naar een onderbouwd investeringsvoorstel: ROI, kostenraming en een go/no-go. Board-ready. 1-2 weken, vanaf €5.000.' },
-  { id: 'ai-roadmap', title: 'AI Roadmap', accent: 'blue' as const, description: 'Van inzicht naar implementatieplan. Een gefaseerde roadmap: quick wins, korte en lange termijn, inclusief governance en resource planning. 2-4 weken, vanaf €5.000.' },
+  { id: 'ai-roadmap', title: 'AI Roadmap', accent: 'blue' as const, description: 'Van inzicht naar implementatieplan. Een gefaseerde roadmap: quick wins, korte en lange termijn, inclusief governance en resource planning. Bij ons een fase van een bouw; los kan het ook, 2-4 weken.' },
   { id: 'ai-implementatiebegeleiding', title: 'Implementatiebegeleiding', accent: 'red' as const, description: 'Hands-on begeleiding tijdens de uitrol: change management, adoptietracking en coaching op de werkvloer. De brug tussen plan en werkelijkheid. 2-8 weken.' },
 ];
 
@@ -21,27 +21,26 @@ const method = [
 ];
 
 const stats = [
-  { value: 'Vanaf €3.000', label: 'eerste readiness-scan' },
-  { value: '2 – 4 weken', label: 'van scan tot roadmap' },
+  { value: '1 A4', label: 'business case vóór elke bouw' },
+  { value: '1 week', label: 'de startsprint, inclusief business case' },
   { value: '70%', label: 'van AI-projecten faalt zonder begeleiding' },
 ];
 
 const cases = [
-  { title: 'Medux', eyebrow: 'Case', accent: 'red' as const, href: '/nl/cases/medux', description: '70% kostenbesparing op klantenservice met voice-to-voice AI.' },
-  { title: 'InnoEnergy', eyebrow: 'Case', accent: 'blue' as const, href: '/nl/cases/innoenergy', description: 'Van visie naar board-approved prototype.' },
-  { title: 'OLX', eyebrow: 'Case', accent: 'blue' as const, href: '/nl/cases/olx', description: 'AI-gedreven transformatie van de marktplaats.' },
+  { title: 'Kwakkel BV', eyebrow: 'Business case in één week', accent: 'red' as const, href: '/nl/cases/kwakkel', description: 'Prototype op eigen data plus de business case, in zes dagen.' },
+  { title: 'Strive', eyebrow: 'Business case vóór de vervanging', accent: 'blue' as const, href: '/nl/cases/strive', description: 'Wat het pakket kostte, wat eigen software kost en wanneer het zich terugverdient, vóór de bouw.' },
 ];
 
 const related = [
-  { title: 'Training', accent: 'red' as const, href: '/nl/diensten/training', description: 'Incompany workshops die je team van inzicht naar dagelijkse toepassing brengen.' },
-  { title: 'Software', accent: 'dark' as const, href: '/nl/diensten/software', description: 'Dezelfde partner die adviseert, bouwt ook wat in de roadmap staat.' },
+  { title: 'De startsprint', accent: 'red' as const, href: '/nl/startsprint', description: 'Eén week, vast bedrag, een werkend prototype of bouwplan. Altijd met de business case erbij.' },
+  { title: 'Hoe we werken', accent: 'blue' as const, href: '/nl/over-ons/aanpak', description: 'Het traject van business case tot overdracht.' },
 ];
 
 const faq = [
-  { q: 'Wat kost AI-consultancy?', a: 'De instap is een AI Readiness Scan van 1 tot 3 dagen, vanaf EUR 3.000. Een procesanalyse of business case development start vanaf EUR 5.000, een volledige AI-roadmap kost 2 tot 4 weken werk vanaf EUR 5.000. Je weet vooraf wat het kost; verrassingen achteraf horen er niet bij.' },
-  { q: 'Waar moet mijn organisatie beginnen met AI?', a: 'Voor de meeste organisaties is de AI Readiness Scan het logische startpunt. In 1 tot 3 dagen brengen we maturiteit, data en cultuur in kaart en krijg je een concreet actieplan: waar je staat, welke quick wins er liggen en wat de logische volgende stap is.' },
-  { q: 'Hoe lang duurt een traject van scan tot roadmap?', a: 'Gemiddeld 2 tot 4 weken. Een losse readiness scan is in enkele dagen klaar; een volledige roadmap met doorgerekende business cases, governance en resource planning vraagt een paar weken. Je stapt in op het niveau dat bij je situatie past.' },
-  { q: 'Wat maakt AI Heroes anders dan andere adviesbureaus?', a: 'We bouwen zelf AI. Daardoor zijn onze kostenramingen realistisch en kan dezelfde partner die adviseert ook bouwen wat in de roadmap staat. Geen overdracht naar een externe bouwer, geen kennislek. En als de business case niet sluit, zeggen we dat eerlijk.' },
+  { q: 'Wat kost AI-consultancy?', a: 'Een losse readiness scan van 1 tot 3 dagen begint vanaf EUR 3.000; een procesanalyse of business case development vanaf EUR 5.000. In de startsprint (één week, vanaf EUR 8.000) zit de business case voor één concreet systeem inbegrepen. Je weet de kosten vooraf; verrassingen achteraf horen er niet bij.' },
+  { q: 'Waar moet mijn organisatie beginnen met AI?', a: 'Heb je al een concreet proces of systeem, dan is de startsprint de eerste stap: één week, werkend prototype of bouwplan, business case erbij. Weet je nog niet waar te beginnen, dan brengt de readiness scan in 1 tot 3 dagen in kaart waar je staat, welke quick wins er liggen en wat de logische volgende stap is.' },
+  { q: 'Hoe lang duurt een traject van scan tot roadmap?', a: 'Gemiddeld 2 tot 4 weken. Een losse readiness scan is in een paar dagen klaar; een volledige roadmap met onderbouwde business cases, governance en resourceplanning kost een paar weken. Gaat het om één concreet systeem, dan is de startsprint van één week sneller en concreter.' },
+  { q: 'Wat maakt AI Heroes anders dan andere adviesbureaus?', a: 'We bouwen zelf. Daardoor zijn onze kostenramingen realistisch en bouwen we ook wat in de business case staat. Geen overdracht naar een externe bouwer, geen kennislek. En als de business case niet sluit, zeggen we dat eerlijk en bouwen we niet.' },
   { q: 'Begeleiden jullie ook de implementatie?', a: 'Ja. Zo’n 70% van AI-projecten faalt zonder begeleiding, dus we stoppen niet bij het rapport. Met implementatiebegeleiding (2 tot 8 weken) begeleiden we de uitrol op de werkvloer: change management, adoptietracking en coaching, tot AI onderdeel is van het dagelijkse werk.' },
 ];
 
@@ -73,26 +72,25 @@ const serviceSchema = {
   lang="nl"
   title="AI Consultancy"
   subtitle="Van eerste inzicht naar werkende AI. We beginnen waar jij staat, brengen kansen in kaart en leveren een plan dat rendeert, voordat je investeert."
-  seoTitle="AI Consultancy | Readiness, business case & roadmap | AI Heroes"
+  seoTitle="AI consultancy: business case, readiness scan en roadmap vóór de bouw"
   seoDescription="AI-consultancy die van readiness-scan naar business case, roadmap en implementatiebegeleiding gaat. Een plan dat werkt, niet een rapport dat stoft. Realistische ramingen, want we bouwen zelf."
   accentColor="blue"
-  pillarBadge="Consultancy"
-  ctaLabel="Plan een gesprek"
-  trustedBy={["Medux", "InnoEnergy", "Prosus", "Envalior", "OLX Poland", "050-IT"]}
+  badge="Business case en scoping"
+  trustedBy={["Kwakkel BV", "Strive", "UMCG", "Envalior", "050-IT"]}
   jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Van eerste inzicht naar werkende AI</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Elke bouw begint bij ons met een business case</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      Voor organisaties die weten dat AI relevant is, maar willen weten waar te beginnen en wat het oplevert voordat ze investeren. We brengen je organisatie en processen in kaart, vertalen kansen naar onderbouwde business cases en een concrete roadmap, en begeleiden de uitrol op de werkvloer.
+      Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient. In de startsprint hoort die business case bij de uitkomst; deze pagina beschrijft hoe we hem maken, en wat je bij ons kunt afnemen als je eerst wilt weten waar te beginnen.
     </p>
-    <p class="text-stone-600 leading-relaxed">Het unieke: dezelfde partner die adviseert, kan ook bouwen wat in de roadmap staat. Geen overdracht, geen kennislek.</p>
+    <p class="text-stone-600 leading-relaxed">Omdat wij zelf bouwen, zijn onze ramingen realistisch. Sluit de business case niet, dan bouwen we niet, en zeggen we dat.</p>
     <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
   </section>
 
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Het traject, stap voor stap</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">Je stapt in waar het voor jou zinvol is: alleen een scan, een enkele business case, of het hele pad van inzicht tot uitrol.</p>
+    <p class="text-stone-600 leading-relaxed mb-6">De startsprint bevat de readiness scan en de business case voor één concreet systeem. Wil je breder kijken of eerst weten waar te beginnen, dan zijn dit de losse onderdelen.</p>
     <CardGrid items={offerings} cols={3} />
   </section>
 
@@ -108,7 +106,7 @@ const serviceSchema = {
   </section>
 
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Van advies naar resultaat</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Business case in de praktijk</h2>
     <CardGrid items={cases} cols={3} />
   </section>
 
@@ -128,7 +126,7 @@ const serviceSchema = {
   </section>
 
   <section>
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Verwante diensten</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe dit in een bouw past</h2>
     <CardGrid items={related} cols={2} />
   </section>
 </SubpageLayout>

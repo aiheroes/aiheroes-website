@@ -56,10 +56,10 @@ export const PersNL: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes is een full-service AI agency uit Groningen, AI-hoofdstad van Europa. Van change management tot technische implementatie: training, consulting en software onder één dak.
+                  AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Vanuit Groningen, AI-hoofdstad van Europa.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
-                  We helpen 50+ organisaties met AI: van teams die nog niet weten wat AI is, tot bedrijven die klaar zijn om te bouwen. Waar je ook staat, we kunnen helpen.
+                  Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De eerste stap is altijd de startsprint: één week, vast bedrag, daarna weet je of het kan, wat het kost en hoe het eruitziet.
                 </p>
               </div>
               <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
@@ -71,9 +71,9 @@ export const PersNL: React.FC = () => {
                   <li><strong>Bezoekadres:</strong> Aarhusweg 4-16, 9723 JJ Groningen</li>
                   <li><strong>KvK:</strong> 42051968</li>
                   <li><strong>BTW:</strong> NL869486263B01</li>
-                  <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
+                  <li><strong>Focus:</strong> Software en AI die in productie draait</li>
                   <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
-                  <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters, elk specialist in een pijler</Link></li>
+                  <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters: business case, bouw en adoptie</Link></li>
                 </ul>
               </div>
             </div>
@@ -83,7 +83,7 @@ export const PersNL: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn, als een circuit dat onze drie pijlers vertegenwoordigt. De rode lijn begint bij de I (training, het startpunt), loopt door het kader (software, de infrastructuur) en eindigt in de A: een pijl omhoog (advies, vooruitgang). De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt. Het traject kan bij elke pijler beginnen; de lijn loopt rond.
+              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn, als een circuit: van ambitie naar implementatie. De rode lijn begint bij de I (de vraag waarmee je binnenkomt), loopt door het kader (de bouw) en eindigt in de A: een pijl omhoog, het systeem dat draait. De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Woordmerk</h3>
@@ -117,7 +117,7 @@ export const PersNL: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Merkkleuren</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Elke kleur in ons palet vertegenwoordigt een pijler van AI Heroes. Samen vormen ze de identiteit van ons merk.
+              Ons palet heeft vier kleuren. Samen vormen ze de identiteit van ons merk.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -126,7 +126,7 @@ export const PersNL: React.FC = () => {
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
                   <h4 className="font-bold text-brand-dark text-sm">Foundry Red</h4>
                   <p className="text-xs text-stone-500 font-mono">#D9534F</p>
-                  <p className="text-xs text-stone-400 mt-1">Training</p>
+                  <p className="text-xs text-stone-400 mt-1">Accent en actie</p>
                 </div>
               </div>
 
@@ -135,7 +135,7 @@ export const PersNL: React.FC = () => {
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
                   <h4 className="font-bold text-brand-dark text-sm">Catalyst Blue</h4>
                   <p className="text-xs text-stone-500 font-mono">#2563EB</p>
-                  <p className="text-xs text-stone-400 mt-1">Consulting</p>
+                  <p className="text-xs text-stone-400 mt-1">Accent en verdieping</p>
                 </div>
               </div>
 
@@ -144,7 +144,7 @@ export const PersNL: React.FC = () => {
                 <div className="bg-white p-4 border border-t-0 border-stone-200 rounded-b-lg">
                   <h4 className="font-bold text-brand-dark text-sm">Forged Black</h4>
                   <p className="text-xs text-stone-500 font-mono">#1C1917</p>
-                  <p className="text-xs text-stone-400 mt-1">Software</p>
+                  <p className="text-xs text-stone-400 mt-1">Tekst en donkere vlakken</p>
                 </div>
               </div>
 
@@ -174,7 +174,7 @@ export const PersNL: React.FC = () => {
                   Gebruikt voor koppen en display tekst. Elegante schreven stralen expertise en autoriteit uit.
                 </p>
                 <div className="mt-6 pt-6 border-t border-stone-100">
-                  <p className="font-serif text-2xl text-brand-dark">AI werkt als je weet hoe</p>
+                  <p className="font-serif text-2xl text-brand-dark">Van ambitie naar implementatie</p>
                 </div>
               </div>
 
@@ -199,27 +199,27 @@ export const PersNL: React.FC = () => {
               <div className="bg-brand-dark p-8 text-white">
                 <p className="text-xs text-white/50 uppercase tracking-wider mb-2">Primaire Tagline</p>
                 <p className="text-3xl md:text-4xl font-serif">
-                  AI <span className="underline decoration-brand-red decoration-4">werkt</span> als je weet <span className="underline decoration-brand-blue decoration-4">hoe</span>
+                  Van <span className="underline decoration-brand-red decoration-4">ambitie</span> naar <span className="underline decoration-brand-blue decoration-4">implementatie</span>
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Training</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Iets nieuws bouwen</p>
                   <p className="text-stone-700 font-medium">
-                    We leren je team wat AI kan. En wat niet.
+                    Van idee naar systeem in productie. In zes dagen een werkend prototype.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Advies</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Vervangen wat niet meer voldoet</p>
                   <p className="text-stone-700 font-medium">
-                    We brengen je kansen in kaart en maken een concreet plan.
+                    Verouderde of te dure software eruit, iets dat past ervoor in de plaats.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-dark">
-                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Software</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">In eigen beheer draaien</p>
                   <p className="text-stone-700 font-medium">
-                    We bouwen AI-oplossingen. Met je team of zelfstandig.
+                    Op je eigen servers of bij een Europese partij, met de AI Act ingebouwd.
                   </p>
                 </div>
               </div>
