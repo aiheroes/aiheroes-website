@@ -10,8 +10,7 @@ register();
 let modules = null;
 async function load() {
   if (!modules) {
-    // The Vercel function is the source of truth since the cutover (api/chat); the
-    // Netlify copy is retired after the 7-day rollback window.
+    // The Vercel function (api/chat) is the chat handler.
     const [{ POST: handler }, { issueToken }] = await Promise.all([
       import('../api/chat/index.ts'),
       import('../server/guards.ts'),

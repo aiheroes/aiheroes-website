@@ -160,7 +160,7 @@ export async function POST(request: Request): Promise<Response> {
     providerOptions: route.providerOptions as never,
     // Fail fast instead of stalling: a throttled/stalled model must become a visible
     // error with a retry button, never an endless typing indicator. Budgets sit well
-    // under Netlify's 60s streamed-function ceiling.
+    // under the 60s function maxDuration (vercel.json).
     maxRetries: 1,
     timeout: { firstChunkMs: 20_000, totalMs: 50_000 },
     abortSignal: request.signal, // D9: nobody pays for tokens no one receives

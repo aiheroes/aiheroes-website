@@ -38,3 +38,7 @@ progress-overview.html
 # tool-installed agent skills (vercel integration add drops these)
 .agents/
 skills-lock.json
+
+# Local-only working docs (internal press ops, product brief) — repo is public
+docs/press/
+PRODUCT.md

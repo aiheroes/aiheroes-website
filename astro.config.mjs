@@ -10,10 +10,10 @@ import { NOINDEX_PATHS } from './src/data/seo.ts';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://aiheroes.io',
-  // output: 'static' is the default — pure SSG, deployed to dist/ on Netlify.
+  // output: 'static' is the default — pure SSG, deployed to dist/ on Vercel.
   trailingSlash: 'never',
-  // Emit page.html instead of page/index.html. With directory output, Netlify's
-  // Pretty URLs 301s every no-slash URL to /path/, contradicting the no-slash
+  // Emit page.html instead of page/index.html. With directory output, the host's
+  // pretty-URL handling 301s every no-slash URL to /path/, contradicting the no-slash
   // canonicals/sitemap/hreflang. File output serves /path directly with a 200.
   build: { format: 'file' },
   server: { port: 3001 }, // 3000 is shared with sister project ivosw

@@ -3,7 +3,7 @@
 // to a 200 on the new Astro deploy, so no indexed URL dies at cutover.
 //
 // Usage: node scripts/check-redirect-parity.mjs <base-url>
-//   e.g. node scripts/check-redirect-parity.mjs https://deploy-preview--aiheroes.netlify.app
+//   e.g. node scripts/check-redirect-parity.mjs https://aiheroes-website-xyz.vercel.app
 
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
