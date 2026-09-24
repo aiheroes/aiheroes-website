@@ -72,7 +72,7 @@ export const PressEN: React.FC = () => {
                   <li><strong>KvK (CoC):</strong> 42051968</li>
                   <li><strong>VAT:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
-                  <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
+                  <li><strong>Contact:</strong> info@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders, each a specialist in one pillar</Link></li>
                 </ul>
               </div>
@@ -234,7 +234,7 @@ export const PressEN: React.FC = () => {
                 For press inquiries, interview requests, or additional brand assets, please contact us directly.
               </p>
               <a
-                href="mailto:hello@aiheroes.io"
+                href="mailto:info@aiheroes.io"
                 className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
               >
                 Contact Press Team

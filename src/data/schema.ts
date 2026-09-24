@@ -12,7 +12,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   url: 'https://aiheroes.io',
   logo: 'https://aiheroes.io/logo.svg',
   image: 'https://aiheroes.io/og-image.png',
-  email: 'hello@aiheroes.io',
+  email: 'info@aiheroes.io',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Aarhusweg 4-16',

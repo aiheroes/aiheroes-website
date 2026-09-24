@@ -72,7 +72,7 @@ export const PersNL: React.FC = () => {
                   <li><strong>KvK:</strong> 42051968</li>
                   <li><strong>BTW:</strong> NL869486263B01</li>
                   <li><strong>Focus:</strong> AI Training, Consulting & Software</li>
-                  <li><strong>Contact:</strong> hello@aiheroes.io · 050-200 3373</li>
+                  <li><strong>Contact:</strong> info@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters, elk specialist in een pijler</Link></li>
                 </ul>
               </div>
@@ -234,7 +234,7 @@ export const PersNL: React.FC = () => {
                 Voor persvragen, interviewverzoeken of aanvullende merkbestanden kun je direct contact met ons opnemen.
               </p>
               <a
-                href="mailto:hello@aiheroes.io"
+                href="mailto:info@aiheroes.io"
                 className="inline-flex items-center gap-2 bg-brand-red text-white px-6 py-3 font-bold uppercase tracking-wider text-sm hover:bg-red-600 transition-colors"
               >
                 Contact Pers

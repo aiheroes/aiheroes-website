@@ -343,7 +343,7 @@ const IntroCard: React.FC = () => (
       </span>
       AI werkt als je weet hoe
       <br />
-      hello@aiheroes.io
+      info@aiheroes.io
     </div>
   </article>
 );

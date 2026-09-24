@@ -72,7 +72,7 @@ export const config = {
   mail: {
     apiKey: process.env.RESEND_API_KEY ?? '',
     from: process.env.MAIL_FROM ?? 'AI Heroes <noreply@aiheroes.io>',
-    to: process.env.MAIL_TO ?? 'hello@aiheroes.io',
+    to: process.env.MAIL_TO ?? 'info@aiheroes.io',
   },
 
   // Render-layer link allowlist (D9 layer 7). The widget refuses to link anything else.

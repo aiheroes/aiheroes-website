@@ -13,7 +13,7 @@
 | Company | AI Heroes B.V. |
 | KvK / BTW | 42051968 / NL869486263B01 |
 | Address | Aarhusweg 4-16, 9723 JJ Groningen, Nederland |
-| Contact | hello@aiheroes.io · +31 50 200 3373 · aiheroes.io · linkedin.com/company/aiheroes |
+| Contact | info@aiheroes.io · +31 50 200 3373 · aiheroes.io · linkedin.com/company/aiheroes |
 | What it is | Full-service AI agency: training, consulting and software under one roof |
 | Tagline | NL: "AI werkt als je weet hoe" · EN: "AI works if you know how" |
 | Brand active since | 2019 (see §2); current company relaunched the brand in 2026 |
