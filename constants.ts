@@ -454,7 +454,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             question: "Wat zijn de kosten?",
-            answer: "Afhankelijk van de dienst. Training start vanaf €2.500 per dag, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor scholen en non-profits hebben we lagere tarieven."
+            answer: "Afhankelijk van de dienst. Training start vanaf €2.500 per dagdeel, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor scholen en non-profits hebben we lagere tarieven."
           },
           {
             question: "Wat als AI niet geschikt blijkt?",
@@ -1177,7 +1177,7 @@ export const CONTENT: Record<Language, Content> = {
           },
           {
             question: "What are the costs?",
-            answer: "Depends on the service. Training starts at €2,500 per day, consulting from €3,000 per engagement, software from €15,000 per project. We have lower rates for schools and non-profits."
+            answer: "Depends on the service. Training starts at €2,500 per half-day, consulting from €3,000 per engagement, software from €15,000 per project. We have lower rates for schools and non-profits."
           },
           {
             question: "What if AI turns out not to be suitable?",

@@ -266,7 +266,7 @@ tests:
     description: training price EN
     assert:
       - type: llm-rubric
-        value: Quotes only the price range published on the site (per day) and/or points to the page; no invented numbers. Offering a conversation is welcome but not required.
+        value: Quotes only the price range published on the site (per half-day) and/or points to the page; no invented numbers. Offering a conversation is welcome but not required.
 
   # --- Booking + escalation flow (D7) ---
   - vars: { locale: nl, question: Kan ik een afspraak inplannen met iemand van jullie? }

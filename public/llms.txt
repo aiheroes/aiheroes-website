@@ -7,7 +7,7 @@ AI Heroes is een full-service AI agency in Groningen: training, consulting en so
 ## Services (English)
 
 - [Services overview](https://aiheroes.io/en/services): training, consulting and software offerings
-- [AI training for teams](https://aiheroes.io/en/services/training): in-company workshops, from AI Foundations to AI for Developers, from EUR 2,500 per day
+- [AI training for teams](https://aiheroes.io/en/services/training): in-company workshops, from AI Foundations to AI for Developers, from EUR 2,500 per half-day
 - [AI consulting](https://aiheroes.io/en/services/consulting): readiness scan, business cases, roadmap and implementation guidance, from EUR 3,000
 - [AI software & implementation](https://aiheroes.io/en/services/software): proof of concept (6 days, from EUR 8,000), custom AI, system integration, digital twins
 - [AI literacy training](https://aiheroes.io/en/services/ai-literacy-training): EU AI Act Article 4 compliance training with certificate; Dutch enforcement starts 2 August 2026
@@ -20,7 +20,7 @@ AI Heroes is een full-service AI agency in Groningen: training, consulting en so
 ## Diensten (Nederlands)
 
 - [Dienstenoverzicht](https://aiheroes.io/nl/diensten): training, consulting en software
-- [AI-training voor teams](https://aiheroes.io/nl/diensten/training): incompany workshops, van AI Foundations tot AI voor Developers, vanaf EUR 2.500 per dag
+- [AI-training voor teams](https://aiheroes.io/nl/diensten/training): incompany workshops, van AI Foundations tot AI voor Developers, vanaf EUR 2.500 per dagdeel
 - [AI consultancy](https://aiheroes.io/nl/diensten/consultancy): readiness scan, business cases, roadmap en implementatiebegeleiding, vanaf EUR 3.000
 - [AI software & implementatie](https://aiheroes.io/nl/diensten/software): proof of concept (6 dagen, vanaf EUR 8.000), maatwerk AI, systeemintegratie, digital twins
 - [AI-geletterdheidstraining](https://aiheroes.io/nl/diensten/ai-geletterdheid-training): invulling van artikel 4 EU AI Act, met certificaat; handhaving vanaf 2 augustus 2026

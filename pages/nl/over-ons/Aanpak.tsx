@@ -102,7 +102,7 @@ export const AanpakNL: React.FC = () => {
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Tarieven</h3>
         <p className="text-stone-600 leading-relaxed mb-6">
-          We werken met transparante tarieven. Training vanaf €2.500 per dag, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor onderwijs en non-profit organisaties hanteren we gereduceerde tarieven.
+          We werken met transparante tarieven. Training vanaf €2.500 per dagdeel, consulting vanaf €3.000 per traject, software vanaf €15.000 per project. Voor onderwijs en non-profit organisaties hanteren we gereduceerde tarieven.
         </p>
         <p className="text-stone-600 leading-relaxed">
           Benieuwd wat we voor jou kunnen betekenen? Neem contact op voor een vrijblijvend gesprek.

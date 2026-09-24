@@ -102,7 +102,7 @@ export const ApproachEN: React.FC = () => {
 
         <h3 className="text-xl font-serif text-brand-dark mb-4">Pricing</h3>
         <p className="text-stone-600 leading-relaxed mb-6">
-          We work with transparent pricing. Training from €2,500 per day, consulting from €3,000 per engagement, software from €15,000 per project. For education and non-profit organizations, we offer reduced rates.
+          We work with transparent pricing. Training from €2,500 per half-day, consulting from €3,000 per engagement, software from €15,000 per project. For education and non-profit organizations, we offer reduced rates.
         </p>
         <p className="text-stone-600 leading-relaxed">
           Curious what we can do for you? Get in touch for a no-obligation conversation.
