@@ -103,7 +103,7 @@ const COPY: Record<Language, Copy> = {
         { time: '18:40', title: '60-second pitches', note: true },
         { time: '19:00–21:00', title: 'Food, Drinks & Open Networking', note: false },
       ],
-      footnote: 'by you? Email info@aiheroes.io to apply.',
+      footnote: 'by you? Email salon@aiheroes.io to apply.',
     },
     speakers: {
       heading: 'Speakers',
@@ -115,7 +115,7 @@ const COPY: Record<Language, Copy> = {
     },
     sponsors: {
       heading: 'Sponsored by you?',
-      body: 'Sponsors keep the salon free, edition after edition. Sponsoring is deliberately affordable, so small and mid-size companies can join too. Email info@aiheroes.io.',
+      body: 'Sponsors keep the salon free, edition after edition. Sponsoring is deliberately affordable, so small and mid-size companies can join too. Email salon@aiheroes.io.',
       mailtoSubject: 'AI Salon Groningen Edition #2 · Sponsorship',
       spotLabel: 'Your logo',
       spotHover: 'Become a sponsor →',
@@ -132,7 +132,7 @@ const COPY: Record<Language, Copy> = {
     },
     rsvp: {
       heading: 'Edition #2 · Thursday, November 5. Registration is open.',
-      note: 'The venue will be announced soon. Want to host edition #2, give a 60-second pitch or sponsor? Email info@aiheroes.io.',
+      note: 'The venue will be announced soon. Want to host edition #2, give a 60-second pitch or sponsor? Email salon@aiheroes.io.',
     },
     about:
       'AI Salon is the global community where AI founders, builders, investors and partners connect and collaborate, with chapters around the world. Groningen is our chapter, in the AI capital of Europe.',
@@ -142,7 +142,7 @@ const COPY: Record<Language, Copy> = {
         lines: ['To be announced', 'Groningen'],
       },
       organiser: { label: 'Organiser', lines: ['AI Heroes (chapter)'] },
-      contact: { label: 'Contact', lines: ['info@aiheroes.io'], mail: true },
+      contact: { label: 'Contact', lines: ['salon@aiheroes.io'], mail: true },
     },
   },
   nl: {
@@ -177,11 +177,11 @@ const COPY: Record<Language, Copy> = {
         { time: '18:40', title: '60-secondenpitches', note: true },
         { time: '19:00–21:00', title: 'Eten, drinken en open netwerken', note: false },
       ],
-      footnote: 'door jou? Mail info@aiheroes.io om je aan te melden.',
+      footnote: 'door jou? Mail salon@aiheroes.io om je aan te melden.',
     },
     speakers: {
       heading: 'Sprekers',
-      body: "Twee talks van zo'n twintig minuten per editie. Spreken? Mail info@aiheroes.io.",
+      body: "Twee talks van zo'n twintig minuten per editie. Spreken? Mail salon@aiheroes.io.",
       mailtoSubject: 'AI Salon Groningen Editie #2 · Spreken',
       spotLabel: 'TBA',
       spotHover: 'Word spreker →',
@@ -189,7 +189,7 @@ const COPY: Record<Language, Copy> = {
     },
     sponsors: {
       heading: 'Sponsors',
-      body: 'Sponsors houden de salon gratis, editie na editie. De bijdrage is bewust laagdrempelig, zodat ook kleine en middelgrote bedrijven kunnen aanhaken. Mail info@aiheroes.io.',
+      body: 'Sponsors houden de salon gratis, editie na editie. De bijdrage is bewust laagdrempelig, zodat ook kleine en middelgrote bedrijven kunnen aanhaken. Mail salon@aiheroes.io.',
       mailtoSubject: 'AI Salon Groningen Editie #2 · Sponsoring',
       spotLabel: 'Jouw logo',
       spotHover: 'Word sponsor →',
@@ -206,7 +206,7 @@ const COPY: Record<Language, Copy> = {
     },
     rsvp: {
       heading: 'Editie #2 · donderdag 5 november. De aanmelding is open.',
-      note: 'De locatie volgt binnenkort. Wil je editie #2 hosten, een 60-secondenpitch geven of sponsoren? Mail info@aiheroes.io.',
+      note: 'De locatie volgt binnenkort. Wil je editie #2 hosten, een 60-secondenpitch geven of sponsoren? Mail salon@aiheroes.io.',
     },
     about:
       'AI Salon is de wereldwijde community waarin AI founders, builders, investeerders en partners elkaar ontmoeten en samenwerken, met chapters over de hele wereld. Groningen is ons chapter, in de AI-hoofdstad van Europa.',
@@ -216,7 +216,7 @@ const COPY: Record<Language, Copy> = {
         lines: ['Wordt bekendgemaakt', 'Groningen'],
       },
       organiser: { label: 'Organisator', lines: ['AI Heroes (chapter)'] },
-      contact: { label: 'Contact', lines: ['info@aiheroes.io'], mail: true },
+      contact: { label: 'Contact', lines: ['salon@aiheroes.io'], mail: true },
     },
   },
 };
@@ -483,7 +483,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
               {Array.from({ length: Math.max(0, SPEAKER_SLOTS - SPEAKERS.length) }).map((_, i) => (
                 <a
                   key={i}
-                  href={`mailto:info@aiheroes.io?subject=${encodeURIComponent(copy.speakers.mailtoSubject)}`}
+                  href={`mailto:salon@aiheroes.io?subject=${encodeURIComponent(copy.speakers.mailtoSubject)}`}
                   className="group flex flex-col gap-3"
                 >
                   <div className="relative w-[200px] sm:w-[220px] h-[260px] sm:h-[290px] border border-white/20 bg-white/[0.03] flex items-center justify-center font-mono text-[11px] tracking-[0.3em] uppercase text-white/35 group-hover:border-brand-red group-hover:text-brand-red group-hover:bg-white/[0.06] transition-colors">
@@ -543,7 +543,7 @@ export const AISalonPage: React.FC<AISalonPageProps> = ({ lang: forcedLang }) =>
               {Array.from({ length: Math.max(0, copy.sponsors.slots - SPONSOR_LOGOS.length) }).map((_, i) => (
                 <a
                   key={i}
-                  href={`mailto:info@aiheroes.io?subject=${encodeURIComponent(copy.sponsors.mailtoSubject)}`}
+                  href={`mailto:salon@aiheroes.io?subject=${encodeURIComponent(copy.sponsors.mailtoSubject)}`}
                   className="group relative h-[110px] md:h-[130px] border border-brand-dark/20 bg-brand-sand/30 flex items-center justify-center font-mono text-[10px] tracking-[0.25em] uppercase text-brand-dark/35 hover:border-brand-red hover:text-brand-red hover:bg-white transition-colors"
                 >
                   <span className="group-hover:opacity-0 transition-opacity">
