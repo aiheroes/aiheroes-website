@@ -2,7 +2,7 @@
 
 **Status:** canonical, shareable. Safe to commit, quote, and hand to partners.
 **Compiled:** 2026-07-29, from the website copy, offerings bible, press kit, brand/tone docs, pitch decks and internal meeting notes (Feb–Jul 2026). Confidential material (funding terms, salaries, margins, deal pricing, prospect names) is deliberately excluded.
-**Use it for:** grounding AI tools writing copy or proposals for AI Heroes, onboarding new team members/freelancers/partners, and as the source of truth for positioning. For platform-specific boilerplate intros (LinkedIn, press, grants), see the offerings bible (internal-only, at `aiheroes-internal/_local/offerings-bible.md`); for writing style rules, see the tone-of-voice doc in the AI Heroes Hub.
+**Use it for:** grounding AI tools writing copy or proposals for AI Heroes, onboarding new team members/freelancers/partners, and as the source of truth for positioning. For platform-specific boilerplate intros (LinkedIn, press, grants), see the offerings bible (internal-only, at `aiheroes-hub/_local/offerings-bible.md`); for writing style rules, see the tone-of-voice doc in the AI Heroes Hub.
 
 ---
 
@@ -72,7 +72,7 @@ Operating principles visible in how the company actually runs:
 Each pillar is owned by one co-founder and has a fixed brand color. Entry can be at any pillar; roughly 80% of training clients continue into advisory work.
 
 ### Training & Workshops — Jan Brusse (Foundry Red)
-"We leren je team wat AI kan. En wat niet." From €2,500 per day; discounts for education and non-profits.
+"We leren je team wat AI kan. En wat niet." From €2,500 per half-day (dagdeel); discounts for education and non-profits.
 - **AI Foundations** — the core one-day workshop, 8–20 people (delivered to Nationale Postcode Loterij, Banijay Benelux, Prosus, Hanzehogeschool)
 - **Copilot Training** — half day (Postcode Loterij, Envalior, Philips Healthcare)
 - **AI voor Developers** — 1–2 days hands-on, take-home repo (OLX Poland, iFood Brazil, Prosus)
