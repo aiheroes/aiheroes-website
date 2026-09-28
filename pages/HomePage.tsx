@@ -217,9 +217,9 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           <Services content={content.services} />
         </section>
 
-        {/* Standard (Light): what every build includes. Not a snap target so it reads
-            as the second half of the services story rather than a separate screen. */}
-        <section id="standard" className="w-full bg-white">
+        {/* Standard (Light): what every build includes. A full screen and snap target
+            like every other section, so the scroll rhythm stays one section per screen. */}
+        <section id="standard" className="md:snap-start md:min-h-screen w-full flex items-center bg-white">
           <Standard content={content.standard} />
         </section>
 

@@ -10,7 +10,7 @@ interface StandardProps {
 // rather than as products of their own.
 export const Standard: React.FC<StandardProps> = ({ content }) => {
   return (
-    <section className="w-full py-16 md:py-24 bg-white border-y border-stone-200">
+    <div className="w-full py-16 md:py-24 bg-white border-y border-stone-200">
       <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mb-10 md:mb-14">
           <h2 className="text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif text-brand-dark leading-tight mb-3">
@@ -29,6 +29,6 @@ export const Standard: React.FC<StandardProps> = ({ content }) => {
           ))}
         </ol>
       </div>
-    </section>
+    </div>
   );
 };
