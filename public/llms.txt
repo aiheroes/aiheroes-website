@@ -20,7 +20,7 @@ AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot
 - [Run it on your own terms](https://aiheroes.io/en/services/eu-consultancy): local models, European cloud, no US cloud dependency, AI Act built in
 - [How we work](https://aiheroes.io/en/about/approach): the start sprint, the AI Heroes standard, business case, compliance, training, handover
 - [Business case and scoping](https://aiheroes.io/en/services/consulting): a phase of every build; standalone advisory work also possible
-- [Training your team](https://aiheroes.io/en/services/training): part of every build; standalone in-company training from EUR 2,500 per day
+- [Training your team](https://aiheroes.io/en/services/training): part of every build; standalone in-company training from EUR 2,500 per half-day
 - [AI literacy training](https://aiheroes.io/en/services/ai-literacy-training): Article 4 of the EU AI Act, with certificate
 
 ## Begin hier (Nederlands)
@@ -32,7 +32,7 @@ AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot
 - [In eigen beheer draaien](https://aiheroes.io/nl/diensten/eu-consultancy): lokale modellen, Europese cloud, geen Amerikaanse cloud, AI Act ingebouwd
 - [Hoe we werken](https://aiheroes.io/nl/over-ons/aanpak): de startsprint, de AI Heroes-standaard, business case, compliance, training, overdracht
 - [Business case en scoping](https://aiheroes.io/nl/diensten/consultancy): een fase van elke bouw; los advieswerk kan ook
-- [Training van je team](https://aiheroes.io/nl/diensten/training): onderdeel van elke bouw; losse incompany training vanaf EUR 2.500 per dag
+- [Training van je team](https://aiheroes.io/nl/diensten/training): onderdeel van elke bouw; losse incompany training vanaf EUR 2.500 per dagdeel
 - [AI-geletterdheidstraining](https://aiheroes.io/nl/diensten/ai-geletterdheid-training): artikel 4 EU AI Act, met certificaat
 
 ## Company

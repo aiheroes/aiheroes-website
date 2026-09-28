@@ -197,7 +197,7 @@ Engels: zelfde vijf, vertaald. Titels in het Engels: "AI-first developer", "AI-f
 | Teams-blok (`departments`) | Drie afdelingen op fase | Blok heet "Hoe we werken" met drie kaarten: de startsprint · bouwen in sprints · de AI Heroes-standaard. Geen afdelingen. |
 | Perks | "Groei met ons mee: booming markt" | Vervangen door "Eigen bouw: je werkt met de mede-eigenaars, niet voor ze" |
 | Waarden | vier, blijven | Alleen "Echte impact" herschrijven: "Wat je bouwt, draait bij de klant. Je ziet het in productie en hoort wat het oplevert." |
-| Open sollicitatie | ontbreekt | Eén alinea onder de vacatures: "Herken je je in het verhaal, maar staat je rol er niet bij? Mail hello@aiheroes.io met wat je gebouwd hebt." |
+| Open sollicitatie | ontbreekt | Eén alinea onder de vacatures: "Herken je je in het verhaal, maar staat je rol er niet bij? Mail info@aiheroes.io met wat je gebouwd hebt." |
 
 Technisch: `departments` in `types.ts` en `constants.ts` verdwijnt of wordt `howWeWork`; `JobPosition.department` wordt `'bouw' | 'ontwerp' | 'compliance' | 'stage'` met bijbehorend `departmentLabel`. De detailpagina's blijven; het JobPosting-schema krijgt `employmentType` per vacature en geen `validThrough` (doorlopend). Filters en labels in `pages/nl/Vacatures.tsx` en `pages/en/Careers.tsx` volgen mee. `npm run check` is de poort.
 

@@ -37,7 +37,6 @@ export function verifyToken(token: string | null, sessionId: string): boolean {
 export function hashIp(request: Request): string {
   const ip =
     request.headers.get('x-real-ip') ?? // Vercel
-    request.headers.get('x-nf-client-connection-ip') ?? // Netlify (until decommissioned)
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
     'unknown';
   return createHmac('sha256', config.ipSalt).update(ip).digest('hex').slice(0, 16);
@@ -53,7 +52,6 @@ export function checkOrigin(request: Request): boolean {
       host === 'aiheroes.io' ||
       host.endsWith('.aiheroes.io') ||
       host.endsWith('.vercel.app') ||
-      host.endsWith('.netlify.app') ||
       host === 'localhost' ||
       host === '127.0.0.1'
     );

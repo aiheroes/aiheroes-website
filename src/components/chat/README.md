@@ -4,8 +4,8 @@ The AI Heroes website assistant (design: internal SDD, not in this repo). Map:
 
 - `src/components/chat/` — widget island (launcher + lazy panel, generative-UI cards,
   escalation form, localStorage continuity, Art. 50 disclosure).
-- `netlify/functions/` — `/api/chat` (streaming), `/api/warmup` (token + prewarm),
-  `/api/escalate`, `/api/feedback`. All pin region `fra`.
+- `api/` — Vercel functions: `/api/chat` (streaming), `/api/warmup` (token + prewarm),
+  `/api/escalate`, `/api/feedback`. Region `fra1` (see `vercel.json`).
 - `server/` — config, guards (HMAC token, quotas), counters/spend breaker, hybrid
   search over the bundled index, prompt, persistence, model routing.
 - `scripts/build-index/` — builds `server/index-data/index.json` from `dist/` after
@@ -19,7 +19,7 @@ The AI Heroes website assistant (design: internal SDD, not in this repo). Map:
 ```bash
 cp .env.example .env   # set GOOGLE_GENERATIVE_AI_API_KEY (AI Studio, paid tier)
 npm run build          # produces dist/ + the knowledge index (embeds if key present)
-netlify dev            # serves the site + functions on one port
+vercel dev             # serves the site + functions on one port
 ```
 
 Dev runs the production model (`gemini-3.7-flash`) via the Gemini API — full model
@@ -31,8 +31,8 @@ no transcripts, no notifications.
 
 ## Ship checklist (per SDD §13)
 
-1. `CHAT_TOKEN_SECRET` + `CHAT_IP_SALT` set in Netlify env.
+1. `CHAT_TOKEN_SECRET` + `CHAT_IP_SALT` set in Vercel env.
 2. Supabase EU project, `db/schema.sql` applied, URL + service key in env.
-3. Slack webhook in env.
+3. Rocket.Chat webhook (`CHAT_SLACK_WEBHOOK_URL`, posts to #website-chat on chat.aiheroes.io) in env.
 4. Production model: `CHAT_MODEL_PROVIDER=vertex` + GCP project vars (EU!).
 5. `PUBLIC_CHAT_ENABLED=true` only after the eval gate passes.

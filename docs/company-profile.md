@@ -2,7 +2,7 @@
 
 **Status:** canonical, shareable. Safe to commit, quote, and hand to partners.
 **Compiled:** 2026-07-29; **repositioned 2026-09-21** (see `docs/transformatieplan-website-2026-09-21.md`). Compiled from the website copy, offerings bible, press kit, brand/tone docs, pitch decks and internal meeting notes (Feb–Sep 2026). Confidential material (funding terms, salaries, margins, deal pricing, prospect names) is deliberately excluded.
-**Use it for:** grounding AI tools writing copy or proposals for AI Heroes, onboarding new team members/freelancers/partners, and as the source of truth for positioning. For platform-specific boilerplate intros (LinkedIn, press, grants), see the offerings bible (internal-only, at `aiheroes-internal/_local/offerings-bible.md`); for writing style rules, see the tone-of-voice doc in the AI Heroes Hub.
+**Use it for:** grounding AI tools writing copy or proposals for AI Heroes, onboarding new team members/freelancers/partners, and as the source of truth for positioning. For platform-specific boilerplate intros (LinkedIn, press, grants), see the offerings bible (internal-only, at `aiheroes-hub/_local/offerings-bible.md`); for writing style rules, see the tone-of-voice doc in the AI Heroes Hub.
 
 ---
 
@@ -13,7 +13,7 @@
 | Company | AI Heroes B.V. |
 | KvK / BTW | 42051968 / NL869486263B01 |
 | Address | Aarhusweg 4-16, 9723 JJ Groningen, Nederland |
-| Contact | hello@aiheroes.io · +31 50 200 3373 · aiheroes.io · linkedin.com/company/aiheroes |
+| Contact | info@aiheroes.io · +31 50 200 3373 · aiheroes.io · linkedin.com/company/aiheroes |
 | What it is | Builds software and AI for organisations and puts it into production; business case, compliance and training included |
 | Tagline | NL: "Van ambitie naar implementatie" · EN: "From ambition to implementation" (replaces "AI werkt als je weet hoe" everywhere, incl. the LinkedIn banner) |
 | Brand active since | 2019 (see §2); current company relaunched the brand in 2026 |
@@ -86,7 +86,7 @@ Operating principles visible in how the company actually runs:
 **The AI Heroes standard (included in every build, never sold separately as the reason to call):**
 - Business case first (Frans): the former readiness scan, process analysis, business case analysis and roadmap. Standalone advisory work still exists on `/nl/diensten/consultancy` for organisations that do not yet have a concrete system; no roadmap price is published, only the start sprint has a price.
 - Compliance from the drawing board (David): AI Act classification, logging, human oversight, hosting choice, AI policy.
-- Your people trained on it (Jan): training on the delivered system, on the work floor; meets Article 4. Standalone in-company training (AI Foundations, Copilot, AI for Developers, Responsible AI use, AI & disinformation, AI literacy with certificate, digital sovereignty session) stays available on `/nl/diensten/training`, from €2,500 per day, with an intake call as before, but is out of the menu and never on the homepage. Lower rates for education and non-profit.
+- Your people trained on it (Jan): training on the delivered system, on the work floor; meets Article 4. Standalone in-company training (AI Foundations, Copilot, AI for Developers, Responsible AI use, AI & disinformation, AI literacy with certificate, digital sovereignty session) stays available on `/nl/diensten/training`, from €2,500 per half-day (dagdeel), with an intake call as before, but is out of the menu and never on the homepage. Lower rates for education and non-profit.
 - Handover without lock-in: source code, documentation and data model belong to the client; management and further development optional.
 
 **Process promise:** reply within 24 hours, usually with a start sprint proposal.
@@ -162,7 +162,7 @@ Internal role logic follows the path of one build: Frans owns the business case 
 - Core sentence: see §1. Slogan: "Van ambitie naar implementatie" / "From ambition to implementation".
 - Structure of every page and post: what we build for you → how we start (the start sprint) → where the proof is.
 - The only call to action: "Plan een startsprint" / "Plan a start sprint".
-- Prices to cite: start sprint from €8,000 (one week, fixed); builds from €15,000; standalone training from €2,500 per day (never above the fold, never in a hero). No roadmap or scan price.
+- Prices to cite: start sprint from €8,000 (one week, fixed); builds from €15,000; standalone training from €2,500 per half-day (dagdeel) (never above the fold, never in a hero). No roadmap or scan price.
 - Proof to cite first: Kwakkel BV (prototype in 6 days), INQ22 (live web shop), Strive (SaaS replaced), IC Commerce, own stack. Earlier cases (Medux, Trabu, OLX, InnoEnergy) only as "eerdere cases".
 - Groningen is the AI capital of Europe — present tense. "AI Fabriek (AI Factory)" at first mention in English.
 - Dates: Dutch AI Act supervision has been operational since 2 August 2026 (past tense).

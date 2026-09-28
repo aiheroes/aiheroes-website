@@ -13,7 +13,7 @@ import type { LanguageModel } from 'ai';
 import { config } from './config.js';
 
 /**
- * Service-account credentials for Vertex from env (Netlify has no key file).
+ * Service-account credentials for Vertex from env (serverless functions have no key file).
  * GOOGLE_VERTEX_CREDENTIALS_B64 holds the base64-encoded service-account JSON —
  * one shell-safe token, no PEM quoting hazards.
  */

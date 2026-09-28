@@ -348,6 +348,8 @@ On 2026-06-01 both AI Heroes repos were transferred from the personal GitHub acc
 
 **Decision:** keep `aiheroes-internal` public for now; when private internal tools are added later, upgrade to **Vercel Pro** (≈$20/seat/mo) to make it private again rather than relying on Hobby. Secret scan before going public was clean (no secrets/keys/data in tree or history; secrets live in Vercel env vars).
 
+**Update 2026-08:** superseded — the repo and its Vercel project were renamed to **`aiheroes-hub`** (local folder renamed 2026-08-17 to match) and the repo is **private** again: it now contains client data and internal tooling and must NOT be made public.
+
 **Ownership nuance:** both the Netlify "AI Heroes" team (slug `fransjorden`) and the Vercel "AI Heroes" team (`frans-projects-66bf79d8`, Hobby) are actually **personal** accounts renamed, not real shared company teams. GitHub is now properly org-owned, but the deploys still run under Frans's personal hosting logins. Future cleanup option: create real company-owned Netlify Team / Vercel Pro team and transfer the sites in (preserves domain + site/project IDs + env vars).
 
 GitHub Apps installed on the org: `netlify`, `vercel`, `claude` (all "all repos"). See [[reference-dev-port-conflict]] for the sibling `ivosw` project.
@@ -423,7 +425,7 @@ How it's wired now:
 - Luma event id: `evt-bgWr4oUXGdNMpms` (public URL `https://luma.com/event/evt-bgWr4oUXGdNMpms`), stored as `LUMA_EVENT_ID`.
 - **Hero triggers** (updated 2026-05-30): registration is opened by **plain text links**, not a pill button. Both the inline "AI Salon Groningen" link in the lead sentence AND the standalone CTA below it (`copy.cta` = "Register now (free) →" / "Nu aanmelden (gratis) →") are now `<LumaLink>` components sharing `HERO_LINK_CLASS` (white, bold, hairline underline). The inline link used to open external aisalon.ai (`lead.linkHref`, now removed) — user wanted it to open the Luma modal instead, identical to the register trigger. `LumaLink` sets `data-luma-action="checkout"`; `useLumaCheckout()` injects `https://embed.lu.ma/checkout-button.js` once (event-delegation, survives SPA re-mounts). The old red-pill `LumaButton` is gone.
 - **RSVP section**: the whole Luma event card embedded via iframe `https://lu.ma/embed/event/${LUMA_EVENT_ID}/simple`. iframe height is fixed per-breakpoint to the measured content height so the **default card never inner-scrolls** (`h-[1120px] sm:h-[980px] md:h-[700px]` — measured ~1069/952/673px at 327/540/1104px wide). The modal opened by the links CAN scroll (extra questions) — that's fine, only the always-visible embed must not.
-- Agenda footnote + pitch/sponsor CTAs now point to salon@aiheroes.io (old "check the box on the form" copy is gone).
+- Agenda footnote + pitch/sponsor/speaker CTAs point to salon@aiheroes.io, matching Luma. salon@ is a Google Group (anyone on the web can post) since 2026-09-24; before that the CTAs used frans@ and briefly info@.
 
 No CSP headers in `netlify.toml` / `index.html`, so the third-party script + iframe load fine. Verified live via Playwright screenshot 2026-05-29. See [[project-salon-sponsors]] and [[design-inspiration]].
 

@@ -5,7 +5,7 @@
 //   [VERCEL_BYPASS=<automation-bypass-secret>] node scripts/check-parity.mjs <target-base> [reference-base]
 //   e.g. node scripts/check-parity.mjs https://aiheroes-website-xyz.vercel.app https://aiheroes.io
 //
-// Checks: (1) every netlify.toml redirect rule, (2) old-sitemap fixture, (3) live
+// Checks: (1) every vercel.json redirect/410 rule, (2) old-sitemap fixture, (3) live
 // sitemap URLs + canonical/hreflang parity vs the reference, (4) URL shape 308s,
 // (5) 404/410, (6) headers + static files, (7) no platform leakage, (8) chat API.
 
@@ -45,21 +45,20 @@ if (bypass) {
   };
 }
 
-// ---------- (1) redirect matrix from netlify.toml ----------
-const toml = readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
-const rules = [];
-const re = /\[\[redirects\]\]([\s\S]*?)(?=\n\[\[|\n\[[a-z]|$)/g;
-let m;
-while ((m = re.exec(toml))) {
-  const body = m[1];
-  const from = body.match(/^\s*from\s*=\s*"([^"]*)"/m)?.[1];
-  const to = body.match(/^\s*to\s*=\s*"([^"]*)"/m)?.[1];
-  const status = Number(body.match(/^\s*status\s*=\s*(\d+)/m)?.[1] ?? 301);
-  if (from && to) rules.push({ from, to, status });
-}
+// ---------- (1) redirect matrix from vercel.json ----------
+// Redirects keep their status; rewrites to /api/gone answer 410. Wildcard segments
+// (:path*, (.*)) are sampled with a fixed path so source and destination line up.
+const vercel = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+const sample = (p) => p.replace(/:path\*$/, 'sample-page').replace(/\(\.\*\)$/, 'sample');
+const rules = [
+  ...vercel.redirects.map((r) => ({ from: sample(r.source), to: sample(r.destination), status: r.statusCode ?? 308 })),
+  ...vercel.rewrites
+    .filter((r) => r.destination === '/api/gone')
+    .map((r) => ({ from: sample(r.source), to: '', status: 410 })),
+];
 for (const rule of rules) {
-  const samplePath = rule.from.replace(/\/\*$/, '/sample-page').replace(/\*$/, 'sample');
-  const expectedLoc = rule.to.replace(':splat', 'sample-page');
+  const samplePath = rule.from;
+  const expectedLoc = rule.to;
   const res = await head(target + samplePath);
   if (rule.status === 410) {
     check(res.status === 410, `410 ${samplePath}`, `got ${res.status}`);

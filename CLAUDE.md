@@ -19,7 +19,7 @@ No unit-test framework is configured; `npm run check` is the gate.
 
 ## Architecture
 
-**Tech Stack:** Astro 5 (static output / SSG), React 19 islands via `@astrojs/react`, Tailwind CSS 4 via `@tailwindcss/vite`, MDX content collections via `@astrojs/mdx`, `@astrojs/sitemap`, `@astrojs/netlify`.
+**Tech Stack:** Astro 5 (static output / SSG), React 19 islands via `@astrojs/react`, Tailwind CSS 4 via `@tailwindcss/vite`, MDX content collections via `@astrojs/mdx`, `@astrojs/sitemap`. Serverless functions live in `api/` (Vercel).
 
 **Deployment:** Vercel, static pages plus a few functions in `api/`. `astro.config.mjs` sets `site: 'https://aiheroes.io'`, `trailingSlash: 'never'`, and `build.format: 'file'` (emits `page.html`, not `page/index.html`, so the host serves no-slash URLs with a 200 instead of 301ing to a trailing slash — this matches the no-slash canonicals/sitemap/hreflang).
 
@@ -63,7 +63,7 @@ The islands reuse legacy React components via `src/lib/react-router-shim.tsx`, a
 
 ## Preview workflow
 
-Hosting moved from Netlify to **Vercel** (team `ai-heroes`, project `aiheroes-website`, functions in `api/`
+Hosting is **Vercel** (team `ai-heroes`, project `aiheroes-website`, functions in `api/`
 pinned to `fra1`; see `vercel.json`). Deploys run through the org's GitHub Actions workflow
 (`.github/workflows/vercel.yml`: `npm run check` gates every deploy; PRs get preview deployments).
 Manual previews from a local checkout:
@@ -74,5 +74,6 @@ vercel deploy --prod     # production — only from master, only after the parit
 node scripts/check-parity.mjs <preview-url>   # SEO/behaviour parity vs https://aiheroes.io
 ```
 
-Forms (`/api/contact`, `/api/apply`) and chat escalation mail go through Resend from `send.aiheroes.io`.
-`netlify.toml` and `netlify/` are kept only until the post-cutover rollback window closes.
+Forms (`/api/contact`, `/api/apply`) and chat escalation mail go through Resend from `send.aiheroes.io`
+to `MAIL_TO` (default `info@aiheroes.io`, see `server/config.ts`). Redirects, 410s and headers live in
+`vercel.json`, the single source of truth. Netlify is fully retired (2026-09-24).

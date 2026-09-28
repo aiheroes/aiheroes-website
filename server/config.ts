@@ -59,12 +59,10 @@ export const config = {
     process.env.CHAT_SUPABASE_SERVICE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
   bookingUrl: process.env.CHAT_BOOKING_URL ?? 'https://calendar.app.google/GV4mwWWbdzJJJBfW9', // public booking link (same default as chat-flags.ts)
   salonLumaUrl: 'https://luma.com/AI-Salon-Groningen-September-2026',
-  // Netlify exposes URL; Vercel exposes VERCEL_PROJECT_PRODUCTION_URL (host only).
-  siteOrigin:
-    process.env.URL ??
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : 'https://aiheroes.io'),
+  // Vercel exposes VERCEL_PROJECT_PRODUCTION_URL (host only).
+  siteOrigin: process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'https://aiheroes.io',
 
   // Transactional mail (Resend, region eu-west-1). The verified domain is the root
   // aiheroes.io (Resend's return-path records live on send.aiheroes.io, so root
@@ -72,7 +70,7 @@ export const config = {
   mail: {
     apiKey: process.env.RESEND_API_KEY ?? '',
     from: process.env.MAIL_FROM ?? 'AI Heroes <noreply@aiheroes.io>',
-    to: process.env.MAIL_TO ?? 'hello@aiheroes.io',
+    to: process.env.MAIL_TO ?? 'info@aiheroes.io',
   },
 
   // Render-layer link allowlist (D9 layer 7). The widget refuses to link anything else.
