@@ -4,7 +4,7 @@ Datum: 22 september 2026
 Status: goedgekeurd in interview, nog niet uitgevoerd
 Hoort bij: `docs/transformatieplan-website-2026-09-21.md` (de positionering) en `docs/company-profile.md` (het profiel)
 
-De site vertelt sinds 21 september één verhaal: wij bouwen software en AI die in productie draait, met de startsprint als eerste stap. Drie dingen lopen daar nog niet in mee, en ze hangen aan elkaar vast:
+De site vertelt sinds 21 september één verhaal: wij bouwen AI-toepassingen die je team elke dag gebruikt, met de startsprint als eerste stap. Drie dingen lopen daar nog niet in mee, en ze hangen aan elkaar vast:
 
 1. **De domeinen van Frans, David en Jan.** De site verdeelt het traject in drie fasen en hangt elke fase aan één persoon. Dat is niet hoe jullie werken: iedereen doet alles. De bezoeker die een afspraak boekt, kiest nu uit drie agenda's op basis van een verdeling die niet bestaat. Die afspraak is de eerste conversie, dus dit is geen detail.
 2. **De vacatures.** Twee van de vier zijn er om groter te lijken dan jullie zijn. Alle vier vertellen het oude verhaal van training, consultancy en development. Jullie willen wél vacatures die de richting laten zien: AI-first developers, en op termijn mensen die jullie kunnen detacheren.
@@ -172,7 +172,7 @@ Verwijderd: `ai-engineer` en `ai-trainer`. Redirects in `vercel.json`: `/nl/vaca
 
 Elke vacature heeft dezelfde opbouw: wat je bouwt (met een echte case als voorbeeld), hoe we werken (startsprint, sprints, de standaard), wat we van je vragen, wat je krijgt. Nergens een startdatum, nergens groeipraat. De openingszin van elke vacature is dezelfde:
 
-> AI Heroes bouwt software en AI die in productie draait. We zoeken doorlopend mensen die dat met ons willen doen; we nemen aan als de juiste persoon zich meldt.
+> AI Heroes bouwt AI-toepassingen die teams elke dag gebruiken. We zoeken doorlopend mensen die dat met ons willen doen; we nemen aan als de juiste persoon zich meldt.
 
 **1. AI-first developer.** Bouwt met AI-tooling als standaard werkwijze, niet als extraatje. Van prototype in de startsprint tot systeem in productie, gekoppeld aan ERP, CRM en de rest van het landschap. Werkt bij ons of, bij detachering, in het team van een klant. Voorbeelden: de administratie-automatisering voor Kwakkel BV, de webwinkel van INQ22, de vervanging bij Strive. Vraagt: TypeScript of Python, ervaring met LLM-integraties en agents, kunnen uitleggen wat je bouwt aan iemand zonder techniek. Salarisindicatie: **[ophalen]**.
 
@@ -190,7 +190,7 @@ Engels: zelfde vijf, vertaald. Titels in het Engels: "AI-first developer", "AI-f
 
 | Onderdeel | Nu | Wordt |
 |---|---|---|
-| Hero | "Werken bij AI Heroes" / "Wij groeien. Sluit je aan bij een team dat..." | "Werken bij AI Heroes" / "Bouw mee aan software en AI die bij klanten in productie draait. Vanuit Groningen, voor heel Nederland en Europa." |
+| Hero | "Werken bij AI Heroes" / "Wij groeien. Sluit je aan bij een team dat..." | "Werken bij AI Heroes" / "Bouw mee aan AI-toepassingen die klanten elke dag gebruiken. Vanuit Groningen, voor heel Nederland en Europa." |
 | Intro (`growth.text`) | "Ons team groeit mee met de vraag..." | "Wie hier werkt, bouwt mee aan het hele traject: de startsprint, de bouw in sprints, de overdracht. Je ziet je werk in productie bij de klant, en je hoort wat ervan terechtkomt." |
 | Stats | 50+ · 1000+ getraind · 3 oprichters · 2019 | `6 dagen` van vraag naar prototype (Kwakkel BV) · `5` cases van het huidige team · `3` mede-eigenaars · `Groningen` AI-hoofdstad van Europa |
 | trustedBy | Kwakkel BV, INQ22, UMCG, Tweede Kamer, Postcode Loterij, Envalior | Kwakkel BV, INQ22, Strive, IC Commerce, UMCG (bewijsregel: huidig team vooraan) |
@@ -248,14 +248,14 @@ Alles hieronder is tekst om te plakken. Plaatsen doen jullie; de teksten komen o
 ### 6.1 Bedrijfspagina
 
 **Tagline** (maximaal 120 tekens):
-> Software en AI die in productie draait. Van ambitie tot implementatie. Groningen.
+> AI-toepassingen die je team elke dag gebruikt. Van ambitie tot implementatie. Groningen.
 
 **Branche:** Softwareontwikkeling.
 
 **Knop:** "Meer informatie" → `https://aiheroes.io/nl/startsprint`.
 
 **Over ons** (maximaal 2.000 tekens; concept):
-> AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan.
+> AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan.
 >
 > Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien op eigen servers of Europese hosting. Heb je zelf developers, dan werkt een AI-first developer van ons mee in jouw team.
 >
@@ -277,7 +277,7 @@ Weg: alles met workshop, training (behalve artikel 4), consultancy, strategie, c
 Zelfde opbouw voor alle drie, één accent verschilt.
 
 **Headline** (maximaal 220 tekens):
-> Mede-eigenaar AI Heroes | We bouwen software en AI die in productie draait | Startsprint: in één week van vraag naar werkend prototype
+> Mede-eigenaar AI Heroes | We bouwen AI-toepassingen die teams elke dag gebruiken | Startsprint: in één week van vraag naar werkend prototype
 
 **Info** (concept, per persoon de eerste alinea eigen, de rest gelijk):
 
@@ -291,7 +291,7 @@ Jan:
 > Ik bouwde vier jaar het Smart Lab in het Groninger Forum op en trainde daar duizenden mensen in nieuwe technologie. Nu zorg ik dat het team dat met onze software gaat werken er op dag één mee overweg kan.
 
 Gedeeld vervolg:
-> Met David en Jan / Frans en Jan / Frans en David ben ik mede-eigenaar van AI Heroes. We bouwen software en AI voor organisaties die verder willen dan een pilot, en we zetten het in productie. Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De eerste stap is altijd een startsprint van één week.
+> Met David en Jan / Frans en Jan / Frans en David ben ik mede-eigenaar van AI Heroes. We bouwen AI-toepassingen die teams elke dag gebruiken, voor organisaties die verder willen dan een pilot. Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De eerste stap is altijd een startsprint van één week.
 >
 > Wil je weten of jouw idee kan, wat het kost en hoe het eruitziet? Plan een kennismaking via aiheroes.io/nl/startsprint.
 
@@ -335,7 +335,7 @@ Ook dit als los bestand in `docs/profielen/google-bedrijfsprofiel.md`.
 | Berichten | Eén per maand. Eerste: de startsprint (zelfde tekst als de vastgepinde LinkedIn-post, ingekort). |
 
 **Beschrijving** (concept, 640 tekens):
-> AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien op Europese hosting. De eerste stap is de startsprint: één week, vast bedrag, werkend prototype of bouwplan plus business case. Gevestigd aan de Aarhusweg in Groningen, AI-hoofdstad van Europa. We werken door heel Nederland, op locatie en op afstand.
+> AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien op Europese hosting. De eerste stap is de startsprint: één week, vast bedrag, werkend prototype of bouwplan plus business case. Gevestigd aan de Aarhusweg in Groningen, AI-hoofdstad van Europa. We werken door heel Nederland, op locatie en op afstand.
 
 ### 7.1 Reviews
 

@@ -14,7 +14,7 @@
 | KvK / BTW | 42051968 / NL869486263B01 |
 | Address | Aarhusweg 4-16, 9723 JJ Groningen, Nederland |
 | Contact | info@aiheroes.io · +31 50 200 3373 · aiheroes.io · linkedin.com/company/aiheroes |
-| What it is | Builds software and AI for organisations and puts it into production; business case, compliance and training included |
+| What it is | Builds AI tools your team uses every day (since 2026-09-29; was "software and AI that runs in production"); business case, compliance and training included |
 | Tagline | NL: "Van ambitie tot implementatie" · EN: "From ambition to implementation" (replaces "AI werkt als je weet hoe" everywhere, incl. the LinkedIn banner) |
 | Brand active since | 2019 (see §2); current company relaunched the brand in 2026 |
 | Team | Three co-founders, each carrying one phase of the same path (business case & scoping, build & compliance, adoption & training) + industry advisor + flexible shell of freelance trainers and a dev-pool |
@@ -22,11 +22,11 @@
 | Languages | Dutch (primary), English (international clients and AI Salon) |
 | Track record | 50+ organisations helped since 2019 (brand) · 1,000+ professionals trained · prototype in 6 days (Kwakkel BV, current team) · current-team cases: Kwakkel BV, INQ22, Strive, IC Commerce, own stack |
 
-**Kernzin (canonical, NL):** "AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
+**Kernzin (canonical, NL):** "AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
 
-**Core sentence (EN):** "AI Heroes builds software and AI for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it."
+**Core sentence (EN):** "AI Heroes builds AI tools your team uses every day, for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it."
 
-Company descriptor: **a company that builds software and AI** (in a list: "AI-bureau dat bouwt"). Never "full-service AI agency", never "AI consultancy", never "drie pijlers". Those terms were retired on 2026-09-21.
+Company descriptor: **a company that builds AI tools teams use every day** (changed 2026-09-29; "in productie" is too technical for visitor copy) (in a list: "AI-bureau dat bouwt"). Never "full-service AI agency", never "AI consultancy", never "drie pijlers". Those terms were retired on 2026-09-21.
 
 *(Note: the offerings bible referenced in this document lives outside this public repo, in the internal workspace, because it contains commercial terms.)*
 
@@ -40,7 +40,7 @@ The founding observation, unchanged since the relaunch: *"The AI market is fragm
 
 One promise, three ways in, one front door, one included layer. Used consistently everywhere (site, LinkedIn, proposals, the chat assistant's system prompt, `public/llms.txt`).
 
-1. **The promise: van ambitie tot implementatie.** We build software and AI and put it into production. Software without AI counts too (INQ22's web shop): AI is the tool, not the goal.
+1. **The promise: van ambitie tot implementatie.** We build AI tools your team uses every day. Software without AI counts too (INQ22's web shop): AI is the tool, not the goal.
 2. **Three ways in** (the questions clients actually arrive with):
    - **Iets nieuws bouwen / Build something new** — "Kunnen jullie dit voor ons bouwen?" Proof: Kwakkel BV, INQ22.
    - **Vervangen wat niet meer voldoet / Replace what no longer fits** — "We zijn ons huidige pakket zat." Proof: Strive, IC Commerce.
@@ -158,7 +158,7 @@ Internal role logic follows the path of one build: Frans owns the business case 
 
 ## 12. Quick reference for writers
 
-- Company descriptor: *a company that builds software and AI and puts it into production* (never "full-service AI agency", never "consultancy", never "drie pijlers").
+- Company descriptor: *a company that builds AI tools teams use every day* (never "full-service AI agency", never "consultancy", never "drie pijlers").
 - Core sentence: see §1. Slogan: "Van ambitie tot implementatie" / "From ambition to implementation".
 - Structure of every page and post: what we build for you → how we start (the start sprint) → where the proof is.
 - The only call to action: "Plan een startsprint" / "Plan a start sprint".

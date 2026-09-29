@@ -56,7 +56,7 @@ export const PersNL: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Vanuit Groningen, AI-hoofdstad van Europa.
+                  AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Vanuit Groningen, AI-hoofdstad van Europa.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
                   Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De eerste stap is altijd de startsprint: één week, vast bedrag, daarna weet je of het kan, wat het kost en hoe het eruitziet.
@@ -71,7 +71,7 @@ export const PersNL: React.FC = () => {
                   <li><strong>Bezoekadres:</strong> Aarhusweg 4-16, 9723 JJ Groningen</li>
                   <li><strong>KvK:</strong> 42051968</li>
                   <li><strong>BTW:</strong> NL869486263B01</li>
-                  <li><strong>Focus:</strong> Software en AI die in productie draait</li>
+                  <li><strong>Focus:</strong> AI-toepassingen die je team elke dag gebruikt</li>
                   <li><strong>Contact:</strong> info@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/nl/over-ons/team" className="text-brand-blue hover:underline">Drie oprichters: business case, bouw en adoptie</Link></li>
                 </ul>
@@ -207,7 +207,7 @@ export const PersNL: React.FC = () => {
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Iets nieuws bouwen</p>
                   <p className="text-stone-700 font-medium">
-                    Van idee naar systeem in productie. In zes dagen een werkend prototype.
+                    Van idee tot iets dat je team elke dag gebruikt. In zes dagen een werkend prototype.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">

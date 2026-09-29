@@ -8,7 +8,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   taxID: '42051968',
   vatID: 'NL869486263B01',
   description:
-    'AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Ontwerpen, bouwen en implementeren, met een sluitende business case, compliance vanaf de tekentafel en training van het team dat ermee werkt. Vanuit Groningen, voor heel Europa.',
+    'AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Ontwerpen, bouwen en implementeren, met een sluitende business case, compliance vanaf de tekentafel en training van het team dat ermee werkt. Vanuit Groningen, voor heel Europa.',
   url: 'https://aiheroes.io',
   logo: 'https://aiheroes.io/logo.svg',
   image: 'https://aiheroes.io/og-image.png',
@@ -51,7 +51,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
         '@type': 'OfferCatalog',
         name: 'Iets nieuws bouwen',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maatwerksoftware en AI', description: 'Assistenten, werkstromen, spraak-AI, interne tools en klantportalen, van prototype tot systeem in productie', url: 'https://aiheroes.io/nl/diensten/software' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maatwerksoftware en AI', description: 'Assistenten, werkstromen, spraak-AI, interne tools en klantportalen, van prototype tot werkend systeem', url: 'https://aiheroes.io/nl/diensten/software' } },
         ],
       },
       {

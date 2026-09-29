@@ -76,7 +76,7 @@ netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
 # AI Heroes Website — Project Memory
 
 ## Business Context (repositioned 2026-09-21)
-- AI Heroes **builds software and AI for organisations and puts it into production**. Never "full-service AI agency", never "consultancy", never "drie pijlers" (all retired 2026-09-21; see `docs/company-profile.md` §3 and `docs/transformatieplan-website-2026-09-21.md`).
+- AI Heroes **builds AI tools your team uses every day** (NL: "Wij bouwen AI-toepassingen die je team elke dag gebruikt"; changed 2026-09-29 from "software en AI die in productie draait", which Frans found odd and too technical; keep "in productie" out of visitor copy). Never "full-service AI agency", never "consultancy", never "drie pijlers" (all retired 2026-09-21; see `docs/company-profile.md` §3 and `docs/transformatieplan-website-2026-09-21.md`).
 - Legal entity is **AI Heroes B.V.** (KvK 42051968, BTW NL869486263B01) — see [Legal entity](project_legal_entity.md).
 - Three **Co-Founders**, each carrying one phase of the same path: Frans Hoorn (business case & scoping), David Homan (build & compliance), Jan Brusse (adoption & training). The former pillar mapping (Consulting/Training/Software) is retired.
 - Based in Groningen — positioned as "AI-hoofdstad van Europa" / "AI Capital of Europe" (present tense, no hedging). Office address **Aarhusweg 4-16, 9723 JJ Groningen** is published on legal pages, footer, press kits and JSON-LD.
@@ -84,7 +84,7 @@ netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
 - European by default: data sovereignty, EU AI Act compliance, no vendor lock-in; the site's own assistant runs on EU infrastructure.
 
 ## Core Messaging (updated 2026-09-21)
-1. **Kernzin:** "AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
+1. **Kernzin:** "AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
 2. **Three ways in:** Iets nieuws bouwen (`/nl/diensten/software`) · Vervangen wat niet meer voldoet (`/nl/diensten/software-vervangen`) · In eigen beheer draaien (`/nl/diensten/eu-consultancy`).
 3. **One front door:** de startsprint (`/nl/startsprint`): one week, fixed fee from €8,000, working prototype or build plan plus business case. The only CTA on the site is "Plan een startsprint".
 4. **The included layer:** de AI Heroes-standaard ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board · your people trained on it · not tied to one AI vendor (model-agnostic, fully documented; source code stays with AI Heroes by default, never claim the client owns it). Training and consulting are phases of a build, kept as pages (`/nl/diensten/training`, `/nl/diensten/consultancy`) but out of the menu and never on the homepage.

@@ -56,7 +56,7 @@ export const PressEN: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  AI Heroes builds software and AI for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it. From Groningen, AI Capital of Europe.
+                  AI Heroes builds AI tools your team uses every day, for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it. From Groningen, AI Capital of Europe.
                 </p>
                 <p className="text-stone-600 leading-relaxed">
                   Three ways in: build something new, replace what no longer fits, or run AI on your own terms. The first step is always the start sprint: one week, fixed fee, after which you know whether it can be done, what it costs and what it looks like.
@@ -71,7 +71,7 @@ export const PressEN: React.FC = () => {
                   <li><strong>Visiting address:</strong> Aarhusweg 4-16, 9723 JJ Groningen</li>
                   <li><strong>KvK (CoC):</strong> 42051968</li>
                   <li><strong>VAT:</strong> NL869486263B01</li>
-                  <li><strong>Focus:</strong> Software and AI that runs in production</li>
+                  <li><strong>Focus:</strong> AI tools your team uses every day</li>
                   <li><strong>Contact:</strong> info@aiheroes.io · 050-200 3373</li>
                   <li><strong>Team:</strong> <Link to="/en/about/team" className="text-brand-blue hover:underline">Three founders: business case, build and adoption</Link></li>
                 </ul>
@@ -207,7 +207,7 @@ export const PressEN: React.FC = () => {
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Build something new</p>
                   <p className="text-stone-700 font-medium">
-                    From idea to system in production. A working prototype in six days.
+                    From idea to something your team uses every day. A working prototype in six days.
                   </p>
                 </div>
                 <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">

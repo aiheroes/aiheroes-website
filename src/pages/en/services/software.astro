@@ -18,7 +18,7 @@ const builds = [
 const method = [
   { title: 'Start sprint', eyebrow: 'Week 1', body: 'One week, fixed fee. Intake, prototype on your data, demo and the business case on one page. Then you decide whether we continue.', href: '/en/start-sprint', hrefLabel: 'More about the start sprint' },
   { title: 'Build in sprints', eyebrow: 'Weeks 2 to 12', body: 'Short sprints with a demo at the end of each sprint, so you always see where we are. Compliance is in the design from the drawing board: AI Act classification, logging, human oversight and hosting.' },
-  { title: 'In production and handed over', eyebrow: 'Delivery', body: 'The system runs, connected to your landscape. The team that works with it has been trained on it. Everything is documented.' },
+  { title: 'In use and handed over', eyebrow: 'Delivery', body: 'The system runs, connected to your landscape. The team that works with it has been trained on it. Everything is documented.' },
 ];
 
 const stats = [
@@ -45,7 +45,7 @@ const related = [
 
 const faq = [
   { q: 'What does it cost to have software or AI built?', a: 'The start sprint costs from €8,000 and takes one week. A custom build after that starts from €15,000 and runs to well over €100,000 for large systems. At the end of the start sprint you know what your build costs, what it returns and when it pays back.' },
-  { q: 'How fast is there something to see?', a: 'In the start sprint there is a working prototype on your data within a week. At Kwakkel BV the prototype for the administrative automation was there after six days. A production system follows in sprints of two weeks.' },
+  { q: 'How fast is there something to see?', a: 'In the start sprint there is a working prototype on your data within a week. At Kwakkel BV the prototype for the administrative automation was there after six days. The complete system follows in sprints of two weeks.' },
   { q: 'Do you also build software without AI?', a: 'Yes. INQ22 got a custom web shop that runs live. We build software; we use AI where it adds value and leave it out where it does not.' },
   { q: 'Do you work together with our own development team?', a: 'Yes, in three ways: we build independently, we strengthen your team with a tech lead and developers, or a hybrid of the two. Every delivery includes documentation and training, so your people can carry on independently.' },
   { q: 'Will we be tied to one AI vendor?', a: 'No. We build model-agnostic, with open standards where possible and European hosting where it matters. If another model becomes better or cheaper, you switch without rebuilding.' },
@@ -63,7 +63,7 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Build something new: custom software and AI',
   serviceType: 'Custom software and AI development',
-  description: 'Assistants, workflows, internal tools, customer portals, web applications and document processing. From prototype in six days to system in production, with business case, compliance and training included.',
+  description: 'Assistants, workflows, internal tools, customer portals, web applications and document processing. From prototype in six days to working system, with business case, compliance and training included.',
   provider: { '@id': 'https://aiheroes.io/#organization' },
   areaServed: { '@type': 'Place', name: 'European Union' },
   availableLanguage: ['Dutch', 'English'],
@@ -75,8 +75,8 @@ const serviceSchema = {
 <SubpageLayout
   lang="en"
   title="Build something new"
-  subtitle="An assistant, a workflow or a tool you are missing today. From prototype in six days to system in production, built with your team and connected to your landscape."
-  seoTitle="Have software and AI built: from prototype in 6 days to production"
+  subtitle="An assistant, a workflow or a tool you are missing today. From prototype in six days to working system, built with your team and connected to your landscape."
+  seoTitle="Have software and AI built: a working prototype in 6 days"
   seoDescription="Have something new built by AI Heroes: assistants, workflows, internal tools, web applications and document processing. Start sprint in one week, custom builds from €15,000. Business case, compliance and training included."
   accentColor="red"
   badge="Build something new"
@@ -88,7 +88,7 @@ const serviceSchema = {
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“Can you build this for us?”</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      There is a process that takes too much manual work, an idea for an assistant, a tool the team has been missing for years. We build it: first a prototype on your data in one week, then on in sprints until it runs in production.
+      There is a process that takes too much manual work, an idea for an assistant, a tool the team has been missing for years. We build it: first a prototype on your data in one week, then on in sprints until it is finished and your team works with it.
     </p>
     <p class="text-stone-600 leading-relaxed">With AI where it adds value, and without it where it does not. For organisations that know what they want to build and have an owner who can decide.</p>
     <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />

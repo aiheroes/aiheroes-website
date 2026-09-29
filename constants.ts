@@ -7,7 +7,7 @@ export const CONTENT: Record<Language, Content> = {
         label: "Wat we bouwen",
         href: "/nl/diensten",
         children: [
-          { label: "Iets nieuws bouwen", href: "/nl/diensten/software", description: "Van idee naar systeem in productie" },
+          { label: "Iets nieuws bouwen", href: "/nl/diensten/software", description: "Van idee tot iets dat je team elke dag gebruikt" },
           { label: "Vervangen wat niet meer voldoet", href: "/nl/diensten/software-vervangen", description: "Verouderde of te dure software eruit, iets dat past ervoor in de plaats" },
           { label: "In eigen beheer draaien", href: "/nl/diensten/eu-consultancy", description: "Op je eigen servers of bij een Europese partij" }
         ]
@@ -71,7 +71,7 @@ export const CONTENT: Record<Language, Content> = {
         {
           label: "Van A tot I",
           headline: "Van <red>ambitie</red> tot <blue>implementatie</blue>",
-          subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is. Wij bouwen het en zetten het in productie.",
+          subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is. Wij bouwen het, tot je team er elke dag mee werkt.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero/summit.webp"
@@ -79,7 +79,7 @@ export const CONTENT: Record<Language, Content> = {
         {
           label: "Bouwen",
           headline: "In <red>zes dagen</red> een <blue>werkend prototype</blue>",
-          subhead: "Een assistent, een werkstroom of een tool die je nu mist. Daarna bouwen we door tot het in productie draait.",
+          subhead: "Een assistent, een werkstroom of een tool die je nu mist. Daarna bouwen we door tot het af is en werkt.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero-bg.webp"
@@ -111,7 +111,7 @@ export const CONTENT: Record<Language, Content> = {
           entry: "nieuw",
           tag: "Nieuw",
           title: "Iets nieuws bouwen",
-          description: "Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna door naar productie.",
+          description: "Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna bouwen we door tot je team er elke dag mee werkt.",
           href: "/nl/diensten/software"
         },
         {
@@ -153,7 +153,7 @@ export const CONTENT: Record<Language, Content> = {
       ]
     },
     approach: {
-      text: "Wij bouwen <red>software</red> en AI\ndie in productie draait\n\nMet de business case vooraf,\ncompliance in het ontwerp\nen een team dat ermee kan werken\n\nVan ambitie tot <blue>implementatie</blue>"
+      text: "Wij bouwen <red>AI-toepassingen</red>\ndie je team elke dag gebruikt\n\nMet de business case vooraf,\ncompliance in het ontwerp\nen een team dat ermee kan werken\n\nVan ambitie tot <blue>implementatie</blue>"
     },
     team: {
       title: "Gebouwd in Groningen",
@@ -277,7 +277,7 @@ export const CONTENT: Record<Language, Content> = {
     aboutPage: {
       hero: {
         title: "Over AI Heroes",
-        subtitle: "AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
+        subtitle: "AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
       },
       intro: {
         text: "De merknaam AI Heroes bestaat sinds 2019. Eind 2025 namen Frans Hoorn, David Homan en Jan Brusse het merk en de klantrelaties over en begonnen ze opnieuw, met één observatie als uitgangspunt: de AI-markt is gefragmenteerd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand snapt. Bijna niemand levert software die op de dag van oplevering werkt én blijft werken.\n\nDaarom bouwen wij. Elke bouw begint met een business case, heeft compliance in het ontwerp en eindigt met een team dat ermee kan werken. Vanuit Groningen, epicentrum van AI in Europa en thuisbasis van de AI Fabriek, voor organisaties door heel Nederland en Europa. Met een Europese aanpak: datasoevereiniteit, EU AI Act-compliance en geen vendor lock-in.",
@@ -299,7 +299,7 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "David Homan",
             role: "Co-Founder · Bouw & compliance",
-            description: "De schakel tussen techniek en directiekamer. Leidt de bouw: van prototype tot systeem in productie, gekoppeld aan jouw landschap, met AI Act-classificatie, logging en hosting in het ontwerp."
+            description: "De schakel tussen techniek en directiekamer. Leidt de bouw: van prototype tot werkend systeem, gekoppeld aan jouw landschap, met AI Act-classificatie, logging en hosting in het ontwerp."
           },
           {
             name: "Jan Brusse",
@@ -347,10 +347,10 @@ export const CONTENT: Record<Language, Content> = {
     careersPage: {
       hero: {
         title: "Werken bij AI Heroes",
-        subtitle: "Wij groeien. Sluit je aan bij een team dat software en AI bouwt voor organisaties door heel Europa, en zorgt dat het werkt."
+        subtitle: "Wij groeien. Sluit je aan bij een team dat AI-toepassingen bouwt voor organisaties door heel Europa, en zorgt dat ze werken."
       },
       growth: {
-        text: "Wij bouwen software en AI die in productie draait, met een business case vooraf, compliance vanaf de tekentafel en training van het team dat ermee gaat werken. Ons team groeit mee met de vraag. We zoeken mensen die net zo graag als wij iets bouwen dat bij de oplevering werkt en een jaar later nog draait.",
+        text: "Wij bouwen AI-toepassingen die je team elke dag gebruikt, met een business case vooraf, compliance vanaf de tekentafel en training van het team dat ermee gaat werken. Ons team groeit mee met de vraag. We zoeken mensen die net zo graag als wij iets bouwen dat bij de oplevering werkt en een jaar later nog draait.",
         stats: [
           { metric: "50+", description: "Organisaties geholpen" },
           { metric: "1000+", description: "Professionals getraind" },
@@ -405,7 +405,7 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "Bouw & compliance",
             pillar: "software",
-            description: "Bouwt de software en AI, koppelt die aan het landschap van de klant en zorgt dat AI Act-classificatie, logging, toezicht en hosting in het ontwerp zitten. Van prototype in zes dagen tot systeem in productie."
+            description: "Bouwt de software en AI, koppelt die aan het landschap van de klant en zorgt dat AI Act-classificatie, logging, toezicht en hosting in het ontwerp zitten. Van prototype in zes dagen tot een systeem dat elke dag gebruikt wordt."
           }
         ]
       },
@@ -574,7 +574,7 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "Wij bouwen software en AI die in productie draait. Business case, compliance en training inbegrepen.",
+      tagline: "Wij bouwen AI-toepassingen die je team elke dag gebruikt. Business case, compliance en training inbegrepen.",
       columns: {
         build: "Wat we bouwen",
         how: "Hoe we werken",
@@ -597,7 +597,7 @@ export const CONTENT: Record<Language, Content> = {
         label: "What we build",
         href: "/en/services",
         children: [
-          { label: "Build something new", href: "/en/services/software", description: "From idea to system in production" },
+          { label: "Build something new", href: "/en/services/software", description: "From idea to something your team uses every day" },
           { label: "Replace what no longer fits", href: "/en/services/replace-software", description: "Outdated or overpriced software out, something that fits in" },
           { label: "Run it on your own terms", href: "/en/services/eu-consultancy", description: "On your own servers or with a European provider" }
         ]
@@ -661,7 +661,7 @@ export const CONTENT: Record<Language, Content> = {
         {
           label: "From A to I",
           headline: "From <red>ambition</red> to <blue>implementation</blue>",
-          subhead: "You have an idea, a process that could work better, or software that needs replacing. We build it and put it into production.",
+          subhead: "You have an idea, a process that could work better, or software that needs replacing. We build it, until your team works with it every day.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero/summit.webp"
@@ -669,7 +669,7 @@ export const CONTENT: Record<Language, Content> = {
         {
           label: "Build",
           headline: "A <blue>working prototype</blue> in <red>six days</red>",
-          subhead: "An assistant, a workflow or a tool you are missing today. Then we keep building until it runs in production.",
+          subhead: "An assistant, a workflow or a tool you are missing today. Then we keep building until it is finished and working.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero-bg.webp"
@@ -701,7 +701,7 @@ export const CONTENT: Record<Language, Content> = {
           entry: "nieuw",
           tag: "New",
           title: "Build something new",
-          description: "An assistant, a workflow or a tool you are missing today. A working prototype in six days, then on to production.",
+          description: "An assistant, a workflow or a tool you are missing today. A working prototype in six days, then we keep building until your team uses it every day.",
           href: "/en/services/software"
         },
         {
@@ -743,7 +743,7 @@ export const CONTENT: Record<Language, Content> = {
       ]
     },
     approach: {
-      text: "We build <red>software</red> and AI\nthat runs in production\n\nWith the business case first,\ncompliance in the design\nand a team that can work with it\n\nFrom ambition to <blue>implementation</blue>"
+      text: "We build <red>AI tools</red>\nyour team uses every day\n\nWith the business case first,\ncompliance in the design\nand a team that can work with it\n\nFrom ambition to <blue>implementation</blue>"
     },
     team: {
       title: "Built in Groningen",
@@ -867,7 +867,7 @@ export const CONTENT: Record<Language, Content> = {
     aboutPage: {
       hero: {
         title: "About AI Heroes",
-        subtitle: "AI Heroes builds software and AI for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it."
+        subtitle: "AI Heroes builds AI tools your team uses every day, for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it."
       },
       intro: {
         text: "The AI Heroes brand dates back to 2019. At the end of 2025, Frans Hoorn, David Homan and Jan Brusse took over the brand and its client relationships and started again, with one observation as the starting point: the AI market is fragmented. Advisory firms write reports, training bureaus train and leave, tech companies build tools nobody understands. Almost nobody delivers software that works on the day of delivery and keeps working.\n\nSo we build. Every build starts with a business case, has compliance in the design and ends with a team that can work with it. From Groningen, the epicentre of AI in Europe and home of the AI Fabriek (AI Factory), for organisations across the Netherlands and Europe. With a European approach: data sovereignty, EU AI Act compliance and no vendor lock-in.",
@@ -889,7 +889,7 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "David Homan",
             role: "Co-Founder · Build & compliance",
-            description: "The link between technology and the boardroom. Leads the build: from prototype to system in production, connected to your landscape, with AI Act classification, logging and hosting in the design."
+            description: "The link between technology and the boardroom. Leads the build: from prototype to working system, connected to your landscape, with AI Act classification, logging and hosting in the design."
           },
           {
             name: "Jan Brusse",
@@ -937,10 +937,10 @@ export const CONTENT: Record<Language, Content> = {
     careersPage: {
       hero: {
         title: "Work at AI Heroes",
-        subtitle: "We are growing. Join a team that builds software and AI for organisations across Europe, and makes sure it works."
+        subtitle: "We are growing. Join a team that builds AI tools for organisations across Europe, and makes sure they work."
       },
       growth: {
-        text: "We build software and AI that runs in production, with a business case first, compliance from the drawing board and training for the team that will use it. Our team grows with demand. We are looking for people who, like us, want to build something that works at handover and still runs a year later.",
+        text: "We build AI tools your team uses every day, with a business case first, compliance from the drawing board and training for the team that will use it. Our team grows with demand. We are looking for people who, like us, want to build something that works at handover and still runs a year later.",
         stats: [
           { metric: "50+", description: "Organisations helped" },
           { metric: "1,000+", description: "Professionals trained" },
@@ -995,7 +995,7 @@ export const CONTENT: Record<Language, Content> = {
           {
             name: "Build & compliance",
             pillar: "software",
-            description: "Builds the software and AI, connects it to the client's landscape and makes sure AI Act classification, logging, oversight and hosting are part of the design. From prototype in six days to system in production."
+            description: "Builds the software and AI, connects it to the client's landscape and makes sure AI Act classification, logging, oversight and hosting are part of the design. From prototype in six days to a system in daily use."
           }
         ]
       },
@@ -1164,7 +1164,7 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "We build software and AI that runs in production. Business case, compliance and training included.",
+      tagline: "We build AI tools your team uses every day. Business case, compliance and training included.",
       columns: {
         build: "What we build",
         how: "How we work",
