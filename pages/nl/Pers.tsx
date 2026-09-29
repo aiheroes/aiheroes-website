@@ -83,7 +83,7 @@ export const PersNL: React.FC = () => {
           <section className="mb-20">
             <h2 className="text-3xl md:text-4xl font-serif text-brand-dark mb-6">Logo</h2>
             <p className="text-stone-600 leading-relaxed mb-8 max-w-2xl">
-              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn, als een circuit: van ambitie naar implementatie. De rode lijn begint bij de I (de vraag waarmee je binnenkomt), loopt door het kader (de bouw) en eindigt in de A: een pijl omhoog, het systeem dat draait. De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt.
+              Ons logo leest als een lijndiagram. Het kader verbindt de letters "AI" met "HEROES" in een doorlopende lijn, als een circuit: van ambitie tot implementatie. De rode lijn begint bij de I (de vraag waarmee je binnenkomt), loopt door het kader (de bouw) en eindigt in de A: een pijl omhoog, het systeem dat draait. De opwaartse pijl verwijst ook naar de verzendknop van een AI-prompt.
             </p>
 
             <h3 className="text-xl font-serif text-brand-dark mb-4">Woordmerk</h3>
@@ -174,7 +174,7 @@ export const PersNL: React.FC = () => {
                   Gebruikt voor koppen en display tekst. Elegante schreven stralen expertise en autoriteit uit.
                 </p>
                 <div className="mt-6 pt-6 border-t border-stone-100">
-                  <p className="font-serif text-2xl text-brand-dark">Van ambitie naar implementatie</p>
+                  <p className="font-serif text-2xl text-brand-dark">Van ambitie tot implementatie</p>
                 </div>
               </div>
 

@@ -248,7 +248,7 @@ Alles hieronder is tekst om te plakken. Plaatsen doen jullie; de teksten komen o
 ### 6.1 Bedrijfspagina
 
 **Tagline** (maximaal 120 tekens):
-> Software en AI die in productie draait. Van ambitie naar implementatie. Groningen.
+> Software en AI die in productie draait. Van ambitie tot implementatie. Groningen.
 
 **Branche:** Softwareontwikkeling.
 

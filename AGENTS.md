@@ -80,7 +80,7 @@ netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
 - Legal entity is **AI Heroes B.V.** (KvK 42051968, BTW NL869486263B01) — see [Legal entity](project_legal_entity.md).
 - Three **Co-Founders**, each carrying one phase of the same path: Frans Hoorn (business case & scoping), David Homan (build & compliance), Jan Brusse (adoption & training). The former pillar mapping (Consulting/Training/Software) is retired.
 - Based in Groningen — positioned as "AI-hoofdstad van Europa" / "AI Capital of Europe" (present tense, no hedging). Office address **Aarhusweg 4-16, 9723 JJ Groningen** is published on legal pages, footer, press kits and JSON-LD.
-- Slogan: "Van ambitie naar implementatie" / "From ambition to implementation" (replaces "AI werkt als je weet hoe").
+- Slogan: "Van ambitie tot implementatie" / "From ambition to implementation" (replaces "AI werkt als je weet hoe").
 - European by default: data sovereignty, EU AI Act compliance, no vendor lock-in; the site's own assistant runs on EU infrastructure.
 
 ## Core Messaging (updated 2026-09-21)

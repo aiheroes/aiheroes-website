@@ -15,7 +15,7 @@
 | Address | Aarhusweg 4-16, 9723 JJ Groningen, Nederland |
 | Contact | info@aiheroes.io · +31 50 200 3373 · aiheroes.io · linkedin.com/company/aiheroes |
 | What it is | Builds software and AI for organisations and puts it into production; business case, compliance and training included |
-| Tagline | NL: "Van ambitie naar implementatie" · EN: "From ambition to implementation" (replaces "AI werkt als je weet hoe" everywhere, incl. the LinkedIn banner) |
+| Tagline | NL: "Van ambitie tot implementatie" · EN: "From ambition to implementation" (replaces "AI werkt als je weet hoe" everywhere, incl. the LinkedIn banner) |
 | Brand active since | 2019 (see §2); current company relaunched the brand in 2026 |
 | Team | Three co-founders, each carrying one phase of the same path (business case & scoping, build & compliance, adoption & training) + industry advisor + flexible shell of freelance trainers and a dev-pool |
 | Reach | Home base Groningen / Noord-Nederland; clients across the Netherlands and Europe (deliveries as far as Poland and Brazil) |
@@ -40,7 +40,7 @@ The founding observation, unchanged since the relaunch: *"The AI market is fragm
 
 One promise, three ways in, one front door, one included layer. Used consistently everywhere (site, LinkedIn, proposals, the chat assistant's system prompt, `public/llms.txt`).
 
-1. **The promise: van ambitie naar implementatie.** We build software and AI and put it into production. Software without AI counts too (INQ22's web shop): AI is the tool, not the goal.
+1. **The promise: van ambitie tot implementatie.** We build software and AI and put it into production. Software without AI counts too (INQ22's web shop): AI is the tool, not the goal.
 2. **Three ways in** (the questions clients actually arrive with):
    - **Iets nieuws bouwen / Build something new** — "Kunnen jullie dit voor ons bouwen?" Proof: Kwakkel BV, INQ22.
    - **Vervangen wat niet meer voldoet / Replace what no longer fits** — "We zijn ons huidige pakket zat." Proof: Strive, IC Commerce.
@@ -50,7 +50,7 @@ One promise, three ways in, one front door, one included layer. Used consistentl
 5. **Groningen, AI-hoofdstad van Europa / AI Capital of Europe** — stated in the present tense. The €200M AI Fabriek is proof, not a precondition.
 6. **European by default** — data sovereignty, EU AI Act compliance, no vendor lock-in; we run our own stack on EU infrastructure. Offered as an option, never an ultimatum.
 
-**Approved phrases:** "Van ambitie naar implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, overdracht zonder lock-in" · "Eén week, vast bedrag" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
+**Approved phrases:** "Van ambitie tot implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, overdracht zonder lock-in" · "Eén week, vast bedrag" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
 
 **Retired (do not use):** "full-service AI agency" · "drie pijlers, één partner" · "onder één dak" · "alles van A tot I" · "stap in waar je wilt" · "van change management tot technische implementatie" · "het hele AI-traject" · "AI werkt als je weet hoe" · "AI strategie. Implementatie. Training." Also retired as proof at the front: Medux, Trabu, OLX and InnoEnergy (earlier AI Heroes; their case pages stay as "eerdere cases").
 
@@ -133,7 +133,7 @@ Internal role logic follows the path of one build: Frans owns the business case 
 - **Register:** observing, analytical, dry where possible, sharp where needed. Benchmark: write like Tweakers/NU.nl, never like marketing copy or LinkedIn gurus. Lay facts side by side; let the reader conclude.
 - **Hard rules:** no em-dashes; no "niet X, maar Y" constructions; no moralistic endings; four approved ending types (pragmatic, observational, analytical, warning); full organisation names on first mention; double quotes only for literal citations.
 - **Channel:** LinkedIn is the channel — 2–3 posts/week, rotating between the three founders. Dutch for the company voice; English only for AI Salon content. Recurring formats: news-analysis opinion posts, "Wist je dat…"-explainers ('Wat is'-series: RAG, MCP, agents, prompt injection…), service cards, case posts, team profiles.
-- **Visual identity:** geometric/square-frame motif; four colors only — Foundry Red #D9534F, Catalyst Blue #2563EB, Forged Black #1C1917, Rooftop White #FDFCF8; the colour-per-pillar link is retired, colour is rhythm. Playfair Display headings, Inter body. Banner line: "Van ambitie naar implementatie" (replaces "AI strategie. Implementatie. Training.").
+- **Visual identity:** geometric/square-frame motif; four colors only — Foundry Red #D9534F, Catalyst Blue #2563EB, Forged Black #1C1917, Rooftop White #FDFCF8; the colour-per-pillar link is retired, colour is rhythm. Playfair Display headings, Inter body. Banner line: "Van ambitie tot implementatie" (replaces "AI strategie. Implementatie. Training.").
 - **Audience of the content:** owners of a concrete process or system (COO, CTO, head of operations, product owner), non-technical — "AI begrijpelijk maken voor mensen die er geen techneut voor willen worden."
 
 ## 10. Ecosystem and partnerships
@@ -159,7 +159,7 @@ Internal role logic follows the path of one build: Frans owns the business case 
 ## 12. Quick reference for writers
 
 - Company descriptor: *a company that builds software and AI and puts it into production* (never "full-service AI agency", never "consultancy", never "drie pijlers").
-- Core sentence: see §1. Slogan: "Van ambitie naar implementatie" / "From ambition to implementation".
+- Core sentence: see §1. Slogan: "Van ambitie tot implementatie" / "From ambition to implementation".
 - Structure of every page and post: what we build for you → how we start (the start sprint) → where the proof is.
 - The only call to action: "Plan een startsprint" / "Plan a start sprint".
 - Prices to cite: start sprint from €8,000 (one week, fixed); builds from €15,000; standalone training from €2,500 per half-day (dagdeel) (never above the fold, never in a hero). No roadmap or scan price.

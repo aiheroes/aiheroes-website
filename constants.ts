@@ -70,7 +70,7 @@ export const CONTENT: Record<Language, Content> = {
       slides: [
         {
           label: "Van A tot I",
-          headline: "Van <red>ambitie</red> naar <blue>implementatie</blue>",
+          headline: "Van <red>ambitie</red> tot <blue>implementatie</blue>",
           subhead: "Je hebt een idee, een proces dat beter kan of software die aan vervanging toe is. Wij bouwen het en zetten het in productie.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
@@ -153,7 +153,7 @@ export const CONTENT: Record<Language, Content> = {
       ]
     },
     approach: {
-      text: "Wij bouwen <red>software</red> en AI\ndie in productie draait\n\nMet de business case vooraf,\ncompliance in het ontwerp\nen een team dat ermee kan werken\n\nVan ambitie naar <blue>implementatie</blue>"
+      text: "Wij bouwen <red>software</red> en AI\ndie in productie draait\n\nMet de business case vooraf,\ncompliance in het ontwerp\nen een team dat ermee kan werken\n\nVan ambitie tot <blue>implementatie</blue>"
     },
     team: {
       title: "Gebouwd in Groningen",
