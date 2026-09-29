@@ -62,7 +62,7 @@ export const PressEN: React.FC = () => {
                   Three ways in: build something new, replace what no longer fits, or run AI on your own terms. The first step is always the start sprint: one week, fixed fee, after which you know whether it can be done, what it costs and what it looks like.
                 </p>
               </div>
-              <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
+              <div className="solid-block bg-brand-dark p-6">
                 <h3 className="font-bold text-brand-dark mb-3">Quick Facts</h3>
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Founded:</strong> 2019</li>
@@ -102,7 +102,7 @@ export const PressEN: React.FC = () => {
               />
             </div>
 
-            <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
+            <div className="solid-block bg-brand-blue p-6">
               <h3 className="font-bold text-brand-dark mb-2">Logo Usage Guidelines</h3>
               <ul className="text-stone-600 text-sm space-y-1">
                 <li>• Maintain minimum clear space equal to the height of the logo mark</li>
@@ -204,19 +204,19 @@ export const PressEN: React.FC = () => {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
+                <div className="solid-block bg-brand-red p-6">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Build something new</p>
-                  <p className="text-stone-700 font-medium">
+                  <p className="text-lg font-medium">
                     From idea to something your team uses every day. A working prototype in six days.
                   </p>
                 </div>
-                <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
+                <div className="solid-block bg-brand-blue p-6">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Replace what no longer fits</p>
                   <p className="text-stone-700 font-medium">
                     Outdated or overpriced software out, something that fits in its place.
                   </p>
                 </div>
-                <div className="bg-stone-50 p-6 border-l-4 border-brand-dark">
+                <div className="solid-block bg-brand-dark p-6">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Run it on your own terms</p>
                   <p className="text-stone-700 font-medium">
                     On your own servers or with a European provider, with the AI Act built in.

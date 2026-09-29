@@ -56,15 +56,14 @@ export const ExerciseView: React.FC<ExerciseViewProps> = ({
 
         <div
           className="p-4 rounded-lg mb-4"
-          style={{
-            backgroundColor: level.bgColor,
-            borderLeft: `4px solid ${level.borderColor}`
-          }}
+          // Solid block in the level's colour (no side stripe). The level colours are
+          // pastels, so the text stays dark here.
+          style={{ backgroundColor: level.borderColor }}
         >
           <div className="font-bold text-brand-dark mb-1">
             Gekozen AI-Level: {level.level} - {level.title}
           </div>
-          <div className="text-stone-700 text-sm">
+          <div className="text-brand-dark text-sm">
             {level.description}
           </div>
         </div>

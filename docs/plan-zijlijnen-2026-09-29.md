@@ -52,3 +52,17 @@ Voorstel: optie 1. Het palet blijft zoals het is.
 4. **Bewaking.** Een regel in `npm run check` die faalt op `border-l-[2-9]` en `border-left:` in pagina's en content, zodat er geen nieuwe zijlijnen bijkomen.
 
 Stap 1 kan direct na akkoord op deze keuzes. Stap 2 is het meeste werk (ongeveer 115 plekken) maar grotendeels mechanisch.
+
+## Stand van zaken (29 september 2026)
+
+- **Stap 1 klaar.** Gedeelde onderdelen omgezet (dienstenkaarten, Callout, DarkBox, menu-item, CardGrid, `.example-callout`).
+- **Stap 2 klaar.** Alle losse zijlijnen vervangen. Nieuwe hulpklassen in `src/styles/global.css`: `solid-block` (met een `bg-brand-…`; maakt alle tekst erin wit) en `table-block` (witte tabel, donkere kopregel). Vertaling per patroon:
+  - grijs kader met blauwe lijn → blauw vlak; met rode lijn → donker vlak (lange tekst, dus geen rood); kader om een tabel → `table-block`;
+  - donkere kaders en cijfertegels → donker zonder lijn;
+  - afsluitend "Zoiets laten bouwen?"-blok op case- en artikelpagina's → blauw vlak met witte knop;
+  - rode "De verplichting"/"Waarom nu"-blokken → merkrood met tekst op 18 px;
+  - persmap → donker, blauw en rood vlak; vacaturekaarten → witte kaart met dunne rand die op hover de accentkleur krijgt;
+  - teamleden en waarden op Over ons → lijn weg; kaarten op Over ons → donker vlak;
+  - Hanze-oefening → effen vlak in de kleur van het AI-level (pastel, dus donkere tekst).
+- **Stap 3 open.** Schermafbeeldingen van elke pagina voor een gezamenlijke ronde.
+- **Stap 4 klaar.** `scripts/check-side-stripes.mjs` draait in `npm run check` (en dus vóór elke deploy) en faalt op `border-l-2…8`, `border-left: ≥2px` en `borderLeft`. Een bewuste uitzondering krijgt `side-stripe-ok` op dezelfde regel.

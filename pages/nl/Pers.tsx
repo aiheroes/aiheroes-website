@@ -62,7 +62,7 @@ export const PersNL: React.FC = () => {
                   Drie manieren om binnen te komen: iets nieuws bouwen, vervangen wat niet meer voldoet, of AI in eigen beheer draaien. De eerste stap is altijd de startsprint: één week, vast bedrag, daarna weet je of het kan, wat het kost en hoe het eruitziet.
                 </p>
               </div>
-              <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
+              <div className="solid-block bg-brand-dark p-6">
                 <h3 className="font-bold text-brand-dark mb-3">Kerngegevens</h3>
                 <ul className="space-y-2 text-stone-600 text-sm">
                   <li><strong>Opgericht:</strong> 2019</li>
@@ -102,7 +102,7 @@ export const PersNL: React.FC = () => {
               />
             </div>
 
-            <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
+            <div className="solid-block bg-brand-blue p-6">
               <h3 className="font-bold text-brand-dark mb-2">Richtlijnen voor logogebruik</h3>
               <ul className="text-stone-600 text-sm space-y-1">
                 <li>• Handhaaf minimale vrije ruimte gelijk aan de hoogte van het logo</li>
@@ -204,19 +204,19 @@ export const PersNL: React.FC = () => {
               </div>
 
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-stone-50 p-6 border-l-4 border-brand-red">
+                <div className="solid-block bg-brand-red p-6">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Iets nieuws bouwen</p>
-                  <p className="text-stone-700 font-medium">
+                  <p className="text-lg font-medium">
                     Van idee tot iets dat je team elke dag gebruikt. In zes dagen een werkend prototype.
                   </p>
                 </div>
-                <div className="bg-stone-50 p-6 border-l-4 border-brand-blue">
+                <div className="solid-block bg-brand-blue p-6">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">Vervangen wat niet meer voldoet</p>
                   <p className="text-stone-700 font-medium">
                     Verouderde of te dure software eruit, iets dat past ervoor in de plaats.
                   </p>
                 </div>
-                <div className="bg-stone-50 p-6 border-l-4 border-brand-dark">
+                <div className="solid-block bg-brand-dark p-6">
                   <p className="text-xs text-stone-400 uppercase tracking-wider mb-2">In eigen beheer draaien</p>
                   <p className="text-stone-700 font-medium">
                     Op je eigen servers of bij een Europese partij, met de AI Act ingebouwd.

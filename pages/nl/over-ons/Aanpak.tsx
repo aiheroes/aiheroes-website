@@ -25,7 +25,7 @@ export const AanpakNL: React.FC = () => {
           AI Heroes doet dat wel. Als full-service AI agency combineren we change management, training, consulting en software onder één dak. Met een Europees-eerste aanpak: datasoevereiniteit, EU AI Act compliance en geen vendor lock-in. Klanten kunnen op elk punt instappen. Je hoeft niet bij pijler 1 te beginnen.
         </p>
 
-        <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
+        <div className="solid-block bg-brand-dark p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Onze principes</h3>
           <ul className="space-y-2 text-stone-600">
             <li>Praktijk boven theorie: je leert door te doen</li>

@@ -25,7 +25,7 @@ export const ApproachEN: React.FC = () => {
           AI Heroes does. As a full-service AI agency, we combine change management, training, consulting and software under one roof. With a European-first approach: data sovereignty, EU AI Act compliance, and no vendor lock-in. Clients can enter at any point. You don't need to start at pillar 1.
         </p>
 
-        <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-red">
+        <div className="solid-block bg-brand-dark p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif text-brand-dark mb-3">Our principles</h3>
           <ul className="space-y-2 text-stone-600">
             <li>Practice over theory: you learn by doing</li>

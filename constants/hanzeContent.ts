@@ -355,14 +355,14 @@ export const HANZE_CONTENT = {
         </ul>
 
         <h3>✍️ No-AI Declaration (copy & sign)</h3>
-        <div style="background: #fff7ed; padding: 18px; border-left: 4px solid #f97316; border-radius: 8px; margin: 16px 0;">
-            <p style="color: #7c2d12; margin-bottom: 10px;"><strong>We declare:</strong></p>
+        <div class="solid-block" style="background: #1C1917; padding: 18px; margin: 16px 0;">
+            <p style="margin-bottom: 10px;"><strong>We declare:</strong></p>
             <ul style="margin-left: 20px; margin-bottom: 12px;">
-                <li style="color: #9a3412;">No AI tools were used in any phase of this assignment</li>
-                <li style="color: #9a3412;">All content is original human work</li>
-                <li style="color: #9a3412;">All sources are from approved human-only materials</li>
+                <li>No AI tools were used in any phase of this assignment</li>
+                <li>All content is original human work</li>
+                <li>All sources are from approved human-only materials</li>
             </ul>
-            <p style="margin-top:12px; color: #7c2d12;">Names: ____________________ Date: ______ Signature: ______</p>
+            <p style="margin-top:12px; ">Names: ____________________ Date: ______ Signature: ______</p>
         </div>
 
         <h3>🕵️ Instructor AI Detection Methods</h3>
