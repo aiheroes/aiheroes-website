@@ -9,7 +9,7 @@ AI Heroes bouwt software en AI voor organisaties die verder willen dan een pilot
 - Business case first: cost, return and payback on one page, before we build
 - Compliance from the drawing board: AI Act classification, logging, human oversight, European hosting
 - Your people trained on it: the team that will use the system is trained on that system (meets Article 4 of the EU AI Act)
-- Handover without lock-in: source code, documentation and data model are yours
+- Not tied to one AI vendor: built model-agnostic, everything documented
 
 ## Start here (English)
 

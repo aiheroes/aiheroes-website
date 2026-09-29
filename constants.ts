@@ -78,8 +78,8 @@ export const CONTENT: Record<Language, Content> = {
         },
         {
           label: "Bouwen",
-          headline: "Van <red>idee</red> naar <blue>werkend systeem</blue>",
-          subhead: "Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna door naar productie.",
+          headline: "In <red>zes dagen</red> een <blue>werkend prototype</blue>",
+          subhead: "Een assistent, een werkstroom of een tool die je nu mist. Daarna bouwen we door tot het in productie draait.",
           ctaLabel: "Plan een startsprint",
           ctaTarget: "/nl/startsprint",
           image: "/hero-bg.webp"
@@ -147,8 +147,8 @@ export const CONTENT: Record<Language, Content> = {
           description: "Het team dat het systeem gaat gebruiken, trainen we op dat systeem. Zo voldoe je meteen aan artikel 4 van de AI Act."
         },
         {
-          title: "Overdracht zonder lock-in",
-          description: "Broncode, documentatie en datamodel zijn van jou, vanaf de eerste sprint."
+          title: "Niet vast aan één AI-leverancier",
+          description: "Je kunt van AI-model wisselen zonder opnieuw te bouwen. Alles komt met documentatie."
         }
       ]
     },
@@ -668,8 +668,8 @@ export const CONTENT: Record<Language, Content> = {
         },
         {
           label: "Build",
-          headline: "From <red>idea</red> to <blue>running system</blue>",
-          subhead: "An assistant, a workflow or a tool you are missing today. A working prototype in six days, then on to production.",
+          headline: "A <blue>working prototype</blue> in <red>six days</red>",
+          subhead: "An assistant, a workflow or a tool you are missing today. Then we keep building until it runs in production.",
           ctaLabel: "Plan a start sprint",
           ctaTarget: "/en/start-sprint",
           image: "/hero-bg.webp"
@@ -737,8 +737,8 @@ export const CONTENT: Record<Language, Content> = {
           description: "We train the team that will use the system on that system. That also meets Article 4 of the EU AI Act."
         },
         {
-          title: "Handover without lock-in",
-          description: "Source code, documentation and data model are yours, from the first sprint."
+          title: "Not tied to one AI vendor",
+          description: "You can switch AI models without rebuilding. Everything comes with documentation."
         }
       ]
     },

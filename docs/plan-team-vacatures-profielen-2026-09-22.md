@@ -218,7 +218,7 @@ Nieuw: `/nl/diensten/developer-in-je-team` en `/en/services/developer-in-your-te
 
 Kern van de pagina:
 
-> **Een AI-first developer in jouw team.** Heb je zelf developers en loopt het bouwwerk vast op AI, dan werkt een developer van AI Heroes mee in jouw team. Op locatie of op afstand, minimaal drie maanden, per maand opzegbaar. Dezelfde werkwijze als bij onze eigen bouw: AI-tooling als standaard, compliance in het ontwerp, overdracht zonder lock-in. Prijs per maand op aanvraag; je hoort hem in de kennismaking.
+> **Een AI-first developer in jouw team.** Heb je zelf developers en loopt het bouwwerk vast op AI, dan werkt een developer van AI Heroes mee in jouw team. Op locatie of op afstand, minimaal drie maanden, per maand opzegbaar. Dezelfde werkwijze als bij onze eigen bouw: AI-tooling als standaard, compliance in het ontwerp, modelonafhankelijk en gedocumenteerd. Prijs per maand op aanvraag; je hoort hem in de kennismaking.
 
 Secties: voor wie (je hebt een team, je mist AI-bouwervaring, je wilt kennis die blijft); hoe het werkt (kennismaking, matching, eerste maand op proef, daarna per maand); wat de developer meebrengt (de AI Heroes-standaard, in jouw repo); veelgestelde vragen (opzegtermijn, wie stuurt aan, wat als het niet past, eigendom van code); de standaard-band; het formulier.
 
@@ -261,7 +261,7 @@ Alles hieronder is tekst om te plakken. Plaatsen doen jullie; de teksten komen o
 >
 > De eerste stap is altijd de startsprint: één week, vast bedrag vanaf € 8.000. Aan het eind heb je een werkend prototype of een bouwplan, en de business case op één A4. Daarna beslis je of we doorgaan.
 >
-> Bij elke bouw inbegrepen: business case vooraf, compliance vanaf de tekentafel (AI Act-classificatie, logging, menselijk toezicht, Europese hosting), training van het team dat ermee gaat werken, overdracht zonder lock-in.
+> Bij elke bouw inbegrepen: business case vooraf, compliance vanaf de tekentafel (AI Act-classificatie, logging, menselijk toezicht, Europese hosting), training van het team dat ermee gaat werken, niet vast aan één AI-leverancier.
 >
 > Drie mede-eigenaars: wie je spreekt bij de kennismaking, werkt ook mee aan de bouw en de overdracht. Vanuit Groningen, AI-hoofdstad van Europa, voor heel Nederland en Europa.
 >

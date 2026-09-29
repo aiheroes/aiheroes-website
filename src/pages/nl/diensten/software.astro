@@ -18,13 +18,13 @@ const builds = [
 const method = [
   { title: 'Startsprint', eyebrow: 'Week 1', body: 'Eén week, vast bedrag. Intake, prototype op jouw data, demo en de business case op één A4. Daarna beslis je of we doorgaan.', href: '/nl/startsprint', hrefLabel: 'Meer over de startsprint' },
   { title: 'Bouwen in sprints', eyebrow: 'Week 2 tot 12', body: 'Korte sprints met een demo aan het eind van elke sprint, zodat je altijd ziet waar we staan. Compliance zit vanaf de tekentafel in het ontwerp: AI Act-classificatie, logging, menselijk toezicht en hosting.' },
-  { title: 'In productie en overgedragen', eyebrow: 'Oplevering', body: 'Het systeem draait, gekoppeld aan je landschap. Het team dat ermee werkt is erop getraind. Broncode, documentatie en datamodel zijn van jou.' },
+  { title: 'In productie en overgedragen', eyebrow: 'Oplevering', body: 'Het systeem draait, gekoppeld aan je landschap. Het team dat ermee werkt is erop getraind. Alles is gedocumenteerd.' },
 ];
 
 const stats = [
   { value: '6 dagen', label: 'van vraag naar werkend prototype' },
   { value: 'Vanaf €15.000', label: 'voor een maatwerkbouw' },
-  { value: 'Geen lock-in', label: 'broncode en datamodel blijven van jou' },
+  { value: 'Vrije modelkeuze', label: 'wisselen van AI-model zonder opnieuw te bouwen' },
 ];
 
 const cases = [
@@ -48,7 +48,7 @@ const faq = [
   { q: 'Hoe snel staat er iets?', a: 'In de startsprint staat binnen een week een werkend prototype op jouw data. Bij Kwakkel BV stond het prototype voor de administratie-automatisering na zes dagen. Een productiesysteem volgt daarna in sprints van twee weken.' },
   { q: 'Bouwen jullie ook software zonder AI?', a: 'Ja. INQ22 kreeg een maatwerkwebwinkel die live draait. We bouwen software; AI zetten we in waar het waarde heeft en laten we weg waar het dat niet heeft.' },
   { q: 'Werken jullie samen met ons eigen developmentteam?', a: 'Ja, op drie manieren: wij bouwen zelfstandig, wij versterken jouw team met een tech lead en developers, of hybride. Elke oplevering bevat documentatie en training, zodat jouw mensen zelfstandig verder kunnen.' },
-  { q: 'Hoe voorkomen jullie vendor lock-in?', a: 'Open standaarden waar mogelijk, Europese hosting waar het ertoe doet, en broncode, documentatie en datamodel die van jou zijn. Je zit nooit vast aan één leverancier, ook niet aan ons.' },
+  { q: 'Zitten we straks vast aan één AI-leverancier?', a: 'Nee. We bouwen modelonafhankelijk, met open standaarden waar mogelijk en Europese hosting waar het ertoe doet. Wordt een ander model beter of goedkoper, dan stap je over zonder opnieuw te bouwen.' },
   { q: 'Hoe zit het met de AI Act?', a: 'Compliance zit in het ontwerp: we classificeren het systeem onder de AI Act, bouwen logging en menselijk toezicht in en kiezen hosting die past bij je data. Het team dat ermee werkt, trainen we op het systeem; daarmee voldoe je meteen aan artikel 4.' },
 ];
 
@@ -115,8 +115,8 @@ const serviceSchema = {
   </section>
 
   <section class="mb-16">
-    <Callout variant="light" accent="blue" eyebrow="Overdracht" title="Zonder lock-in">
-      <p>We werken met open standaarden waar mogelijk en Europese hosting waar het ertoe doet. Broncode, documentatie en datamodel zijn van jou. Je kunt zonder ons verder als je dat wilt.</p>
+    <Callout variant="light" accent="blue" eyebrow="Overdracht" title="Niet vast aan één AI-leverancier">
+      <p>We werken met open standaarden waar mogelijk en Europese hosting waar het ertoe doet. We bouwen modelonafhankelijk, dus je kunt van AI-model wisselen zonder opnieuw te bouwen. Alles komt met documentatie.</p>
     </Callout>
   </section>
 

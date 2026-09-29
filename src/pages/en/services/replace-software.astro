@@ -16,13 +16,13 @@ const replaces = [
 const method = [
   { title: 'Start sprint', eyebrow: 'Week 1', body: 'We map what the current system does, what parts of it are used and what it is connected to. Outcome: an architecture, a phased migration plan and the business case on one page.', href: '/en/start-sprint', hrefLabel: 'More about the start sprint' },
   { title: 'Build alongside the old', eyebrow: 'Weeks 2 to 12', body: 'The new system grows in sprints, alongside the old one. Integrations with ERP, CRM and the rest of the landscape first, so the transition is no big bang. Data moves over in parts, under control.' },
-  { title: 'Switch over and hand over', eyebrow: 'Delivery', body: 'The team that works with it is trained before the switch. The old system goes off once the new one runs. Source code, documentation and data model are yours.' },
+  { title: 'Switch over and hand over', eyebrow: 'Delivery', body: 'The team that works with it is trained before the switch. The old system goes off once the new one runs. Everything is documented.' },
 ];
 
 const stats = [
   { value: '1 week', label: 'to architecture and migration plan' },
   { value: 'In phases', label: 'never a big bang' },
-  { value: 'Yours', label: 'source code, documentation and data model' },
+  { value: 'Documented', label: 'system, integrations and data model' },
 ];
 
 const cases = [
@@ -40,7 +40,7 @@ const faq = [
   { q: 'How does the data move over?', a: 'In parts, under control. We start with the integrations and a copy of the data, run the new system alongside and only switch over once the numbers match. The old system stays on until that moment.' },
   { q: 'What if the old system is tied to everything?', a: 'That is exactly why we map the integrations first in the start sprint. ERP, CRM, Microsoft 365, accounting: we build the integrations first, so the new system fits into the landscape before it replaces anything.' },
   { q: 'How long does a replacement take?', a: 'A start sprint of one week for the plan, then two to twelve weeks of building, depending on the size. The plan from the start sprint names the phases and the lead time per phase.' },
-  { q: 'Will we end up tied to you instead?', a: 'No. Source code, documentation and data model are yours, built on open standards. Every delivery includes training for your team, so you can carry on without us if you want to.' },
+  { q: 'Will we end up tied again?', a: 'Not to one AI vendor: we build model-agnostic and on open standards. Everything comes with documentation, from the integrations to the data model, and every delivery includes training for your team.' },
 ];
 
 const faqSchema = {

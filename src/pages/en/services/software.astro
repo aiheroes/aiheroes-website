@@ -18,13 +18,13 @@ const builds = [
 const method = [
   { title: 'Start sprint', eyebrow: 'Week 1', body: 'One week, fixed fee. Intake, prototype on your data, demo and the business case on one page. Then you decide whether we continue.', href: '/en/start-sprint', hrefLabel: 'More about the start sprint' },
   { title: 'Build in sprints', eyebrow: 'Weeks 2 to 12', body: 'Short sprints with a demo at the end of each sprint, so you always see where we are. Compliance is in the design from the drawing board: AI Act classification, logging, human oversight and hosting.' },
-  { title: 'In production and handed over', eyebrow: 'Delivery', body: 'The system runs, connected to your landscape. The team that works with it has been trained on it. Source code, documentation and data model are yours.' },
+  { title: 'In production and handed over', eyebrow: 'Delivery', body: 'The system runs, connected to your landscape. The team that works with it has been trained on it. Everything is documented.' },
 ];
 
 const stats = [
   { value: '6 days', label: 'from question to working prototype' },
   { value: 'From €15,000', label: 'for a custom build' },
-  { value: 'No lock-in', label: 'source code and data model stay yours' },
+  { value: 'Any model', label: 'switch AI models without rebuilding' },
 ];
 
 const cases = [
@@ -48,7 +48,7 @@ const faq = [
   { q: 'How fast is there something to see?', a: 'In the start sprint there is a working prototype on your data within a week. At Kwakkel BV the prototype for the administrative automation was there after six days. A production system follows in sprints of two weeks.' },
   { q: 'Do you also build software without AI?', a: 'Yes. INQ22 got a custom web shop that runs live. We build software; we use AI where it adds value and leave it out where it does not.' },
   { q: 'Do you work together with our own development team?', a: 'Yes, in three ways: we build independently, we strengthen your team with a tech lead and developers, or a hybrid of the two. Every delivery includes documentation and training, so your people can carry on independently.' },
-  { q: 'How do you prevent vendor lock-in?', a: 'Open standards where possible, European hosting where it matters, and source code, documentation and a data model that are yours. You are never tied to a single supplier, including us.' },
+  { q: 'Will we be tied to one AI vendor?', a: 'No. We build model-agnostic, with open standards where possible and European hosting where it matters. If another model becomes better or cheaper, you switch without rebuilding.' },
   { q: 'What about the AI Act?', a: 'Compliance is part of the design: we classify the system under the AI Act, build in logging and human oversight, and choose hosting that fits your data. We train the team that works with it on the system; that means you meet Article 4 straight away.' },
 ];
 
@@ -115,8 +115,8 @@ const serviceSchema = {
   </section>
 
   <section class="mb-16">
-    <Callout variant="light" accent="blue" eyebrow="Handover" title="Without lock-in">
-      <p>We work with open standards where possible and European hosting where it matters. Source code, documentation and data model are yours. You can carry on without us if you want to.</p>
+    <Callout variant="light" accent="blue" eyebrow="Handover" title="Not tied to one AI vendor">
+      <p>We work with open standards where possible and European hosting where it matters. We build model-agnostic, so you can switch AI models without rebuilding. Everything comes with documentation.</p>
     </Callout>
   </section>
 

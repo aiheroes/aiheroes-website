@@ -46,11 +46,11 @@ One promise, three ways in, one front door, one included layer. Used consistentl
    - **Vervangen wat niet meer voldoet / Replace what no longer fits** — "We zijn ons huidige pakket zat." Proof: Strive, IC Commerce.
    - **In eigen beheer draaien / Run it on your own terms** — "Kan het op onze eigen servers, binnen Europa?" Proof: our own stack (the site assistant), logos UMCG, Tweede Kamer, Envalior.
 3. **The front door: de startsprint / the start sprint.** One week, fixed fee from €8,000. Outcome: a working prototype (new) or a build plan (replace, self-hosted), always with the business case on one page. Every button on the site says "Plan een startsprint". A workshop is never the front door.
-4. **The included layer: de AI Heroes-standaard / the AI Heroes standard** ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board (AI Act classification, logging, human oversight, European hosting) · your people trained on it (meets Article 4) · handover without lock-in. This is where the former training, consulting and compliance pillars live: as parts of every build, never as a menu.
+4. **The included layer: de AI Heroes-standaard / the AI Heroes standard** ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board (AI Act classification, logging, human oversight, European hosting) · your people trained on it (meets Article 4) · not tied to one AI vendor (model-agnostic, fully documented). This is where the former training, consulting and compliance pillars live: as parts of every build, never as a menu.
 5. **Groningen, AI-hoofdstad van Europa / AI Capital of Europe** — stated in the present tense. The €200M AI Fabriek is proof, not a precondition.
 6. **European by default** — data sovereignty, EU AI Act compliance, no vendor lock-in; we run our own stack on EU infrastructure. Offered as an option, never an ultimatum.
 
-**Approved phrases:** "Van ambitie tot implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, overdracht zonder lock-in" · "Eén week, vast bedrag" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
+**Approved phrases:** "Van ambitie tot implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, niet vast aan één AI-leverancier" · "Eén week, vast bedrag" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
 
 **Retired (do not use):** "full-service AI agency" · "drie pijlers, één partner" · "onder één dak" · "alles van A tot I" · "stap in waar je wilt" · "van change management tot technische implementatie" · "het hele AI-traject" · "AI werkt als je weet hoe" · "AI strategie. Implementatie. Training." Also retired as proof at the front: Medux, Trabu, OLX and InnoEnergy (earlier AI Heroes; their case pages stay as "eerdere cases").
 
@@ -60,7 +60,7 @@ One promise, three ways in, one front door, one included layer. Used consistentl
 
 Public values (the "Wat ons drijft" set):
 
-1. **Eerlijkheid boven verkoop / Honesty over sales** — "If AI isn't the solution, we'll tell you." Backed by real guarantees: the business-case analysis is free if nothing valuable is found, and "no vendor lock-in" is a written promise.
+1. **Eerlijkheid boven verkoop / Honesty over sales** — "If AI isn't the solution, we'll tell you." Backed by real guarantees: the business-case analysis is free if nothing valuable is found, and builds are model-agnostic, so clients are not tied to one AI vendor.
 2. **Maatwerk boven standaard / Custom over standard.**
 3. **Practitioners die meedoen / Practitioners who do the work** — "We don't just advise, we also build."
 4. **Groningen, AI Capital of Europe** — local base, European reach.
@@ -87,7 +87,7 @@ Operating principles visible in how the company actually runs:
 - Business case first (Frans): the former readiness scan, process analysis, business case analysis and roadmap. Standalone advisory work still exists on `/nl/diensten/consultancy` for organisations that do not yet have a concrete system; no roadmap price is published, only the start sprint has a price.
 - Compliance from the drawing board (David): AI Act classification, logging, human oversight, hosting choice, AI policy.
 - Your people trained on it (Jan): training on the delivered system, on the work floor; meets Article 4. Standalone in-company training (AI Foundations, Copilot, AI for Developers, Responsible AI use, AI & disinformation, AI literacy with certificate, digital sovereignty session) stays available on `/nl/diensten/training`, from €2,500 per half-day (dagdeel), with an intake call as before, but is out of the menu and never on the homepage. Lower rates for education and non-profit.
-- Handover without lock-in: source code, documentation and data model belong to the client; management and further development optional.
+- Not tied to one AI vendor (changed 2026-09-29): builds are model-agnostic and fully documented. Source code stays with AI Heroes by default, so never claim it belongs to the client; management and further development continue with us.
 
 **Process promise:** reply within 24 hours, usually with a start sprint proposal.
 
