@@ -30,8 +30,10 @@
   }
 
   @keyframes ken-burns {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+    /* scale3d + translateZ keep this on the GPU; a plain 2D scale is repainted on the
+       CPU each frame and the photo visibly shimmers ("bibbert"). */
+    0% { transform: translateZ(0) scale3d(1, 1, 1); }
+    100% { transform: translateZ(0) scale3d(1.05, 1.05, 1); }
   }
 
   @keyframes fadeIn {
