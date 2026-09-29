@@ -364,7 +364,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to={content.cta.href}
             onClick={() => setOpenDropdown(null)}
-            className="bg-brand-red text-white px-5 py-2 text-sm font-medium rounded-sm hover:bg-red-600 transition-colors"
+            className="bg-brand-blue text-white px-5 py-2 text-sm font-medium rounded-sm hover:bg-blue-700 transition-colors"
           >
             {content.cta.label}
           </Link>
@@ -515,7 +515,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <Link
             to={content.cta.href}
             onClick={() => setIsOpen(false)}
-            className="block w-full bg-brand-red text-white text-center py-4 text-xl font-medium mt-6"
+            className="block w-full bg-brand-blue text-white text-center py-4 text-xl font-medium mt-6"
           >
             {content.cta.label}
           </Link>
