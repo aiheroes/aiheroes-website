@@ -79,6 +79,16 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     }
   };
 
+  // With the chat assistant live, the chat launcher grows into the sticky CTA.
+  useEffect(() => {
+    if (!CHAT_ENABLED || !showContactForm) return;
+    window.dispatchEvent(new CustomEvent('aih:chat-cta', {
+      detail: { show: showStickyCta, label: lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?' },
+    }));
+    // Collapse again when the page unmounts (the widget can outlive it via view transitions).
+    return () => { window.dispatchEvent(new CustomEvent('aih:chat-cta', { detail: { show: false } })); };
+  }, [showStickyCta, showContactForm, lang]);
+
   // Track scroll to show sticky CTA when hero is out of view
   useEffect(() => {
     const handleStickyCtaScroll = () => {
@@ -254,23 +264,17 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         />
       </footer>
 
-      {/* Sticky CTA - only show when hero button is scrolled out. While the chat
-          assistant is live it OPENS the chat (decision A5 26-08); otherwise it scrolls
-          to the contact form as before. */}
-      {showContactForm && (
+      {/* Sticky CTA, only without the chat assistant (with it, the chat launcher
+          becomes this button; see the aih:chat-cta effect). Shown when the hero
+          button is scrolled out and the contact form is not yet in view. */}
+      {showContactForm && !CHAT_ENABLED && (
         <div
-          className={`fixed bottom-6 right-24 z-[96] transition-all duration-500 ${
+          className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
             showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
           }`}
         >
           <button
-            onClick={() => {
-              if (CHAT_ENABLED) {
-                window.dispatchEvent(new CustomEvent('aih:open-chat'));
-              } else {
-                scrollToContact();
-              }
-            }}
+            onClick={scrollToContact}
             className={`group ${accentColor === 'red' ? 'bg-brand-blue hover:shadow-brand-blue/30' : 'bg-brand-red hover:shadow-brand-red/30'} text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105`}
           >
             <span>{ctaLabel || CONTENT[lang].nav.cta.label}</span>

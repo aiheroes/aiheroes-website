@@ -181,6 +181,17 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
 
   };
 
+  // With the chat assistant live, the chat launcher itself grows into the
+  // "Wat wil je bouwen?" pill once the hero is past: one floating element, not two.
+  useEffect(() => {
+    if (!CHAT_ENABLED) return;
+    window.dispatchEvent(new CustomEvent('aih:chat-cta', {
+      detail: { show: showStickyCta, label: lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?' },
+    }));
+    // Collapse again when the page unmounts (the widget can outlive it via view transitions).
+    return () => { window.dispatchEvent(new CustomEvent('aih:chat-cta', { detail: { show: false } })); };
+  }, [showStickyCta, lang]);
+
   // Scroll to contact section
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -251,28 +262,24 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
       </main>
 
-            {/* Sticky CTA - only show when hero is scrolled out. While the chat assistant
-          is live it OPENS the chat (one floating entry, decision A5 26-08); otherwise
-          it scrolls to the contact form as before. */}
-      <div
-        className={`fixed bottom-6 right-24 z-[96] transition-all duration-500 ${
-          showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
-        }`}
-      >
-        <button
-          onClick={() => {
-            if (CHAT_ENABLED) {
-              window.dispatchEvent(new CustomEvent('aih:open-chat'));
-            } else {
-              scrollToContact();
-            }
-          }}
-          className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+      {/* Sticky CTA, only without the chat assistant (with it, the chat launcher
+          becomes this button; see the aih:chat-cta effect above). Shown when the
+          hero is scrolled out and the contact form is not yet in view. */}
+      {!CHAT_ENABLED && (
+        <div
+          className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
+            showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+          }`}
         >
-          <span>{lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?'}</span>
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </button>
-      </div>
+          <button
+            onClick={scrollToContact}
+            className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+          >
+            <span>{lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?'}</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
