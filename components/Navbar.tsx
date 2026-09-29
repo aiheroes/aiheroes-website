@@ -186,17 +186,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         <Link
           to={featured.href}
           onClick={() => setOpenDropdown(null)}
-          className="group flex items-center gap-3 px-3 py-2.5 rounded bg-stone-50 hover:bg-brand-red/5 transition-colors border-l-2 border-brand-red"
+          className="group flex items-center gap-3 px-3 py-2.5 rounded-sm bg-brand-blue hover:bg-blue-700 transition-colors"
         >
           <div className="flex-1 min-w-0">
-            <span className="text-sm font-medium text-brand-dark group-hover:text-brand-red transition-colors">
+            <span className="text-sm font-medium text-white">
               {featured.label}
             </span>
-            <span className="block text-xs text-stone-400 mt-0.5">
+            <span className="block text-xs text-white/85 mt-0.5">
               {featured.description}
             </span>
           </div>
-          <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-brand-red group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-all flex-shrink-0" />
         </Link>
       </div>
     </>
