@@ -230,7 +230,7 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
 
         {/* Standard (Light): what every build includes. A full screen and snap target
             like every other section, so the scroll rhythm stays one section per screen. */}
-        <section id="standard" className="md:snap-start md:min-h-screen w-full flex items-center bg-white">
+        <section id="standard" className="md:snap-start md:min-h-screen w-full flex items-center bg-brand-light">
           <Standard content={content.standard} />
         </section>
 
