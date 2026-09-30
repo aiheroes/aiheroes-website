@@ -20,8 +20,10 @@ interface Props {
   /** Which of the three entries this page belongs to. Picks the hero photo and
    *  preselects the matching chip in the contact form. */
   entry?: Entry;
-  /** Override the hero button label. It always links to the startsprint page. */
+  /** Override the hero button label. */
   ctaLabel?: string;
+  /** Defaults to the startsprint page; use an anchor on that page itself. */
+  ctaHref?: string;
   trustedBy?: string[];
   showContactForm?: boolean;
   /** Show the "Bij elke bouw inbegrepen" band above the contact form. */
@@ -30,7 +32,7 @@ interface Props {
 
 const {
   lang, title, subtitle, seoTitle, seoDescription,
-  noindex, jsonLd, accentColor = 'red', badge, entry, ctaLabel, trustedBy,
+  noindex, jsonLd, accentColor = 'red', badge, entry, ctaLabel, ctaHref, trustedBy,
   showContactForm = true, showStandard = false,
 } = Astro.props;
 
@@ -65,7 +67,7 @@ const trustedLabel = lang === 'nl' ? 'Vertrouwd door' : 'Trusted by';
       <h1 class="text-[clamp(1.875rem,_1.25rem+1.5vw,_3.75rem)] font-serif text-white mb-4">{title}</h1>
       {subtitle && <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{subtitle}</p>}
       {showContactForm && (
-        <a href={cta.href} class={`inline-flex items-center gap-3 ${accentBg} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg`}>{ctaText}</a>
+        <a href={ctaHref ?? cta.href} class={`inline-flex items-center gap-3 ${accentBg} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg`}>{ctaText}</a>
       )}
       {trustedBy && trustedBy.length > 0 && (
         <div class="mt-8 md:mt-10 pt-6 border-t border-white/15">
