@@ -10,7 +10,7 @@ const offerings = [
   { id: 'process-analysis', title: 'Process Optimisation', accent: 'blue' as const, description: 'A deep-dive into your business processes. Where are the automation opportunities, which bottlenecks can AI solve? You get a prioritised opportunity register. 3-5 days, from €5,000.' },
   { id: 'opportunity-scouting', title: 'Business Case Analysis', accent: 'red' as const, description: 'Where are you leaving money on the table? An organisation-wide scan of where AI delivers most, with an overview and the top 3-5 worked-out business cases. With a results guarantee.' },
   { id: 'business-case-development', title: 'Business Case Development', accent: 'red' as const, description: 'From a single AI opportunity to a substantiated investment proposal: ROI, cost estimates and a go/no-go. Board-ready. 1-2 weeks, from €5,000.' },
-  { id: 'ai-roadmap', title: 'AI Roadmap', accent: 'blue' as const, description: 'From insight to implementation plan. A phased roadmap: quick wins, short and long term, including governance and resource planning. 2-4 weeks, from €5,000.' },
+  { id: 'ai-roadmap', title: 'AI Roadmap', accent: 'blue' as const, description: 'From insight to implementation plan. A phased roadmap: quick wins, short and long term, including governance and resource planning. With us, one phase of a build; stand-alone is also possible, 2-4 weeks.' },
   { id: 'ai-implementation-guidance', title: 'Implementation Guidance', accent: 'red' as const, description: 'Hands-on guidance during rollout: change management, adoption tracking and coaching on the work floor. The bridge between plan and reality. 2-8 weeks.' },
 ];
 
@@ -21,27 +21,26 @@ const method = [
 ];
 
 const stats = [
-  { value: 'From €3,000', label: 'first readiness scan' },
-  { value: '2 – 4 weeks', label: 'from scan to roadmap' },
+  { value: '1 page', label: 'business case before every build' },
+  { value: '1 week', label: 'the start sprint, business case included' },
   { value: '70%', label: 'of AI projects fail without guidance' },
 ];
 
 const cases = [
-  { title: 'Medux', eyebrow: 'Case', accent: 'red' as const, href: '/en/cases/medux', description: '70% cost saving on customer service with voice-to-voice AI.' },
-  { title: 'InnoEnergy', eyebrow: 'Case', accent: 'blue' as const, href: '/en/cases/innoenergy', description: 'From vision to board-approved prototype.' },
-  { title: 'OLX', eyebrow: 'Case', accent: 'blue' as const, href: '/en/cases/olx', description: 'AI-driven transformation of the marketplace.' },
+  { title: 'Kwakkel BV', eyebrow: 'Business case in one week', accent: 'red' as const, href: '/en/cases/kwakkel', description: 'Prototype on their own data plus the business case, in six days.' },
+  { title: 'Strive', eyebrow: 'Business case before the replacement', accent: 'blue' as const, href: '/en/cases/strive', description: 'What the package cost, what custom software costs and when it pays back, before the build.' },
 ];
 
 const related = [
-  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from insight to daily application.' },
-  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'The same partner that advises also builds what is in the roadmap.' },
+  { title: 'The start sprint', accent: 'red' as const, href: '/en/start-sprint', description: 'One week, fixed price, a working prototype or build plan. Always with the business case included.' },
+  { title: 'How we work', accent: 'blue' as const, href: '/en/about/approach', description: 'The project from business case to handover.' },
 ];
 
 const faq = [
-  { q: 'What does AI consulting cost?', a: 'The entry point is an AI readiness scan of 1 to 3 days, from EUR 3,000. A process analysis or business case development starts from EUR 5,000, and a full AI roadmap takes 2 to 4 weeks of work from EUR 5,000. You know the cost up front; surprises afterwards are not part of the deal.' },
-  { q: 'Where should my organisation start with AI?', a: 'For most organisations the AI readiness scan is the logical starting point. In 1 to 3 days we map maturity, data and culture, and you get a concrete action plan: where you stand, which quick wins are available and what the logical next step is.' },
-  { q: 'How long does it take from scan to roadmap?', a: 'On average 2 to 4 weeks. A standalone readiness scan is done in a few days; a full roadmap with quantified business cases, governance and resource planning takes a few weeks. You step in at the level that fits your situation.' },
-  { q: 'What makes AI Heroes different from other consultancies?', a: 'We build AI ourselves. That makes our cost estimates realistic, and the same partner that advises can also build what is in the roadmap. No handover to an external builder, no knowledge leak. And if the business case does not add up, we say so honestly.' },
+  { q: 'What does AI consulting cost?', a: 'A stand-alone readiness scan of 1 to 3 days starts from EUR 3,000; a process analysis or business case development from EUR 5,000. The start sprint (one week, from EUR 8,000) includes the business case for one concrete system. You know the cost up front; surprises afterwards are not part of the deal.' },
+  { q: 'Where should my organisation start with AI?', a: 'If you already have a concrete process or system in mind, the start sprint is the first step: one week, a working prototype or build plan, business case included. If you do not yet know where to begin, the readiness scan maps in 1 to 3 days where you stand, which quick wins are available and what the logical next step is.' },
+  { q: 'How long does it take from scan to roadmap?', a: 'On average 2 to 4 weeks. A stand-alone readiness scan is done in a few days; a full roadmap with substantiated business cases, governance and resource planning takes a few weeks. If it concerns one concrete system, the one-week start sprint is faster and more concrete.' },
+  { q: 'What makes AI Heroes different from other consultancies?', a: 'We build ourselves. That makes our cost estimates realistic, and we also build what is in the business case. No handover to an external builder, no knowledge leak. And if the business case does not add up, we say so honestly and we do not build.' },
   { q: 'Do you also guide the implementation?', a: 'Yes. Around 70% of AI projects fail without guidance, so we do not stop at the report. With implementation guidance (2 to 8 weeks) we support the rollout on the work floor: change management, adoption tracking and coaching, until AI is part of the daily work.' },
 ];
 
@@ -73,26 +72,25 @@ const serviceSchema = {
   lang="en"
   title="AI Consulting"
   subtitle="From first insight to working AI. We start where you stand, map the opportunities and deliver a plan that pays off, before you invest."
-  seoTitle="AI Consulting | Readiness, business case & roadmap | AI Heroes"
+  seoTitle="AI consulting: business case, readiness scan and roadmap before the build"
   seoDescription="AI consulting that goes from readiness scan to business case, roadmap and implementation guidance. A plan that works, not a report that gathers dust. Realistic estimates, because we build ourselves."
   accentColor="blue"
-  pillarBadge="Consulting"
-  ctaLabel="Schedule a consultation"
-  trustedBy={["Medux", "InnoEnergy", "Prosus", "Envalior", "OLX Poland", "050-IT"]}
+  badge="Business case and scoping"
+  trustedBy={["Kwakkel BV", "Strive", "UMCG", "Envalior", "050-IT"]}
   jsonLd={[serviceSchema, faqSchema]}
 >
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">From first insight to working AI</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Every build starts with a business case</h2>
     <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      For organisations that know AI is relevant but want to know where to start and what it delivers before they invest. We map your organisation and processes, translate opportunities into substantiated business cases and a concrete roadmap, and guide the rollout on the work floor.
+      Before we build, you know what it costs, what it returns and when it pays back. In the start sprint that business case is part of the outcome; this page describes how we make it, and what you can get from us if you first want to know where to begin.
     </p>
-    <p class="text-stone-600 leading-relaxed">What is unique: the same partner that advises can also build what is in the roadmap. No handover, no knowledge leak.</p>
+    <p class="text-stone-600 leading-relaxed">Because we build ourselves, our estimates are realistic. If the business case does not add up, we do not build, and we say so.</p>
     <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
   </section>
 
   <section class="mb-16">
     <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">The journey, step by step</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">You step in where it makes sense for you: just a scan, a single business case, or the whole path from insight to rollout.</p>
+    <p class="text-stone-600 leading-relaxed mb-6">The start sprint includes the readiness scan and the business case for one concrete system. If you want to look wider or first want to know where to begin, these are the stand-alone components.</p>
     <CardGrid items={offerings} cols={3} />
   </section>
 
@@ -108,7 +106,7 @@ const serviceSchema = {
   </section>
 
   <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">From advice to results</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Business case in practice</h2>
     <CardGrid items={cases} cols={3} />
   </section>
 
@@ -128,7 +126,7 @@ const serviceSchema = {
   </section>
 
   <section>
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Related services</h2>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">How this fits in a build</h2>
     <CardGrid items={related} cols={2} />
   </section>
 </SubpageLayout>

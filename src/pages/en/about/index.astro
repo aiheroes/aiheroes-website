@@ -5,28 +5,24 @@ import { CONTENT } from '../../../data/content';
 import CardGrid from '../../../components/blocks/CardGrid.astro';
 import ProofRow from '../../../components/blocks/ProofRow.astro';
 
-const content = CONTENT.en.aboutPage;
+const content = { ...CONTENT.en.aboutPage, services: CONTENT.en.services };
 const introParagraphs = content.intro.text.split('\n\n');
 const readMore = 'Read more';
 
-const pillars = [
-  { title: 'Training', accent: 'red' as const, href: '/en/services/training', description: 'In-company workshops that take your team from insight to daily application.' },
-  { title: 'Consulting', accent: 'blue' as const, href: '/en/services/consulting', description: 'From AI readiness and business cases to a roadmap and implementation guidance.' },
-  { title: 'Software', accent: 'dark' as const, href: '/en/services/software', description: 'From proof of concept to custom AI, integration and digital twins.' },
-];
-const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalior', 'InnoEnergy', 'OLX Poland', 'Banijay Benelux'];
+const entries = content.services.items.map((item, i) => ({ title: item.title, eyebrow: item.tag, accent: (['red', 'blue', 'dark'] as const)[i], href: item.href, description: item.description }));
+const clients = ['Kwakkel BV', 'INQ22', 'Strive', 'IC Commerce', 'UMCG', 'Tweede Kamer', 'Postcode Loterij', 'Envalior'];
 ---
 
 <BaseLayout
   lang="en"
   title={content.hero.title}
-  description="About AI Heroes: full-service AI agency based in Groningen. Since 2019, guiding organisations from change management to technical implementation."
+  description="About AI Heroes: we build AI tools your team uses every day, for organisations that want to go beyond a pilot, with business case, compliance and training included. Based in Groningen, a brand since 2019, with the current team since late 2025."
 >
   <header id="page-hero" class="pt-24 pb-12 md:pt-40 md:pb-24 bg-brand-dark border-b-4 border-brand-red">
     <div class="max-w-4xl mx-auto px-6">
       <h1 class="text-[clamp(1.875rem,_1.25rem+1.5vw,_3.75rem)] font-serif text-white mb-4">{content.hero.title}</h1>
       <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{content.hero.subtitle}</p>
-      <a href="/en#contact" class="inline-flex items-center gap-3 bg-brand-red text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg">Start conversation</a>
+      <a href="/en/start-sprint" class="inline-flex items-center gap-3 bg-brand-red text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg">Plan a start sprint</a>
     </div>
   </header>
 
@@ -56,7 +52,7 @@ const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalio
         <p class="text-lg text-stone-600 mb-12">{content.team.subtitle}</p>
         <div class="space-y-8">
           {content.team.members.map((member) => (
-            <div class="border-l-4 border-brand-red pl-6 py-2">
+            <div class="py-2">
               <h3 class="text-xl md:text-2xl font-serif text-brand-dark mb-1">{member.name}</h3>
               <div class="text-sm text-brand-red font-medium uppercase tracking-wider mb-3">{member.role}</div>
               <p class="text-stone-700 leading-relaxed">{member.description}</p>
@@ -70,7 +66,7 @@ const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalio
       <div class="max-w-4xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {content.cards.map((card) => (
-            <a href={card.href} class="group bg-white p-8 hover:shadow-lg transition-all duration-300 border-l-4 border-brand-red no-underline">
+            <a href={card.href} class="group solid-block bg-brand-dark p-8 hover:bg-black transition-colors duration-300 no-underline">
               <div class="flex items-start gap-4">
                 <div class="flex-shrink-0">
                   <div class="w-12 h-12 bg-brand-red/10 flex items-center justify-center text-brand-red">
@@ -98,7 +94,7 @@ const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalio
         <h2 class="text-3xl md:text-5xl font-serif text-white mb-12">{content.values.title}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {content.values.items.map((value) => (
-            <div class="border-l-4 border-brand-red pl-6 py-2">
+            <div class="py-2">
               <h3 class="text-xl font-serif text-white mb-3">{value.title}</h3>
               <p class="text-white/80 leading-relaxed">{value.description}</p>
             </div>
@@ -109,9 +105,9 @@ const clients = ['Postcode Loterij', 'Tweede Kamer', 'Prosus', 'Medux', 'Envalio
 
     <section class="py-16 md:py-20 bg-brand-light px-6 md:px-12">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-3">What we do</h2>
-        <p class="text-lg text-stone-600 mb-8">Three pillars, under one roof. From first insight to working AI in production.</p>
-        <CardGrid items={pillars} cols={3} />
+        <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-3">What we build</h2>
+        <p class="text-lg text-stone-600 mb-8">Three ways in. The first step is always the start sprint.</p>
+        <CardGrid items={entries} cols={3} />
         <p class="mt-8 text-stone-600">Curious about the results? <a href="/en/cases" class="text-brand-red font-medium hover:underline underline-offset-2">See our cases &rarr;</a></p>
       </div>
     </section>

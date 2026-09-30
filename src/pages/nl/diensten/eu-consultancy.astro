@@ -1,82 +1,117 @@
 ---
 import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+import CardGrid from '../../../components/blocks/CardGrid.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import StatGrid from '../../../components/blocks/StatGrid.astro';
+import Callout from '../../../components/blocks/Callout.astro';
+import Faq from '../../../components/blocks/Faq.astro';
+
+const options = [
+  { id: 'on-premises', title: 'Op eigen servers', accent: 'dark' as const, description: 'Een taalmodel op je eigen hardware. Geen abonnement, geen data die het pand verlaat. Wij installeren, configureren en trainen je beheerders; jij houdt de sleutels.' },
+  { id: 'europese-cloud', title: 'Europese cloud', accent: 'blue' as const, description: 'Mistral in Frankrijk, Aleph Alpha in Duitsland, Nederlandse hosting voor de rest. Modellen van Europees niveau, gehost onder Europees recht.' },
+  { id: 'migratie', title: 'Migratie weg van Amerikaanse cloud', accent: 'red' as const, description: 'Van ChatGPT, Azure OpenAI of AWS Bedrock naar een Europees alternatief, zonder dat je team er iets van merkt. Inclusief inkoopadvies over leveranciers en contracten.' },
+  { id: 'ai-beleid', title: 'AI-beleid en AI Act', accent: 'red' as const, description: 'Classificatie van je systemen onder de AI Act, logging en menselijk toezicht in het ontwerp, en een AI-beleid van twee A4 dat je team ook echt gebruikt.' },
+];
+
+const method = [
+  { title: 'Startsprint', eyebrow: 'Week 1', body: 'We brengen je digitale omgeving in kaart: welke tools, waar data naartoe gaat, welke leveranciers onder Amerikaanse jurisdictie vallen. Uitkomst: een hostingontwerp, een risicobeoordeling en de business case op één A4.', href: '/nl/startsprint', hrefLabel: 'Meer over de startsprint' },
+  { title: 'Bouwen en migreren', eyebrow: 'Week 2 tot 12', body: 'Het model of de toepassing draait op de gekozen plek, gekoppeld aan je systemen. Migratie in fasen, met de oude en nieuwe omgeving naast elkaar tot de cijfers kloppen.' },
+  { title: 'Beheer overgedragen', eyebrow: 'Oplevering', body: 'Je beheerders zijn getraind, de documentatie is compleet en de AI Act-classificatie ligt vast. Je kunt het zelf draaiende houden; wij blijven bereikbaar als je dat wilt.' },
+];
+
+const stats = [
+  { value: '1 week', label: 'tot hostingontwerp en risicobeoordeling' },
+  { value: 'EU-recht', label: 'op elke server die je data raakt' },
+  { value: 'Eigen stack', label: 'onze assistent op deze site draait Europees' },
+];
+
+const proof = [
+  { title: 'De assistent op deze site', eyebrow: 'In eigen beheer draaien', accent: 'dark' as const, href: '/nl/cases/eigen-stack', description: 'Door ons gebouwd, gehost in Europa, met Europese database en retentiebeleid. Zelf doen wat we adviseren.' },
+];
+
+const related = [
+  { title: 'Iets nieuws bouwen', accent: 'red' as const, href: '/nl/diensten/software', description: 'Een assistent, een werkstroom, een tool die er nog niet is.' },
+  { title: 'Vervangen wat niet meer voldoet', accent: 'blue' as const, href: '/nl/diensten/software-vervangen', description: 'Verouderde of te dure software eruit, iets dat past ervoor in de plaats.' },
+];
+
+const faq = [
+  { q: 'Zijn Europese modellen goed genoeg?', a: 'Voor de meeste bedrijfstoepassingen wel: documenten samenvatten, vragen beantwoorden op eigen data, teksten opstellen, spraak verwerken. In de startsprint testen we het op jouw situatie, zodat je het niet hoeft te geloven maar kunt zien.' },
+  { q: 'Wat kost een eigen server?', a: 'Dat hangt af van het model en het aantal gebruikers. Een middelgrote organisatie draait een goed taalmodel op hardware van enkele duizenden euro\'s, zonder abonnement. De vergelijking met cloudkosten staat in de business case van de startsprint.' },
+  { q: 'Waarom zou ik weg willen van Amerikaanse cloud?', a: 'De CLOUD Act geeft de Amerikaanse overheid toegang tot data bij Amerikaanse bedrijven, ongeacht waar de servers staan. Voor overheden, zorg, advocatuur en organisaties met aanbestedingseisen rond datasoevereiniteit is dat een reden om het anders te doen. Voor anderen is het een afweging; we adviseren eerlijk, ook als het antwoord is dat je goed zit waar je zit.' },
+  { q: 'Hoe zit het met de AI Act?', a: 'Sinds 2 augustus 2026 is het Nederlandse toezicht operationeel. We classificeren je systemen, bouwen logging en menselijk toezicht in en zorgen dat je team voldoet aan de geletterdheidsplicht van artikel 4. Dat zit in elke bouw; het is de AI Heroes-standaard.' },
+  { q: 'Kan ik alleen advies krijgen, zonder bouw?', a: 'De startsprint levert een hostingontwerp en risicobeoordeling op waarmee je zelf verder kunt, ook zonder ons. Een losse sessie over digitale risico\'s en Europese alternatieven voor je team is er ook; die vind je bij training.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'In eigen beheer draaien: soevereine AI en hosting',
+  serviceType: 'Sovereign AI implementation and European hosting',
+  description: 'AI en software op eigen servers of bij een Europese partij. Lokale modellen, Europese cloud, migratie weg van Amerikaanse cloud, AI-beleid en AI Act-classificatie.',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Place', name: 'European Union' },
+  availableLanguage: ['Dutch', 'English'],
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'EUR', lowPrice: '8000' },
+  url: 'https://aiheroes.io/nl/diensten/eu-consultancy',
+};
 ---
 
 <SubpageLayout
   lang="nl"
-  title="EU AI Consultancy"
-  subtitle="Europese AI zonder vendor lock-in. Van bewustwording tot werkende oplossing: training, consulting en implementatie in één traject."
-  seoTitle="Soevereine AI Consultancy | Europese AI zonder lock-in"
-  seoDescription="Soevereine AI voor jouw organisatie: het complete traject van risico-inventarisatie tot werkende Europese AI-oplossing. Training, consulting en implementatie door AI Heroes."
-  accentColor="red"
-  ctaLabel="Plan een gesprek"
-  trustedBy={["Tweede Kamer", "Envalior", "050-IT"]}
+  title="In eigen beheer draaien"
+  subtitle="AI en software op je eigen servers of bij een Europese partij. Zonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd."
+  seoTitle="Soevereine AI: op eigen servers of Europees gehost, zonder Amerikaanse cloud"
+  seoDescription="AI in eigen beheer draaien met AI Heroes: lokale modellen op eigen hardware, Europese cloud (Mistral, Aleph Alpha, Nederlandse hosting), migratie weg van Amerikaanse cloud, AI-beleid en AI Act-classificatie. Startsprint in één week."
+  accentColor="blue"
+  badge="In eigen beheer draaien"
+  entry="eigen-beheer"
+  trustedBy={["UMCG", "Tweede Kamer", "Envalior", "050-IT"]}
+  jsonLd={[serviceSchema, faqSchema]}
+  showStandard
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Europese AI die werkt, zonder afhankelijkheid</h2>
-
-    <div class="bg-red-950 text-white p-6 md:p-8 mb-8 border-l-4 border-brand-red not-prose">
-      <p class="text-sm font-bold uppercase tracking-wider text-brand-red mb-3">Waarom nu</p>
-      <p class="text-sm text-stone-200 mb-2">De CLOUD Act stelt de VS in staat om data op te eisen bij elk Amerikaans bedrijf (inclusief Microsoft, Google en AWS), ongeacht waar de servers staan. Vanaf <strong class="text-white">augustus 2025</strong> verplicht de EU AI Act transparantie over dataverwerking in AI-systemen.</p>
-      <p class="text-sm text-stone-200">Organisaties zonder helder beeld van hun digitale omgeving lopen risico op non-compliance, dataverlies aan buitenlandse jurisdicties en strategische afhankelijkheid.</p>
-    </div>
-
-    <p class="text-stone-600 leading-relaxed mb-8">
-      De meeste organisaties weten dat ze iets moeten doen met digitale soevereiniteit; alleen weten ze niet waar te beginnen. Wij bieden een compleet traject: van bewustwording en risico-inventarisatie tot werkende Europese AI-oplossingen. Eén partner voor het hele pad.
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">“Kan het ook op onze eigen servers? Onze data mag Europa niet uit.”</h2>
+    <p class="text-lg text-stone-600 leading-relaxed mb-4">
+      Voor overheden, zorg, advocatuur en organisaties met aanbestedingseisen is dit geen wens maar een voorwaarde. Wij bouwen AI die in Europa blijft: op je eigen hardware of bij een Europese partij, gekoppeld aan je systemen, met de AI Act in het ontwerp.
     </p>
+    <p class="text-stone-600 leading-relaxed">We doen het zelf ook. De assistent op deze site is door ons gebouwd en draait op Europese infrastructuur.</p>
+    <StatGrid stats={stats} accent="blue" cols={3} class="mt-8" />
+  </section>
 
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Drie stappen naar onafhankelijkheid</h3>
+  <section class="mb-16">
+    <Callout variant="red" accent="red" eyebrow="Waarom dit speelt" title="CLOUD Act en AI Act">
+      <p>De Amerikaanse CLOUD Act geeft de Amerikaanse overheid toegang tot data die bij Amerikaanse bedrijven is opgeslagen, ongeacht waar de servers staan. Dat geldt voor Microsoft, Google en Amazon, en dus voor ChatGPT, Azure OpenAI en AWS Bedrock.</p>
+      <p>Sinds 2 augustus 2026 is het Nederlandse toezicht op de EU AI Act operationeel. Wie AI-systemen gebruikt, moet ze kunnen classificeren, loggen en verantwoorden, en moet kunnen aantonen dat medewerkers voldoende AI-geletterd zijn. In maart 2025 nam de Tweede Kamer moties aan over minder afhankelijkheid van Amerikaanse platformen; aanbestedingen volgen.</p>
+    </Callout>
+  </section>
 
-    <div class="space-y-6 mb-10 not-prose">
-      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-brand-red transition-colors">
-        <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-red font-serif font-bold text-lg">1</span></div>
-          <div>
-            <h4 class="font-bold text-brand-dark text-lg mb-1">Bewustwording & Training</h4>
-            <p class="text-xs font-bold uppercase tracking-wider text-brand-red mb-3">Halve of hele dag op locatie</p>
-            <p class="text-stone-600 text-sm leading-relaxed mb-3">Wat betekent de CLOUD Act voor jouw data? Welke risico's loop je met Amerikaanse platformen? En welke Europese alternatieven bestaan er? Een praktische sessie die je team op hetzelfde niveau brengt, zonder jargon.</p>
-            <a href="/nl/diensten/eu-training" class="text-sm font-medium text-brand-red hover:underline underline-offset-2">Meer over de training →</a>
-          </div>
-        </div>
-      </div>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Wat we bouwen</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Vier vormen, vaak in combinatie.</p>
+    <CardGrid items={options} cols={2} />
+  </section>
 
-      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-brand-blue transition-colors">
-        <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-brand-blue/10 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-blue font-serif font-bold text-lg">2</span></div>
-          <div>
-            <h4 class="font-bold text-brand-dark text-lg mb-1">Organisatiescan & Roadmap</h4>
-            <p class="text-xs font-bold uppercase tracking-wider text-brand-blue mb-3">2–3 weken doorlooptijd</p>
-            <p class="text-stone-600 text-sm leading-relaxed mb-3">We brengen je volledige digitale omgeving in kaart: welke tools, waar data naartoe gaat, welke leveranciers onder Amerikaanse jurisdictie vallen. Je krijgt een risicomatrix, visuele roadmap met fasering en kostenschatting.</p>
-            <p class="text-stone-600 text-sm leading-relaxed"><strong>Oplevering:</strong> adviesrapport met prioritering en concreet actieplan.</p>
-          </div>
-        </div>
-      </div>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe we beginnen</h2>
+    <ProcessSteps steps={method} />
+  </section>
 
-      <div class="border-2 border-stone-200 p-6 md:p-8 hover:border-stone-400 transition-colors">
-        <div class="flex items-start gap-4">
-          <div class="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center flex-shrink-0 mt-1"><span class="text-brand-dark font-serif font-bold text-lg">3</span></div>
-          <div>
-            <h4 class="font-bold text-brand-dark text-lg mb-1">Europese AI-implementatie</h4>
-            <p class="text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">Op maat van je organisatie</p>
-            <p class="text-stone-600 text-sm leading-relaxed mb-3">Van lokaal model op eigen hardware tot Europese cloud-oplossingen (Mistral, Aleph Alpha). We bouwen AI die in Europa blijft, zonder concessies aan kwaliteit. Inclusief migratie, configuratie en training van medewerkers.</p>
-            <a href="/nl/diensten/eu-development" class="text-sm font-medium text-brand-dark hover:underline underline-offset-2">Meer over implementatie →</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="mb-16">
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Zelf doen wat we adviseren</h2>
+    <p class="text-stone-600 leading-relaxed mb-6">Het bewijs dat zonder klanttoestemming te tonen is: onze eigen stack.</p>
+    <CardGrid items={proof} cols={2} />
+  </section>
 
-    <h3 class="text-xl font-serif text-brand-dark mb-4">Flexibel instappen</h3>
-    <p class="text-stone-600 leading-relaxed mb-8">Niet elke organisatie heeft alle drie de stappen nodig. Je kunt instappen waar je wilt: alleen een scan, alleen de training, of het volledige traject. Wij adviseren eerlijk over wat voor jouw situatie zinvol is.</p>
+  <Faq items={faq} title="Veelgestelde vragen" class="mb-16" />
 
-    <div class="grid md:grid-cols-3 gap-6 mb-8 not-prose">
-      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">1 dag – 3 weken</div><div class="text-sm text-stone-500 uppercase tracking-wider">Afhankelijk van scope</div></div>
-      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">3 pijlers</div><div class="text-sm text-stone-500 uppercase tracking-wider">Training · Scan · Bouw</div></div>
-      <div class="text-center p-6 bg-white border border-stone-200"><div class="text-3xl font-serif text-brand-red mb-2">Op locatie</div><div class="text-sm text-stone-500 uppercase tracking-wider">Bij jouw organisatie</div></div>
-    </div>
-
-    <div class="dark-box-content bg-brand-dark p-8 border-l-4 border-brand-blue my-8 not-prose">
-      <h3>Voor wie is dit?</h3>
-      <p>Organisaties die grip willen krijgen op hun digitale afhankelijkheden. Overheden die zich voorbereiden op aanbestedingseisen rond datasoevereiniteit. Bedrijven die nu al willen voldoen aan de EU AI Act. En teams die willen begrijpen waarom dit ertoe doet.</p>
-    </div>
-  </div>
+  <section>
+    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">De andere ingangen</h2>
+    <CardGrid items={related} cols={2} />
+  </section>
 </SubpageLayout>

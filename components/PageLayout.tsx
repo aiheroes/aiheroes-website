@@ -79,6 +79,16 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     }
   };
 
+  // With the chat assistant live, the chat launcher grows into the sticky CTA.
+  useEffect(() => {
+    if (!CHAT_ENABLED || !showContactForm) return;
+    window.dispatchEvent(new CustomEvent('aih:chat-cta', {
+      detail: { show: showStickyCta, label: lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?' },
+    }));
+    // Collapse again when the page unmounts (the widget can outlive it via view transitions).
+    return () => { window.dispatchEvent(new CustomEvent('aih:chat-cta', { detail: { show: false } })); };
+  }, [showStickyCta, showContactForm, lang]);
+
   // Track scroll to show sticky CTA when hero is out of view
   useEffect(() => {
     const handleStickyCtaScroll = () => {
@@ -208,7 +218,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
               onClick={scrollToContact}
               className={`group ${accentColor === 'red' ? 'bg-brand-red' : 'bg-brand-blue'} text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl`}
             >
-              <span>{ctaLabel || (lang === 'nl' ? 'Start gesprek' : 'Start conversation')}</span>
+              <span>{ctaLabel || CONTENT[lang].nav.cta.label}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           )}
@@ -239,7 +249,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       {showContactForm && (
         <section id="contact-form" className="py-16 md:py-24 bg-white border-t border-stone-200">
           <div className="max-w-4xl mx-auto px-6">
-            <PageContactForm lang={lang} accentColor={accentColor} preselectedTopic={pillarBadge} />
+            <PageContactForm lang={lang} accentColor={accentColor} />
           </div>
         </section>
       )}
@@ -254,26 +264,20 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         />
       </footer>
 
-      {/* Sticky CTA - only show when hero button is scrolled out. While the chat
-          assistant is live it OPENS the chat (decision A5 26-08); otherwise it scrolls
-          to the contact form as before. */}
-      {showContactForm && (
+      {/* Sticky CTA, only without the chat assistant (with it, the chat launcher
+          becomes this button; see the aih:chat-cta effect). Shown when the hero
+          button is scrolled out and the contact form is not yet in view. */}
+      {showContactForm && !CHAT_ENABLED && (
         <div
           className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
             showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
           }`}
         >
           <button
-            onClick={() => {
-              if (CHAT_ENABLED) {
-                window.dispatchEvent(new CustomEvent('aih:open-chat'));
-              } else {
-                scrollToContact();
-              }
-            }}
+            onClick={scrollToContact}
             className={`group ${accentColor === 'red' ? 'bg-brand-blue hover:shadow-brand-blue/30' : 'bg-brand-red hover:shadow-brand-red/30'} text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105`}
           >
-            <span>{ctaLabel || (lang === 'nl' ? 'Start gesprek' : 'Start conversation')}</span>
+            <span>{ctaLabel || CONTENT[lang].nav.cta.label}</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

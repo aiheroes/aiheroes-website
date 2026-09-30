@@ -1,0 +1,35 @@
+---
+/**
+ * "Bij elke bouw inbegrepen": the four things every build includes, as a band
+ * for static pages. Copy comes from CONTENT[lang].standard so the homepage and
+ * every subpage say exactly the same thing.
+ */
+import { CONTENT } from '../../data/content';
+import type { Lang } from '../../data/i18n';
+
+interface Props {
+  lang: Lang;
+  /** Anchor id, so "Hoe we werken" can deep-link to it. */
+  id?: string;
+  class?: string;
+}
+const { lang, id = 'standaard', class: className = '' } = Astro.props;
+const c = CONTENT[lang].standard;
+// Solid brand blocks with white text, same as the homepage (components/Standard.tsx).
+const TILE_BG = ['bg-brand-red', 'bg-brand-blue', 'bg-brand-dark', 'bg-brand-blue'];
+---
+<section id={id} class={`scroll-mt-28 ${className}`}>
+  <p class="text-brand-red text-xs font-medium tracking-[0.2em] uppercase mb-3">{c.subtitle}</p>
+  <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">{c.title}</h2>
+  <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    {c.items.map((item, i) => (
+      <li class={`${TILE_BG[i % TILE_BG.length]} text-white p-6 flex flex-col min-h-[14rem]`}>
+        <span class="font-serif text-3xl text-white/50 leading-none">{String(i + 1).padStart(2, '0')}</span>
+        <div class="mt-auto pt-8">
+          <h3 class="font-serif text-xl leading-snug mb-2 text-balance">{item.title}</h3>
+          <p class="text-base leading-relaxed text-pretty">{item.description}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

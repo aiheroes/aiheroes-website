@@ -9,7 +9,8 @@
     "build:index": "tsx scripts/build-index/index.ts",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check && npm run check:server",
+    "check": "astro check && npm run check:server && npm run check:stripes",
+    "check:stripes": "node scripts/check-side-stripes.mjs",
     "check:server": "tsc -p tsconfig.server.json --noEmit",
     "eval:chat": "npx -y promptfoo@0.122.0 eval -c evals/promptfooconfig.yaml"
   },

@@ -63,7 +63,7 @@ export const VacaturesNL: React.FC = () => {
           <div className="space-y-4">
             {content.positions.items.map((position) => {
               const Icon = departmentIcons[position.department] || Briefcase;
-              const accentBorder = position.department === 'training' ? 'border-brand-red' : 'border-brand-blue';
+              const accentBorder = position.department === 'training' ? 'hover:border-brand-red' : 'hover:border-brand-blue';
               const accentText = position.department === 'training' ? 'text-brand-red' : 'text-brand-blue';
               const accentBg = position.department === 'training' ? 'bg-brand-red' : 'bg-brand-blue';
 
@@ -71,7 +71,7 @@ export const VacaturesNL: React.FC = () => {
                 <Link
                   key={position.id}
                   to={`/nl/vacatures/${position.id}`}
-                  className={`group border ${accentBorder} border-l-4 p-6 flex items-start gap-4 hover:bg-stone-50 transition-colors`}
+                  className={`group bg-white border border-stone-200 ${accentBorder} p-6 flex items-start gap-4 transition-colors`}
                 >
                   <div className={`w-10 h-10 ${accentBg}/10 flex items-center justify-center flex-shrink-0 mt-1`}>
                     <Icon className={`w-5 h-5 ${accentText}`} />
@@ -115,7 +115,7 @@ export const VacaturesNL: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {content.culture.values.map((value, i) => (
-              <div key={i} className="border-l-4 border-brand-blue pl-6 py-2">
+              <div key={i} className="py-2">
                 <h3 className="text-xl font-serif text-brand-dark mb-2">
                   {value.title}
                 </h3>

@@ -5,12 +5,12 @@ import type { Language } from '../types';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
+import { Standard } from '../components/Standard';
 import { Approach } from '../components/Approach';
 import { Team } from '../components/Team';
 import { SocialProof } from '../components/SocialProof';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
-import { useSEO } from '../hooks/useSEO';
 import { ArrowRight } from 'lucide-react';
 import { CHAT_ENABLED } from '../src/data/chat-flags';
 
@@ -49,6 +49,7 @@ interface HomePageProps {
 const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
+  { id: 'standard', theme: 'light' },
   { id: 'social-proof', theme: 'dark' },
   { id: 'team', theme: 'light' }, // On desktop, whole team section is light
   { id: 'approach', theme: 'dark' },
@@ -59,6 +60,7 @@ const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
 const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
+  { id: 'standard', theme: 'light' },
   { id: 'social-proof', theme: 'dark' },
   { id: 'team-image', theme: 'dark' },   // Team image needs dark navbar (mobile stacked)
   { id: 'team-content', theme: 'light' }, // Team text needs light navbar
@@ -66,18 +68,6 @@ const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'contact', theme: 'light' },
   { id: 'footer', theme: 'dark' },
 ];
-
-// SEO content per language
-const SEO_CONTENT = {
-  nl: {
-    title: 'Full-Service AI Agency Nederland | Training, Consulting & Software',
-    description: 'AI Heroes is een full-service AI bureau uit Groningen, actief in heel Nederland en Europa. Van change management tot technische implementatie: training, consulting en software.'
-  },
-  en: {
-    title: 'Full-Service AI Agency Netherlands | Training, Consulting & Software',
-    description: 'AI Heroes is a full-service AI agency in the Netherlands, based in Groningen. From change management to technical implementation: AI training, consulting and software.'
-  }
-};
 
 export function HomePage({ defaultLang }: HomePageProps = {}) {
   const navigate = useNavigate();
@@ -107,15 +97,6 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
       navigate(newLang === 'nl' ? '/' : '/en');
     }
   };
-
-  // SEO for homepage
-  useSEO({
-    title: SEO_CONTENT[lang].title,
-    description: SEO_CONTENT[lang].description,
-    lang,
-    path: lang === 'nl' ? '/' : '/en',
-    alternatePath: lang === 'nl' ? '/en' : '/'
-  });
 
   useEffect(() => {
     localStorage.setItem(LANG_STORAGE_KEY, lang);
@@ -200,6 +181,17 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
 
   };
 
+  // With the chat assistant live, the chat launcher itself grows into the
+  // "Wat wil je bouwen?" pill once the hero is past: one floating element, not two.
+  useEffect(() => {
+    if (!CHAT_ENABLED) return;
+    window.dispatchEvent(new CustomEvent('aih:chat-cta', {
+      detail: { show: showStickyCta, label: lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?' },
+    }));
+    // Collapse again when the page unmounts (the widget can outlive it via view transitions).
+    return () => { window.dispatchEvent(new CustomEvent('aih:chat-cta', { detail: { show: false } })); };
+  }, [showStickyCta, lang]);
+
   // Scroll to contact section
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -232,8 +224,14 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
 
         {/* Services (Light) */}
-        <section id="services" className="md:snap-start md:h-screen w-full flex items-center bg-brand-light overflow-y-auto md:overflow-hidden scrollbar-hide">
-          <Services content={content.services} lang={lang} />
+        <section id="services" className="md:snap-start md:min-h-screen w-full flex items-center bg-brand-light">
+          <Services content={content.services} />
+        </section>
+
+        {/* Standard (Light): what every build includes. A full screen and snap target
+            like every other section, so the scroll rhythm stays one section per screen. */}
+        <section id="standard" className="md:snap-start md:min-h-screen w-full flex items-center bg-brand-light">
+          <Standard content={content.standard} />
         </section>
 
         {/* Social Proof (Dark). min-h-screen (not fixed h-screen) so the desktop
@@ -264,28 +262,24 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
         </section>
       </main>
 
-            {/* Sticky CTA - only show when hero is scrolled out. While the chat assistant
-          is live it OPENS the chat (one floating entry, decision A5 26-08); otherwise
-          it scrolls to the contact form as before. */}
-      <div
-        className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
-          showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
-        }`}
-      >
-        <button
-          onClick={() => {
-            if (CHAT_ENABLED) {
-              window.dispatchEvent(new CustomEvent('aih:open-chat'));
-            } else {
-              scrollToContact();
-            }
-          }}
-          className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+      {/* Sticky CTA, only without the chat assistant (with it, the chat launcher
+          becomes this button; see the aih:chat-cta effect above). Shown when the
+          hero is scrolled out and the contact form is not yet in view. */}
+      {!CHAT_ENABLED && (
+        <div
+          className={`fixed bottom-6 right-6 z-[96] transition-all duration-500 ${
+            showStickyCta ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+          }`}
         >
-          <span>{lang === 'nl' ? 'Start gesprek' : 'Start conversation'}</span>
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </button>
-      </div>
+          <button
+            onClick={scrollToContact}
+            className="group bg-brand-blue hover:shadow-brand-blue/30 text-white px-6 py-4 shadow-2xl transition-all duration-300 flex items-center gap-3 font-medium hover:scale-105"
+          >
+            <span>{lang === 'nl' ? 'Wat wil je bouwen?' : 'What do you want to build?'}</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

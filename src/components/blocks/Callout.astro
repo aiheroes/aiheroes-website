@@ -1,7 +1,9 @@
 ---
 /**
- * Accent-bordered callout box. `light` sits on light backgrounds; `dark` and
- * `red` are attention blocks. Optional eyebrow + title, body via slot.
+ * Callout as a solid colour block with white text (no side stripes; see
+ * docs/plan-zijlijnen-2026-09-29.md). `dark` is a dark block whose eyebrow picks up
+ * the accent; `red` and `light` become a block in the accent colour. White on brand
+ * red only passes contrast at large sizes, so red blocks set their body text larger.
  */
 interface Props {
   variant?: 'light' | 'dark' | 'red';
@@ -11,21 +13,19 @@ interface Props {
   class?: string;
 }
 const { variant = 'light', accent = 'red', eyebrow, title, class: className = '' } = Astro.props;
-const accentBorder = accent === 'red' ? 'border-brand-red' : 'border-brand-blue';
-const accentText = accent === 'red' ? 'text-brand-red' : 'text-brand-blue';
-const box = {
-  light: 'bg-white border border-stone-200',
-  dark: 'bg-brand-dark',
-  red: 'bg-red-950',
-}[variant];
-const onDark = variant !== 'light';
-const titleColor = onDark ? 'text-white' : 'text-brand-dark';
-const bodyColor = onDark ? 'text-stone-200' : 'text-stone-600';
+const bg =
+  variant === 'dark' ? 'bg-brand-dark' : variant === 'red' || accent === 'red' ? 'bg-brand-red' : 'bg-brand-blue';
+const isRed = bg === 'bg-brand-red';
+// Lighter tints of the accent read well on the dark block; on a coloured block the
+// eyebrow is plain white.
+const eyebrowColor =
+  variant === 'dark' ? (accent === 'red' ? 'text-red-400' : 'text-blue-400') : 'text-white/80';
+const bodySize = isRed ? 'text-lg' : 'text-sm md:text-base';
 ---
-<div class={`p-6 md:p-8 border-l-4 ${accentBorder} ${box} ${className}`}>
-  {eyebrow && <p class={`text-xs font-bold uppercase tracking-wider ${accentText} mb-3`}>{eyebrow}</p>}
-  {title && <h3 class={`font-serif text-xl mb-3 ${titleColor}`}>{title}</h3>}
-  <div class={`text-sm leading-relaxed ${bodyColor} [&_strong]:font-semibold ${onDark ? '[&_strong]:text-white' : '[&_strong]:text-brand-dark'} [&_p]:mb-2 [&_p:last-child]:mb-0`}>
+<div class={`p-6 md:p-8 ${bg} text-white ${className}`}>
+  {eyebrow && <p class={`text-xs font-bold uppercase tracking-wider ${eyebrowColor} mb-3`}>{eyebrow}</p>}
+  {title && <h3 class="font-serif text-xl md:text-2xl mb-3 text-white">{title}</h3>}
+  <div class={`${bodySize} leading-relaxed text-white [&_strong]:font-semibold [&_strong]:text-white [&_a]:text-white! [&_a]:underline [&_a]:underline-offset-2 [&_p]:mb-2 [&_p:last-child]:mb-0`}>
     <slot />
   </div>
 </div>

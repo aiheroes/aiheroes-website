@@ -18,7 +18,7 @@ export const Team: React.FC<TeamProps> = ({ content }) => {
             <Image
               src={content.image.src}
               alt={content.image.alt}
-              className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+              className="absolute inset-0 w-full h-full object-cover animate-ken-burns will-change-transform [backface-visibility:hidden]"
             />
             {/* Gradient overlay for navbar legibility on mobile */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent lg:hidden" />

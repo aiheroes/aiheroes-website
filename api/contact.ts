@@ -1,4 +1,4 @@
-// Contact form → Resend (replaces Netlify Forms, cutover plan F1). Vercel function.
+// Contact form → Resend. Vercel function.
 // The widget's client-side bot heuristics stay; this adds server-side checks and a
 // per-IP rate limit. Honest failure: if mail isn't configured or fails, the visitor
 // sees the error state instead of a fake success.
@@ -12,7 +12,11 @@ const bodySchema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(200),
   organization: z.string().trim().max(200).default(''),
+  // Which of the three entries the visitor picked (or "weet ik nog niet").
   topics: z.string().trim().max(300).default(''),
+  // Qualification: budget band and decision ownership, as chosen on the form.
+  budget: z.string().trim().max(100).default(''),
+  owner: z.string().trim().max(100).default(''),
   message: z.string().trim().min(1).max(5000),
   botField: z.string().max(200).default(''),
 });
@@ -41,13 +45,15 @@ export async function POST(request: Request): Promise<Response> {
   if (perMinute > 5) return json(429, { error: 'rate' });
 
   const result = await sendMail({
-    subject: `Contactformulier: ${body.name}${body.organization ? ` (${body.organization})` : ''}`,
+    subject: `Aanvraag: ${body.name}${body.organization ? ` (${body.organization})` : ''}${body.topics ? ` · ${body.topics}` : ''}`,
     replyTo: body.email,
     text: [
       `Naam: ${body.name}`,
       `E-mail: ${body.email}`,
       body.organization ? `Organisatie: ${body.organization}` : null,
-      body.topics ? `Onderwerpen: ${body.topics}` : null,
+      body.topics ? `Ingang: ${body.topics}` : null,
+      body.budget ? `Budget: ${body.budget}` : null,
+      body.owner ? `Beslist: ${body.owner}` : null,
       '',
       body.message,
       '',

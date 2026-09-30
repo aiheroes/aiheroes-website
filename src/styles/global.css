@@ -36,8 +36,10 @@
   }
 
   @keyframes ken-burns {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+    /* scale3d + translateZ keep this on the GPU; a plain 2D scale is repainted on the
+       CPU each frame and the photo visibly shimmers ("bibbert"). */
+    0% { transform: translateZ(0) scale3d(1, 1, 1); }
+    100% { transform: translateZ(0) scale3d(1.05, 1.05, 1); }
   }
 
   @keyframes fadeIn {
@@ -211,15 +213,20 @@ body {
 }
 
 .example-callout {
-  background: #f1f5f9;
-  border-left: 5px solid #2563eb;
+  background: #2563eb;
+  color: #fff;
   padding: 18px 20px;
-  border-radius: 8px;
   margin: 16px 0 22px;
 }
 
+.example-callout h2,
+.example-callout p,
+.example-callout strong,
+.example-callout li {
+  color: #fff;
+}
 .example-callout h3 {
-  color: #1e293b;
+  color: #fff;
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -326,4 +333,48 @@ img.loaded {
 .dark-box-content strong {
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 600;
+}
+
+/* Solid blocks replace side-stripe boxes (docs/plan-zijlijnen-2026-09-29.md).
+   Use with a background utility: `solid-block bg-brand-blue`. Descendant text is
+   forced white so content written for light boxes (text-stone-600, text-brand-dark)
+   stays legible without rewriting every inner element. */
+.solid-block {
+  color: #fff;
+}
+.solid-block :where(h1, h2, h3, h4, h5, h6, p, li, strong, em, span, dt, dd, blockquote, figcaption) {
+  color: #fff !important;
+}
+.solid-block :where(li)::marker {
+  color: rgba(255, 255, 255, 0.7);
+}
+.solid-block a {
+  color: #fff !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Tables no longer sit in a striped box: a white table with a dark header row. */
+.table-block {
+  background: #fff;
+  border: 1px solid var(--color-brand-stone);
+  overflow-x: auto;
+}
+.table-block table {
+  width: 100%;
+}
+.table-block thead tr {
+  border: 0 !important;
+}
+.table-block th {
+  background: var(--color-brand-dark);
+  color: #fff !important;
+  padding: 0.75rem 1rem !important;
+  text-align: left;
+}
+.table-block td {
+  padding: 0.625rem 1rem !important;
+}
+.table-block tbody tr + tr {
+  border-top: 1px solid var(--color-brand-stone);
 }

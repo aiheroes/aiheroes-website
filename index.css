@@ -30,8 +30,10 @@
   }
 
   @keyframes ken-burns {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+    /* scale3d + translateZ keep this on the GPU; a plain 2D scale is repainted on the
+       CPU each frame and the photo visibly shimmers ("bibbert"). */
+    0% { transform: translateZ(0) scale3d(1, 1, 1); }
+    100% { transform: translateZ(0) scale3d(1.05, 1.05, 1); }
   }
 
   @keyframes fadeIn {
@@ -195,15 +197,20 @@ body {
 }
 
 .example-callout {
-  background: #f1f5f9;
-  border-left: 5px solid #2563eb;
+  background: #2563eb;
+  color: #fff;
   padding: 18px 20px;
-  border-radius: 8px;
   margin: 16px 0 22px;
 }
 
+.example-callout h2,
+.example-callout p,
+.example-callout strong,
+.example-callout li {
+  color: #fff;
+}
 .example-callout h3 {
-  color: #1e293b;
+  color: #fff;
   font-size: 1.15rem;
   margin-bottom: 0.5rem;
   font-weight: 600;

@@ -22,7 +22,7 @@ export const PrivacyNL: React.FC = () => {
           Bij AI Heroes nemen we privacy serieus. We verzamelen alleen gegevens die we nodig hebben, bewaren ze niet langer dan noodzakelijk, en delen ze nooit met derden voor commerciële doeleinden.
         </p>
 
-        <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
+        <div className="solid-block bg-brand-blue p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif text-brand-dark mb-3">In het kort</h3>
           <ul className="space-y-2 text-stone-600">
             <li>We verzamelen alleen wat nodig is</li>

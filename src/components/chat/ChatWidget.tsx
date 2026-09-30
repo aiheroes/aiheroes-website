@@ -27,6 +27,10 @@ export default function ChatWidget({
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
+  // Pages with a hero ask the launcher to grow into a labelled pill once the hero is
+  // scrolled past ("Wat wil je bouwen?"), so there is one floating element, not two.
+  const [ctaLabel, setCtaLabel] = useState('');
+  const [ctaShown, setCtaShown] = useState(false);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const t = STRINGS[locale];
 
@@ -34,7 +38,7 @@ export default function ChatWidget({
     setVisible(isChatEnabled(enabled));
   }, [enabled]);
 
-  // The site's sticky "Start gesprek" CTA opens the chat while the assistant is
+  // The site's sticky "Wat wil je bouwen?" CTA opens the chat while the assistant is
   // live (decision A5 26-08): one conversation entry point instead of two buttons.
   useEffect(() => {
     const open = () => {
@@ -43,6 +47,16 @@ export default function ChatWidget({
     };
     window.addEventListener('aih:open-chat', open);
     return () => window.removeEventListener('aih:open-chat', open);
+  }, []);
+
+  useEffect(() => {
+    const onCta = (e: Event) => {
+      const { show, label } = (e as CustomEvent<{ show: boolean; label?: string }>).detail ?? {};
+      if (label) setCtaLabel(label); // kept while collapsing so the text doesn't vanish mid-animation
+      setCtaShown(Boolean(show && label));
+    };
+    window.addEventListener('aih:chat-cta', onCta);
+    return () => window.removeEventListener('aih:chat-cta', onCta);
   }, []);
 
   // Prewarm on intent (audit P1): hovering/focusing the launcher warms the function
@@ -78,10 +92,18 @@ export default function ChatWidget({
           onClick={() => setOpen(true)}
           onMouseEnter={prewarm}
           onFocus={prewarm}
-          aria-label={t.launcherLabel}
-          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex size-[3.25rem] touch-manipulation items-center justify-center rounded-full bg-brand-blue text-white shadow-lg transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
+          aria-label={ctaShown ? ctaLabel : t.launcherLabel}
+          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex h-[3.25rem] min-w-[3.25rem] touch-manipulation items-center rounded-full bg-brand-blue px-[15px] text-white shadow-lg transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
         >
-          <MessageCircle size={22} aria-hidden />
+          <MessageCircle size={22} aria-hidden className="shrink-0" />
+          <span
+            aria-hidden
+            className={`overflow-hidden whitespace-nowrap font-medium transition-[max-width,opacity,margin] duration-500 ease-out motion-reduce:transition-none ${
+              ctaShown ? 'ml-2.5 mr-1 max-w-[16rem] opacity-100' : 'ml-0 max-w-0 opacity-0'
+            }`}
+          >
+            {ctaLabel}
+          </span>
         </button>
       )}
       {open && (

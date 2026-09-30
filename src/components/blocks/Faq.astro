@@ -1,0 +1,23 @@
+---
+/** Accordion FAQ list. Pair with a FAQPage JSON-LD built from the same items. */
+interface Props {
+  items: { q: string; a: string }[];
+  title?: string;
+  class?: string;
+}
+const { items, title, class: className = '' } = Astro.props;
+---
+<section class={className}>
+  {title && <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">{title}</h2>}
+  <div class="space-y-3">
+    {items.map((f) => (
+      <details class="group border border-stone-200 bg-white">
+        <summary class="cursor-pointer list-none p-5 font-medium text-brand-dark flex justify-between items-center gap-4">
+          <span>{f.q}</span>
+          <span class="text-stone-400 group-open:rotate-180 transition-transform flex-shrink-0">&#9662;</span>
+        </summary>
+        <div class="px-5 pb-5 text-sm text-stone-600 leading-relaxed">{f.a}</div>
+      </details>
+    ))}
+  </div>
+</section>

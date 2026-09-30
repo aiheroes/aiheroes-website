@@ -44,6 +44,14 @@ const TECH_PARTNERS = [
   }
 ];
 
+// Cases linked from the footer, in the order of the cases index (current team first).
+const CASE_LINKS = [
+  { slug: 'kwakkel', name: 'Kwakkel BV' },
+  { slug: 'inq22', name: 'INQ22' },
+  { slug: 'strive', name: 'Strive' },
+  { slug: 'ic-commerce', name: 'IC Commerce' },
+];
+
 // EU flag star positions (12 stars in a circle)
 const EU_STARS = Array.from({ length: 12 }, (_, i) => {
   const angle = (i * 30 - 90) * (Math.PI / 180);
@@ -68,20 +76,10 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alternateUrl }) => {
-  const scrollTo = (href: string) => {
-    if (href.startsWith('#')) {
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
-
   const pressUrl = lang === 'nl' ? '/nl/pers' : '/en/press';
   const pressLabel = lang === 'nl' ? 'Pers' : 'Press';
-  const companyLabel = lang === 'nl' ? 'Bedrijf' : 'Company';
-  const aiStormHref = lang === 'nl' ? '/nl/de-ai-storm' : '/en/de-ai-storm';
-  const aiStormLabel = lang === 'nl' ? 'Zoals gezien op tv' : 'As seen on TV';
+  // The "Kennis" column mirrors the knowledge group of the About mega-menu.
+  const knowledgeItems = nav.about.columns?.find((c) => c.items.some((i) => i.href.includes('/resources')))?.items ?? [];
 
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-8 mt-auto border-t border-stone-800 overflow-hidden">
@@ -115,44 +113,13 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
             </div>
           </div>
 
-          {/* Training Column */}
-          <div>
-            <h3 className="font-serif text-lg mb-4 text-white">{lang === 'nl' ? 'Training' : 'Training'}</h3>
-            <ul className="space-y-2">
-              {nav.services.children?.filter(c => c.category === 'training').map((item, idx) => (
-                <li key={idx}>
-                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link to={lang === 'nl' ? '/nl/diensten/ai-geletterdheid-training' : '/en/services/ai-literacy-training'} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {lang === 'nl' ? 'AI-geletterdheid Training' : 'AI Literacy Training'}
-                </Link>
-              </li>
-              <li>
-                <Link to={lang === 'nl' ? '/nl/diensten/incompany-ai-training' : '/en/services/incompany-ai-training'} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {lang === 'nl' ? 'Incompany AI-training' : 'In-company AI Training'}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Consultancy Column */}
+          {/* Wat we bouwen */}
           <div>
             <h3 className="font-serif text-lg mb-4 text-white">
-              <Link to={lang === 'nl' ? '/nl/diensten' : '/en/services'} className="hover:text-stone-300 transition-colors">
-                {lang === 'nl' ? 'Consultancy' : 'Consulting'}
-              </Link>
+              <Link to={nav.build.href} className="hover:text-stone-300 transition-colors">{content.columns.build}</Link>
             </h3>
             <ul className="space-y-2">
-              <li>
-                <Link to={lang === 'nl' ? '/nl/diensten/ai-bureau-nederland' : '/en/services/ai-agency-netherlands'} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {lang === 'nl' ? 'AI Bureau Nederland' : 'AI Agency Netherlands'}
-                </Link>
-              </li>
-              {nav.services.children?.filter(c => c.category === 'consulting').map((item, idx) => (
+              {nav.build.children?.map((item, idx) => (
                 <li key={idx}>
                   <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
                     {item.label}
@@ -160,23 +127,19 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </li>
               ))}
               <li>
-                <Link to={lang === 'nl' ? '/nl/diensten/ai-consultancy-groningen' : '/en/services/ai-agency-groningen'} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {lang === 'nl' ? 'AI Consultancy Groningen' : 'AI Agency Groningen'}
-                </Link>
-              </li>
-              <li>
-                <Link to={lang === 'nl' ? '/nl/diensten/digitale-onafhankelijkheid' : '/en/services/digital-independence'} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {lang === 'nl' ? 'Digitale onafhankelijkheid' : 'Digital independence'}
+                <Link to={nav.featured.href} className="text-white hover:text-brand-red transition-colors text-sm font-medium">
+                  {nav.featured.label}
                 </Link>
               </li>
             </ul>
           </div>
-
-          {/* Software Column */}
+          {/* Hoe we werken */}
           <div>
-            <h3 className="font-serif text-lg mb-4 text-white">Software</h3>
+            <h3 className="font-serif text-lg mb-4 text-white">
+              <Link to={nav.how.href} className="hover:text-stone-300 transition-colors">{content.columns.how}</Link>
+            </h3>
             <ul className="space-y-2">
-              {nav.services.children?.filter(c => c.category === 'software').map((item, idx) => (
+              {nav.how.children?.map((item, idx) => (
                 <li key={idx}>
                   <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
                     {item.label}
@@ -185,29 +148,22 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
               ))}
             </ul>
           </div>
-
-          {/* Case Studies Column */}
+          {/* Cases */}
           <div>
-            <h3 className="font-serif text-lg mb-4 text-white">{content.caseStudies.title}</h3>
+            <h3 className="font-serif text-lg mb-4 text-white">
+              <Link to={nav.cases.href} className="hover:text-stone-300 transition-colors">{content.columns.cases}</Link>
+            </h3>
             <ul className="space-y-2">
-              <li>
-                <Link to={`/${lang}/cases/medux`} className="text-stone-400 hover:text-white transition-colors text-sm">Medux</Link>
-              </li>
-              <li>
-                <Link to={`/${lang}/cases/olx`} className="text-stone-400 hover:text-white transition-colors text-sm">OLX</Link>
-              </li>
-              <li>
-                <Link to={`/${lang}/cases/trabu`} className="text-stone-400 hover:text-white transition-colors text-sm">Trabu</Link>
-              </li>
-              <li>
-                <Link to={`/${lang}/cases/innoenergy`} className="text-stone-400 hover:text-white transition-colors text-sm">InnoEnergy</Link>
-              </li>
+              {CASE_LINKS.map((c) => (
+                <li key={c.slug}>
+                  <Link to={`/${lang}/cases/${c.slug}`} className="text-stone-400 hover:text-white transition-colors text-sm">{c.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* Company + Resources + Legal Column */}
+          {/* Bedrijf */}
           <div>
-            <h3 className="font-serif text-lg mb-4 text-white">{companyLabel}</h3>
+            <h3 className="font-serif text-lg mb-4 text-white">{content.columns.company}</h3>
             <ul className="space-y-2">
               {nav.about.children?.map((item, idx) => (
                 <li key={idx}>
@@ -222,28 +178,6 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 </Link>
               </li>
               <li>
-                <Link to={aiStormHref} className="text-stone-400 hover:text-white transition-colors text-sm">
-                  {aiStormLabel}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={lang === 'en' ? '/en#contact' : '/#contact'}
-                  onClick={(e: React.MouseEvent) => {
-                    // On the homepage, smooth-scroll instead of navigating. Checked at
-                    // click time (not render) so server/client HTML stays identical.
-                    const p = window.location.pathname;
-                    if (p === '/' || p === '/en') {
-                      e.preventDefault();
-                      scrollTo('#contact');
-                    }
-                  }}
-                  className="text-stone-400 hover:text-white transition-colors text-sm"
-                >
-                  {nav.contact.label}
-                </Link>
-              </li>
-              <li>
                 <MeetingChooser
                   label={CONTENT[lang].contactForm.meetingLabel}
                   meetings={CONTENT[lang].contactForm.meetings}
@@ -251,22 +185,19 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
                 />
               </li>
             </ul>
-
-            {nav.resources && (
-              <>
-                <h3 className="font-serif text-lg mb-3 mt-6 text-white">{nav.resources.label}</h3>
-                <ul className="space-y-2">
-                  {nav.resources.children?.map((item, idx) => (
-                    <li key={idx}>
-                      <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-
+          </div>
+          {/* Kennis */}
+          <div>
+            <h3 className="font-serif text-lg mb-4 text-white">{content.columns.knowledge}</h3>
+            <ul className="space-y-2">
+              {knowledgeItems.map((item, idx) => (
+                <li key={idx}>
+                  <Link to={item.href} className="text-stone-400 hover:text-white transition-colors text-sm">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -278,7 +209,7 @@ export const Footer: React.FC<FooterProps> = ({ content, nav, lang, setLang, alt
           {/* Partner logos row */}
           <div className="flex flex-wrap items-center gap-y-3 mb-6">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-stone-600 pr-6 w-full md:w-auto mb-1 md:mb-0">
-              {lang === 'nl' ? 'We werken met' : 'We work with'}
+              {content.partnersLabel}
             </span>
             {/* AI providers */}
             {TECH_PARTNERS.slice(0, 4).map(({ name, viewBox, path }) => (

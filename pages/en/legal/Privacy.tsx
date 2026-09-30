@@ -22,7 +22,7 @@ export const PrivacyEN: React.FC = () => {
           At AI Heroes, we take privacy seriously. We only collect data we need, don't keep it longer than necessary, and never share it with third parties for commercial purposes.
         </p>
 
-        <div className="bg-stone-50 p-6 md:p-8 mb-8 border-l-4 border-brand-blue">
+        <div className="solid-block bg-brand-blue p-6 md:p-8 mb-8">
           <h3 className="text-xl font-serif text-brand-dark mb-3">In short</h3>
           <ul className="space-y-2 text-stone-600">
             <li>We only collect what's necessary</li>

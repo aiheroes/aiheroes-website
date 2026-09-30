@@ -2,6 +2,10 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Content } from '../types';
 
+// Client logos in the strip. A name with a file here renders as an image (white on the
+// dark band); a name without one renders as text until the file lands in public/logos/.
+const LOGO_FILES: Record<string, string> = {};
+
 interface SocialProofProps {
   content: Content['socialProof'];
 }
@@ -13,17 +17,23 @@ const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : use
 const AUTO_ADVANCE_MS = 7000;
 
 export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
-  const logos = [
-    "Postcode Loterij", "Banijay", "Prosus", "Medux", "Hanze", "Locatiqs"
-  ];
+  const logos = content.logos;
 
   const testimonials = content.testimonials;
   const hasMultiple = testimonials.length > 1;
-  const backLabel = content.back ?? 'Terug';
-  const readMore = content.readMore ?? 'Lees meer';
+  const backLabel = content.back;
+  const readMore = content.readMore;
 
-  // Desktop/tablet shows the whole wall at once; only the mobile carousel rotates.
+  // Desktop/tablet shows one row of three at a time (paged by hand, so the section
+  // stays exactly one screen tall); only the mobile carousel rotates on its own.
   const [active, setActive] = useState(0);
+  const PAGE_SIZE = 3;
+  const pageCount = Math.ceil(testimonials.length / PAGE_SIZE);
+  const [page, setPage] = useState(0);
+  const goToPage = (index: number) => setPage(((index % pageCount) + pageCount) % pageCount);
+  const pageItems = testimonials
+    .map((t, idx) => ({ t, idx }))
+    .slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
   const [paused, setPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   // Which reference is opened full-screen (old single-quote style); null = wall.
@@ -89,7 +99,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
 
   return (
     <section
-      className="w-full min-h-screen pt-28 md:pt-32 pb-16 md:pb-24 flex flex-col justify-center items-center"
+      className="w-full min-h-screen pt-24 md:pt-28 pb-12 md:pb-16 flex flex-col justify-center items-center"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -127,39 +137,62 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
         ) : (
           <>
             {content.heading && (
-              <h2 className="text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif text-white text-center leading-tight mb-10 md:mb-16">
+              <h2 className="text-[clamp(1.625rem,_1.125rem+1.75vw,_3.5rem)] font-serif text-white text-center leading-tight mb-8 md:mb-10">
                 {content.heading}
               </h2>
             )}
 
-            {/* Desktop / tablet: the full wall of references, all visible at once.
-                CSS multi-column masonry; each card opens the full review on click. */}
-            <div className="hidden md:block w-full mb-14 lg:mb-16">
-              <div className="columns-2 lg:columns-3 gap-5 lg:gap-6">
-                {testimonials.map((t, idx) => (
+            {/* Desktop / tablet: one row of three references, paged with the arrows
+                below. Each card opens the full review on click. */}
+            <div className="hidden md:block w-full mb-10">
+              <div className="grid grid-cols-3 gap-5 lg:gap-6">
+                {pageItems.map(({ t, idx }) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => openExpanded(idx)}
-                    aria-label={t.author ? `Lees de volledige review van ${t.author}` : 'Lees de volledige review'}
-                    className="group block w-full text-left break-inside-avoid mb-5 lg:mb-6 rounded-2xl border border-stone-800 bg-stone-900/40 p-6 lg:p-7 cursor-pointer transition-colors duration-300 hover:border-stone-600 hover:bg-stone-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+                    aria-label={t.author ? `${readMore}: ${t.author}` : readMore}
+                    className="group flex flex-col w-full text-left rounded-2xl border border-stone-800 bg-stone-900/40 p-6 cursor-pointer transition-colors duration-300 hover:border-stone-600 hover:bg-stone-900/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
                   >
-                    <span className="block font-serif italic text-stone-100 text-lg lg:text-xl leading-snug text-balance">
+                    <span className="block font-serif italic text-stone-100 text-base lg:text-lg leading-snug text-balance">
                       <span className="text-stone-600">&ldquo;</span>{t.highlight ?? t.text}<span className="text-stone-600">&rdquo;</span>
                     </span>
-                    <span className="block mt-5">
+                    <span className="block mt-auto pt-5">
                       {t.author && (
                         <span className="block font-sans font-bold text-white tracking-wide text-sm">{t.author}</span>
                       )}
                       <span className="block font-serif text-stone-400 text-sm mt-1">{t.role}</span>
                     </span>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-stone-500 group-hover:text-stone-200 transition-colors duration-300">
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-stone-500 group-hover:text-stone-200 transition-colors duration-300">
                       {readMore}
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </span>
                   </button>
                 ))}
               </div>
+
+              {pageCount > 1 && (
+                <div className="flex items-center justify-center gap-4 mt-6">
+                  <button type="button" onClick={() => goToPage(page - 1)} aria-label={content.prev} className={`${arrowBtn} w-9 h-9`}>
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <div className="flex items-center gap-2.5">
+                    {Array.from({ length: pageCount }, (_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => goToPage(idx)}
+                        aria-label={`${idx + 1}`}
+                        aria-current={idx === page ? 'true' : undefined}
+                        className={`h-2 rounded-full transition-all duration-300 ${idx === page ? 'w-6 bg-white' : 'w-2 bg-stone-600 hover:bg-stone-400'}`}
+                      />
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => goToPage(page + 1)} aria-label={content.next} className={`${arrowBtn} w-9 h-9`}>
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Mobile: one reference at a time, auto-advancing. Tap to read in full. */}
@@ -168,7 +201,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                 type="button"
                 key={active}
                 onClick={() => openExpanded(active)}
-                aria-label={activeTestimonial.author ? `Lees de volledige review van ${activeTestimonial.author}` : 'Lees de volledige review'}
+                aria-label={activeTestimonial.author ? `${readMore}: ${activeTestimonial.author}` : readMore}
                 className="block w-full text-center px-2 animate-fadeIn min-h-[12rem] cursor-pointer"
               >
                 <span className="relative flex flex-col justify-center min-h-[12rem]">
@@ -196,7 +229,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                   <button
                     type="button"
                     onClick={() => goTo(active - 1)}
-                    aria-label="Vorige"
+                    aria-label={content.prev}
                     className={`${arrowBtn} w-9 h-9`}
                   >
                     <ChevronLeft className="w-6 h-6" />
@@ -210,7 +243,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                           key={idx}
                           type="button"
                           onClick={() => goTo(idx)}
-                          aria-label={`Ga naar referentie ${idx + 1}`}
+                          aria-label={`${idx + 1}`}
                           aria-current={isActive ? 'true' : undefined}
                           className={`relative h-2 rounded-full overflow-hidden transition-all duration-300 ${
                             isActive ? 'w-6 bg-stone-600' : 'w-2 bg-stone-600 hover:bg-stone-400'
@@ -231,7 +264,7 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
                   <button
                     type="button"
                     onClick={() => goTo(active + 1)}
-                    aria-label="Volgende"
+                    aria-label={content.next}
                     className={`${arrowBtn} w-9 h-9`}
                   >
                     <ChevronRight className="w-6 h-6" />
@@ -241,16 +274,27 @@ export const SocialProof: React.FC<SocialProofProps> = ({ content }) => {
             </div>
 
             {/* Logos */}
-            <div className="border-t border-stone-800 pt-8 md:pt-12 w-full max-w-5xl">
-              <p className="text-center text-[10px] md:text-xs font-bold uppercase tracking-widest text-stone-500 mb-5 md:mb-8">
+            <div className="border-t border-stone-800 pt-8 w-full max-w-5xl">
+              <p className="text-center text-[10px] md:text-xs font-bold uppercase tracking-widest text-stone-500 mb-5">
                 {content.title}
               </p>
               <div className="flex flex-wrap justify-center gap-x-8 md:gap-x-16 gap-y-3 md:gap-y-6 opacity-40 hover:opacity-100 transition-opacity duration-500">
-                {logos.map((logo, idx) => (
-                  <span key={idx} className="text-lg md:text-2xl font-serif text-stone-300 cursor-default">
-                    {logo}
-                  </span>
-                ))}
+                {logos.map((logo, idx) => {
+                  const file = LOGO_FILES[logo];
+                  return file ? (
+                    <img
+                      key={idx}
+                      src={file}
+                      alt={logo}
+                      loading="lazy"
+                      className="h-7 md:h-9 w-auto object-contain brightness-0 invert"
+                    />
+                  ) : (
+                    <span key={idx} className="text-lg md:text-2xl font-serif text-stone-300 cursor-default">
+                      {logo}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </>
