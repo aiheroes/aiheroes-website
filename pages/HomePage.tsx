@@ -49,8 +49,8 @@ interface HomePageProps {
 const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
-  { id: 'standard', theme: 'light' },
   { id: 'social-proof', theme: 'dark' },
+  { id: 'standard', theme: 'light' },
   { id: 'team', theme: 'light' }, // On desktop, whole team section is light
   { id: 'approach', theme: 'dark' },
   { id: 'contact', theme: 'light' },
@@ -60,8 +60,8 @@ const SECTIONS_DESKTOP: { id: string; theme: 'dark' | 'light' }[] = [
 const SECTIONS_MOBILE: { id: string; theme: 'dark' | 'light' }[] = [
   { id: 'hero', theme: 'dark' },
   { id: 'services', theme: 'light' },
-  { id: 'standard', theme: 'light' },
   { id: 'social-proof', theme: 'dark' },
+  { id: 'standard', theme: 'light' },
   { id: 'team-image', theme: 'dark' },   // Team image needs dark navbar (mobile stacked)
   { id: 'team-content', theme: 'light' }, // Team text needs light navbar
   { id: 'approach', theme: 'dark' },
@@ -228,16 +228,18 @@ export function HomePage({ defaultLang }: HomePageProps = {}) {
           <Services content={content.services} />
         </section>
 
-        {/* Standard (Light): what every build includes. A full screen and snap target
-            like every other section, so the scroll rhythm stays one section per screen. */}
-        <section id="standard" className="md:snap-start md:min-h-screen w-full flex items-center bg-brand-light">
-          <Standard content={content.standard} />
-        </section>
-
         {/* Social Proof (Dark). min-h-screen (not fixed h-screen) so the desktop
             reference wall can grow past the viewport on short displays instead of clipping. */}
         <section id="social-proof" className="md:snap-start min-h-screen w-full flex bg-brand-dark">
            <SocialProof content={content.socialProof} />
+        </section>
+
+        {/* Standard (Light): what every build includes. A full screen and snap target
+            like every other section, so the scroll rhythm stays one section per screen.
+            Sits after the references so the two tile sections (entries, standard)
+            don't follow each other and read as one repeated section. */}
+        <section id="standard" className="md:snap-start md:min-h-screen w-full flex items-center bg-brand-light">
+          <Standard content={content.standard} />
         </section>
 
         {/* Team (Light) */}
