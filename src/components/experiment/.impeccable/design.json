@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T15:00:00+02:00",
+  "title": "Design System: AI Heroes house style, web translation (experiment)",
+  "extensions": {
+    "scope": "Documents the experiment's web translation of the AI Heroes house style at /nl/experiment/huisstijl; canonical sources are aiheroes-present/template/DESIGN.md and aiheroes-hub/docs/posttaal.md. Not yet the live site's system.",
+    "colorMeta": {
+      "signal-red": {
+        "role": "primary",
+        "displayName": "Signal Red",
+        "canonical": "#D9534F",
+        "tonalRamp": [
+          "#3B0F0E",
+          "#5E1A18",
+          "#842624",
+          "#AD3632",
+          "#D9534F",
+          "#E5807D",
+          "#EFAFAC",
+          "#F9DEDD"
+        ]
+      },
+      "build-blue": {
+        "role": "secondary",
+        "displayName": "Build Blue",
+        "canonical": "#2563EB",
+        "tonalRamp": [
+          "#0A1A45",
+          "#0F2A70",
+          "#173E9F",
+          "#1F51CC",
+          "#2563EB",
+          "#5C8BF1",
+          "#9BB8F7",
+          "#D8E4FC"
+        ]
+      },
+      "warm-ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#1C1917",
+        "tonalRamp": [
+          "#0C0A09",
+          "#1C1917",
+          "#292524",
+          "#44403C",
+          "#57534E",
+          "#78716C",
+          "#A8A29E",
+          "#E7E5E4"
+        ]
+      },
+      "cream-paper": {
+        "role": "neutral",
+        "displayName": "Cream Paper",
+        "canonical": "#FDFCF8",
+        "tonalRamp": [
+          "#3D3B33",
+          "#6B685C",
+          "#9A9686",
+          "#C4C0B0",
+          "#E3E0D4",
+          "#F2F0E8",
+          "#F8F7F1",
+          "#FDFCF8"
+        ]
+      },
+      "body-on-light": {
+        "role": "neutral",
+        "displayName": "Body on Light (ink 72%)",
+        "canonical": "rgba(28, 25, 23, .72)"
+      },
+      "micro-on-light": {
+        "role": "neutral",
+        "displayName": "Micro on Light (ink 62%)",
+        "canonical": "rgba(28, 25, 23, .62)"
+      },
+      "body-on-dark": {
+        "role": "neutral",
+        "displayName": "Body on Dark (cream 86%)",
+        "canonical": "rgba(253, 252, 248, .86)"
+      },
+      "micro-on-dark": {
+        "role": "neutral",
+        "displayName": "Micro on Dark (cream 55%)",
+        "canonical": "rgba(253, 252, 248, .55)"
+      },
+      "rule-on-light": {
+        "role": "neutral",
+        "displayName": "Rule on Light (ink 16%)",
+        "canonical": "rgba(28, 25, 23, .16)"
+      },
+      "rule-on-dark": {
+        "role": "neutral",
+        "displayName": "Rule on Dark (cream 18%)",
+        "canonical": "rgba(253, 252, 248, .18)"
+      },
+      "grid-hair": {
+        "role": "neutral",
+        "displayName": "Blueprint Hairline (ink 9%)",
+        "canonical": "rgba(28, 25, 23, .09)"
+      },
+      "panel-edge": {
+        "role": "neutral",
+        "displayName": "Panel Edge (ink 22%)",
+        "canonical": "rgba(28, 25, 23, .22)"
+      }
+    },
+    "typographyMeta": {
+      "display-cover": {
+        "displayName": "Display, cover",
+        "purpose": "The rotating cover headline (max 11em)."
+      },
+      "display-cover-long": {
+        "displayName": "Display, cover long",
+        "purpose": "Cover headlines over 40 characters; the punch drops to its own line."
+      },
+      "display-l": {
+        "displayName": "Display L",
+        "purpose": "The statement slide's slogan only."
+      },
+      "display-m": {
+        "displayName": "Display M",
+        "purpose": "Every section heading; width and svh terms so a slide fits a 768px-tall screen."
+      },
+      "entry-title": {
+        "displayName": "Entry title",
+        "purpose": "Titles inside the three colour planes."
+      },
+      "stat": {
+        "displayName": "Stat",
+        "purpose": "Case figures, tabular, count up on entry."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Contact 'meet us' heading; the standard's four poster lines share its weight."
+      },
+      "quote-lead": {
+        "displayName": "Quote lead",
+        "purpose": "The first, larger testimonial; regular weight."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "The other five testimonials, body-on-dark tint."
+      },
+      "body-l": {
+        "displayName": "Body L",
+        "purpose": "Section ledes, case lede, Groningen claim."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs at 40 to 56ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Form labels, chip text, names."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Legal line and small captions."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Button text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "rule-inset",
+        "value": "inset 0 -1.5px 0 rgba(28, 25, 23, .16)",
+        "purpose": "Nav bottom rule; inset strokes stand in for borders, there are no drop shadows."
+      },
+      {
+        "name": "square-close",
+        "value": "inset 0 -1.5px 0 #1C1917",
+        "purpose": "Closes the cover's cream square against the cream section below."
+      },
+      {
+        "name": "panel-outline",
+        "value": "inset 0 0 0 1.5px rgba(28, 25, 23, .22)",
+        "purpose": "Input and unselected chip outline."
+      },
+      {
+        "name": "input-focus",
+        "value": "inset 0 0 0 2px #1C1917",
+        "purpose": "Focused input outline."
+      },
+      {
+        "name": "button-hover-ring",
+        "value": "inset 0 0 0 1.5px #1C1917 (dark button) | inset 0 0 0 1.5px #FDFCF8 (light button)",
+        "purpose": "Ring in the button's original fill colour after it inverts on hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 0.61, 0.36, 1)",
+        "purpose": "The one easing curve for every transition."
+      },
+      {
+        "name": "reveal",
+        "value": "500ms, 10px rise, stagger 60ms capped at 480ms",
+        "purpose": "Section build-up of data-item children on entry (IntersectionObserver, once)."
+      },
+      {
+        "name": "plane-grow",
+        "value": "600ms scaleY from bottom, stagger 90ms; content fades in 380ms later",
+        "purpose": "Entry planes grow like deck bars."
+      },
+      {
+        "name": "icon-draw",
+        "value": "700ms stroke-dashoffset after the square rises (500ms), lines 110ms apart",
+        "purpose": "IconPark line icons draw themselves on entry."
+      },
+      {
+        "name": "photo-open",
+        "value": "900ms clip-path from the bottom",
+        "purpose": "Case and place photos open on entry."
+      },
+      {
+        "name": "count-up",
+        "value": "800ms cubic ease-out, 180ms after entry",
+        "purpose": "Case figures count up from zero."
+      },
+      {
+        "name": "cover-clock",
+        "value": "7s linear progress fill",
+        "purpose": "The fill end advances the cover slide; pauses on hover, focus, hidden tab, pause button."
+      },
+      {
+        "name": "cover-crossfade",
+        "value": "headline/subline 500ms after 280ms; photos 800ms",
+        "purpose": "Cover slide change."
+      },
+      {
+        "name": "cover-wipe",
+        "value": "720ms clip-path left to right",
+        "purpose": "New colour field on a visitor's tab choice."
+      },
+      {
+        "name": "statement-punch",
+        "value": "400ms colour, 700ms delay",
+        "purpose": "Slogan punch turns from cream to red after the slide lands."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all transitions and animations none; final states shown; scroll snap off",
+        "purpose": "prefers-reduced-motion fallback."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone-tabs",
+        "value": "max-width 519px"
+      },
+      {
+        "name": "stats-stack",
+        "value": "max-width 559px"
+      },
+      {
+        "name": "quotes-2col",
+        "value": "720px"
+      },
+      {
+        "name": "nav-tall",
+        "value": "768px"
+      },
+      {
+        "name": "split",
+        "value": "900px"
+      },
+      {
+        "name": "slides",
+        "value": "1024px"
+      },
+      {
+        "name": "nav-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "quotes-3col",
+        "value": "1200px"
+      },
+      {
+        "name": "punch-ink",
+        "value": "1330px"
+      },
+      {
+        "name": "punch-ink-long",
+        "value": "1660px"
+      },
+      {
+        "name": "compact-height",
+        "value": "max-height 840px (with min-width 1024px)"
+      }
+    ],
+    "observedBehaviour": [
+      "The nav is declared position: sticky; top: 0, but src/styles/global.css sets overflow-x: hidden on html and body, so the bar scrolls away with the page in practice."
+    ]
+  },
+  "components": [
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "Ink slab on light ground (nav CTA, form submit); inverts on hover with an ink ring.",
+      "html": "<a class=\"ds-btn ds-btn-dark\" href=\"#\">Plan een startsprint<svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 56px; padding: 0 1.5rem; border-radius: 4px; font: 600 1.0625rem/1.1 'Inter HS', Inter, system-ui, sans-serif; font-feature-settings: 'cv08'; text-decoration: none; white-space: nowrap; transition: background-color .15s, color .15s, box-shadow .15s; } .ds-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn:hover .ds-icon { transform: translateX(4px); } .ds-btn-dark { background: #1C1917; color: #FDFCF8; } .ds-btn-dark:hover { background: #FDFCF8; color: #1C1917; box-shadow: inset 0 0 0 1.5px #1C1917; } .ds-btn:focus-visible { outline: 2px solid #1C1917; outline-offset: 3px; }"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Cream slab on ink or colour ground (cover band CTA, mobile menu); inverts on hover with a cream ring.",
+      "html": "<div class=\"ds-dark-ground\"><a class=\"ds-btn-l\" href=\"#\">Plan een startsprint<svg class=\"ds-icon-l\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></div>",
+      "css": ".ds-dark-ground { background: #1C1917; padding: 32px; } .ds-btn-l { display: inline-flex; align-items: center; gap: .75rem; min-height: 56px; padding: 0 1.5rem; border-radius: 4px; font: 600 1.0625rem/1.1 'Inter HS', Inter, system-ui, sans-serif; text-decoration: none; background: #FDFCF8; color: #1C1917; transition: background-color .15s, color .15s, box-shadow .15s; } .ds-btn-l:hover { background: #1C1917; color: #FDFCF8; box-shadow: inset 0 0 0 1.5px #FDFCF8; } .ds-btn-l:focus-visible { outline: 2px solid #FDFCF8; outline-offset: 3px; } .ds-icon-l { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; transition: transform .25s cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-btn-l:hover .ds-icon-l { transform: translateX(4px); }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "body",
+      "description": "Weight 600 link with a 1.5px underline at 35% that goes full on hover; arrow slides 4px.",
+      "html": "<a class=\"ds-link\" href=\"#\">Lees de hele case<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: .5rem; font: 600 1.0625rem/1.4 'Inter HS', Inter, system-ui, sans-serif; color: #1C1917; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .3em; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); transition: text-decoration-color .15s; } .ds-link:hover { text-decoration-color: currentColor; } .ds-link svg { width: 1.15em; height: 1.15em; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; transition: transform .25s cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-link:hover svg { transform: translateX(4px); } .ds-link:focus-visible { outline: 2px solid #1C1917; outline-offset: 3px; }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Transparent field with a 1.5px panel-edge inset outline; 2px ink outline on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Naam</span><input class=\"ds-input\" type=\"text\" placeholder=\"Je naam\"></label>",
+      "css": ".ds-field { display: grid; gap: 8px; max-width: 320px; } .ds-label { font: 600 .9375rem/1.3 'Inter HS', Inter, system-ui, sans-serif; color: #1C1917; } .ds-input { width: 100%; min-height: 52px; padding: 14px 16px; border: 0; border-radius: 2px; background: transparent; box-shadow: inset 0 0 0 1.5px rgba(28, 25, 23, .22); font: 400 1rem/1.4 'Inter HS', Inter, system-ui, sans-serif; color: #1C1917; transition: box-shadow .15s; } .ds-input::placeholder { color: rgba(28, 25, 23, .62); } .ds-input:hover { box-shadow: inset 0 0 0 1.5px rgba(28, 25, 23, .62); } .ds-input:focus { outline: none; box-shadow: inset 0 0 0 2px #1C1917; }"
+    },
+    {
+      "name": "Radio Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Outlined 44px chip; checked fills ink with cream text.",
+      "html": "<div class=\"ds-chips\"><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-t\" checked><span>Nieuw bouwen</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-t\"><span>Vervangen</span></label><label class=\"ds-chip\"><input type=\"radio\" name=\"ds-t\"><span>Eigen beheer</span></label></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { position: relative; } .ds-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; } .ds-chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 2px; box-shadow: inset 0 0 0 1.5px rgba(28, 25, 23, .22); font: 600 .9375rem/1 'Inter HS', Inter, system-ui, sans-serif; color: #1C1917; transition: background-color .15s, color .15s, box-shadow .15s; } .ds-chip:hover span { box-shadow: inset 0 0 0 1.5px #1C1917; } .ds-chip input:checked + span { background: #1C1917; color: #FDFCF8; box-shadow: none; } .ds-chip input:focus-visible + span { outline: 2px solid #1C1917; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Cream bar with a 1.5px bottom rule, an ink brand tile at bar height holding the white icon, 600-weight links with a scale-in underline, EN switch and small dark CTA.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\" aria-label=\"AI Heroes\"><svg viewBox=\"0 0 40 40\" aria-hidden=\"true\"><rect x=\"8\" y=\"8\" width=\"24\" height=\"24\" fill=\"#FDFCF8\"/></svg></a><nav class=\"ds-nav-links\"><a href=\"#\">Wat we bouwen</a><a href=\"#\">Hoe we werken</a><a href=\"#\">Cases</a><a href=\"#\">Over ons</a></nav><div class=\"ds-nav-end\"><a class=\"ds-nav-lang\" href=\"#\">EN</a><a class=\"ds-nav-cta\" href=\"#\">Plan een startsprint</a></div></header>",
+      "css": ".ds-nav { height: 76px; display: flex; align-items: center; gap: 32px; padding-right: 32px; background: #FDFCF8; color: #1C1917; box-shadow: inset 0 -1.5px 0 rgba(28, 25, 23, .16); font-family: 'Inter HS', Inter, system-ui, sans-serif; } .ds-nav-brand { width: 76px; height: 76px; flex: none; display: grid; place-items: center; background: #1C1917; } .ds-nav-brand svg { width: 60%; } .ds-nav-links { display: flex; gap: 32px; margin-left: auto; } .ds-nav-links a, .ds-nav-lang { position: relative; padding-block: .5rem; font-weight: 600; font-size: 1rem; text-decoration: none; color: inherit; } .ds-nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-nav-links a:hover::after { transform: scaleX(1); } .ds-nav-end { display: flex; align-items: center; gap: 24px; } .ds-nav-lang { color: rgba(28, 25, 23, .72); } .ds-nav-lang:hover { color: #1C1917; } .ds-nav-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.125rem; border-radius: 4px; background: #1C1917; color: #FDFCF8; font-weight: 600; font-size: 1rem; text-decoration: none; transition: background-color .15s, color .15s, box-shadow .15s; } .ds-nav-cta:hover { background: #FDFCF8; color: #1C1917; box-shadow: inset 0 0 0 1.5px #1C1917; } .ds-nav a:focus-visible { outline: 2px solid #1C1917; outline-offset: 3px; }"
+    },
+    {
+      "name": "Entry Planes",
+      "kind": "card",
+      "refersTo": "entry-plane",
+      "description": "Three linked hard-edged colour planes (red, blue, ink) with a bottom-left title and a top-right arrow; text and a 'more' action below on cream.",
+      "html": "<div class=\"ds-entries\"><a class=\"ds-entry\" href=\"#\"><div class=\"ds-plane\" style=\"background:#D9534F\"><h3>Nieuw bouwen</h3><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></div><p>Een AI-toepassing die je team elke dag gebruikt.</p></a><a class=\"ds-entry\" href=\"#\"><div class=\"ds-plane\" style=\"background:#2563EB\"><h3>Vervangen</h3><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></div><p>Oude software vervangen door iets dat werkt.</p></a><a class=\"ds-entry\" href=\"#\"><div class=\"ds-plane\" style=\"background:#1C1917\"><h3>Eigen beheer</h3><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7\"/><path d=\"M7 7h10v10\"/></svg></div><p>Zelf verder, met documentatie.</p></a></div>",
+      "css": ".ds-entries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #FDFCF8; font-family: 'Inter HS', Inter, system-ui, sans-serif; } .ds-entry { text-decoration: none; color: #1C1917; } .ds-plane { position: relative; display: flex; align-items: flex-end; min-height: 200px; padding: 28px; color: #FDFCF8; } .ds-plane h3 { margin: 0; font-weight: 700; letter-spacing: -0.02em; font-size: 2rem; line-height: 1.04; max-width: 12ch; } .ds-plane svg { position: absolute; top: 28px; right: 28px; width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; transition: transform .3s cubic-bezier(0.22, 0.61, 0.36, 1); } .ds-entry:hover .ds-plane svg { transform: translate(4px, -4px); } .ds-entry p { margin: 0; padding: 20px 28px 28px; font-size: 1rem; line-height: 1.55; color: rgba(28, 25, 23, .72); } .ds-entry:focus-visible { outline: 2px solid #1C1917; outline-offset: 4px; }"
+    },
+    {
+      "name": "Testimonial on Ink",
+      "kind": "custom",
+      "refersTo": "quote-lead",
+      "description": "Regular-weight quote in cream with an 800-weight red opening mark hung in the gutter; name 600, role in the micro tint.",
+      "html": "<div class=\"ds-quotes\"><figure class=\"ds-quote\"><blockquote><p>Ze leverden software die ons team nu elke dag gebruikt.</p></blockquote><figcaption><span>Naam Klant</span><span>Directeur, Organisatie</span></figcaption></figure></div>",
+      "css": ".ds-quotes { background: #1C1917; color: #FDFCF8; padding: 40px 40px 40px 64px; font-family: 'Inter HS', Inter, system-ui, sans-serif; } .ds-quote { margin: 0; display: grid; gap: 28px; } .ds-quote blockquote { position: relative; margin: 0; font-weight: 400; font-size: 2rem; line-height: 1.16; letter-spacing: -0.02em; color: #FDFCF8; } .ds-quote blockquote p { margin: 0; } .ds-quote blockquote::before { content: '\\201C'; position: absolute; left: -0.55em; top: -0.06em; font-weight: 800; font-size: 1.5em; line-height: 1; color: #D9534F; } .ds-quote figcaption { display: grid; gap: 2px; font-size: .9375rem; } .ds-quote figcaption span:first-child { font-weight: 600; } .ds-quote figcaption span:last-child { color: rgba(253, 252, 248, .55); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Deck You Scroll",
+    "overview": "Every section is one slide class from the deck template or one post preset, stacked vertically: the L01 cover with a photo panel, the entries as a strip of colour fields (post \"merkkaart\"), L21 quotes on dark with an L15 logo wall, the \"Bij elke bouw inbegrepen\" poster on blue, the klantcase in numbers, the L09 place photo, a dark statement slide, the L17 contact offer and a closing footer slide. At 1024px and wider each section is literally a slide: at least one viewport tall below the nav, content centred vertically, with proximity scroll snapping between them. There is no scroll pinning and no scroll-driven choreography: sections build up once as they enter and then hold still.\n\nThe page is paced, not wall-to-wall colour. Red and blue appear as whole fields in three places only: the cover zone, the blue field of the standard and the contact zone; between them cream and warm-ink slides alternate and colour returns as accent (the three entry planes, red quote marks, the first case figure in red, the blue Groningen claim, the slogan's punch in red). One family, Inter 4.1 variable with optical sizing and the serifed capital I (`cv08`), carries the whole voice through weight: 800 for display, 700 for titles and figures, 600 for actions and labels, 450 for lede, 400 for body and the clients' own words. Surfaces are flat: no gradients, no drop shadows, no glow. Rules and outlines are drawn as 1.5px inset strokes.\n\nDensity is low: one heading, one supporting paragraph, one action per slide. Photos never carry text: colour photos sit beside the cover headline, people are duotoned, the real place stays in colour. The cream square, the brand's signature geometry, appears three times: as the dark brand tile in the nav (inverted), as the cover square holding the full-colour wordmark, and as the footer square holding it again.",
+    "keyCharacteristics": [
+      "Four colours; red and blue as whole fields only on the cover zone and the contact zone.",
+      "Cream and warm-ink slides in between, colour as accent only.",
+      "One family: Inter 4.1 variable, optical sizing on, `cv08` always on.",
+      "One module = 1/16 of the viewport (`clamp(24px, 6.25vw, 120px)`); side padding is one module, capped to a 1680px measure.",
+      "One viewport per section at 1024px and up, headings scaled by viewport height, with a compaction layer below 840px tall.",
+      "Blueprint grid only behind a light zone with little text; no slide uses it at the moment.",
+      "The square: brand tile in the nav, wordmark square on the cover, wordmark square in the footer.",
+      "One icon set everywhere: IconPark Outline (Apache 2.0) on its 48 grid, stroke 4, square ends, mitred joins, drawn inline so each path can draw itself.",
+      "Motion builds each section up once; reduced motion switches every transition, animation and the snap off."
+    ],
+    "rules": [
+      {
+        "name": "The Two Fields Rule",
+        "body": "Red and blue fill a whole zone only on the cover and on the contact zone. Everywhere else they are accents on cream or ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rotation Keeps The Field Rule",
+        "body": "Auto-rotation of the cover changes words, subline and photo inside one colour field; only a visitor's tab choice changes the field, by wiping the new colour in from the left (720ms).",
+        "section": "colors"
+      },
+      {
+        "name": "The Cream Text Rule",
+        "body": "Text on red, blue or ink is cream; paragraph copy on dark uses the 86% tint, never a grey.",
+        "section": "colors"
+      },
+      {
+        "name": "The 800 Rule",
+        "body": "Weight 800 is for display only: the cover headline, section headings and the slogan (plus the red opening quote mark). Titles and figures stop at 700.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Punch Rule",
+        "body": "A headline carries at most one emphasised word, a no-wrap `.punch` span; the copy may mark two, the build keeps one.",
+        "section": "typography"
+      },
+      {
+        "name": "The 76px Threshold Rule",
+        "body": "On a colour field the punch only turns ink at display sizes of about 76px and up (from 1330px wide for normal headlines, 1660px for long ones). Below that, a long headline's punch drops to its own line instead of changing colour.",
+        "section": "typography"
+      },
+      {
+        "name": "The Serifed I Rule",
+        "body": "`cv08` is always on, so \"AI\" never reads as \"Al\". Do not swap in a build of Inter that lacks it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Slide Fits Rule",
+        "body": "At 1024px and up a section must fit one viewport below the nav on a 768px-tall screen; headings scale with `svh`, and short screens get the 840px compaction layer rather than a scroll inside the slide.",
+        "section": "layout"
+      },
+      {
+        "name": "The Grid Or Rules Rule",
+        "body": "The blueprint grid never sits behind running text or row dividers, and only on a light zone with little text; no slide uses it at the moment.",
+        "section": "layout"
+      },
+      {
+        "name": "The Inset Stroke Rule",
+        "body": "Lines are 1.5px inset strokes (2px for a focused input), never offset or blurred shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep whole red or blue fields to the cover zone and the contact zone; use colour as accent everywhere else.",
+      "Do set every heading in Inter HS with `cv08` on, 800 for display and 700 for titles and figures.",
+      "Do keep at most one punch word per headline, and let it change colour on a colour field only at about 76px display size and up.",
+      "Do size side padding in modules (`pad-x`) and keep each desktop section to one viewport, scaling headings with `svh`.",
+      "Do draw rules and outlines as 1.5px inset strokes in the rule or panel-edge tints.",
+      "Do keep text off photos; duotone people, keep places and cover scenes in colour.",
+      "Do use the square: nav brand tile at bar height, wordmark squares on the cover and in the footer.",
+      "Do build a section up once on entry and give every motion a reduced-motion fallback that shows the final state."
+    ],
+    "donts": [
+      "Don't use drop shadows, gradients or glows; depth is colour fields and photos.",
+      "Don't round colour zones, photos, planes or squares; radius belongs to controls only (2px, 4px).",
+      "Don't put a label or kicker above a heading; emphasis comes from the punch, weight and size.",
+      "Don't add scroll pinning, scroll-driven unfolding or a hide-on-scroll nav; sections hold still once built.",
+      "Don't let auto-rotation change the cover's colour field; only a visitor's choice does.",
+      "Don't use the blueprint grid behind long text or combine it with row dividers.",
+      "Don't rely on the nav staying on screen while the global `overflow-x: hidden` on html and body remains; it scrolls away in practice."
+    ]
+  }
+}

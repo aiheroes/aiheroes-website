@@ -1,0 +1,27 @@
+---
+// The standard as a poster on blue: the heading small, the four things every build includes as
+// large lines, each a cream label with the text in blue, its line icon in front on the blue field. Only the titles; the descriptions live
+// on the services pages.
+import HsIcon from './HsIcon.astro';
+import { STANDARD_ICONS, zet } from './hs';
+import type { Content } from '../../data/types';
+
+interface Props {
+  standard: Content['standard'];
+}
+const { standard } = Astro.props;
+---
+
+<section class="hs-standard on-blue hs-snap" id="standaard" data-reveal>
+  <div class="hs-wrap">
+    <h2 class="hs-standard__title" data-item>{standard.title}</h2>
+    <ul class="hs-standard__list">
+      {standard.items.map((item, i) => (
+        <li style={`--i:${i + 1}`}>
+          <HsIcon name={STANDARD_ICONS[i % STANDARD_ICONS.length]} />
+          <span class="hs-standard__label">{zet(item.title, { display: true })}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

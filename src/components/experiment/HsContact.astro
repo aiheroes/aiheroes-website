@@ -1,0 +1,89 @@
+---
+// L17 offer: the ask on a colour field, the form on light. Visual only in this experiment:
+// the form does not post, so a preview deploy cannot send mail to info@.
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import type { Content } from '../../data/types';
+
+interface Props {
+  contact: Content['contact'];
+  contactForm: Content['contactForm'];
+}
+const { contact, contactForm: cf } = Astro.props;
+const f = contact.form;
+const lede = cf.subtitle.startsWith(cf.title) ? cf.subtitle.slice(cf.title.length).replace(/^[.\s]+/, '') : cf.subtitle;
+const groups = [
+  { name: 'topic', legend: f.topic, options: f.topicOptions },
+  { name: 'budget', legend: f.budget.label, options: f.budget.options },
+];
+---
+
+<section class="hs-contact hs-snap" id="contact">
+  <div class="hs-contact__zone on-blue" data-reveal>
+    <h2 class="hs-d-m" data-item>{zet(cf.title, { display: true, cap: 13 })}</h2>
+    <p class="hs-body-l" data-item style="--i:1">{zet(lede)}</p>
+    <div class="hs-contact__direct" data-item style="--i:2">
+      <a href={`mailto:${cf.email}`}>{cf.email}</a>
+      <a href={cf.phoneHref}>{cf.phone}</a>
+    </div>
+    <div class="hs-contact__people" data-item style="--i:3">
+      <h3 class="hs-title">{cf.meetingLabel}</h3>
+      <ul>
+        {cf.meetings.map((m) => (
+          <li>
+            <a class="hs-person" href={m.url} target="_blank" rel="noopener">
+              <span class="hs-person__photo">
+                <img src={m.photo} alt="" width="300" height="400" loading="lazy" decoding="async" />
+              </span>
+              <span class="hs-person__name">{m.name}</span>
+              {m.hint && <span class="hs-person__hint">{zet(m.hint, { cap: 13 })}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="hs-contact__form" data-reveal>
+    <form class="hs-form" data-hs-form novalidate>
+      <div class="hs-form__row" data-item>
+        <label class="hs-field">
+          <span class="hs-label">{f.name}</span>
+          <input class="hs-input" type="text" name="name" autocomplete="name" />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">{f.email}</span>
+          <input class="hs-input" type="email" name="email" autocomplete="email" />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">{f.org}</span>
+          <input class="hs-input" type="text" name="org" autocomplete="organization" />
+        </label>
+      </div>
+      {groups.map((g, gi) => (
+        <fieldset data-item style={`--i:${gi + 1}`}>
+          <legend>{g.legend}</legend>
+          <div class="hs-chips">
+            {g.options.map((o) => (
+              <label class="hs-chip">
+                <input type="radio" name={g.name} value={o} />
+                <span>{o}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+      <label class="hs-field" data-item style="--i:5">
+        <span class="hs-label">{f.message}</span>
+        <textarea class="hs-input" name="message" rows="3"></textarea>
+      </label>
+      <div class="hs-form__foot" data-item style="--i:6">
+        <p class="hs-form__status" role="status" aria-live="polite"></p>
+        <button class="hs-btn hs-btn--dark" type="submit">
+          {f.submit}
+          <HsIcon name="arrow-right" />
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

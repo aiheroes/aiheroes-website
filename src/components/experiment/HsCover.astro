@@ -1,0 +1,122 @@
+---
+// L01 cover with a photo panel: colour zone with the headline, the photo beside it (no text
+// on the photo), dark band with subline, CTA and slide progress, and a light square holding
+// the logo, exactly as wide as the band is tall.
+import HsIcon from './HsIcon.astro';
+import HsLogo from './HsLogo.astro';
+import { punch, plain, zet } from './hs';
+import type { Content } from '../../data/types';
+
+interface Props {
+  hero: Content['hero'];
+  approach: Content['approach'];
+  ctaHref: string;
+}
+const { hero, approach, ctaHref } = Astro.props;
+
+// The cover leads with the core line (what we do); the slogan closes the page in the statement.
+const coreLine = approach.text.split(/\n\s*\n/)[0].replace(/\n/g, ' ').trim();
+const sources = hero.slides.map((s, i) => (i === 0 ? { ...s, headline: coreLine } : s));
+
+// Colour is rhythm on the site; covers only take red or blue (deck K3). Auto-rotation keeps the
+// field, a tab click wipes to that slide's colour.
+const ACCENTS = ['red', 'blue', 'red', 'blue'] as const;
+// One punch per headline, chosen from the words the copy marks.
+const PUNCH = ['red', 'red', 'red', 'red'] as const;
+// Unsplash photos (provenance in ASSETS.md).
+const PHOTOS = [
+  { src: '/experiment/photos/cover-office.webp', w: 1800, h: 1200, alt: 'Een medewerker werkt aan een scherm op een kantoor met dossiers', pos: '60% 50%' },
+  { src: '/experiment/photos/cover-screen.webp', w: 1800, h: 1198, alt: 'Twee mensen werken samen aan één scherm, een van hen wijst iets aan', pos: '50% 50%' },
+  { src: '/experiment/photos/cover-legacy.webp', w: 1800, h: 1800, alt: 'Een oude beige computer op een kantoorbureau', pos: '40% 55%' },
+  { src: '/experiment/photos/cover-datacenter.webp', w: 1800, h: 1012, alt: 'Een lichte serverruimte in een datacenter', pos: '50% 55%' },
+];
+
+const slides = sources.map((s, i) => {
+  const text = plain(s.headline);
+  return {
+    ...s,
+    accent: ACCENTS[i % ACCENTS.length],
+    html: punch(zet(s.headline, { display: true }), PUNCH[i % PUNCH.length]),
+    text,
+    long: text.length > 40,
+    photo: PHOTOS[i % PHOTOS.length],
+  };
+});
+---
+
+<section
+  class="hs-cover hs-snap"
+  data-accent={slides[0].accent}
+  aria-roledescription="carrousel"
+  aria-label="Wat AI Heroes bouwt"
+>
+  <div class="hs-cover__zone">
+    <div class="hs-cover__wipe" aria-hidden="true"></div>
+    <div class="hs-cover__stack">
+      {slides.map((s, i) =>
+        i === 0 ? (
+          <h1 class:list={['is-active', { 'is-long': s.long }]} data-head id="hs-slide-0" set:html={s.html} />
+        ) : (
+          <p class:list={['hs-display', { 'is-long': s.long }]} data-head id={`hs-slide-${i}`} aria-hidden="true" set:html={s.html} />
+        )
+      )}
+    </div>
+  </div>
+
+  <div class="hs-cover__photo">
+    {slides.map((s, i) => (
+      <img
+        src={s.photo.src}
+        alt={i === 0 ? s.photo.alt : ''}
+        data-photo
+        class:list={{ 'is-active': i === 0 }}
+        style={`object-position:${s.photo.pos}`}
+        width={s.photo.w}
+        height={s.photo.h}
+        loading={i === 0 ? 'eager' : 'lazy'}
+        fetchpriority={i === 0 ? 'high' : 'auto'}
+        decoding="async"
+      />
+    ))}
+  </div>
+
+  <div class="hs-cover__band">
+    <div class="hs-cover__subs">
+      {slides.map((s, i) => (
+        <p data-sub class:list={{ 'is-active': i === 0 }} aria-hidden={i === 0 ? undefined : 'true'}>{zet(s.subhead)}</p>
+      ))}
+    </div>
+    <a class="hs-btn hs-btn--light hs-cover__cta" href={ctaHref}>
+      {slides[0].ctaLabel}
+      <HsIcon name="arrow-right" />
+    </a>
+    <div class="hs-cover__progress">
+      <div class="hs-cover__tabs" role="tablist" aria-label="Kies een onderwerp">
+        {slides.map((s, i) => (
+          <button
+            class="hs-cover__tab"
+            type="button"
+            role="tab"
+            data-go={i}
+            data-accent={s.accent}
+            data-alt={s.photo.alt}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`hs-slide-${i}`}
+            title={s.text}
+          >
+            <span>{s.label}</span>
+            <span class="hs-cover__track"><span class="hs-cover__fill"></span></span>
+          </button>
+        ))}
+      </div>
+      <button class="hs-cover__pause" type="button" data-pause aria-label="Pauzeer de wisseling">
+        <HsIcon name="pause" class="is-pause" />
+        <HsIcon name="play" class="is-play" />
+      </button>
+    </div>
+  </div>
+
+  <div class="hs-cover__square">
+    <HsLogo mark="wordmark" />
+  </div>
+</section>

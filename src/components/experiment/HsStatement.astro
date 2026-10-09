@@ -1,0 +1,33 @@
+---
+// The quiet slide before the ask. The slogan is set as "Van A / tot I" with the red initials
+// stacked, so they read AI. Once the slide is in view the rest of each word writes itself out,
+// letter by letter, in place (no reflow, no scroll pinning). Without JS or with reduced motion
+// the full slogan simply stands.
+import { plain, zet } from './hs';
+import type { Content } from '../../data/types';
+
+interface Props {
+  approach: Content['approach'];
+}
+const { approach } = Astro.props;
+const [, how = '', sloganSrc = ''] = approach.text.split(/\n\s*\n/).map((s) => s.replace(/\n/g, ' ').trim());
+const slogan = plain(sloganSrc);
+// "Van ambitie tot implementatie" → two rows: lead word | initial + the letters that follow.
+const [w1 = 'Van', w2 = 'ambitie', w3 = 'tot', w4 = 'implementatie'] = slogan.split(/\s+/);
+const rows = [
+  { lead: w1, cap: w2.charAt(0).toUpperCase(), rest: [...w2.slice(1)] },
+  { lead: w3, cap: w4.charAt(0).toUpperCase(), rest: [...w4.slice(1)] },
+];
+---
+
+<section class="hs-statement on-dark hs-wrap hs-snap" id="aanpak" data-reveal data-ai>
+  <p class="hs-statement__lede" data-item>{zet(plain(how))}</p>
+  <h2 class="hs-d-l hs-ai" data-item style="--i:2" aria-label={slogan}>
+    {rows.map((r, row) => (
+      <span class="hs-ai__row" aria-hidden="true" style={`--row:${row}`}>
+        <span class="hs-ai__lead">{r.lead}</span>
+        <span class="hs-ai__word"><span class="hs-ai__cap">{r.cap}</span>{r.rest.map((ch, n) => <span class="hs-ai__l" style={`--n:${n}`}>{ch}</span>)}</span>
+      </span>
+    ))}
+  </h2>
+</section>

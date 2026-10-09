@@ -1,0 +1,20 @@
+---
+import { uniqueSvg } from './hs';
+import logoFull from '../../../assets/brand/logo-fullcolor-transparent.svg?raw';
+import logoWhite from '../../../assets/brand/logo-white-transparent.svg?raw';
+import iconFull from '../../../assets/brand/icon-fullcolor-transparent.svg?raw';
+import iconWhite from '../../../assets/brand/icon-white-transparent.svg?raw';
+
+interface Props {
+  mark?: 'wordmark' | 'icon';
+  tone?: 'color' | 'white';
+  class?: string;
+}
+const { mark = 'wordmark', tone = 'color', class: cls } = Astro.props;
+const svg = mark === 'wordmark' ? (tone === 'white' ? logoWhite : logoFull) : tone === 'white' ? iconWhite : iconFull;
+// The four frame bars (46.66 units thick) are drawn on the pixel grid, so all sides render
+// equally thick; the CSS sizes the logo so that thickness is a whole number of device pixels.
+const crisp = svg.replace(/<rect\b(?=[^>]*\b(?:width|height)="46\.6)/g, '<rect shape-rendering="crispEdges"');
+---
+
+<span class:list={['hs-logo', cls]} set:html={uniqueSvg(crisp)} />

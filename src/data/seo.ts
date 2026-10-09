@@ -11,4 +11,5 @@ export const NOINDEX_PATHS = [
   '/en/legal/terms',
   '/nl/legal/ai-assistent',
   '/en/legal/ai-assistant',
+  '/nl/experiment/huisstijl',
 ];

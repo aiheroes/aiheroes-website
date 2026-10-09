@@ -1,0 +1,104 @@
+---
+// Main menu. From 1100px the items with sub-pages open a full-width bar, one line high, under the
+// menu: a flat colour plane per item (red, blue, dark, as the entry planes) with short labels next
+// to each other. Moving to another item keeps the bar open and wipes in the next colour
+// (hs-client initSubnav). Below 1100px the full-screen menu lists the sub-pages under each item.
+import HsIcon from './HsIcon.astro';
+import HsLogo from './HsLogo.astro';
+import type { Content } from '../../data/types';
+
+interface Props {
+  nav: Content['nav'];
+  home: string;
+}
+const { nav, home } = Astro.props;
+const build = nav.build.children ?? [];
+const how = nav.how.children ?? [];
+
+type Sub = { label: string; href: string };
+type Item = { key: string; label: string; href: string; accent?: 'red' | 'blue' | 'dark'; subs?: Sub[] };
+type Draft = Omit<Item, 'subs'> & { subs?: { label: string; href?: string }[] };
+// Labels for the bar: each says what a visitor who knows nothing of us gets when clicking, short
+// enough for one line (experiment only; the hrefs come from constants.ts). Hoe we werken lists the
+// steps in order; the summary "Bij elke bouw inbegrepen" is left out because these are its parts.
+// Over ons sits before Cases, so the three bars come first.
+const DRAFT: Draft[] = [
+  { key: 'build', label: nav.build.label, href: nav.build.href, accent: 'red', subs: [
+    { label: 'Nieuwe AI-toepassing', href: build[0]?.href },
+    { label: 'Oude software vervangen', href: build[1]?.href },
+    { label: 'Software op je eigen servers', href: build[2]?.href },
+  ] },
+  { key: 'how', label: nav.how.label, href: nav.how.href, accent: 'blue', subs: [
+    { label: 'Eerste stap: de startsprint', href: how[0]?.href },
+    { label: 'Kosten en opbrengst vooraf', href: how[2]?.href },
+    { label: 'Voldoen aan de AI Act', href: how[3]?.href },
+    { label: 'AI-training voor je team', href: how[4]?.href },
+  ] },
+  { key: 'about', label: nav.about.label, href: nav.about.href, accent: 'dark', subs: [
+    { label: 'Over AI Heroes', href: '/nl/over-ons' },
+    { label: 'Het team', href: '/nl/over-ons/team' },
+    { label: 'Vacatures', href: '/nl/vacatures' },
+    { label: 'AI Salon-avonden', href: '/nl/ai-salon' },
+    { label: 'Op tv: De AI Storm', href: '/nl/de-ai-storm' },
+    { label: 'Voor de pers', href: '/nl/pers' },
+    { label: 'Artikelen en gidsen', href: '/nl/resources' },
+  ] },
+  { key: 'cases', label: nav.cases.label, href: nav.cases.href },
+];
+const ITEMS: Item[] = DRAFT.map((i) => ({ ...i, subs: i.subs?.filter((s): s is Sub => !!s.href) }));
+---
+
+<header class="hs-nav" data-subnav>
+  <a class="hs-nav__brand" href={home} aria-label="AI Heroes, naar boven">
+    <HsLogo mark="wordmark" tone="white" />
+  </a>
+  <nav class="hs-nav__links" aria-label="Hoofdmenu">
+    <ul class="hs-nav__list">
+      {ITEMS.map((item) => (
+        <li class="hs-nav__item" data-key={item.subs ? item.key : undefined}>
+          <a
+            class="hs-nav__top"
+            href={item.href}
+            aria-expanded={item.subs ? 'false' : undefined}
+            aria-controls={item.subs ? `hs-sub-${item.key}` : undefined}
+          >{item.label}</a>
+          {item.subs && (
+            <div class={`hs-sub on-${item.accent}`} id={`hs-sub-${item.key}`} data-sub={item.key}>
+              <ul class="hs-sub__list">
+                {item.subs.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+              </ul>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <div class="hs-nav__end">
+    <a class="hs-nav__lang" href="/en" hreflang="en" lang="en" aria-label="English">EN</a>
+    <a class="hs-btn hs-btn--dark hs-btn--s hs-nav__cta" href={nav.cta.href}>{nav.cta.label}</a>
+    <button class="hs-nav__menu" type="button" aria-expanded="false" aria-controls="hs-menu">
+      <HsIcon name="menu" />
+      <span>Menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="hs-menu" id="hs-menu" hidden>
+  <ul>
+    {ITEMS.map((item) => (
+      <li>
+        <a href={item.href}>{item.label}</a>
+        {item.subs && (
+          <ul class="hs-menu__subs">
+            {item.subs.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+  <a class="hs-btn hs-btn--light" href={nav.cta.href}>
+    {nav.cta.label}
+    <HsIcon name="arrow-right" />
+  </a>
+  <a class="hs-link" href="/en" hreflang="en" lang="en">English</a>
+</div>
