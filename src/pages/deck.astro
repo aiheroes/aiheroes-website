@@ -1,9 +1,17 @@
 ---
 import presentation from '../assets/deck/sme-pitch-v6.html?raw';
 
-// Keep the exported deck intact, including its embedded assets and runtime.
+// Keep the source export intact; adapt the hosted runtime at build time.
 // A standalone document avoids site styles, navigation and chat over the slides.
-const html = presentation.replace('</head>', `
+const hostedPresentation = presentation
+  .replace(/<aside class="notes">[\s\S]*?<\/aside>/g, '')
+  .replace(/<script>\s*\/\/ Losse versie: de presentatorweergave[\s\S]*?<\/script>/, '')
+  .replace(/case"b":case"B":case"\.":[^;]+;break;/, '')
+  .replace(/case"s":case"S":\w+\(\);break;/, '')
+  .replace('F full screen · B blackout · S notes · Esc stop', 'F full screen · Esc stop')
+  .replace('F volledig scherm · B zwart · S notes · V terugval · Esc stop', 'F full screen · Esc stop');
+
+const html = hostedPresentation.replace('</head>', `
 <meta name="description" content="AI Heroes presentation: practical bespoke software for small and medium businesses, from ambition to implementation.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://aiheroes.io/deck">
