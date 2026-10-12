@@ -22,6 +22,8 @@ const read = async (f) => (await readFile(join(here, f), 'utf8')).split(/\r?\n/)
 const urls = [...new Set([...(await read('old-sitemap-urls.txt')), ...(await read('gsc-urls.txt'))])];
 
 const REDIRECT_OK = new Set([301, 308]);
+// Protected Vercel previews: pass the project's bypass secret as VERCEL_BYPASS.
+const headers = process.env.VERCEL_BYPASS ? { 'x-vercel-protection-bypass': process.env.VERCEL_BYPASS } : {};
 let failures = 0;
 
 const results = await Promise.all(
@@ -32,7 +34,7 @@ const results = await Promise.all(
       let url = base + path;
       let hops = [];
       for (let i = 0; i < 5; i++) {
-        const res = await fetch(url, { redirect: 'manual' });
+        const res = await fetch(url, { redirect: 'manual', headers });
         if (REDIRECT_OK.has(res.status)) {
           const loc = res.headers.get('location');
           hops.push(`${res.status} -> ${loc}`);

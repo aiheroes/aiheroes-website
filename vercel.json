@@ -922,19 +922,21 @@
       "source": "/en/services/eu-training",
       "destination": "/en/digital-sovereignty",
       "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "/nl/kennis",
+      "statusCode": 301
+    },
+    {
+      "source": "/success-stories",
+      "destination": "/en/cases",
+      "statusCode": 301
     }
   ],
   "rewrites": [
     {
-      "source": "/Brand_Package/_favicon_test.html",
-      "destination": "/api/gone"
-    },
-    {
       "source": "/Brand_Package/_favicon_test",
-      "destination": "/api/gone"
-    },
-    {
-      "source": "/og-image-generator.html",
       "destination": "/api/gone"
     },
     {
@@ -995,6 +997,58 @@
     },
     {
       "source": "/wp-content/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/ai-tools-marketing",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/baseline",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/claude-3-5-sonnet-overtakes-gpt-4o",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/creative-qr-codes-with-generative-ai",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/example-blogpost",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/googles-tailwind-notebooklm",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/mastermind",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/nl/the-rise-of-chinese-ai-models",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/openais-o1-the-ai-that-thinks-before-it-speaks",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/playground",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/prompt-of-week",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/suno-the-ai-music-revolution",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/the-state-of-llms-in-2024",
       "destination": "/api/gone"
     }
   ],
