@@ -12,13 +12,18 @@ function initMenu(signal: AbortSignal) {
     menuBtn.setAttribute('aria-expanded', String(open));
     menu.hidden = !open;
     document.documentElement.style.overflow = open ? 'hidden' : '';
+    // The chat launcher steps aside while the full-screen menu is open.
+    window.dispatchEvent(new CustomEvent('hs:menu', { detail: { open } }));
   };
   menuBtn.addEventListener('click', () => setOpen(menuBtn.getAttribute('aria-expanded') !== 'true'), { signal });
   menu.addEventListener('click', (e) => { if ((e.target as Element).closest('a')) setOpen(false); }, { signal });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !menu.hidden) { setOpen(false); menuBtn.focus(); }
   }, { signal });
-  signal.addEventListener('abort', () => { document.documentElement.style.overflow = ''; });
+  signal.addEventListener('abort', () => {
+    document.documentElement.style.overflow = '';
+    window.dispatchEvent(new CustomEvent('hs:menu', { detail: { open: false } }));
+  });
 }
 
 function initCover(signal: AbortSignal) {

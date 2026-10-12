@@ -1,13 +1,13 @@
-// The chat panel (SDD D2 + UX audit 2026-08-22): streaming with smoothed cadence,
-// scroll pinning (never yank), suggestions, source chips, tool cards, feedback,
-// undo-able clear, escalation, full keyboard/reader accessibility. Lazy-loaded.
+// The chat panel (SDD D2 + UX audit 2026-08-22, house style 2026-10): streaming with smoothed
+// cadence, scroll pinning (never yank), page-aware suggestions, sources, tool cards,
+// escalation with a closed-thread state, an always-available route to a person, honest
+// waiting, offline handling and full keyboard/reader accessibility. Lazy-loaded.
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
-import { ArrowDown, BookOpen, Check, ChevronDown, RotateCcw, Send, Square, X } from 'lucide-react';
+import { ChatIcon } from './ChatIcon';
 import { ChatMarkdown } from './Markdown';
-import './chat.css';
 import {
   ensureToken,
   getConversationId,
@@ -27,7 +27,7 @@ interface Props {
   locale: ChatLocale;
   path: string;
   bookingUrl: string | null;
-  /** Source chips under answers: on for demos, off at public launch (David 25-08). */
+  /** Sources under answers (CHAT_SOURCE_CHIPS). */
   sourceChips: boolean;
   closing: boolean;
   onCloseRequest: () => void;
@@ -36,11 +36,8 @@ interface Props {
 
 type MessageSources = { url: string; title: string }[];
 
-// Brand focus ring (UX audit P1) — every interactive element in the widget wears it.
-const RING =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2';
-
 const PIN_THRESHOLD_PX = 72;
+const MAX_INPUT = 2000;
 
 function textOf(message: UIMessage): string {
   return message.parts
@@ -51,7 +48,7 @@ function textOf(message: UIMessage): string {
 
 /**
  * Whether an assistant message shows anything ON SCREEN. search_knowledge renders
- * nothing (server-side retrieval), so it must not count — or the typing indicator
+ * nothing (server-side retrieval), so it must not count, or the typing indicator
  * dies during the invisible search step while the visitor stares at a blank gap.
  */
 function hasVisibleContent(message: UIMessage | undefined): boolean {
@@ -78,8 +75,9 @@ export default function ChatPanel({
   const [announcement, setAnnouncement] = useState('');
   const [slow, setSlow] = useState(false);
   const [silentFail, setSilentFail] = useState(false);
+  const [offline, setOffline] = useState(() => typeof navigator !== 'undefined' && !navigator.onLine);
   // A forwarded conversation is a closed thread: the composer locks (handoff best
-  // practice — confirmation, expectation, clean break; anything typed after the
+  // practice: confirmation, expectation, clean break; anything typed after the
   // forward would never reach the team).
   const [escalated, setEscalated] = useState(() => wasEscalated(getConversationId()));
 
@@ -104,10 +102,20 @@ export default function ChatPanel({
   const dragDelta = useRef(0);
 
   useEffect(() => {
-    void ensureToken().then(setToken); // idempotent; the launcher already prewarmed on hover
+    void ensureToken().then(setToken); // idempotent; the launcher already prewarmed on intent
     markDisclosed();
     // Autofocus is desktop-only: on touch devices it slams the keyboard open (audit P0).
     if (window.matchMedia('(pointer: fine)').matches) inputRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const update = () => setOffline(!navigator.onLine);
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
+    return () => {
+      window.removeEventListener('online', update);
+      window.removeEventListener('offline', update);
+    };
   }, []);
 
   const transport = useMemo(
@@ -143,15 +151,16 @@ export default function ChatPanel({
   useEffect(() => {
     const el = listRef.current;
     if (el && pinned) el.scrollTop = el.scrollHeight;
-  }, [messages, status, pinned]);
+  }, [messages, status, pinned, offline, silentFail, error]);
 
   const jumpToLatest = useCallback(() => {
-    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: reduce ? 'auto' : 'smooth' });
     setPinned(true);
   }, []);
 
-  // Screen-reader narration (audit P0): announce exactly twice per turn — start and
-  // the finished answer — instead of re-reading every streamed token.
+  // Screen-reader narration (audit P0): announce exactly twice per turn (start and
+  // the finished answer) instead of re-reading every streamed token.
   const prevStatus = useRef(status);
   useEffect(() => {
     if (status === 'submitted' && prevStatus.current !== 'submitted') {
@@ -164,21 +173,27 @@ export default function ChatPanel({
       const last = messages[messages.length - 1];
       if (last?.role === 'assistant') setAnnouncement(textOf(last));
       // A stream that ended without any VISIBLE assistant content is a silent
-      // failure (throttled upstream, killed function, search-only step) —
+      // failure (throttled upstream, killed function, search-only step):
       // surface the retry UI, never nothing.
       setSilentFail(!hasVisibleContent(last));
     }
     prevStatus.current = status;
   }, [status, messages, t.thinking]);
 
-  // Basic focus trap + Escape to close.
+  // Focus trap + Escape to close.
   const onKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.key === 'Escape') onCloseRequest();
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        onCloseRequest();
+        return;
+      }
       if (event.key === 'Tab' && panelRef.current) {
-        const focusables = panelRef.current.querySelectorAll<HTMLElement>(
-          'button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])',
-        );
+        const focusables = [
+          ...panelRef.current.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ].filter((el) => el.offsetParent !== null);
         if (focusables.length === 0) return;
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
@@ -195,10 +210,11 @@ export default function ChatPanel({
   );
 
   const busy = status === 'submitted' || status === 'streaming';
+  const lastMessage = messages[messages.length - 1];
 
-  // The typing dots must reflect what the visitor SEES, not the stream state:
+  // The typing squares must reflect what the visitor SEES, not the stream state:
   // metadata and invisible search steps arrive long before visible content.
-  const awaitingContent = busy && !hasVisibleContent(messages[messages.length - 1]);
+  const awaitingContent = busy && !hasVisibleContent(lastMessage);
 
   // Honest waiting: after 15s without visible content, say it's slower than usual.
   useEffect(() => {
@@ -219,7 +235,7 @@ export default function ChatPanel({
       const anchor = (event.target as HTMLElement).closest?.('a');
       if (!anchor || anchor.target === '_blank') return;
       const href = anchor.getAttribute('href') ?? '';
-      if (!href || href.startsWith('#')) return;
+      if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
       if (window.matchMedia('(max-width: 639px)').matches) onCloseRequest();
     },
     [onCloseRequest],
@@ -228,13 +244,13 @@ export default function ChatPanel({
   const submit = useCallback(
     (text: string) => {
       const trimmed = text.trim();
-      if (!trimmed || busy) return;
+      if (!trimmed || busy || offline) return;
       setInput('');
       setPinned(true);
       setSilentFail(false);
       void sendMessage({ text: trimmed });
     },
-    [busy, sendMessage],
+    [busy, offline, sendMessage],
   );
 
   const transcript = useMemo(
@@ -246,12 +262,15 @@ export default function ChatPanel({
     [messages],
   );
 
-  // Direct clear, no undo bar (David 25-08 — conscious deviation from the audit's
-  // destructive-action guideline; the founders prefer a quiet UI).
+  // Direct clear, no undo bar (David 25-08: the founders prefer a quiet UI).
   function newConversation() {
     if (messages.length === 0) return;
+    if (busy) stop();
     const id = resetConversation();
     setConversationId(id);
+    setSilentFail(false);
+    setInput('');
+    requestAnimationFrame(() => inputRef.current?.focus({ preventScroll: true }));
   }
 
   const errorKind = useMemo(() => {
@@ -261,16 +280,14 @@ export default function ChatPanel({
     return error ? 'generic' : null;
   }, [error]);
 
+  // The route to a person disappears while a forward form is already on screen.
+  const forwardOnScreen =
+    errorKind === 'budget' ||
+    (lastMessage?.role === 'assistant' && lastMessage.parts.some((p) => p.type === 'tool-escalate_to_human'));
+
   function renderPart(part: UIMessage['parts'][number], index: number) {
     if (part.type === 'text') {
-      return (
-        <div
-          key={index}
-          className="mb-1 rounded-[2px] border border-stone-200/80 bg-white px-3.5 py-2.5 last:mb-0"
-        >
-          <ChatMarkdown text={part.text} />
-        </div>
-      );
+      return part.text.trim() ? <ChatMarkdown key={index} text={part.text} /> : null;
     }
     if (part.type === 'tool-show_page' && 'input' in part && part.input) {
       return <PageCard key={index} locale={locale} input={part.input as never} />;
@@ -298,11 +315,32 @@ export default function ChatPanel({
     return null;
   }
 
+  function renderSources(message: UIMessage) {
+    if (!sourceChips) return null;
+    // Sources belong under a FINISHED answer: the metadata arrives at stream start,
+    // but showing them before the text reads as noise.
+    if (busy && message.id === lastMessage?.id) return null;
+    if (!textOf(message).trim()) return null;
+    const sources = (message.metadata as { sources?: MessageSources } | undefined)?.sources;
+    if (!sources?.length) return null;
+    const unique = sources.filter((s, i) => sources.findIndex((x) => x.url === s.url) === i);
+    return (
+      <p className="aih-sources">
+        <span className="aih-sources__label">{t.sources}</span>
+        {unique.slice(0, 3).map((s) => (
+          <a key={s.url} href={s.url.replace('https://aiheroes.io', '') || '/'}>
+            {s.title}
+          </a>
+        ))}
+      </p>
+    );
+  }
+
   const suggestions = suggestionsForPath(locale, path);
 
-  // Drag on the grabber (mobile): follow the finger; release decides —
+  // Drag on the grabber (mobile): follow the finger; release decides:
   // down >120px dismisses, up >60px maximizes, otherwise snap back.
-  // Tap and buttons remain the non-gesture alternatives.
+  // Tap and the header buttons remain the non-gesture alternatives.
   const onGrabberPointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
     dragStartY.current = e.clientY;
     dragDelta.current = 0;
@@ -322,288 +360,248 @@ export default function ChatPanel({
     else if (delta < -60) setMaximized(true);
   };
 
+  const errorText =
+    errorKind === 'budget' ? t.errorBudget : errorKind === 'rate' ? t.errorRate : t.errorGeneric;
+  const canRetry = errorKind === 'generic' || (silentFail && !errorKind);
+  const panelClass = [
+    'aih',
+    'aih-panel',
+    maximized && 'is-max',
+    closing && 'is-out',
+    dragOffset > 0 && 'is-dragging',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <>
-      {/* Backdrop scrim (mobile only): the page stays visible behind the sheet —
-          unmistakably a layer, not a new page. Tap to minimize. */}
-      <div
-        aria-hidden="true"
-        onClick={onCloseRequest}
-        className={`${closing ? 'aih-backdrop-out' : 'aih-backdrop'} fixed inset-0 z-[94] bg-brand-dark/30 sm:hidden`}
-      />
+      {/* Scrim (mobile only): the page stays visible behind the sheet, so it reads as a
+          layer and not a new page. Tap to minimize. */}
+      <div aria-hidden="true" onClick={onCloseRequest} className={`aih aih-backdrop${closing ? ' is-out' : ''}`} />
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label={t.title}
+        aria-labelledby="aih-title"
         onKeyDown={onKeyDown}
         onClick={onPanelClick}
         onAnimationEnd={(e) => {
           if (closing && e.target === panelRef.current) onClosed();
         }}
         style={dragOffset > 0 ? { transform: `translateY(${dragOffset}px)` } : undefined}
-        className={`${closing ? 'aih-panel-out' : 'aih-panel-in'} aih-sheet ${dragOffset > 0 ? 'aih-dragging' : ''} fixed inset-x-0 bottom-0 z-[95] flex ${maximized ? 'h-[calc(100dvh-0.75rem)]' : 'h-[85dvh]'} touch-manipulation flex-col rounded-t-[4px] bg-brand-light pb-[env(safe-area-inset-bottom)] text-brand-dark [-webkit-tap-highlight-color:transparent] sm:inset-x-auto sm:right-5 sm:bottom-5 sm:h-[38rem] sm:max-h-[calc(100vh-3rem)] sm:w-[25rem] sm:rounded-[4px] sm:border sm:border-stone-200 sm:pb-0`}
+        className={panelClass}
       >
-        {/* Grabber (mobile): tap toggles size, drag dismisses or expands. */}
-        <button
-          type="button"
-          aria-label={maximized ? t.collapse : t.expand}
-          onClick={() => setMaximized((m) => !m)}
-          onPointerDown={onGrabberPointerDown}
-          onPointerMove={onGrabberPointerMove}
-          onPointerUp={onGrabberPointerUp}
-          onPointerCancel={onGrabberPointerUp}
-          className={`flex w-full touch-none items-center justify-center pt-2.5 pb-1.5 sm:hidden ${RING}`}
-        >
-          <span className="h-1 w-9 rounded-full bg-stone-300" aria-hidden />
-        </button>
-      {/* Screen-reader status channel (audit P0). */}
-      <div className="sr-only" role="status" aria-live="polite">
-        {announcement}
-      </div>
-
-      {/* Header with the always-visible AI badge (SDD D10). */}
-      <header className="flex items-center justify-between gap-2 border-b border-stone-200 px-4 pt-1 pb-3 sm:pt-3">
-        <div>
-          <p className="text-base font-bold tracking-tight">{t.title}</p>
-          <p className="text-[0.68rem] font-medium uppercase tracking-wide text-stone-500">
-            {t.aiBadge}
-          </p>
-        </div>
-        <div className="flex items-center gap-1">
-          {messages.length > 0 && (
-            <button
-              type="button"
-              onClick={newConversation}
-              title={t.newChat}
-              aria-label={t.newChat}
-              className={`rounded-[2px] p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
-            >
-              <RotateCcw size={16} aria-hidden />
-            </button>
-          )}
-          {/* Mobile: minimizing to the bubble, not leaving — the conversation stays. */}
+        {/* Header: the blue plane with the always-visible AI label (SDD D10, AI Act art. 50). */}
+        <header className="aih-head">
           <button
             type="button"
-            onClick={onCloseRequest}
-            aria-label={t.minimize}
-            title={t.minimize}
-            className={`rounded-[2px] p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
+            className="aih-grab"
+            aria-label={maximized ? t.collapse : t.expand}
+            onClick={() => setMaximized((m) => !m)}
+            onPointerDown={onGrabberPointerDown}
+            onPointerMove={onGrabberPointerMove}
+            onPointerUp={onGrabberPointerUp}
+            onPointerCancel={onGrabberPointerUp}
           >
-            <ChevronDown size={20} aria-hidden className="sm:hidden" />
-            <X size={18} aria-hidden className="hidden sm:block" />
+            <span aria-hidden="true" />
           </button>
-        </div>
-      </header>
-
-      {/* Messages */}
-      <div className="relative flex min-h-0 flex-1 flex-col">
-        <div
-          ref={listRef}
-          onScroll={onListScroll}
-          className="flex-1 overflow-y-auto overscroll-contain px-4 py-3"
-        >
-          {showDisclosure && (
-            <div className="mb-3 rounded-[4px] border border-stone-200 bg-white p-3 text-xs leading-relaxed text-stone-600">
-              {t.disclosure}{' '}
-              <a
-                href={DISCLOSURE_PATH[locale]}
-                className={`underline underline-offset-2 hover:text-brand-dark ${RING}`}
-              >
-                {t.disclosureLink}
-              </a>
-            </div>
-          )}
-
-          {messages.length === 0 && (
-            <div className="mt-3">
-              <p className="mb-3 text-xl font-bold tracking-tight text-balance">{t.suggestionsTitle}</p>
-              <div className="flex flex-col items-start gap-2">
-                {suggestions.map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => submit(s)}
-                    className={`rounded-[4px] border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm hover:border-brand-blue hover:text-brand-blue ${RING}`}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {messages.map((message) => (
-            <div key={message.id} className="aih-msg-in mb-3">
-              {message.role === 'user' ? (
-                <div className="ml-8 min-w-0 break-words rounded-[2px] bg-brand-blue px-3.5 py-2.5 text-[0.95rem] text-white">
-                  {textOf(message)}
-                </div>
-              ) : (
-                <div className="mr-4 min-w-0">
-                  {message.parts.map((part, i) => renderPart(part, i))}
-                  {(() => {
-                    if (!sourceChips) return null;
-                    // Sources belong under a FINISHED answer — the metadata arrives
-                    // at stream start, but showing chips before text reads as noise.
-                    const isActive =
-                      (status === 'streaming' || status === 'submitted') &&
-                      message.id === messages[messages.length - 1]?.id;
-                    if (isActive || !textOf(message).trim()) return null;
-                    const sources = (message.metadata as { sources?: MessageSources } | undefined)
-                      ?.sources;
-                    if (!sources?.length) return null;
-                    const unique = sources.filter(
-                      (s, i) => sources.findIndex((x) => x.url === s.url) === i,
-                    );
-                    return (
-                      <div className="mt-1.5 flex flex-wrap items-center gap-1">
-                        <BookOpen size={12} aria-label={t.sources} className="text-stone-400" />
-                        {unique.slice(0, 3).map((s) => (
-                          <a
-                            key={s.url}
-                            href={s.url.replace('https://aiheroes.io', '')}
-                            className={`max-w-[12rem] truncate rounded-[2px] bg-stone-100 px-2 py-0.5 text-[0.68rem] text-stone-600 hover:bg-stone-200 ${RING}`}
-                          >
-                            {s.title}
-                          </a>
-                        ))}
-                      </div>
-                    );
-                  })()}
-                </div>
+          <div className="aih-head__bar">
+            <h2 className="aih-head__title" id="aih-title">
+              <span className="aih-mark" aria-hidden="true" />
+              {t.aiBadge}
+            </h2>
+            <div className="aih-head__actions">
+              {messages.length > 0 && (
+                <button type="button" className="aih-iconbtn" onClick={newConversation} aria-label={t.newChat} title={t.newChat}>
+                  <ChatIcon name="refresh" />
+                </button>
               )}
+              <button type="button" className="aih-iconbtn" onClick={onCloseRequest} aria-label={t.close} title={t.close}>
+                <ChatIcon name="arrow-right" className="is-down aih-mob" />
+                <ChatIcon name="close" className="aih-desk" />
+              </button>
             </div>
-          ))}
+          </div>
+        </header>
 
-          {awaitingContent && (
-            <div className="text-stone-400">
-              <span className="aih-dots" role="img" aria-label={t.thinking}>
-                <span /><span /><span />
-              </span>
-              {slow && <p className="mt-0.5 text-xs">{t.slow}</p>}
-            </div>
-          )}
+        {/* Screen-reader status channel (audit P0). */}
+        <div className="aih-sr" role="status" aria-live="polite">
+          {announcement}
+        </div>
 
-          {(errorKind || silentFail) && (
-            <div className="mb-2 rounded-[4px] bg-brand-red/10 p-3 text-xs text-brand-red">
-              <p>
-                {errorKind === 'budget'
-                  ? t.errorBudget
-                  : errorKind === 'rate'
-                    ? t.errorRate
-                    : t.errorGeneric}
+        <div className="aih-body">
+          <div ref={listRef} onScroll={onListScroll} className="aih-list">
+            {showDisclosure && (
+              <p className="aih-disclosure">
+                {t.disclosure} <a href={DISCLOSURE_PATH[locale]}>{t.disclosureLink}</a>
               </p>
-              {(errorKind === 'generic' || (silentFail && !errorKind)) && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSilentFail(false);
-                    void regenerate();
-                  }}
-                  className={`mt-1.5 rounded-[2px] bg-brand-red px-2.5 py-1 text-[0.7rem] font-semibold text-white hover:bg-brand-red/85 ${RING}`}
-                >
-                  {t.retry}
+            )}
+
+            {messages.length === 0 && (
+              <div>
+                <p className="aih-empty__title">{t.suggestionsTitle}</p>
+                <ul className="aih-suggest">
+                  {suggestions.map((s) => (
+                    <li key={s}>
+                      <button type="button" onClick={() => submit(s)} disabled={offline}>
+                        <span>{s}</span>
+                        <ChatIcon name="arrow-right" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <ChatMarkdown text={t.directLine} className="aih-direct" />
+              </div>
+            )}
+
+            {messages.map((message) =>
+              message.role === 'user' ? (
+                <div key={message.id} className="aih-msg aih-msg--user">
+                  <p className="aih-user">
+                    <span className="aih-sr">{t.you}: </span>
+                    {textOf(message)}
+                  </p>
+                </div>
+              ) : hasVisibleContent(message) ? (
+                <div key={message.id} className="aih-msg">
+                  {/* Text first, then the action cards: the model often calls a tool before it
+                      writes, yet refers to the card as "below". */}
+                  {message.parts.map((part, i) => (part.type === 'text' ? renderPart(part, i) : null))}
+                  {message.parts.map((part, i) => (part.type === 'text' ? null : renderPart(part, i)))}
+                  {renderSources(message)}
+                </div>
+              ) : null,
+            )}
+
+            {awaitingContent && (
+              <div className="aih-msg">
+                <span className="aih-typing" role="img" aria-label={t.thinking}>
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                {slow && <p className="aih-note">{t.slow}</p>}
+              </div>
+            )}
+
+            {offline ? (
+              <div className="aih-alert" role="status">
+                <p>{t.offline}</p>
+              </div>
+            ) : (
+              (errorKind || silentFail) && (
+                <div className="aih-alert" role="alert">
+                  <div>
+                    <p>{errorText}</p>
+                    {canRetry && (
+                      <button
+                        type="button"
+                        className="aih-textbtn"
+                        onClick={() => {
+                          setSilentFail(false);
+                          void regenerate();
+                        }}
+                      >
+                        {t.retry}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )
+            )}
+            {errorKind === 'budget' && !escalated && (
+              <EscalationForm
+                locale={locale}
+                payload={{ reason: 'visitor_request', summary: '' }}
+                sessionId={sessionId}
+                conversationId={conversationId}
+                token={token}
+                transcript={transcript}
+                onDone={onEscalated}
+              />
+            )}
+          </div>
+
+          {/* Back to the latest answer: only when the visitor scrolled up mid-stream. */}
+          {!pinned && busy && (
+            <button type="button" className="aih-jump" onClick={jumpToLatest}>
+              <ChatIcon name="arrow-right" className="is-down" />
+              {t.newAnswer}
+            </button>
+          )}
+        </div>
+
+        {/* Composer, or after a forward a closed-thread bar with a fresh start. */}
+        {escalated ? (
+          <div className="aih-closed">
+            <p>
+              <ChatIcon name="check" />
+              {t.escalatedBar}
+            </p>
+            <button type="button" className="aih-btn" onClick={newConversation}>
+              {t.newChat}
+            </button>
+          </div>
+        ) : (
+          <form
+            className="aih-composer"
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit(input);
+            }}
+          >
+            <div className="aih-composer__row">
+              <textarea
+                ref={inputRef}
+                name="message"
+                className="aih-textarea"
+                autoComplete="off"
+                enterKeyHint="send"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
+                    e.preventDefault();
+                    submit(input);
+                  }
+                }}
+                rows={1}
+                maxLength={MAX_INPUT}
+                placeholder={t.inputPlaceholder}
+                aria-label={t.inputPlaceholder}
+              />
+              {busy ? (
+                <button type="button" className="aih-send is-stop" onClick={() => stop()} aria-label={t.stop} title={t.stop}>
+                  <ChatIcon name="stop" />
+                </button>
+              ) : (
+                <button type="submit" className="aih-send" aria-label={t.send} title={t.send} disabled={!input.trim() || offline}>
+                  <ChatIcon name="arrow-right" />
                 </button>
               )}
             </div>
-          )}
-          {errorKind === 'budget' && (
-            <EscalationForm
-              locale={locale}
-              payload={{ reason: 'visitor_request', summary: '' }}
-              sessionId={sessionId}
-              conversationId={conversationId}
-              token={token}
-              transcript={transcript}
-              onDone={onEscalated}
-            />
-          )}
-        </div>
-
-        {/* Back-to-latest pill: appears only when the visitor scrolled up mid-stream. */}
-        {!pinned && busy && (
-          <button
-            type="button"
-            onClick={jumpToLatest}
-            className={`absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-[2px] border border-stone-200 bg-white px-3 py-1 text-[0.7rem] font-medium text-stone-600 hover:text-brand-dark ${RING}`}
-          >
-            <ArrowDown size={12} aria-hidden /> {t.newAnswer}
-          </button>
+            {((messages.length > 0 && !forwardOnScreen) || input.length > MAX_INPUT - 200) && (
+              <div className="aih-composer__meta">
+                {messages.length > 0 && !forwardOnScreen && (
+                  <button
+                    type="button"
+                    className="aih-human"
+                    onClick={() => submit(t.humanRequestMessage)}
+                    disabled={busy || offline}
+                  >
+                    <ChatIcon name="headset" />
+                    {t.talkToHuman}
+                  </button>
+                )}
+                {input.length > MAX_INPUT - 200 && (
+                  <span className="aih-count is-near" aria-live="polite">
+                    {input.length}/{MAX_INPUT}
+                  </span>
+                )}
+              </div>
+            )}
+          </form>
         )}
-      </div>
-
-      {/* Composer — or, after a forward, a closed-thread bar with a fresh start. */}
-      {escalated ? (
-        <div className="flex items-center justify-between gap-3 border-t border-stone-200 px-4 py-3">
-          <span className="flex items-center gap-1.5 text-sm text-stone-600">
-            <Check size={15} aria-hidden className="text-brand-blue" /> {t.escalatedBar}
-          </span>
-          <button
-            type="button"
-            onClick={newConversation}
-            className={`rounded-[4px] bg-brand-dark px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark/85 ${RING}`}
-          >
-            {t.newChat}
-          </button>
-        </div>
-      ) : (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          submit(input);
-        }}
-        className="border-t border-stone-200 px-3 py-2.5"
-      >
-        <div className="flex items-end gap-2">
-          <textarea
-            ref={inputRef}
-            name="message"
-            autoComplete="off"
-            enterKeyHint="send"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                submit(input);
-              }
-            }}
-            rows={1}
-            maxLength={2000}
-            placeholder={t.inputPlaceholder}
-            aria-label={t.inputPlaceholder}
-            className="max-h-28 flex-1 resize-none rounded-[4px] border border-stone-300 bg-white px-3.5 py-2.5 text-base field-sizing-content focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25 sm:text-sm"
-          />
-          {/* Buttons mirror the textarea's vertical metrics (padding + border +
-              line-height-sized icon box), so they match its height exactly and
-              stay square at every breakpoint. */}
-          {busy ? (
-            <button
-              type="button"
-              onClick={() => stop()}
-              aria-label={t.stop}
-              className={`rounded-[4px] border border-transparent bg-stone-200 p-2.5 text-stone-700 hover:bg-stone-300 ${RING}`}
-            >
-              <span className="flex h-6 w-6 items-center justify-center sm:h-5 sm:w-5" aria-hidden>
-                <Square size={16} />
-              </span>
-            </button>
-          ) : (
-            <button
-              type="submit"
-              aria-label={t.send}
-              disabled={!input.trim()}
-              className={`rounded-[4px] border border-transparent bg-brand-red p-2.5 text-white hover:bg-brand-red/85 disabled:opacity-40 ${RING}`}
-            >
-              <span className="flex h-6 w-6 items-center justify-center sm:h-5 sm:w-5" aria-hidden>
-                <Send size={17} />
-              </span>
-            </button>
-          )}
-        </div>
-      </form>
-      )}
       </div>
     </>
   );

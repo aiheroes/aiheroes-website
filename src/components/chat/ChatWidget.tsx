@@ -1,13 +1,25 @@
-// Widget island root (SDD D1 + UX audit): a tiny launcher; the panel bundle loads on
-// first open. Prewarms the backend on hover/focus intent. On by default; gated by
+// Widget island root (SDD D1 + UX audit): a small launcher; the panel bundle loads on
+// first open. Prewarms the backend on hover/focus/touch intent. On by default; gated by
 // PUBLIC_CHAT_ENABLED=false at build time (kill switch), or re-enabled per browser via ?chat=1.
+//
+// Launcher states (house style 2026-10): labelled ink block; "continue" label when a
+// conversation is waiting; icon-only next to the footer and contact form so it never covers
+// them; hidden while the full-screen menu is open. The island persists across view
+// transitions, so the observed elements are picked up again after every navigation.
 
 import React, { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
-import { MessageCircle } from 'lucide-react';
-import { ensureToken, isChatEnabled } from './session';
+import { ChatIcon } from './ChatIcon';
+import { ensureToken, isChatEnabled, loadMessages } from './session';
 import { STRINGS, type ChatLocale } from './strings';
+import './chat.css';
 
 const ChatPanel = lazy(() => import('./ChatPanel'));
+
+/** Elements the launcher steps back from: it shrinks to its icon while they are on screen. */
+const MAKE_ROOM = '.hs-footer, .hs-contact__form';
+/** On phones also the cover's tabs and pause button, which keep room for the icon (huisstijl.css). */
+const MAKE_ROOM_PHONE = '.hs-cover__progress';
+const PHONE = '(max-width: 639px)';
 
 interface Props {
   locale: ChatLocale;
@@ -27,40 +39,65 @@ export default function ChatWidget({
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-  // Pages with a hero ask the launcher to grow into a labelled pill once the hero is
-  // scrolled past ("Wat wil je bouwen?"), so there is one floating element, not two.
-  const [ctaLabel, setCtaLabel] = useState('');
-  const [ctaShown, setCtaShown] = useState(false);
+  const [hasThread, setHasThread] = useState(false);
+  const [compact, setCompact] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  // Only the very first appearance gets the delayed rise; coming back from the panel is a quick fade.
+  const [isNew, setIsNew] = useState(true);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const t = STRINGS[locale];
 
   useEffect(() => {
     setVisible(isChatEnabled(enabled));
+    setHasThread(loadMessages().length > 0);
   }, [enabled]);
 
-  // The site's sticky "Wat wil je bouwen?" CTA opens the chat while the assistant is
-  // live (decision A5 26-08): one conversation entry point instead of two buttons.
+  // The 404 page and the AI-assistant page open the chat from their own buttons.
   useEffect(() => {
-    const open = () => {
+    const openChat = () => {
       setVisible(true);
       setOpen(true);
     };
-    window.addEventListener('aih:open-chat', open);
-    return () => window.removeEventListener('aih:open-chat', open);
+    window.addEventListener('aih:open-chat', openChat);
+    return () => window.removeEventListener('aih:open-chat', openChat);
   }, []);
 
   useEffect(() => {
-    const onCta = (e: Event) => {
-      const { show, label } = (e as CustomEvent<{ show: boolean; label?: string }>).detail ?? {};
-      if (label) setCtaLabel(label); // kept while collapsing so the text doesn't vanish mid-animation
-      setCtaShown(Boolean(show && label));
-    };
-    window.addEventListener('aih:chat-cta', onCta);
-    return () => window.removeEventListener('aih:chat-cta', onCta);
+    const onMenu = (e: Event) => setMenuOpen(Boolean((e as CustomEvent<{ open: boolean }>).detail?.open));
+    window.addEventListener('hs:menu', onMenu);
+    return () => window.removeEventListener('hs:menu', onMenu);
   }, []);
 
-  // Prewarm on intent (audit P1): hovering/focusing the launcher warms the function
-  // and fetches the widget token before the click. Idempotent and model-call-free.
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+    const inView = new Set<Element>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) inView.add(entry.target);
+        else inView.delete(entry.target);
+      }
+      setCompact(inView.size > 0);
+    });
+    const phone = window.matchMedia(PHONE);
+    const watch = () => {
+      observer.disconnect();
+      inView.clear();
+      setCompact(false);
+      const selector = phone.matches ? `${MAKE_ROOM}, ${MAKE_ROOM_PHONE}` : MAKE_ROOM;
+      document.querySelectorAll(selector).forEach((el) => observer.observe(el));
+    };
+    watch();
+    document.addEventListener('astro:page-load', watch);
+    phone.addEventListener('change', watch);
+    return () => {
+      document.removeEventListener('astro:page-load', watch);
+      phone.removeEventListener('change', watch);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Prewarm on intent (audit P1): warms the function and fetches the widget token before
+  // the click. Idempotent and model-call-free.
   const prewarm = useCallback(() => {
     void ensureToken();
     void import('./ChatPanel'); // also start fetching the panel bundle
@@ -69,6 +106,8 @@ export default function ChatWidget({
   const finalizeClose = useCallback(() => {
     setClosing(false);
     setOpen(false);
+    setIsNew(false);
+    setHasThread(loadMessages().length > 0);
     requestAnimationFrame(() => launcherRef.current?.focus()); // focus returns (audit P0)
   }, []);
 
@@ -77,11 +116,22 @@ export default function ChatWidget({
   // Fallback in case the close animation never fires its end event.
   useEffect(() => {
     if (!closing) return;
-    const timer = setTimeout(finalizeClose, 300);
+    const timer = setTimeout(finalizeClose, 320);
     return () => clearTimeout(timer);
   }, [closing, finalizeClose]);
 
   if (!visible) return null;
+
+  const label = hasThread ? t.launcherContinue : t.launcherLabel;
+  const classes = [
+    'aih',
+    'aih-launcher',
+    isNew && 'is-new',
+    compact && 'is-compact',
+    menuOpen && 'is-hidden',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <>
@@ -89,21 +139,17 @@ export default function ChatWidget({
         <button
           ref={launcherRef}
           type="button"
+          className={classes}
           onClick={() => setOpen(true)}
           onMouseEnter={prewarm}
           onFocus={prewarm}
-          aria-label={ctaShown ? ctaLabel : t.launcherLabel}
-          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex h-[3.25rem] min-w-[3.25rem] touch-manipulation items-center rounded-[4px] bg-brand-blue px-[15px] text-white ring-2 ring-[#FDFCF8] transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
+          onTouchStart={prewarm}
+          aria-haspopup="dialog"
+          aria-hidden={menuOpen || undefined}
+          tabIndex={menuOpen ? -1 : undefined}
         >
-          <MessageCircle size={22} aria-hidden className="shrink-0" />
-          <span
-            aria-hidden
-            className={`overflow-hidden whitespace-nowrap font-medium transition-[max-width,opacity,margin] duration-500 ease-out motion-reduce:transition-none ${
-              ctaShown ? 'ml-2.5 mr-1 max-w-[16rem] opacity-100' : 'ml-0 max-w-0 opacity-0'
-            }`}
-          >
-            {ctaLabel}
-          </span>
+          <ChatIcon name="comments" />
+          <span className="aih-launcher__label">{label}</span>
         </button>
       )}
       {open && (
