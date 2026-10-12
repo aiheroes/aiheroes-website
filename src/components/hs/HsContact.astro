@@ -1,0 +1,111 @@
+---
+// L17 offer: the ask on a colour field, the form on light. Posts to /api/contact (Resend) through
+// hs-client initForm. Three questions on purpose (01-besluiten §22): name, email and the question,
+// plus optional topic chips: the three entries and "Weet ik nog niet"; training pages add
+// "Training" and preselect it (§6). Budget and who decides come up in the first conversation.
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import { SITE, SITE_EN, entriesFor, type Entry } from '../../data/site';
+import { FOUNDERS, FOUNDER_ORDER, founderText } from '../../data/team';
+import { ui, langOf } from '../../data/ui';
+
+interface Props {
+  title?: string;
+  lede?: string;
+  /** Preselects the entry chip. */
+  entry?: Entry;
+  /** Training pages: adds and preselects the "Training" chip. */
+  training?: boolean;
+  /** Colour of the ask field. */
+  accent?: 'blue' | 'red' | 'dark';
+  id?: string;
+}
+const lang = langOf(Astro.url);
+const t = ui(Astro.url).contact;
+const ENTRIES = entriesFor(lang);
+const { title = t.title, lede = t.lede, entry, training = false, accent = 'blue', id = 'contact' } = Astro.props;
+
+const topics = [
+  ...(training ? [t.training] : []),
+  ...(Object.keys(ENTRIES) as Entry[]).map((k) => ENTRIES[k].topic),
+  t.unsure,
+];
+const preselect = training ? t.training : entry ? ENTRIES[entry].topic : undefined;
+const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, lang).hint }));
+---
+
+<section class="hs-contact hs-snap" id={id}>
+  <div class={`hs-contact__zone on-${accent}`} data-reveal>
+    <h2 class="hs-d-m" data-item>{zet(title, { display: true, cap: 13 })}</h2>
+    <p class="hs-body-l" data-item style="--i:1">{zet(lede)}</p>
+    <div class="hs-contact__direct" data-item style="--i:2">
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <a href={SITE.phoneHref}>{lang === 'en' ? SITE_EN.phone : SITE.phone}</a>
+    </div>
+    <div class="hs-contact__people" data-item style="--i:3">
+      <h3 class="hs-title">{t.meet}</h3>
+      <ul data-shuffle>
+        {people.map((m) => (
+          <li>
+            <a class="hs-person" href={m.calendar} target="_blank" rel="noopener">
+              <span class="hs-person__photo">
+                <img src={m.photo} alt="" width="300" height="400" loading="lazy" decoding="async" />
+              </span>
+              <span class="hs-person__name">{m.name}</span>
+              <span class="hs-person__hint">{zet(m.hint, { cap: 13 })}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="hs-contact__form" data-reveal>
+    <form
+      class="hs-form"
+      data-hs-form
+      method="post"
+      action="/api/contact"
+      novalidate
+      data-success={t.success}
+      data-msg-missing={t.missing}
+      data-msg-email={t.badEmail}
+      data-msg-busy={t.busy}
+      data-msg-error={t.error}
+    >
+      <input class="hs-honey" type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="hs-form__row" data-item>
+        <label class="hs-field">
+          <span class="hs-label">{t.name}</span>
+          <input class="hs-input" type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">{t.email}</span>
+          <input class="hs-input" type="email" name="email" autocomplete="email" required />
+        </label>
+      </div>
+      <fieldset data-item style="--i:1">
+        <legend>{t.topic} <span class="hs-optional">{t.optional}</span></legend>
+        <div class="hs-chips">
+          {topics.map((o) => (
+            <label class="hs-chip">
+              <input type="radio" name="topics" value={o} checked={preselect === o} />
+              <span>{o}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <label class="hs-field" data-item style="--i:2">
+        <span class="hs-label">{training ? t.messageTraining : t.message}</span>
+        <textarea class="hs-input" name="message" rows="3" required placeholder={training ? t.placeholderTraining : t.placeholder}></textarea>
+      </label>
+      <div class="hs-form__foot" data-item style="--i:3">
+        <p class="hs-form__status" role="status" aria-live="polite"></p>
+        <button class="hs-btn hs-btn--dark" type="submit">
+          {t.submit}
+          <HsIcon name="arrow-right" />
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

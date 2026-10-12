@@ -1,0 +1,104 @@
+---
+// P2 Wat we bouwen (docs/relaunch/pages/P2-wat-we-bouwen.md): the overview of the three entries and
+// every landing (docs/relaunch/01-besluiten.md §9). The menu label only opens the sub-bar; this page
+// is reached from the homepage planes, the footer and the breadcrumbs.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsEntries from '../../components/hs/HsEntries.astro';
+import HsLandingIndex from '../../components/hs/HsLandingIndex.astro';
+import HsFigures from '../../components/hs/HsFigures.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE, ENTRIES } from '../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/' }];
+
+const catalog = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI-toepassingen en maatwerksoftware',
+  url: 'https://aiheroes.io/nl/wat-we-bouwen',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Country', name: 'Nederland' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Wat we bouwen',
+    itemListElement: Object.values(ENTRIES).map((e) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: e.title, url: `https://aiheroes.io${e.href}` },
+    })),
+  },
+};
+---
+
+<HsLayout
+  title="Wat we bouwen"
+  seoTitle="Wat we bouwen: AI-toepassingen en maatwerksoftware"
+  description={`AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, langs drie ingangen: iets nieuws, oude software vervangen of lokale AI. Altijd met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
+  crumbs={crumbs}
+  jsonLd={catalog}
+>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="Wat we bouwen"
+    title="Wat we voor je *bouwen*"
+    lede="Wij bouwen AI-toepassingen die je team elke dag gebruikt. AI is daarbij gereedschap: software zonder AI bouwen we net zo goed, als dat beter past."
+    secondary={{ label: 'Alles wat we vaak bouwen', href: '#vaak' }}
+  />
+
+  <HsEntries
+    title="Welke ingang past bij je vraag?"
+    snap={false}
+    id="ingangen"
+    more="Bekijk deze ingang"
+    descriptions={{
+      nieuw: '“Kunnen jullie dit voor ons bouwen?” In zes dagen een werkend prototype op je eigen data, daarna bouwen we door tot je team er elke dag mee werkt.',
+      vervangen: '“We zijn ons pakket zat.” We bouwen het nieuwe naast het oude, zetten je data in delen over en schakelen het oude pas uit als het nieuwe draait.',
+      'eigen-beheer': '“Kan het op onze eigen servers, binnen Europa?” Op je eigen hardware of bij een Europese partij, met de AI Act in het ontwerp.',
+    }}
+  />
+
+  <HsSection id="vaak" tone="paper" title="Wat we *vaak* bouwen" lede="Zoek je iets specifieks? Hier staat het per ingang. Staat het jouwe er niet bij, dan zoeken we het in de startsprint uit." split>
+    <HsLandingIndex />
+  </HsSection>
+
+  <HsSection title="De eerste stap is | *altijd* hetzelfde" lede="Welke ingang je ook kiest, we beginnen met een startsprint. Daarna weet je of het kan, wat het kost en hoe het eruitziet.">
+    <div class="hs-figs"><HsFigures
+      items={[
+        { value: '6 dagen', label: 'van vraag naar prototype of bouwplan' },
+        { value: SITE.sprint.price, label: 'vaste prijs, gelijk voor alle ingangen' },
+        { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
+      ]}
+    /></div>
+    <p class="hs-sec__foot" data-item>
+      <a class="hs-btn hs-btn--dark" href="/nl/startsprint">Bekijk de startsprint<HsIcon name="arrow-right" /></a>
+    </p>
+  </HsSection>
+
+  <HsSection tone="paper" title="Waar we het *bewezen*" lede="Eén voorbeeld per ingang. Meer werk staat bij de cases.">
+    <HsCards
+      items={[
+        { meta: ENTRIES.nieuw.title, title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Van vraag naar werkend prototype op de eigen administratie, met de business case erbij, in zes dagen.' },
+        { meta: ENTRIES.vervangen.title, title: 'Strive', href: '/nl/cases/strive', more: 'Lees de case', text: 'Een te duur ledenbeheerpakket vervangen door eigen software, naast het oude gebouwd en in één jaar terugverdiend.' },
+        { meta: ENTRIES['eigen-beheer'].title, title: 'Onze eigen assistent', href: '/nl/cases/eigen-stack', more: 'Lees de case', text: 'De AI-assistent op deze site draait op Europese infrastructuur, laat zien dat hij AI is en geeft je een mens als hij het niet weet.' },
+      ]}
+    />
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/cases">Alle cases<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsStandardList />
+
+  <HsContact />
+</HsLayout>
+
+<style>
+  /* Figures with words ("6 dagen", "€8.000") need the label under the number on phones. */
+  @media (max-width: 559px) {
+    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
+    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
+  }
+</style>

@@ -113,6 +113,13 @@ const seoTags = (html) =>
   [...html.matchAll(/<link[^>]+rel="(?:canonical|alternate)"[^>]*>/g)].map((x) => x[0].replace(/\s+/g, ' ')).sort().join('\n');
 for (const path of pageUrls) {
   const [a, b] = await Promise.all([fetch(target + path, { redirect: 'manual' }), fetch(reference + path)]);
+  // The relaunch (2026-10) moved pages: one 301 to a page that answers 200 counts as a pass.
+  if (a.status === 301) {
+    const loc = new URL(a.headers.get('location') ?? '', target + path).href;
+    const moved = await fetch(loc, { redirect: 'manual' });
+    check(moved.status === 200, `sitemap ${path} (moved)`, `301 -> ${loc} got ${moved.status}`);
+    continue;
+  }
   check(a.status === 200, `sitemap ${path}`, `got ${a.status}`);
   if (a.status === 200 && b.status === 200) {
     const [ha, hb] = await Promise.all([a.text(), b.text()]);
@@ -143,7 +150,9 @@ for (const path of ['/', '/en']) {
   check((res.headers.get('link') ?? '').includes('api-catalog'), 'Link header on /');
   const cat = await fetch(`${target}/.well-known/api-catalog`);
   check((cat.headers.get('content-type') ?? '').startsWith('application/linkset+json'), 'api-catalog content-type', cat.headers.get('content-type') ?? '');
-  for (const file of ['/robots.txt', '/llms.txt', '/sitemap-index.xml']) {
+  // llms.txt was rewritten for the relaunch's structure, so it only has to exist.
+  check((await fetch(target + '/llms.txt')).status === 200, 'llms.txt present');
+  for (const file of ['/robots.txt', '/sitemap-index.xml']) {
     const [ta, ra] = await Promise.all([fetch(target + file).then((r) => r.text()), fetch(reference + file).then((r) => r.text())]);
     // Line endings normalised: a Windows-side `vercel deploy --prebuilt` uploads CRLF
     // public files; CI (Linux) does not. Content must match otherwise.

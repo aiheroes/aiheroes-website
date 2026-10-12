@@ -1,0 +1,37 @@
+---
+// "Bij elke bouw inbegrepen" for subpages: the four parts of the standard with their icons and one
+// line each, plus an optional sentence that counts on this page. The homepage keeps the big poster
+// (HsStandard); this is the compact version (docs/relaunch/02-bouwplan.md §2).
+import HsIcon from './HsIcon.astro';
+import HsSection from './HsSection.astro';
+import { STANDARD_ICONS, rich, zet } from './hs';
+import { ui } from '../../data/ui';
+
+interface Props {
+  /** One sentence that matters on this page, shown under the four items. */
+  extra?: string;
+  tone?: 'light' | 'paper' | 'blue';
+  title?: string;
+}
+const t = ui(Astro.url);
+const { extra, tone = 'blue', title = t.standardTitle } = Astro.props;
+const ITEMS = t.standard;
+---
+
+<HsSection tone={tone} title={title} class="hs-stdlist">
+  <ul class="hs-cards hs-cards--rules hs-cards--4">
+    {ITEMS.map((it, i) => (
+      <li data-item style={`--i:${i}`}>
+        <div class="hs-card">
+          <HsIcon name={STANDARD_ICONS[i]} />
+          <h3 class="hs-card__title">{zet(it.title, { display: true, cap: 20 })}</h3>
+          <p class="hs-card__text">{zet(it.text)}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+  {(extra) && <p class="hs-stdlist__extra hs-body-l" data-item set:html={rich(extra)} />}
+  <p class="hs-sec__foot" data-item>
+    <a class="hs-link" href={t.howHref}>{t.howLink}<HsIcon name="arrow-right" /></a>
+  </p>
+</HsSection>

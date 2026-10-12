@@ -1,0 +1,103 @@
+---
+// P8 Cost and return up front, English (docs/relaunch/pages/P8-business-case.md, phase 7): mirrors
+// /nl/business-case. One exploration without a price; only the start sprint has a price; no "free
+// analysis" guarantee; implementation support is part of the standard. Sender: Frans Hoorn.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsCtaBand from '../../components/hs/HsCtaBand.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsAuthor from '../../components/hs/HsAuthor.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { SITE_EN as S } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'How we work', href: '/en/how-we-work' }];
+
+const sheet = [
+  { icon: 'wallet' as const, title: 'Cost', text: 'What the build costs, and what maintenance, hosting and model use cost per year after that.' },
+  { icon: 'chart-histogram' as const, title: 'Return', text: 'What it returns in time, money or quality, calculated with your own numbers.' },
+  { icon: 'hourglass' as const, title: 'Payback time', text: 'When the investment has paid for itself, and what happens if results fall short.' },
+  { icon: 'protect' as const, title: 'Risks', text: 'What can go wrong: data, adoption, rules such as the AI Act, and how we deal with them.' },
+  { icon: 'check' as const, title: 'Go or no-go', text: 'Advice to build, adjust or stop. The decision is yours.' },
+];
+
+const faq = [
+  { q: 'What does a business case cost?', a: `When you have something concrete, it is part of the start sprint: six days, from ${S.sprint.price}, with a prototype or build plan included. An exploration for organisations without a concrete question yet is priced up front for your situation.` },
+  { q: 'What if the answer is no?', a: 'Then we do not build, and you know why. Kwakkel BV decided not to build yet after the start sprint and keeps the prototype, the plan and the business case. That is an outcome too.' },
+  { q: 'Where do you start if you have nothing concrete yet?', a: 'With an exploration: we go through your processes and rank the opportunities by return. You can also read [where to start with AI in your organisation](/en/insights/where-to-start-with-ai).' },
+  { q: 'Who helps companies with an AI readiness scan?', a: 'AI Heroes in Groningen does this through an exploration: a readiness scan that ends with concrete candidates to build, with cost and return attached. Because we build ourselves, our figures reflect what building really costs.' },
+  { q: 'How is this different from a consultancy firm?', a: 'We build ourselves. Our business case ends with something we can build, at its real cost. If AI is not the answer, we say so.' },
+  { q: 'Who makes the business case?', a: 'Frans Hoorn, co-founder. He leads the start sprint and the business case.' },
+];
+---
+
+<HsLayout
+  lang="en"
+  title="Cost and return up front"
+  seoTitle="AI business case: cost and return before you build"
+  description="Before AI Heroes builds, you know what it costs, what it returns and when it pays for itself. On one page, in the start sprint or through an exploration of your processes. If the business case does not add up, we do not build."
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Business case and exploration', path: '/en/business-case', serviceType: 'AI business case and readiness scan', description: 'Cost, return and payback time of an AI application on one page, before anything is built.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Cost and return up front"
+    title="First know what it *returns*. | Then build."
+    lede="Before we build, you know what it costs, what it returns and when it pays for itself. On one page, as the basis for your decision."
+    secondary={{ label: 'What is on the page', href: '#one-page' }}
+    facts={[
+      { value: '1 page', label: 'business case before every build' },
+      { value: '6 days', label: 'and it is ready, in the start sprint' },
+    ]}
+  />
+
+  <HsSection id="one-page" title="What is on the *page*" lede="Five questions, answered in plain language. Enough for a board or management team to decide on.">
+    <HsCards items={sheet} />
+  </HsSection>
+
+  <HsSection tone="paper" title="Why our estimates *hold*" lede="We build ourselves. That is why our figures are based on what building really costs: hours, hosting, model use and maintenance.">
+    <p class="hs-lead" data-item>{zet('If the business case does not add up, we do not build.', { display: true })}</p>
+  </HsSection>
+
+  <HsSection title="Two ways to *get* there">
+    <HsCards
+      variant="planes"
+      columns={2}
+      items={[
+        { accent: 'red', title: 'You have something concrete', text: `The business case is part of the start sprint: six days, from ${S.sprint.price}, with a working prototype or build plan included.`, href: '/en/start-sprint', more: 'See the start sprint' },
+        { accent: 'dark', title: 'You do not know yet where it pays off', text: 'An exploration of your processes. We rank the opportunities by return and end with one or more candidates for a start sprint. We agree on the cost up front.', href: '#contact', more: 'Ask for an exploration' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="What it *delivered*">
+    <HsCards
+      columns={2}
+      items={[
+        { meta: 'Case · gym', title: 'Strive', href: '/en/cases/strive', more: 'Read the case', text: 'The business case was ready before an overpriced membership package was replaced. The build paid for itself within one year.' },
+        { meta: 'Case · administration', title: 'Kwakkel BV', href: '/en/cases/kwakkel', more: 'Read the case', text: 'After six days there was a business case next to the prototype. Kwakkel decided not to build yet, and that is an outcome too.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsCtaBand
+    tone="dark"
+    title="What does *AI implementation* cost?"
+    text={`A start sprint from ${S.sprint.price}, a build from ${S.build.from} to well over €100,000. Read what drives the price.`}
+    cta={{ label: 'AI implementation costs', href: '/en/ai-implementation-costs' }}
+  />
+
+  <HsSection title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+    <div class="hs-sec__foot" data-item><HsAuthor id="frans-hoorn" label="You talk to" /></div>
+  </HsSection>
+
+  <HsContact title="Tell us where you stand" lede={`Something concrete, or still looking? You hear from us within ${S.reply}, with a proposal for a start sprint or an exploration.`} />
+</HsLayout>

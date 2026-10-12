@@ -93,7 +93,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/glass.webp"
         },
         {
-          label: "Eigen beheer",
+          label: "Lokale AI",
           headline: "AI op <red>eigen</red> grond, <blue>Europees</blue> gehost",
           subhead: "Op je eigen servers of bij een Europese partij. Zonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd.",
           ctaLabel: "Plan een startsprint",
@@ -104,7 +104,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     services: {
       title: "Wat we voor je bouwen",
-      intro: "Kies wat bij je vraag past. De eerste stap is altijd een startsprint van één week.",
+      intro: "Kies wat bij je vraag past. De eerste stap is altijd een startsprint van zes dagen.",
       cta: "Lees meer",
       items: [
         {
@@ -683,7 +683,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/glass.webp"
         },
         {
-          label: "Run in-house",
+          label: "Self-hosted",
           headline: "AI on <red>your own</red> ground, <blue>hosted in Europe</blue>",
           subhead: "On your own servers or with a European provider. No dependency on US cloud, with the AI Act built in.",
           ctaLabel: "Plan a start sprint",
@@ -694,7 +694,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     services: {
       title: "What we build for you",
-      intro: "Pick the entry that fits your question. The first step is always a one-week start sprint.",
+      intro: "Pick the entry that fits your question. The first step is always a six-day start sprint.",
       cta: "Read more",
       items: [
         {

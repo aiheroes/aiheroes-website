@@ -1,0 +1,25 @@
+---
+// Text beside a photo (deck L09). People are duotoned, places and screenshots keep their colour;
+// a screenshot sits contained on a paper field.
+import { display } from './hs';
+
+interface Props {
+  id?: string;
+  title?: string;
+  tone?: 'light' | 'dark' | 'paper';
+  photo: { src: string; alt: string; w: number; h: number; pos?: string; duo?: 'red' | 'blue'; shot?: boolean };
+  reverse?: boolean;
+}
+const { id, title, tone = 'light', photo, reverse = false } = Astro.props;
+const toneClass = tone === 'dark' ? 'on-dark' : tone === 'paper' ? 'hs-sec--paper' : 'hs-sec--light';
+---
+
+<section class:list={['hs-split', toneClass, { 'is-reverse': reverse }]} id={id} data-reveal>
+  <div class:list={['hs-split__photo', { 'is-duo': photo.duo === 'red', 'is-duo-blue': photo.duo === 'blue', 'is-shot': photo.shot }]}>
+    <img src={photo.src} alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="lazy" decoding="async" />
+  </div>
+  <div class="hs-split__text">
+    {title && <h2 class="hs-d-s" data-item set:html={display(title)} />}
+    <slot />
+  </div>
+</section>

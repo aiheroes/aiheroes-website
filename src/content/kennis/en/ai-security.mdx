@@ -1,0 +1,83 @@
+---
+lang: en
+slug: ai-security
+plan: K5
+kind: artikel
+group: compliance
+title: "AI and information security: the risks and what to *do* about them"
+seoTitle: "AI security risks: prompt injection, data leaks and what to do about them"
+description: "Which security risks does AI bring, such as data leaks through prompts and prompt injection, and how do they fit into ISO 27001 and NIS2? The measure for each risk."
+answer: "AI applications bring a few risks that classic software does not have: data that ends up with a model through prompts, manipulation through text the model reads (prompt injection) and agents that are allowed to do more than they need. You control them with the same approach as the rest of your information security: knowing which data goes where, limiting rights, logging and testing."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+pillar:
+  label: "Have your AI application tested"
+  href: "/en/compliance"
+  text: "Want to know how secure your AI application is? We carry out security reviews and penetration tests of AI applications, and build security in from the first version."
+related: [ai-and-gdpr, iso-42001, human-oversight]
+faq:
+  - q: "Is it safe to put company data into ChatGPT or Copilot?"
+    a: "With a business version, sound contractual agreements and clear rules about which data may go in, it can be done responsibly. With free consumer accounts you have little control over what happens to your data. Record it in your [AI policy](/en/insights/ai-policy)."
+  - q: "What is prompt injection?"
+    a: "An attack in which someone hides instructions in text the model reads, such as an email, document or web page. The model then carries out those instructions as if they came from the user. It is the best-known risk on the OWASP list for applications built on language models."
+  - q: "Should AI be in our ISO 27001 scope?"
+    a: "If AI applications work with your information, they belong in your risk assessment and your supplier management. Usually you extend what you already do. If you want to go further, look at [ISO 42001](/en/insights/iso-42001)."
+  - q: "Does NIS2 cover AI?"
+    a: "NIS2 is about the organisation, not about a technology. If you fall under NIS2 (in the Netherlands the Cyberbeveiligingswet, in force since 15 August 2026), your AI applications fall under the same duty of care as your other systems."
+  - q: "Where does an AI model actually run?"
+    a: "With the model provider, in a cloud you choose, or on your own servers. That decides where your data goes and under which law. Read [AI on your own servers](/en/ai-on-your-own-servers)."
+---
+
+## What is different about AI security?
+
+An AI application is software, so everything you already do for security still applies. AI adds a few risks of its own:
+
+- **Data leaking through prompts.** Staff paste contracts, customer files or source code into an AI tool. Depending on the terms, that information may stay with the provider.
+- **Prompt injection.** A model reads text from outside, such as an email or web page, and carries out the instructions hidden in it. An assistant that summarises email can be tricked into forwarding information this way. It tops the [OWASP list for applications built on language models](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
+- **Agents with too many rights.** An agent that operates systems itself can do everything its account can do. A mistake or manipulation then has immediate consequences.
+- **Dependence on one provider.** If the provider changes its model, terms or price, your application changes with it.
+- **Hosting and jurisdiction.** Where the model runs and where the data sits decides which law applies.
+
+## What to do about each risk
+
+| Risk | Measure | Who arranges it |
+|---|---|---|
+| Data through prompts | Business tools with agreements, data classes, training | IT and compliance, through the AI policy |
+| Prompt injection | Keep outside input apart from instructions, check output, have sensitive actions confirmed | Developers |
+| Agents with too many rights | Least privilege, a person approves sensitive actions, log everything | Developers and operations |
+| One provider | A model-agnostic build, documentation, an exit plan | Architect and procurement |
+| Hosting and jurisdiction | Choose deliberately where the model and the data sit, data processing agreements | IT, privacy and procurement |
+
+## AI within ISO 27001
+
+AI applications belong in your existing information security. What you add to your management system:
+
+1. **Inventory:** AI applications and AI features in existing software in your asset register.
+2. **Risk assessment:** the risks above, per application.
+3. **Supplier management:** the terms of model providers, where they store data and whether they use it for training.
+4. **Logging and monitoring:** what the application does, who uses it and what goes wrong.
+5. **Testing:** on top of your usual tests, tests aimed at prompt injection and misuse.
+
+If your organisation falls under NIS2, your AI applications fall under the same duty of care as your other systems. In the Netherlands NIS2 is implemented in the [Cyberbeveiligingswet](https://www.rijksoverheid.nl/actueel/nieuws/2026/08/15/cyberbeveiligingswet-en-wet-weerbaarheid-kritieke-entiteiten-vanaf-vandaag-van-kracht) (Cybersecurity Act), in force since 15 August 2026.
+
+## Hosting and jurisdiction
+
+Three questions decide much of your risk: where the model runs, where the data sits, and which law the provider falls under. The US CLOUD Act can oblige American companies to hand over data they control, even when it is stored in a European data centre. So for sensitive data, choose deliberately: a European provider, or your own servers. Read more in [AI on your own servers](/en/ai-on-your-own-servers) and [self-hosted AI](/en/self-hosted).
+
+## What AI Heroes does here
+
+<div class="hs-note">
+
+- **We carry out security reviews and penetration tests of AI applications**, including ones we did not build ourselves.
+- **In every build** logging, least privilege, human oversight and documentation are part of the design. We build model-agnostic, with European hosting as an option.
+- **We are working towards ISO 27001 certification ourselves.**
+
+The assistant on this site is an example: it runs in Frankfurt with a database in the EU, keeps conversations pseudonymised for at most 30 days and is described on [the transparency page](/en/legal/ai-assistant).
+
+</div>
+
+## Sources
+
+- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/), OWASP
+- [Cyberbeveiligingswet en Wet weerbaarheid kritieke entiteiten vanaf vandaag van kracht](https://www.rijksoverheid.nl/actueel/nieuws/2026/08/15/cyberbeveiligingswet-en-wet-weerbaarheid-kritieke-entiteiten-vanaf-vandaag-van-kracht) (Dutch Cybersecurity Act in force), Dutch government, 15 August 2026

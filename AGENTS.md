@@ -85,13 +85,13 @@ netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
 
 ## Core Messaging (updated 2026-09-21)
 1. **Kernzin:** "AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan."
-2. **Three ways in:** Iets nieuws bouwen (`/nl/diensten/software`) · Vervangen wat niet meer voldoet (`/nl/diensten/software-vervangen`) · In eigen beheer draaien (`/nl/diensten/eu-consultancy`).
+2. **Three ways in:** Iets nieuws bouwen (`/nl/diensten/software`) · Vervangen wat niet meer voldoet (`/nl/diensten/software-vervangen`) · Lokale AI / Self-hosted AI (`/nl/eigen-beheer`, `/en/self-hosted`).
 3. **One front door:** de startsprint (`/nl/startsprint`): one week, fixed fee from €8,000, working prototype or build plan plus business case. The only CTA on the site is "Plan een startsprint".
 4. **The included layer:** de AI Heroes-standaard ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board · your people trained on it · not tied to one AI vendor (model-agnostic, fully documented; source code stays with AI Heroes by default, never claim the client owns it). Training and consulting are phases of a build, kept as pages (`/nl/diensten/training`, `/nl/diensten/consultancy`) but out of the menu and never on the homepage.
 5. **Proof rule:** only current-team work at the front (Kwakkel BV, INQ22, Strive, IC Commerce, own stack). Medux, Trabu, OLX, InnoEnergy are "eerdere cases" (earlier AI Heroes), never first proof.
 
 ## Content structure (2026-09-21)
-- Copy lives in `constants.ts` (`nav.build/how/cases/about/cta/featured`, `hero.slides`, `services.items` keyed by `entry`, `standard`, `approach.text`, `socialProof.logos`, `contact.form.budget/owner`).
+- Copy lives in `constants.ts` (`nav.build/how/cases/about/cta/featured`, `hero.slides`, `services.items` keyed by `entry`, `standard`, `approach.text`, `socialProof.logos`).
 - `Entry = 'nieuw' | 'vervangen' | 'eigen-beheer'` (types.ts) drives cards, hero images, case badges (`entry`/`era` in the cases collection) and the contact-form chip preselect.
 - `SubpageLayout` props: `badge`, `entry`, `showStandard`; the hero button always links to the startsprint page.
 

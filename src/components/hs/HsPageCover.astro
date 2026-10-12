@@ -1,0 +1,88 @@
+---
+// The subpage cover (deck L01 with a photo panel, without rotation): a colour field with the
+// breadcrumbs and the headline, an optional photo beside it, and an ink band with the lede, the
+// action and up to three facts. Mark the one punch word in the title with *asterisks*.
+import HsIcon from './HsIcon.astro';
+import { display, photoSrcset, plainText, zet } from './hs';
+import type { Crumb } from '../../data/schema';
+import { ui } from '../../data/ui';
+
+interface Fact {
+  value: string;
+  label: string;
+}
+interface Props {
+  title: string;
+  /** Short page name for the breadcrumb trail (the title is often a sentence). */
+  current?: string;
+  lede?: string;
+  accent?: 'red' | 'blue' | 'dark';
+  crumbs?: Crumb[];
+  cta?: { label: string; href: string } | null;
+  secondary?: { label: string; href: string };
+  photo?: { src: string; alt: string; w: number; h: number; pos?: string; duo?: 'red' | 'blue' | 'bw' };
+  facts?: Fact[];
+}
+const {
+  title,
+  current,
+  lede,
+  accent = 'red',
+  crumbs = [],
+  cta = { label: ui(Astro.url).sprintCta, href: ui(Astro.url).sprintHref },
+  secondary,
+  photo,
+  facts = [],
+} = Astro.props;
+const long = plainText(title).length > 46;
+---
+
+<section class:list={['hs-pcover hs-snap', { 'has-photo': photo }]}>
+  <div class={`hs-pcover__zone on-${accent}`}>
+    {crumbs.length > 0 && (
+      <nav class="hs-crumbs" aria-label={ui(Astro.url).crumbs}>
+        <ol>
+          {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+          <li aria-current="page">{current ?? plainText(title)}</li>
+        </ol>
+      </nav>
+    )}
+    <h1 class:list={['hs-pcover__title', { 'is-long': long }]} set:html={display(title)} />
+  </div>
+  {photo && (
+    <div class:list={['hs-pcover__photo', { 'is-duo': photo.duo === 'red', 'is-duo-blue': photo.duo === 'blue', 'is-bw': photo.duo === 'bw' }]}>
+      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 1024px) 75vw, 100vw" alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+  )}
+  {(lede || cta || facts.length > 0) && (
+    <div class="hs-pcover__band">
+      {lede && <p class="hs-pcover__lede">{zet(lede)}</p>}
+      {(cta || secondary) && (
+        <div class="hs-pcover__actions">
+          {cta && (
+            <a class="hs-btn hs-btn--light" href={cta.href}>
+              {cta.label}
+              <HsIcon name="arrow-right" />
+            </a>
+          )}
+          {secondary && (
+            <a class="hs-link" href={secondary.href}>
+              {secondary.label}
+              <HsIcon name="arrow-right" />
+            </a>
+          )}
+        </div>
+      )}
+      {facts.length > 0 && (
+        <dl class="hs-pcover__facts">
+          {facts.map((f) => (
+            <div>
+              <dt>{zet(f.label, { cap: 16 })}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+    </div>
+  )}
+</section>

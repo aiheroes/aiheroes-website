@@ -1,0 +1,74 @@
+---
+// The work in numbers (post "klantcase"): kicker, heading, lede, figures, a closing line, a link
+// and the duotone photo. Defaults are the homepage's anonymous customer-service case: the client is
+// not named on the homepage (docs/relaunch/01-besluiten.md §7), the result has no tense, and the
+// 7,8 is the rating of the AI conversations. Other pages pass the named case.
+import HsIcon from './HsIcon.astro';
+import { display, photoSrcset, zet } from './hs';
+import { langOf } from '../../data/ui';
+
+interface Stat {
+  value: number;
+  suffix?: string;
+  decimals?: number;
+  label: string;
+}
+interface Props {
+  kicker?: string;
+  title?: string;
+  lede?: string;
+  stats?: Stat[];
+  close?: string;
+  link?: { label: string; href: string };
+  /** null: a text-only case band (no stand-in fits yet). */
+  photo?: { src: string; alt?: string; w: number; h: number; pos?: string } | null;
+  id?: string;
+  snap?: boolean;
+}
+const {
+  kicker = 'Case',
+  title = '4.000 gesprekken per maand, | 80% door AI',
+  lede = 'Voor een Nederlandse zorgorganisatie met klanten die liever bellen dan online iets regelen, bouwden we een AI-stem die kan opnemen, afspraken inplannen en vragen beantwoorden.',
+  stats = [
+    { value: 70, suffix: '%', decimals: 0, label: 'kostenbesparing' },
+    { value: 7.8, suffix: '', decimals: 1, label: 'waardering AI-gesprekken' },
+  ],
+  close = 'Ook buiten kantooruren, met doorschakeling naar een medewerker bij lastige of dringende vragen.',
+  link,
+  photo = { src: '/hs/photos/case-support.webp', w: 1400, h: 788 },
+  id = 'case',
+  snap = true,
+} = Astro.props;
+const locale = langOf(Astro.url) === 'en' ? 'en-GB' : 'nl-NL';
+const nf = (s: Stat) => new Intl.NumberFormat(locale, { minimumFractionDigits: s.decimals ?? 0, maximumFractionDigits: s.decimals ?? 0 }).format(s.value) + (s.suffix ?? '');
+---
+
+<section class:list={['hs-case on-dark', { 'hs-snap': snap, 'is-text': !photo }]} id={id} data-reveal>
+  {photo && (
+    <div class="hs-case__photo">
+      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 900px) 95vw, 100vw" alt={photo.alt ?? ''} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="lazy" decoding="async" />
+    </div>
+  )}
+  <div class="hs-case__text">
+    <p class="hs-case__kicker" data-item>{kicker}</p>
+    <h2 class="hs-d-m" data-item style="--i:1" set:html={display(title)} />
+    <p class="hs-body-l hs-case__lede" data-item style="--i:2">{zet(lede, { cap: 40 })}</p>
+    {stats.length > 0 && (
+      <dl class="hs-stats" data-item style={`--i:3;--n:${stats.length};--fig-w:${Math.max(...stats.map((s) => nf(s).length)) + 0.4}ch`}>
+        {stats.map((s) => (
+          <div>
+            <dt>{s.label}</dt>
+            <dd data-count={s.value} data-decimals={s.decimals ?? 0} data-suffix={s.suffix ?? ''}>{nf(s)}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+    {close && <p class="hs-body" data-item style="--i:4">{zet(close)}</p>}
+    {link && (
+      <a class="hs-link" href={link.href} data-item style="--i:5">
+        {link.label}
+        <HsIcon name="arrow-right" />
+      </a>
+    )}
+  </div>
+</section>

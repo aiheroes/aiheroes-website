@@ -1,0 +1,171 @@
+---
+// P17 Kennis (docs/relaunch/pages/P17-kennis.md): the overview of the kennis collection, grouped by
+// topic with the pillar of each group, the guide to start with and the newest articles. Landings
+// appear here only as "verder lezen" links. No newsletter: there is none (01-besluiten §11).
+import { getCollection } from 'astro:content';
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { plainText, zet } from '../../../components/hs/hs';
+import { FOUNDERS } from '../../../data/team';
+
+const all = (await getCollection('kennis', (e) => e.data.lang === 'nl' && !e.data.draft)).sort(
+  (a, b) => b.data.updatedDate.getTime() - a.data.updatedDate.getTime(),
+);
+const minutes = (body?: string) => Math.max(2, Math.round((body ?? '').split(/\s+/).filter(Boolean).length / 220));
+const KIND = { artikel: 'Artikel', listicle: 'Overzicht', gids: 'Gids' } as const;
+const card = (e: (typeof all)[number]) => ({
+  title: plainText(e.data.title),
+  text: e.data.description,
+  href: `/nl/kennis/${e.data.slug}`,
+  meta: `${KIND[e.data.kind]} · ${minutes(e.body)} min · ${FOUNDERS[e.data.author].name}`,
+  more: 'Lees verder',
+});
+const pick = (slugs: string[]) => slugs.map((s) => all.find((e) => e.data.slug === s)).filter((e): e is (typeof all)[number] => !!e);
+
+const start = all.find((e) => e.data.slug === 'waar-begin-je-met-ai');
+const GROUPS = [
+  {
+    id: 'compliance',
+    title: 'Compliance en *security*',
+    lede: 'Wat de AI Act, de AVG en informatiebeveiliging van je vragen, en hoe je het regelt. Met het sjabloon voor je AI-beleid.',
+    items: all.filter((e) => e.data.group === 'compliance'),
+    links: [
+      { label: 'Compliance en security', href: '/nl/compliance' },
+      { label: 'De AI Act-check', href: '/nl/compliance' },
+    ],
+  },
+  {
+    id: 'kosten-en-aanpak',
+    title: 'Kosten en *aanpak*',
+    lede: 'Waar je begint, wat het kost en hoe je weet of het iets oplevert voordat je bouwt.',
+    items: pick(['waar-begin-je-met-ai']),
+    links: [
+      { label: 'Wat kost AI-implementatie?', href: '/nl/wat-kost-ai-implementatie' },
+      { label: 'Kosten en opbrengst vooraf', href: '/nl/business-case' },
+      { label: 'De startsprint', href: '/nl/startsprint' },
+    ],
+  },
+  {
+    id: 'eigen-beheer',
+    title: 'Lokale AI en *Europa*',
+    lede: 'Welke Europese AI-tools er zijn, en wanneer je AI op je eigen servers of in een Europese cloud draait.',
+    items: pick(['europese-alternatieven-chatgpt']),
+    links: [
+      { label: 'AI op eigen servers', href: '/nl/ai-op-eigen-servers' },
+      { label: 'Europees alternatief voor ChatGPT', href: '/nl/europees-alternatief-chatgpt' },
+      { label: 'Lokale AI', href: '/nl/eigen-beheer' },
+    ],
+  },
+  {
+    id: 'training',
+    title: '*Training*',
+    lede: 'Je team leren werken met AI, en voldoen aan artikel 4 van de AI Act.',
+    items: pick(['ai-geletterdheid']),
+    links: [
+      { label: 'AI-training voor je team', href: '/nl/training' },
+      { label: 'Incompany AI-training', href: '/nl/incompany-ai-training' },
+      { label: 'AI-geletterdheidstraining', href: '/nl/ai-geletterdheid-training' },
+      { label: 'Digitale soevereiniteit', href: '/nl/digitale-soevereiniteit' },
+    ],
+  },
+  {
+    id: 'overzichten',
+    title: '*Overzichten*',
+    lede: 'Vergelijkingen die we elk halfjaar bijwerken.',
+    items: pick(['top-10-ai-bureaus']),
+    links: [
+      { label: 'AI-bureau Nederland', href: '/nl/ai-bureau-nederland' },
+      { label: 'AI-bureau Groningen', href: '/nl/ai-bureau-groningen' },
+    ],
+  },
+];
+
+const fmt = (date: Date) => date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' });
+const newest = all.slice(0, 6);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Kennis',
+  url: 'https://aiheroes.io/nl/kennis',
+  inLanguage: 'nl',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: all.length,
+    itemListElement: all.map((e, i) => ({ '@type': 'ListItem', position: i + 1, name: plainText(e.data.title), url: `https://aiheroes.io/nl/kennis/${e.data.slug}` })),
+  },
+};
+const crumbs = [{ label: 'Home', href: '/' }];
+---
+
+<HsLayout
+  title="Kennis"
+  seoTitle="Kennis: gidsen over AI bouwen, kosten en de AI Act"
+  description="Gidsen en artikelen van mensen die zelf AI bouwen: de AI Act, AI-geletterdheid, de AVG en security, kosten, Europese alternatieven en waar je begint."
+  crumbs={crumbs}
+  jsonLd={jsonLd}
+>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="Kennis"
+    title="Kennis van mensen die zelf *bouwen*"
+    lede="Gidsen en artikelen over de AI Act, kosten, Europese AI en waar je begint. Geschreven door de founders, bijgewerkt als de regels of de markt veranderen."
+    cta={null}
+    secondary={{ label: 'Begin met de gids', href: '#begin-hier' }}
+  />
+
+  {start && (
+    <HsSection id="begin-hier" title="Begin *hier*" lede="Begin je net met AI in je organisatie? Deze gids neemt je in vijf stappen mee, van het eerste proces tot een team dat ermee werkt.">
+      <HsCards variant="planes" columns={2} items={[{ ...card(start), accent: 'red', more: 'Lees de gids' }]} />
+    </HsSection>
+  )}
+
+  {GROUPS.map((g, gi) => (
+    <HsSection id={g.id} tone={gi % 2 === 0 ? 'paper' : 'light'} title={g.title} lede={g.lede}>
+      {g.items.length > 0 && <HsCards columns={3} items={g.items.map(card)} />}
+      <div class="hs-sec__foot hs-kennis__links" data-item>
+        <span class="hs-kennis__label">Verder lezen</span>
+        {g.links.map((l) => <a class="hs-link" href={l.href}>{l.label}<HsIcon name="arrow-right" /></a>)}
+      </div>
+    </HsSection>
+  ))}
+
+  <HsSection title="Nieuw en *bijgewerkt*">
+    <ol class="hs-kennis__list">
+      {newest.map((e, i) => (
+        <li data-item style={`--i:${i}`}>
+          <a href={`/nl/kennis/${e.data.slug}`}>
+            <span class="hs-kennis__title">{zet(plainText(e.data.title), { display: true, cap: 30 })}</span>
+            <span class="hs-kennis__meta">
+              {FOUNDERS[e.data.author].name} · bijgewerkt <time datetime={e.data.updatedDate.toISOString().slice(0, 10)}>{fmt(e.data.updatedDate)}</time> · {minutes(e.body)} min
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </HsSection>
+
+  <HsCtaBand
+    tone="blue"
+    title="Liever direct *praten*?"
+    text="Heb je een concreet proces of systeem? In een startsprint van zes dagen weet je of het werkt, wat het kost en hoe het eruitziet."
+    cta={{ label: 'Plan een startsprint', href: '/nl/startsprint' }}
+    secondary={{ label: 'Plan een kennismaking', href: '/nl/over-ons/team' }}
+  />
+</HsLayout>
+
+<style>
+  .hs-kennis__links { gap: .75rem 1.75rem; }
+  .hs-kennis__label { font-size: .875rem; font-weight: 700; letter-spacing: .04em; color: var(--micro-on-light); }
+  .hs-kennis__list { display: grid; max-width: 56rem; counter-reset: k; }
+  .hs-kennis__list li { box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
+  .hs-kennis__list li:last-child { box-shadow: inset 0 1.5px 0 var(--rule-on-light), inset 0 -1.5px 0 var(--rule-on-light); }
+  .hs-kennis__list a { display: grid; gap: .375rem; padding: 1.125rem 0; text-decoration: none; }
+  .hs-kennis__title { font-weight: 700; letter-spacing: -0.015em; font-size: clamp(1.125rem, 1rem + .4vw, 1.375rem); line-height: 1.3; }
+  .hs-kennis__list a:hover .hs-kennis__title { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; }
+  .hs-kennis__meta { font-size: .9375rem; color: var(--micro-on-light); }
+</style>

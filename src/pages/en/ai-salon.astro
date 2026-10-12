@@ -1,48 +1,258 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import AISalonIsland from '../../components/islands/AISalonIsland';
+// P15 AI Salon (English). Community page: it does not sell, the action is registering on Luma. All
+// edition data comes from src/data/salon.ts, shared with /nl/ai-salon (the freeze exception: updated
+// live and carried into `relaunch`). The evenings themselves are in English.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import HsLuma from '../../components/hs/HsLuma.astro';
+import { zet } from '../../components/hs/hs';
+import {
+  SALON_NEXT, SALON_EDITIONS, SALON_AGENDA, SALON_TIMES, SALON_NETWORK, SALON_FOLLOW, SALON_CALENDAR,
+  SALON_EMAIL, SALON_SPEAKER_SLOTS, SALON_SPONSOR_SLOTS, editionText,
+} from '../../data/salon';
 
-const description =
-  'AI Salon Groningen edition #2, Thursday November 5, 2026. A bimonthly community evening for AI founders, builders, investors, researchers and partners.';
+const next = SALON_NEXT;
+const nt = editionText(next, 'en');
+const speakers = next.speakers ?? [];
+const sponsors = next.sponsors ?? [];
+const openSpeakers = Math.max(0, SALON_SPEAKER_SLOTS - speakers.length);
+const openSponsors = Math.max(0, SALON_SPONSOR_SLOTS - sponsors.length);
+const mail = (subject: string) => `mailto:${SALON_EMAIL}?subject=${encodeURIComponent(`AI Salon Groningen ${nt.title} · ${subject}`)}`;
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'About', href: '/en/about' }];
+const [amsterdam, brabant] = SALON_NETWORK.chapters;
+const shortDay = nt.shortDate.replace(/^\w+ /, '');
 
-// Editie #2 — datum + tijd bekend (5 nov, 18:00); de geplande locatie viel af, dus alleen de stad.
-const edition2Schema = {
+const eventSchema = {
   '@context': 'https://schema.org',
   '@type': 'Event',
-  name: 'AI Salon Groningen · Edition #2',
-  startDate: '2026-11-05T18:00:00+01:00',
-  endDate: '2026-11-05T21:00:00+01:00',
+  name: `AI Salon Groningen · ${nt.title}`,
+  startDate: `${next.date}T${SALON_TIMES.start}:00+01:00`,
+  endDate: `${next.date}T${SALON_TIMES.end}:00+01:00`,
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  inLanguage: 'en',
   location: {
     '@type': 'Place',
-    name: 'Groningen',
-    address: { '@type': 'PostalAddress', addressLocality: 'Groningen', addressCountry: 'NL' },
+    name: next.venue ?? next.city,
+    address: { '@type': 'PostalAddress', addressLocality: next.city, addressCountry: 'NL' },
   },
   image: ['https://aiheroes.io/og-image.png'],
-  description:
-    'Second edition of AI Salon Groningen, Thursday 5 November 2026. Venue to be announced. Free community evening for AI founders, builders, investors, researchers and partners.',
-  performer: [
-    { '@type': 'Person', name: 'Ilse Gosliga' },
-    { '@type': 'Person', name: 'Alex van Ginneken' },
-  ],
+  description: `${nt.title} of AI Salon Groningen, ${nt.dateLabel}. A free community evening for AI founders, builders, investors, researchers and partners.`,
+  performer: speakers.map((s) => ({ '@type': 'Person', name: s.name })),
   organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR',
-    availability: 'https://schema.org/InStock',
-    url: 'https://luma.com/AI-Salon-Gro-2',
-  },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: next.lumaUrl },
 };
+
+const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open: 'Registration open' };
 ---
 
-<BaseLayout
+<HsLayout
   lang="en"
-  title="AI Salon Groningen · Edition #2"
-  description={description}
-  jsonLd={[edition2Schema]}
-  noChrome
+  title="AI Salon Groningen"
+  seoTitle={`AI Salon Groningen: ${nt.title.toLowerCase()}, ${shortDay}`}
+  description={`AI Salon Groningen ${nt.title.toLowerCase()}, ${nt.dateLabel}. A free, bimonthly evening for AI founders, builders, investors, researchers and partners. Register on Luma.`}
+  crumbs={crumbs}
+  jsonLd={eventSchema}
 >
-  <AISalonIsland lang="en" client:load />
-</BaseLayout>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="AI Salon"
+    title="The #1 AI networking event, | now in *Groningen*."
+    lede={`${nt.title} of AI Salon Groningen is on ${nt.dateLabel}, doors open at ${SALON_TIMES.doors}. Free and in English, for AI founders, builders, investors, researchers and partners.`}
+    cta={{ label: `Register for ${nt.title.toLowerCase()}`, href: '#register' }}
+    secondary={{ label: 'The programme', href: '#programme' }}
+    photo={{ src: '/groningen.webp', alt: 'A street in the centre of Groningen with a church tower', w: 1200, h: 1500, pos: '50% 40%' }}
+    facts={[
+      { value: shortDay, label: `${nt.title.toLowerCase()}, from ${SALON_TIMES.doors}` },
+      { value: 'Free', label: 'and in English' },
+      { value: '70+', label: 'guests at the sold-out kick-off' },
+    ]}
+  />
+
+  <HsSection title="What is the *AI Salon*?" lede="Every two months we bring together people in Groningen who build with AI, invest in it or research it. Two short talks, one-minute pitches, then food, drinks and networking." split>
+    <ul class="hs-cards hs-cards--rules hs-cards--3">
+      <li data-item>
+        <div class="hs-card">
+          <HsIcon name="earth" />
+          <h3 class="hs-card__title">A global network</h3>
+          <p class="hs-card__text">
+            AI Salon connects local AI scenes with founders and investors around the world. In the Netherlands there are also chapters in{' '}
+            {amsterdam.url ? <a href={amsterdam.url} rel="noopener" target="_blank">{amsterdam.name}</a> : amsterdam.name} and{' '}
+            {brabant.url ? <a href={brabant.url} rel="noopener" target="_blank">{brabant.name}</a> : brabant.name}.
+          </p>
+          <a class="hs-card__more" href={SALON_NETWORK.url} rel="noopener" target="_blank"><span>About the network</span><HsIcon name="arrow-up-right" /></a>
+        </div>
+      </li>
+      <li data-item style="--i:1">
+        <div class="hs-card">
+          <HsIcon name="calendar" />
+          <h3 class="hs-card__title">Every two months, free</h3>
+          <p class="hs-card__text">{zet('The evenings are free and in English. Sponsors keep it that way, edition after edition.')}</p>
+        </div>
+      </li>
+      <li data-item style="--i:2">
+        <div class="hs-card">
+          <HsIcon name="peoples" />
+          <h3 class="hs-card__title">Who it is for</h3>
+          <p class="hs-card__text">{zet('AI founders, builders, investors, researchers and partners from the northern Netherlands and beyond.')}</p>
+        </div>
+      </li>
+    </ul>
+  </HsSection>
+
+  <HsSection id="programme" tone="paper" title="The *programme*" lede={`${nt.title}, ${nt.dateLabel}. ${nt.note ?? ''}`.trim()}>
+    <HsSteps ordered={false} items={SALON_AGENDA.map((a) => ({ label: a.time, title: a.en.title, meta: a.en.note }))} />
+  </HsSection>
+
+  <HsSection tone="dark" title="The *speakers*" lede={`Two talks of around twenty minutes per edition. Want to speak at an upcoming evening? Email ${SALON_EMAIL}.`}>
+    <ul class="salon-people">
+      {speakers.map((s, i) => (
+        <li data-item style={`--i:${i}`}>
+          <div class="salon-people__photo">
+            {s.photo ? <img src={s.photo} alt="" width="400" height="500" loading="lazy" decoding="async" /> : <span>Photo to follow</span>}
+          </div>
+          <p class="salon-people__name">{s.name}</p>
+          {(s.orgEn ?? s.org) && <p class="salon-people__org">{s.orgEn ?? s.org}</p>}
+          <p class="salon-people__topic">{s.topic ? `“${s.topic}”` : 'Topic to follow'}</p>
+        </li>
+      ))}
+      {Array.from({ length: openSpeakers }).map((_, i) => (
+        <li data-item style={`--i:${speakers.length + i}`}>
+          <a class="salon-people__open" href={mail('Speaking')}>
+            <div class="salon-people__photo is-open"><span>Become a speaker</span></div>
+            <p class="salon-people__name">Slot open</p>
+            <p class="salon-people__topic">Email us your topic</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </HsSection>
+
+  <HsSection title="The *sponsors*" lede="Sponsors keep the evening free. The contribution is deliberately affordable, so small and mid-size companies can join too.">
+    {sponsors.length > 0 ? (
+    <ul class="salon-logos">
+      {sponsors.map((sp) => (
+        <li data-item>
+          {sp.href ? <a href={sp.href} rel="noopener" target="_blank"><img src={sp.src} alt={sp.name} loading="lazy" /></a> : <img src={sp.src} alt={sp.name} loading="lazy" />}
+        </li>
+      ))}
+      {Array.from({ length: openSponsors }).map((_, i) => (
+        <li data-item style={`--i:${i}`}><a class="salon-logos__open" href={mail('Sponsorship')}><span>Your logo</span></a></li>
+      ))}
+    </ul>
+    ) : (
+      <div class="salon-sponsor-call" data-item>
+        <h3>{zet(`Become a sponsor of ${nt.title.toLowerCase()}`)}</h3>
+        <p>{zet('Your logo goes on this page, for an evening with the AI scene of the northern Netherlands. Email us and we will tell you how it works.')}</p>
+        <a class="hs-btn hs-btn--dark" href={mail('Sponsorship')}>
+          Email {SALON_EMAIL}
+          <HsIcon name="arrow-right" />
+        </a>
+      </div>
+    )}
+  </HsSection>
+
+  <HsSection id="register" tone="blue" title={`Register for ${nt.title.toLowerCase()}`} lede={`${nt.dateLabel}, doors open at ${SALON_TIMES.doors}, ${next.venue ?? 'venue to be announced'}, ${next.city}. Registration runs through Luma.`}>
+    <div class="salon-register" data-item>
+      <HsLuma eventId={next.lumaEventId!} href={next.lumaUrl} class="hs-btn hs-btn--light">
+        Register on Luma
+        <HsIcon name="arrow-right" />
+      </HsLuma>
+      <a class="hs-link" href={SALON_CALENDAR.url} rel="noopener" target="_blank">{SALON_CALENDAR.labelEn}<HsIcon name="arrow-up-right" /></a>
+      <a class="hs-link" href={SALON_FOLLOW.url} rel="noopener" target="_blank">{SALON_FOLLOW.labelEn}<HsIcon name="arrow-up-right" /></a>
+    </div>
+    <div class="salon-embed" data-item>
+      <iframe src={`https://lu.ma/embed/event/${next.lumaEventId}/simple`} title={`AI Salon Groningen ${nt.title}: register`} loading="lazy"></iframe>
+    </div>
+  </HsSection>
+
+  <HsSection title="The *editions*">
+    <ol class="salon-editions">
+      {[...SALON_EDITIONS].reverse().map((e) => {
+        const et = editionText(e, 'en');
+        return (
+          <li data-item>
+            <span class="salon-editions__date">{et.shortDate}</span>
+            <div>
+              <p class="salon-editions__title">{et.title} <span>{e.venue ?? 'Venue to be announced'}, {e.city}</span></p>
+              {e.speakers && e.speakers.length > 0 && <p class="salon-editions__meta">Speakers: {e.speakers.map((s) => s.name).join(' and ')}</p>}
+              {e.status !== 'open' && e.sponsors && e.sponsors.length > 0 && <p class="salon-editions__meta">Sponsors: {e.sponsors.map((s) => s.name).join(', ')}</p>}
+              {e.status !== 'open' && et.note && <p class="salon-editions__meta">{et.note}</p>}
+            </div>
+            {e.status === 'open' && e.lumaEventId ? (
+              <HsLuma eventId={e.lumaEventId} href={e.lumaUrl} class="hs-link">Register<HsIcon name="arrow-right" /></HsLuma>
+            ) : (
+              <span class="salon-editions__status">{STATUS[e.status]}</span>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </HsSection>
+
+  <HsSection tone="paper" title="Get *involved*" lede={`Everything runs through ${SALON_EMAIL}.`}>
+    <HsCards
+      columns={4}
+      items={[
+        { icon: 'microphone', title: 'Speak', text: 'A twenty-minute talk about what you build, research or have learned.', href: mail('Speaking'), more: 'Email your topic' },
+        { icon: 'speaker', title: 'Pitch', text: 'One minute to show your product, your question or your vacancy.', href: mail('Pitching'), more: 'Sign up to pitch' },
+        { icon: 'funds', title: 'Sponsor', text: 'Keep the evening free and get seen by the AI scene of the northern Netherlands.', href: mail('Sponsorship'), more: 'Become a sponsor' },
+        { icon: 'local', title: 'Host a venue', text: 'A space in Groningen for around seventy people, for one evening.', href: mail('Venue'), more: 'Offer a venue' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="dark" title="Organised by *AI Heroes*" lede="AI Heroes runs the Groningen chapter. We build AI tools that teams use every day, from Groningen.">
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/about">About AI Heroes<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+</HsLayout>
+
+<style>
+  .salon-people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem clamp(1rem, 2.4vw, 2.5rem); max-width: 44rem; }
+  .salon-people li { display: grid; gap: .5rem; align-content: start; }
+  .salon-people__photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: rgba(253, 252, 248, .06); box-shadow: inset 0 0 0 1.5px var(--rule-on-dark); display: grid; place-items: center; }
+  /* Speakers in black and white, no duotone (decision 2026-10-12), so every portrait matches. */
+  .salon-people__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+  .salon-people__photo span { font-size: .875rem; font-weight: 600; color: var(--micro-on-dark); }
+  .salon-people__photo.is-open { transition: background-color .2s, box-shadow .2s; }
+  .salon-people__open { display: grid; gap: .5rem; text-decoration: none; }
+  .salon-people__open:hover .salon-people__photo { background: var(--red); box-shadow: none; }
+  .salon-people__open:hover .salon-people__photo span { color: var(--light); }
+  .salon-people__name { font-weight: 700; font-size: 1.125rem; letter-spacing: -0.01em; }
+  .salon-people__org { font-size: .9375rem; color: var(--body-on-dark); }
+  .salon-people__topic { font-size: .9375rem; color: var(--micro-on-dark); }
+
+  .salon-logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.75rem, 1.4vw, 1.25rem); max-width: 60rem; }
+  @media (min-width: 720px) { .salon-logos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .salon-logos li > * { display: grid; place-items: center; height: clamp(6rem, 10vw, 8rem); padding: 1rem 1.5rem; box-shadow: inset 0 0 0 1.5px var(--rule-on-light); }
+  .salon-logos img { max-height: 4rem; max-width: 80%; width: auto; }
+  .salon-logos__open { text-decoration: none; font-weight: 600; font-size: .9375rem; color: var(--micro-on-light); background: #F5F3EC; transition: background-color .15s, color .15s; }
+  .salon-logos__open:hover { background: var(--dark); color: var(--light); }
+  /* No sponsor confirmed yet: one clear call instead of a row of empty tiles. */
+  .salon-sponsor-call { display: grid; gap: 1rem; justify-items: start; max-width: 40rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: #F5F3EC; box-shadow: inset 0 0 0 1.5px var(--rule-on-light); }
+  .salon-sponsor-call h3 { font-weight: 700; font-size: clamp(1.375rem, 1.1rem + 1vw, 2rem); line-height: 1.15; letter-spacing: -0.015em; }
+  .salon-sponsor-call p { max-width: 34rem; color: var(--body-on-light); }
+  .salon-sponsor-call .hs-btn { margin-top: .5rem; }
+
+  .salon-register { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-bottom: 2rem; }
+  .salon-embed { background: var(--light); max-width: 56rem; }
+  .salon-embed iframe { display: block; width: 100%; height: 1120px; border: 0; }
+  @media (min-width: 640px) { .salon-embed iframe { height: 980px; } }
+  @media (min-width: 900px) { .salon-embed iframe { height: 700px; } }
+
+  .salon-editions { display: grid; max-width: 56rem; }
+  .salon-editions li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; gap: 1rem 1.5rem; align-items: baseline; padding: 1.25rem 0; box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
+  .salon-editions__date { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .salon-editions__title { font-weight: 700; font-size: 1.125rem; }
+  .salon-editions__title span { display: block; font-weight: 500; font-size: .9375rem; color: var(--body-on-light); }
+  .salon-editions__meta { font-size: .9375rem; color: var(--body-on-light); margin-top: .25rem; }
+  .salon-editions__status { font-size: .875rem; font-weight: 700; color: var(--red); }
+  @media (max-width: 559px) {
+    .salon-editions li { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
+  }
+</style>

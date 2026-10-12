@@ -1,30 +1,36 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import AIStormFeature from '../../components/AIStormFeature.astro';
+// A1 De AI Storm (English) in the campaign template: first broadcast 7 June 2026, embed allowed, in
+// the menu (docs/relaunch/01-besluiten.md §14). The episode itself is in Dutch.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsCampaign from '../../components/hs/HsCampaign.astro';
+import { CAMPAIGNS, campaignText } from '../../data/campaigns';
 
-const description =
-  'AI Heroes on De AI Storm, as seen on RTL 7, RTL Z and Videoland. Watch our episode and discover how to take AI from idea to working solution.';
-
+const c = CAMPAIGNS['de-ai-storm'];
+const t = campaignText(c, 'en');
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'About', href: '/en/about' }];
 const videoSchema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
-  name: 'AI Heroes on De AI Storm',
-  description,
-  thumbnailUrl: ['https://i.ytimg.com/vi/uq8MIcgzUR4/maxresdefault.jpg'],
-  uploadDate: '2026-05-17',
-  embedUrl: 'https://www.youtube-nocookie.com/embed/uq8MIcgzUR4',
-  contentUrl: 'https://www.youtube.com/watch?v=uq8MIcgzUR4',
+  name: t.mediaTitle,
+  description: t.description,
+  inLanguage: 'nl',
+  thumbnailUrl: [`https://i.ytimg.com/vi/${c.media.youtubeId}/maxresdefault.jpg`],
+  uploadDate: c.media.uploadDate,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${c.media.youtubeId}`,
+  contentUrl: `https://www.youtube.com/watch?v=${c.media.youtubeId}`,
+  publication: { '@type': 'BroadcastEvent', isLiveBroadcast: false, startDate: c.date, publishedOn: { '@type': 'BroadcastService', name: 'RTL 7' } },
   publisher: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
 };
 ---
 
-<BaseLayout
+<HsLayout
   lang="en"
-  title="AI Heroes on De AI Storm"
-  seoTitle="AI Heroes on De AI Storm · RTL 7, RTL Z & Videoland"
-  description={description}
-  ogImage="https://i.ytimg.com/vi/uq8MIcgzUR4/maxresdefault.jpg"
+  title={t.title}
+  seoTitle={t.seoTitle}
+  description={t.description}
+  ogImage={`https://i.ytimg.com/vi/${c.media.youtubeId}/maxresdefault.jpg`}
+  crumbs={crumbs}
   jsonLd={videoSchema}
 >
-  <AIStormFeature lang="en" />
-</BaseLayout>
+  <HsCampaign campaign={c} crumbs={crumbs} />
+</HsLayout>

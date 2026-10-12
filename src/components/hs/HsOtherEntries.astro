@@ -1,0 +1,22 @@
+---
+// "De andere ingangen": the two entries this page is not about, as colour planes.
+import HsSection from './HsSection.astro';
+import HsCards from './HsCards.astro';
+import { entriesFor, type Entry } from '../../data/site';
+import { ui, langOf } from '../../data/ui';
+
+interface Props {
+  current: Entry;
+}
+const { current } = Astro.props;
+const t = ui(Astro.url);
+const ENTRIES = entriesFor(langOf(Astro.url));
+const TEXT: Record<Entry, string> = t.otherEntriesText;
+const items = (Object.keys(ENTRIES) as Entry[])
+  .filter((k) => k !== current)
+  .map((k) => ({ title: ENTRIES[k].title, href: ENTRIES[k].href, accent: ENTRIES[k].accent, text: TEXT[k], more: t.otherEntriesMore }));
+---
+
+<HsSection title={t.otherEntries}>
+  <HsCards variant="planes" columns={2} items={items} />
+</HsSection>

@@ -1,121 +1,120 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { PageContactForm } from '../../../../components/PageContactForm';
+// P11 Over ons (docs/relaunch/pages/P11-over-ons.md): who is behind AI Heroes. The takeover at the
+// end of 2025 is told explicitly and the market story lives here (01-besluiten §2, §9); 50+ and
+// 1.000+ always "sinds 2019"; no industry advisor (§13).
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsPlace from '../../../components/hs/HsPlace.astro';
+import HsContact from '../../../components/hs/HsContact.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
 import { CONTENT } from '../../../data/content';
-import CardGrid from '../../../components/blocks/CardGrid.astro';
-import ProofRow from '../../../components/blocks/ProofRow.astro';
+import { SITE } from '../../../data/site';
+import { FOUNDERS, FOUNDER_ORDER } from '../../../data/team';
+import { zet } from '../../../components/hs/hs';
 
-const content = { ...CONTENT.nl.aboutPage, services: CONTENT.nl.services };
-const introParagraphs = content.intro.text.split('\n\n');
-const readMore = 'Lees meer';
-
-const entries = content.services.items.map((item, i) => ({ title: item.title, eyebrow: item.tag, accent: (['red', 'blue', 'dark'] as const)[i], href: item.href, description: item.description }));
-const clients = ['Kwakkel BV', 'INQ22', 'Strive', 'IC Commerce', 'UMCG', 'Tweede Kamer', 'Postcode Loterij', 'Envalior'];
+const crumbs = [{ label: 'Home', href: '/' }];
+const founders = FOUNDER_ORDER.map((id) => FOUNDERS[id]);
+const LOGOS = [
+  { name: 'UMCG', src: '/hs/logos-white/umcg.svg', h: 22 },
+  { name: 'Tweede Kamer', src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  { name: 'Nationale Postcode Loterij', src: '/hs/logos-white/postcode-loterij.svg', h: 32 },
+  { name: 'Envalior', src: '/hs/logos-white/envalior.svg', h: 34 },
+  { name: 'Banijay Benelux', src: '/hs/logos-white/banijay.svg', h: 26 },
+  { name: 'Prosus', src: '/hs/logos-white/prosus.svg', h: 42 },
+  { name: 'Hanzehogeschool', src: '/hs/logos-white/hanze.svg', h: 30 },
+];
+const team = { ...CONTENT.nl.team, cta: { text: 'AI-bureau in Groningen', href: '/nl/ai-bureau-groningen' } };
 ---
 
-<BaseLayout
-  lang="nl"
-  title={content.hero.title}
-  description="Over AI Heroes: wij bouwen AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot, met business case, compliance en training inbegrepen. Vanuit Groningen, sinds 2019 als merk, sinds eind 2025 met het huidige team."
+<HsLayout
+  title="Over AI Heroes"
+  seoTitle="Over AI Heroes: AI-toepassingen bouwen vanuit Groningen"
+  description="AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt. Merk sinds 2019, eind 2025 overgenomen door Frans Hoorn, David Homan en Jan Brusse. Vanuit Groningen, aan de Aarhusweg."
+  crumbs={crumbs}
 >
-  <header id="page-hero" class="pt-24 pb-12 md:pt-40 md:pb-24 bg-brand-dark border-b-4 border-brand-red">
-    <div class="max-w-4xl mx-auto px-6">
-      <h1 class="text-[clamp(1.875rem,_1.25rem+1.5vw,_3.75rem)] font-serif text-white mb-4">{content.hero.title}</h1>
-      <p class="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl mb-8">{content.hero.subtitle}</p>
-      <a href="/nl/startsprint" class="inline-flex items-center gap-3 bg-brand-red text-white px-8 py-4 font-medium hover:bg-opacity-90 transition-all shadow-lg">Plan een startsprint</a>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="Over ons"
+    title="Over AI Heroes"
+    lede="AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Van ambitie tot implementatie."
+    facts={[
+      { value: SITE.proof.orgs, label: 'organisaties geholpen sinds 2019' },
+      { value: SITE.proof.trained, label: 'professionals getraind sinds 2019' },
+      { value: '6 dagen', label: 'van vraag naar werkend prototype' },
+    ]}
+  />
+
+  <HsSection title="Een merk uit 2019, | opnieuw *begonnen*" lede="De naam AI Heroes bestaat sinds 2019. Eind 2025 namen Frans Hoorn, David Homan en Jan Brusse het merk en de klantrelaties over van de vorige eigenaar en begonnen ze opnieuw.">
+    <div class="hs-prose about-story" data-item>
+      <p>{zet('Frans werkte drie jaar in het management van het oorspronkelijke AI Heroes, David twee jaar in de operatie. Op 1 mei 2026 is AI Heroes B.V. in Groningen opgericht. Sindsdien bouwen we vanaf de Aarhusweg voor organisaties in heel Nederland en Europa.')}</p>
     </div>
-  </header>
+  </HsSection>
 
-  <main>
-    <section class="py-16 md:py-20 bg-brand-light px-6 md:px-12">
-      <div class="max-w-4xl mx-auto">
-        <div class="prose prose-lg max-w-none mb-12">
-          {introParagraphs.map((p) => <p class="text-stone-700 leading-relaxed mb-6 text-lg">{p}</p>)}
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          {content.intro.stats.map((stat) => (
-            <div class="text-center">
-              <div class="text-4xl md:text-5xl font-serif text-brand-red mb-2">{stat.metric}</div>
-              <div class="text-sm text-stone-600 uppercase tracking-wider">{stat.description}</div>
-            </div>
-          ))}
-        </div>
-        <div class="mt-14">
-          <ProofRow label="Vertrouwd door" items={clients} />
-        </div>
-      </div>
-    </section>
+  <HsSection tone="dark" title="Waarom AI Heroes *bestaat*" lede="De AI-markt is versnipperd. Adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die weinig mensen gebruiken.">
+    <p class="hs-lead" data-item>{zet('Wij bouwen wat je team elke dag gebruikt, en blijven het beheren.', { display: true })}</p>
+  </HsSection>
 
-    <section class="py-16 md:py-20 bg-white px-6 md:px-12">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-5xl font-serif text-brand-dark mb-3">{content.team.title}</h2>
-        <p class="text-lg text-stone-600 mb-12">{content.team.subtitle}</p>
-        <div class="space-y-8">
-          {content.team.members.map((member) => (
-            <div class="py-2">
-              <h3 class="text-xl md:text-2xl font-serif text-brand-dark mb-1">{member.name}</h3>
-              <div class="text-sm text-brand-red font-medium uppercase tracking-wider mb-3">{member.role}</div>
-              <p class="text-stone-700 leading-relaxed">{member.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  <HsSection title="Waar we in *geloven*">
+    <HsCards
+      columns={4}
+      items={[
+        { icon: 'comments', title: 'Eerlijkheid boven verkoop', text: 'Als AI niet de oplossing is, zeggen we dat. Sluit de business case niet, dan bouwen we niet.' },
+        { icon: 'tool', title: 'Maatwerk boven standaard', text: 'We bouwen wat bij jouw werk past, ook als dat software zonder AI is.' },
+        { icon: 'code', title: 'We bouwen zelf', text: 'We adviseren en bouwen. Onze eigen AI-assistent draait op deze site, gehost in Europa.', href: '/nl/cases/eigen-stack', more: 'Lees de case' },
+        { icon: 'local', title: 'Groningen', text: 'Geworteld in Groningen, waar de AI Fabriek komt. Een lokale basis en een Europees werkgebied.' },
+      ]}
+    />
+  </HsSection>
 
-    <section class="py-16 md:py-20 bg-brand-light px-6 md:px-12">
-      <div class="max-w-4xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {content.cards.map((card) => (
-            <a href={card.href} class="group solid-block bg-brand-dark p-8 hover:bg-black transition-colors duration-300 no-underline">
-              <div class="flex items-start gap-4">
-                <div class="flex-shrink-0">
-                  <div class="w-12 h-12 bg-brand-red/10 flex items-center justify-center text-brand-red">
-                    {card.icon === 'users' ? (
-                      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    ) : (
-                      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                    )}
-                  </div>
-                </div>
-                <div class="flex-grow">
-                  <h3 class="text-xl font-serif text-brand-dark mb-2 group-hover:text-brand-red transition-colors">{card.title}</h3>
-                  <p class="text-stone-600 text-sm mb-3">{card.description}</p>
-                  <div class="flex items-center gap-2 text-brand-red text-sm font-medium"><span>{readMore}</span><span class="group-hover:translate-x-1 transition-transform">→</span></div>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
+  <HsSection tone="paper" title="De drie *oprichters*" lede="Elk van hen draagt een deel van hetzelfde traject: de business case, de bouw en de training van je mensen.">
+    <ul class="about-founders" data-shuffle>
+      {founders.map((f, i) => (
+        <li data-item style={`--i:${i}`}>
+          <a href="/nl/over-ons/team">
+            <span class="about-founders__photo"><img src={f.photo} alt="" width="300" height="400" loading="lazy" decoding="async" /></span>
+            <span class="about-founders__name">{f.name}</span>
+            <span class="about-founders__role">{f.role}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/over-ons/team">Het team<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
 
-    <section class="py-16 md:py-20 bg-brand-dark px-6 md:px-12">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-5xl font-serif text-white mb-12">{content.values.title}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {content.values.items.map((value) => (
-            <div class="py-2">
-              <h3 class="text-xl font-serif text-white mb-3">{value.title}</h3>
-              <p class="text-white/80 leading-relaxed">{value.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  <HsPlace team={team} />
 
-    <section class="py-16 md:py-20 bg-brand-light px-6 md:px-12">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-serif text-brand-dark mb-3">Wat we bouwen</h2>
-        <p class="text-lg text-stone-600 mb-8">Drie manieren om binnen te komen. De eerste stap is altijd de startsprint.</p>
-        <CardGrid items={entries} cols={3} />
-        <p class="mt-8 text-stone-600">Benieuwd naar het resultaat? <a href="/nl/cases" class="text-brand-red font-medium hover:underline underline-offset-2">Bekijk onze cases &rarr;</a></p>
-      </div>
-    </section>
+  <HsSection title="Organisaties waar we mee *werkten*">
+    <ul class="hs-logos hs-logos--light hs-logos--bare" data-item>
+      {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
+    </ul>
+  </HsSection>
 
-    <section id="contact-form" class="py-16 md:py-24 bg-white border-t border-stone-200 px-6">
-      <div class="max-w-4xl mx-auto">
-        <PageContactForm lang="nl" accentColor="red" client:visible />
-      </div>
-    </section>
-  </main>
-</BaseLayout>
+  <HsSection tone="paper" title="Verder *kijken*">
+    <HsCards
+      columns={4}
+      items={[
+        { title: 'Het team', text: 'Frans, David en Jan, en met wie je over welke vraag praat.', href: '/nl/over-ons/team', more: 'Naar het team' },
+        { title: 'Vacatures', text: 'Bouw mee aan AI-toepassingen, vanuit Groningen.', href: '/nl/vacatures', more: 'Naar de vacatures' },
+        { title: 'AI Salon', text: 'Elke twee maanden de avond voor de AI-scene van het Noorden.', href: '/nl/ai-salon', more: 'Naar de AI Salon' },
+        { title: 'Op tv en in de pers', text: 'AI Heroes in De AI Storm, en alles voor journalisten.', href: '/nl/pers', more: 'Voor de pers' },
+      ]}
+    />
+  </HsSection>
+
+  <HsContact />
+</HsLayout>
+
+<style>
+  .about-story { max-width: 46rem; }
+  .about-founders { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 2rem); max-width: 56rem; }
+  .about-founders a { display: grid; gap: .5rem; text-decoration: none; }
+  .about-founders__photo { aspect-ratio: 3 / 4; overflow: hidden; background: var(--dark); }
+  .about-founders__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: contrast(1.05) url(#hs-duo-blue); transform: translateZ(0); backface-visibility: hidden; will-change: transform; transition: transform .6s var(--ease); }
+  .about-founders a:hover img { transform: translateZ(0) scale(1.04); }
+  .about-founders__name { font-weight: 700; font-size: clamp(1rem, .9rem + .4vw, 1.25rem); }
+  .about-founders a:hover .about-founders__name { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; }
+  .about-founders__role { font-size: .875rem; color: var(--body-on-light); }
+</style>

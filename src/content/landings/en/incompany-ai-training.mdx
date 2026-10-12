@@ -1,0 +1,77 @@
+---
+lang: en
+slug: incompany-ai-training
+plan: T1
+group: training
+entry: training
+training: true
+title: In-company AI training
+seoTitle: "In-company AI training on site, from €2,500 per half day"
+description: "AI training at your location anywhere in the Netherlands, or live online, with your own work as practice material. Basic AI training, AI literacy, Copilot and more. From €2,500 per half day."
+question: "AI training at your place, | with your *own* work"
+lede: "AI Heroes trains your team on site anywhere in the Netherlands, or live online, with your own work as practice material. From €2,500 per half day, with a certificate where needed."
+author: jan-brusse
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+build:
+  title: "What your team can *do* afterwards"
+  items:
+    - icon: write
+      title: Write faster with AI
+      text: Draft a quote, email or report in a fraction of the time, in your own tone.
+    - icon: check
+      title: Check results critically
+      text: Spot when AI gets it wrong, and know how to check.
+    - icon: lock
+      title: Work safely with company data
+      text: Know what can and cannot go into a prompt.
+    - icon: tool
+      title: Use the tools you already have
+      text: Copilot, ChatGPT or a European alternative, applied to everyday work.
+sprint:
+  title: "How it *works*"
+  text: "First an intake: who takes part, with which tools and which work. Within a week of the intake you have a proposal. Then we train on site, or live online for large groups, and record what was covered."
+  outcome: "A team that uses AI safely and productively in its own work, with a report for your records and a certificate where needed."
+cases: []
+proofText: "Since 2019 AI Heroes has trained more than 1,000 professionals, at organisations including the Tweede Kamer (the Dutch House of Representatives), the Nationale Postcode Loterij, Envalior, Banijay, Prosus and the Hanzehogeschool."
+faq:
+  - q: What does in-company AI training cost?
+    a: "From €2,500 per half day, including preparation, materials and follow-up. Education and non-profit organisations pay a lower rate."
+  - q: How many people can take part, and can it be online?
+    a: "We agree the group size in the intake. For large groups we give the training live online, so everyone can take part at once."
+  - q: Do you come to us anywhere in the Netherlands?
+    a: "Yes. We train on site anywhere in the Netherlands, and live online where that works better."
+  - q: Which tools do you cover?
+    a: "The tools you already have or are getting: Copilot in Microsoft 365, ChatGPT or a European alternative."
+  - q: Does the training count towards the AI literacy obligation?
+    a: "That is what the [AI literacy training](/en/ai-literacy-training) is for: for each audience, with a certificate and a report."
+related:
+  - label: AI literacy training
+    href: /en/ai-literacy-training
+  - label: Digital sovereignty session
+    href: /en/digital-sovereignty
+  - label: "AI literacy: what the law asks"
+    href: /en/insights/ai-literacy
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+
+<HsSection tone="paper" title="The *courses*" lede="We tailor every course in the intake to your work and your tools.">
+  <HsCards items={[
+    { meta: '1 day · foundation course', title: 'Basic AI training', text: 'For everyone who will use AI in their work: what it can do, where it goes wrong and how to use it in your own work.' },
+    { meta: 'with certificate', title: 'AI literacy', text: 'What Article 4 of the AI Act asks, for each audience, with responsible AI use and a deepfake demo that sticks.', href: '/en/ai-literacy-training', more: 'AI literacy training' },
+    { meta: 'half day · hands-on', title: 'Training in the tools you already have', text: 'Copilot in Microsoft 365, ChatGPT or a European alternative, applied to your own work.' },
+    { meta: 'for software teams', title: 'AI for developers', text: 'Hands-on in your own stack. Would you rather have extra capacity in your team? See [extra developers](/en/extra-developers).' },
+    { meta: 'for the board and IT', title: 'Digital sovereignty session', text: 'Where you depend on American platforms, and what the European alternatives are.', href: '/en/digital-sovereignty', more: 'About the session' },
+  ]} />
+</HsSection>
+
+<HsSection title="What it *costs*" lede="From €2,500 per half day, including preparation, materials and follow-up. Education and non-profit organisations pay a lower rate." />
+
+<HsCtaBand
+  tone="dark"
+  title="Working on an *AI application* of your own?"
+  text="Then training your team is part of the build: we train your people on the system itself, in their daily work."
+  cta={{ label: 'See the start sprint', href: '/en/start-sprint' }}
+/>

@@ -1,0 +1,121 @@
+---
+// P9 Compliance en security (docs/relaunch/pages/P9-compliance.md): new pillar, hub of K1–K7. The AI
+// Act check is sold on its own without a price; ISO 42001 guidance is a service; about ourselves
+// only "we werken naar certificering"; security reviews and pentests in house; the client runs the
+// DPIA (docs/relaunch/01-besluiten.md §4, §5, §11). Sender: David Homan. Only verified dates: article
+// 4 applies since 2 February 2025. No fine amounts; the page is checked every quarter.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsAuthor from '../../components/hs/HsAuthor.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { SITE } from '../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/nl/hoe-we-werken' }];
+const updated = '12 oktober 2026';
+
+const layers = [
+  { meta: 'Laag 1', title: 'Iedereen die AI gebruikt', text: 'Sinds 2 februari 2025 vraagt artikel 4 dat je mensen verstandig met AI kunnen werken. Daarnaast moet wie met een chatbot praat weten dat het een AI is (artikel 50).', href: '/nl/kennis/ai-geletterdheid', more: 'AI-geletterdheid' },
+  { meta: 'Laag 2', title: 'Wie AI inzet in processen', text: 'Je weet welke AI-systemen je gebruikt en in welke risicoklasse ze vallen, je hebt een AI-beleid en je legt vast wat het systeem doet.', href: '/nl/kennis/ai-beleid', more: 'AI-beleid opstellen' },
+  { meta: 'Laag 3', title: 'Wie hoogrisico-AI gebruikt', text: 'Menselijk toezicht, documentatie, registratie en een systeem dat aantoonbaar doet wat het moet.', href: '/nl/kennis/menselijk-toezicht', more: 'Menselijk toezicht en logging' },
+];
+
+const inBuild = [
+  { icon: 'list-checkbox' as const, title: 'Classificatie', text: 'In de startsprint bepalen we in welke risicoklasse je toepassing valt: minimaal, beperkt of hoog.' },
+  { icon: 'preview-open' as const, title: 'Logging en menselijk toezicht', text: 'Elke beslissing is terug te vinden en een mens kan ingrijpen. Bij een AI-klantenservice is dat doorschakeling naar een medewerker, bij een werkstroom een controlestap.' },
+  { icon: 'server' as const, title: 'Hosting en data in Europa', text: 'Data die Europa niet uit mag, blijft in Europa. Op je eigen servers kan ook.', href: '/nl/eigen-beheer', more: 'Lokale AI' },
+  { icon: 'peoples' as const, title: 'Een team dat ermee kan werken', text: 'We trainen het team op het systeem dat het gaat gebruiken, op de werkvloer.', href: '/nl/training', more: 'AI-training voor je team' },
+];
+
+const norms = [
+  { icon: 'certificate' as const, title: 'ISO 42001', text: 'De norm voor een AI-managementsysteem: hoe je AI-gebruik organiseert, bewaakt en verbetert. We begeleiden je erbij. Het certificaat geeft een certificerende instelling.', href: '/nl/kennis/iso-42001', more: 'Over ISO 42001' },
+  { icon: 'lock' as const, title: 'Security en ISO 27001', text: 'We doen zelf security-reviews en pentests van AI-toepassingen, en bouwen met de eisen van informatiebeveiliging in het achterhoofd.', href: '/nl/kennis/ai-security', more: 'AI en security' },
+  { icon: 'file-text' as const, title: 'AVG en DPIA', text: 'Werkt je toepassing met persoonsgegevens, dan voer jij de DPIA uit. Wij leveren op verzoek de technische informatie die je daarvoor nodig hebt.', href: '/nl/kennis/ai-en-avg', more: 'AI en de AVG' },
+  { icon: 'agreement' as const, title: 'Ons eigen traject', text: 'We werken naar ISO 42001- en ISO 27001-certificering voor AI Heroes zelf. Zodra die rond is, staat het hier.' },
+];
+
+const faq = [
+  { q: 'Geldt de AI Act ook voor kleine organisaties?', a: 'Ja. Wat je moet regelen, hangt vooral af van hoe je AI gebruikt. Artikel 4 over AI-geletterdheid geldt sinds 2 februari 2025 voor elke organisatie die AI inzet, groot of klein.' },
+  { q: 'Wat als we alleen ChatGPT of Copilot gebruiken?', a: 'Dan geldt in elk geval artikel 4: je mensen moeten er verstandig mee kunnen werken. Een AI-beleid legt vast wat wel en niet mag. De AI Act-check laat zien wat er voor jou nog ontbreekt.' },
+  { q: 'Wat zijn de boetes?', a: 'Dat hangt af van de overtreding, en een deel wordt in Nederlandse wetgeving geregeld. We noemen hier bewust geen bedragen: de regels zijn in 2026 nog aangepast en we werken deze pagina elk kwartaal bij. In de AI Act-check krijg je het actuele beeld voor jouw situatie.' },
+  { q: 'Kunnen jullie ons begeleiden naar ISO 42001?', a: 'Ja, als dienst. We helpen je het AI-managementsysteem op te zetten en in te voeren. Het certificaat zelf geeft een certificerende instelling.' },
+  { q: 'Doen jullie pentests?', a: 'Ja. We doen zelf security-reviews en pentests van AI-toepassingen.' },
+  { q: 'Zijn jullie zelf gecertificeerd?', a: 'We werken naar ISO 42001- en ISO 27001-certificering. Zodra die rond is, staat het op deze pagina.' },
+];
+---
+
+<HsLayout
+  title="Compliance en security"
+  seoTitle="Compliance en security voor AI: AI Act, ISO 42001 en pentests"
+  description="Compliance vanaf de tekentafel: AI Act-classificatie, logging, toezicht en Europese hosting in elke bouw. Gebruik je AI al, dan brengt de AI Act-check in kaart wat er ontbreekt. Plus ISO 42001-begeleiding, security-reviews en pentests."
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'AI Act-check en compliance', path: '/nl/compliance', serviceType: 'AI Act-compliance, ISO 42001-begeleiding en security', description: 'Inventaris en classificatie van AI-gebruik, AI-beleid, AI-geletterdheid, ISO 42001-begeleiding en security-reviews van AI-toepassingen.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="Compliance en security"
+    title="Compliance vanaf | de *tekentafel*."
+    lede="Bij elke bouw zitten de AI Act, logging, toezicht en hosting in het ontwerp. Gebruik je AI al, dan brengt de AI Act-check in kaart wat er geregeld moet worden."
+    cta={{ label: 'Vraag de AI Act-check aan', href: '#contact' }}
+    secondary={{ label: 'Wat de regels vragen', href: '#lagen' }}
+  />
+
+  <HsSection id="lagen" title="Wat de regels van je *vragen*" lede="De AI Act werkt in lagen. Zoek de laag die bij jouw AI-gebruik past.">
+    <HsCards items={layers} />
+    <div class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/nl/kennis/ai-act">De AI Act: wat moet je als organisatie<HsIcon name="arrow-right" /></a>
+      <p class="hs-meta">Bijgewerkt op {updated}. We controleren de regels elk kwartaal.</p>
+    </div>
+  </HsSection>
+
+  <HsSection tone="paper" title="Wat er in elke bouw *zit*" lede="Compliance is bij ons een ontwerpkeuze. Vier dingen regelen we in elke bouw.">
+    <HsCards columns={4} items={inBuild} />
+  </HsSection>
+
+  <HsSection id="ai-act-check" tone="dark" title="De AI Act-*check*" lede="Voor wie al AI gebruikt en niets laat bouwen. Na de check weet je in welke laag je zit, wat er ontbreekt en wat eerst moet.">
+    <HsSteps
+      items={[
+        { label: 'Stap 1', title: 'Inventaris en classificatie', text: 'We brengen in kaart welke AI je gebruikt, van ChatGPT en Copilot tot AI in je eigen systemen, en in welke risicoklasse elk systeem valt.' },
+        { label: 'Stap 2', title: 'Een AI-beleid', text: 'Een AI-beleid dat je team echt gebruikt. Wil je zelf beginnen, lees dan [AI-beleid opstellen](/nl/kennis/ai-beleid).' },
+        { label: 'Stap 3', title: 'Geletterdheid', text: 'Een [AI-geletterdheidstraining](/nl/ai-geletterdheid-training) met certificaat voor je team.' },
+      ]}
+    />
+    <div class="hs-sec__foot" data-item>
+      <a class="hs-btn hs-btn--light" href="#contact">Vraag de AI Act-check aan<HsIcon name="arrow-right" /></a>
+      <p class="hs-meta">Wat de check kost, hangt af van je AI-gebruik. Je hoort het vooraf.</p>
+    </div>
+  </HsSection>
+
+  <HsSection title="Normen, security en *certificering*">
+    <HsCards columns={2} items={norms} />
+  </HsSection>
+
+  <HsSection tone="paper" title="Zelf *gedaan*" lede="De assistent op deze site laat zien dat hij AI is, bewaart gesprekken volgens een vast retentiebeleid en geeft je een mens als hij het niet weet. Op een openbare pagina staat hoe hij werkt.">
+    <div class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/nl/legal/ai-assistent">Hoe de assistent werkt<HsIcon name="arrow-right" /></a>
+      <a class="hs-link" href="/nl/cases/eigen-stack">Lees de case<HsIcon name="arrow-right" /></a>
+    </div>
+  </HsSection>
+
+  <HsSection title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+    <div class="hs-sec__foot" data-item><HsAuthor id="david-homan" label="Je spreekt met" /></div>
+  </HsSection>
+
+  <HsContact title="Vraag de AI Act-check aan" lede={`Of laat ons iets bouwen dat vanaf de tekentafel voldoet. Binnen ${SITE.reply} hoor je van ons.`} />
+</HsLayout>
+
+<style>
+  /* Links inside step text read as links (shared fix requested). */
+  :global(.hs-step__text a) { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+  :global(.hs-step__text a:hover) { text-decoration-color: currentColor; }
+</style>

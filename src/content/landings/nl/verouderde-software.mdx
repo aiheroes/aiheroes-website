@@ -1,0 +1,69 @@
+---
+lang: nl
+slug: verouderde-software
+plan: L11
+group: kern
+entry: vervangen
+title: Verouderde software
+seoTitle: Verouderde software vervangen zonder big bang
+description: "Een oud maatwerksysteem of een platform dat niet meegroeit opnieuw gebouwd, naast het oude en in fasen overgezet. Startsprint met migratieplan, zes dagen, vanaf €8.000."
+question: "Je systeem is van *2011* | en niemand durft eraan te komen"
+lede: "AI Heroes bouwt je verouderde systeem, of een platform dat niet meer meegroeit, opnieuw naast het oude, en zet het oude pas uit als het nieuwe draait. De eerste stap is een startsprint van zes dagen, vanaf €8.000."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+photo:
+  src: /hs/photos/cover-legacy.webp
+  alt: Een oude beige computer op een kantoorbureau
+  w: 1800
+  h: 1800
+  pos: "40% 55%"
+build:
+  title: "Wat we *doen*"
+  items:
+    - icon: search
+      title: Uitzoeken wat het oude systeem doet
+      text: Uit de code en de data, ook de dingen die niemand meer weet.
+    - icon: computer
+      title: Het nieuwe systeem bouwen
+      text: Met de koppelingen die het oude nooit had, en ruimte om te groeien.
+    - icon: data-server
+      title: Data in delen over
+      text: Elke stap gecontroleerd, zodat er niets kwijtraakt.
+    - icon: refresh
+      title: Niet alles in één keer
+      text: Het oude draait door tot het nieuwe aantoonbaar werkt.
+sprint:
+  text: "In de startsprint zoeken we uit wat het oude systeem doet en waar het aan vastzit. Daaruit volgen de architectuur van het nieuwe systeem en een migratieplan in fasen."
+  outcome: "Een inventaris van het oude systeem, de architectuur van het nieuwe, een migratieplan in fasen en de business case."
+cases: []
+standardExtra: "Hier telt vooral: alles wordt gedocumenteerd. Nooit meer een systeem dat niemand begrijpt."
+faq:
+  - q: Wat als niemand meer weet wat het oude systeem doet?
+    a: "Dat zoeken we uit in de startsprint, uit de code en de data. Wat het systeem doet, staat daarna op papier."
+  - q: Moet alles in één keer over?
+    a: "Nee. We stappen in fasen over, en het oude systeem draait door tot het nieuwe werkt."
+  - q: Wat als de oude leverancier niet meewerkt?
+    a: "Dan werken we met wat er is: de data, de exports en het systeem zelf. In de startsprint zie je wat dat betekent voor de planning."
+  - q: Hoe lang duurt het?
+    a: "De startsprint duurt zes dagen. Daarna bouwen we per fase, meestal twee tot twaalf weken."
+  - q: Wat kost het?
+    a: "De startsprint kost vanaf €8.000. De kosten per fase staan daarna in de business case."
+related:
+  - label: AI koppelen aan je systemen
+    href: /nl/ai-integratie
+  - label: SaaS-pakket vervangen
+    href: /nl/saas-vervangen
+  - label: Excel vervangen
+    href: /nl/excel-vervangen
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsSteps from '../../../components/hs/HsSteps.astro';
+
+<HsSection tone="dark" title="Overstappen zonder dat | alles *stilvalt*" lede="Het risico van vervangen zit in de overstap. Daarom doen we drie dingen altijd zo.">
+  <HsSteps ordered={false} items={[
+    { label: 'Eerst', title: 'Koppelingen eerst', text: 'We verbinden het nieuwe systeem met wat blijft: je ERP, CRM, boekhouding of webshop.' },
+    { label: 'Dan', title: 'Data in delen, met controle', text: 'We zetten je data in delen over en controleren elke stap, zodat er niets kwijtraakt.' },
+    { label: 'Pas als het draait', title: 'Het oude blijft aan', text: 'Het oude systeem draait door tot het nieuwe aantoonbaar werkt. Pas dan zet je het uit.' },
+  ]} />
+</HsSection>

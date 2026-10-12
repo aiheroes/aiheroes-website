@@ -1,0 +1,19 @@
+---
+// One client quote, in their own voice (regular weight), with the red opening mark in the gutter.
+import { zet } from './hs';
+
+interface Props {
+  text: string;
+  author: string;
+  role?: string;
+}
+const { text, author, role } = Astro.props;
+---
+
+<figure class="hs-pquote" data-item>
+  <blockquote><p>{zet(text, { cap: 22 })}</p></blockquote>
+  <figcaption>
+    <span>{author}</span>
+    {role && <span>{role}</span>}
+  </figcaption>
+</figure>

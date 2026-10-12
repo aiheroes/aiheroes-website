@@ -1,63 +1,105 @@
 ---
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+// P12 Het team (docs/relaunch/pages/P12-team.md): the three founders, each a second way into the
+// introduction call. Portraits in duotone until the shoot, no advisors, LinkedIn only once filled in
+// (01-besluiten §13); bios from src/data/team.ts (written by Claude, approved once by each founder).
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsSteps from '../../../components/hs/HsSteps.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+import HsContact from '../../../components/hs/HsContact.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { FOUNDERS, FOUNDER_ORDER, personSchema, type FounderId } from '../../../data/team';
+import { zet } from '../../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Over ons', href: '/nl/over-ons' }];
+
+// One line of background per founder (company profile §8).
+const BACKGROUND: Record<FounderId, string> = {
+  'frans-hoorn': 'Ruim vijftien jaar in development, UX en sales, productmanagement bij Tele2, BOZU en Prosus, en drie jaar in het management van het oorspronkelijke AI Heroes.',
+  'david-homan': 'Studeerde Artificial Intelligence aan de Rijksuniversiteit Groningen, richtte een app-startup op en werkte twee jaar in de operatie van het oorspronkelijke AI Heroes.',
+  'jan-brusse': 'Bouwde vier jaar het Smart Lab in het Groninger Forum op, met een team van twaalf en meerdere workshops per week. In De AI Storm op RTL 7 vertelde hij over AI in het mkb.',
+};
+const ACCENT: Record<FounderId, string> = { 'frans-hoorn': 'red', 'david-homan': 'blue', 'jan-brusse': 'dark' };
+const founders = FOUNDER_ORDER.map((id) => FOUNDERS[id]);
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 ---
 
-<SubpageLayout
-  lang="nl"
-  title="Ons Team"
-  subtitle="Frans, David en Jan. Vanuit Groningen, AI-hoofdstad van Europa."
-  seoTitle="Het team achter AI Heroes: Frans, David en Jan"
-  accentColor="blue"
-  seoDescription="Het team achter AI Heroes: Frans Hoorn (business case en scoping), David Homan (bouw en compliance) en Jan Brusse (adoptie en training). Sinds eind 2025 het huidige team, vanuit Groningen."
+<HsLayout
+  title="Het team"
+  seoTitle="Het team achter AI Heroes: Frans Hoorn, David Homan en Jan Brusse"
+  description="Het team achter AI Heroes: Frans Hoorn (business case en strategie), David Homan (software en compliance) en Jan Brusse (training en adoptie). Vanuit Groningen."
+  crumbs={crumbs}
+  jsonLd={FOUNDER_ORDER.map((id) => personSchema(id))}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">De mensen achter AI Heroes</h2>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Het team"
+    title="Drie oprichters, | elk een deel van het *traject*"
+    lede="Frans Hoorn, David Homan en Jan Brusse. Elk van hen draagt een deel van hetzelfde traject: de business case, de bouw en de training van je mensen. Plan een gesprek met wie bij je vraag past."
+    cta={{ label: 'Plan een startsprint', href: '/nl/startsprint' }}
+  />
 
-    <p class="text-stone-600 leading-relaxed mb-8">Eind 2025 namen Frans, David en Jan het merk AI Heroes over en begonnen ze opnieuw, met één traject waarin elk van hen een fase draagt: de business case, de bouw en de adoptie. Vanuit Groningen, voor heel Europa.</p>
-
-    <div class="space-y-12 mb-12 not-prose">
-      <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-        <div class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden"><img src="/team/frans.webp" alt="Frans Hoorn" loading="lazy" class="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" /></div>
-        <div class="flex-1">
-          <h3 class="text-xl font-serif text-brand-dark mb-1">Frans Hoorn</h3>
-          <p class="text-brand-red font-medium mb-3">Co-Founder · Business case & scoping</p>
-          <p class="text-stone-600 leading-relaxed">Combineert strategisch denken met een scherp oog voor gebruikerservaring. Leidt de startsprint en de business case: wat kost het, wat levert het op en wanneer verdient het zich terug. Met een achtergrond in UX/UI design en productmanagement weet hij een vage vraag te vertalen naar een scope waar een team op kan bouwen.</p>
+  <div data-shuffle="alternate">
+  {founders.map((f, i) => (
+    <section class:list={['team-person', { 'is-reverse': i % 2 === 1 }]} id={f.id} data-reveal>
+      <div class="team-person__photo"><img src={f.photo} alt={`Portret van ${f.name}`} width="900" height="1200" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>
+      <div class="team-person__text">
+        <p class={`team-person__tag on-${ACCENT[f.id]}`} data-item>{cap(f.role.replace('Co-Founder, ', ''))}</p>
+        <h2 class="hs-d-s" data-item style="--i:1">{f.name}</h2>
+        <p class="team-person__role" data-item style="--i:2">Co-Founder</p>
+        <p class="hs-body-l" data-item style="--i:3">{zet(f.bio)}</p>
+        <p class="hs-body team-person__bg" data-item style="--i:4">{zet(BACKGROUND[f.id])}</p>
+        <div class="team-person__actions" data-item style="--i:5">
+          <a class="hs-btn hs-btn--dark" href={f.calendar} target="_blank" rel="noopener">Plan een gesprek met {f.first}<HsIcon name="arrow-up-right" /></a>
+          {f.linkedin && <a class="hs-link" href={f.linkedin} target="_blank" rel="me noopener">LinkedIn<HsIcon name="arrow-up-right" /></a>}
         </div>
       </div>
-
-      <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-        <div class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden"><img src="/team/david.webp" alt="David Homan" loading="lazy" class="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" /></div>
-        <div class="flex-1">
-          <h3 class="text-xl font-serif text-brand-dark mb-1">David Homan</h3>
-          <p class="text-brand-red font-medium mb-3">Co-Founder · Bouw & compliance</p>
-          <p class="text-stone-600 leading-relaxed">De schakel tussen techniek en boardroom. Begrijpt hoe AI-modellen onder de motorkap werken (van transformers tot image generation) en vertaalt die kennis naar wat het betekent voor jouw bedrijfsprocessen. Bouwt zelf met tools als GitHub Copilot en lokale AI-modellen, waardoor hij precies weet wat er technisch mogelijk is én wat haalbaar is binnen jouw organisatie. Leidt de bouw, van prototype tot werkend systeem, en zorgt dat AI Act-classificatie, logging, toezicht en hosting in het ontwerp zitten.</p>
-        </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-        <div class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 bg-stone-200 rounded-full overflow-hidden"><img src="/team/jan.webp" alt="Jan Brusse" loading="lazy" class="w-full h-full object-cover object-top scale-125 brightness-110 grayscale hover:grayscale-0 transition-all duration-300" /></div>
-        <div class="flex-1">
-          <h3 class="text-xl font-serif text-brand-dark mb-1">Jan Brusse</h3>
-          <p class="text-brand-red font-medium mb-3">Co-Founder · Adoptie & training</p>
-          <p class="text-stone-600 leading-relaxed">Specialist in het toegankelijk maken van complexe technologie. Heeft jarenlang een innovatielab opgebouwd waar hij duizenden mensen trainde in nieuwe technologieën, van beginners tot experts. Snapt als geen ander hoe je een taai onderwerp omzet naar een interactieve, praktische sessie die blijft hangen. Zorgt dat het team dat met het systeem gaat werken er ook mee kan werken: training op het systeem zelf, op de werkvloer, met het bewijs voor artikel 4 van de AI Act erbij.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="border-t border-stone-200 pt-8 mb-12 not-prose">
-      <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-        <div class="flex-shrink-0 w-20 h-20 bg-stone-200 rounded-full overflow-hidden"><img src="/team/joseph.png" alt="Joseph Groot Kormelink" class="w-full h-full object-cover grayscale" /></div>
-        <div class="flex-1">
-          <h3 class="text-lg font-serif text-brand-dark mb-1">Joseph Groot Kormelink</h3>
-          <p class="text-brand-blue font-medium mb-2 text-sm">Industry Advisor</p>
-          <p class="text-stone-600 leading-relaxed text-sm">Bekend in de Amsterdamse AI en startup scene. Adviseert op enterprise-vraagstukken.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="dark-box-content bg-brand-dark p-8 my-8 not-prose">
-      <h3>Vertel wat je wilt bouwen</h3>
-      <p>Een startsprint is de eerste stap. Hieronder kun je vertellen waar het om gaat; we reageren binnen 24 uur.</p>
-    </div>
+    </section>
+  ))}
   </div>
-</SubpageLayout>
+
+  <HsSection tone="paper" title="Hoe we *samenwerken*" lede="In een startsprint en een bouw komen de drie rollen samen. Je hebt één aanspreekpunt per fase.">
+    <HsSteps
+      items={[
+        { label: 'Frans', title: 'Intake en business case', text: 'Wat moet er staan, wat kost het en wat levert het op. De startsprint begint bij Frans.' },
+        { label: 'David', title: 'Bouw en compliance', text: 'Van prototype tot systeem in je eigen landschap, met de AI Act in het ontwerp.' },
+        { label: 'Jan', title: 'Training en overdracht', text: 'Je team leert werken met wat er gebouwd is, op het systeem zelf.' },
+      ]}
+    />
+    <p class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/nl/hoe-we-werken">Zo werken we<HsIcon name="arrow-right" /></a>
+      <a class="hs-link" href="/nl/startsprint">De startsprint<HsIcon name="arrow-right" /></a>
+    </p>
+  </HsSection>
+
+  <HsCtaBand tone="dark" title="Werken bij *AI Heroes*?" text="Het team groeit. Er staan vacatures open voor engineers, trainers en stagiairs." cta={{ label: 'Bekijk de vacatures', href: '/nl/vacatures' }} />
+
+  <HsContact />
+</HsLayout>
+
+<style>
+  .team-person { display: grid; grid-template-columns: minmax(0, 1fr); background: var(--light); box-shadow: inset 0 -1.5px 0 var(--rule-on-light); }
+  .team-person__photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--dark); }
+  .team-person__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: contrast(1.05) url(#hs-duo-blue); }
+  .team-person__text { display: grid; gap: 1rem; align-content: center; padding: max(2.5rem, var(--module)) var(--pad-x) var(--sec-y); }
+  .team-person__tag { justify-self: start; padding: .3rem .625rem; font-size: .875rem; font-weight: 700; }
+  .team-person__role { font-weight: 600; color: var(--micro-on-light); margin-top: -.5rem; }
+  .team-person__text .hs-body-l { max-width: 40ch; }
+  .team-person__bg { color: var(--body-on-light); max-width: 52ch; }
+  .team-person__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-top: .5rem; }
+  @media (min-width: 900px) {
+    .team-person { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    .team-person.is-reverse { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+    .team-person.is-reverse .team-person__photo { order: 2; }
+    .team-person__photo { aspect-ratio: auto; min-height: 36rem; }
+    .team-person__text { padding: var(--sec-y) var(--pad-x) var(--sec-y) var(--module); }
+    .team-person.is-reverse .team-person__text { padding: var(--sec-y) var(--module) var(--sec-y) var(--pad-x); }
+  }
+  :global(.hs-js) .team-person:not(.is-in) .team-person__photo img { clip-path: inset(100% 0 0 0); }
+  .team-person .team-person__photo img { clip-path: inset(0 0 0 0); transition: clip-path .9s var(--ease); }
+  @media (prefers-reduced-motion: reduce) {
+    :global(.hs-js) .team-person:not(.is-in) .team-person__photo img { clip-path: none; }
+  }
+</style>

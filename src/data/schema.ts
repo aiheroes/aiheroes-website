@@ -28,9 +28,9 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   // see docs/seo-offsite-checklist.md). Only verified, live profile URLs belong here.
   sameAs: ['https://www.linkedin.com/company/aiheroes'],
   founder: [
-    { '@type': 'Person', name: 'Frans Hoorn', jobTitle: 'Co-Founder, Business case & scoping' },
-    { '@type': 'Person', name: 'David Homan', jobTitle: 'Co-Founder, Bouw & compliance' },
-    { '@type': 'Person', name: 'Jan Brusse', jobTitle: 'Co-Founder, Adoptie & training' },
+    { '@type': 'Person', '@id': 'https://aiheroes.io/#frans-hoorn', name: 'Frans Hoorn', jobTitle: 'Co-Founder, business case en strategie', sameAs: ['https://www.linkedin.com/in/frans-hoorn-057b082a/'] },
+    { '@type': 'Person', '@id': 'https://aiheroes.io/#david-homan', name: 'David Homan', jobTitle: 'Co-Founder, software en compliance', sameAs: ['https://www.linkedin.com/in/davidnhoman/'] },
+    { '@type': 'Person', '@id': 'https://aiheroes.io/#jan-brusse', name: 'Jan Brusse', jobTitle: 'Co-Founder, training en adoptie', sameAs: ['https://www.linkedin.com/in/jan-brusse-42a5a3139/'] },
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -41,7 +41,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
         itemOffered: {
           '@type': 'Service',
           name: 'Startsprint',
-          description: 'Eén week, vast bedrag. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
+          description: 'Zes dagen, vaste prijs, vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
           url: 'https://aiheroes.io/nl/startsprint',
         },
         price: '8000',
@@ -49,23 +49,23 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
       },
       {
         '@type': 'OfferCatalog',
-        name: 'Iets nieuws bouwen',
+        name: 'Nieuwe AI-toepassing',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maatwerksoftware en AI', description: 'Assistenten, werkstromen, spraak-AI, interne tools en klantportalen, van prototype tot werkend systeem', url: 'https://aiheroes.io/nl/diensten/software' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Maatwerksoftware en AI', description: 'Assistenten, werkstromen, spraak-AI, interne tools en klantportalen, van prototype tot werkend systeem', url: 'https://aiheroes.io/nl/nieuwe-ai-toepassing' } },
         ],
       },
       {
         '@type': 'OfferCatalog',
-        name: 'Vervangen wat niet meer voldoet',
+        name: 'Oude software vervangen',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Software vervangen', description: 'Verouderde maatwerksystemen en te dure SaaS vervangen door eigen software, gekoppeld aan ERP, CRM en het bestaande landschap', url: 'https://aiheroes.io/nl/diensten/software-vervangen' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Software vervangen', description: 'Verouderde maatwerksystemen en te dure SaaS vervangen door eigen software, gekoppeld aan ERP, CRM en het bestaande landschap', url: 'https://aiheroes.io/nl/software-vervangen' } },
         ],
       },
       {
         '@type': 'OfferCatalog',
-        name: 'In eigen beheer draaien',
+        name: 'Lokale AI',
         itemListElement: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Soevereine AI en hosting', description: 'AI en software op eigen servers of bij een Europese partij, zonder Amerikaanse cloud, met de AI Act ingebouwd', url: 'https://aiheroes.io/nl/diensten/eu-consultancy' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Soevereine AI en hosting', description: 'AI en software op eigen servers of bij een Europese partij, zonder Amerikaanse cloud, met de AI Act ingebouwd', url: 'https://aiheroes.io/nl/eigen-beheer' } },
         ],
       },
     ],
@@ -83,3 +83,72 @@ export const WEBSITE_SCHEMA = {
   inLanguage: ['nl', 'en'],
   publisher: { '@id': 'https://aiheroes.io/#organization' },
 };
+
+// ---------- Builders for the new pages (docs/relaunch/02-bouwplan.md §4.3) ----------
+
+const DOMAIN = 'https://aiheroes.io';
+const ORG = { '@id': `${DOMAIN}/#organization` };
+const abs = (path: string) => (path.startsWith('http') ? path : `${DOMAIN}${path}`);
+
+export interface Crumb {
+  label: string;
+  href: string;
+}
+
+export function breadcrumbSchema(crumbs: Crumb[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: abs(c.href) })),
+  };
+}
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+export function faqSchema(items: FaqItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
+}
+
+export function serviceSchema(opts: { name: string; description: string; path: string; serviceType?: string; price?: number }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: opts.name,
+    description: opts.description,
+    url: abs(opts.path),
+    serviceType: opts.serviceType ?? opts.name,
+    provider: ORG,
+    areaServed: { '@type': 'Country', name: 'Nederland' },
+    ...(opts.price
+      ? { offers: { '@type': 'Offer', price: String(opts.price), priceCurrency: 'EUR', priceSpecification: { '@type': 'PriceSpecification', minPrice: String(opts.price), priceCurrency: 'EUR' } } }
+      : {}),
+  };
+}
+
+export function personRef(id: string) {
+  return { '@id': `${DOMAIN}/#${id}` };
+}
+
+export function articleSchema(opts: { title: string; description: string; path: string; published: Date; updated?: Date; authorId: string; authorName: string; image?: string; lang?: 'nl' | 'en' }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.title,
+    description: opts.description,
+    url: abs(opts.path),
+    mainEntityOfPage: abs(opts.path),
+    datePublished: opts.published.toISOString().slice(0, 10),
+    dateModified: (opts.updated ?? opts.published).toISOString().slice(0, 10),
+    author: { '@type': 'Person', '@id': `${DOMAIN}/#${opts.authorId}`, name: opts.authorName },
+    publisher: ORG,
+    inLanguage: opts.lang ?? 'nl',
+    ...(opts.image ? { image: abs(opts.image) } : {}),
+  };
+}

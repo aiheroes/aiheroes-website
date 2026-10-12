@@ -1,0 +1,90 @@
+---
+lang: nl
+slug: ai-en-avg
+plan: K6
+kind: artikel
+group: compliance
+title: "AI en de AVG: wat je regelt voordat je *persoonsgegevens* gebruikt"
+seoTitle: "AI en de AVG: wat je regelt voordat je persoonsgegevens gebruikt"
+description: "Wanneer de AVG geldt bij AI, wat je regelt (grondslag, dataminimalisatie, verwerkersovereenkomst, DPIA), waar de data mag staan en hoe AVG en AI Act naast elkaar werken."
+answer: "Zodra er persoonsgegevens in prompts, documenten of trainingsdata zitten, geldt de AVG gewoon. Je hebt een grondslag nodig, een verwerkersovereenkomst met elke partij die de gegevens verwerkt, en bij een hoog risico voor de betrokkenen een DPIA. De AI Act komt daar bovenop en vervangt niets van de AVG."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+pillar:
+  label: "Naar compliance en security"
+  href: "/nl/compliance"
+  text: "Wil je zeker weten dat je AI-toepassing voldoet aan de AVG en de AI Act? Bij elke bouw zit privacy in het ontwerp, en met de AI Act-check zie je waar je staat."
+related: [ai-security, ai-act, ai-beleid]
+faq:
+  - q: "Mag ik klantgegevens in ChatGPT zetten?"
+    a: "Alleen met een grondslag, een zakelijke versie met verwerkersovereenkomst en duidelijke afspraken over welke gegevens erin mogen. Met een gratis consumentenaccount heb je die afspraken niet, en dan kun je het niet verantwoorden."
+  - q: "Heb ik een DPIA nodig voor een AI-toepassing?"
+    a: "Vaak wel. Een DPIA is verplicht als een verwerking waarschijnlijk een hoog risico geeft, bijvoorbeeld bij profilering, gezondheidsgegevens, het volgen van werknemers of grootschalige verwerking met nieuwe technologie. De Autoriteit Persoonsgegevens heeft een lijst van verwerkingen waarvoor een DPIA altijd verplicht is."
+  - q: "Is een Amerikaanse AI-leverancier AVG-proof?"
+    a: "Doorgifte naar de VS mag onder het EU-US Data Privacy Framework als de leverancier daarbij is aangesloten. Dat kader is in 2025 door het Gerecht van de EU in stand gehouden; een hoger beroep bij het Hof van Justitie loopt nog. Los daarvan blijft de CLOUD Act gelden. Wil je dat risico niet, kies dan Europese hosting."
+  - q: "Mag een model leren van onze data?"
+    a: "Alleen als je dat bewust toestaat en er een grondslag voor is. Bij zakelijke versies van de meeste AI-tools is trainen op klantdata standaard uit; controleer het in de voorwaarden en leg het vast."
+  - q: "Hoe lang mag je gesprekken met een AI-assistent bewaren?"
+    a: "Niet langer dan nodig voor het doel. Leg per doel een termijn vast. Onze eigen assistent bewaart gesprekken pseudoniem maximaal 30 dagen, en contactgegevens die je zelf achterlaat maximaal 90 dagen."
+---
+
+## Wanneer geldt de AVG bij AI?
+
+Zodra er persoonsgegevens door het systeem gaan. Dat is vaker dan je denkt:
+
+- een medewerker plakt een klantmail met naam en adres in een AI-tool;
+- een assistent zoekt in dossiers, cv's of patiëntgegevens;
+- een AI-stem voert gesprekken met klanten en schrijft die uit;
+- je gebruikt eigen gegevens om een model te trainen of bij te stellen.
+
+In al die gevallen gelden de gewone regels van de AVG. Dat er AI aan te pas komt, verandert daar niets aan.
+
+## De vier dingen die je regelt
+
+**1. Een grondslag.** Waarom mag je deze gegevens voor dit doel gebruiken? Meestal is dat de uitvoering van een overeenkomst of een gerechtvaardigd belang. Leg de afweging vast.
+
+**2. Dataminimalisatie.** Gebruik alleen wat nodig is. Haal namen en nummers uit teksten die het model niet hoeft te kennen, en bewaar uitkomsten niet langer dan nodig.
+
+**3. Een verwerkersovereenkomst.** Met elke partij die de gegevens voor jou verwerkt: de bouwer, de hostingpartij en de leverancier van het model. Controleer daarbij waar de gegevens staan en of de leverancier ermee traint.
+
+**4. Een DPIA bij hoog risico.** Een gegevens­beschermings­effect­beoordeling is verplicht als de verwerking waarschijnlijk een hoog risico voor de betrokkenen geeft. Denk aan profilering, gezondheidsgegevens, het volgen van werknemers of grootschalige verwerking met nieuwe technologie. De [Autoriteit Persoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/praktisch-avg/data-protection-impact-assessment-dpia) houdt een lijst bij van verwerkingen waarvoor een DPIA altijd verplicht is.
+
+Een voorbeeld uit de zorg: bij de AI-stem die we voor Medux bouwden, gaan klantgesprekken door het systeem: wie belt, waarvoor en welke afspraak er wordt ingepland. Gesprekken worden uitgeschreven voor kwaliteit en controle. Dan moet vooraf vastliggen welke gegevens het systeem nodig heeft, hoe lang de uitwerkingen bewaard blijven en wie erbij kan.
+
+## Waar staat de data?
+
+Twee dingen worden vaak door elkaar gehaald:
+
+- **Een model aanroepen:** je stuurt een vraag naar een model en krijgt een antwoord. De vraag kan bij de leverancier gelogd worden.
+- **Gegevens opslaan:** documenten, gesprekken en uitkomsten die je bewaart in een database of zoekindex.
+
+Voor beide geldt: weet waar het staat. Doorgifte buiten de EU mag alleen met een passende basis, zoals het EU-US Data Privacy Framework voor aangesloten Amerikaanse bedrijven. Dat kader staat juridisch onder druk: het Gerecht van de EU hield het in september 2025 in stand, en het hoger beroep bij het Hof van Justitie loopt nog. Daarnaast kan de Amerikaanse CLOUD Act Amerikaanse bedrijven verplichten gegevens te overhandigen, ook als die in Europa staan. Voor gevoelige gegevens is Europese hosting of je [eigen server](/nl/ai-op-eigen-servers) de veiligste keuze.
+
+## AVG en AI Act naast elkaar
+
+| | AVG | AI Act |
+|---|---|---|
+| **Gaat over** | Persoonsgegevens | AI-systemen |
+| **Geldt wanneer** | Er persoonsgegevens verwerkt worden | Er AI wordt aangeboden of gebruikt |
+| **Kern** | Grondslag, minimalisatie, rechten van betrokkenen | Risicoklasse, transparantie, toezicht, geletterdheid |
+| **Beoordeling vooraf** | DPIA bij hoog risico | Risicobeheer en documentatie bij hoog-risico-AI |
+| **Toezicht in Nederland** | Autoriteit Persoonsgegevens | In voorbereiding; de AP krijgt een coördinerende rol |
+
+Een AI-toepassing met persoonsgegevens moet aan beide voldoen. Meer over de AI Act lees je in [de AI Act](/nl/kennis/ai-act).
+
+## Wat AI Heroes hier doet
+
+<div class="hs-note">
+
+Bij elke bouw zit privacy in het ontwerp: dataminimalisatie, Europese hosting als optie, en logging met vaste bewaartermijnen. **De DPIA voer je als verwerkings­verantwoordelijke zelf uit.** Wij leveren op verzoek de technische informatie die je daarvoor nodig hebt: welke gegevens, waar ze staan, hoe lang ze bewaard blijven en welke leveranciers betrokken zijn.
+
+Onze eigen assistent laat zien hoe dat eruitziet: gesprekken pseudoniem, maximaal 30 dagen bewaard, en alles beschreven op [de transparantiepagina](/nl/legal/ai-assistent).
+
+</div>
+
+## Bronnen
+
+- [Data protection impact assessment (DPIA)](https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/praktisch-avg/data-protection-impact-assessment-dpia), Autoriteit Persoonsgegevens
+- [Opinion 28/2024 on AI models](https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en), European Data Protection Board
+- [Algemene verordening gegevensbescherming](https://eur-lex.europa.eu/eli/reg/2016/679/oj), EUR-Lex

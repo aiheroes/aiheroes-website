@@ -1,67 +1,56 @@
 ---
+// C1–C9 in English: one page per case from the caseStudies collection (lang en), in the case
+// template (docs/relaunch/pages/C0-case-mal.md). The MDX body is the longer story.
 import { getCollection, render } from 'astro:content';
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
-import CardGrid from '../../../components/blocks/CardGrid.astro';
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsCaseStudy from '../../../components/hs/HsCaseStudy.astro';
+import { displayName, plainHeadline, sectorLabel } from '../../../components/hs/cases';
 
 export async function getStaticPaths() {
-  const items = await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft);
-  return items.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry, items } }));
+  const items = await getCollection('caseStudies', (e) => e.data.lang === 'en' && !e.data.draft);
+  return items.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
 }
 
-const { entry, items } = Astro.props;
-const ENTRY_LABEL = { nieuw: 'Build something new', vervangen: 'Replace what no longer fits', 'eigen-beheer': 'Run it on your own terms' } as const;
-const ERA_LABEL = 'Earlier case';
+const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+const path = `/en/cases/${d.slug}`;
+const named = !d.anonymous.page;
+const sector = sectorLabel(d.sector, 'en');
 
-const others = items
-  .filter((e) => e.data.slug !== d.slug)
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3)
-  .map((e) => ({
-    title: e.data.client ?? e.data.title,
-    eyebrow: e.data.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[e.data.entry],
-    description: e.data.subtitle,
-    href: `/en/cases/${e.data.slug}`,
-    accent: e.data.accentColor,
-  }));
-
-const caseSchema = {
+const article = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: d.title,
-  description: d.description,
-  ...(d.client ? { about: { '@type': 'Organization', name: d.client } } : {}),
-  author: { '@type': 'Organization', name: 'AI Heroes' },
-  publisher: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+  headline: plainHeadline(d.headline),
+  description: d.lede,
+  url: `https://aiheroes.io${path}`,
   inLanguage: 'en',
+  ...(sector ? { about: { '@type': 'Thing', name: sector } } : {}),
+  ...(named ? { mentions: { '@type': 'Organization', name: d.client } } : {}),
+  ...(d.year ? { datePublished: String(d.year) } : {}),
+  author: { '@id': 'https://aiheroes.io/#organization' },
+  publisher: { '@id': 'https://aiheroes.io/#organization' },
 };
+const review = d.quote?.approved
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Review',
+      reviewBody: d.quote.text,
+      author: { '@type': 'Person', name: d.quote.author },
+      itemReviewed: { '@id': 'https://aiheroes.io/#organization' },
+    }
+  : null;
 ---
 
-<SubpageLayout
+<HsLayout
   lang="en"
-  title={d.title}
-  subtitle={d.subtitle}
-  seoTitle={d.seoTitle}
-  seoDescription={d.description}
-  accentColor={d.accentColor}
-  badge={d.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[d.entry]}
-  entry={d.entry}
-  jsonLd={caseSchema}
+  title={displayName(entry, 'page')}
+  seoTitle={d.seoTitle ?? d.title}
+  description={d.description}
+  crumbs={[{ label: 'Home', href: '/en' }, { label: 'Cases', href: '/en/cases' }]}
+  jsonLd={review ? [article, review] : [article]}
 >
-  <a href="/en/cases" class="inline-flex items-center gap-1.5 text-sm text-stone-500 hover:text-brand-red transition-colors mb-8">&larr; All cases</a>
-  <div class="prose prose-lg max-w-none">
+  <HsCaseStudy entry={entry}>
     <Content />
-  </div>
-  <div class="mt-12 bg-brand-blue text-white p-8 md:p-10">
-    <h2 class="font-serif text-2xl mb-2">Want something like this built?</h2>
-    <p class="text-white/90 mb-5 max-w-xl">A start sprint is the first step: one week, fixed fee, a working prototype or build plan. Always with the business case included.</p>
-    <a href="/en/start-sprint" class="inline-flex items-center gap-2 bg-white text-brand-blue px-6 py-3 font-medium hover:bg-stone-100 transition-colors">Plan a start sprint &rarr;</a>
-  </div>
-  {others.length > 0 && (
-    <section class="mt-16 pt-10 border-t border-stone-200">
-      <h2 class="font-serif text-2xl text-brand-dark mb-6">More cases</h2>
-      <CardGrid items={others} cols={3} />
-    </section>
-  )}
-</SubpageLayout>
+  </HsCaseStudy>
+</HsLayout>

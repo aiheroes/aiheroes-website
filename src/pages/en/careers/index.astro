@@ -1,16 +1,124 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CareersIsland from '../../../components/islands/CareersIsland';
-import { CONTENT } from '../../../data/content';
+// P13 Careers (English): the open positions straight under the cover, then how we work, what you
+// get, Groningen and the open application. Mirrors /nl/vacatures (docs/relaunch/01-besluiten.md §13).
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsSteps from '../../../components/hs/HsSteps.astro';
+import HsApplyForm from '../../../components/hs/HsApplyForm.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { JOBS, jobText } from '../../../data/jobs';
+import { SITE_EN } from '../../../data/site';
 
-const content = CONTENT.en.careersPage;
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'About', href: '/en/about' }];
+const jobs = JOBS.map((j) => ({ id: j.id, ...jobText(j, 'en') }));
 ---
 
-<BaseLayout
+<HsLayout
   lang="en"
-  title={content.hero.title}
-  description="Work at AI Heroes: explore our open positions and join a growing AI agency in Groningen. AI Engineer, Trainer and more."
-  noChrome
+  title="Careers at AI Heroes"
+  seoTitle="Jobs at AI Heroes: build AI tools in Groningen"
+  description="Careers at AI Heroes in Groningen: open positions for an AI Engineer, an AI Trainer and internships in sales and marketing. Help build AI tools that teams use every day."
+  crumbs={crumbs}
 >
-  <CareersIsland lang="en" client:load />
-</BaseLayout>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Careers"
+    title="Work at *AI Heroes*"
+    lede="We build AI tools that teams use every day, from Groningen. The team grows with the demand."
+    cta={{ label: 'See the open positions', href: '#positions' }}
+    secondary={{ label: 'Open application', href: '#apply' }}
+    facts={[
+      { value: `${JOBS.length}`, label: 'open positions' },
+      { value: SITE_EN.proof.orgs, label: 'organisations helped since 2019' },
+      { value: SITE_EN.proof.trained, label: 'professionals trained since 2019' },
+    ]}
+  />
+
+  <HsSection id="positions" title="Open *positions*">
+    <ul class="jobs">
+      {jobs.map((j, i) => (
+        <li data-item style={`--i:${i}`}>
+          <a class="jobs__item" href={`/en/careers/${j.id}`}>
+            <span class="jobs__team">{j.team}</span>
+            <span class="jobs__title">{j.title}</span>
+            <span class="jobs__text">{j.summary}</span>
+            <span class="jobs__meta">{j.location} · {j.hours} · {j.type}</span>
+            <HsIcon name="arrow-right" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </HsSection>
+
+  <HsSection tone="paper" title="Three roles in *every* project" lede="Every build follows the same path. Whichever role you start in, you see where your work fits in.">
+    <HsSteps
+      items={[
+        { label: 'Business case and strategy', title: 'What it costs, what it returns', text: 'Before anything is built, there is a business case on one page. Sales and marketing sit here too.' },
+        { label: 'Build and compliance', title: 'From prototype to system', text: 'A working prototype in six days, then two-week sprints, with the AI Act in the design.' },
+        { label: 'Training and adoption', title: 'A team that works with it', text: 'The client’s team learns to work with what we build, on the system itself and on the job.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection title="What you *get*">
+    <HsCards
+      items={[
+        { icon: 'robot', title: 'We use what we build', text: 'Our own work runs on AI tools we built ourselves: from meeting notes to reports and presentations.' },
+        { icon: 'lightning', title: 'Speed', text: 'A prototype in six days and a reply within a day. You see your work land quickly.' },
+        { icon: 'comments', title: 'Honest and direct', text: 'We say what we think, to clients too. If AI is not the answer, we say so.' },
+        { icon: 'peoples', title: 'A flat organisation', text: 'Direct access to the three founders and responsibility from day one.' },
+        { icon: 'book', title: 'Learning is part of the job', text: 'AI changes every week. You get time and budget to keep up and to experiment.' },
+        { icon: 'local', title: 'An office in Groningen', text: 'On the Aarhusweg, in the AI capital of Europe. Combine it with working from home as it suits you.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="dark" title="Built in *Groningen*" lede="With the AI Fabriek, 200 million euros of AI computing power is coming to Groningen. Every two months we host the AI Salon, the evening where the AI scene of the northern Netherlands meets.">
+    <p class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/en/ai-salon">The AI Salon<HsIcon name="arrow-right" /></a>
+      <a class="hs-link" href="/en/about/team">The team<HsIcon name="arrow-right" /></a>
+    </p>
+  </HsSection>
+
+  <HsSection tone="paper" title="How *applying* works">
+    <HsSteps
+      items={[
+        { label: 'Step 1', title: 'Application', text: 'Send your CV and cover letter through the form. We confirm receipt within two working days.' },
+        { label: 'Step 2', title: 'Introduction', text: 'An informal half-hour conversation to get to know each other.' },
+        { label: 'Step 3', title: 'In depth', text: 'A conversation about the work or a practical assignment, depending on the role.' },
+        { label: 'Step 4', title: 'Offer', text: 'If it fits, we make you an offer. We communicate quickly and clearly.' },
+      ]}
+    />
+  </HsSection>
+
+  <section class="hs-sec" data-reveal>
+    <div class="hs-wrap">
+      <p class="hs-body-l jobs__open" data-item>Not seeing a position that fits? Send an open application and tell us what you can contribute.</p>
+      <HsApplyForm title="Apply" />
+    </div>
+  </section>
+</HsLayout>
+
+<style>
+  .jobs { display: grid; max-width: 72rem; }
+  .jobs__item {
+    position: relative;
+    display: grid;
+    gap: .375rem;
+    padding: 1.5rem 3rem 1.75rem 0;
+    box-shadow: inset 0 1.5px 0 var(--rule-on-light);
+    text-decoration: none;
+  }
+  .jobs li:last-child .jobs__item { box-shadow: inset 0 1.5px 0 var(--rule-on-light), inset 0 -1.5px 0 var(--rule-on-light); }
+  .jobs__team { font-size: .875rem; font-weight: 700; color: var(--red); }
+  .jobs__title { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.5rem); line-height: 1.1; }
+  .jobs__text { color: var(--body-on-light); max-width: 56ch; }
+  .jobs__meta { font-size: .9375rem; font-weight: 500; color: var(--micro-on-light); }
+  .jobs__item :global(.hs-icon) { position: absolute; right: 0; top: 50%; width: 1.75rem; height: 1.75rem; transform: translateY(-50%); transition: transform .25s var(--ease); }
+  .jobs__item:hover :global(.hs-icon) { transform: translate(.375rem, -50%); }
+  .jobs__item:hover .jobs__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+  .jobs__open { max-width: 44ch; margin-bottom: 2rem; color: var(--body-on-light); }
+</style>

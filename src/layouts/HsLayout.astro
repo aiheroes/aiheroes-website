@@ -1,0 +1,119 @@
+---
+// The layout of the new site in the house style (docs/relaunch/02-bouwplan.md §4.1). Same SEO head
+// as BaseLayout (canonical, hreflang, Open Graph, JSON-LD, organisation schema on every page), with
+// the self-hosted Inter and the house-style nav, footer and behaviour. BaseLayout stays for the
+// legacy pages until the launch.
+import '../styles/global.css';
+import '../styles/huisstijl.css';
+import '../styles/hs-pages.css';
+import { ClientRouter } from 'astro:transitions';
+import { counterpart, type Lang } from '../data/i18n';
+import { PROFESSIONAL_SERVICE_SCHEMA, breadcrumbSchema, type Crumb } from '../data/schema';
+import HsDuotone from '../components/hs/HsDuotone.astro';
+import HsNav from '../components/hs/HsNav.astro';
+import HsFooter from '../components/hs/HsFooter.astro';
+import ChatWidget from '../components/chat/ChatWidget';
+import { CHAT_ENABLED, CHAT_BOOKING_URL, CHAT_SOURCE_CHIPS } from '../data/chat-flags';
+import { UI } from '../data/ui';
+
+export interface Props {
+  lang?: Lang;
+  title: string;
+  /** Overrides the visible-title-derived <title> for keyword targeting only. */
+  seoTitle?: string;
+  description: string;
+  noindex?: boolean;
+  jsonLd?: object | object[];
+  ogImage?: string;
+  /** Breadcrumb trail (without the current page); emitted as BreadcrumbList. */
+  crumbs?: Crumb[];
+}
+
+const { lang = 'nl', title, seoTitle, description, noindex = false, jsonLd, ogImage = '/og-image.png', crumbs } = Astro.props;
+
+const DOMAIN = 'https://aiheroes.io';
+const rawPath = Astro.url.pathname;
+const path = rawPath !== '/' ? rawPath.replace(/\.html$/, '').replace(/\/$/, '') : '/';
+const canonical = `${DOMAIN}${path}`;
+const fullTitle = `${seoTitle ?? title} | AI Heroes`;
+const other = counterpart(path, lang);
+const nlPath = lang === 'nl' ? path : other;
+const enPath = lang === 'nl' ? other : path;
+const ogLocale = lang === 'nl' ? 'nl_NL' : 'en_US';
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${DOMAIN}${ogImage}`;
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const ORG_TYPES = ['ProfessionalService', 'LocalBusiness', 'Organization'];
+const hasOwnOrgSchema = pageSchemas.some((s: any) => ORG_TYPES.includes(s['@type']));
+const crumbSchema = crumbs && crumbs.length ? [breadcrumbSchema([...crumbs, { label: title, href: path }])] : [];
+const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...pageSchemas, ...crumbSchema];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+    <link rel="icon" href="/favicon-white.ico" sizes="any" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-white-32.png" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" href="/fonts/inter/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="AI Heroes" />
+    <meta name="google-site-verification" content="cDwNcWtvIDJx0kC5rIDIanesLuEY6_aVipJl-fZRdZI" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+    <meta name="theme-color" content="#FDFCF8" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="AI Heroes" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {nlPath && <link rel="alternate" hreflang="nl" href={`${DOMAIN}${nlPath}`} />}
+    {enPath && <link rel="alternate" hreflang="en" href={`${DOMAIN}${enPath}`} />}
+    {nlPath && <link rel="alternate" hreflang="x-default" href={`${DOMAIN}${nlPath}`} />}
+
+    {schemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+
+    <ClientRouter />
+    <script is:inline>document.documentElement.classList.add('hs-js');</script>
+  </head>
+  <body class="hs-body-root">
+    <div class="hs">
+      <a class="hs-skip" href="#inhoud">{UI[lang].skip}</a>
+      <HsDuotone />
+      <HsNav lang={lang} path={path} alternate={other} />
+      <main id="inhoud" tabindex="-1">
+        <slot />
+      </main>
+      <HsFooter lang={lang} />
+    </div>
+
+    <ChatWidget
+      client:idle
+      transition:persist="aih-chat"
+      locale={lang}
+      path={path}
+      enabled={CHAT_ENABLED}
+      bookingUrl={CHAT_BOOKING_URL}
+      sourceChips={CHAT_SOURCE_CHIPS}
+    />
+
+    <script>
+      import '../components/hs/hs-client';
+    </script>
+  </body>
+</html>

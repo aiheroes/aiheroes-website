@@ -1,0 +1,42 @@
+---
+// Kennis articles (docs/relaunch/pages/B0-blog-template.md): one route for articles, listicles and
+// guides from the `kennis` collection. Related reading: the slugs in `related`, topped up from the
+// same group.
+import { getCollection, render } from 'astro:content';
+import HsArticle from '../../../components/hs/HsArticle.astro';
+import { plainText } from '../../../components/hs/hs';
+
+export async function getStaticPaths() {
+  const all = await getCollection('kennis', (e) => e.data.lang === 'nl' && !e.data.draft);
+  return all.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry, all } }));
+}
+
+const { entry, all } = Astro.props;
+const { Content, headings } = await render(entry);
+const d = entry.data;
+const words = (entry.body ?? '').split(/\s+/).filter(Boolean).length;
+const minutes = Math.max(2, Math.round(words / 220));
+
+// B3 sits in "overig" in the collection; on the page it belongs to Lokale AI and Europa.
+const KICKERS: Record<string, string> = {
+  'europese-alternatieven-chatgpt': 'Lokale AI en Europa',
+  'top-10-ai-bureaus': 'Overzicht',
+  'waar-begin-je-met-ai': 'Gids',
+};
+
+const bySlug = new Map(all.map((e) => [e.data.slug, e]));
+const picked = d.related.map((s) => bySlug.get(s)).filter((e): e is NonNullable<typeof e> => !!e && e.data.slug !== d.slug);
+const fill = all
+  .filter((e) => e.data.group === d.group && e.data.slug !== d.slug && !picked.includes(e))
+  .sort((a, b) => b.data.updatedDate.getTime() - a.data.updatedDate.getTime());
+const related = [...picked, ...fill].slice(0, 3).map((e) => ({
+  title: plainText(e.data.title),
+  text: e.data.description,
+  href: `/nl/kennis/${e.data.slug}`,
+  meta: e.data.kind === 'gids' ? 'Gids' : e.data.kind === 'listicle' ? 'Overzicht' : 'Artikel',
+}));
+---
+
+<HsArticle data={d} headings={headings} minutes={minutes} related={related} kicker={KICKERS[d.slug]}>
+  <Content />
+</HsArticle>

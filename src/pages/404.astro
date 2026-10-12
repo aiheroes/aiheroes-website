@@ -1,24 +1,32 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+// H5 404 (docs/relaunch/pages/H5-404.md): the smallest help template, with the full nav and footer
+// (01-besluiten §15), the four main routes and the assistant as search. Noindex. One static file
+// serves both languages: the Dutch block shows by default, an inline script shows the English one
+// for paths under /en.
+import HsLayout from '../layouts/HsLayout.astro';
+import HsHelp from '../components/hs/HsHelp.astro';
+import HsCards from '../components/hs/HsCards.astro';
+import HsIcon from '../components/hs/HsIcon.astro';
+import { SITE, SITE_EN } from '../data/site';
 ---
 
-<BaseLayout
-  lang="nl"
-  title="Pagina niet gevonden"
-  description="Pagina niet gevonden."
-  noindex
-  noChrome
->
+<HsLayout title="Pagina niet gevonden" description="Deze pagina bestaat niet (meer)." noindex>
   <!--
-    Bare-path catch-all. Mirrors the old SPA BarePathRedirect: a prefix-less URL
-    (e.g. /over-ons, /about, /ai-salon) is resolved to its language-prefixed page
-    in the browser. Language-specific slugs already have server-side 301s in
-    vercel.json; this handles the long tail and visitor-language-based neutral slugs.
+    Bare-path catch-all, kept from the old SPA BarePathRedirect: a prefix-less URL (/over-ons,
+    /startsprint, /eigen-beheer, /about) is sent to its language-prefixed page in the browser. Slugs
+    that only exist in one language decide the language; neutral slugs follow the visitor. Old slugs
+    stay listed while vercel.json still redirects them. ALIAS covers paths that differ per language.
   -->
   <script is:inline>
     (function () {
-      var NL_ONLY = ['diensten','startsprint','software-vervangen','over-ons','aanpak','ai-geletterdheid','ai-strategie-gids','wat-kost-ai-implementatie','voorwaarden','vacatures','pers','menu'];
-      var EN_ONLY = ['services','start-sprint','replace-software','about','approach','ai-literacy','ai-strategy-guide','ai-implementation-costs','terms','careers','press'];
+      var NL_ONLY = ['diensten','startsprint','software-vervangen','over-ons','aanpak','ai-geletterdheid','ai-strategie-gids','wat-kost-ai-implementatie','voorwaarden','vacatures','pers',
+        'wat-we-bouwen','nieuwe-ai-toepassing','eigen-beheer','hoe-we-werken','kennis','ai-klantenservice','administratie-automatiseren','ai-integratie','extra-developers','maatwerk-software',
+        'saas-vervangen','excel-vervangen','verouderde-software','ai-op-eigen-servers','europees-alternatief-chatgpt','ai-bureau-groningen','ai-bureau-nederland','ai-geletterdheid-training','digitale-soevereiniteit'];
+      var EN_ONLY = ['services','start-sprint','replace-software','about','approach','ai-literacy','ai-strategy-guide','ai-implementation-costs','terms','careers','press',
+        'what-we-build','new-ai-tool','self-hosted','how-we-work','insights','ai-customer-service','automate-administration','ai-integration','custom-software',
+        'replace-saas','replace-excel','legacy-software','ai-on-your-own-servers','european-chatgpt-alternative','ai-agency-groningen','ai-agency-netherlands','ai-literacy-training','digital-sovereignty'];
+      // Bare paths whose page lives at a different path per language.
+      var ALIAS = { team: { nl: 'over-ons/team', en: 'about/team' }, privacy: { nl: 'legal/privacy', en: 'legal/privacy' } };
       function visitorLang() {
         try {
           var s = localStorage.getItem('aiheroes-lang');
@@ -27,29 +35,88 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         var b = (navigator.language || '').toLowerCase();
         return b.indexOf('nl') === 0 ? 'nl' : 'en';
       }
-      var path = window.location.pathname;
-      var segments = path.split('/').filter(Boolean);
+      var segments = window.location.pathname.split('/').filter(Boolean);
       if (segments.length === 0) return;
-      if (segments[0] === 'nl' || segments[0] === 'en') return; // already prefixed -> genuine 404
+      if (segments[0] === 'nl' || segments[0] === 'en') return; // already prefixed: a genuine 404
       var lang = null;
       for (var i = 0; i < segments.length; i++) {
         if (NL_ONLY.indexOf(segments[i]) !== -1) { lang = 'nl'; break; }
         if (EN_ONLY.indexOf(segments[i]) !== -1) { lang = 'en'; break; }
       }
       if (!lang) lang = visitorLang();
-      window.location.replace('/' + lang + '/' + segments.join('/') + window.location.search + window.location.hash);
+      var rest = segments.length === 1 && ALIAS[segments[0]] ? ALIAS[segments[0]][lang] : segments.join('/');
+      window.location.replace('/' + lang + '/' + rest + window.location.search + window.location.hash);
     })();
   </script>
 
-  <main class="min-h-[70vh] flex items-center justify-center px-6 py-24 bg-brand-light">
-    <div class="text-center max-w-lg">
-      <p class="text-sm font-bold uppercase tracking-widest text-brand-red mb-4">404</p>
-      <h1 class="text-3xl md:text-5xl font-serif text-brand-dark mb-4">Pagina niet gevonden</h1>
-      <p class="text-stone-600 mb-8">Deze pagina bestaat niet (meer). Ga terug naar de homepage of bekijk wat we bouwen.</p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/" class="bg-brand-dark text-white px-6 py-3 text-sm font-medium hover:bg-stone-800 transition-colors">Naar home</a>
-        <a href="/nl/diensten" class="border border-stone-300 text-brand-dark px-6 py-3 text-sm font-medium hover:bg-white transition-colors">Wat we bouwen</a>
-      </div>
-    </div>
-  </main>
-</BaseLayout>
+  <div data-lang404="nl">
+    <HsHelp
+      title="Deze pagina bestaat | niet *(meer)*"
+      current="Niet gevonden"
+      intro="De link is oud of er zit een typfout in. Kies hieronder waar je heen wilt, of vraag het de assistent."
+      contact={`Kom je er niet uit? Mail [${SITE.email}](mailto:${SITE.email}) of bel ${SITE.phone}.`}
+    >
+      <HsCards
+        variant="planes"
+        columns={2}
+        items={[
+          { title: 'Wat we bouwen', href: '/nl/wat-we-bouwen', accent: 'red', text: 'Nieuwe AI-toepassingen, oude software vervangen en lokale AI.', more: 'Bekijk wat we bouwen' },
+          { title: 'De startsprint', href: '/nl/startsprint', accent: 'blue', text: `Zes dagen, vanaf ${SITE.sprint.price}, en je weet of het kan.`, more: 'Naar de startsprint' },
+          { title: 'Cases', href: '/nl/cases', accent: 'dark', text: 'Wat we bouwden, met cijfers waar ze er zijn.', more: 'Bekijk de cases' },
+          { title: 'Kennis', href: '/nl/kennis', accent: 'red', text: 'Artikelen en gidsen over de AI Act, kosten en waar je begint.', more: 'Naar kennis' },
+        ]}
+      />
+      <p>
+        <button class="hs-btn hs-btn--dark" type="button" data-open-chat>
+          Vraag het de assistent
+          <HsIcon name="arrow-right" />
+        </button>
+      </p>
+    </HsHelp>
+  </div>
+
+  <div data-lang404="en" hidden>
+    <HsHelp
+      title="This page does not | exist *(anymore)*"
+      intro="The link is old or has a typo in it. Choose where you want to go below, or ask the assistant."
+      contact={`Still stuck? Email [${SITE.email}](mailto:${SITE.email}) or call +31 50 200 3373.`}
+    >
+      <HsCards
+        variant="planes"
+        columns={2}
+        items={[
+          { title: 'What we build', href: '/en/what-we-build', accent: 'red', text: 'New AI tools, replacing old software and self-hosted AI.', more: 'See what we build' },
+          { title: 'The start sprint', href: '/en/start-sprint', accent: 'blue', text: `Six days, from ${SITE_EN.sprint.price}, and you know whether it can be done.`, more: 'To the start sprint' },
+          { title: 'Cases', href: '/en/cases', accent: 'dark', text: 'What we built, with figures where we have them.', more: 'See the cases' },
+          { title: 'Insights', href: '/en/insights', accent: 'red', text: 'Articles and guides on the AI Act, costs and where to start.', more: 'To insights' },
+        ]}
+      />
+      <p>
+        <button class="hs-btn hs-btn--dark" type="button" data-open-chat>
+          Ask the assistant
+          <HsIcon name="arrow-right" />
+        </button>
+      </p>
+    </HsHelp>
+  </div>
+
+  <script is:inline>
+    (function () {
+      if (!/^\/en(\/|$)/.test(window.location.pathname)) return;
+      var nl = document.querySelector('[data-lang404="nl"]');
+      var en = document.querySelector('[data-lang404="en"]');
+      if (nl) nl.hidden = true;
+      if (en) en.hidden = false;
+      document.documentElement.lang = 'en';
+      document.title = 'Page not found | AI Heroes';
+    })();
+  </script>
+</HsLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-open-chat]').forEach((b) =>
+      b.addEventListener('click', () => window.dispatchEvent(new Event('aih:open-chat'))),
+    );
+  });
+</script>

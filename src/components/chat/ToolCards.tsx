@@ -1,16 +1,10 @@
 // Generative-UI cards rendered for model tool calls (SDD D2), plus the inline
-// escalation form (SDD D7) — the only place the widget asks for PII, consent-gated.
+// escalation form (SDD D7), the only place the widget asks for PII, consent-gated.
+// House style: a paper tile, a blue icon, one dark button.
 
 import React, { useState } from 'react';
-import { ArrowRight, CalendarDays, Mail, Sparkles } from 'lucide-react';
+import { ChatIcon } from './ChatIcon';
 import { STRINGS, type ChatLocale } from './strings';
-
-const cardClass =
-  'mt-2 rounded-xl border border-stone-200 bg-white p-3.5 text-sm shadow-sm';
-const ctaClass =
-  'mt-2 inline-flex items-center gap-1.5 rounded-lg bg-brand-dark px-3 py-2 text-xs font-semibold text-white hover:bg-brand-dark/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2';
-const inputClass =
-  'mt-0.5 w-full rounded-md border border-stone-300 px-2 py-1.5 text-sm focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25';
 
 export function PageCard({
   locale,
@@ -30,11 +24,15 @@ export function PageCard({
     return null;
   }
   return (
-    <div className={cardClass}>
-      <p className="font-semibold">{input.title ?? href}</p>
-      {input.reason && <p className="mt-0.5 text-stone-500">{input.reason}</p>}
-      <a href={href} className={ctaClass}>
-        {t.pageCta} <ArrowRight size={12} aria-hidden />
+    <div className="aih-card">
+      <p className="aih-card__title">
+        <ChatIcon name="file-text" />
+        {input.title ?? href}
+      </p>
+      {input.reason && <p className="aih-card__text">{input.reason}</p>}
+      <a href={href} className="aih-btn">
+        {t.pageCta}
+        <ChatIcon name="arrow-right" />
       </a>
     </div>
   );
@@ -50,17 +48,21 @@ export function BookingCard({
   const t = STRINGS[locale];
   const contactHref = locale === 'nl' ? '/nl/startsprint' : '/en/start-sprint';
   return (
-    <div className={cardClass}>
-      <p className="flex items-center gap-1.5 font-semibold">
-        <CalendarDays size={14} aria-hidden /> {t.bookTitle}
+    <div className="aih-card">
+      <p className="aih-card__title">
+        <ChatIcon name="calendar" />
+        {t.bookTitle}
       </p>
+      <p className="aih-card__text">{t.bookText}</p>
       {bookingUrl ? (
-        <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className={ctaClass}>
-          {t.bookCta} <ArrowRight size={12} aria-hidden />
+        <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="aih-btn">
+          {t.bookCta}
+          <ChatIcon name="arrow-up-right" />
         </a>
       ) : (
-        <a href={contactHref} className={ctaClass}>
-          {t.bookFallbackCta} <ArrowRight size={12} aria-hidden />
+        <a href={contactHref} className="aih-btn">
+          {t.bookFallbackCta}
+          <ChatIcon name="arrow-right" />
         </a>
       )}
     </div>
@@ -70,15 +72,18 @@ export function BookingCard({
 export function SalonCard({ locale }: { locale: ChatLocale }) {
   const t = STRINGS[locale];
   // Internal link on purpose: the salon page always carries the current
-  // registration state (Luma event URLs rot — the 2026-08 kick-off link 404s).
+  // registration state (Luma event URLs rot; the 2026-08 kick-off link 404s).
   const href = locale === 'nl' ? '/nl/ai-salon' : '/en/ai-salon';
   return (
-    <div className={cardClass}>
-      <p className="flex items-center gap-1.5 font-semibold">
-        <Sparkles size={14} aria-hidden /> {t.salonTitle}
+    <div className="aih-card">
+      <p className="aih-card__title">
+        <ChatIcon name="peoples-two" />
+        {t.salonTitle}
       </p>
-      <a href={href} className={ctaClass}>
-        {t.salonCta} <ArrowRight size={12} aria-hidden />
+      <p className="aih-card__text">{t.salonText}</p>
+      <a href={href} className="aih-btn">
+        {t.salonCta}
+        <ChatIcon name="arrow-right" />
       </a>
     </div>
   );
@@ -94,7 +99,7 @@ export interface EscalationPayload {
 /**
  * Conversational escalation confirm (SDD D7, revised 2026-08-24): the assistant asks
  * for the email in the conversation; this card is only the one-tap confirmation.
- * Sending IS the consent action; the micro-line states what it means.
+ * Sending IS the consent action; the fine print states what it means.
  */
 export function EscalationForm({
   locale,
@@ -131,7 +136,7 @@ export function EscalationForm({
           sessionId,
           conversationId,
           name: payload.name ?? '',
-          email,
+          email: email.trim(),
           reason: payload.reason || 'visitor_request',
           summary: payload.summary ?? '',
           transcript: transcript.slice(-20),
@@ -149,40 +154,46 @@ export function EscalationForm({
 
   if (state === 'done-office' || state === 'done-closed') {
     return (
-      <div className={cardClass}>
-        <p className="font-semibold">
+      <div className="aih-card" role="status">
+        <p className="aih-done">
+          <ChatIcon name="check" />
           {state === 'done-office' ? t.escalateDoneOffice : t.escalateDoneClosed}
         </p>
       </div>
     );
   }
 
+  const sending = state === 'sending';
   return (
-    <form onSubmit={submit} className={cardClass}>
-      <p className="flex items-center gap-1.5 font-semibold">
-        <Mail size={14} aria-hidden /> {t.escalateTitle}
+    <form onSubmit={submit} className="aih-card">
+      <p className="aih-card__title">
+        <ChatIcon name="mail" />
+        {t.escalateTitle}
       </p>
-      <div className="mt-2 flex items-center gap-2">
+      <div className="aih-form">
         <input
           required
           type="email"
+          className="aih-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-label={t.escalateEmail}
           placeholder={t.escalateEmail}
-          className={`${inputClass} mt-0 flex-1`}
           autoComplete="email"
+          inputMode="email"
+          readOnly={sending}
         />
-        <button
-          type="submit"
-          disabled={state === 'sending'}
-          className={`${ctaClass} mt-0 shrink-0 disabled:opacity-50`}
-        >
-          {t.escalateSend}
+        <button type="submit" className="aih-btn" disabled={sending}>
+          {sending ? t.escalateSending : t.escalateSend}
         </button>
       </div>
-      <p className="mt-1.5 text-[0.68rem] leading-snug text-stone-400">{t.escalateConsent}</p>
-      {state === 'error' && <p className="mt-1 text-xs text-brand-red">{t.errorGeneric}</p>}
+      {state === 'error' ? (
+        <p className="aih-fine is-error" role="alert">
+          {t.escalateError}
+        </p>
+      ) : (
+        <p className="aih-fine">{t.escalateConsent}</p>
+      )}
     </form>
   );
 }

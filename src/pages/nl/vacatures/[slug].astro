@@ -1,89 +1,107 @@
 ---
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
-import { ApplicationForm } from '../../../../components/ApplicationForm';
-import { CONTENT } from '../../../data/content';
+// H4 Vacaturedetails (docs/relaunch/pages/H4-vacaturedetails.md), in the hulp-template with the form.
+// JobPosting with validThrough and jobLocation, no baseSalary (01-besluiten §13); the founder of the
+// field is the contact.
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsHelp from '../../../components/hs/HsHelp.astro';
+import HsApplyForm from '../../../components/hs/HsApplyForm.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { JOBS, type Job } from '../../../data/jobs';
+import { FOUNDERS } from '../../../data/team';
+import { SITE } from '../../../data/site';
+import { zet } from '../../../components/hs/hs';
 
-const DOMAIN = 'https://aiheroes.io';
-
-const employmentType = (type: string): string => {
-  const t = type.toLowerCase();
-  if (/stage|intern/.test(t)) return 'INTERN';
-  if (/(parttime|part-time|part time)/.test(t) && !/full/.test(t)) return 'PART_TIME';
-  return 'FULL_TIME';
-};
-
-export async function getStaticPaths() {
-  const items = CONTENT.nl.careersPage.positions.items;
-  return items.map((position) => ({ params: { slug: position.id }, props: { position } }));
+export function getStaticPaths() {
+  return JOBS.map((job) => ({ params: { slug: job.id }, props: { job } }));
 }
 
-const { position } = Astro.props;
-const content = CONTENT.nl.careersPage;
-const path = `/nl/vacatures/${position.id}`;
-const accentColor = position.department === 'training' ? 'red' : 'blue';
+const { job } = Astro.props as { job: Job };
+const DOMAIN = 'https://aiheroes.io';
+const path = `/nl/vacatures/${job.id}`;
+const contact = FOUNDERS[job.contact];
+const others = JOBS.filter((j) => j.id !== job.id);
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Vacatures', href: '/nl/vacatures' }];
+const posted = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(job.datePosted));
 
 const descriptionHtml =
-  position.description.map((p) => `<p>${p}</p>`).join('') +
-  `<p><strong>Wat vragen we?</strong></p>` +
-  `<ul>${position.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>` +
-  `<p><strong>Wat bieden we?</strong></p>` +
-  `<ul>${position.offerings.map((o) => `<li>${o}</li>`).join('')}</ul>`;
+  job.description.map((p) => `<p>${p}</p>`).join('') +
+  `<p><strong>Wat we vragen</strong></p><ul>${job.requirements.map((r) => `<li>${r}</li>`).join('')}</ul>` +
+  `<p><strong>Wat we bieden</strong></p><ul>${job.offerings.map((o) => `<li>${o}</li>`).join('')}</ul>`;
 
-const jsonLd = {
+const jobSchema = {
   '@context': 'https://schema.org',
   '@type': 'JobPosting',
-  title: position.title,
+  title: job.title,
   description: descriptionHtml,
-  datePosted: position.datePosted,
-  employmentType: employmentType(position.type),
+  datePosted: job.datePosted,
+  ...(job.validThrough ? { validThrough: `${job.validThrough}T23:59:59+01:00` } : {}),
+  employmentType: job.employment.length === 1 ? job.employment[0] : job.employment,
   url: `${DOMAIN}${path}`,
   directApply: true,
-  hiringOrganization: { '@type': 'Organization', name: 'AI Heroes B.V.', sameAs: DOMAIN, logo: `${DOMAIN}/og-image.png` },
+  hiringOrganization: { '@type': 'Organization', name: SITE.legalName, sameAs: DOMAIN, logo: `${DOMAIN}/og-image.png` },
   jobLocation: {
     '@type': 'Place',
-    address: { '@type': 'PostalAddress', streetAddress: 'Aarhusweg 4-16', addressLocality: 'Groningen', postalCode: '9723 JJ', addressCountry: 'NL' },
+    address: { '@type': 'PostalAddress', streetAddress: SITE.address.street, addressLocality: SITE.address.city, postalCode: SITE.address.postcode, addressCountry: SITE.address.country },
   },
 };
 ---
 
-<SubpageLayout
-  lang="nl"
-  title={position.title}
-  subtitle={position.summary}
-  seoDescription={`${position.summary} ${position.location}. Solliciteer bij AI Heroes.`}
-  accentColor={accentColor}
-  badge={position.departmentLabel}
-  showContactForm={false}
-  jsonLd={jsonLd}
+<HsLayout
+  title={job.title}
+  seoTitle={`${job.title} bij AI Heroes in Groningen`}
+  description={`${job.summary} ${job.location}, ${job.hours}. Solliciteer bij AI Heroes.`}
+  crumbs={crumbs}
+  jsonLd={jobSchema}
 >
-  <a href="/nl/vacatures" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-brand-blue transition-colors mb-8 no-underline">← Alle vacatures</a>
+  <HsHelp
+    title={job.title}
+    intro={job.summary}
+    crumbs={crumbs}
+    meta={[job.team, job.location, job.hours, job.type, `Geplaatst ${posted}`]}
+    contact={`Vragen over deze vacature? Mail [${SITE.email}](mailto:${SITE.email}) of bel ${SITE.phone}.`}
+  >
+    <div class="hs-prose">
+      <h2>Wat je doet</h2>
+      {job.description.map((p) => <p>{zet(p)}</p>)}
 
-  <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-500 mb-10">
-    <span class={position.department === 'training' ? 'font-medium text-brand-red' : 'font-medium text-brand-blue'}>{position.departmentLabel}</span>
-    <span>{position.location}</span>
-    <span>{position.hours}</span>
-    <span>{position.type}</span>
-  </div>
+      <h2>Wat we vragen</h2>
+      <ul>{job.requirements.map((r) => <li>{r}</li>)}</ul>
 
-  {position.description.map((p) => <p class="text-lg text-stone-700 leading-relaxed mb-4">{p}</p>)}
+      <h2>Wat we bieden</h2>
+      <ul>{job.offerings.map((o) => <li>{o}</li>)}</ul>
+    </div>
 
-  <h2 class="font-bold text-brand-dark mt-10 mb-3 text-sm uppercase tracking-wider">Wat vragen we?</h2>
-  <ul class="space-y-2 mb-8 list-disc ml-5 text-stone-700">
-    {position.requirements.map((req) => <li>{req}</li>)}
-  </ul>
+    <aside class="job-contact" aria-label="Je aanspreekpunt">
+      <div class="job-contact__photo"><img src={contact.photo} alt="" width="300" height="400" loading="lazy" decoding="async" /></div>
+      <div>
+        <p class="job-contact__label">Je werkt samen met</p>
+        <p class="job-contact__name">{contact.name}</p>
+        <p class="job-contact__role">{contact.role}</p>
+        <a class="hs-link" href="/nl/over-ons/team">Het team<HsIcon name="arrow-right" /></a>
+      </div>
+    </aside>
 
-  <h2 class="font-bold text-brand-dark mt-10 mb-3 text-sm uppercase tracking-wider">Wat bieden we?</h2>
-  <ul class="space-y-2 mb-12 list-disc ml-5 text-stone-700">
-    {position.offerings.map((offer) => <li>{offer}</li>)}
-  </ul>
+    <HsApplyForm position={job.title} title="Solliciteer" />
 
-  <div class="border-t border-stone-200 pt-12">
-    <ApplicationForm
-      lang="nl"
-      content={content.applicationForm}
-      positions={content.positions.items}
-      preselectedPosition={position.title}
-      client:visible
-    />
-  </div>
-</SubpageLayout>
+    {others.length > 0 && (
+      <nav class="job-others" aria-label="Andere vacatures">
+        <h2>Andere vacatures</h2>
+        <ul>
+          {others.map((o) => <li><a class="hs-link" href={`/nl/vacatures/${o.id}`}>{o.title}<HsIcon name="arrow-right" /></a></li>)}
+          <li><a class="hs-link" href="/nl/vacatures">Alle vacatures en open sollicitatie<HsIcon name="arrow-right" /></a></li>
+        </ul>
+      </nav>
+    )}
+  </HsHelp>
+</HsLayout>
+
+<style>
+  .job-contact { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; align-items: center; max-width: 44rem; padding: 1.5rem; background: #F5F3EC; }
+  .job-contact__photo { width: 5.5rem; aspect-ratio: 3 / 4; overflow: hidden; background: var(--dark); }
+  .job-contact__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: contrast(1.05) url(#hs-duo-blue); }
+  .job-contact__label { font-size: .875rem; font-weight: 600; color: var(--micro-on-light); }
+  .job-contact__name { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
+  .job-contact__role { font-size: .9375rem; color: var(--body-on-light); margin-bottom: .5rem; }
+  .job-others h2 { font-size: .875rem; font-weight: 700; letter-spacing: .04em; color: var(--micro-on-light); margin-bottom: .75rem; }
+  .job-others ul { display: grid; gap: .625rem; }
+</style>

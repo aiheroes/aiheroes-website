@@ -1,0 +1,71 @@
+---
+lang: en
+slug: ai-implementation-costs
+plan: L14
+group: kern
+entry: alle
+title: What does AI implementation cost?
+seoTitle: "What does AI implementation cost? Prices for 2026"
+description: "What does AI implementation cost? The start sprint costs from €8,000 (six days, fixed), a build from €15,000. What comes after the build, and how you know up front what your application will cost."
+question: "What does AI implementation cost? | After six days you know *exactly*."
+lede: "Having an AI application built starts at AI Heroes with a six-day start sprint, from €8,000. A build starts from €15,000 and for large systems runs to well over €100,000. After the start sprint you know what your application will cost."
+author: frans-hoorn
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+build:
+  title: "What you *pay*"
+  intro: "The same amounts as everywhere on this site."
+  items:
+    - icon: rocket
+      title: "Start sprint: from €8,000"
+      text: Six days, fixed price, for every way in. Starts within two weeks of the first call.
+    - icon: code
+      title: "Build: from €15,000"
+      text: Usually two to twelve weeks, in two-week sprints with a demo after every sprint.
+    - icon: data-server
+      title: "Large systems: to well over €100,000"
+      text: With many connections, migrations or several applications at once.
+    - icon: refresh
+      title: "After that: maintenance and development"
+      text: "Hosting, model usage, maintenance and further development. What that costs is in your business case."
+    - icon: peoples
+      title: "Training: from €2,500 per half day"
+      text: "Bookable separately for your team. In a build, training on the system is included. See [AI training](/en/training)."
+sprint:
+  title: "How you know for certain what it *costs*"
+  text: "That is what the start sprint is for: in six days we build a prototype or build plan and work out what the full version costs and returns."
+  outcome: "The business case on one page: what your application costs, what it returns and when it pays for itself. If it does not add up, we do not build."
+cases: [kwakkel]
+proofText: "After six days, Kwakkel knows what the full version costs and returns, and decides when the build starts."
+faq:
+  - q: Why no fixed price for the build?
+    a: "Because every application is different. The start sprint works out what yours costs; after that the amount is in the business case."
+  - q: What are the running costs after the build?
+    a: "Hosting, model usage, maintenance and further development. What drives them is explained on this page; the amounts for your situation are in your business case."
+  - q: Isn't a SaaS tool cheaper?
+    a: "Sometimes. Sometimes you pay year after year for a package you only partly use; see [replacing a SaaS package](/en/replace-saas). In the start sprint we work out both."
+  - q: What if the business case does not add up?
+    a: "Then we do not build. You keep the prototype or plan and the business case."
+  - q: Do I get the start sprint fee back if the build does not go ahead?
+    a: "No. You pay for six days of work and keep the prototype or plan and the business case."
+related:
+  - label: Cost and return up front
+    href: /en/business-case
+  - label: The start sprint
+    href: /en/start-sprint
+  - label: Replace a SaaS package
+    href: /en/replace-saas
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+
+<HsSection tone="paper" title="Where the costs *are*" lede="What an application costs depends on a few things. After delivery too.">
+  <HsCards items={[
+    { icon: 'link', title: 'Connections', text: 'How many systems are involved, and whether they have a good API.' },
+    { icon: 'data-server', title: 'Data', text: 'How clean your data is and how much needs moving over.' },
+    { icon: 'server', title: 'Hosting', text: 'European cloud or your own servers, and how many users there are.' },
+    { icon: 'cpu', title: 'Model usage', text: 'How many questions or documents the AI model handles each month.' },
+    { icon: 'refresh', title: 'Maintenance and development', text: 'What comes after delivery: upkeep, updates and new wishes.' },
+    { icon: 'peoples', title: 'Training', text: 'How many people will work with it, and where.' },
+  ]} />
+</HsSection>

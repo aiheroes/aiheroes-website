@@ -1,0 +1,60 @@
+---
+// L21 quotes on a dark panel. One lead quote gives the eye a place to start; the clients speak in
+// regular Inter so they sound different from our headings. Below: the logo wall (L15) in white.
+import { zet } from './hs';
+import type { Content } from '../../data/types';
+
+interface Props {
+  proof: Content['socialProof'];
+}
+const { proof } = Astro.props;
+
+// Lead: the quote about delivered software, closest to what the page sells.
+const LEAD = 1;
+const quotes = [proof.testimonials[LEAD], ...proof.testimonials.filter((_, i) => i !== LEAD)];
+// Never break after an acronym's hyphen ("AI-" / "software"): use a non-breaking hyphen.
+const nb = (text: string) => text.replace(/\b([A-Z]{2,})-(?=\w)/g, '$1\u2011');
+
+// White SVG logos (recoloured to the house cream), sourced 2026-10-06; provenance in ASSETS.md.
+// Heights balance optical size: a wide wordmark sits lower than a compact mark.
+const LOGOS: Record<string, { src: string; h: number }> = {
+  'UMCG': { src: '/hs/logos-white/umcg.svg', h: 22 },
+  'Tweede Kamer': { src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  'Nationale Postcode Loterij': { src: '/hs/logos-white/postcode-loterij.svg', h: 32 },
+  'Envalior': { src: '/hs/logos-white/envalior.svg', h: 34 },
+  'Banijay Benelux': { src: '/hs/logos-white/banijay.svg', h: 26 },
+  'Prosus': { src: '/hs/logos-white/prosus.svg', h: 42 },
+  'Hanzehogeschool': { src: '/hs/logos-white/hanze.svg', h: 30 },
+};
+---
+
+<section class="hs-quotes on-dark hs-snap" id="referenties" data-reveal>
+  <div class="hs-wrap">
+    <h2 class="hs-d-m" data-item>{zet(proof.heading, { display: true })}</h2>
+    <ul class="hs-quotes__list">
+      {quotes.map((t, i) => (
+        <li class:list={['hs-quotes__item', { 'is-lead': i === 0 }]} data-item style={`--i:${i + 1}`}>
+          <figure class="hs-quote">
+            <blockquote>
+              <p>{nb(zet(t.highlight ?? t.text, { cap: i === 0 ? 14 : 24 }))}</p>
+            </blockquote>
+            <figcaption>
+              <span>{t.author}</span>
+              <span>{t.role}</span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+    <ul class="hs-logos" data-item style="--i:7">
+      {proof.logos.map((name) => {
+        const logo = LOGOS[name];
+        return (
+          <li>
+            {logo ? <img src={logo.src} alt={name} style={`--h:${logo.h / 16}rem`} loading="lazy" decoding="async" /> : <span>{name}</span>}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

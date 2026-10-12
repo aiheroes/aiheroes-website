@@ -1,100 +1,113 @@
 ---
-import SubpageLayout from '../../layouts/SubpageLayout.astro';
-import CardGrid from '../../components/blocks/CardGrid.astro';
-import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
-import StatGrid from '../../components/blocks/StatGrid.astro';
-import Callout from '../../components/blocks/Callout.astro';
-import Faq from '../../components/blocks/Faq.astro';
-import StandardBand from '../../components/blocks/StandardBand.astro';
+// P7 The start sprint, English (docs/relaunch/pages/P7-startsprint.md, phase 7): the front door.
+// Six days, from €8,000 for all three entries, start within two weeks (docs/relaunch/01-besluiten.md §1).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsFit from '../../components/hs/HsFit.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { SITE, SITE_EN, ENTRIES_EN } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+
+const s = SITE_EN.sprint;
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'How we work', href: '/en/how-we-work' }];
 
 const outcomes = [
-  { title: 'Build something new', eyebrow: 'Outcome: working prototype', accent: 'red' as const, href: '/en/services/software', description: 'By the end of the week there is a prototype that works on your data. At Kwakkel BV it was ready after six days.' },
-  { title: 'Replace what no longer fits', eyebrow: 'Outcome: architecture and migration plan', accent: 'blue' as const, href: '/en/services/replace-software', description: 'Which integrations are needed, how the data moves over, what can be done in phases. A build plan you can decide on.' },
-  { title: 'Run it on your own terms', eyebrow: 'Outcome: hosting design and risk assessment', accent: 'dark' as const, href: '/en/services/eu-consultancy', description: 'Which model, which hardware or European cloud, what it costs and what the AI Act asks of you. Tested on your situation.' },
+  { title: ENTRIES_EN.nieuw.title, accent: 'red' as const, href: ENTRIES_EN.nieuw.href, more: 'More about new AI tools', text: 'A working prototype on your own data. Your team tries it out before anyone decides to build.' },
+  { title: ENTRIES_EN.vervangen.title, accent: 'blue' as const, href: ENTRIES_EN.vervangen.href, more: 'More about replacing software', text: 'An architecture and a migration plan: what is new, what stays and in which order you switch over.' },
+  { title: ENTRIES_EN['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES_EN['eigen-beheer'].href, more: 'More about self-hosted AI', text: 'A hosting design and a risk assessment: where it runs, who has access and what the AI Act asks.' },
 ];
 
-const week = [
-  { title: 'Intake and scope', eyebrow: 'Day 1', body: 'We sit down with the owner of the problem and the people who work with it. What it has to do, what data there is, what the first version is that already delivers value.' },
-  { title: 'Build or design', eyebrow: 'Days 2 and 3', body: 'For something new we build the prototype. For replacement or self-hosting we design the architecture and test the critical parts.' },
-  { title: 'Connect to your real environment', eyebrow: 'Day 4', body: 'Real data, real systems, real users. This is where it shows whether it works outside the demo.' },
-  { title: 'Demo, business case and go/no-go', eyebrow: 'Day 5', body: 'We show what is there and put the business case on one page next to it: what it costs, what it returns, when it pays back. Then you decide.' },
-];
-
-const stats = [
-  { value: '1 week', label: 'from question to decision' },
-  { value: 'From €8,000', label: 'fixed fee, known up front' },
-  { value: '6 days', label: 'to working prototype at Kwakkel BV' },
+const days = [
+  { label: 'Day 1', title: 'Intake and scope', text: 'We sit down with the owner and the people who do the work. Together we decide what should be there on day six.', meta: 'From you: the owner and two or three users, half a day.' },
+  { label: 'Days 2 and 3', title: 'Build or design', text: 'We build the prototype, or we design the new architecture or the hosting.', meta: 'From you: someone for questions, an hour a day.' },
+  { label: 'Day 4', title: 'Connect to your real data', text: 'The prototype starts running on your own data and systems, next to the current work.', meta: 'From you: someone who knows your data and systems, a few hours.' },
+  { label: 'Day 5', title: 'Test with users', text: 'Your people work with it. Whatever gets in their way, we fix the same day.', meta: 'From you: the users, an hour.' },
+  { label: 'Day 6', title: 'Demo, business case and decision', text: 'We show what is there, with the business case on a single page. You decide: build, adjust or stop.', meta: 'From you: the owner, an hour.' },
 ];
 
 const faq = [
-  { q: 'What if it cannot be done in a week?', a: 'Then you know that at the end of the week, and you know why. You keep the prototype or the plan, the business case and honest advice on what can be done. That is exactly what the start sprint is for: a small fee to take a big decision well.' },
-  { q: 'Do we need to free up people?', a: 'Yes, a little. We need the owner of the problem on day 1 and day 5, and a few hours from someone who knows the data and systems. We do the rest.' },
-  { q: 'What happens after the sprint?', a: 'If the build goes ahead, the start sprint is the first phase and we keep building in sprints until it is finished and working. If it does not, you keep everything that was made. No obligations.' },
-  { q: 'Can we start without a start sprint?', a: 'If you already know exactly what you want to build and have the business case, yes. In practice the week almost always yields insights that make the build shorter and cheaper, so we recommend it.' },
-  { q: 'Does this work for software without AI?', a: 'Yes. A web shop, a customer portal, an internal system: we build software, with AI where it adds value and without it where it does not. INQ22 is an example: a custom web shop that simply runs live.' },
-  { q: 'How is this different from a workshop or a readiness scan?', a: 'A workshop teaches your team what AI can do. A scan says where the opportunities are. The start sprint builds one, on your data, and tells you what it costs. If you do not have a concrete process or system yet, a training or scan is a better first step; you will find those under How we work.' },
+  { q: 'What does a start sprint cost?', a: `A fixed price, from ${s.price}, for all three ways in. The price is fixed before we start.` },
+  { q: 'How soon can we start?', a: `Within ${s.startWithin} of the first call. After your request you hear from us within ${SITE_EN.reply}, usually with a proposal.` },
+  { q: 'What do we need to free up?', a: 'The owner on day 1 and day 6, a few users for the intake and the test, and a few hours from someone who knows your data and systems. We do the building.' },
+  { q: 'What if it does not work in six days?', a: 'Then you know after six days, and you know why. Sometimes a question turns out bigger than expected; the plan then says what it takes. If AI is not the answer, we say so.' },
+  { q: 'Is the price different per way in?', a: `No. From ${s.price} for all three: a new AI tool, replacing old software or self-hosted AI.` },
+  { q: 'Can we skip the start sprint?', a: 'Almost never. The start sprint keeps us from building something whose business case does not add up. Only if you are looking for [extra developers in your team](/en/extra-developers) do we start with an introduction.' },
+  { q: 'Does it work for software without AI?', a: 'Yes. We build what you need, with or without AI. The [INQ22](/en/cases/inq22) web shop has no AI in it, yet we built it with AI.' },
+  { q: 'What happens after the start sprint?', a: `If the build goes ahead, the start sprint is phase 1. We build in two-week sprints, from ${SITE_EN.build.from}, and after delivery we keep maintaining and developing the system. If it does not go ahead, you keep the prototype or plan and the business case.` },
 ];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
-};
-
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Start sprint',
-  serviceType: 'Software and AI discovery sprint',
-  description: 'One week, fixed fee from EUR 8,000. Outcome: a working prototype or a build plan, always with the business case included.',
-  provider: { '@id': 'https://aiheroes.io/#organization' },
-  areaServed: { '@type': 'Place', name: 'European Union' },
-  availableLanguage: ['Dutch', 'English'],
-  offers: { '@type': 'Offer', priceCurrency: 'EUR', price: '8000', url: 'https://aiheroes.io/en/start-sprint' },
-  url: 'https://aiheroes.io/en/start-sprint',
-};
 ---
 
-<SubpageLayout
+<HsLayout
   lang="en"
   title="The start sprint"
-  subtitle="One week. Fixed fee. At the end you know whether it can be done, what it costs and what it looks like."
-  seoTitle="The start sprint: from question to working prototype or build plan in one week"
-  seoDescription="The AI Heroes start sprint: one week, fixed fee from €8,000. Outcome: a working prototype or a build plan, always with the business case included. The first step of every build."
-  accentColor="red"
-  badge="The first step"
-  ctaLabel="Plan a start sprint"
-  ctaHref="#contact-form"
-  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG"]}
-  jsonLd={[serviceSchema, faqSchema]}
+  seoTitle="The start sprint: a working AI prototype or build plan in six days"
+  description={`The AI Heroes start sprint: six days, fixed price, from ${s.price}, start within two weeks. A working prototype or build plan with the business case on a single page.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Start sprint', path: '/en/start-sprint', price: SITE.sprint.priceValue, serviceType: 'AI prototype and business case', description: `Six days, fixed price, from ${s.price}: a working prototype or build plan with the business case on a single page.` }),
+    faqSchema(faq),
+  ]}
 >
-  <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">One week to take a big decision well</h2>
-    <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      You have a process that costs money, a system that needs replacing or an idea you want to test. The start sprint is how you find out in one week, with something tangible in hand: a working prototype on your data or a build plan you can decide on. Always with the business case included.
-    </p>
-    <p class="text-stone-600 leading-relaxed">For organisations with a concrete process, product or system, and an owner who can decide. Want to get to know what AI can do first? Then a <a href="/en/services/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training</a> is a better first step.</p>
-    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
-  </section>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="The start sprint"
+    title="Six days. A fixed price. | Then you *know*."
+    lede="The start sprint is the first step of every build. At the end of day six you know whether it can be done, what it costs and what it looks like."
+    cta={{ label: 'Plan a start sprint', href: '#contact' }}
+    secondary={{ label: 'See the six days', href: '#six-days' }}
+    facts={[
+      { value: '6 days', label: 'from question to prototype or build plan' },
+      { value: s.price, label: 'fixed price, for every way in' },
+      { value: '2 weeks', label: 'after the first call you can start' },
+    ]}
+  />
 
-  <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">What you have at the end of the week</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">The outcome depends on the entry you come in through.</p>
-    <CardGrid items={outcomes} cols={3} />
-  </section>
+  <HsSection title="What you have *in hand* after six days" lede="What is on the table on day six depends on your question. It always comes with the business case on a single page: what the build costs, what it returns and when it pays for itself." split>
+    <HsCards variant="planes" items={outcomes} />
+  </HsSection>
 
-  <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">What the week looks like</h2>
-    <ProcessSteps steps={week} />
-  </section>
+  <HsSection id="six-days" tone="paper" title="Six days, *day by day*" lede="We do the work. From your side, a few people for a few hours a day.">
+    <HsSteps items={days} />
+  </HsSection>
 
-  <section class="mb-16">
-    <Callout variant="dark" accent="red" eyebrow="Price" title="From €8,000, fixed fee, known up front">
-      <p>If the build goes ahead, the start sprint is the first phase of the project. If it does not, you keep the prototype, the plan and the business case. A custom build after that starts from €15,000; what it will be exactly is on paper at the end of the week.</p>
-    </Callout>
-  </section>
+  <HsCase
+    id="example"
+    snap={false}
+    kicker="Example"
+    title="From question to | working prototype | in six days"
+    lede="Kwakkel BV wanted to see whether the manual admin work could go, and did not want to take a report's word for it. After six days a prototype was running on their own administration, with the business case on a single page."
+    stats={[{ value: 6, label: 'days from question to working prototype' }]}
+    close="Whatever the system is unsure about, it puts to a staff member. Kwakkel keeps the prototype, the plan and the business case, and decides when the build starts."
+    link={{ label: 'Read the case', href: '/en/cases/kwakkel' }}
+    photo={{ src: '/hs/photos/cover-office.webp', w: 1800, h: 1200, pos: '55% 50%' }}
+  />
 
-  <StandardBand lang="en" id="standard" class="mb-16" />
+  <HsSection title="And *after* that">
+    <HsCards
+      columns={2}
+      items={[
+        { icon: 'check', title: 'If the build goes ahead', text: `Then the start sprint is phase 1. We build in two-week sprints, from ${SITE_EN.build.from}, with a demo after every sprint. After delivery we keep maintaining and developing the system.`, href: '/en/how-we-work', more: 'How we work' },
+        { icon: 'close', title: 'If the business case does not add up', text: 'Then we do not build. You keep the prototype or the plan and the business case. An honest decision after six days saves you a project nobody uses.', href: '/en/business-case', more: 'Cost and return up front' },
+      ]}
+    />
+  </HsSection>
 
-  <Faq items={faq} title="Frequently asked questions" />
-</SubpageLayout>
+  <HsSection tone="paper" title="Is this *for you*?">
+    <HsFit
+      yes={{ title: 'Yes, if you', items: ['have a process, system or idea that costs money or holds back growth', 'have someone who can decide on the build', 'can free up a few hours of your own people over six days'] }}
+      no={{ title: 'Not yet, if you', items: ['first want to know where AI pays off in your organisation: start with [cost and return up front](/en/business-case)', 'mainly want your team to learn to work with AI: see [AI training for your team](/en/training)'] }}
+    />
+  </HsSection>
+
+  <HsSection title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsContact title="Plan your start sprint" lede={`Tell us what you want to build. You hear from us within ${SITE_EN.reply}, usually with a proposal for your start sprint.`} />
+</HsLayout>

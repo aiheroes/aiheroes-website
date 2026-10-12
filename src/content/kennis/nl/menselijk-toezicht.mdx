@@ -1,0 +1,85 @@
+---
+lang: nl
+slug: menselijk-toezicht
+plan: K7
+kind: artikel
+group: compliance
+title: "Menselijk toezicht en logging: wat de AI Act vraagt en hoe je het *bouwt*"
+seoTitle: "Menselijk toezicht en logging in AI-systemen: wat de AI Act vraagt en hoe je het bouwt"
+description: "Wat menselijk toezicht en logging onder de AI Act betekenen, wanneer ze verplicht zijn, welke ontwerppatronen werken en hoe lang je logs bewaart. Met de AI-stem van Medux als voorbeeld."
+answer: "Bij hoog-risico-AI verplicht de AI Act dat mensen het systeem kunnen begrijpen, bewaken en zo nodig ingrijpen of een uitkomst terzijde schuiven, en dat het systeem automatisch vastlegt wat het doet. Voor de toepassingen uit bijlage III geldt dat vanaf 2 december 2027. Ook buiten hoog risico is het verstandig: het maakt fouten zichtbaar en houdt de verantwoordelijkheid bij mensen."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+pillar:
+  label: "Naar compliance en security"
+  href: "/nl/compliance"
+  text: "Bouw je een AI-toepassing die beslissingen voorbereidt? Bij elke bouw zitten toezicht en logging vanaf de tekentafel in het ontwerp. Begin met een [startsprint](/nl/startsprint)."
+related: [ai-act, ai-en-avg, ai-security]
+faq:
+  - q: "Is menselijk toezicht altijd verplicht?"
+    a: "Wettelijk alleen bij hoog-risico-AI. Voor de toepassingen uit bijlage III, zoals AI in werving of kredietbeoordeling, geldt dat vanaf 2 december 2027. Voor andere toepassingen is het een ontwerpkeuze, en vaak een verstandige."
+  - q: "Wat moet je loggen bij een AI-systeem?"
+    a: "In ieder geval wanneer het systeem draaide, op welke invoer, wat de uitkomst was en wie die controleerde of verwierp. Bij hoog-risico-AI moet het systeem dat automatisch kunnen vastleggen."
+  - q: "Hoe lang bewaar je logs?"
+    a: "Bij hoog-risico-AI moeten gebruiksverantwoordelijken de automatisch gemaakte logs minstens zes maanden bewaren, tenzij andere wetgeving iets anders vraagt. Bevatten de logs persoonsgegevens, dan bewaar je ze ook niet langer dan nodig volgens de AVG."
+  - q: "Betekent menselijk toezicht dat iemand alles moet controleren?"
+    a: "Nee. Het betekent dat een mens het systeem kan volgen en kan ingrijpen. Hoe je dat inricht, hangt af van het risico: van een steekproef bij laag risico tot een verplichte goedkeuring bij belangrijke besluiten."
+  - q: "Wie is verantwoordelijk als de AI een fout maakt?"
+    a: "De organisatie die het systeem inzet, en binnen die organisatie de mensen aan wie het toezicht is opgedragen. De AI Act vraagt dat zij de bevoegdheid, kennis en tijd hebben om dat toezicht echt uit te oefenen."
+---
+
+## Wat vraagt de wet?
+
+De [AI Act](/nl/kennis/ai-act) stelt bij hoog-risico-AI twee eisen die je in het ontwerp van een systeem inbouwt:
+
+- **Menselijk toezicht (artikel 14).** Het systeem moet zo gemaakt zijn dat mensen het kunnen begrijpen, bewaken en zo nodig ingrijpen. Ze moeten een uitkomst kunnen negeren of terugdraaien, en het systeem kunnen stoppen. Organisaties die het systeem gebruiken, wijzen daarvoor mensen aan met de kennis, de bevoegdheid en de tijd om dat te doen (artikel 26).
+- **Logging (artikel 12).** Het systeem moet automatisch vastleggen wat het doet, zodat je achteraf kunt nagaan wat er gebeurde. Gebruiksverantwoordelijken bewaren die logs minstens zes maanden.
+
+Voor de hoog-risicotoepassingen uit bijlage III gelden deze eisen vanaf 2 december 2027; voor AI in gereguleerde producten vanaf 2 augustus 2028. Die data zijn in 2026 vastgelegd met de Digital Omnibus. We controleren ze elk kwartaal.
+
+## Wat dat in een systeem betekent
+
+Menselijk toezicht is een ontwerpkeuze. Deze patronen gebruiken we het vaakst:
+
+1. **Een mens keurt goed.** Het systeem maakt een voorstel, een medewerker verstuurt of besluit. Geschikt voor alles wat naar buiten gaat of gevolgen heeft voor een persoon.
+2. **Doorschakelen bij twijfel of urgentie.** Het systeem handelt standaardgevallen af en geeft lastige, dringende of gevoelige gevallen direct door aan een medewerker.
+3. **Een drempel voor zekerheid.** Is het systeem minder zeker dan een ingestelde grens, dan gaat het geval naar een mens. De drempel stel je bij op basis van de logs.
+4. **Een noodstop.** Eén knop die de automatische verwerking stillegt, terwijl het handmatige werk doorgaat.
+5. **Uitleg bij een uitkomst.** Het systeem laat zien waarop een uitkomst gebaseerd is, zodat de mens die controleert kan zien of het klopt.
+
+## Wat je logt en hoe lang
+
+Een goede log beantwoordt achteraf vier vragen:
+
+| Vraag | Wat je vastlegt |
+|---|---|
+| Wat ging erin? | De invoer, of een verwijzing ernaar |
+| Wat kwam eruit? | De uitkomst en, waar mogelijk, de zekerheid of de bronnen |
+| Wat gebeurde ermee? | Goedgekeurd, aangepast, doorgeschakeld of verworpen, en door wie |
+| Wanneer en met welke versie? | Tijdstip, versie van het systeem en van het model |
+
+Bij hoog-risico-AI bewaar je de logs minstens zes maanden. Bevatten ze persoonsgegevens, dan geldt ook de AVG: niet langer dan nodig, en goed beveiligd. Lees meer in [AI en de AVG](/nl/kennis/ai-en-avg).
+
+## Voorbeeld uit de praktijk: de AI-stem van Medux
+
+Voor Medux bouwden we een AI-stem die telefoongesprekken voert: opnemen, afspraken inplannen en vragen beantwoorden. De cijfers: 4.000 gesprekken per maand, waarvan 80% door de AI afgehandeld. Lastige of dringende vragen gaan direct naar een medewerker.
+
+Zo ziet menselijk toezicht er in de praktijk uit: de AI voor het standaardwerk, een mens waar het ertoe doet, en elk gesprek uitgeschreven voor kwaliteit en controle. Lees [de case](/nl/cases/medux).
+
+## Achteraf inbouwen of vanaf het begin
+
+Toezicht en logging achteraf toevoegen is duur. Je moet beslismomenten zoeken in een systeem dat er niet op ontworpen is, en logs reconstrueren die er niet zijn. Wie het vanaf het begin meeneemt, bouwt het als onderdeel van de toepassing, en kan het later bijstellen op basis van wat de logs laten zien.
+
+## Wat AI Heroes hier doet
+
+<div class="hs-note">
+
+Bij elke bouw bepalen we in de startsprint de risicoklasse en de beslismomenten. Doorschakelen naar een mens, logging met vaste bewaartermijnen en een noodstop zitten vanaf de eerste versie in het systeem. Dat is wat we bedoelen met **compliance vanaf de tekentafel**.
+
+</div>
+
+## Bronnen
+
+- [AI Act, Verordening (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), artikelen 12, 14 en 26, EUR-Lex
+- [Digital Omnibus on AI, Verordening (EU) 2026/1744](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601744), EUR-Lex

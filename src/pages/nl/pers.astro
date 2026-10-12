@@ -1,13 +1,201 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PressIsland from '../../components/islands/PressIsland';
+// P14 Voor de pers (docs/relaunch/pages/P14-pers.md): the press contact first (Jan Brusse), the
+// boilerplate in three lengths (same as public/llms.txt and the company profile), De AI Storm, the
+// brand with the colour names of the deck template, and a new press kit (01-besluiten §14). The AI
+// Salon press release stays off the site until the quotes are approved.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import HsLogo from '../../components/hs/HsLogo.astro';
+import { SITE } from '../../data/site';
+import { FOUNDERS, FOUNDER_ORDER } from '../../data/team';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Over ons', href: '/nl/over-ons' }];
+const press = FOUNDERS['jan-brusse'];
+const a = SITE.address;
+
+const BOILER = [
+  { label: 'In één zin', text: 'AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, vanuit Groningen.' },
+  { label: 'In één alinea', text: 'AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Vanuit Groningen, voor heel Europa.' },
+  { label: 'Langer', text: 'AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Klanten komen binnen met een nieuwe AI-toepassing, met oude software die vervangen moet worden of met AI die lokaal moet draaien. De eerste stap is altijd de startsprint: zes dagen, vaste prijs, vanaf €8.000, met een werkend prototype of bouwplan en de business case op één A4. Het merk AI Heroes bestaat sinds 2019. Sindsdien hielp het meer dan 50 organisaties en trainde het meer dan 1.000 professionals. Eind 2025 namen Frans Hoorn, David Homan en Jan Brusse het merk en de klantrelaties over. AI Heroes B.V. is gevestigd aan de Aarhusweg in Groningen en organiseert daar de AI Salon Groningen. Van ambitie tot implementatie.' },
+];
+const FACTS = [
+  ['Statutaire naam', SITE.legalName],
+  ['Merk sinds', '2019; huidige team sinds eind 2025'],
+  ['Adres', `${a.street}, ${a.postcode} ${a.city}`],
+  ['KvK', SITE.kvk],
+  ['Btw', SITE.vat],
+  ['Oprichters', 'Frans Hoorn, David Homan, Jan Brusse'],
+];
+const COLORS = [
+  { name: 'Rood', hex: '#D9534F', use: 'Accent en actie' },
+  { name: 'Blauw', hex: '#2563EB', use: 'Accent en uitleg' },
+  { name: 'Donker', hex: '#1C1917', use: 'Tekst en donkere vlakken' },
+  { name: 'Licht', hex: '#FDFCF8', use: 'Achtergronden en tekst op kleur' },
+];
+const LOGO_FILES = [
+  { label: 'Woordmerk, kleur (SVG)', href: '/Brand_Package/Logo/SVG/AIHeroes_Logo_FullColor_Transparent.svg' },
+  { label: 'Woordmerk, zwart (SVG)', href: '/Brand_Package/Logo/SVG/AIHeroes_Logo_Black_Transparent.svg' },
+  { label: 'Woordmerk, wit (SVG)', href: '/Brand_Package/Logo/SVG/AIHeroes_Logo_White_Transparent.svg' },
+  { label: 'Beeldmerk, kleur (SVG)', href: '/Brand_Package/Icon/SVG/AIHeroes_Icon_FullColor_Transparent.svg' },
+];
 ---
 
-<BaseLayout
-  lang="nl"
-  title="Pers & Media"
-  description="AI Heroes pers & media: huisstijl, logo, merkkleuren en richtlijnen. Brand assets en perscontact voor media."
-  noChrome
+<HsLayout
+  title="Voor de pers"
+  seoTitle="Pers en media: AI Heroes"
+  description={`AI Heroes voor de pers: perscontact ${press.name}, de bedrijfsbeschrijving in drie lengtes, kerngegevens, logo's, kleuren en het perspakket.`}
+  crumbs={crumbs}
 >
-  <PressIsland lang="nl" client:load />
-</BaseLayout>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="Voor de pers"
+    title="Voor de *pers*"
+    lede={`Perscontact is ${press.name}, mede-oprichter. Bel ${SITE.phone} of mail ${SITE.email}. Hieronder staan de bedrijfsbeschrijving, de kerngegevens en het perspakket.`}
+    cta={{ label: 'Mail het perscontact', href: `mailto:${SITE.email}?subject=${encodeURIComponent('Persvraag')}` }}
+    secondary={{ label: 'Download het perspakket', href: '/pers/ai-heroes-perspakket.zip' }}
+  />
+
+  <HsSection title="AI Heroes in het *kort*" lede="Letterlijk over te nemen. Kies de lengte die past.">
+    <div class="press-boiler">
+      {BOILER.map((b, i) => (
+        <figure data-item style={`--i:${i}`}>
+          <figcaption>{b.label}</figcaption>
+          <blockquote><p>{zet(b.text)}</p></blockquote>
+          <button class="hs-link press-copy" type="button" data-copy={b.text}>Kopieer de tekst<HsIcon name="clipboard" /></button>
+        </figure>
+      ))}
+    </div>
+  </HsSection>
+
+  <HsSection tone="paper" title="Kerngegevens">
+    <dl class="press-facts" data-item>
+      {FACTS.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      <div><dt>Perscontact</dt><dd>{press.name}, <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, <a href={SITE.phoneHref}>{SITE.phone}</a></dd></div>
+      <div><dt>Website</dt><dd><a href="/">aiheroes.io</a></dd></div>
+    </dl>
+  </HsSection>
+
+  <HsSection title="Recent in het *nieuws*">
+    <a class="press-news" href="/nl/de-ai-storm" data-item>
+      <img src="/broadcasters/ai-storm-wit.png" alt="De AI Storm" width="1250" height="250" loading="lazy" />
+      <span class="press-news__date">Eerste uitzending 7 juni 2026 · RTL 7, RTL Z en Videoland</span>
+      <span class="press-news__title">AI Heroes in De AI Storm</span>
+      <span class="press-news__text">{zet('Jan Brusse vertelt over AI-adoptie in het mkb. Kijk de aflevering terug.')}</span>
+      <span class="hs-link">Bekijk de aflevering<HsIcon name="arrow-right" /></span>
+    </a>
+  </HsSection>
+
+  <HsSection tone="paper" title="Logo en *huisstijl*" lede="Ons logo leest als een lijndiagram: het kader verbindt AI met HEROES, van ambitie tot implementatie.">
+    <div class="press-brand">
+      <ul class="press-logos" data-item>
+        <li class="is-light"><HsLogo mark="wordmark" /></li>
+        <li class="on-dark"><HsLogo mark="wordmark" tone="white" /></li>
+        <li class="on-red"><HsLogo mark="wordmark" tone="white" /></li>
+        <li class="on-blue"><HsLogo mark="wordmark" tone="white" /></li>
+      </ul>
+      <ul class="press-files" data-item>
+        {LOGO_FILES.map((f) => <li><a class="hs-link" href={f.href} download>{f.label}<HsIcon name="download" /></a></li>)}
+      </ul>
+      <p class="hs-body press-rules" data-item>{zet('Houd rondom het logo minimaal de hoogte van het logo vrij. Roteer, vervorm of verkleur het logo niet. Minimale hoogte: 32 pixels digitaal, 10 millimeter in print.')}</p>
+      <ul class="press-colors" data-item>
+        {COLORS.map((c) => (
+          <li>
+            <span class="press-colors__swatch" style={`background:${c.hex}`}></span>
+            <span class="press-colors__name">{c.name}</span>
+            <span class="press-colors__hex">{c.hex}</span>
+            <span class="press-colors__use">{c.use}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="hs-body" data-item>Koppen in Inter Tight, tekst in Inter.</p>
+    </div>
+  </HsSection>
+
+  <HsSection tone="dark" title="Het *perspakket*" lede="Logo's en beeldmerk in SVG en PNG, portretten van de oprichters en de bedrijfsbeschrijving, in één bestand.">
+    <p class="hs-sec__foot" data-item>
+      <a class="hs-btn hs-btn--light" href="/pers/ai-heroes-perspakket.zip" download>Download het perspakket<HsIcon name="download" /></a>
+    </p>
+  </HsSection>
+
+  <HsSection title="De *mensen*" lede="Wil je iemand interviewen? Dit zijn de oprichters. Jan Brusse was te zien in De AI Storm.">
+    <ul class="press-people" data-shuffle>
+      {FOUNDER_ORDER.map((id, i) => {
+        const f = FOUNDERS[id];
+        return (
+          <li data-item style={`--i:${i}`}>
+            <a href={`/nl/over-ons/team#${f.id}`}>
+              <span class="press-people__photo"><img src={f.photo} alt="" width="300" height="400" loading="lazy" decoding="async" /></span>
+              <span class="press-people__name">{f.name}</span>
+              <span class="press-people__role">{f.role}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </HsSection>
+</HsLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => {
+      const label = b.firstChild?.textContent ?? '';
+      b.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(b.dataset.copy ?? '');
+          if (b.firstChild) b.firstChild.textContent = 'Gekopieerd';
+          setTimeout(() => { if (b.firstChild) b.firstChild.textContent = label; }, 2000);
+        } catch { /* clipboard blocked: the text stays selectable */ }
+      });
+    });
+  });
+</script>
+
+<style>
+  .press-boiler { display: grid; gap: 2rem; max-width: 52rem; }
+  .press-boiler figure { display: grid; gap: .75rem; padding-top: 1.25rem; box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
+  .press-boiler figcaption { font-size: .875rem; font-weight: 700; color: var(--red); }
+  .press-boiler blockquote { font-size: clamp(1.0625rem, 1rem + .25vw, 1.25rem); line-height: 1.55; }
+  .press-copy { justify-self: start; }
+
+  .press-facts { display: grid; max-width: 52rem; }
+  .press-facts div { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 1rem; padding: .875rem 0; box-shadow: inset 0 -1.5px 0 var(--rule-on-light); }
+  .press-facts dt { font-weight: 700; }
+  .press-facts dd { color: var(--body-on-light); }
+  .press-facts a { text-decoration: underline; text-underline-offset: .2em; }
+  @media (max-width: 559px) { .press-facts div { grid-template-columns: minmax(0, 1fr); gap: .25rem; } }
+
+  .press-news { display: grid; gap: .75rem; max-width: 46rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--dark); color: var(--light); text-decoration: none; }
+  .press-news img { height: 2.25rem; width: auto; margin-bottom: .75rem; }
+  .press-news__date { font-size: .875rem; font-weight: 600; color: var(--micro-on-dark); }
+  .press-news__title { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.5rem); line-height: 1.1; }
+  .press-news__text { color: var(--body-on-dark); }
+  .press-news:hover .press-news__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+
+  .press-brand { display: grid; gap: 2rem; }
+  .press-logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; max-width: 52rem; }
+  @media (min-width: 900px) { .press-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .press-logos li { display: grid; place-items: center; aspect-ratio: 3 / 2; padding: 1.5rem; }
+  .press-logos li.is-light { background: var(--light); box-shadow: inset 0 0 0 1.5px var(--rule-on-light); }
+  .press-logos :global(.hs-logo) { width: 84%; max-width: 13rem; }
+  .press-files { display: flex; flex-wrap: wrap; gap: .75rem 2rem; }
+  .press-rules { max-width: 52ch; color: var(--body-on-light); }
+  .press-colors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; max-width: 52rem; }
+  @media (min-width: 900px) { .press-colors { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .press-colors li { display: grid; gap: .25rem; align-content: start; min-width: 0; }
+  .press-colors__swatch { display: block; width: 100%; height: clamp(5rem, 8vw, 7.5rem); box-shadow: inset 0 0 0 1.5px var(--rule-on-light); margin-bottom: .5rem; }
+  .press-colors__name { font-weight: 700; }
+  .press-colors__hex { font-size: .875rem; font-variant-numeric: tabular-nums; color: var(--body-on-light); }
+  .press-colors__use { font-size: .875rem; color: var(--micro-on-light); }
+
+  .press-people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 2rem); max-width: 48rem; }
+  .press-people a { display: grid; gap: .5rem; text-decoration: none; }
+  .press-people__photo { aspect-ratio: 3 / 4; overflow: hidden; background: var(--dark); }
+  .press-people__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: contrast(1.05) url(#hs-duo-blue); }
+  .press-people__name { font-weight: 700; }
+  .press-people a:hover .press-people__name { text-decoration: underline; text-underline-offset: .25em; }
+  .press-people__role { font-size: .875rem; color: var(--body-on-light); }
+</style>

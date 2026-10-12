@@ -1,0 +1,121 @@
+---
+// P6 Hoe we werken (docs/relaunch/pages/P6-hoe-we-werken.md): the whole track in one view, the
+// standard with links (anchor #standaard stays for old links), the published prices and the
+// promises. The market story moved to Over ons (docs/relaunch/01-besluiten.md §9); the discount for
+// education and non-profit is only on the training pages (§6).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsFigures from '../../components/hs/HsFigures.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE } from '../../data/site';
+import { FOUNDERS, FOUNDER_ORDER } from '../../data/team';
+import { faqSchema } from '../../data/schema';
+import HsFaq from '../../components/hs/HsFaq.astro';
+
+const crumbs = [{ label: 'Home', href: '/' }];
+
+const track = [
+  { label: `Binnen ${SITE.sprint.startWithin}`, title: 'Startsprint', text: `Zes dagen, vaste prijs, vanaf ${SITE.sprint.price}. We werken met de eigenaar en de gebruikers aan een prototype of een plan. [Over de startsprint](/nl/startsprint).`, meta: 'Jij levert: de eigenaar en een paar gebruikers. Je krijgt: een prototype of bouwplan.' },
+  { label: 'Dag zes', title: 'Besluit', text: 'Op basis van de business case op één A4 besluit je: bouwen, bijsturen of stoppen. Sluit de business case niet, dan bouwen we niet. [Kosten en opbrengst vooraf](/nl/business-case).', meta: 'Je krijgt: kosten, opbrengst en terugverdientijd op papier.' },
+  { label: 'Week 2 tot 12', title: 'Bouwen in sprints', text: `Sprints van ${SITE.build.sprintWeeks} weken, met na elke sprint een demo. Compliance, logging en toezicht zitten in het ontwerp. Een bouw begint vanaf ${SITE.build.from}.`, meta: 'Jij levert: een aanspreekpunt en feedback na elke demo.' },
+  { label: 'Livegang', title: 'Overstap met een getraind team', text: 'Je team is getraind op het systeem zelf, op de werkvloer. Vervangen we iets, dan gaat het oude pas uit als het nieuwe draait.', meta: 'Je krijgt: een team dat er elke dag mee werkt.' },
+  { label: 'Daarna', title: 'Wij blijven beheren en doorontwikkelen', text: 'De software blijft bij ons in beheer. Alles is gedocumenteerd en je kunt van AI-model wisselen zonder opnieuw te bouwen.', meta: 'Je krijgt: software die blijft werken en meegroeit.' },
+];
+
+const standard = [
+  { icon: 'chart-line' as const, title: 'Business case vooraf', text: 'Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient.', href: '/nl/business-case', more: 'Kosten en opbrengst vooraf' },
+  { icon: 'protect' as const, title: 'Compliance vanaf de tekentafel', text: 'AI Act-classificatie, logging, menselijk toezicht en Europese hosting zitten in het ontwerp. Security-reviews horen bij het traject.', href: '/nl/compliance', more: 'Compliance en security' },
+  { icon: 'peoples' as const, title: 'Je mensen kunnen ermee werken', text: 'We trainen het team op het systeem zelf en begeleiden de invoering tot het in het dagelijkse werk zit. Zo voldoe je aan artikel 4 van de AI Act.', href: '/nl/training', more: 'AI-training voor je team' },
+  { icon: 'switch' as const, title: 'Niet vast aan één AI-leverancier', text: 'We bouwen modelonafhankelijk en documenteren alles. Komt er een beter of goedkoper model, dan wissel je zonder opnieuw te bouwen.' },
+];
+
+const promises = [
+  { icon: 'check' as const, title: 'Als AI niet de oplossing is, zeggen we dat', text: 'Soms is een eenvoudiger stuk software, een andere werkwijze of niets doen beter. Dan hoor je dat van ons.' },
+  { icon: 'chart-histogram' as const, title: 'Sluit de business case niet, dan bouwen we niet', text: 'We bouwen alleen wat zich terugverdient. Het besluit ligt bij jou, met de cijfers op tafel.' },
+  { icon: 'time' as const, title: `Binnen ${SITE.reply} een reactie`, text: 'Na je aanvraag hoor je van ons, meestal met een voorstel voor een startsprint.' },
+  { icon: 'calendar' as const, title: `Binnen ${SITE.sprint.startWithin} van start`, text: 'Na het eerste gesprek kan de startsprint binnen twee weken beginnen.' },
+];
+
+const people = FOUNDER_ORDER.map((id) => FOUNDERS[id]);
+
+const faq = [
+  { q: 'Hoe lang duurt een traject?', a: 'De startsprint duurt zes dagen. Een bouw duurt meestal twee tot twaalf weken, in sprints van twee weken. Daarna blijven wij beheren en doorontwikkelen.' },
+  { q: 'Wat kost het?', a: `De startsprint kost vanaf ${SITE.sprint.price}, vast, voor alle drie de ingangen. Een bouw begint vanaf ${SITE.build.from}. Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier. Meer in [wat kost AI-implementatie](/nl/wat-kost-ai-implementatie).` },
+  { q: 'Wie beheert de software na oplevering?', a: 'Wij. De software blijft bij ons in beheer en we ontwikkelen hem door. Alles is gedocumenteerd, en je zit niet vast aan één AI-leverancier.' },
+  { q: 'Kunnen onze eigen developers meebouwen?', a: 'Ja. We bouwen zelfstandig, versterken je team of verdelen het werk. Voor extra capaciteit in je eigen team zie [extra developers](/nl/extra-developers).' },
+];
+---
+
+<HsLayout
+  title="Hoe we werken"
+  seoTitle="Hoe we werken: van startsprint tot software die draait"
+  description={`Zo werkt AI Heroes: een startsprint van zes dagen vanaf ${SITE.sprint.price}, een besluit op basis van de business case, bouwen in sprints van twee weken en daarna beheer en doorontwikkeling. Business case, compliance en training inbegrepen.`}
+  crumbs={crumbs}
+  jsonLd={faqSchema(faq)}
+>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Hoe we werken"
+    title="Eerst zes dagen. | Dan een besluit. | Dan een *bouw*."
+    lede="Van ambitie tot implementatie. Zo verloopt elke samenwerking, van het eerste gesprek tot software die draait en blijft draaien."
+    secondary={{ label: 'Bekijk het traject', href: '#traject' }}
+    facts={[
+      { value: '6 dagen', label: 'startsprint, vaste prijs' },
+      { value: '2 weken', label: 'na het eerste gesprek van start' },
+      { value: SITE.reply, label: 'en je hoort van ons' },
+    ]}
+  />
+
+  <HsSection id="traject" title="Het traject in *één* beeld" lede="Per stap: wat er gebeurt, wat we van je nodig hebben en wat je krijgt.">
+    <HsSteps items={track} />
+  </HsSection>
+
+  <HsSection id="standaard" tone="blue" title="Bij elke bouw *inbegrepen*" lede="Vier dingen zitten in elke bouw. Je betaalt er niet apart voor en je hoeft er niet om te vragen.">
+    <HsCards columns={4} items={standard} />
+  </HsSection>
+
+  <HsSection title="Wat het *kost*" lede="Dit zijn de prijzen die we publiceren. Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier.">
+    <div class="hs-figs"><HsFigures
+      items={[
+        { value: SITE.sprint.price, label: 'startsprint van zes dagen, vaste prijs' },
+        { value: SITE.build.from, label: 'vanaf, voor een bouw' },
+        { value: SITE.training.from, label: 'vanaf, per dagdeel voor een losse training' },
+      ]}
+    /></div>
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/wat-kost-ai-implementatie">Wat kost AI-implementatie<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsSection tone="paper" title="Waar we ons aan *houden*">
+    <HsCards columns={2} items={promises} />
+  </HsSection>
+
+  <HsSection title="Wie je *spreekt*" lede="Drie founders, elk met een eigen deel van het traject.">
+    <HsCards
+      shuffle
+      items={people.map((p) => ({ meta: p.role, title: p.name, text: p.bio }))}
+    />
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/over-ons/team">Het team<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsSection tone="paper" title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsContact />
+</HsLayout>
+
+<style>
+  /* Links inside step text read as links (shared fix requested). */
+  :global(.hs-step__text a) { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+  :global(.hs-step__text a:hover) { text-decoration-color: currentColor; }
+  /* Figures with words ("6 dagen", "€8.000") need the label under the number on phones. */
+  @media (max-width: 559px) {
+    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
+    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
+  }
+</style>

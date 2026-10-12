@@ -1,0 +1,72 @@
+---
+// "Wat we vaak bouwen": every landing, grouped per entry, as compact link lists under a small colour
+// plane with the entry name. The lists come from the footer columns in src/data/nav.ts, so the
+// overview and the footer always name the same pages.
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import { navFor } from '../../data/nav';
+import { entriesFor, type Entry } from '../../data/site';
+import { langOf } from '../../data/ui';
+
+const lang = langOf(Astro.url);
+const ENTRIES = entriesFor(lang);
+const columns = navFor(lang).footer.columns;
+const keys = Object.keys(ENTRIES) as Entry[];
+const groups = keys.map((k) => {
+  const col = columns.find((c) => c.href === ENTRIES[k].href);
+  return { key: k, title: ENTRIES[k].title, href: ENTRIES[k].href, accent: ENTRIES[k].accent, links: col?.links ?? [] };
+});
+---
+
+<div class="hs-lindex">
+  {groups.map((g, i) => (
+    <section class="hs-lindex__group" data-item style={`--i:${i}`} aria-labelledby={`lindex-${g.key}`}>
+      <a class={`hs-lindex__head on-${g.accent}`} href={g.href}>
+        <h3 id={`lindex-${g.key}`}>{zet(g.title, { display: true, cap: 14 })}</h3>
+        <HsIcon name="arrow-up-right" />
+      </a>
+      <ul>
+        {g.links.map((l) => (
+          <li>
+            <a href={l.href}>
+              <span>{zet(l.label, { display: true, cap: 26 })}</span>
+              <HsIcon name="arrow-right" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>
+
+<style>
+  .hs-lindex { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.5rem clamp(1.5rem, 3vw, 3rem); }
+  @media (min-width: 900px) { .hs-lindex { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .hs-lindex__group { display: grid; align-content: start; }
+  .hs-lindex__head {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 7.5rem;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+  }
+  .hs-lindex__head h3 { font-weight: 700; letter-spacing: -0.02em; font-size: clamp(1.375rem, 1.1rem + .8vw, 2rem); line-height: 1.05; max-width: 12ch; }
+  .hs-lindex__head :global(.hs-icon) { position: absolute; top: 1.25rem; right: 1.25rem; width: 1.75rem; height: 1.75rem; transition: transform .3s var(--ease); }
+  .hs-lindex__head:hover :global(.hs-icon) { transform: translate(.25rem, -.25rem); }
+  .hs-lindex ul { display: grid; }
+  .hs-lindex li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: .875rem 0;
+    box-shadow: inset 0 -1.5px 0 var(--rule-on-light);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    text-decoration: none;
+  }
+  .hs-lindex li a :global(.hs-icon) { width: 1.125rem; height: 1.125rem; flex: none; color: var(--micro-on-light); transition: transform .25s var(--ease), color .15s; }
+  .hs-lindex li a:hover span { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; }
+  .hs-lindex li a:hover :global(.hs-icon) { transform: translateX(.25rem); color: var(--dark); }
+</style>

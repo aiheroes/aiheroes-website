@@ -1,0 +1,26 @@
+---
+// Duotone recipe "C2 · drieklank licht" (aiheroes-hub PhotoPane, aiheroes-present runtime):
+// luminance mapped onto dark accent → accent → cream, with a gamma lift for a light mid-register.
+const DUO = {
+  red: { r: '0.42 0.851 0.992', g: '0.19 0.325 0.988', b: '0.18 0.310 0.973' },
+  blue: { r: '0.13 0.145 0.992', g: '0.24 0.388 0.988', b: '0.51 0.922 0.973' },
+};
+---
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  {Object.entries(DUO).map(([k, t]) => (
+    <filter id={`hs-duo-${k}`} color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncR type="gamma" amplitude="1" exponent="0.8" offset="0" />
+        <feFuncG type="gamma" amplitude="1" exponent="0.8" offset="0" />
+        <feFuncB type="gamma" amplitude="1" exponent="0.8" offset="0" />
+      </feComponentTransfer>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues={t.r} />
+        <feFuncG type="table" tableValues={t.g} />
+        <feFuncB type="table" tableValues={t.b} />
+      </feComponentTransfer>
+    </filter>
+  ))}
+</svg>

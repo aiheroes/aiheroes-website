@@ -1,16 +1,34 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import HomeIsland from '../components/islands/HomeIsland';
+// P1 Home (docs/relaunch/pages/P1-home.md): the approved house-style homepage, now on "/".
+// Medux is not named here (docs/relaunch/01-besluiten.md §7); HsCase shows it anonymously.
+import HsLayout from '../layouts/HsLayout.astro';
+import { CONTENT } from '../data/content';
 import { PROFESSIONAL_SERVICE_SCHEMA, WEBSITE_SCHEMA } from '../data/schema';
+import HsCover from '../components/hs/HsCover.astro';
+import HsEntries from '../components/hs/HsEntries.astro';
+import HsQuotes from '../components/hs/HsQuotes.astro';
+import HsStandard from '../components/hs/HsStandard.astro';
+import HsCase from '../components/hs/HsCase.astro';
+import HsPlace from '../components/hs/HsPlace.astro';
+import HsStatement from '../components/hs/HsStatement.astro';
+import HsContact from '../components/hs/HsContact.astro';
+
+const c = CONTENT.nl;
 ---
 
-<BaseLayout
+<HsLayout
   lang="nl"
   title="AI Heroes"
   seoTitle="AI laten bouwen die je team elke dag gebruikt"
-  description="AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Business case, compliance en training inbegrepen. Vanuit Groningen, voor heel Europa."
+  description="AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt. Begin met een startsprint: zes dagen, vanaf €8.000, een werkend prototype of bouwplan. Business case, compliance en training inbegrepen. Vanuit Groningen."
   jsonLd={[PROFESSIONAL_SERVICE_SCHEMA, WEBSITE_SCHEMA]}
-  noChrome
 >
-  <HomeIsland lang="nl" client:load />
-</BaseLayout>
+  <HsCover hero={c.hero} approach={c.approach} ctaHref="/nl/startsprint" />
+  <HsEntries />
+  <HsQuotes proof={c.socialProof} />
+  <HsStandard standard={c.standard} />
+  <HsCase />
+  <HsPlace team={c.team} />
+  <HsStatement approach={c.approach} />
+  <HsContact />
+</HsLayout>

@@ -1,0 +1,24 @@
+---
+// Questions as <details>; the first words of each answer answer the question. The page passes the
+// same items to faqSchema() for the FAQPage JSON-LD. Answers may hold [links](href).
+import HsIcon from './HsIcon.astro';
+import { rich, zet } from './hs';
+import type { FaqItem } from '../../data/schema';
+
+interface Props {
+  items: FaqItem[];
+  idPrefix?: string;
+}
+const { items, idPrefix = 'faq' } = Astro.props;
+---
+
+<div class="hs-faq">
+  {items.map((f, i) => (
+    <details id={`${idPrefix}-${i + 1}`} data-item style={`--i:${i}`}>
+      <summary><span>{zet(f.q, { display: true, cap: 30 })}</span><HsIcon name="plus" /></summary>
+      <div class="hs-faq__a">
+        {f.a.split(/\n\n+/).map((para) => <p set:html={rich(para)} />)}
+      </div>
+    </details>
+  ))}
+</div>

@@ -1,0 +1,22 @@
+---
+// "Is dit iets voor jou?": two lists, a fit and a better first step elsewhere.
+import HsIcon from './HsIcon.astro';
+import { rich, zet } from './hs';
+
+interface Props {
+  yes: { title: string; items: string[] };
+  no: { title: string; items: string[] };
+}
+const { yes, no } = Astro.props;
+---
+
+<div class="hs-fit">
+  <div class="hs-fit__yes" data-item>
+    <h3>{zet(yes.title, { display: true })}</h3>
+    <ul>{yes.items.map((t) => <li><HsIcon name="check" /><p set:html={rich(t)} /></li>)}</ul>
+  </div>
+  <div class="hs-fit__no" data-item style="--i:1">
+    <h3>{zet(no.title, { display: true })}</h3>
+    <ul>{no.items.map((t) => <li><HsIcon name="minus" /><p set:html={rich(t)} /></li>)}</ul>
+  </div>
+</div>

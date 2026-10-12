@@ -1,0 +1,69 @@
+---
+lang: en
+slug: legacy-software
+plan: L11
+group: kern
+entry: vervangen
+title: Legacy software
+seoTitle: Replace legacy software without a big bang
+description: "An old custom system or a platform that no longer keeps up, rebuilt alongside the old one and moved over in phases. A six-day start sprint with a migration plan, from €8,000."
+question: "Your system dates from *2011* | and nobody dares to touch it"
+lede: "AI Heroes rebuilds your legacy system with today's know-how, alongside the old one, and switches the old one off only when the new one runs. The same goes for a platform that no longer keeps up. The first step is a six-day start sprint, from €8,000."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+photo:
+  src: /hs/photos/cover-legacy.webp
+  alt: An old beige computer on an office desk
+  w: 1800
+  h: 1800
+  pos: "40% 55%"
+build:
+  title: "What we *do*"
+  items:
+    - icon: search
+      title: Work out what the old system does
+      text: From the code and the data, including the things nobody remembers.
+    - icon: computer
+      title: Build the new system
+      text: With the connections the old one never had, and room to grow.
+    - icon: data-server
+      title: Move data over in parts
+      text: Every step checked, so nothing gets lost.
+    - icon: refresh
+      title: No big bang
+      text: The old system keeps running until the new one demonstrably works.
+sprint:
+  text: "In the start sprint we work out what the old system does and what it is tied to. From that follow the architecture of the new system and a phased migration plan."
+  outcome: "An inventory of the old system, the architecture of the new one, a phased migration plan and the business case."
+cases: []
+standardExtra: "What matters most here: everything is documented. Never again a system nobody understands."
+faq:
+  - q: What if nobody knows what the old system does any more?
+    a: "We work that out in the start sprint, from the code and the data. After that, what the system does is written down."
+  - q: Does everything have to move over at once?
+    a: "No. We switch in phases, and the old system keeps running until the new one works."
+  - q: What if the old supplier does not cooperate?
+    a: "Then we work with what there is: the data, the exports and the system itself. In the start sprint you see what that means for the schedule."
+  - q: How long does it take?
+    a: "The start sprint takes six days. After that we build in phases, usually two to twelve weeks."
+  - q: What does it cost?
+    a: "The start sprint costs from €8,000. The costs per phase are then in the business case."
+related:
+  - label: Connect AI to your systems
+    href: /en/ai-integration
+  - label: Replace a SaaS package
+    href: /en/replace-saas
+  - label: Replace Excel
+    href: /en/replace-excel
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsSteps from '../../../components/hs/HsSteps.astro';
+
+<HsSection tone="dark" title="Switching over without | everything grinding to a *halt*" lede="The risk of replacing is in the switch. So we always do these three things.">
+  <HsSteps ordered={false} items={[
+    { label: 'First', title: 'Connections first', text: 'We first connect the new system to what stays: your ERP, CRM, accounting or web shop.' },
+    { label: 'Then', title: 'Data in parts, with checks', text: 'We move your data over in parts and check every step, so nothing gets lost.' },
+    { label: 'Only when it runs', title: 'The old one stays on', text: 'The old system keeps running until the new one demonstrably works. Only then do you switch it off.' },
+  ]} />
+</HsSection>

@@ -1,0 +1,121 @@
+---
+// P3 Nieuwe AI-toepassing (docs/relaunch/pages/P3-nieuwe-ai-toepassing.md): entry "nieuw", the hub
+// of landings L01–L08. Medux may be named here (docs/relaunch/01-besluiten.md §7).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/nl/wat-we-bouwen' }];
+
+const kinds = [
+  { icon: 'headset' as const, title: 'AI-klantenservice', href: '/nl/ai-klantenservice', text: 'Een AI-stem of chat die opneemt, afspraken inplant en vragen beantwoordt, met doorschakeling naar een medewerker.' },
+  { icon: 'robot' as const, title: 'AI-agents en workflows', href: '/nl/ai-agents', text: 'Agents die terugkerend werk zelf afhandelen: aanvragen verwerken, gegevens overzetten, opvolgen.' },
+  { icon: 'file-text' as const, title: 'Administratie en documenten', href: '/nl/administratie-automatiseren', text: 'Facturen, orders, aanvragen en formulieren automatisch verwerkt, met een medewerker bij twijfel.' },
+  { icon: 'book' as const, title: 'Company wiki', href: '/nl/company-wiki', text: 'Een kennisassistent die antwoord geeft uit je eigen documenten, met de bron erbij.' },
+  { icon: 'analysis' as const, title: 'Digital twin', href: '/nl/digital-twin', text: 'Een digitale kopie van je bedrijf waar je vragen aan stelt en scenario’s mee doorrekent.' },
+  { icon: 'link' as const, title: 'Koppelen aan je systemen', href: '/nl/ai-integratie', text: 'AI in je ERP, CRM, Microsoft 365, webshop of marktplaats, zonder dat je team van systeem wisselt.' },
+  { icon: 'code' as const, title: 'Extra developers', href: '/nl/extra-developers', text: 'Een tech lead met één tot vijf developers die in je eigen team meebouwen.' },
+  { icon: 'computer' as const, title: 'Maatwerksoftware', href: '/nl/maatwerk-software', text: 'Interne tools, klantportalen en webapplicaties, met of zonder AI.' },
+].map((k) => ({ ...k, more: 'Lees meer' }));
+
+const faq = [
+  { q: 'Wat kost een nieuwe AI-toepassing?', a: `De startsprint kost vanaf ${SITE.sprint.price}. Een bouw begint vanaf ${SITE.build.from} en loopt bij grotere systemen op tot ruim €100.000. Na de startsprint weet je het bedrag voor jouw situatie. Meer in [wat kost AI-implementatie](/nl/wat-kost-ai-implementatie).` },
+  { q: 'Hoe snel staat er iets?', a: 'De startsprint kan binnen twee weken beginnen en na zes dagen staat er een werkend prototype. Een bouw duurt meestal twee tot twaalf weken.' },
+  { q: 'Bouwen jullie ook software zonder AI?', a: 'Ja. AI zetten we in waar het waarde heeft. De webwinkel van [INQ22](/nl/cases/inq22) bevat zelf geen AI en is wel met AI gebouwd.' },
+  { q: 'Hoe zit het met de AI Act?', a: 'In de startsprint bepalen we in welke risicoklasse je toepassing valt. Logging, menselijk toezicht en transparantie bouwen we in. Meer bij [compliance en security](/nl/compliance).' },
+  { q: 'Wie beheert het na oplevering?', a: 'Wij. We blijven beheren en doorontwikkelen, en alles is gedocumenteerd. Je zit niet vast aan één AI-leverancier: het model is te wisselen zonder opnieuw te bouwen.' },
+  { q: 'Kan het ook op onze eigen servers?', a: 'Ja. Dat is een eigen ingang: [lokale AI](/nl/eigen-beheer).' },
+];
+---
+
+<HsLayout
+  title="Nieuwe AI-toepassing"
+  seoTitle="AI-toepassing laten bouwen: werkend prototype in zes dagen"
+  description={`AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt: klantenservice, agents, administratie, kennis en koppelingen. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Nieuwe AI-toepassing', path: '/nl/nieuwe-ai-toepassing', price: SITE.sprint.priceValue, serviceType: 'AI-toepassing laten bouwen', description: 'Van werkend prototype in zes dagen tot een AI-toepassing die je team elke dag gebruikt.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="Nieuwe AI-toepassing"
+    title="Kunnen jullie dit | voor ons bouwen? *Ja.*"
+    lede="Een assistent, een werkstroom of een tool die je nu mist. In zes dagen staat er een werkend prototype op je eigen data, daarna bouwen we door tot je team er elke dag mee werkt."
+    secondary={{ label: 'Wat we bouwen', href: '#wat-we-bouwen' }}
+    photo={{ src: '/hs/photos/cover-screen.webp', alt: 'Twee mensen werken samen aan één scherm, een van hen wijst iets aan', w: 1800, h: 1198, pos: '50% 50%' }}
+    facts={[
+      { value: '6 dagen', label: 'tot een werkend prototype' },
+      { value: SITE.sprint.price, label: 'de startsprint, vaste prijs' },
+      { value: SITE.build.from, label: 'vanaf, voor de bouw' },
+    ]}
+  />
+
+  <HsSection id="wat-we-bouwen" title="Wat we *bouwen*" lede="Dit vragen klanten ons het vaakst. Staat het jouwe er niet bij, dan zoeken we het in de startsprint uit." split>
+    <HsCards columns={4} items={kinds} />
+  </HsSection>
+
+  <HsCase
+    id="case"
+    snap={false}
+    kicker="Case"
+    title="4.000 gesprekken per maand, | 80% door AI"
+    lede="Medux heeft veel klanten die liever bellen dan online iets regelen. We bouwden een AI-stem die opneemt, afspraken inplant en vragen beantwoordt, ook buiten kantooruren."
+    close="Lastige of dringende vragen gaan direct naar een medewerker. De cijfers zijn door Medux gemeten."
+    link={{ label: 'Lees de case', href: '/nl/cases/medux' }}
+  />
+
+  <HsSection tone="paper" title="Meer van ons *werk*">
+    <HsCards
+      items={[
+        { meta: 'Case · e-commerce', title: 'IC Commerce', href: '/nl/cases/ic-commerce', more: 'Lees de case', text: 'Een eigen platform in plaats van WooCommerce, met een AI-mediapipeline voor productbeelden en een shop die producten toont vanuit de dichtstbijzijnde voorraadlocatie en het winkelmandje.' },
+        { meta: 'Case · administratie', title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Van vraag naar werkend prototype op de eigen administratie, met de business case erbij, in zes dagen.' },
+        { meta: 'Case · B2B-webwinkel', title: 'INQ22', href: '/nl/cases/inq22', more: 'Lees de case', text: 'Een webwinkel op maat voor een groothandel in tattoo-benodigdheden, gebouwd met AI als gereedschap.' },
+      ]}
+    />
+    <p class="hs-sec__foot"><a class="hs-link" href="/nl/cases">Alle cases<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsSection title="Van week één tot *in gebruik*" lede="Elke bouw volgt dezelfde lijn. Je weet vooraf wat het kost en ziet na elke sprint wat er staat.">
+    <HsSteps
+      items={[
+        { label: 'Zes dagen', title: 'Startsprint', text: `Een werkend prototype op je data en de business case op één A4. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
+        { label: 'Sprints van twee weken', title: 'Bouwen', text: `Na elke sprint een demo. Compliance, logging en toezicht zitten in het ontwerp. Vanaf ${SITE.build.from}.` },
+        { label: 'Livegang', title: 'In gebruik', text: 'Je team is getraind op het systeem zelf, op de werkvloer. Pas dan noemen we het af.' },
+        { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Alles is gedocumenteerd en je zit niet vast aan één AI-leverancier.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsStandardList extra="Hier telt vooral: je kunt van AI-model wisselen zonder opnieuw te bouwen." />
+
+  <HsSection title="Met je eigen *developers*" lede="Heb je zelf een ontwikkelteam? Dan spreken we vooraf af wie wat doet.">
+    <HsCards
+      items={[
+        { icon: 'computer', title: 'Wij bouwen het', text: 'We bouwen zelfstandig. Je team ziet na elke sprint wat er staat en denkt mee.' },
+        { icon: 'peoples', title: 'Wij versterken je team', text: 'Een tech lead en developers van ons werken mee in jouw team.', href: '/nl/extra-developers', more: 'Extra developers' },
+        { icon: 'switch', title: 'Samen', text: 'Wij bouwen de AI-onderdelen, jouw team de rest. Vooraf ligt vast wie wat beheert.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsOtherEntries current="nieuw" />
+
+  <HsContact entry="nieuw" title="Vertel wat je wilt bouwen" />
+</HsLayout>

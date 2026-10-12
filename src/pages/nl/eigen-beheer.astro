@@ -1,0 +1,123 @@
+---
+// P5 Lokale AI (docs/relaunch/pages/P5-eigen-beheer.md): entry "eigen-beheer", hub of
+// L12 and L13. No server price (docs/relaunch/01-besluiten.md §2); European providers may be named
+// as examples (§10); logos as "werken met ons" without claiming self-hosting there.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { SITE } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/nl/wat-we-bouwen' }];
+
+const faq = [
+  { q: 'Zijn Europese modellen goed genoeg?', a: 'Voor de meeste bedrijfstoepassingen wel: samenvatten, zoeken in documenten, klantvragen beantwoorden, formulieren verwerken. In de startsprint testen we het op jouw data en jouw vragen. Is een Europees model voor jouw toepassing niet goed genoeg, dan zeggen we dat.' },
+  { q: 'Wat kost een eigen server?', a: 'Dat hangt af van het aantal gebruikers en wat het model moet kunnen. In de startsprint zetten we de kosten van hardware, hosting en beheer in de business case, naast wat dezelfde toepassing in de cloud zou kosten.' },
+  { q: 'Waarom zou ik weg willen uit de Amerikaanse cloud?', a: 'De Amerikaanse CLOUD Act kan Amerikaanse bedrijven verplichten data te overhandigen, ook als die in Europa staat. Dat geldt ook voor diensten als ChatGPT, Azure OpenAI en AWS Bedrock. Voor veel organisaties is dat bij gevoelige data of in aanbestedingen een probleem.' },
+  { q: 'Kan ik alleen een plan krijgen?', a: 'Ja. De startsprint levert een hostingontwerp, een risicobeoordeling en de business case. Daarna besluit je of je verder gaat.' },
+  { q: 'Wie beheert het?', a: 'Wij blijven beheren en doorontwikkelen. Je eigen beheerders trainen we op de omgeving, zodat ze weten wat er draait.' },
+];
+
+const LOGOS = [
+  { name: 'UMCG', src: '/hs/logos-white/umcg.svg', h: 22 },
+  { name: 'Tweede Kamer', src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  { name: 'Envalior', src: '/hs/logos-white/envalior.svg', h: 34 },
+];
+---
+
+<HsLayout
+  title="Lokale AI"
+  seoTitle="AI op je eigen servers of Europees gehost"
+  description={`AI en software op je eigen servers of bij een Europese partij, met de AI Act in het ontwerp. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}: hostingontwerp, risicobeoordeling en business case.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Lokale AI', path: '/nl/eigen-beheer', price: SITE.sprint.priceValue, serviceType: 'AI op eigen servers en Europese hosting', description: 'AI en software op eigen servers of bij een Europese partij, met de AI Act in het ontwerp.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="Lokale AI"
+    title="Op onze eigen servers, | binnen Europa? *Ja.*"
+    lede="AI en software op je eigen servers of bij een Europese partij, gekoppeld aan je systemen en met de AI Act in het ontwerp. Wij doen het zelf ook: de assistent op deze site draait in Europa."
+    secondary={{ label: 'De drie vormen', href: '#vormen' }}
+    photo={{ src: '/hs/photos/cover-datacenter.webp', alt: 'Een lichte serverruimte in een datacenter', w: 1800, h: 1012, pos: '50% 55%' }}
+    facts={[
+      { value: '6 dagen', label: 'tot hostingontwerp en risicobeoordeling' },
+      { value: SITE.sprint.price, label: 'de startsprint, vaste prijs' },
+    ]}
+  />
+
+  <HsSection title="Waarom dit *speelt*" lede="Voor veel organisaties is de plek van de data een eis: in aanbestedingen, bij zorgdata of bij gevoelige klantgegevens." split>
+    <HsCards
+      items={[
+        { icon: 'earth', title: 'De CLOUD Act', text: 'Amerikaanse bedrijven kunnen verplicht worden data te overhandigen, ook als die in Europa staat. Dat geldt ook voor ChatGPT, Azure OpenAI en AWS Bedrock.' },
+        { icon: 'protect', title: 'Europese regels', text: 'De AVG en de AI Act vragen dat je weet waar je data staat, wie erbij kan en hoe een AI-systeem tot een uitkomst komt.' },
+        { icon: 'switch', title: 'Een keuze met de feiten op tafel', text: 'Lokale AI is een optie die we naast de cloud leggen. Jij kiest, met de kosten en risico’s van beide op één A4.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection id="vormen" tone="paper" title="Drie *vormen*">
+    <HsCards
+      items={[
+        { icon: 'server', title: 'Op je eigen hardware', text: 'Een taalmodel en je software op je eigen servers. Je beheerders trainen we op de omgeving.', href: '/nl/ai-op-eigen-servers', more: 'AI op eigen servers' },
+        { icon: 'cloud-storage', title: 'In de Europese cloud', text: 'Bij een Europese partij, met Europese modellen zoals die van Mistral of het open EuroLLM. We blijven modelonafhankelijk.', href: '/nl/ai-op-eigen-servers', more: 'Europese hosting' },
+        { icon: 'transfer', title: 'Overstappen', text: 'Van ChatGPT, Copilot of Azure OpenAI naar een Europees alternatief, zonder dat je team anders hoeft te werken.', href: '/nl/europees-alternatief-chatgpt', more: 'Europees alternatief voor ChatGPT' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection title="Is het *goed genoeg*?" lede="Voor de meeste bedrijfstoepassingen wel: samenvatten, zoeken in documenten, klantvragen beantwoorden, formulieren verwerken. In de startsprint testen we het op jouw data en jouw vragen.">
+    <p class="hs-lead" data-item>{zet('Is een Europees model voor jouw toepassing niet goed genoeg, dan zeggen we dat.', { display: true })}</p>
+  </HsSection>
+
+  <HsCase
+    id="zelf-gedaan"
+    snap={false}
+    photo={null}
+    kicker="Zelf gedaan"
+    title="Onze eigen AI-assistent, | gehost in Europa"
+    lede="De assistent op deze site beantwoordt vragen uit onze eigen pagina's, met de bron erbij. Hij draait op Europese infrastructuur, laat zien dat hij AI is en geeft je een mens als hij het niet weet."
+    stats={[]}
+    close="Het model is te wisselen, en elke nieuwe versie moet eerst een vaste testset halen."
+    link={{ label: 'Hoe de assistent werkt', href: '/nl/legal/ai-assistent' }}
+  />
+
+  <HsSection title="Organisaties waar we mee *werkten*">
+    <ul class="hs-logos hs-logos--light hs-logos--bare" data-item>
+      {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
+      <li><span class="hs-logos__text">050-IT</span></li>
+    </ul>
+  </HsSection>
+
+  <HsSection tone="paper" title="Van startsprint tot *beheer*">
+    <HsSteps
+      items={[
+        { label: 'Zes dagen', title: 'Startsprint', text: `Je omgeving in kaart, een hostingontwerp, een risicobeoordeling en de business case. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
+        { label: 'In fasen', title: 'Bouwen en migreren', text: `We bouwen of migreren in fasen, naast wat er nu draait. Bouw vanaf ${SITE.build.from}.` },
+        { label: 'Livegang', title: 'Beheerders getraind', text: 'Je eigen beheerders zijn getraind op de omgeving voordat die live gaat.' },
+        { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Alles is gedocumenteerd en je zit niet vast aan één AI-leverancier.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsStandardList extra="Hier telt vooral: de AI Act zit in het ontwerp. Meer bij [compliance en security](/nl/compliance)." />
+
+  <HsSection tone="paper" title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsOtherEntries current="eigen-beheer" />
+
+  <HsContact entry="eigen-beheer" title="Vertel waar het moet draaien" lede={`Welke toepassing, welke data en welke eisen? Binnen ${SITE.reply} hoor je van ons, meestal met een voorstel voor een startsprint.`} />
+</HsLayout>

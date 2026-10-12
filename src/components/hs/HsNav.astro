@@ -1,0 +1,93 @@
+---
+// Main menu. From 1100px the items with sub-pages open a full-width bar, one line high, under the
+// menu: a flat colour plane per item (red, blue, dark, as the entry planes) with the sub-pages next
+// to each other. Moving to another item keeps the bar open and wipes in the next colour
+// (hs-client initSubnav). Below 1100px the full-screen menu lists the sub-pages under each item.
+// Items and labels live in src/data/nav.ts.
+import HsIcon from './HsIcon.astro';
+import HsLogo from './HsLogo.astro';
+import { navFor } from '../../data/nav';
+import type { Lang } from '../../data/i18n';
+import { UI } from '../../data/ui';
+
+interface Props {
+  lang: Lang;
+  /** Current path, to mark the active item. */
+  path: string;
+  /** The other language's version of this page, or null when it has none yet. */
+  alternate: string | null;
+}
+const { lang, path, alternate } = Astro.props;
+const nav = navFor(lang);
+const t = UI[lang];
+const otherLang = lang === 'nl' ? 'en' : 'nl';
+const langHref = alternate ?? (lang === 'nl' ? '/en' : '/');
+const isCurrent = (href?: string) => !!href && (path === href || path.startsWith(`${href}/`));
+const itemActive = (subs?: { href: string }[], href?: string) => isCurrent(href) || !!subs?.some((s) => isCurrent(s.href));
+---
+
+<header class="hs-nav" data-subnav>
+  <a class="hs-nav__brand" href={nav.home} aria-label={t.homeLabel}>
+    <HsLogo mark="wordmark" tone="white" />
+  </a>
+  <nav class="hs-nav__links" aria-label={t.mainMenu}>
+    <ul class="hs-nav__list">
+      {nav.items.map((item) => (
+        <li class="hs-nav__item" data-key={item.subs ? item.key : undefined}>
+          {item.href ? (
+            <a
+              class:list={['hs-nav__top', { 'is-current': itemActive(item.subs, item.href) }]}
+              href={item.href}
+              aria-expanded={item.subs ? 'false' : undefined}
+              aria-controls={item.subs ? `hs-sub-${item.key}` : undefined}
+              aria-current={path === item.href ? 'page' : undefined}
+            >{item.label}</a>
+          ) : (
+            <button
+              class:list={['hs-nav__top', { 'is-current': itemActive(item.subs) }]}
+              type="button"
+              aria-expanded="false"
+              aria-controls={`hs-sub-${item.key}`}
+            >{item.label}</button>
+          )}
+          {item.subs && (
+            <div class={`hs-sub on-${item.accent}`} id={`hs-sub-${item.key}`} data-sub={item.key}>
+              <ul class="hs-sub__list">
+                {item.subs.map((s) => <li><a href={s.href} aria-current={path === s.href ? 'page' : undefined}>{s.label}</a></li>)}
+              </ul>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <div class="hs-nav__end">
+    <a class="hs-nav__lang" href={langHref} hreflang={otherLang} lang={otherLang} aria-label={nav.langName}>{nav.langLabel}</a>
+    <a class="hs-btn hs-btn--dark hs-btn--s hs-nav__cta" href={nav.cta.href}>{nav.cta.label}</a>
+    <button class="hs-nav__menu" type="button" aria-expanded="false" aria-controls="hs-menu">
+      <HsIcon name="menu" class="is-closed" />
+      <HsIcon name="close" class="is-open" />
+      <span class="hs-nav__menu-label"><span class="is-closed">{nav.menuLabel}</span><span class="is-open">{nav.closeLabel}</span></span>
+    </button>
+  </div>
+</header>
+
+<div class="hs-menu" id="hs-menu" hidden>
+  <ul>
+    {nav.items.map((item) => (
+      <li>
+        {item.href ? <a href={item.href}>{item.label}</a> : <span class="hs-menu__head">{item.label}</span>}
+        {item.subs && (
+          <ul class="hs-menu__subs">
+            {item.subs.filter((s) => s.href !== item.href).map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+  <a class="hs-btn hs-btn--light" href={nav.cta.href}>
+    {nav.cta.label}
+    <HsIcon name="arrow-right" />
+  </a>
+  <a class="hs-link" href={langHref} hreflang={otherLang} lang={otherLang}>{nav.langName}</a>
+</div>

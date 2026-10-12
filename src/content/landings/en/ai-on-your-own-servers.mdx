@@ -1,0 +1,78 @@
+---
+lang: en
+slug: ai-on-your-own-servers
+plan: L12
+group: kern
+entry: eigen-beheer
+title: AI on your own servers
+seoTitle: AI on your own servers or hosted in Europe
+description: "Language models on your own hardware or in the European cloud, connected to your systems and outside the US cloud. Our own assistant runs this way. A six-day start sprint, from €8,000."
+question: "Can it run on your *own* | servers? Yes."
+lede: "AI Heroes builds AI that stays in Europe: on your own hardware or with a European provider, connected to your systems. The first step is a six-day start sprint, from €8,000."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+photo:
+  src: /hs/photos/cover-datacenter.webp
+  alt: A bright server room in a data centre
+  w: 1800
+  h: 1012
+  pos: "50% 55%"
+build:
+  title: "What we *build*"
+  items:
+    - icon: server
+      title: Language models on your own hardware
+      text: In your own server room or data centre, with your administrators trained on the setup.
+    - icon: cloud-storage
+      title: Applications in the European cloud
+      text: With a European provider, using European models such as those from Mistral or the open EuroLLM.
+    - icon: transfer
+      title: Switching without your team noticing
+      text: From ChatGPT or Azure OpenAI to a European alternative, with the same way of working.
+    - icon: link
+      title: Connected to your systems
+      text: Your documents, ERP and CRM, with the permissions you already have.
+sprint:
+  text: "We make a hosting design: your own hardware, the European cloud or a mix. In six days a model runs in the chosen place with your own data."
+  outcome: "A hosting design, a working model in the chosen place, a risk assessment of what falls under US jurisdiction, and the business case: cloud versus your own hardware."
+cases: [eigen-stack]
+proofText: "It runs on European infrastructure. That is how we practise what we advise."
+standardExtra: "What matters most here: the hosting choice is part of compliance from the start."
+faq:
+  - q: Are European or open models good enough?
+    a: "For most business applications, yes. In the start sprint we test it on your data and your questions, and we say so if it falls short."
+  - q: What does your own hardware cost?
+    a: "That depends on the number of users and what the model needs to do. The trade-off between cloud and your own hardware is in the business case of the start sprint."
+  - q: Why is a European server at a US company not enough?
+    a: "Under the US CLOUD Act, a US company can be compelled to hand over data, even when that data is stored in Europe. A European provider without a US parent, or your own servers, do not carry that risk."
+  - q: Who manages it?
+    a: "We keep maintaining and developing it, documented and not tied to one AI vendor. We train your own administrators on the setup."
+  - q: Does this help with the AI Act?
+    a: "It helps: you know where your data is and who can reach it. You can read what else the AI Act asks in [the AI Act for organisations](/en/insights/ai-act)."
+related:
+  - label: European alternative to ChatGPT
+    href: /en/european-chatgpt-alternative
+  - label: Company wiki
+    href: /en/company-wiki
+  - label: Digital sovereignty session
+    href: /en/digital-sovereignty
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+
+<HsSection tone="paper" title="Three *routes*" lede="For some organisations, their own hardware is a requirement. For others it is a trade-off, which we make together in the start sprint.">
+  <HsCards items={[
+    { icon: 'server', title: 'Your own hardware', text: 'When data may not leave the building, or with heavy use. You keep full control.' },
+    { icon: 'cloud-storage', title: 'European cloud', text: 'A quick start without running your own servers, with a European provider.' },
+    { icon: 'connection', title: 'A mix', text: 'Sensitive parts with you, the rest in the European cloud.' },
+  ]} />
+</HsSection>
+
+<HsSection title="Working with *us*" lede="Organisations that have worked with AI Heroes include:">
+  <ul class="hs-logos hs-logos--light hs-logos--bare">
+    <li><img src="/hs/logos-white/umcg.svg" alt="UMCG" style="--h:1.375rem" loading="lazy" decoding="async" /></li>
+    <li><img src="/hs/logos-white/tweede-kamer.svg" alt="Tweede Kamer" style="--h:2.25rem" loading="lazy" decoding="async" /></li>
+    <li><img src="/hs/logos-white/envalior.svg" alt="Envalior" style="--h:2.125rem" loading="lazy" decoding="async" /></li>
+  </ul>
+</HsSection>

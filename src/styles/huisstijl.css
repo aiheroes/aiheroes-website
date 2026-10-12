@@ -1,0 +1,1024 @@
+/* Experiment: the homepage in the AI Heroes house style.
+   Source rules: aiheroes-hub/docs/posttaal.md and aiheroes-present/template/DESIGN.md
+   (four colours, Inter display + text, flat colour fields, blueprint grid, the square).
+   Everything is scoped under .hs and only loaded by /nl/experiment/huisstijl. */
+
+/* Inter 4.1 variable (rsms/inter, OFL). Its optical-size axis gives the display cut at large
+   sizes (the role Inter Tight plays in the decks), and unlike the Google Fonts and fontsource
+   builds it carries cv08, the capital I with serifs: "AI" must never read as "Al". */
+@font-face {
+  font-family: 'Inter HS';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter/InterVariable.woff2') format('woff2');
+}
+
+/* ---------- Tokens ---------- */
+
+.hs {
+  --red: #D9534F;
+  --blue: #2563EB;
+  --dark: #1C1917;
+  --light: #FDFCF8;
+
+  --body-on-light: rgba(28, 25, 23, .72);
+  --micro-on-light: rgba(28, 25, 23, .62);
+  --body-on-dark: rgba(253, 252, 248, .86);
+  --micro-on-dark: rgba(253, 252, 248, .55);
+  --rule-on-light: rgba(28, 25, 23, .16);
+  --rule-on-dark: rgba(253, 252, 248, .18);
+  --grid-hair: rgba(28, 25, 23, .09);
+  --panel-edge: rgba(28, 25, 23, .22);
+
+  --font: 'Inter HS', 'Inter', system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* The deck canvas is 16 modules wide; on the web one module is 1/16 of the viewport. */
+  --module: clamp(1.5rem, 6.25vw, 7.5rem);
+  --pad-x: max(1.25rem, var(--module), calc((100vw - 105rem) / 2));
+  --sec-y: max(4rem, calc(var(--module) * 1.5));
+  --nav-h: 4rem;
+  --focus: var(--dark);
+
+  font-family: var(--font);
+  font-feature-settings: 'cv08';
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  color: var(--dark);
+  background: var(--light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (min-width: 768px) {
+  .hs { --nav-h: 4.75rem; }
+}
+/* Logo sizes snap to this step so the frame of the wordmark is a whole number of device pixels
+   thick on every side (59.39 CSS px wide = a 1px frame; divided by the pixel ratio). */
+.hs { --logo-step: 59.39px; }
+@media (min-resolution: 1.25dppx) { .hs { --logo-step: 47.51px; } }
+@media (min-resolution: 1.5dppx) { .hs { --logo-step: 39.59px; } }
+@media (min-resolution: 1.75dppx) { .hs { --logo-step: 33.94px; } }
+@media (min-resolution: 2dppx) { .hs { --logo-step: 29.7px; } }
+@media (min-resolution: 2.5dppx) { .hs { --logo-step: 23.76px; } }
+@media (min-resolution: 3dppx) { .hs { --logo-step: 19.8px; } }
+
+/* Resets carry zero specificity so every component class wins over them. */
+:where(.hs) *, :where(.hs) *::before, :where(.hs) *::after { box-sizing: border-box; }
+:where(.hs) a { color: inherit; }
+:where(.hs) img { display: block; max-width: 100%; }
+:where(.hs) :is(ul, ol, dl, dd) { list-style: none; margin: 0; padding: 0; }
+:where(.hs) :is(p, figure, blockquote) { margin: 0; }
+:where(.hs) button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+.hs ::selection { background: var(--dark); color: var(--light); }
+.hs .on-dark ::selection, .hs .on-red ::selection, .hs .on-blue ::selection { background: var(--light); color: var(--dark); }
+.hs .on-dark, .hs .on-red, .hs .on-blue { --focus: var(--light); }
+.hs :focus-visible { outline: 2px solid var(--focus); outline-offset: .1875rem; }
+
+html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
+/* Above 1920px the page scales like a deck slide: by the smaller of width and height against a
+   1920 x 1080 canvas, never below 16px. Every length is in rem, so a 3840 x 2160 screen shows the
+   1920 layout at twice the size, while an ultrawide (3440 x 1440) scales by its height and keeps
+   the content in a centred measure with room on both sides. */
+@media (min-width: 1921px) {
+  html:has(.hs) { font-size: max(100%, min(calc(100vw / 120), calc(100vh / 67.5))); }
+}
+@media (min-width: 1024px) {
+  html:has(.hs) { scroll-snap-type: y proximity; scroll-padding-top: 4.75rem; }
+  .hs-snap { scroll-snap-align: start; }
+}
+
+.hs .on-red { background: var(--red); color: var(--light); }
+.hs .on-blue { background: var(--blue); color: var(--light); }
+.hs .on-dark { background: var(--dark); color: var(--light); }
+
+.hs .hs-wrap { padding-inline: var(--pad-x); }
+
+/* Blueprint grid: 1px hairlines on one module, only on light zones with little text. */
+.hs-grid {
+  background-color: var(--light);
+  background-image:
+    linear-gradient(to right, var(--grid-hair) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-hair) 1px, transparent 1px);
+  background-size: var(--module) var(--module);
+}
+@media (max-width: 767px) {
+  .hs-grid { background-size: calc(var(--module) * 2) calc(var(--module) * 2); }
+}
+
+/* ---------- Type: 800 only for the cover and section headings ---------- */
+
+:where(.hs h1, .hs h2, .hs h3, .hs .hs-display) {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.03;
+  text-wrap: balance;
+}
+.hs-d-l { font-size: clamp(min(2.25rem, 9.4vw), 0.8rem + 5vw, 7rem); line-height: 1.02; }
+/* Display minimums follow the screen below 390px, so the longest word group still fits 320px. */
+.hs-d-m { font-size: clamp(min(2.125rem, 8.6vw), 0.75rem + 4.4vw, 6rem); }
+.hs .hs-title {
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  font-size: clamp(1.375rem, 0.95rem + 1.2vw, 2.5rem);
+  line-height: 1.12;
+}
+.hs-body-l { font-size: clamp(1.125rem, 0.92rem + 0.7vw, 1.75rem); line-height: 1.4; font-weight: 450; }
+.hs-body { font-size: clamp(1rem, 0.94rem + 0.22vw, 1.1875rem); line-height: 1.55; }
+.hs-micro { font-size: 0.875rem; font-weight: 500; line-height: 1.45; }
+/* The punch takes its colour from the background (DESIGN.md, The Punch Colour Rule): red on
+   light, paper and dark, ink on a red or blue field. */
+.hs .punch { white-space: nowrap; color: var(--red); transition: color .4s var(--ease); }
+.hs :is(.on-red, .on-blue) .punch { color: var(--dark); }
+/* Line breaking. zet() (hs.ts) adds the Dutch rules: no line ends on an article, preposition or
+   conjunction, numbers stay with their unit, no word alone on the last line. On top of that,
+   paragraphs avoid short last lines and short blocks balance their lines. */
+.hs p, .hs blockquote, .hs dd, .hs dt, .hs li { text-wrap: pretty; }
+.hs :is(.hs-display, .hs-body-l, .hs-statement__lede, .hs-person__hint, .hs-footer__tagline, .hs-footer__cols a), .hs .hs-cover__subs p { text-wrap: balance; }
+.hs .num { font-variant-numeric: tabular-nums; }
+
+.hs-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .3em;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: text-decoration-color .15s;
+}
+.hs-link:hover { text-decoration-color: currentColor; }
+.hs-link .hs-icon { width: 1.15em; height: 1.15em; transition: transform .25s var(--ease); }
+.hs-link:hover .hs-icon { transform: translateX(.25rem); }
+
+/* Icons: Lucide line paths, stroke 1.5, in the accent. */
+/* IconPark Outline on its 48 grid: stroke 4 (2px at 24px), square ends, mitred joins. */
+.hs-icon { width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: square; stroke-linejoin: miter; flex: none; }
+
+/* ---------- Buttons ---------- */
+
+.hs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  min-height: 3.5rem;
+  padding: 0 1.5rem;
+  border-radius: .25rem;
+  font: 600 1.0625rem/1.1 var(--font);
+  text-decoration: none;
+  /* One line while it fits; a button wider than its column wraps instead of pushing the column. */
+  max-width: 100%;
+  flex-shrink: 0;
+  text-align: left;
+  transition: background-color .15s, color .15s, box-shadow .15s;
+}
+.hs-btn .hs-icon { width: 1.25rem; height: 1.25rem; transition: transform .25s var(--ease); }
+.hs-btn:hover .hs-icon { transform: translateX(.25rem); }
+.hs-btn--s { min-height: 2.75rem; padding: 0 1.125rem; font-size: 1rem; }
+.hs-btn--dark { background: var(--dark); color: var(--light); }
+.hs-btn--dark:hover { background: var(--light); color: var(--dark); box-shadow: inset 0 0 0 1.5px var(--dark); }
+.hs-btn--light { background: var(--light); color: var(--dark); }
+.hs-btn--light:hover { background: var(--dark); color: var(--light); box-shadow: inset 0 0 0 1.5px var(--light); }
+
+/* ---------- Logo ---------- */
+
+.hs-logo { display: block; }
+.hs-logo svg { display: block; width: 100%; height: auto; }
+
+/* ---------- Nav: one quiet cream bar, Inter 600 ---------- */
+
+.hs { padding-top: var(--nav-h); }
+.hs-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: transform .3s var(--ease);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2.25rem);
+  padding-right: var(--pad-x);
+  background: var(--light);
+  color: var(--dark);
+  box-shadow: inset 0 -1.5px 0 var(--rule-on-light);
+}
+.hs-nav.is-hidden { transform: translateY(-100%); }
+.hs-nav__brand {
+  height: var(--nav-h);
+  flex: none;
+  display: flex;
+  align-items: center;
+  /* The block runs in from the left edge; the wordmark starts on the content column. */
+  padding-left: var(--pad-x);
+  padding-right: calc(var(--nav-h) * .36);
+  background: var(--dark);
+}
+.hs-nav__brand .hs-logo {
+  width: calc(var(--nav-h) * 1.18);
+  width: max(var(--logo-step), round(nearest, calc(var(--nav-h) * 1.18), var(--logo-step)));
+}
+.hs-nav__links { display: none; margin-left: auto; }
+.hs-nav__list { display: flex; gap: clamp(1.25rem, 2.4vw, 2.5rem); list-style: none; margin: 0; padding: 0; }
+.hs-nav__top, .hs-nav__lang, .hs-nav__menu {
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.hs-nav__top { position: relative; padding-block: .5rem; }
+.hs-nav__top::after, .hs-sub__list a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s var(--ease);
+}
+.hs-nav__top:hover::after, .hs-nav__top[aria-expanded="true"]::after, .hs-sub__list a:hover::after { transform: scaleX(1); }
+.hs-nav__end { display: flex; align-items: center; gap: clamp(1rem, 1.8vw, 1.75rem); margin-left: auto; }
+.hs-nav__lang { padding: .5rem 0; color: var(--body-on-light); }
+/* Touch: small links get a hit area of at least 24px (WCAG 2.5.8) without moving anything; the
+   padding is taken back by a negative margin. */
+@media (pointer: coarse) {
+  .hs-nav__lang { padding-inline: .5rem; margin-inline: -.5rem; }
+  .hs :is(.hs-footer__cols a, .hs-footer__legal a, .hs-crumbs a, .hs-author__links a, .hs-acov__by a, .hs-toc a, dd a) {
+    display: inline-block;
+    padding-block: .3125rem;
+    margin-block: -.3125rem;
+  }
+}
+.hs-nav__lang:hover { color: var(--dark); }
+.hs-nav__cta { display: none; }
+.hs-nav__menu { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
+.hs-nav__menu .hs-icon { width: 1.5rem; height: 1.5rem; }
+/* Open, the button says what it does next: close. Both labels share one cell, so the width holds. */
+.hs-nav__menu-label { display: grid; }
+.hs-nav__menu-label > span { grid-area: 1 / 1; }
+.hs-nav__menu[aria-expanded="true"] .hs-icon.is-closed, .hs-nav__menu:not([aria-expanded="true"]) .hs-icon.is-open { display: none; }
+.hs-nav__menu[aria-expanded="true"] .hs-nav__menu-label .is-closed, .hs-nav__menu:not([aria-expanded="true"]) .hs-nav__menu-label .is-open { visibility: hidden; }
+@media (min-width: 1100px) {
+  .hs-nav__links { display: flex; }
+  .hs-nav__end { margin-left: 0; }
+  .hs-nav__cta { display: inline-flex; }
+  .hs-nav__menu { display: none; }
+}
+
+/* Sub-menu bar (from 1100px): full width under the menu, one line high, a flat colour plane per
+   item (red, blue, dark, as the entry planes). Closed it is clipped away to its top edge; opening
+   drops it down. Switching items keeps it open and wipes the next colour in from the left
+   (hs-client initSubnav). 19px bold, so cream on red stays readable as large text. */
+.hs-sub { display: none; }
+@media (min-width: 1100px) {
+  .hs-sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    padding: .5rem var(--pad-x);
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    visibility: hidden;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path .22s var(--ease), visibility 0s linear .22s;
+  }
+  .hs-sub.is-active { z-index: 2; visibility: visible; clip-path: inset(0 0 0 0); transition: clip-path .22s var(--ease); }
+  .hs-sub.is-leaving:not(.is-active) { z-index: 1; visibility: visible; clip-path: inset(0 0 0 0); transition: none; }
+  .hs-sub > * { opacity: 0; transition: opacity .15s var(--ease); }
+  .hs-sub.is-active > * { opacity: 1; transition-delay: .06s; }
+  .hs-sub.is-leaving > * { opacity: 1; transition: none; }
+  /* Every list is right-aligned on the menu's right edge (the edge of the startsprint button), so
+     the sub-items sit under the menu on every screen. One line from 1280px; on the narrowest
+     desktops a long bar may take a second line. */
+  .hs-sub { justify-content: flex-end; }
+  .hs-sub__list { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .25rem clamp(1.25rem, 2vw, 2.25rem); max-width: 100%; list-style: none; margin: 0; padding: 0; }
+  .hs-sub__list li { white-space: nowrap; }
+  .hs-sub__list a { position: relative; display: inline-block; padding-block: .25rem; text-decoration: none; }
+}
+
+.hs-menu {
+  position: fixed;
+  inset: var(--nav-h) 0 0 0;
+  z-index: 49;
+  overflow-y: auto;
+  padding: 2rem var(--pad-x) 3rem;
+  background: var(--dark);
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  --focus: var(--light);
+}
+.hs-menu[hidden] { display: none; }
+.hs-menu ul { display: grid; gap: .25rem; }
+.hs-menu ul a {
+  display: block;
+  padding: .5rem 0;
+  font-weight: 700;
+  font-size: clamp(2rem, 1.4rem + 3vw, 3rem);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  text-decoration: none;
+}
+.hs-menu .hs-btn { align-self: flex-start; }
+.hs-menu .hs-menu__subs { display: grid; gap: 0; padding: .125rem 0 1rem; }
+.hs-menu .hs-menu__subs a { padding: .375rem 0; font-size: 1.0625rem; font-weight: 600; letter-spacing: 0; color: var(--body-on-dark); }
+.hs-menu .hs-menu__subs a:hover { color: var(--light); }
+
+/* ---------- Cover (L01 with a photo panel) ----------
+   Colour zone with the headline, the photo beside it (never text on the photo), dark band
+   with subline, CTA and progress, and the light square as wide as the band is tall. */
+
+.hs-cover {
+  --band: clamp(15rem, 32svh, 21.25rem);
+  --photo-w: 40vw;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background: var(--dark);
+}
+.hs-cover__photo {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--dark);
+}
+.hs-cover__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .8s var(--ease);
+}
+.hs-cover__photo img.is-active { opacity: 1; }
+/* A phone on its side: the stacked 16:10 photo would be taller than the screen. */
+@media (orientation: landscape) and (max-height: 540px) and (max-width: 899px) {
+  .hs-cover__photo { aspect-ratio: auto; height: 55svh; }
+}
+.hs-cover__zone {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.75rem var(--pad-x) 2rem;
+  background: var(--red);
+  color: var(--light);
+  overflow: hidden;
+}
+.hs-cover[data-accent="blue"] .hs-cover__zone { background: var(--blue); }
+.hs-cover__wipe {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+.hs-cover__wipe.is-wiping { animation: hs-wipe .72s var(--ease) forwards; }
+@keyframes hs-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+.hs-cover__stack, .hs-cover__subs { position: relative; display: grid; width: 100%; }
+.hs-cover__stack > *, .hs-cover__subs > * { grid-area: 1 / 1; }
+.hs-cover [data-head] {
+  max-width: 11em;
+  font-size: clamp(min(2.25rem, 9.4vw), 0.6rem + 5vw, 7.5rem);
+  line-height: 1;
+}
+/* The deck's length ladder: a longer headline steps down (cover 176 → 132). */
+.hs-cover [data-head].is-long { font-size: clamp(min(2rem, 8.4vw), 0.5rem + 4.1vw, 6.25rem); line-height: 1.02; }
+/* A long headline also gives its punch its own line. */
+.hs-cover [data-head].is-long .punch { display: block; }
+.hs-cover [data-head], .hs-cover [data-sub] {
+  align-self: end;
+  opacity: 0;
+  transform: translateY(.625rem);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.hs-cover [data-sub] { align-self: start; }
+.hs-cover .is-active[data-head], .hs-cover .is-active[data-sub] {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s var(--ease) .28s, transform .5s var(--ease) .28s;
+}
+/* Punch on a colour field: ink at every screen size (the site drops the decks' size threshold). */
+.hs-cover [data-head] .punch { color: var(--dark); }
+
+.hs-cover__band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.75rem var(--pad-x) 1.25rem;
+  background: var(--dark);
+  color: var(--light);
+  --focus: var(--light);
+}
+.hs-cover__subs p { max-width: 52ch; font-size: clamp(1.0625rem, 0.9rem + 0.5vw, 1.375rem); line-height: 1.45; color: var(--body-on-dark); }
+.hs-cover__cta { justify-self: start; }
+.hs-cover__progress { display: flex; align-items: flex-end; gap: clamp(.75rem, 2vw, 2.25rem); }
+.hs-cover__tabs { flex: 1 1 auto; min-width: 0; display: flex; gap: clamp(.625rem, 1.6vw, 1.75rem); }
+.hs-cover__tab {
+  flex: 1 1 0;
+  min-width: 0;
+  display: grid;
+  gap: .625rem;
+  padding-top: .5rem;
+  text-align: left;
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--micro-on-dark);
+  transition: color .2s;
+}
+.hs-cover__tab:hover, .hs-cover__tab[aria-selected="true"] { color: var(--light); }
+.hs-cover__tab span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hs-cover__track { position: relative; height: .1875rem; background: var(--rule-on-dark); overflow: hidden; }
+.hs-cover__fill { position: absolute; inset: 0; background: var(--light); transform: scaleX(0); transform-origin: left; }
+.hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards; }
+.hs-cover.is-paused .hs-cover__fill { animation-play-state: paused; }
+@keyframes hs-fill { to { transform: scaleX(1); } }
+.hs-cover__pause {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: -.5rem;
+  border-radius: .25rem;
+  color: var(--micro-on-dark);
+  transition: color .2s, box-shadow .2s;
+}
+.hs-cover__pause:hover { color: var(--light); box-shadow: inset 0 0 0 1.5px var(--rule-on-dark); }
+/* Phones: keep the tabs and pause button clear of the chat button, which shrinks to its icon here. */
+@media (max-width: 639px) { .hs-cover__progress { padding-right: 4rem; } }
+.hs-cover__pause .hs-icon { width: 1rem; height: 1rem; stroke-width: 6; }
+.hs-cover__pause .is-play { fill: currentColor; }
+.hs-cover__pause .is-play { display: none; }
+.hs-cover.is-held .hs-cover__pause .is-play { display: block; }
+.hs-cover.is-held .hs-cover__pause .is-pause { display: none; }
+
+.hs-cover__square { display: none; }
+@media (max-width: 519px) {
+  /* Four labels do not fit a phone: keep the tracks, label stays for screen readers. */
+  .hs-cover__tab span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .hs-cover__tab { padding-block: 1.125rem .75rem; }
+}
+
+@media (min-width: 900px) {
+  .hs-cover {
+    min-height: max(37.5rem, calc(100svh - var(--nav-h)));
+    grid-template-columns: minmax(0, 1fr) calc(var(--photo-w) - var(--band)) var(--band);
+    grid-template-rows: minmax(0, 1fr) minmax(var(--band), auto);
+  }
+  .hs-cover__zone { grid-column: 1; grid-row: 1; padding: 2.5rem clamp(2rem, 3.4vw, 4rem) clamp(1.75rem, 3vw, 3.5rem) var(--pad-x); }
+  .hs-cover__photo { grid-column: 2 / 4; grid-row: 1; aspect-ratio: auto; }
+  .hs-cover__band {
+    grid-column: 1 / 3;
+    grid-row: 2;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 1fr auto;
+    gap: 1.25rem clamp(1.5rem, 3vw, 3.5rem);
+    padding: clamp(1.5rem, 2.6vw, 2.75rem) clamp(1.5rem, 3vw, 3rem) clamp(1rem, 1.8vw, 1.75rem) var(--pad-x);
+  }
+  .hs-cover__subs { grid-column: 1; grid-row: 1; }
+  .hs-cover__cta { grid-column: 2; grid-row: 1; align-self: start; }
+  .hs-cover__progress { grid-column: 1 / -1; grid-row: 2; }
+  .hs-cover__square {
+    grid-column: 3;
+    grid-row: 2;
+    display: grid;
+    place-items: center;
+    background: var(--light);
+    /* The section below is cream too: a rule closes the square. */
+    box-shadow: inset 0 -1.5px 0 var(--dark);
+  }
+  .hs-cover__square .hs-logo { width: 74%; width: round(nearest, calc(var(--band) * .74), var(--logo-step)); }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .hs-cover { --band: clamp(17.5rem, 38svh, 21.25rem); --photo-w: 42vw; }
+  .hs-cover__band { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr; }
+  .hs-cover__cta { grid-column: 1; grid-row: 2; justify-self: start; }
+  .hs-cover__progress { grid-row: 3; align-self: end; }
+}
+
+/* ---------- Entries: cream, the three colour fields are the accent ---------- */
+
+.hs-entries { padding-block: var(--sec-y) calc(var(--sec-y) * .9); background: var(--light); }
+.hs-entries__head {
+  display: grid;
+  gap: 1.25rem;
+  align-items: end;
+  margin-bottom: max(2.5rem, var(--module));
+}
+.hs-entries__head p { color: var(--body-on-light); max-width: 34ch; }
+@media (min-width: 900px) {
+  .hs-entries__head { grid-template-columns: minmax(0, 8fr) minmax(0, 6fr); gap: var(--module); }
+}
+.hs-entries__row { display: grid; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) {
+  .hs-entries__row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.hs-entry {
+  --pad: clamp(1.25rem, 2.1vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--dark);
+}
+.hs-entry__plane {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: max(11.875rem, calc(var(--module) * 3));
+  padding: var(--pad);
+  color: var(--light);
+  transform-origin: bottom;
+}
+.hs-entry__plane .hs-icon {
+  position: absolute;
+  top: var(--pad);
+  right: var(--pad);
+  width: clamp(1.75rem, 2.4vw, 2.5rem);
+  height: clamp(1.75rem, 2.4vw, 2.5rem);
+  transition: transform .3s var(--ease);
+}
+.hs-entry:hover .hs-entry__plane .hs-icon { transform: translate(.25rem, -.25rem); }
+.hs .hs-entry__title { font-weight: 700; letter-spacing: -0.02em; font-size: clamp(1.75rem, 1rem + 1.7vw, 3rem); line-height: 1.04; max-width: 12ch; }
+.hs-entry__text { display: grid; gap: 1.125rem; align-content: start; padding: 1.5rem var(--pad) 2.25rem; }
+.hs-entry__text p { color: var(--body-on-light); max-width: 40ch; }
+.hs-entry__more { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; }
+.hs-entry__more .hs-icon { width: 1.25rem; height: 1.25rem; transition: transform .25s var(--ease); }
+.hs-entry:hover .hs-entry__more .hs-icon { transform: translateX(.25rem); }
+.hs-entry__more span {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .3em;
+  text-decoration-color: var(--rule-on-light);
+  transition: text-decoration-color .15s;
+}
+.hs-entry:hover .hs-entry__more span { text-decoration-color: currentColor; }
+.hs-entry:focus-visible { outline-offset: .25rem; }
+
+/* ---------- Quotes: one lead quote, the client's own voice in regular Inter ---------- */
+
+.hs-quotes { padding-block: var(--sec-y); }
+.hs-quotes h2 { max-width: 14ch; margin-bottom: max(3rem, var(--module)); }
+.hs-quotes__list {
+  display: grid;
+  gap: max(2.5rem, calc(var(--module) * .7)) var(--module);
+  grid-template-columns: minmax(0, 1fr);
+  padding-left: 0.9em;
+}
+@media (min-width: 720px) { .hs-quotes__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) {
+  .hs-quotes__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hs-quotes__item.is-lead { grid-column: 1 / 3; grid-row: 1 / 3; }
+}
+@media (min-width: 720px) and (max-width: 1199px) {
+  .hs-quotes__item.is-lead { grid-column: 1 / -1; }
+}
+.hs-quote { display: grid; gap: 1.125rem; align-content: start; }
+.hs-quote blockquote {
+  position: relative;
+  font-weight: 400;
+  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.375rem);
+  line-height: 1.45;
+  color: var(--body-on-dark);
+  text-wrap: pretty;
+}
+.hs-quote blockquote::before {
+  content: '\201C';
+  position: absolute;
+  left: -0.62em;
+  top: -0.14em;
+  font-weight: 800;
+  font-size: 2em;
+  line-height: 1;
+  color: var(--red);
+}
+.is-lead .hs-quote { gap: 1.75rem; }
+.is-lead .hs-quote blockquote {
+  font-size: clamp(1.75rem, 1rem + 2.4vw, 3.5rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  color: var(--light);
+  max-width: 20ch;
+}
+.is-lead .hs-quote blockquote::before { left: -0.55em; top: -0.06em; font-size: 1.5em; }
+.hs-quote figcaption { display: grid; gap: 2px; font-size: .9375rem; }
+.hs-quote figcaption span:first-child { font-weight: 600; }
+.hs-quote figcaption span:last-child { color: var(--micro-on-dark); }
+
+/* Logo wall (L15): client logos as white SVGs straight on the dark field, one row on desktop. */
+.hs-logos {
+  margin-top: max(3.5rem, calc(var(--module) * 1.1));
+  padding-top: clamp(1.75rem, 3vw, 2.75rem);
+  box-shadow: inset 0 1.5px 0 var(--rule-on-dark);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem clamp(1.75rem, 3vw, 3.5rem);
+  --logo-scale: .82;
+}
+@media (min-width: 1200px) { .hs-logos { flex-wrap: nowrap; --logo-scale: 1; } }
+.hs-logos li { display: flex; align-items: center; }
+.hs-logos img { width: auto; height: calc(var(--h, 1.875rem) * var(--logo-scale)); opacity: .88; transition: opacity .2s; }
+.hs-logos li:hover img { opacity: 1; }
+@media (max-width: 719px) {
+  .hs-logos { justify-content: flex-start; gap: 1.625rem 2.25rem; --logo-scale: .74; }
+}
+
+/* ---------- Standard: a poster on blue ----------
+   The heading small, the four things every build includes as large lines, each a cream label
+   with the text in blue and its line icon in front. A flat field: no grid, no rules, no
+   descriptions. */
+
+.hs-standard { padding-block: var(--sec-y); }
+.hs-standard__title {
+  margin-bottom: clamp(1.75rem, 1rem + 2.6vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.125rem, .95rem + .6vw, 1.75rem);
+  line-height: 1.2;
+}
+.hs-standard__list { display: grid; gap: clamp(1.25rem, .8rem + 1.6vw, 2.75rem); }
+.hs-standard__list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: .4em;
+  align-items: start;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-size: clamp(1.75rem, .9rem + 3.5vw, 5.5rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+/* Each line is a label: a cream plane as wide as its text, the text in blue (5.2:1). When a line
+   wraps (phones) the plane holds both lines as one block. The icon stays cream on the blue field,
+   set on the label's first line. */
+.hs-standard__label {
+  justify-self: start;
+  padding: .1em .3em .14em;
+  background: var(--light);
+  color: var(--blue);
+}
+.hs .hs-standard__label::selection, .hs .hs-standard__label ::selection { background: var(--dark); color: var(--light); }
+.hs-standard__list .hs-icon { width: .72em; height: .72em; margin-top: .28em; }
+
+/* ---------- Case (post "klantcase"): the work in numbers ---------- */
+
+.hs-case { display: grid; grid-template-columns: minmax(0, 1fr); }
+.hs-case__photo { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--light); }
+.hs-case__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 40%;
+  filter: contrast(1.05) url(#hs-duo-red);
+}
+.hs-case__text { display: grid; gap: 1.75rem; align-content: center; padding: max(3rem, var(--module)) var(--pad-x) var(--sec-y); }
+.hs-case__text > p { color: var(--body-on-dark); max-width: 46ch; }
+.hs-case__text > .hs-case__lede { color: var(--light); }
+.hs-case__kicker { margin-bottom: -.75rem; font-weight: 700; font-size: clamp(.875rem, .8rem + .25vw, 1.0625rem); line-height: 1.2; letter-spacing: .12em; text-transform: uppercase; color: var(--body-on-dark); }
+.hs-stats { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 1.25rem clamp(1rem, 2.4vw, 3rem); padding-block: .5rem; }
+/* Number above its label; in column-reverse flex-end packs at the top, so numbers align. */
+.hs-stats div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .375rem; }
+.hs-stats dd {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(2.5rem, 1.2rem + 4.4vw, 7rem);
+  font-variant-numeric: tabular-nums;
+}
+.hs-stats div:first-child dd { color: var(--red); }
+.hs-stats dt { font-size: .9375rem; font-weight: 500; color: var(--body-on-dark); }
+@media (max-width: 559px) {
+  .hs-stats { grid-template-columns: minmax(0, 1fr); gap: .875rem; }
+  .hs-stats div { flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 1rem; }
+  .hs-stats dd { min-width: var(--fig-w, 3.4ch); font-size: 3rem; }   /* --fig-w: the longest figure, in tabular digits */
+}
+@media (min-width: 900px) {
+  .hs-case { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .hs-case__photo { order: 2; aspect-ratio: auto; }
+  .hs-case__text { padding: var(--sec-y) var(--module) var(--sec-y) var(--pad-x); }
+}
+
+/* ---------- Place (L09, colour photo: a real place) ---------- */
+
+.hs-place { display: grid; grid-template-columns: minmax(0, 1fr); background: var(--light); }
+.hs-place__photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--dark); }
+.hs-place__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hs-place__text {
+  display: grid;
+  align-content: center;
+  gap: 1.5rem;
+  padding: max(3rem, var(--module)) var(--pad-x) var(--sec-y);
+}
+.hs-place__claim { color: var(--blue); font-weight: 700; letter-spacing: -0.015em; }
+.hs-place__text .hs-body { color: var(--body-on-light); max-width: 56ch; }
+@media (min-width: 900px) {
+  .hs-place { grid-template-columns: minmax(0, 45fr) minmax(0, 55fr); }
+  .hs-place__photo { aspect-ratio: auto; }
+  .hs-place__text { padding: var(--sec-y) var(--pad-x) var(--sec-y) var(--module); }
+}
+
+/* ---------- Statement: the quiet slide before the ask ---------- */
+
+.hs-statement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: max(1.75rem, calc(var(--module) * .4));
+  padding-block: var(--sec-y);
+}
+.hs-statement__lede {
+  max-width: 30ch;
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 2rem);
+  line-height: 1.35;
+  font-weight: 450;
+  color: var(--body-on-dark);
+}
+/* "Van A / tot I": lead words right-aligned in one column, so the red initials stack and read AI.
+   Two fixed rows, so the letters that write themselves out never reflow the slogan. */
+.hs-ai {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  column-gap: .24em;
+  font-size: min(9.2vw, clamp(2.25rem, 0.8rem + 5vw, 7rem));
+  line-height: 1.04;
+}
+.hs-ai__row { display: contents; }
+.hs-ai__lead { justify-self: end; }
+.hs-ai__word { white-space: nowrap; }
+.hs-ai__cap { color: var(--red); }
+.hs-ai__l { display: inline-block; }
+
+/* ---------- Contact (L17): the second full-colour moment ---------- */
+
+.hs-contact { display: grid; grid-template-columns: minmax(0, 1fr); }
+.hs-contact__zone {
+  display: grid;
+  align-content: start;
+  gap: 1.75rem;
+  padding: var(--sec-y) var(--pad-x) max(3rem, var(--module));
+}
+.hs-contact__zone h2 { max-width: 11ch; }
+.hs-contact__direct { display: grid; gap: .375rem; }
+.hs-contact__direct a {
+  justify-self: start;
+  font-weight: 600;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .25em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+.hs-contact__direct a:hover { text-decoration-color: currentColor; }
+.hs-contact__people { display: grid; gap: 1.125rem; margin-top: .75rem; }
+.hs-contact__people ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 1.4vw, 1.5rem); max-width: 32.5rem; }
+.hs-person { display: grid; gap: .625rem; text-decoration: none; }
+/* The grey filter sits on the frame and the photo gets its own compositor layer, so the hover zoom
+   is scaled smoothly instead of re-rastered and pixel-snapped every frame (which made it tremble). */
+.hs-person__photo { aspect-ratio: 3 / 4; overflow: hidden; background: var(--dark); filter: grayscale(1) contrast(1.08); }
+.hs-person__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  transition: transform .6s var(--ease);
+}
+.hs-person:hover .hs-person__photo img { transform: translateZ(0) scale(1.04); }
+.hs-person__name { font-weight: 600; font-size: .9375rem; line-height: 1.3; }
+.hs-person__hint { font-size: .8125rem; line-height: 1.35; }
+@media (max-width: 359px) { .hs-person__name, .hs-person__hint { font-size: .75rem; } }
+.hs-person:hover .hs-person__name { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; }
+
+.hs-contact__form { padding: max(2.5rem, var(--module)) var(--pad-x) var(--sec-y); }
+@media (min-width: 1024px) {
+  .hs-contact { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .hs-contact__form { padding: var(--sec-y) var(--pad-x) var(--sec-y) var(--module); }
+}
+
+.hs-form { display: grid; gap: 1.75rem; max-width: 47.5rem; }
+.hs-form__row { display: grid; gap: 1.75rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(10.625rem, 1fr)); }
+.hs-field { display: grid; gap: .5rem; }
+.hs-label, .hs-form legend { font-weight: 600; font-size: .9375rem; color: var(--dark); padding: 0; }
+.hs-optional { font-weight: 400; color: var(--body-on-light); }
+.hs-input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: .875rem 1rem;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--panel-edge);
+  font: 400 1rem/1.4 var(--font);
+  color: var(--dark);
+  transition: box-shadow .15s;
+}
+.hs-input::placeholder { color: var(--micro-on-light); }
+.hs-input:hover { box-shadow: inset 0 0 0 1.5px var(--micro-on-light); }
+.hs-input:focus { outline: none; box-shadow: inset 0 0 0 2px var(--dark); }
+.hs-input[aria-invalid="true"], .hs-input[aria-invalid="true"]:focus { box-shadow: inset 0 0 0 2px var(--red); }
+textarea.hs-input { min-height: 8.75rem; resize: vertical; }
+.hs-form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: .75rem; }
+.hs-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.hs-chip { position: relative; }
+.hs-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.hs-chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1.5px var(--panel-edge);
+  font-weight: 600;
+  font-size: .9375rem;
+  transition: background-color .15s, color .15s, box-shadow .15s;
+}
+.hs-chip:hover span { box-shadow: inset 0 0 0 1.5px var(--dark); }
+.hs-chip input:checked + span { background: var(--dark); color: var(--light); box-shadow: none; }
+.hs-chip input:focus-visible + span { outline: 2px solid var(--dark); outline-offset: .1875rem; }
+.hs-form__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 1.75rem; }
+.hs-form__status { flex: 1 1 16.25rem; color: var(--body-on-light); font-size: .9375rem; }
+.hs-form__status:empty { display: none; }
+
+/* ---------- Footer (slot: band + square) ---------- */
+
+.hs-footer {
+  --sq: clamp(13.75rem, 23vw, 23.75rem);
+  --sq-now: 7rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.hs-footer__square { display: grid; place-items: center; width: 7rem; height: 7rem; background: var(--light); order: -1; }
+.hs-footer__square .hs-logo { width: 78%; width: round(nearest, calc(var(--sq-now) * .78), var(--logo-step)); }
+.hs-footer__body { display: grid; gap: 2.75rem; padding: 2.5rem var(--pad-x) 2rem; }
+.hs-footer__tagline {
+  max-width: 34ch;
+  font-weight: 450;
+  font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--body-on-dark);
+}
+.hs-footer__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+@media (min-width: 900px) { .hs-footer__cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.hs .hs-footer__cols h3 {
+  margin-bottom: .875rem;
+  font-weight: 600;
+  font-size: .875rem;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--micro-on-dark);
+}
+.hs-footer__cols ul { display: grid; gap: .625rem; }
+.hs-footer__cols a { font-size: .9375rem; text-decoration: none; color: var(--body-on-dark); transition: color .15s; }
+.hs-footer__cols a:hover { color: var(--light); text-decoration: underline; text-underline-offset: .25em; }
+.hs-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .375rem 1.375rem;
+  padding-top: 1.375rem;
+  box-shadow: inset 0 1.5px 0 var(--rule-on-dark);
+  color: var(--micro-on-dark);
+}
+.hs-footer__legal a { text-decoration: none; }
+.hs-footer__legal a:hover { color: var(--light); text-decoration: underline; text-underline-offset: .25em; }
+@media (min-width: 900px) {
+  .hs-footer { grid-template-columns: minmax(0, 1fr) var(--sq); min-height: var(--sq); --sq-now: var(--sq); }
+  .hs-footer__square { order: 0; width: var(--sq); height: var(--sq); align-self: end; }
+  .hs-footer__body { padding: max(3rem, calc(var(--module) * .75)) var(--module) 2rem var(--pad-x); }
+}
+
+/* ---------- One viewport per section (desktop), as on the live homepage ----------
+   Each slide fills the screen below the nav with its content centred, and the page snaps to
+   it (proximity). On short screens a slide may still grow; the footer is no snap target. */
+
+@media (min-width: 1024px) {
+  .hs { --slide-y: clamp(2.25rem, 6svh, 5.5rem); --slide-gap: clamp(1.5rem, 4.4svh, 3.75rem); }
+  .hs .hs-snap { min-height: calc(100svh - var(--nav-h)); }
+
+  .hs-entries, .hs-quotes, .hs-standard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: var(--slide-y);
+  }
+  .hs-entries__head { margin-bottom: var(--slide-gap); }
+  .hs-entry__plane { min-height: clamp(9.375rem, 23svh, 16.875rem); }
+  .hs-entry__text { padding-block: 1.25rem .5rem; }
+
+  .hs-quotes h2 { max-width: none; margin-bottom: var(--slide-gap); }
+  .hs-quotes__list { gap: var(--slide-gap) var(--module); }
+  .hs-logos { margin-top: var(--slide-gap); padding-top: var(--slide-gap); }
+  .hs-standard__list { gap: clamp(1rem, 4.2svh, 3rem); }
+  .hs-standard__list li { font-size: clamp(2rem, min(.5rem + 4vw, 7.2svh), 5.5rem); }
+
+  .hs-case__text, .hs-place__text { padding-block: var(--slide-y); }
+  .hs-statement { padding-block: var(--slide-y); }
+
+  .hs-contact__zone { align-content: center; gap: 1.25rem; padding-block: var(--slide-y); }
+  .hs-contact__form { display: grid; align-content: center; padding-block: var(--slide-y); }
+  .hs-contact__people ul { max-width: 26.25rem; }
+  .hs-form { gap: 1.25rem; }
+  .hs-form__row { gap: 1.25rem; }
+  .hs-chip span { min-height: 2.5rem; padding: 0 .875rem; font-size: .875rem; }
+  textarea.hs-input { min-height: 6rem; }
+
+  /* Headings also scale with the screen height, so a slide fits a 48rem laptop screen. */
+  .hs-d-m { font-size: clamp(2.125rem, min(0.75rem + 4.4vw, 1rem + 6svh), 6rem); }
+  .hs-contact__zone h2 { max-width: 12ch; font-size: clamp(2rem, min(0.6rem + 3.2vw, 1rem + 5svh), 4.75rem); }
+  .is-lead .hs-quote blockquote { font-size: clamp(1.375rem, min(0.8rem + 1.3vw, 0.3rem + 2.8svh), 2.375rem); }
+}
+@media (min-width: 1024px) and (max-height: 840px) {
+  .hs-person__photo { aspect-ratio: 1 / 1; }
+  .hs-contact__zone, .hs-form, .hs-form__row { gap: 1rem; }
+  .hs-chip span { min-height: 2.25rem; padding: 0 .75rem; font-size: .8125rem; }
+  .hs-form fieldset { gap: .5rem; }
+  .hs-logos { margin-top: calc(var(--slide-gap) * .8); padding-top: calc(var(--slide-gap) * .8); }
+}
+/* All six quotes stay in view: an even 3 x 2 grid, the lead quote first and larger. */
+@media (min-width: 1200px) {
+  .hs-quotes__item.is-lead { grid-column: auto; grid-row: auto; }
+  .is-lead .hs-quote blockquote { max-width: none; }
+}
+
+/* ---------- Motion: one build-up per section (deck §9), varied per layout ---------- */
+
+.hs-js [data-reveal] [data-item] {
+  opacity: 0;
+  transform: translateY(.625rem);
+}
+.hs-js [data-reveal].is-in [data-item] {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+  transition-delay: min(calc(var(--i, 0) * 60ms), 480ms);
+}
+/* Entries: the colour planes grow like the deck's bars (600ms), then the text arrives. */
+.hs-js .hs-entries:not(.is-in) .hs-entry__plane { transform: scaleY(0); }
+.hs-js .hs-entries .hs-entry__plane { transition: transform .6s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+.hs-js .hs-entries:not(.is-in) .hs-entry__plane > * { opacity: 0; }
+.hs-js .hs-entries .hs-entry__plane > * { transition: opacity .4s var(--ease) calc(var(--i, 0) * 90ms + 380ms), transform .3s var(--ease); }
+/* Standard: the labels wipe in from the left one after the other, like a marker stroke (plane and
+   text together), and each icon then draws itself. Time-based on entry, never tied to the scroll. */
+.hs-js .hs-standard:not(.is-in) .hs-standard__label { clip-path: inset(0 100% 0 0); }
+.hs-js .hs-standard .hs-standard__label {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path .5s var(--ease);
+  transition-delay: calc(var(--i, 0) * 140ms + 60ms);
+}
+.hs-js .hs-standard:not(.is-in) .hs-icon * { stroke-dashoffset: 1; }
+.hs-js .hs-standard .hs-icon * {
+  stroke-dasharray: 1;
+  transition: stroke-dashoffset .7s var(--ease);
+  transition-delay: calc(var(--i, 0) * 140ms + 380ms);
+}
+/* Place and case: the photo opens from the bottom. */
+.hs-js .hs-place:not(.is-in) .hs-place__photo img,
+.hs-js .hs-case:not(.is-in) .hs-case__photo img { clip-path: inset(100% 0 0 0); }
+.hs-js .hs-place .hs-place__photo img,
+.hs-js .hs-case .hs-case__photo img { clip-path: inset(0 0 0 0); transition: clip-path .9s var(--ease); }
+/* Statement: the punch turns red once the line has landed. */
+/* Statement: once the slide is in view (hs-client initAI) the letters after A, then after I,
+   rise into focus one by one. Time-based and played once; the scroll is never held. */
+.hs-js .hs-statement[data-ai] .hs-ai__l {
+  opacity: 0;
+  transform: translateY(.16em);
+  filter: blur(.375rem);
+  transition: opacity .5s var(--ease), transform .55s var(--ease), filter .55s var(--ease);
+  transition-delay: calc(.25s + var(--row, 0) * .4s + var(--n, 0) * 34ms);
+}
+.hs-js .hs-statement[data-ai].is-played .hs-ai__l { opacity: 1; transform: none; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hs *, .hs *::before, .hs *::after { transition: none !important; animation: none !important; }
+  .hs-js .hs [data-reveal] [data-item] { opacity: 1; transform: none; }
+  .hs-js .hs-entries:not(.is-in) .hs-entry__plane { transform: none; }
+  .hs-js .hs-entries:not(.is-in) .hs-entry__plane > * { opacity: 1; }
+  .hs-js .hs-standard:not(.is-in) .hs-standard__label { clip-path: none; }
+  .hs-js .hs-standard:not(.is-in) .hs-icon * { stroke-dashoffset: 0; }
+  .hs-js .hs-place:not(.is-in) .hs-place__photo img,
+  .hs-js .hs-case:not(.is-in) .hs-case__photo img { clip-path: none; }
+  .hs-js .hs-statement[data-ai] .hs-ai__l { opacity: 1; transform: none; filter: none; }
+  .hs-cover__tab[aria-selected="true"] .hs-cover__fill { transform: scaleX(1); }
+  .hs-cover__pause { display: none; }
+  html:has(.hs) { scroll-snap-type: none; }
+}
