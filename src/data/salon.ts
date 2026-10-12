@@ -69,7 +69,7 @@ export const SALON_NEXT: SalonEdition = {
   lumaUrl: 'https://luma.com/AI-Salon-Gro-2',
   speakers: [
     // Founder and director of Energiso (energy management, ISO 50001). Portrait from energiso.nl.
-    { name: 'Ilse Gosliga', org: 'Energiso', topic: 'Buildings that learn: 26% less energy, no new hardware', photo: '/speakers/ilse-gosliga.jpg' },
+    { name: 'Ilse Gosliga', org: 'Energiso', topic: 'Buildings that learn: 26% less energy, no renovation', photo: '/speakers/ilse-gosliga.jpg' },
     // Business coach in Groningen since 2016, 150+ entrepreneurs; runs the workshop 'Ondernemen met AI'.
     // Portrait cropped from alexvanginneken.com. His title is not known yet (2026-10-12): the page shows
     // "Onderwerp volgt" until it is.
