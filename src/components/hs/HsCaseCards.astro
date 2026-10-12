@@ -5,7 +5,7 @@
 // team comes first (proof rule, never shown as a label). `filterTags` adds data-tags for the
 // entry filter (hs-client initFilter).
 import HsIcon from './HsIcon.astro';
-import { zet } from './hs';
+import { photoSrcset, zet } from './hs';
 import { getCases, displayName, formatStat, plainHeadline, sectorLabel, SECTOR_ICON, entryLabel, entryAccent, caseHref, CASE_UI, type CasePlace } from './cases';
 import type { Entry } from '../../data/site';
 import { langOf } from '../../data/ui';
@@ -46,7 +46,7 @@ if (limit) items = items.slice(0, limit);
           <a class="hs-casecard" href={caseHref(d.slug, lang)}>
             {d.photo ? (
               <span class:list={['hs-casecard__photo', { 'is-duo': d.photo.duo && !d.photo.shot, 'is-shot': d.photo.shot }]}>
-                <img src={d.photo.src} alt="" width={d.photo.w} height={d.photo.h} style={d.photo.pos ? `object-position:${d.photo.pos}` : undefined} loading="lazy" decoding="async" />
+                <img src={d.photo.src} srcset={photoSrcset(d.photo.src)} sizes="(min-width: 900px) 33vw, 100vw" alt="" width={d.photo.w} height={d.photo.h} style={d.photo.pos ? `object-position:${d.photo.pos}` : undefined} loading="lazy" decoding="async" />
                 <span class={`hs-casecard__plane on-${entryAccent(first)}`}>{entryLabel(first, lang)}</span>
               </span>
             ) : (

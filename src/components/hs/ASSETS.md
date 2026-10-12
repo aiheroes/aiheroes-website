@@ -11,8 +11,15 @@ Everything below lives in `public/experiment/` and `public/fonts/inter/` and is 
 | `photos/cover-legacy.webp` | https://unsplash.com/photos/okgMMgpliIk | Yuheng Ouyang |
 | `photos/cover-datacenter.webp` | https://unsplash.com/photos/aWslrFhs1w4 | Taylor Vick |
 | `photos/case-support.webp` | https://unsplash.com/photos/RoGw9buwZBg | Vitaly Gariev |
+| `photos/cases/inq22-tattoo.webp` | https://unsplash.com/photos/jNVIeG9p2_s | Andrew Leu |
+| `photos/cases/ic-commerce.webp` | https://unsplash.com/photos/MGaFENpDCsw | Bench Accounting |
+| `photos/cases/innoenergy.webp` | https://unsplash.com/photos/BXRk8z4cKFk | Karwin Luo |
+| `photos/cases/olx.webp` | https://unsplash.com/photos/Iywgu-a_eCs | V H |
+| `photos/cases/strive.webp` | https://unsplash.com/photos/Il9YbhIBiOA | Jakub Żerdzicki |
+| `photos/cases/trabu.webp` | https://unsplash.com/photos/AX6s7zREtZE | Global Residence Index |
+| `photos/cases/eigen-stack.webp` | https://unsplash.com/photos/VHmBX7FnXw0 | Domaintechnik |
 
-Downloaded at 1400 to 1800px wide and converted to WebP (quality 78). Each also has a 900px (`name-900.webp`, quality 78) and a 2800px variant (`name-2800.webp`, quality 70), made 2026-10-12 from the 3600px Unsplash download of the same photo, same crop; `photoSrcset()` in hs.ts serves them, so phones load less and 4K and high-density screens stay sharp. The case photo (a smiling support employee with headphones at a laptop) is a stand-in; it is not someone from the client. Cover photos 1 and 2 and the case photo were picked by the team from a comparison page (2026-10-07). The client (Medux) is not named on the homepage: it works with another partner now (2026-10-07), so the case stands anonymously.
+Downloaded at 1400 to 1800px wide and converted to WebP (quality 78). Each also has a 900px (`name-900.webp`, quality 78) and a 2800px variant (`name-2800.webp`, quality 70), made 2026-10-12 from the 3600px Unsplash download of the same photo, same crop; `photoSrcset()` in hs.ts serves them, so phones load less and 4K and high-density screens stay sharp. The seven case photos under `photos/cases/` (2026-10-12) are stand-ins for cases without their own image, made the same way (1800px main file plus 900 and 2800px), INQ22 and Trabu stay portrait with a focal point (`pos`), so the landscape tile and the tall desktop cover each show the right part; INQ22's shop screenshot stays as `screenshot` for the live section. The case photo (a smiling support employee with headphones at a laptop) is a stand-in; it is not someone from the client. Cover photos 1 and 2 and the case photo were picked by the team from a comparison page (2026-10-07). The client (Medux) is not named on the homepage: it works with another partner now (2026-10-07), so the case stands anonymously.
 
 ## Client logos (trademarks of their owners; use on the site cleared by the clients, see PRODUCT.md)
 

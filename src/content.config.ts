@@ -38,6 +38,8 @@ const caseStudies = defineCollection({
     standard: z.array(z.enum(['business-case', 'compliance', 'training', 'vendor'])).default([]),
     quote: z.object({ text: z.string(), author: z.string(), role: z.string().optional(), approved: z.boolean().default(false) }).optional(),
     photo: z.object({ src: z.string(), alt: z.string(), w: z.number(), h: z.number(), pos: z.string().optional(), standIn: z.boolean().default(true), shot: z.boolean().default(false), duo: z.boolean().default(true) }).optional(),
+    /** A screenshot of the live work, shown under "live" on the case page; the photo stays the cover and tile. */
+    screenshot: z.object({ src: z.string(), alt: z.string(), w: z.number(), h: z.number() }).optional(),
     liveUrl: z.string().url().optional(),
     year: z.number().optional(),
     order: z.number().default(0),

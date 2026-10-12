@@ -41,7 +41,7 @@ const STANDARD = {
 const standard = d.currentTeam ? d.standard.map((k) => STANDARD[k]) : [];
 const quote = d.quote?.approved ? d.quote : undefined;
 const coverPhoto = d.photo && !d.photo.shot ? { src: d.photo.src, alt: d.photo.alt, w: d.photo.w, h: d.photo.h, pos: d.photo.pos, duo: d.photo.duo ? ('red' as const) : undefined } : undefined;
-const shot = d.photo?.shot ? d.photo : undefined;
+const shot = d.screenshot ?? (d.photo?.shot ? d.photo : undefined);
 const more = (await getCases(lang)).filter((c) => c.data.slug !== d.slug && c.data.entry.some((e) => d.entry.includes(e)));
 ---
 

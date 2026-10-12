@@ -283,6 +283,13 @@ const PHOTO_WIDTHS: Record<string, number> = {
   '/hs/photos/cover-legacy.webp': 1800,
   '/hs/photos/cover-datacenter.webp': 1800,
   '/hs/photos/case-support.webp': 1400,
+  '/hs/photos/cases/inq22-tattoo.webp': 1800,
+  '/hs/photos/cases/ic-commerce.webp': 1800,
+  '/hs/photos/cases/innoenergy.webp': 1800,
+  '/hs/photos/cases/olx.webp': 1800,
+  '/hs/photos/cases/strive.webp': 1800,
+  '/hs/photos/cases/trabu.webp': 1800,
+  '/hs/photos/cases/eigen-stack.webp': 1800,
 };
 
 /** The srcset for a photo with extra widths, or undefined for any other image. */
