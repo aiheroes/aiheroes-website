@@ -338,7 +338,7 @@ Blue zone with the heading, a lede, direct mail and phone links and three people
 Ink band with a 450 tagline, four link columns (headings in 600 0.875rem micro tint, links at body tint turning cream and underlined on hover), a legal line above a 1.5px rule, and the cream square with the full-colour wordmark at 78%, aligned to the bottom right.
 
 ### Duotone people
-SVG filter "C2 drieklank licht": desaturate, gamma lift 0.8, then map luminance onto dark accent, accent, cream. Applied with `contrast(1.05)`; red for the case photo, blue for the contact people. The cover photos and the place photo stay in colour.
+SVG filter "C2 drieklank licht": desaturate, gamma lift 0.8, then map luminance onto dark accent, accent, cream. Applied with `contrast(1.05)`; red for the case photo, blue for the contact people. The cover photos and the place photo stay in colour, and so do the AI Salon speaker portraits (decision 2026-10-12).
 
 ## Do's and Don'ts
 
