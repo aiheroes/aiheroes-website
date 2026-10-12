@@ -4,6 +4,10 @@ Eén bron van waarheid voor de relaunch van aiheroes.io in de huisstijl van de e
 homepage (`/nl/experiment/huisstijl`). Besluiten zijn genomen op 2026-10-09. Wijzigt er iets,
 pas dan dit document aan, niet alleen de code.
 
+Daarnaast: `docs/relaunch/00-opzet.md` (paginalijst en redirect-kaart), `docs/relaunch/pages/`
+(plan per pagina) en `docs/relaunch/01-besluiten.md` (antwoorden op de open vragen uit die
+plannen; gaat voor op de plannen).
+
 ## Uitgangspunten
 
 - De positionering staat vast: `docs/company-profile.md` en `AGENTS.md`. Elke pagina begint
@@ -12,6 +16,11 @@ pas dan dit document aan, niet alleen de code.
 - De goedgekeurde homepage is de stijlbron. `src/components/experiment/DESIGN.md` en
   `ASSETS.md` beschrijven de regels; iconen zijn IconPark Outline (stroke 4, square, miter).
 - Lancering is één merge. Daarna is de oude stijl weg.
+- **Elke pagina wordt van scratch gepland.** Veel bestaande content is lang geleden geschreven,
+  voor het aanbod op de homepage werd aangescherpt. We passen oude content dus niet aan, voegen
+  niet samen en verbeteren niet. Per pagina, één voor één: wat stond er, en wat moet er komen
+  te staan. De nieuwe homepage en de besluiten in dit document zijn de bron; oude content is
+  alleen inventaris (feiten, cijfers, cases die we kunnen hergebruiken).
 
 ## Paginacategorieën
 
@@ -28,8 +37,8 @@ Landings en blogs krijgen **twee aparte templates**. Beide krijgen wel: auteur (
 onderwerp, met foto en bio), publicatie- en bijwerkdatum, FAQ-blok en structured data, voor
 vindbaarheid in Google en in AI-zoekmachines.
 
-Auteur per onderwerp: training en AI-geletterdheid Jan Brusse, software David Homan,
-strategie en compliance Frans Hoorn.
+Auteur per onderwerp: training en AI-geletterdheid Jan Brusse, software en compliance David Homan,
+strategie (business case, kosten, plaats, gidsen) Frans Hoorn.
 
 ## Cases
 
@@ -91,17 +100,87 @@ Verdwijnen met **410 Gone**: `/hanze`, `/nl/menu`, `/og-image-generator`,
 ## Tijdens de bouw
 
 - **Content freeze** op de live site tot de lancering. Ook snelle SEO-fixes (titels en
-  omschrijvingen) wachten op de relaunch.
+  omschrijvingen) wachten op de relaunch. **Uitzondering:** de AI Salon (sprekers, sponsors,
+  edities) wordt live bijgewerkt en elke wijziging gaat ook mee in de branch `relaunch`.
 - De Vercel-bypass voor previews blijft tot de lancering; daarna roteren.
 - Lancering is **stil**: geen campagne of aankondiging.
 
 ## Buiten de site
 
 - `aoplatform.backend.aiheroes.io` is dood (hoort bij de verdwenen AWS-omgeving) maar staat in
-  Google: DNS-record verwijderen.
+  Google: DNS-record verwijderen (Frans).
 
-## Open punten
+## SEO-landings en blogs
 
-- **SEO-landings:** welke onderwerpen. Vertrekpunt is de kern (wat we bouwen, voor wie,
-  waarmee de klant begint), daarna pas de zoekvraag. Voorstel volgt bij stap 1.
-- **Uitzondering op de freeze:** de AI Salon heeft regelmatig nieuwe sprekers en sponsors.
+Een landing beantwoordt **één vraag waarmee een koper zoekt**. De klant komt met een ding, niet
+met een thema. Elke landing moet door vier toetsen, in deze volgorde:
+
+1. Bij welke entry hoort het (nieuw bouwen, vervangen, eigen beheer)?
+2. Welk bewijs hebben we (case, of anders de werkwijze)?
+3. Wat levert de startsprint hier op?
+4. Wordt er gezocht? Zoekvolume is het laatste filter, nooit het startpunt.
+
+Drie groepen. Elke groep hangt onder een pillar page (het centrum); landings en blogs eromheen
+linken ernaartoe.
+
+### Groep 1: de kern (pillars: de drie entries, startsprint)
+
+| Entry | Landing | Bewijs | Bestaand materiaal |
+|---|---|---|---|
+| Nieuw bouwen | AI-klantenservice en spraakassistent | Medux | |
+| Nieuw bouwen | AI-agents en workflows die werk automatisch doen | | |
+| Nieuw bouwen | Administratie en documentverwerking automatiseren | Kwakkel | |
+| Nieuw bouwen | Company wiki: AI-assistent op je eigen kennis en documenten | Eigen stack | |
+| Nieuw bouwen | Digital twin laten bouwen | | oude dienst `digital-twins` (301) |
+| Nieuw bouwen | AI koppelen aan bestaande systemen (ERP, CRM, Microsoft 365) | | oude dienst `ai-integratie` (301) |
+| Nieuw bouwen | Extra bouwcapaciteit: developers in je team | | oude dienst `ai-development-teams` (301) |
+| Nieuw bouwen | Maatwerk software of webshop laten bouwen | INQ22 | |
+| Vervangen | Duur SaaS-pakket vervangen door eigen software | Strive | |
+| Vervangen | Excel en losse tools vervangen door één systeem | werkwijze | |
+| Vervangen | Verouderd maatwerksysteem moderniseren | werkwijze | |
+| Eigen beheer | AI op eigen servers of in de Europese cloud | Eigen stack, UMCG | `soevereine-ai` |
+| Eigen beheer | Europees alternatief voor ChatGPT/Copilot | | `europese-chatgpt-alternatieven` |
+| Alle drie | Wat kost een AI-toepassing laten bouwen | | `wat-kost-ai-implementatie` |
+| Plaats | AI-bureau Groningen | | `ai-consultancy-groningen` |
+| Plaats | AI-bureau Nederland | | `ai-bureau-nederland` |
+
+Vervangen-landings worden gebouwd ook waar een case ontbreekt: daar dragen de werkwijze (naast
+het oude systeem bouwen, gefaseerd migreren, oud systeem pas uit als het nieuwe draait) en de
+startsprint het verhaal. De lijst is niet uitputtend: nieuwe vragen uit eerste gesprekken
+komen erbij via dezelfde vier toetsen.
+
+### Groep 2: Compliance (pillar: AI Act)
+
+| Onderwerp | Bestaand materiaal |
+|---|---|
+| AI Act: wat moet je als organisatie | `eu-ai-act-compliance` |
+| AI-geletterdheid (artikel 4) | `ai-geletterdheid` |
+| AI-beleid opstellen | `ai-beleid-opstellen` |
+| ISO 42001 (AI-managementsysteem) | nieuw |
+| Security en ISO 27001 bij AI | nieuw |
+| AVG en privacy bij AI (DPIA, data in Europa) | nieuw |
+| Menselijk toezicht en logging bij hoogrisico-AI | nieuw |
+
+### Groep 3: Training (pillar: training)
+
+| Onderwerp | Bestaand materiaal |
+|---|---|
+| Incompany AI-training | `incompany-ai-training` |
+| AI-geletterdheidstraining met certificaat | `ai-geletterdheid-training` |
+| Copilot-training | deel van de trainingspagina |
+| AI voor developers | deel van de trainingspagina |
+| Sessie digitale soevereiniteit | `eu-training` |
+
+AI-geletterdheid als verplichting staat onder Compliance, de training die eraan voldoet onder
+Training; ze linken naar elkaar.
+
+### Blogs en listicles buiten de groepen
+
+- `top-10-ai-consultancy-nederland`: listicle, blijft (vangt GEO-vragen als "beste AI-bureau
+  voor mkb").
+- `ai-implementatie-mkb` en `ai-strategie-gids` worden samen één gids ("Waar begin je met AI in
+  je organisatie"), eindigend bij de startsprint; de andere URL krijgt een 301.
+
+### Later
+
+- Sector-landings (zorg, e-commerce, publieke sector) pas zodra er per sector twee cases zijn.

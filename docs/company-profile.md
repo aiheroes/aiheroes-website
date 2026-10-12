@@ -45,14 +45,14 @@ One promise, three ways in, one front door, one included layer. Used consistentl
    - **Iets nieuws bouwen / Build something new** — "Kunnen jullie dit voor ons bouwen?" Proof: Kwakkel BV, INQ22.
    - **Vervangen wat niet meer voldoet / Replace what no longer fits** — "We zijn ons huidige pakket zat." Proof: Strive, IC Commerce.
    - **In eigen beheer draaien / Run it on your own terms** — "Kan het op onze eigen servers, binnen Europa?" Proof: our own stack (the site assistant), logos UMCG, Tweede Kamer, Envalior.
-3. **The front door: de startsprint / the start sprint.** One week, fixed fee from €8,000. Outcome: a working prototype (new) or a build plan (replace, self-hosted), always with the business case on one page. Every button on the site says "Plan een startsprint". A workshop is never the front door.
+3. **The front door: de startsprint / the start sprint.** Six days, fixed fee from €8,000 (decided 2026-10-09; "zes dagen" everywhere). A start sprint can begin within two weeks of the first call. Outcome: a working prototype (new) or a build plan (replace, self-hosted), always with the business case on one page. Every button on the site says "Plan een startsprint". A workshop is never the front door.
 4. **The included layer: de AI Heroes-standaard / the AI Heroes standard** ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board (AI Act classification, logging, human oversight, European hosting) · your people trained on it (meets Article 4) · not tied to one AI vendor (model-agnostic, fully documented). This is where the former training, consulting and compliance pillars live: as parts of every build, never as a menu.
 5. **Groningen, AI-hoofdstad van Europa / AI Capital of Europe** — stated in the present tense. The €200M AI Fabriek is proof, not a precondition.
 6. **European by default** — data sovereignty, EU AI Act compliance, no vendor lock-in; we run our own stack on EU infrastructure. Offered as an option, never an ultimatum.
 
 **Approved phrases:** "Van ambitie tot implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, niet vast aan één AI-leverancier" · "Eén week, vast bedrag" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
 
-**Retired (do not use):** "full-service AI agency" · "drie pijlers, één partner" · "onder één dak" · "alles van A tot I" · "stap in waar je wilt" · "van change management tot technische implementatie" · "het hele AI-traject" · "AI werkt als je weet hoe" · "AI strategie. Implementatie. Training." Also retired as proof at the front: Medux, Trabu, OLX and InnoEnergy (earlier AI Heroes; their case pages stay as "eerdere cases").
+**Retired (do not use):** "full-service AI agency" · "drie pijlers, één partner" · "onder één dak" · "alles van A tot I" · "stap in waar je wilt" · "van change management tot technische implementatie" · "het hele AI-traject" · "AI werkt als je weet hoe" · "AI strategie. Implementatie. Training." Also retired as proof at the front: Medux, Trabu, OLX and InnoEnergy (earlier AI Heroes; their case pages stay, as equals in the case template without an "eerdere case" label, decided 2026-10-09).
 
 **Avoid (style):** "AI journey" · NL-only framing · negative contrasts ("geen X, maar Y") · em-dashes · hype and LinkedIn-guru cadence.
 
@@ -60,7 +60,7 @@ One promise, three ways in, one front door, one included layer. Used consistentl
 
 Public values (the "Wat ons drijft" set):
 
-1. **Eerlijkheid boven verkoop / Honesty over sales** — "If AI isn't the solution, we'll tell you." Backed by real guarantees: the business-case analysis is free if nothing valuable is found, and builds are model-agnostic, so clients are not tied to one AI vendor.
+1. **Eerlijkheid boven verkoop / Honesty over sales** — "If AI isn't the solution, we'll tell you." Backed by builds that are model-agnostic, so clients are not tied to one AI vendor. (The "business-case analysis free if nothing valuable is found" guarantee was dropped on 2026-10-09.)
 2. **Maatwerk boven standaard / Custom over standard.**
 3. **Practitioners die meedoen / Practitioners who do the work** — "We don't just advise, we also build."
 4. **Groningen, AI Capital of Europe** — local base, European reach.
@@ -76,7 +76,7 @@ Operating principles visible in how the company actually runs:
 
 ## 5. Offering: what we build, and what every build includes
 
-**The start sprint (front door).** One week, fixed fee from €8,000. Day 1 intake and scope with the owner of the problem; days 2–3 build or design; day 4 connect to real data and systems; day 5 demo, business case on one page, go/no-go. If the build goes ahead the sprint is phase 1; if not, the client keeps prototype, plan and business case.
+**The start sprint (front door).** Six days, fixed fee from €8,000, the same for all three ways in. Intake and scope with the owner of the problem, build or design, connect to real data and systems, then demo, business case on one page, go/no-go (the day-by-day plan lives on the start sprint page). If the build goes ahead the sprint is phase 1; if not, the client keeps prototype, plan and business case.
 
 **Builds (from €15,000, typically 2–12 weeks in two-week sprints):**
 - *Iets nieuws bouwen* — assistants and voice AI, workflows and administrative automation, internal tools and customer portals, web applications and web shops (also without AI), search and document processing, extra build capacity (tech lead + 1–5 developers in a client's team).
@@ -85,7 +85,7 @@ Operating principles visible in how the company actually runs:
 
 **The AI Heroes standard (included in every build, never sold separately as the reason to call):**
 - Business case first (Frans): the former readiness scan, process analysis, business case analysis and roadmap. Standalone advisory work still exists on `/nl/diensten/consultancy` for organisations that do not yet have a concrete system; no roadmap price is published, only the start sprint has a price.
-- Compliance from the drawing board (David): AI Act classification, logging, human oversight, hosting choice, AI policy.
+- Compliance from the drawing board (David): AI Act classification, logging, human oversight, hosting choice, AI policy. Compliance is also sold on its own as the "AI Act-check" (no published price) for organisations that do not build with us, plus ISO 42001 guidance; AI Heroes itself is working towards ISO 42001 and 27001 certification (decided 2026-10-09).
 - Your people trained on it (Jan): training on the delivered system, on the work floor; meets Article 4. Standalone in-company training (AI Foundations, Copilot, AI for Developers, Responsible AI use, AI & disinformation, AI literacy with certificate, digital sovereignty session) stays available on `/nl/diensten/training`, from €2,500 per half-day (dagdeel), with an intake call as before, but is out of the menu and never on the homepage. Lower rates for education and non-profit.
 - Not tied to one AI vendor (changed 2026-09-29): builds are model-agnostic and fully documented. Source code stays with AI Heroes by default, so never claim it belongs to the client; management and further development continue with us.
 
@@ -105,7 +105,7 @@ Operating principles visible in how the company actually runs:
 
 ## 7. Proof and credibility
 
-**Proof rule (2026-09-21):** only work by the current team (since the takeover at the end of 2025) goes at the front: hero, entry cards, start sprint page, first testimonials. Earlier AI Heroes work stays as case pages marked "eerdere case" and is never the first proof.
+**Proof rule (2026-09-21):** only work by the current team (since the takeover at the end of 2025) goes at the front: hero, entry cards, start sprint page, first testimonials. Earlier AI Heroes work stays as case pages, shown as equals in the case template without an "eerdere case" label (2026-10-09), and is never the first proof.
 
 - **Kwakkel BV (current team):** administrative automation, from question to working prototype in six days; the illustration of the start sprint. One paragraph allowed on the site; quote requested.
 - **INQ22 (current team):** custom web shop, live on inq22.com; the proof for "software and AI" (no AI in the product, built with AI).
@@ -113,7 +113,7 @@ Operating principles visible in how the company actually runs:
 - **IC Commerce (current team):** e-commerce platform automated step by step with AI; existing testimonial (P.R. Jeeninga).
 - **Own stack (current team):** the site's AI assistant, built in-house, hosted in Europe (functions in Frankfurt, Supabase EU), AI Act transparency built in, retention policy; documented at `/nl/legal/ai-assistent`.
 - **UMCG (current team, early stage):** software collaboration; logo only until the project is further along.
-- **Earlier AI Heroes (case pages stay, not at the front):** Medux (voice-to-voice customer service; project not cleanly closed, mention but do not showcase), OLX Magic, Trabu, InnoEnergy. Testimonials from Jogo, Avics and Cloud Primero also date from that era and sit after the current-team quotes.
+- **Earlier AI Heroes (case pages stay without an "eerdere case" label, not at the front):** Medux (voice-to-voice customer service; project not cleanly closed, mention but do not showcase), OLX Magic, Trabu, InnoEnergy. Testimonials from Jogo, Avics and Cloud Primero also date from that era and sit after the current-team quotes.
 - **TV:** "De AI Storm" feature on RTL 7, RTL Z and Videoland (first aired 7 June 2026), with Jan Brusse interviewed.
 - **AI Salon Groningen** (see §10).
 
@@ -162,7 +162,7 @@ Internal role logic follows the path of one build: Frans owns the business case 
 - Core sentence: see §1. Slogan: "Van ambitie tot implementatie" / "From ambition to implementation".
 - Structure of every page and post: what we build for you → how we start (the start sprint) → where the proof is.
 - The only call to action: "Plan een startsprint" / "Plan a start sprint".
-- Prices to cite: start sprint from €8,000 (one week, fixed); builds from €15,000; standalone training from €2,500 per half-day (dagdeel) (never above the fold, never in a hero). No roadmap or scan price.
+- Prices to cite: start sprint from €8,000 (six days, fixed); builds from €15,000; standalone training from €2,500 per half-day (dagdeel) (never above the fold, never in a hero). No roadmap or scan price.
 - Proof to cite first: Kwakkel BV (prototype in 6 days), INQ22 (live web shop), Strive (SaaS replaced), IC Commerce, own stack. Earlier cases (Medux, Trabu, OLX, InnoEnergy) only as "eerdere cases".
 - Groningen is the AI capital of Europe — present tense. "AI Fabriek (AI Factory)" at first mention in English.
 - Dates: Dutch AI Act supervision has been operational since 2 August 2026 (past tense).
