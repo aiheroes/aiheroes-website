@@ -31,7 +31,7 @@ const days = [
 ];
 
 const faq = [
-  { q: 'Wat kost een startsprint?', a: `Vanaf ${s.price}, vast bedrag, voor alle drie de ingangen. De prijs ligt vast voordat we beginnen.` },
+  { q: 'Wat kost een startsprint?', a: `Een vaste prijs, vanaf ${s.price}, voor alle drie de ingangen. De prijs ligt vast voordat we beginnen.` },
   { q: 'Hoe snel kunnen we beginnen?', a: `Binnen ${s.startWithin} na het eerste gesprek. Na je aanvraag hoor je binnen ${SITE.reply} van ons, meestal met een voorstel.` },
   { q: 'Wat moeten wij zelf vrijmaken?', a: 'De eigenaar op dag 1 en dag 6, een paar gebruikers voor de intake en de test, en een paar uur van iemand die je data en systemen kent. Het bouwen doen wij.' },
   { q: 'Wat als het niet lukt in zes dagen?', a: 'Dan weet je dat na zes dagen, met de reden erbij. Soms is een vraag groter dan gedacht; dan staat in het plan wat er nodig is. Is AI niet de oplossing, dan zeggen we dat.' },
@@ -45,10 +45,10 @@ const faq = [
 <HsLayout
   title="De startsprint"
   seoTitle="De startsprint: in zes dagen een werkend prototype of bouwplan"
-  description={`De startsprint van AI Heroes: zes dagen, vast bedrag vanaf ${s.price}, start binnen twee weken. Een werkend prototype of bouwplan met de business case op één A4.`}
+  description={`De startsprint van AI Heroes: zes dagen, vaste prijs, vanaf ${s.price}, start binnen twee weken. Een werkend prototype of bouwplan met de business case op één A4.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Startsprint', path: '/nl/startsprint', price: s.priceValue, serviceType: 'AI-prototype en business case', description: `Zes dagen, vast bedrag vanaf ${s.price}: een werkend prototype of bouwplan met de business case op één A4.` }),
+    serviceSchema({ name: 'Startsprint', path: '/nl/startsprint', price: s.priceValue, serviceType: 'AI-prototype en business case', description: `Zes dagen, vaste prijs, vanaf ${s.price}: een werkend prototype of bouwplan met de business case op één A4.` }),
     faqSchema(faq),
   ]}
 >
@@ -56,13 +56,13 @@ const faq = [
     accent="red"
     crumbs={crumbs}
     current="De startsprint"
-    title="Zes dagen. Vast bedrag. | Dan *weet* je het."
+    title="Zes dagen. Vaste prijs. | Dan *weet* je het."
     lede={`De startsprint is de eerste stap van elke bouw. Aan het eind van dag zes weet je of het kan, wat het kost en hoe het eruitziet.`}
     cta={{ label: 'Plan een startsprint', href: '#contact' }}
     secondary={{ label: 'Bekijk de zes dagen', href: '#zes-dagen' }}
     facts={[
       { value: '6 dagen', label: 'van vraag naar prototype of bouwplan' },
-      { value: s.price, label: 'vast bedrag, voor alle ingangen' },
+      { value: s.price, label: 'vaste prijs, voor alle ingangen' },
       { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
     ]}
   />

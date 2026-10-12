@@ -240,3 +240,13 @@ Dit bestand gaat voor op de open vragen in de paginaplannen. Waar een besluit ie
 
 De jurist is akkoord met het concept (`docs/relaunch/voorwaarden-concept.md`). De tekst staat op
 `/nl/legal/voorwaarden` en, als vertaling waarbij de Nederlandse tekst voorgaat, op `/en/legal/terms`.
+
+## 21. Na de copy-review (interview 2026-10-12)
+
+| Vraag | Besluit | Raakt |
+|---|---|---|
+| Prijsformulering startsprint | **"vaste prijs, vanaf €8.000"** (EN "fixed price, from €8,000"); "vast bedrag" verdwijnt | alle pagina's, llms.txt, assistent-prompt, schema, company profile |
+| "Het #1 AI netwerk-event" | **Blijft** | P15 |
+| "AI agency" in de FAQ van L15 | **Zo laten** (het zoekwoord staat in titel en op L16) | L15 |
+| IC Commerce | Concreet: klanten zien eerst producten uit de **dichtstbijzijnde voorraadlocatie**, en wat al in het **winkelmandje** zit bepaalt uit welke voorraadlocatie de shop de volgende producten toont | C4, P3 |
+| Engels "compliance from the drawing board" | Wordt "compliance by design" / "from the start" (Nederlands "vanaf de tekentafel" blijft) | EN-pagina's |

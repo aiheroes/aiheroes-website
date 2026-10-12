@@ -18,7 +18,7 @@ import { faqSchema } from '../../data/schema';
 const crumbs = [{ label: 'Home', href: '/en' }];
 
 const track = [
-  { label: `Within ${S.sprint.startWithin}`, title: 'Start sprint', text: `Six days, fixed fee from ${S.sprint.price}. We work with the owner and the users on a prototype or a plan. [About the start sprint](/en/start-sprint).`, meta: 'You bring: the owner and a few users. You get: a prototype or build plan.' },
+  { label: `Within ${S.sprint.startWithin}`, title: 'Start sprint', text: `Six days, fixed price, from ${S.sprint.price}. We work with the owner and the users on a prototype or a plan. [About the start sprint](/en/start-sprint).`, meta: 'You bring: the owner and a few users. You get: a prototype or build plan.' },
   { label: 'Day six', title: 'Decision', text: 'Based on the one-page business case you decide: build, adjust or stop. If the business case does not add up, we do not build. [Cost and return up front](/en/business-case).', meta: 'You get: cost, return and payback time on paper.' },
   { label: 'Week 2 to 12', title: 'Building in sprints', text: `Two-week sprints, with a demo after every sprint. Compliance, logging and oversight are part of the design. A build starts from ${S.build.from}.`, meta: 'You bring: one contact person and feedback after each demo.' },
   { label: 'Go-live', title: 'Switching over with a trained team', text: 'Your team is trained on the system itself, on the job. When we replace something, the old system is only switched off once the new one runs.', meta: 'You get: a team that works with it every day.' },
@@ -65,7 +65,7 @@ const faq = [
     lede="From ambition to implementation. This is how every project runs, from the first call to software that runs and keeps running."
     secondary={{ label: 'See the process', href: '#track' }}
     facts={[
-      { value: '6 days', label: 'start sprint, fixed fee' },
+      { value: '6 days', label: 'start sprint, fixed price' },
       { value: '2 weeks', label: 'from the first call to the start' },
       { value: S.reply, label: 'and you hear from us' },
     ]}
@@ -82,7 +82,7 @@ const faq = [
   <HsSection title="What it *costs*" lede="These are the prices we publish. At the end of the start sprint you have the cost of your build on paper.">
     <HsFigures
       items={[
-        { value: S.sprint.price, label: 'six-day start sprint, fixed fee' },
+        { value: S.sprint.price, label: 'six-day start sprint, fixed price' },
         { value: S.build.from, label: 'starting price of a build' },
         { value: S.training.from, label: 'starting price per half day of standalone training' },
       ]}

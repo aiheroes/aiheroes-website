@@ -19,7 +19,7 @@ import HsFaq from '../../components/hs/HsFaq.astro';
 const crumbs = [{ label: 'Home', href: '/' }];
 
 const track = [
-  { label: `Binnen ${SITE.sprint.startWithin}`, title: 'Startsprint', text: `Zes dagen, vast bedrag vanaf ${SITE.sprint.price}. We werken met de eigenaar en de gebruikers aan een prototype of een plan. [Over de startsprint](/nl/startsprint).`, meta: 'Jij levert: de eigenaar en een paar gebruikers. Je krijgt: een prototype of bouwplan.' },
+  { label: `Binnen ${SITE.sprint.startWithin}`, title: 'Startsprint', text: `Zes dagen, vaste prijs, vanaf ${SITE.sprint.price}. We werken met de eigenaar en de gebruikers aan een prototype of een plan. [Over de startsprint](/nl/startsprint).`, meta: 'Jij levert: de eigenaar en een paar gebruikers. Je krijgt: een prototype of bouwplan.' },
   { label: 'Dag zes', title: 'Besluit', text: 'Op basis van de business case op één A4 besluit je: bouwen, bijsturen of stoppen. Sluit de business case niet, dan bouwen we niet. [Kosten en opbrengst vooraf](/nl/business-case).', meta: 'Je krijgt: kosten, opbrengst en terugverdientijd op papier.' },
   { label: 'Week 2 tot 12', title: 'Bouwen in sprints', text: `Sprints van ${SITE.build.sprintWeeks} weken, met na elke sprint een demo. Compliance, logging en toezicht zitten in het ontwerp. Een bouw begint vanaf ${SITE.build.from}.`, meta: 'Jij levert: een aanspreekpunt en feedback na elke demo.' },
   { label: 'Livegang', title: 'Overstap met een getraind team', text: 'Je team is getraind op het systeem zelf, op de werkvloer. Vervangen we iets, dan gaat het oude pas uit als het nieuwe draait.', meta: 'Je krijgt: een team dat er elke dag mee werkt.' },
@@ -65,7 +65,7 @@ const faq = [
     lede="Van ambitie tot implementatie. Zo verloopt elke samenwerking, van het eerste gesprek tot software die draait en blijft draaien."
     secondary={{ label: 'Bekijk het traject', href: '#traject' }}
     facts={[
-      { value: '6 dagen', label: 'startsprint, vast bedrag' },
+      { value: '6 dagen', label: 'startsprint, vaste prijs' },
       { value: '2 weken', label: 'na het eerste gesprek van start' },
       { value: SITE.reply, label: 'en je hoort van ons' },
     ]}
@@ -82,7 +82,7 @@ const faq = [
   <HsSection title="Wat het *kost*" lede="Dit zijn de prijzen die we publiceren. Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier.">
     <div class="hs-figs"><HsFigures
       items={[
-        { value: SITE.sprint.price, label: 'startsprint van zes dagen, vast bedrag' },
+        { value: SITE.sprint.price, label: 'startsprint van zes dagen, vaste prijs' },
         { value: SITE.build.from, label: 'vanaf, voor een bouw' },
         { value: SITE.training.from, label: 'vanaf, per dagdeel voor een losse training' },
       ]}

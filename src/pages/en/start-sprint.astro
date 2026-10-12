@@ -31,7 +31,7 @@ const days = [
 ];
 
 const faq = [
-  { q: 'What does a start sprint cost?', a: `From ${s.price}, fixed fee, for all three ways in. The price is fixed before we start.` },
+  { q: 'What does a start sprint cost?', a: `A fixed price, from ${s.price}, for all three ways in. The price is fixed before we start.` },
   { q: 'How soon can we start?', a: `Within ${s.startWithin} of the first call. After your request you hear from us within ${SITE_EN.reply}, usually with a proposal.` },
   { q: 'What do we need to free up?', a: 'The owner on day 1 and day 6, a few users for the intake and the test, and a few hours from someone who knows your data and systems. We do the building.' },
   { q: 'What if it does not work in six days?', a: 'Then you know after six days, and you know why. Sometimes a question turns out bigger than expected; the plan then says what it takes. If AI is not the answer, we say so.' },
@@ -46,10 +46,10 @@ const faq = [
   lang="en"
   title="The start sprint"
   seoTitle="The start sprint: a working AI prototype or build plan in six days"
-  description={`The AI Heroes start sprint: six days, fixed fee from ${s.price}, start within two weeks. A working prototype or build plan with the business case on a single page.`}
+  description={`The AI Heroes start sprint: six days, fixed price, from ${s.price}, start within two weeks. A working prototype or build plan with the business case on a single page.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Start sprint', path: '/en/start-sprint', price: SITE.sprint.priceValue, serviceType: 'AI prototype and business case', description: `Six days, fixed fee from ${s.price}: a working prototype or build plan with the business case on a single page.` }),
+    serviceSchema({ name: 'Start sprint', path: '/en/start-sprint', price: SITE.sprint.priceValue, serviceType: 'AI prototype and business case', description: `Six days, fixed price, from ${s.price}: a working prototype or build plan with the business case on a single page.` }),
     faqSchema(faq),
   ]}
 >
@@ -57,13 +57,13 @@ const faq = [
     accent="red"
     crumbs={crumbs}
     current="The start sprint"
-    title="Six days. A fixed fee. | Then you *know*."
+    title="Six days. A fixed price. | Then you *know*."
     lede="The start sprint is the first step of every build. At the end of day six you know whether it can be done, what it costs and what it looks like."
     cta={{ label: 'Plan a start sprint', href: '#contact' }}
     secondary={{ label: 'See the six days', href: '#six-days' }}
     facts={[
       { value: '6 days', label: 'from question to prototype or build plan' },
-      { value: s.price, label: 'fixed fee, for every way in' },
+      { value: s.price, label: 'fixed price, for every way in' },
       { value: '2 weeks', label: 'after the first call you can start' },
     ]}
   />

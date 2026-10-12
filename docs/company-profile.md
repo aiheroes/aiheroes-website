@@ -45,12 +45,12 @@ One promise, three ways in, one front door, one included layer. Used consistentl
    - **Iets nieuws bouwen / Build something new** — "Kunnen jullie dit voor ons bouwen?" Proof: Kwakkel BV, INQ22.
    - **Vervangen wat niet meer voldoet / Replace what no longer fits** — "We zijn ons huidige pakket zat." Proof: Strive, IC Commerce.
    - **In eigen beheer draaien / Run it on your own terms** — "Kan het op onze eigen servers, binnen Europa?" Proof: our own stack (the site assistant), logos UMCG, Tweede Kamer, Envalior.
-3. **The front door: de startsprint / the start sprint.** Six days, fixed fee from €8,000 (decided 2026-10-09; "zes dagen" everywhere). A start sprint can begin within two weeks of the first call. Outcome: a working prototype (new) or a build plan (replace, self-hosted), always with the business case on one page. Every button on the site says "Plan een startsprint". A workshop is never the front door.
+3. **The front door: de startsprint / the start sprint.** Six days, fixed price, from €8,000 (decided 2026-10-09; "zes dagen" and "vaste prijs, vanaf €8.000" everywhere). A start sprint can begin within two weeks of the first call. Outcome: a working prototype (new) or a build plan (replace, self-hosted), always with the business case on one page. Every button on the site says "Plan een startsprint". A workshop is never the front door.
 4. **The included layer: de AI Heroes-standaard / the AI Heroes standard** ("Bij elke bouw inbegrepen"): business case first · compliance from the drawing board (AI Act classification, logging, human oversight, European hosting) · your people trained on it (meets Article 4) · not tied to one AI vendor (model-agnostic, fully documented). This is where the former training, consulting and compliance pillars live: as parts of every build, never as a menu.
 5. **Groningen, AI-hoofdstad van Europa / AI Capital of Europe** — stated in the present tense. The €200M AI Fabriek is proof, not a precondition.
 6. **European by default** — data sovereignty, EU AI Act compliance, no vendor lock-in; we run our own stack on EU infrastructure. Offered as an option, never an ultimatum.
 
-**Approved phrases:** "Van ambitie tot implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, niet vast aan één AI-leverancier" · "Eén week, vast bedrag" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
+**Approved phrases:** "Van ambitie tot implementatie" · "Bij elke bouw inbegrepen" · "Software die werkt op de dag dat we vertrekken" · "Business case vooraf, compliance vanaf de tekentafel, je mensen kunnen ermee werken, niet vast aan één AI-leverancier" · "Zes dagen, vaste prijs" · "Als AI niet de oplossing is, zeggen we dat" · "Sluit de business case niet, dan bouwen we niet".
 
 **Retired (do not use):** "full-service AI agency" · "drie pijlers, één partner" · "onder één dak" · "alles van A tot I" · "stap in waar je wilt" · "van change management tot technische implementatie" · "het hele AI-traject" · "AI werkt als je weet hoe" · "AI strategie. Implementatie. Training." Also retired as proof at the front: Medux, Trabu, OLX and InnoEnergy (earlier AI Heroes; their case pages stay, as equals in the case template without an "eerdere case" label, decided 2026-10-09).
 
@@ -76,7 +76,7 @@ Operating principles visible in how the company actually runs:
 
 ## 5. Offering: what we build, and what every build includes
 
-**The start sprint (front door).** Six days, fixed fee from €8,000, the same for all three ways in. Intake and scope with the owner of the problem, build or design, connect to real data and systems, then demo, business case on one page, go/no-go (the day-by-day plan lives on the start sprint page). If the build goes ahead the sprint is phase 1; if not, the client keeps prototype, plan and business case.
+**The start sprint (front door).** Six days, fixed price, from €8,000, the same for all three ways in. Intake and scope with the owner of the problem, build or design, connect to real data and systems, then demo, business case on one page, go/no-go (the day-by-day plan lives on the start sprint page). If the build goes ahead the sprint is phase 1; if not, the client keeps prototype, plan and business case.
 
 **Builds (from €15,000, typically 2–12 weeks in two-week sprints):**
 - *Iets nieuws bouwen* — assistants and voice AI, workflows and administrative automation, internal tools and customer portals, web applications and web shops (also without AI), search and document processing, extra build capacity (tech lead + 1–5 developers in a client's team).

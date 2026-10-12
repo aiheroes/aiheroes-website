@@ -41,7 +41,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
         itemOffered: {
           '@type': 'Service',
           name: 'Startsprint',
-          description: 'Zes dagen, vast bedrag vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
+          description: 'Zes dagen, vaste prijs, vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
           url: 'https://aiheroes.io/nl/startsprint',
         },
         price: '8000',

@@ -1,8 +1,8 @@
 # AI Heroes
 
-> AI Heroes B.V. (Groningen, the Netherlands, KvK 42051968) builds AI tools your team uses every day, for organisations that want more than a pilot. Three ways in: a new AI tool, replacing old software that no longer fits, or software you control (on your own servers or with a European provider). The first step is always the start sprint: six days, fixed fee from EUR 8,000 (the same for all three ways in), it can start within two weeks of the first call and ends in a working prototype or a build plan, always with the business case on one page. Builds start from EUR 15,000; after delivery AI Heroes keeps maintaining and developing the system. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: info@aiheroes.io, +31 50 200 3373.
+> AI Heroes B.V. (Groningen, the Netherlands, KvK 42051968) builds AI tools your team uses every day, for organisations that want more than a pilot. Three ways in: a new AI tool, replacing old software that no longer fits, or software you control (on your own servers or with a European provider). The first step is always the start sprint: six days, fixed price, from EUR 8,000 (the same for all three ways in), it can start within two weeks of the first call and ends in a working prototype or a build plan, always with the business case on one page. Builds start from EUR 15,000; after delivery AI Heroes keeps maintaining and developing the system. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: info@aiheroes.io, +31 50 200 3373.
 
-AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Drie ingangen: een nieuwe AI-toepassing, oude software vervangen of software in eigen beheer. De eerste stap is altijd de startsprint: zes dagen, vast bedrag vanaf EUR 8.000, start binnen twee weken. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
+AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Drie ingangen: een nieuwe AI-toepassing, oude software vervangen of software in eigen beheer. De eerste stap is altijd de startsprint: zes dagen, vaste prijs, vanaf EUR 8.000, start binnen twee weken. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
 
 ## The AI Heroes standard (included in every build)
 
@@ -13,7 +13,7 @@ AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties
 
 ## Start here (English)
 
-- [The start sprint](https://aiheroes.io/en/start-sprint): six days, fixed fee from EUR 8,000, working prototype or build plan plus business case
+- [The start sprint](https://aiheroes.io/en/start-sprint): six days, fixed price, from EUR 8,000, working prototype or build plan plus business case
 - [What we build](https://aiheroes.io/en/what-we-build): the three ways in and everything we build
 - [A new AI tool](https://aiheroes.io/en/new-ai-tool): AI customer service, agents and workflows, administration, company wiki, digital twin, integrations, extra developers, custom software
 - [Replace old software](https://aiheroes.io/en/replace-software): overpriced SaaS, Excel and legacy systems replaced next to the old system, moved over in phases
@@ -25,7 +25,7 @@ AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties
 
 ## Begin hier (Nederlands)
 
-- [De startsprint](https://aiheroes.io/nl/startsprint): zes dagen, vast bedrag vanaf EUR 8.000, werkend prototype of bouwplan plus business case
+- [De startsprint](https://aiheroes.io/nl/startsprint): zes dagen, vaste prijs, vanaf EUR 8.000, werkend prototype of bouwplan plus business case
 - [Wat we bouwen](https://aiheroes.io/nl/wat-we-bouwen): de drie ingangen en alles wat we bouwen
 - [Nieuwe AI-toepassing](https://aiheroes.io/nl/nieuwe-ai-toepassing): AI-klantenservice, agents, administratie, company wiki, digital twin, koppelingen, extra developers, maatwerk software
 - [Oude software vervangen](https://aiheroes.io/nl/software-vervangen): duur SaaS-pakket, Excel en verouderd maatwerk, naast het oude gebouwd en in fasen overgezet
