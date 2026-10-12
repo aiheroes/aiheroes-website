@@ -24,7 +24,7 @@ faq:
   - q: "Moet AI in onze ISO 27001-scope?"
     a: "Als AI-toepassingen met je informatie werken, horen ze in je risicoanalyse en je leveranciersbeheer. Meestal breid je uit wat je al doet. Wie verder wil, kijkt naar [ISO 42001](/nl/kennis/iso-42001)."
   - q: "Valt AI onder NIS2?"
-    a: "NIS2 gaat over de organisatie, niet over een technologie. Val je onder de Cyberbeveiligingswet, die sinds 15 augustus 2026 geldt, dan vallen je AI-toepassingen onder dezelfde zorgplicht als je andere systemen."
+    a: "NIS2 gaat over de beveiliging van je hele organisatie, welke technologie je ook gebruikt. Val je onder de Cyberbeveiligingswet, die sinds 15 augustus 2026 geldt, dan vallen je AI-toepassingen onder dezelfde zorgplicht als je andere systemen."
   - q: "Waar draait een AI-model eigenlijk?"
     a: "Bij de leverancier van het model, in een cloud die jij kiest, of op je eigen servers. Dat bepaalt waar je data heen gaat en onder welk recht. Lees [AI op eigen servers](/nl/ai-op-eigen-servers)."
 ---
@@ -34,7 +34,7 @@ faq:
 Een AI-toepassing is software, dus alles wat je al doet aan beveiliging blijft gelden. Er komen een paar risico's bij:
 
 - **Gegevens lekken via prompts.** Medewerkers plakken contracten, klantdossiers of broncode in een AI-tool. Afhankelijk van de voorwaarden kan die informatie bij de leverancier blijven staan.
-- **Prompt injection.** Een model leest tekst van buitenaf, zoals een e-mail of webpagina, en voert de instructies uit die daarin verstopt zitten. Een assistent die mail samenvat, kan zo misleid worden om informatie door te sturen. Het staat bovenaan de [OWASP-lijst voor toepassingen met taalmodellen](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
+- **Prompt injection.** Een model leest tekst van buitenaf, zoals een e-mail of webpagina, en voert de instructies uit die daarin verstopt zitten. Een assistent die mail samenvat, kan zo worden overgehaald om informatie door te sturen. Het staat bovenaan de [OWASP-lijst voor toepassingen met taalmodellen](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
 - **Agents met te veel rechten.** Een agent die zelf systemen aanstuurt, kan alles wat zijn account kan. Een fout of manipulatie heeft dan meteen gevolgen.
 - **Afhankelijkheid van één leverancier.** Verandert de leverancier zijn model, voorwaarden of prijs, dan verandert jouw toepassing mee.
 - **Hosting en jurisdictie.** Waar het model draait en waar de data staat, bepaalt welk recht van toepassing is.
@@ -71,7 +71,7 @@ Drie vragen bepalen veel van je risico: waar draait het model, waar staat de dat
 
 - **We doen security-reviews en pentests van AI-toepassingen**, ook als we ze niet zelf gebouwd hebben.
 - **Bij elke bouw** zitten logging, minimale rechten, menselijk toezicht en documentatie in het ontwerp. We bouwen modelonafhankelijk, met Europese hosting als optie.
-- **We werken zelf naar ISO 27001-certificering.**
+- **We werken zelf toe naar ISO 27001-certificering.**
 
 De assistent op deze site is een voorbeeld: hij draait in Frankfurt met een database in de EU, bewaart gesprekken pseudoniem maximaal 30 dagen en staat beschreven op [de transparantiepagina](/nl/legal/ai-assistent).
 

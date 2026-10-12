@@ -32,10 +32,10 @@ const LOGOS = [
 ];
 
 const faq = [
-  { q: 'What does a training cost?', a: `From ${t.from} ${t.unit}. A full day is two half days. Preparation and materials are included. A lower rate applies to education and non-profits. There is always an intake call first.` },
-  { q: 'Do you come to our location?', a: 'Yes, we train on location anywhere in the Netherlands. For large groups, from 150 participants, we also give the training online and live.' },
-  { q: 'Which teams is it for?', a: 'For every team that is going to work with AI, from the board to the work floor. We tailor content and examples to the group. Development teams have a training of their own.' },
-  { q: 'Does the training count for Article 4 of the AI Act?', a: 'The [AI literacy training](/en/ai-literacy-training) is made for it, with a certificate per participant and a report of what was covered. When we build something for you, training on that system is part of the track.' },
+  { q: 'What does training cost?', a: `From ${t.from} ${t.unit}. A full day is two half days. Preparation and materials are included. A lower rate applies to education and non-profits. There is always an intake call first.` },
+  { q: 'Do you come to our location?', a: 'Yes, we train on location anywhere in the Netherlands. For large groups, from 150 participants, we also run the training live online.' },
+  { q: 'Which teams is it for?', a: 'For every team that is going to work with AI, from the boardroom to the shop floor. We tailor content and examples to the group. Development teams get their own training.' },
+  { q: 'Does the training count for Article 4 of the AI Act?', a: 'The [AI literacy training](/en/ai-literacy-training) is made for it, with a certificate per participant and a report of what was covered. When we build something for you, training on that system is part of the process.' },
   { q: 'Which tools do you cover?', a: 'The tools your team actually uses: ChatGPT, Claude, Copilot or a European alternative. We teach ways of working that still hold with the next tool: asking good questions, judging the output and handling company data safely.' },
 ];
 ---
@@ -57,26 +57,26 @@ const faq = [
     current="AI training for your team"
     title="Your team can *work* with it."
     lede="The training that pays off most is the one on the system your team uses every day. It is part of every build. We also give standalone training, on location anywhere in the Netherlands."
-    cta={{ label: 'Ask for a training', href: '#contact' }}
-    secondary={{ label: 'See the trainings', href: '#trainings' }}
+    cta={{ label: 'Ask about training', href: '#contact' }}
+    secondary={{ label: 'See the courses', href: '#trainings' }}
     facts={[
       { value: S.proof.trained, label: `professionals trained since ${SITE.since}` },
-      { value: t.from, label: `from, ${t.unit}` },
-      { value: 'On location', label: 'anywhere in the Netherlands, or online live' },
+      { value: t.from, label: `starting price ${t.unit}` },
+      { value: 'On location', label: 'anywhere in the Netherlands, or live online' },
     ]}
   />
 
-  <HsSection title="Training in every *build*" lede="We train the team that will use the system, on that system and on the work floor, before the switch. And we guide the roll-out until it is part of daily work.">
+  <HsSection title="Training in every *build*" lede="We train the team that will use the system, on that system and on the job, before the switch. And we guide the roll-out until it is part of daily work.">
     <p class="hs-lead" data-item>{zet('That also covers Article 4 of the AI Act.', { display: true })}</p>
     <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/how-we-work">How we work<HsIcon name="arrow-right" /></a></p>
   </HsSection>
 
-  <HsSection id="trainings" tone="paper" title="Standalone *trainings*" lede="For teams that want to learn to work with AI, also when we are not building anything for you.">
+  <HsSection id="trainings" tone="paper" title="Standalone *courses*" lede="For teams that want to learn to work with AI, even when we are not building anything for you.">
     <HsCards
       variant="planes"
       items={[
         { accent: 'red', title: 'In-company AI training', text: 'The core training for your whole team: how AI tools work, questions that get results and judging the output critically.', href: '/en/incompany-ai-training', more: 'In-company AI training' },
-        { accent: 'blue', title: 'AI literacy with a certificate', text: 'For Article 4: responsible use of AI and disinformation, with a live deepfake demo. With a certificate per participant.', href: '/en/ai-literacy-training', more: 'AI literacy training' },
+        { accent: 'blue', title: 'AI literacy with a certificate', text: 'For Article 4: responsible use of AI and disinformation, with a live deepfake demo. Each participant gets a certificate.', href: '/en/ai-literacy-training', more: 'AI literacy training' },
         { accent: 'dark', title: 'Digital sovereignty', text: 'A session with Jan for the board and IT: how dependent are you on US cloud, and what can you do about it?', href: '/en/digital-sovereignty', more: 'Digital sovereignty session' },
       ]}
     />
@@ -85,14 +85,14 @@ const faq = [
         columns={2}
         items={[
           { icon: 'computer', title: 'Training in the tools you already have', text: 'Copilot in Word, Excel, Outlook and Teams, or the AI tools your team already uses.', href: '/en/incompany-ai-training', more: 'In-company AI training' },
-          { icon: 'code', title: 'AI for developers', text: 'For development teams that want to build AI in. Would you rather have us build with you? Then see extra developers.', href: '/en/extra-developers', more: 'Extra developers' },
+          { icon: 'code', title: 'AI for developers', text: 'For development teams that want to build AI into their software. Would you rather have us build with you? Then see extra developers.', href: '/en/extra-developers', more: 'Extra developers' },
         ]}
       />
     </div>
-    <p class="hs-sec__foot hs-muted" data-item>{zet('On location anywhere in the Netherlands. For large groups, from 150 participants, also online and live.')}</p>
+    <p class="hs-sec__foot hs-muted" data-item>{zet('On location anywhere in the Netherlands. For large groups, from 150 participants, also live online.')}</p>
   </HsSection>
 
-  <HsSection title="How a training *runs*">
+  <HsSection title="How the training *runs*">
     <HsSteps
       items={[
         { label: 'Preparation', title: 'Intake', text: 'We discuss your team, your goals and your work. Afterwards you know what the training covers, what it costs and when we start.' },
@@ -103,10 +103,10 @@ const faq = [
   </HsSection>
 
   <HsSection tone="paper" title="What it *costs*" lede="A full day is two half days. Preparation and materials are included. A lower rate applies to education and non-profits, and there is always an intake call first.">
-    <HsFigures items={[{ value: t.from, label: `from, ${t.unit}` }]} />
+    <HsFigures items={[{ value: t.from, label: `starting price ${t.unit}` }]} />
   </HsSection>
 
-  <HsSection tone="blue" title="Article 4 in two *sentences*" lede="Since 2 February 2025, every organisation that uses AI has to make sure its people can work with it sensibly. A training with a report helps you show that you do.">
+  <HsSection tone="blue" title="Article 4 in two *sentences*" lede="Since 2 February 2025, every organisation that uses AI has to make sure its people can work with it sensibly. Training with a report helps you show that you do.">
     <div class="hs-sec__foot" data-item>
       <a class="hs-link" href="/en/insights/ai-literacy">What AI literacy requires<HsIcon name="arrow-right" /></a>
       <a class="hs-link" href="/en/compliance">Compliance and security<HsIcon name="arrow-right" /></a>
@@ -130,7 +130,7 @@ const faq = [
 
   <HsContact
     training
-    title="Ask for a training"
+    title="Ask about training"
     lede={`Tell us who you want to train and what they need to be able to do. You hear from us within ${S.reply}, with a proposal for an intake. Want something built? Then pick one of the other topics.`}
   />
 </HsLayout>

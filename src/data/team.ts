@@ -48,7 +48,7 @@ export const FOUNDERS: Record<FounderId, Founder> = {
     en: {
       role: 'Co-Founder, software and compliance',
       hint: 'Build, hosting and compliance',
-      bio: 'David leads the build, from prototype to a system that runs in your own landscape. AI Act classification, logging, security and hosting are part of the design from the drawing board.',
+      bio: 'David leads the build, from prototype to a system that runs in your own landscape. AI Act classification, logging, security and hosting are built into the design from the start.',
     },
   },
   'jan-brusse': {

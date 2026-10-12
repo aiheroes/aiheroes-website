@@ -83,7 +83,7 @@ export const SALON_NEXT: SalonEdition = {
 export const SALON_TIMES = { doors: '17:30', start: '18:00', end: '21:00' };
 
 export const SALON_AGENDA = [
-  { time: '17:30', title: 'Inloop', en: { title: 'Walk-in' } },
+  { time: '17:30', title: 'Inloop', en: { title: 'Doors open' } },
   { time: '18:00', title: 'Twee talks van zo’n twintig minuten', en: { title: 'Two talks of around twenty minutes' } },
   { time: '18:40', title: 'Pitches van een minuut', note: 'Pitchen? Mail salon@aiheroes.io.', en: { title: 'One-minute pitches', note: 'Want to pitch? Email salon@aiheroes.io.' } },
   { time: '19:00', title: 'Eten, drinken en netwerken', note: 'Tot 21:00.', en: { title: 'Food, drinks and networking', note: 'Until 21:00.' } },

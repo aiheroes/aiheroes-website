@@ -38,7 +38,7 @@ const eventSchema = {
     address: { '@type': 'PostalAddress', addressLocality: next.city, addressCountry: 'NL' },
   },
   image: ['https://aiheroes.io/og-image.png'],
-  description: `${next.title} van AI Salon Groningen, ${next.dateLabel}. Gratis community-avond voor AI founders, builders, investeerders, onderzoekers en partners.`,
+  description: `${next.title} van AI Salon Groningen, ${next.dateLabel}. Gratis community-avond voor AI-founders, builders, investeerders, onderzoekers en partners.`,
   performer: speakers.map((s) => ({ '@type': 'Person', name: s.name })),
   organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: next.lumaUrl },
@@ -50,7 +50,7 @@ const STATUS: Record<string, string> = { soldout: 'Uitverkocht', past: 'Geweest'
 <HsLayout
   title="AI Salon Groningen"
   seoTitle={`AI Salon Groningen: ${next.title.toLowerCase()}, ${next.shortDate.replace(/^Do /, '')}`}
-  description={`AI Salon Groningen ${next.title.toLowerCase()}, ${next.dateLabel}. Een gratis, tweemaandelijkse avond voor AI founders, builders, investeerders, onderzoekers en partners. Meld je aan via Luma.`}
+  description={`AI Salon Groningen ${next.title.toLowerCase()}, ${next.dateLabel}. Een gratis, tweemaandelijkse avond voor AI-founders, builders, investeerders, onderzoekers en partners. Meld je aan via Luma.`}
   crumbs={crumbs}
   jsonLd={eventSchema}
 >
@@ -58,8 +58,8 @@ const STATUS: Record<string, string> = { soldout: 'Uitverkocht', past: 'Geweest'
     accent="dark"
     crumbs={crumbs}
     current="AI Salon"
-    title="Het #1 AI netwerk-event, | nu ook in *Groningen*."
-    lede={`${next.title} van AI Salon Groningen is op ${next.dateLabel}, inloop vanaf ${SALON_TIMES.doors}. Gratis en Engelstalig, voor AI founders, builders, investeerders, onderzoekers en partners.`}
+    title="Het #1 AI-netwerkevent, | nu ook in *Groningen*."
+    lede={`${next.title} van AI Salon Groningen is op ${next.dateLabel}, inloop vanaf ${SALON_TIMES.doors}. Gratis en Engelstalig, voor AI-founders, builders, investeerders, onderzoekers en partners.`}
     cta={{ label: `Meld je aan voor ${next.title.toLowerCase()}`, href: '#aanmelden' }}
     secondary={{ label: 'Het programma', href: '#programma' }}
     photo={{ src: '/groningen.webp', alt: 'Een straat in de binnenstad van Groningen met een kerktoren', w: 1200, h: 1500, pos: '50% 40%' }}
@@ -70,7 +70,7 @@ const STATUS: Record<string, string> = { soldout: 'Uitverkocht', past: 'Geweest'
     ]}
   />
 
-  <HsSection title="Wat is de *AI Salon*?" lede="Elke twee maanden brengen we in Groningen mensen samen die met AI bouwen, erin investeren of erover onderzoeken. Twee korte talks, pitches van een minuut en daarna eten, drinken en netwerken." split>
+  <HsSection title="Wat is de *AI Salon*?" lede="Elke twee maanden brengen we in Groningen mensen samen die met AI bouwen, erin investeren of er onderzoek naar doen. Twee korte talks, pitches van een minuut en daarna eten, drinken en netwerken." split>
     <ul class="hs-cards hs-cards--rules hs-cards--3">
       <li data-item>
         <div class="hs-card">
@@ -88,14 +88,14 @@ const STATUS: Record<string, string> = { soldout: 'Uitverkocht', past: 'Geweest'
         <div class="hs-card">
           <HsIcon name="calendar" />
           <h3 class="hs-card__title">Elke twee maanden, gratis</h3>
-          <p class="hs-card__text">{zet('De avonden zijn gratis en in het Engels. Sponsors houden dat zo, editie na editie.')}</p>
+          <p class="hs-card__text">{zet('Sponsors houden de avonden gratis, editie na editie. De voertaal is Engels.')}</p>
         </div>
       </li>
       <li data-item style="--i:2">
         <div class="hs-card">
           <HsIcon name="peoples" />
           <h3 class="hs-card__title">Voor wie</h3>
-          <p class="hs-card__text">{zet('AI founders, builders, investeerders, onderzoekers en partners uit Noord-Nederland en daarbuiten.')}</p>
+          <p class="hs-card__text">{zet('AI-founders, builders, investeerders, onderzoekers en partners uit Noord-Nederland en daarbuiten.')}</p>
         </div>
       </li>
     </ul>

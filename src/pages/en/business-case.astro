@@ -20,16 +20,16 @@ const sheet = [
   { icon: 'wallet' as const, title: 'Cost', text: 'What the build costs, and what maintenance, hosting and model use cost per year after that.' },
   { icon: 'chart-histogram' as const, title: 'Return', text: 'What it returns in time, money or quality, calculated with your own numbers.' },
   { icon: 'hourglass' as const, title: 'Payback time', text: 'When the investment has paid for itself, and what happens if results fall short.' },
-  { icon: 'protect' as const, title: 'Risks', text: 'What can go wrong: data, adoption, rules such as the AI Act, and how we deal with it.' },
+  { icon: 'protect' as const, title: 'Risks', text: 'What can go wrong: data, adoption, rules such as the AI Act, and how we deal with them.' },
   { icon: 'check' as const, title: 'Go or no-go', text: 'Advice to build, adjust or stop. The decision is yours.' },
 ];
 
 const faq = [
-  { q: 'What does a business case cost?', a: `When you have something concrete, it is part of the start sprint: six days, from ${S.sprint.price}, with a prototype or build plan included. An exploration for organisations without a concrete question yet is priced up front, to fit.` },
+  { q: 'What does a business case cost?', a: `When you have something concrete, it is part of the start sprint: six days, from ${S.sprint.price}, with a prototype or build plan included. An exploration for organisations without a concrete question yet is priced up front for your situation.` },
   { q: 'What if the answer is no?', a: 'Then we do not build, and you know why. Kwakkel BV decided not to build yet after the start sprint and keeps the prototype, the plan and the business case. That is an outcome too.' },
-  { q: 'Where do you start if you have nothing concrete yet?', a: 'With an exploration: we go through your processes and rank the opportunities by return. Also read [where to start with AI in your organisation](/en/insights/where-to-start-with-ai).' },
-  { q: 'Who helps companies with an AI readiness scan?', a: 'AI Heroes from Groningen does this with an exploration: a readiness scan that ends with concrete candidates to build, with cost and return attached. Because we build ourselves, we calculate with what building really costs.' },
-  { q: 'How is this different from a consultancy firm?', a: 'We build ourselves. Our business case ends with something we can build, with the cost it really has. If AI is not the answer, we say so.' },
+  { q: 'Where do you start if you have nothing concrete yet?', a: 'With an exploration: we go through your processes and rank the opportunities by return. You can also read [where to start with AI in your organisation](/en/insights/where-to-start-with-ai).' },
+  { q: 'Who helps companies with an AI readiness scan?', a: 'AI Heroes in Groningen does this through an exploration: a readiness scan that ends with concrete candidates to build, with cost and return attached. Because we build ourselves, our figures reflect what building really costs.' },
+  { q: 'How is this different from a consultancy firm?', a: 'We build ourselves. Our business case ends with something we can build, at its real cost. If AI is not the answer, we say so.' },
   { q: 'Who makes the business case?', a: 'Frans Hoorn, co-founder. He leads the start sprint and the business case.' },
 ];
 ---
@@ -62,7 +62,7 @@ const faq = [
     <HsCards items={sheet} />
   </HsSection>
 
-  <HsSection tone="paper" title="Why our estimates *hold*" lede="We build ourselves. That is why we calculate with what building really costs: hours, hosting, model use and maintenance.">
+  <HsSection tone="paper" title="Why our estimates *hold*" lede="We build ourselves. That is why our figures are based on what building really costs: hours, hosting, model use and maintenance.">
     <p class="hs-lead" data-item>{zet('If the business case does not add up, we do not build.', { display: true })}</p>
   </HsSection>
 

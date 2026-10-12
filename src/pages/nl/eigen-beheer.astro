@@ -21,7 +21,7 @@ const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/
 const faq = [
   { q: 'Zijn Europese modellen goed genoeg?', a: 'Voor de meeste bedrijfstoepassingen wel: samenvatten, zoeken in documenten, klantvragen beantwoorden, formulieren verwerken. In de startsprint testen we het op jouw data en jouw vragen. Is een Europees model voor jouw toepassing niet goed genoeg, dan zeggen we dat.' },
   { q: 'Wat kost een eigen server?', a: 'Dat hangt af van het aantal gebruikers en wat het model moet kunnen. In de startsprint zetten we de kosten van hardware, hosting en beheer in de business case, naast wat dezelfde toepassing in de cloud zou kosten.' },
-  { q: 'Waarom zou ik weg willen van Amerikaanse cloud?', a: 'De Amerikaanse CLOUD Act kan Amerikaanse bedrijven verplichten data te overhandigen, ook als die in Europa staat. Dat geldt ook voor diensten als ChatGPT, Azure OpenAI en AWS Bedrock. Voor veel organisaties is dat bij gevoelige data of in aanbestedingen een probleem.' },
+  { q: 'Waarom zou ik weg willen uit de Amerikaanse cloud?', a: 'De Amerikaanse CLOUD Act kan Amerikaanse bedrijven verplichten data te overhandigen, ook als die in Europa staat. Dat geldt ook voor diensten als ChatGPT, Azure OpenAI en AWS Bedrock. Voor veel organisaties is dat bij gevoelige data of in aanbestedingen een probleem.' },
   { q: 'Kan ik alleen een plan krijgen?', a: 'Ja. De startsprint levert een hostingontwerp, een risicobeoordeling en de business case. Daarna besluit je of je verder gaat.' },
   { q: 'Wie beheert het?', a: 'Wij blijven beheren en doorontwikkelen. Je eigen beheerders trainen we op de omgeving, zodat ze weten wat er draait.' },
 ];
@@ -93,7 +93,7 @@ const LOGOS = [
     link={{ label: 'Hoe de assistent werkt', href: '/nl/legal/ai-assistent' }}
   />
 
-  <HsSection title="Werken met *ons*">
+  <HsSection title="Organisaties waar we mee *werkten*">
     <ul class="hs-logos hs-logos--light hs-logos--bare" data-item>
       {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
       <li><span class="hs-logos__text">050-IT</span></li>
@@ -106,7 +106,7 @@ const LOGOS = [
         { label: 'Zes dagen', title: 'Startsprint', text: `Je omgeving in kaart, een hostingontwerp, een risicobeoordeling en de business case. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
         { label: 'In fasen', title: 'Bouwen en migreren', text: `We bouwen of migreren in fasen, naast wat er nu draait. Bouw vanaf ${SITE.build.from}.` },
         { label: 'Livegang', title: 'Beheerders getraind', text: 'Je eigen beheerders zijn getraind op de omgeving voordat die live gaat.' },
-        { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen, gedocumenteerd en niet vast aan één AI-leverancier.' },
+        { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Alles is gedocumenteerd en je zit niet vast aan één AI-leverancier.' },
       ]}
     />
   </HsSection>

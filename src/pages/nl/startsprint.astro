@@ -23,7 +23,7 @@ const outcomes = [
 ];
 
 const days = [
-  { label: 'Dag 1', title: 'Intake en scope', text: 'We zitten met de eigenaar en de mensen die het werk doen. Samen bepalen we wat er op dag zes moet staan.', meta: 'Van jou: de eigenaar en twee of drie gebruikers, een halve dag.' },
+  { label: 'Dag 1', title: 'Intake en scope', text: 'We gaan om tafel met de eigenaar en de mensen die het werk doen. Samen bepalen we wat er op dag zes moet staan.', meta: 'Van jou: de eigenaar en twee of drie gebruikers, een halve dag.' },
   { label: 'Dag 2 en 3', title: 'Bouwen of ontwerpen', text: 'We bouwen het prototype, of we ontwerpen de nieuwe architectuur of de hosting.', meta: 'Van jou: iemand voor vragen, een uur per dag.' },
   { label: 'Dag 4', title: 'Koppelen aan je echte data', text: 'Het prototype gaat draaien op je eigen data en systemen, naast het huidige werk.', meta: 'Van jou: iemand die je data en systemen kent, een paar uur.' },
   { label: 'Dag 5', title: 'Testen met gebruikers', text: 'Je mensen werken ermee. Wat schuurt, passen we dezelfde dag aan.', meta: 'Van jou: de gebruikers, een uur.' },
@@ -35,7 +35,7 @@ const faq = [
   { q: 'Hoe snel kunnen we beginnen?', a: `Binnen ${s.startWithin} na het eerste gesprek. Na je aanvraag hoor je binnen ${SITE.reply} van ons, meestal met een voorstel.` },
   { q: 'Wat moeten wij zelf vrijmaken?', a: 'De eigenaar op dag 1 en dag 6, een paar gebruikers voor de intake en de test, en een paar uur van iemand die je data en systemen kent. Het bouwen doen wij.' },
   { q: 'Wat als het niet lukt in zes dagen?', a: 'Dan weet je dat na zes dagen, met de reden erbij. Soms is een vraag groter dan gedacht; dan staat in het plan wat er nodig is. Is AI niet de oplossing, dan zeggen we dat.' },
-  { q: 'Is de prijs anders per ingang?', a: `Nee. Vanaf ${s.price}, of je nu iets nieuws laat bouwen, oude software vervangt of software in eigen beheer wilt draaien.` },
+  { q: 'Is de prijs anders per ingang?', a: `Nee. Vanaf ${s.price} voor alle drie: iets nieuws laten bouwen, oude software vervangen of software in eigen beheer draaien.` },
   { q: 'Kan het ook zonder startsprint?', a: 'Bijna nooit. De startsprint voorkomt dat we iets bouwen waarvan de business case niet sluit. Alleen als je [extra developers in je team](/nl/extra-developers) zoekt, beginnen we met een kennismaking.' },
   { q: 'Werkt het ook voor software zonder AI?', a: 'Ja. We bouwen wat je nodig hebt, met of zonder AI. De webwinkel van [INQ22](/nl/cases/inq22) bevat zelf geen AI en is wel met AI gebouwd.' },
   { q: 'Wat gebeurt er na de startsprint?', a: `Gaat de bouw door, dan is de startsprint fase 1. We bouwen in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}, en na oplevering blijven wij beheren en doorontwikkelen. Gaat hij niet door, dan houd je prototype of plan en de business case.` },
@@ -80,7 +80,7 @@ const faq = [
     snap={false}
     kicker="Voorbeeld"
     title="Van vraag naar | werkend prototype | in zes dagen"
-    lede="Kwakkel BV wilde zien of het administratieve handwerk eruit kon, en dat niet uit een rapport halen. Na zes dagen draaide een prototype op hun eigen administratie, met de business case op één A4."
+    lede="Kwakkel BV wilde zelf zien of het administratieve handwerk eruit kon, in plaats van erover te lezen in een rapport. Na zes dagen draaide een prototype op hun eigen administratie, met de business case op één A4."
     stats={[{ value: 6, label: 'dagen van vraag tot werkend prototype' }]}
     close="Wat het systeem niet zeker weet, legt het voor aan een medewerker. Kwakkel houdt het prototype, het plan en de business case, en besluit zelf wanneer de bouw begint."
     link={{ label: 'Lees de case', href: '/nl/cases/kwakkel' }}

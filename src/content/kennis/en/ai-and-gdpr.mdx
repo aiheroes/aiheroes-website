@@ -18,7 +18,7 @@ pillar:
 related: [ai-security, ai-act, ai-policy]
 faq:
   - q: "May I put customer data into ChatGPT?"
-    a: "Only with a legal basis, a business version with a data processing agreement and clear agreements about which data may go in. A free consumer account gives you none of those agreements, and then you cannot justify it."
+    a: "Only with a legal basis, a business version with a data processing agreement and clear agreements about which data may go in. A free consumer account offers none of that, so you cannot justify it."
   - q: "Do I need a DPIA for an AI application?"
     a: "Often, yes. A DPIA is mandatory when processing is likely to result in a high risk, for example with profiling, health data, monitoring employees or large-scale processing with new technology. Data protection authorities publish lists of processing for which a DPIA is always required; in the Netherlands that is the Autoriteit Persoonsgegevens."
   - q: "Is an American AI provider GDPR compliant?"
@@ -38,19 +38,19 @@ As soon as personal data passes through the system. That happens more often than
 - an AI voice holds conversations with customers and transcribes them;
 - you use your own data to train or fine-tune a model.
 
-In all those cases the ordinary rules of the GDPR apply. The AI technology changes nothing about that.
+In all those cases the ordinary rules of the GDPR apply. Using AI changes nothing about that.
 
-## The four things you arrange
+## The four things to arrange
 
 **1. A legal basis.** Why may you use this data for this purpose? Usually that is the performance of a contract or a legitimate interest. Record the assessment.
 
 **2. Data minimisation.** Use only what you need. Remove names and numbers from texts the model does not need to know, and do not keep outputs longer than necessary.
 
-**3. A data processing agreement.** With every party that processes the data on your behalf: the builder, the hosting party and the model provider. Check where the data is stored and whether the provider trains on it.
+**3. A data processing agreement.** With every party that processes the data on your behalf: the builder, the hosting provider and the model provider. Check where the data is stored and whether the provider trains on it.
 
 **4. A DPIA when the risk is high.** A data protection impact assessment is mandatory when processing is likely to result in a high risk to the people involved. Think of profiling, health data, monitoring employees or large-scale processing with new technology. In the Netherlands the [Autoriteit Persoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/praktisch-avg/data-protection-impact-assessment-dpia) keeps a list of processing for which a DPIA is always required.
 
-An example from healthcare: in the AI voice we built for Medux, customer calls pass through the system. Who is calling, what about, and which appointment gets booked. Calls are transcribed for quality and review. It then has to be settled in advance which data the system needs, how long the transcripts are kept and who has access.
+An example from healthcare: in the AI voice we built for Medux, customer calls pass through the system: who is calling, what about and which appointment gets booked. Calls are transcribed for quality and review. So you settle in advance which data the system needs, how long the transcripts are kept and who has access.
 
 ## Where is the data?
 
@@ -59,7 +59,7 @@ Two things are often mixed up:
 - **Calling a model:** you send a question to a model and get an answer. The question may be logged by the provider.
 - **Storing data:** documents, conversations and outputs you keep in a database or search index.
 
-For both: know where it is. Transfers outside the EU are only allowed on an appropriate basis, such as the EU-US Data Privacy Framework for American companies that have signed up to it. That framework is under legal pressure: the EU General Court upheld it in September 2025, and the appeal to the Court of Justice is still pending. On top of that, the US CLOUD Act can oblige American companies to hand over data, also when it is stored in Europe. For sensitive data, European hosting or your [own server](/en/ai-on-your-own-servers) is the safest choice.
+For both: know where it is. Transfers outside the EU are only allowed on an appropriate basis, such as the EU-US Data Privacy Framework for American companies that have signed up to it. That framework is under legal pressure: the EU General Court upheld it in September 2025, and the appeal to the Court of Justice is still pending. On top of that, the US CLOUD Act can oblige American companies to hand over data, even when it is stored in Europe. For sensitive data, European hosting or your [own server](/en/ai-on-your-own-servers) is the safest choice.
 
 ## The GDPR and the AI Act side by side
 

@@ -39,7 +39,7 @@ export const JOBS: Job[] = [
     employment: ['FULL_TIME'],
     datePosted: '2026-06-08',
     contact: 'david-homan',
-    summary: 'Je bouwt AI-toepassingen die teams elke dag gebruiken, van werkend prototype in zes dagen tot een systeem in het landschap van de klant.',
+    summary: 'Je bouwt AI-toepassingen die teams elke dag gebruiken, van werkend prototype in zes dagen tot een systeem dat bij de klant draait.',
     description: [
       'Als AI Engineer bouw je mee aan alles wat AI Heroes oplevert: AI-klantenservice, agents en workflows, documentverwerking, kennisassistenten en de koppelingen met de systemen die een klant al heeft.',
       'Je werkt in startsprints van zes dagen en daarna in sprints van twee weken, met een demo na elke sprint. Compliance zit vanaf de tekentafel in het ontwerp: AI Act-classificatie, logging, menselijk toezicht en de keuze voor de hosting. Na oplevering blijven we beheren en doorontwikkelen, dus je ziet wat je bouwt ook echt gebruikt worden.',
@@ -63,10 +63,10 @@ export const JOBS: Job[] = [
       location: 'Groningen',
       hours: '32 to 40 hours a week',
       type: 'Full-time',
-      summary: 'You build AI tools that teams use every day, from a working prototype in six days to a system running in the client’s own landscape.',
+      summary: 'You build AI tools that teams use every day, from a working prototype in six days to a system running in the client’s own IT landscape.',
       description: [
         'As an AI Engineer you help build everything AI Heroes delivers: AI customer service, agents and workflows, document processing, knowledge assistants and the connections to the systems a client already has.',
-        'You work in six-day start sprints and then in two-week sprints, with a demo after every sprint. Compliance is part of the design from the drawing board: AI Act classification, logging, human oversight and the choice of hosting. After delivery we keep maintaining and developing what we built, so you see your work actually being used.',
+        'You work in six-day start sprints and then in two-week sprints, with a demo after every sprint. Compliance is built into the design from day one: AI Act classification, logging, human oversight and the choice of hosting. After delivery we keep maintaining and developing what we built, so you see your work actually being used.',
       ],
       requirements: [
         'Experience with Python or TypeScript and with modern AI frameworks',
@@ -118,13 +118,13 @@ export const JOBS: Job[] = [
       location: 'Groningen and on site in the Netherlands',
       hours: '24 to 40 hours a week',
       type: 'Full-time or part-time',
-      summary: 'You make sure teams can work with what we build, and you give training that makes organisations AI literate.',
+      summary: 'You make sure teams can work with what we build, and you run training that makes organisations AI literate.',
       description: [
-        'As an AI Trainer you make sure the people who will use a delivered system can actually work with it: training on the system itself, on the work floor, and support in the first weeks. That way a client also meets Article 4 of the AI Act straight away.',
-        'You also give standalone training, from in-company AI training to the AI literacy training with certificate, for groups from the board to developers, on site or live online. Together with Jan you develop new material and keep existing training up to date.',
+        'As an AI Trainer you make sure the people who will use a delivered system can actually work with it: training on the system itself, on the job, and support in the first weeks. That way a client also meets Article 4 of the AI Act straight away.',
+        'You also run standalone training, from in-company AI training to AI literacy training with a certificate, for groups from the board to developers, on site or live online. Together with Jan you develop new material and keep existing training up to date.',
       ],
       requirements: [
-        'Proven experience in giving training or workshops',
+        'Proven experience in running training or workshops',
         'Broad knowledge of AI tools and how teams use them in their work',
         'You make complex subjects understandable for everyone in the room',
         'You present with ease to groups of 5 to 50 people',
@@ -132,7 +132,7 @@ export const JOBS: Job[] = [
         'Excellent Dutch',
       ],
       offerings: [
-        'New teams and organisations all the time, also after a build is delivered',
+        'New teams and organisations all the time, including after a build is delivered',
         'Room to develop your own training formats',
         'Part-time is open for discussion',
         'A desk at our office in Groningen',
@@ -149,10 +149,10 @@ export const JOBS: Job[] = [
     employment: ['INTERN'],
     datePosted: '2026-06-08',
     contact: 'frans-hoorn',
-    summary: 'Je bouwt mee aan de commerciële pijplijn, van het eerste gesprek tot een voorstel voor een startsprint.',
+    summary: 'Je helpt nieuwe klanten binnenhalen, van het eerste gesprek tot een voorstel voor een startsprint.',
     description: [
       'AI Heroes bouwt AI-toepassingen die teams elke dag gebruiken, vanuit Groningen. De eerste stap bij elke klant is een startsprint van zes dagen.',
-      'Als stagiair sales en business development zoek je organisaties met een concreet proces dat beter kan, voer je eerste gesprekken en bereid je voorstellen voor. Je werkt direct samen met de drie oprichters en krijgt veel eigenaarschap.',
+      'Als stagiair sales en business development zoek je organisaties met een concreet proces dat beter kan, voer je eerste gesprekken en bereid je voorstellen voor. Je werkt direct samen met de drie oprichters en krijgt veel verantwoordelijkheid.',
     ],
     requirements: [
       'Je studeert Commerciële Economie, International Business of iets vergelijkbaars (hbo of bachelor)',
@@ -220,21 +220,21 @@ export const JOBS: Job[] = [
       'Een plek op ons kantoor in Groningen',
     ],
     en: {
-      title: 'Marketing with AI intern',
+      title: 'AI marketing intern',
       team: 'Business case and strategy',
       location: 'Groningen',
       hours: '32 to 40 hours a week',
       type: 'Internship, at least five months',
       summary: 'You create content that shows what we build, with the latest AI tools.',
       description: [
-        'As our marketing intern you make visible what AI Heroes builds: LinkedIn posts, cases, articles, video and images. You use AI tools yourself and share what works with the team.',
+        'As our marketing intern you show what AI Heroes builds: LinkedIn posts, cases, articles, video and images. You use AI tools yourself and share what works with the team.',
         'You work directly with the founders on marketing, from the content calendar to the AI Salon, and learn how a company that builds AI tools presents itself.',
       ],
       requirements: [
         'You study Communication, Media, Marketing or something similar (applied sciences or bachelor level)',
         'You have experience with content for LinkedIn, Instagram or YouTube',
         'You already use AI tools for your own work',
-        'You write good Dutch; English is a plus',
+        'You write well in Dutch; English is a plus',
         'You are available for at least five months, 32 to 40 hours a week',
       ],
       offerings: [

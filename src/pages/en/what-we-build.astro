@@ -38,7 +38,7 @@ const catalog = {
   lang="en"
   title="What we build"
   seoTitle="What we build: AI tools and custom software"
-  description={`AI Heroes builds AI tools your team uses every day, through three ways in: something new, replacing old software or software you control. Always starting with a six-day start sprint from ${SITE_EN.sprint.price}.`}
+  description={`AI Heroes builds AI tools your team uses every day, through three ways in: something new, replacing old software or software you control. Every project starts with a six-day start sprint from ${SITE_EN.sprint.price}.`}
   crumbs={crumbs}
   jsonLd={catalog}
 >
@@ -47,8 +47,8 @@ const catalog = {
     crumbs={crumbs}
     current="What we build"
     title="What we *build* for you"
-    lede="We build AI tools your team uses every day. AI is a tool in that: we build software without AI just as well, when that fits better."
-    secondary={{ label: 'Everything we often build', href: '#often' }}
+    lede="We build AI tools your team uses every day. AI is one of our tools: when software without AI fits better, we build that just as well."
+    secondary={{ label: 'What we often build', href: '#often' }}
   />
 
   <HsEntries
@@ -58,12 +58,12 @@ const catalog = {
     more="See this way in"
     descriptions={{
       nieuw: '“Can you build this for us?” A working prototype on your own data in six days, then we keep building until your team uses it every day.',
-      vervangen: '“We are fed up with our package.” We build the new next to the old, move your data over in parts and only switch off the old one once the new one runs.',
+      vervangen: '“We are fed up with our package.” We build the new system next to the old one, move your data over in parts and only switch off the old one once the new one runs.',
       'eigen-beheer': '“Can it run on our own servers, within Europe?” On your own hardware or with a European provider, with the AI Act in the design.',
     }}
   />
 
-  <HsSection id="often" tone="paper" title="What we *often* build" lede="Coming with something specific? Find it here per way in. If yours is not on the list, we work it out in the start sprint." split>
+  <HsSection id="often" tone="paper" title="What we *often* build" lede="Looking for something specific? Find it here, by way in. If yours is not on the list, we work it out in the start sprint." split>
     <HsLandingIndex />
   </HsSection>
 
@@ -80,12 +80,12 @@ const catalog = {
     </p>
   </HsSection>
 
-  <HsSection tone="paper" title="Where we *proved* it" lede="One example per way in. More work under the cases.">
+  <HsSection tone="paper" title="Where we *proved* it" lede="One example per way in. More in the cases.">
     <HsCards
       items={[
         { meta: ENTRIES_EN.nieuw.title, title: 'Kwakkel BV', href: '/en/cases/kwakkel', more: 'Read the case', text: 'From question to working prototype on the company’s own administration, with the business case, in six days.' },
         { meta: ENTRIES_EN.vervangen.title, title: 'Strive', href: '/en/cases/strive', more: 'Read the case', text: 'An overpriced membership management package replaced by its own software, built next to the old one and earned back in one year.' },
-        { meta: ENTRIES_EN['eigen-beheer'].title, title: 'Our own assistant', href: '/en/cases/eigen-stack', more: 'Read the case', text: 'The AI assistant on this site runs on European infrastructure, makes clear that it is AI and hands you to a person when it does not know.' },
+        { meta: ENTRIES_EN['eigen-beheer'].title, title: 'Our own assistant', href: '/en/cases/eigen-stack', more: 'Read the case', text: 'The AI assistant on this site runs on European infrastructure, makes clear that it is AI and hands you over to a person when it does not know the answer.' },
       ]}
     />
     <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/cases">All cases<HsIcon name="arrow-right" /></a></p>

@@ -87,7 +87,7 @@ const NL: NavContent = {
           { label: 'Digital twin', href: '/nl/digital-twin' },
           { label: 'AI koppelen aan je systemen', href: '/nl/ai-integratie' },
           { label: 'Extra developers', href: '/nl/extra-developers' },
-          { label: 'Maatwerk software', href: '/nl/maatwerk-software' },
+          { label: 'Maatwerksoftware', href: '/nl/maatwerk-software' },
         ],
       },
       {

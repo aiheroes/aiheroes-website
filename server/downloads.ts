@@ -1,7 +1,8 @@
 // Downloadable templates, offered in exchange for an email address (docs/relaunch/01-besluiten.md
 // §11). One source for the article form (src/components/hs/HsDownloadForm.astro) and the function
 // (api/download.ts). A template stays switched off until its files exist: the article then says
-// "het sjabloon komt binnenkort" and the function answers 404.
+// "het sjabloon komt binnenkort" and the function answers 404. When switching a template on, also
+// update the template FAQ in /nl/kennis/ai-beleid and /en/insights/ai-policy ("Het komt eraan").
 
 export interface DownloadTemplate {
   /** Shown to the visitor and in the mail. */

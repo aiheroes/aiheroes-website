@@ -7,14 +7,14 @@ group: compliance
 title: "Human oversight and logging: what the AI Act asks and how to *build* it"
 seoTitle: "Human oversight and logging in AI systems: what the EU AI Act asks and how to build it"
 description: "What human oversight and logging mean under the EU AI Act, when they are mandatory, which design patterns work and how long to keep logs. With the Medux AI voice as an example."
-answer: "For high-risk AI, the AI Act requires that people can understand and monitor the system and, where needed, step in or override its decision, and that the system automatically records what it does. For the applications in Annex III that applies from 2 December 2027. Outside high risk it is wise too: it makes mistakes visible and keeps responsibility with people."
+answer: "For high-risk AI, the AI Act requires that people can understand and monitor the system and, where needed, step in or override its decision, and that the system automatically records what it does. For the applications in Annex III that applies from 2 December 2027. For other AI it is wise too: it makes mistakes visible and keeps responsibility with people."
 author: david-homan
 publishDate: 2026-10-12
 updatedDate: 2026-10-12
 pillar:
   label: "Go to compliance and security"
   href: "/en/compliance"
-  text: "Building an AI application that prepares decisions? In every build, oversight and logging are part of the design from the drawing board. Start with a [start sprint](/en/start-sprint)."
+  text: "Building an AI application that prepares decisions? In every build, oversight and logging are built into the design from the start. Start with a [start sprint](/en/start-sprint)."
 related: [ai-act, ai-and-gdpr, ai-security]
 faq:
   - q: "Is human oversight always mandatory?"
@@ -36,19 +36,19 @@ For high-risk AI, the [AI Act](/en/insights/ai-act) sets two requirements that e
 - **Human oversight (Article 14).** The system must be built so that people can understand it, monitor it and step in where needed. They must be able to disregard or reverse an outcome, and to stop the system. Organisations that use the system appoint people with the knowledge, authority and time to do this (Article 26).
 - **Logging (Article 12).** The system must automatically record what it does, so you can trace afterwards what happened. Deployers keep those logs for at least six months.
 
-For the high-risk applications in Annex III these requirements apply from 2 December 2027; for AI in regulated products from 2 August 2028. Those dates were set in 2026 with the Digital Omnibus. We check them every quarter.
+For the high-risk applications in Annex III these requirements apply from 2 December 2027; for AI in regulated products from 2 August 2028. Those dates were set in 2026 by the Digital Omnibus. We check them every quarter.
 
 ## What that means in a system
 
 Human oversight is a design choice. These are the patterns we use most:
 
-1. **A person approves.** The system makes a proposal, a member of staff sends it or decides. Suitable for everything that goes out or affects a person.
+1. **A person approves.** The system makes a proposal; a member of staff sends it or decides. Suits anything that goes out or affects a person.
 2. **Hand over when in doubt or urgent.** The system handles standard cases and passes difficult, urgent or sensitive cases straight to a member of staff.
 3. **A confidence threshold.** Below a set confidence level the case goes to a person. You adjust the threshold based on the logs.
 4. **An emergency stop.** One button that halts the automated processing, while the manual work carries on.
 5. **An explanation with each outcome.** The system shows what an outcome is based on, so the person checking it can see whether it is right.
 
-## What you log and for how long
+## What to log, and for how long
 
 A good log answers four questions afterwards:
 
@@ -69,13 +69,13 @@ This is what human oversight looks like in practice: the AI for the standard wor
 
 ## Adding it later or building it in from the start
 
-Adding oversight and logging afterwards is expensive. You have to find decision points in a system that was not designed for them, and reconstruct logs that do not exist. If you take it along from the start, you build it as part of the application, and you can adjust it later based on what the logs show.
+Adding oversight and logging afterwards is expensive. You have to find decision points in a system that was not designed for them, and reconstruct logs that do not exist. If you include it from the start, it becomes part of the application, and you can adjust it later based on what the logs show.
 
 ## What AI Heroes does here
 
 <div class="hs-note">
 
-In every build we decide the risk class and the decision points during the start sprint. Handing over to a person, logging with fixed retention periods and an emergency stop are in the system from the first version. That is what we mean by **compliance from the drawing board**.
+In every build we decide the risk class and the decision points during the start sprint. Hand-off to a person, logging with fixed retention periods and an emergency stop are in the system from the first version. That is what we mean by **compliance from the start**.
 
 </div>
 

@@ -4,7 +4,7 @@ slug: ai-security
 plan: K5
 kind: artikel
 group: compliance
-title: "AI and information security: the risks and what you *do* about them"
+title: "AI and information security: the risks and what to *do* about them"
 seoTitle: "AI security risks: prompt injection, data leaks and what to do about them"
 description: "Which security risks does AI bring, such as data leaks through prompts and prompt injection, and how do they fit into ISO 27001 and NIS2? The measure for each risk."
 answer: "AI applications bring a few risks that classic software does not have: data that ends up with a model through prompts, manipulation through text the model reads (prompt injection) and agents that are allowed to do more than they need. You control them with the same approach as the rest of your information security: knowing which data goes where, limiting rights, logging and testing."
@@ -31,7 +31,7 @@ faq:
 
 ## What is different about AI security?
 
-An AI application is software, so everything you already do for security still applies. A few risks are added:
+An AI application is software, so everything you already do for security still applies. AI adds a few risks of its own:
 
 - **Data leaking through prompts.** Staff paste contracts, customer files or source code into an AI tool. Depending on the terms, that information may stay with the provider.
 - **Prompt injection.** A model reads text from outside, such as an email or web page, and carries out the instructions hidden in it. An assistant that summarises email can be tricked into forwarding information this way. It tops the [OWASP list for applications built on language models](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
@@ -39,14 +39,14 @@ An AI application is software, so everything you already do for security still a
 - **Dependence on one provider.** If the provider changes its model, terms or price, your application changes with it.
 - **Hosting and jurisdiction.** Where the model runs and where the data sits decides which law applies.
 
-## What you do per risk
+## What to do about each risk
 
 | Risk | Measure | Who arranges it |
 |---|---|---|
 | Data through prompts | Business tools with agreements, data classes, training | IT and compliance, through the AI policy |
 | Prompt injection | Keep outside input apart from instructions, check output, have sensitive actions confirmed | Developers |
 | Agents with too many rights | Least privilege, a person approves sensitive actions, log everything | Developers and operations |
-| One provider | Build model-agnostic, documentation, an exit plan | Architect and procurement |
+| One provider | A model-agnostic build, documentation, an exit plan | Architect and procurement |
 | Hosting and jurisdiction | Choose deliberately where the model and the data sit, data processing agreements | IT, privacy and procurement |
 
 ## AI within ISO 27001
@@ -63,13 +63,13 @@ If your organisation falls under NIS2, your AI applications fall under the same 
 
 ## Hosting and jurisdiction
 
-Three questions decide much of your risk: where the model runs, where the data sits, and which law the provider falls under. The US CLOUD Act can oblige American companies to hand over data they control, also when it is stored in a European data centre. For sensitive data you therefore choose deliberately: a European provider, or your own servers. Read more in [AI on your own servers](/en/ai-on-your-own-servers) and [software you control](/en/self-hosted).
+Three questions decide much of your risk: where the model runs, where the data sits, and which law the provider falls under. The US CLOUD Act can oblige American companies to hand over data they control, even when it is stored in a European data centre. So for sensitive data, choose deliberately: a European provider, or your own servers. Read more in [AI on your own servers](/en/ai-on-your-own-servers) and [software you control](/en/self-hosted).
 
 ## What AI Heroes does here
 
 <div class="hs-note">
 
-- **We carry out security reviews and penetration tests of AI applications**, also when we did not build them ourselves.
+- **We carry out security reviews and penetration tests of AI applications**, including ones we did not build ourselves.
 - **In every build** logging, least privilege, human oversight and documentation are part of the design. We build model-agnostic, with European hosting as an option.
 - **We are working towards ISO 27001 certification ourselves.**
 

@@ -22,7 +22,7 @@ const card = (e: (typeof all)[number]) => ({
   text: e.data.description,
   href: `/en/insights/${e.data.slug}`,
   meta: `${KIND[e.data.kind]} · ${minutes(e.body)} min · ${FOUNDERS[e.data.author].name}`,
-  more: 'Read on',
+  more: 'Read more',
 });
 const pick = (slugs: string[]) => slugs.map((s) => all.find((e) => e.data.slug === s)).filter((e): e is (typeof all)[number] => !!e);
 
@@ -152,7 +152,7 @@ const crumbs = [{ label: 'Home', href: '/en' }];
 
   <HsCtaBand
     tone="blue"
-    title="Rather talk *directly*?"
+    title="Prefer to *talk*?"
     text="Have a concrete process or system? In a six-day start sprint you find out whether it works, what it costs and what it looks like."
     cta={{ label: 'Plan a start sprint', href: '/en/start-sprint' }}
     secondary={{ label: 'Book an introduction', href: '/en/about/team' }}

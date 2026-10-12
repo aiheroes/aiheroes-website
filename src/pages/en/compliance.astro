@@ -20,7 +20,7 @@ const crumbs = [{ label: 'Home', href: '/en' }, { label: 'How we work', href: '/
 const updated = '12 October 2026';
 
 const layers = [
-  { meta: 'Layer 1', title: 'Everyone who uses AI', text: 'Since 2 February 2025, Article 4 requires that your people can work with AI sensibly. And anyone talking to an AI has to know it is an AI.', href: '/en/insights/ai-literacy', more: 'AI literacy' },
+  { meta: 'Layer 1', title: 'Everyone who uses AI', text: 'Since 2 February 2025, Article 4 requires that your people can work with AI sensibly. On top of that, anyone talking to a chatbot has to know it is an AI (Article 50).', href: '/en/insights/ai-literacy', more: 'AI literacy' },
   { meta: 'Layer 2', title: 'Organisations using AI in their processes', text: 'You know which AI systems you use and which risk class they fall into, you have an AI policy and you record what each system does.', href: '/en/insights/ai-policy', more: 'Writing an AI policy' },
   { meta: 'Layer 3', title: 'Organisations using high-risk AI', text: 'Human oversight, documentation, registration and a system that demonstrably does what it should.', href: '/en/insights/human-oversight', more: 'Human oversight and logging' },
 ];
@@ -29,14 +29,14 @@ const inBuild = [
   { icon: 'list-checkbox' as const, title: 'Classification', text: 'In the start sprint we determine which risk class your application falls into: minimal, limited or high.' },
   { icon: 'preview-open' as const, title: 'Logging and human oversight', text: 'Every decision can be traced and a person can step in. For AI customer service that means handing over to a colleague, for a workflow a review step.' },
   { icon: 'server' as const, title: 'Hosting and data in Europe', text: 'Data that may not leave Europe stays in Europe. Your own servers are an option too.', href: '/en/self-hosted', more: 'Software you control' },
-  { icon: 'peoples' as const, title: 'A team that can work with it', text: 'We train the team on the system it will use, on the work floor.', href: '/en/training', more: 'AI training for your team' },
+  { icon: 'peoples' as const, title: 'A team that can work with it', text: 'We train the team on the system it will use, on the job.', href: '/en/training', more: 'AI training for your team' },
 ];
 
 const norms = [
   { icon: 'certificate' as const, title: 'ISO 42001', text: 'The standard for an AI management system: how you organise, monitor and improve your use of AI. We guide you through it. The certificate itself is issued by a certification body.', href: '/en/insights/iso-42001', more: 'About ISO 42001' },
   { icon: 'lock' as const, title: 'Security and ISO 27001', text: 'We carry out security reviews and pentests of AI applications ourselves, and build with the requirements of information security in mind.', href: '/en/insights/ai-security', more: 'AI and security' },
   { icon: 'file-text' as const, title: 'GDPR and DPIA', text: 'If your application works with personal data, you carry out the DPIA. On request we provide the technical information you need for it.', href: '/en/insights/ai-and-gdpr', more: 'AI and the GDPR' },
-  { icon: 'agreement' as const, title: 'Our own track', text: 'We are working towards ISO 42001 and ISO 27001 certification for AI Heroes itself. Once that is complete, it will be on this page.' },
+  { icon: 'agreement' as const, title: 'Our own certification', text: 'We are working towards ISO 42001 and ISO 27001 certification for AI Heroes itself. Once that is complete, it will be on this page.' },
 ];
 
 const faq = [
@@ -53,7 +53,7 @@ const faq = [
   lang="en"
   title="Compliance and security"
   seoTitle="AI compliance and security: AI Act, ISO 42001 and pentests"
-  description="Compliance from the drawing board: AI Act classification, logging, oversight and European hosting in every build. Already using AI? The AI Act check shows what is missing. Plus ISO 42001 guidance, security reviews and pentests."
+  description="Compliance by design: AI Act classification, logging, oversight and European hosting in every build. Already using AI? The AI Act check shows what is missing. Plus ISO 42001 guidance, security reviews and pentests."
   crumbs={crumbs}
   jsonLd={[
     serviceSchema({ name: 'AI Act check and compliance', path: '/en/compliance', serviceType: 'AI Act compliance, ISO 42001 guidance and security', description: 'Inventory and classification of AI use, AI policy, AI literacy, ISO 42001 guidance and security reviews of AI applications.' }),
@@ -64,7 +64,7 @@ const faq = [
     accent="dark"
     crumbs={crumbs}
     current="Compliance and security"
-    title="Compliance from | the *drawing board*."
+    title="Compliance built in | from *day one*."
     lede="In every build, the AI Act, logging, oversight and hosting are part of the design. Already using AI? The AI Act check shows what still needs to be arranged."
     cta={{ label: 'Ask for the AI Act check', href: '#contact' }}
     secondary={{ label: 'What the rules ask', href: '#layers' }}
@@ -87,12 +87,12 @@ const faq = [
       items={[
         { label: 'Step 1', title: 'Inventory and classification', text: 'We map which AI you use, from ChatGPT and Copilot to AI inside your own systems, and which risk class each system falls into.' },
         { label: 'Step 2', title: 'An AI policy', text: 'An AI policy your team actually uses. Want to start yourself? Read [writing an AI policy](/en/insights/ai-policy).' },
-        { label: 'Step 3', title: 'Literacy', text: 'An [AI literacy training](/en/ai-literacy-training) with a certificate for your team.' },
+        { label: 'Step 3', title: 'Literacy', text: '[AI literacy training](/en/ai-literacy-training) for your team, with a certificate.' },
       ]}
     />
     <div class="hs-sec__foot" data-item>
       <a class="hs-btn hs-btn--light" href="#contact">Ask for the AI Act check<HsIcon name="arrow-right" /></a>
-      <p class="hs-meta">What the check costs depends on how you use AI. You hear it up front.</p>
+      <p class="hs-meta">What the check costs depends on how you use AI. You know the price before we start.</p>
     </div>
   </HsSection>
 
@@ -100,7 +100,7 @@ const faq = [
     <HsCards columns={2} items={norms} />
   </HsSection>
 
-  <HsSection tone="paper" title="Done *ourselves*" lede="The assistant on this site tells you it is an AI, keeps conversations under a fixed retention policy and hands you to a person when it does not know. A public page explains how it works.">
+  <HsSection tone="paper" title="We do it *ourselves*" lede="The assistant on this site tells you it is an AI, keeps conversations under a fixed retention policy and hands you over to a person when it does not know the answer. A public page explains how it works.">
     <div class="hs-sec__foot" data-item>
       <a class="hs-link" href="/en/legal/ai-assistant">How the assistant works<HsIcon name="arrow-right" /></a>
       <a class="hs-link" href="/en/cases/eigen-stack">Read the case<HsIcon name="arrow-right" /></a>
@@ -112,5 +112,5 @@ const faq = [
     <div class="hs-sec__foot" data-item><HsAuthor id="david-homan" label="You talk to" /></div>
   </HsSection>
 
-  <HsContact title="Ask for the AI Act check" lede={`Or have us build something that complies from the drawing board. You hear from us within ${S.reply}.`} />
+  <HsContact title="Ask for the AI Act check" lede={`Or have us build something that is compliant from day one. You hear from us within ${S.reply}.`} />
 </HsLayout>

@@ -109,7 +109,7 @@ const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open
     <HsSteps ordered={false} items={SALON_AGENDA.map((a) => ({ label: a.time, title: a.en.title, meta: a.en.note }))} />
   </HsSection>
 
-  <HsSection tone="dark" title="The *speakers*" lede={`Two talks of around twenty minutes per edition. Want to speak at a coming evening? Email ${SALON_EMAIL}.`}>
+  <HsSection tone="dark" title="The *speakers*" lede={`Two talks of around twenty minutes per edition. Want to speak at an upcoming evening? Email ${SALON_EMAIL}.`}>
     <ul class="salon-people">
       {speakers.map((s, i) => (
         <li data-item style={`--i:${i}`}>

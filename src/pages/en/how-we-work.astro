@@ -21,29 +21,29 @@ const track = [
   { label: `Within ${S.sprint.startWithin}`, title: 'Start sprint', text: `Six days, fixed fee from ${S.sprint.price}. We work with the owner and the users on a prototype or a plan. [About the start sprint](/en/start-sprint).`, meta: 'You bring: the owner and a few users. You get: a prototype or build plan.' },
   { label: 'Day six', title: 'Decision', text: 'Based on the one-page business case you decide: build, adjust or stop. If the business case does not add up, we do not build. [Cost and return up front](/en/business-case).', meta: 'You get: cost, return and payback time on paper.' },
   { label: 'Week 2 to 12', title: 'Building in sprints', text: `Two-week sprints, with a demo after every sprint. Compliance, logging and oversight are part of the design. A build starts from ${S.build.from}.`, meta: 'You bring: one contact person and feedback after each demo.' },
-  { label: 'Go-live', title: 'Switching over with a trained team', text: 'Your team is trained on the system itself, on the work floor. When we replace something, the old system only goes off once the new one runs.', meta: 'You get: a team that works with it every day.' },
+  { label: 'Go-live', title: 'Switching over with a trained team', text: 'Your team is trained on the system itself, on the job. When we replace something, the old system is only switched off once the new one runs.', meta: 'You get: a team that works with it every day.' },
   { label: 'After that', title: 'We keep maintaining and developing it', text: 'The software stays in our care. Everything is documented and you can switch AI models without rebuilding.', meta: 'You get: software that keeps working and grows with you.' },
 ];
 
 const standard = [
   { icon: 'chart-line' as const, title: 'Business case first', text: 'Before we build, you know what it costs, what it returns and when it pays for itself.', href: '/en/business-case', more: 'Cost and return up front' },
-  { icon: 'protect' as const, title: 'Compliance from the drawing board', text: 'AI Act classification, logging, human oversight and European hosting are part of the design. Security reviews are part of the track.', href: '/en/compliance', more: 'Compliance and security' },
+  { icon: 'protect' as const, title: 'Compliance by design', text: 'AI Act classification, logging, human oversight and European hosting are part of the design. Security reviews are part of the process.', href: '/en/compliance', more: 'Compliance and security' },
   { icon: 'peoples' as const, title: 'Your people can work with it', text: 'We train the team on the system itself and guide the roll-out until it is part of daily work. That also covers Article 4 of the AI Act.', href: '/en/training', more: 'AI training for your team' },
-  { icon: 'switch' as const, title: 'Not tied to one AI vendor', text: 'We build model-agnostic and document everything. When a better or cheaper model comes along, you switch without rebuilding.' },
+  { icon: 'switch' as const, title: 'Not tied to one AI vendor', text: 'Our builds are model-agnostic and everything is documented. When a better or cheaper model comes along, you switch without rebuilding.' },
 ];
 
 const promises = [
-  { icon: 'check' as const, title: 'If AI is not the answer, we say so', text: 'Sometimes simpler software, a different way of working or doing nothing is better. Then you hear that from us.' },
+  { icon: 'check' as const, title: 'If AI is not the answer, we say so', text: 'Sometimes simpler software, a different way of working or doing nothing is better. Then we tell you.' },
   { icon: 'chart-histogram' as const, title: 'If the business case does not add up, we do not build', text: 'We only build what pays for itself. The decision is yours, with the numbers on the table.' },
-  { icon: 'time' as const, title: `A reply within ${S.reply}`, text: 'After your request you hear from us within one working day, usually with a proposal for a start sprint.' },
-  { icon: 'calendar' as const, title: `Started within ${S.sprint.startWithin}`, text: 'After the first call, the start sprint can begin within two weeks.' },
+  { icon: 'time' as const, title: `A reply within ${S.reply}`, text: 'After your request you hear from us within 24 hours, usually with a proposal for a start sprint.' },
+  { icon: 'calendar' as const, title: `Start within ${S.sprint.startWithin}`, text: 'After the first call, the start sprint can begin within two weeks.' },
 ];
 
 const people = FOUNDER_ORDER.map((id) => ({ ...FOUNDERS[id], ...founderText(id, 'en') }));
 
 const faq = [
   { q: 'How long does a project take?', a: 'The start sprint takes six days. A build usually takes two to twelve weeks, in sprints of two weeks. After that we keep maintaining and developing the system.' },
-  { q: 'What does it cost?', a: `The start sprint costs from ${S.sprint.price}, fixed, for all three ways in. A build starts from ${S.build.from}. What your build will cost is on paper at the end of the start sprint. More in [AI implementation costs](/en/ai-implementation-costs).` },
+  { q: 'What does it cost?', a: `The start sprint costs from ${S.sprint.price}, fixed, for all three ways in. A build starts from ${S.build.from}. At the end of the start sprint you have the cost of your build on paper. More in [AI implementation costs](/en/ai-implementation-costs).` },
   { q: 'Who maintains the software after delivery?', a: 'We do. The software stays in our care and we keep developing it. Everything is documented, and you are not tied to one AI vendor.' },
   { q: 'Can our own developers build with you?', a: 'Yes. We build on our own, strengthen your team or split the work. For extra capacity inside your own team, see [extra developers](/en/extra-developers).' },
 ];
@@ -63,7 +63,7 @@ const faq = [
     current="How we work"
     title="Six days first. | Then a decision. | Then a *build*."
     lede="From ambition to implementation. This is how every project runs, from the first call to software that runs and keeps running."
-    secondary={{ label: 'See the track', href: '#track' }}
+    secondary={{ label: 'See the process', href: '#track' }}
     facts={[
       { value: '6 days', label: 'start sprint, fixed fee' },
       { value: '2 weeks', label: 'from the first call to the start' },
@@ -71,7 +71,7 @@ const faq = [
     ]}
   />
 
-  <HsSection id="track" title="The track in *one* view" lede="Per step: what happens, what we need from you and what you get.">
+  <HsSection id="track" title="The process in *one* view" lede="Per step: what happens, what we need from you and what you get.">
     <HsSteps items={track} />
   </HsSection>
 
@@ -79,12 +79,12 @@ const faq = [
     <HsCards columns={4} items={standard} />
   </HsSection>
 
-  <HsSection title="What it *costs*" lede="These are the prices we publish. What your build will cost is on paper at the end of the start sprint.">
+  <HsSection title="What it *costs*" lede="These are the prices we publish. At the end of the start sprint you have the cost of your build on paper.">
     <HsFigures
       items={[
         { value: S.sprint.price, label: 'six-day start sprint, fixed fee' },
-        { value: S.build.from, label: 'from, for a build' },
-        { value: S.training.from, label: 'from, per half day of standalone training' },
+        { value: S.build.from, label: 'starting price of a build' },
+        { value: S.training.from, label: 'starting price per half day of standalone training' },
       ]}
     />
     <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/ai-implementation-costs">AI implementation costs<HsIcon name="arrow-right" /></a></p>
@@ -94,7 +94,7 @@ const faq = [
     <HsCards columns={2} items={promises} />
   </HsSection>
 
-  <HsSection title="Who you *talk* to" lede="Three founders, each responsible for a part of the track.">
+  <HsSection title="Who you *talk* to" lede="Three founders, each responsible for part of the process.">
     <HsCards shuffle items={people.map((p) => ({ meta: p.role, title: p.name, text: p.bio }))} />
     <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/about/team">The team<HsIcon name="arrow-right" /></a></p>
   </HsSection>
