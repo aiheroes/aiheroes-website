@@ -1,5 +1,5 @@
 ---
-// P5 Software in eigen beheer (docs/relaunch/pages/P5-eigen-beheer.md): entry "eigen-beheer", hub of
+// P5 Lokale AI (docs/relaunch/pages/P5-eigen-beheer.md): entry "eigen-beheer", hub of
 // L12 and L13. No server price (docs/relaunch/01-besluiten.md §2); European providers may be named
 // as examples (§10); logos as "werken met ons" without claiming self-hosting there.
 import HsLayout from '../../layouts/HsLayout.astro';
@@ -34,19 +34,19 @@ const LOGOS = [
 ---
 
 <HsLayout
-  title="Software in eigen beheer"
+  title="Lokale AI"
   seoTitle="AI op je eigen servers of Europees gehost"
   description={`AI en software op je eigen servers of bij een Europese partij, met de AI Act in het ontwerp. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}: hostingontwerp, risicobeoordeling en business case.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Software in eigen beheer', path: '/nl/eigen-beheer', price: SITE.sprint.priceValue, serviceType: 'AI op eigen servers en Europese hosting', description: 'AI en software op eigen servers of bij een Europese partij, met de AI Act in het ontwerp.' }),
+    serviceSchema({ name: 'Lokale AI', path: '/nl/eigen-beheer', price: SITE.sprint.priceValue, serviceType: 'AI op eigen servers en Europese hosting', description: 'AI en software op eigen servers of bij een Europese partij, met de AI Act in het ontwerp.' }),
     faqSchema(faq),
   ]}
 >
   <HsPageCover
     accent="dark"
     crumbs={crumbs}
-    current="Software in eigen beheer"
+    current="Lokale AI"
     title="Op onze eigen servers, | binnen Europa? *Ja.*"
     lede="AI en software op je eigen servers of bij een Europese partij, gekoppeld aan je systemen en met de AI Act in het ontwerp. Wij doen het zelf ook: de assistent op deze site draait in Europa."
     secondary={{ label: 'De drie vormen', href: '#vormen' }}
@@ -62,7 +62,7 @@ const LOGOS = [
       items={[
         { icon: 'earth', title: 'De CLOUD Act', text: 'Amerikaanse bedrijven kunnen verplicht worden data te overhandigen, ook als die in Europa staat. Dat geldt ook voor ChatGPT, Azure OpenAI en AWS Bedrock.' },
         { icon: 'protect', title: 'Europese regels', text: 'De AVG en de AI Act vragen dat je weet waar je data staat, wie erbij kan en hoe een AI-systeem tot een uitkomst komt.' },
-        { icon: 'switch', title: 'Een keuze met de feiten op tafel', text: 'Eigen beheer is een optie die we naast de cloud leggen. Jij kiest, met de kosten en risico’s van beide op één A4.' },
+        { icon: 'switch', title: 'Een keuze met de feiten op tafel', text: 'Lokale AI is een optie die we naast de cloud leggen. Jij kiest, met de kosten en risico’s van beide op één A4.' },
       ]}
     />
   </HsSection>

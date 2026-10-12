@@ -17,9 +17,9 @@ const d = entry.data;
 const words = (entry.body ?? '').split(/\s+/).filter(Boolean).length;
 const minutes = Math.max(2, Math.round(words / 220));
 
-// B3 sits in "overig" in the collection; on the page it belongs to eigen beheer and Europa.
+// B3 sits in "overig" in the collection; on the page it belongs to Lokale AI and Europa.
 const KICKERS: Record<string, string> = {
-  'europese-alternatieven-chatgpt': 'Eigen beheer en Europa',
+  'europese-alternatieven-chatgpt': 'Lokale AI en Europa',
   'top-10-ai-bureaus': 'Overzicht',
   'waar-begin-je-met-ai': 'Gids',
 };

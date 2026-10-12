@@ -1,8 +1,8 @@
 # AI Heroes
 
-> AI Heroes B.V. (Groningen, the Netherlands, KvK 42051968) builds AI tools your team uses every day, for organisations that want more than a pilot. Three ways in: a new AI tool, replacing old software that no longer fits, or software you control (on your own servers or with a European provider). The first step is always the start sprint: six days, fixed price, from EUR 8,000 (the same for all three ways in), it can start within two weeks of the first call and ends in a working prototype or a build plan, always with the business case on one page. Builds start from EUR 15,000; after delivery AI Heroes keeps maintaining and developing the system. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: info@aiheroes.io, +31 50 200 3373.
+> AI Heroes B.V. (Groningen, the Netherlands, KvK 42051968) builds AI tools your team uses every day, for organisations that want more than a pilot. Three ways in: a new AI tool, replacing old software that no longer fits, or self-hosted AI (on your own servers or with a European provider). The first step is always the start sprint: six days, fixed price, from EUR 8,000 (the same for all three ways in), it can start within two weeks of the first call and ends in a working prototype or a build plan, always with the business case on one page. Builds start from EUR 15,000; after delivery AI Heroes keeps maintaining and developing the system. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: info@aiheroes.io, +31 50 200 3373.
 
-AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Drie ingangen: een nieuwe AI-toepassing, oude software vervangen of software in eigen beheer. De eerste stap is altijd de startsprint: zes dagen, vaste prijs, vanaf EUR 8.000, start binnen twee weken. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
+AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Drie ingangen: een nieuwe AI-toepassing, oude software vervangen of lokale AI. De eerste stap is altijd de startsprint: zes dagen, vaste prijs, vanaf EUR 8.000, start binnen twee weken. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
 
 ## The AI Heroes standard (included in every build)
 
@@ -17,7 +17,7 @@ AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties
 - [What we build](https://aiheroes.io/en/what-we-build): the three ways in and everything we build
 - [A new AI tool](https://aiheroes.io/en/new-ai-tool): AI customer service, agents and workflows, administration, company wiki, digital twin, integrations, extra developers, custom software
 - [Replace old software](https://aiheroes.io/en/replace-software): overpriced SaaS, Excel and legacy systems replaced next to the old system, moved over in phases
-- [Software you control](https://aiheroes.io/en/self-hosted): AI on your own servers or in the European cloud, with the AI Act in the design
+- [Self-hosted AI](https://aiheroes.io/en/self-hosted): AI on your own servers or in the European cloud, with the AI Act in the design
 - [How we work](https://aiheroes.io/en/how-we-work): from start sprint to maintenance
 - [Cost and return up front](https://aiheroes.io/en/business-case) and [What does AI implementation cost?](https://aiheroes.io/en/ai-implementation-costs)
 - [Compliance and security](https://aiheroes.io/en/compliance): AI Act check, ISO 42001 guidance, security reviews
@@ -29,7 +29,7 @@ AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties
 - [Wat we bouwen](https://aiheroes.io/nl/wat-we-bouwen): de drie ingangen en alles wat we bouwen
 - [Nieuwe AI-toepassing](https://aiheroes.io/nl/nieuwe-ai-toepassing): AI-klantenservice, agents, administratie, company wiki, digital twin, koppelingen, extra developers, maatwerk software
 - [Oude software vervangen](https://aiheroes.io/nl/software-vervangen): duur SaaS-pakket, Excel en verouderd maatwerk, naast het oude gebouwd en in fasen overgezet
-- [Software in eigen beheer](https://aiheroes.io/nl/eigen-beheer): AI op eigen servers of in de Europese cloud, met de AI Act in het ontwerp
+- [Lokale AI](https://aiheroes.io/nl/eigen-beheer): AI op eigen servers of in de Europese cloud, met de AI Act in het ontwerp
 - [Hoe we werken](https://aiheroes.io/nl/hoe-we-werken): van startsprint tot beheer
 - [Kosten en opbrengst vooraf](https://aiheroes.io/nl/business-case) en [Wat kost AI-implementatie?](https://aiheroes.io/nl/wat-kost-ai-implementatie)
 - [Compliance en security](https://aiheroes.io/nl/compliance): AI Act-check, ISO 42001-begeleiding, security-reviews

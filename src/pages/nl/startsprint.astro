@@ -19,7 +19,7 @@ const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/
 const outcomes = [
   { title: ENTRIES.nieuw.title, accent: 'red' as const, href: ENTRIES.nieuw.href, more: 'Meer over nieuwe AI-toepassingen', text: 'Een werkend prototype op je eigen data. Je team probeert het uit voordat er een bouwbesluit ligt.' },
   { title: ENTRIES.vervangen.title, accent: 'blue' as const, href: ENTRIES.vervangen.href, more: 'Meer over software vervangen', text: 'Een architectuur en een migratieplan: wat er komt, wat er blijft en in welke volgorde je overstapt.' },
-  { title: ENTRIES['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES['eigen-beheer'].href, more: 'Meer over software in eigen beheer', text: 'Een hostingontwerp en een risicobeoordeling: waar het draait, wie erbij kan en wat de AI Act vraagt.' },
+  { title: ENTRIES['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES['eigen-beheer'].href, more: 'Meer over lokale AI', text: 'Een hostingontwerp en een risicobeoordeling: waar het draait, wie erbij kan en wat de AI Act vraagt.' },
 ];
 
 const days = [
@@ -35,7 +35,7 @@ const faq = [
   { q: 'Hoe snel kunnen we beginnen?', a: `Binnen ${s.startWithin} na het eerste gesprek. Na je aanvraag hoor je binnen ${SITE.reply} van ons, meestal met een voorstel.` },
   { q: 'Wat moeten wij zelf vrijmaken?', a: 'De eigenaar op dag 1 en dag 6, een paar gebruikers voor de intake en de test, en een paar uur van iemand die je data en systemen kent. Het bouwen doen wij.' },
   { q: 'Wat als het niet lukt in zes dagen?', a: 'Dan weet je dat na zes dagen, met de reden erbij. Soms is een vraag groter dan gedacht; dan staat in het plan wat er nodig is. Is AI niet de oplossing, dan zeggen we dat.' },
-  { q: 'Is de prijs anders per ingang?', a: `Nee. Vanaf ${s.price} voor alle drie: iets nieuws laten bouwen, oude software vervangen of software in eigen beheer draaien.` },
+  { q: 'Is de prijs anders per ingang?', a: `Nee. Vanaf ${s.price} voor alle drie: iets nieuws laten bouwen, oude software vervangen of AI lokaal laten draaien.` },
   { q: 'Kan het ook zonder startsprint?', a: 'Bijna nooit. De startsprint voorkomt dat we iets bouwen waarvan de business case niet sluit. Alleen als je [extra developers in je team](/nl/extra-developers) zoekt, beginnen we met een kennismaking.' },
   { q: 'Werkt het ook voor software zonder AI?', a: 'Ja. We bouwen wat je nodig hebt, met of zonder AI. De webwinkel van [INQ22](/nl/cases/inq22) bevat zelf geen AI en is wel met AI gebouwd.' },
   { q: 'Wat gebeurt er na de startsprint?', a: `Gaat de bouw door, dan is de startsprint fase 1. We bouwen in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}, en na oplevering blijven wij beheren en doorontwikkelen. Gaat hij niet door, dan houd je prototype of plan en de business case.` },

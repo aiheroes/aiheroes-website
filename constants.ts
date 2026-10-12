@@ -93,7 +93,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/glass.webp"
         },
         {
-          label: "Eigen beheer",
+          label: "Lokale AI",
           headline: "AI op <red>eigen</red> grond, <blue>Europees</blue> gehost",
           subhead: "Op je eigen servers of bij een Europese partij. Zonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd.",
           ctaLabel: "Plan een startsprint",
@@ -683,7 +683,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/glass.webp"
         },
         {
-          label: "Run in-house",
+          label: "Self-hosted",
           headline: "AI on <red>your own</red> ground, <blue>hosted in Europe</blue>",
           subhead: "On your own servers or with a European provider. No dependency on US cloud, with the AI Act built in.",
           ctaLabel: "Plan a start sprint",
