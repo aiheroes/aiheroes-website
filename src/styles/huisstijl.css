@@ -127,7 +127,10 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-body-l { font-size: clamp(1.125rem, 0.92rem + 0.7vw, 1.75rem); line-height: 1.4; font-weight: 450; }
 .hs-body { font-size: clamp(1rem, 0.94rem + 0.22vw, 1.1875rem); line-height: 1.55; }
 .hs-micro { font-size: 0.875rem; font-weight: 500; line-height: 1.45; }
-.hs .punch { white-space: nowrap; transition: color .4s var(--ease); }
+/* The punch takes its colour from the background (DESIGN.md, The Punch Colour Rule): red on
+   light, paper and dark, ink on a red or blue field. */
+.hs .punch { white-space: nowrap; color: var(--red); transition: color .4s var(--ease); }
+.hs :is(.on-red, .on-blue) .punch { color: var(--dark); }
 /* Line breaking. zet() (hs.ts) adds the Dutch rules: no line ends on an article, preposition or
    conjunction, numbers stay with their unit, no word alone on the last line. On top of that,
    paragraphs avoid short last lines and short blocks balance their lines. */
