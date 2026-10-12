@@ -59,6 +59,54 @@ function hasVisibleContent(message: UIMessage | undefined): boolean {
   );
 }
 
+const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+
+/** A link's path on this site, or null for mail, anchor and external links. */
+function sitePath(href: string): string | null {
+  if (href.startsWith('#')) return null;
+  try {
+    const url = new URL(href, 'https://aiheroes.io');
+    if (!/^https?:$/.test(url.protocol)) return null;
+    if (url.hostname !== 'aiheroes.io' && url.hostname !== 'www.aiheroes.io') return null;
+    return url.pathname.replace(/\/$/, '') || '/';
+  } catch {
+    return null;
+  }
+}
+
+/** "De startsprint: in zes dagen …" becomes "De startsprint": the page's name, not its whole title. */
+function shortTitle(title: string): string {
+  const clean = title.replace(/[*_`]/g, '').trim();
+  const head = clean.split(/[:|]/)[0].trim();
+  const name = head.length >= 3 ? head : clean;
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+/**
+ * The pages an answer actually cites: its inline links to this site, in order, minus the
+ * pages it already shows as a card. Retrieval returns six candidate pages for every
+ * question (also for "my email address is …"), so the metadata only supplies page names.
+ * Derived from the text, the sources appear while the answer streams, never as a late jump.
+ */
+function citedSources(message: UIMessage): { href: string; label: string }[] {
+  const meta = (message.metadata as { sources?: MessageSources } | undefined)?.sources ?? [];
+  const carded = new Set<string | null>();
+  for (const part of message.parts) {
+    const url = part.type === 'tool-show_page' && 'input' in part ? (part.input as { url?: string } | undefined)?.url : undefined;
+    if (url) carded.add(sitePath(url));
+  }
+  const seen = new Set<string>();
+  const cited: { href: string; label: string }[] = [];
+  for (const [, text, href] of textOf(message).matchAll(LINK_RE)) {
+    const path = sitePath(href);
+    if (!path || seen.has(path) || carded.has(path)) continue;
+    seen.add(path);
+    const hit = meta.find((s) => sitePath(s.url) === path);
+    cited.push({ href: path, label: shortTitle(hit?.title ?? text) });
+  }
+  return cited.slice(0, 3);
+}
+
 export default function ChatPanel({
   locale,
   path,
@@ -317,19 +365,14 @@ export default function ChatPanel({
 
   function renderSources(message: UIMessage) {
     if (!sourceChips) return null;
-    // Sources belong under a FINISHED answer: the metadata arrives at stream start,
-    // but showing them before the text reads as noise.
-    if (busy && message.id === lastMessage?.id) return null;
-    if (!textOf(message).trim()) return null;
-    const sources = (message.metadata as { sources?: MessageSources } | undefined)?.sources;
-    if (!sources?.length) return null;
-    const unique = sources.filter((s, i) => sources.findIndex((x) => x.url === s.url) === i);
+    const cited = citedSources(message);
+    if (cited.length === 0) return null;
     return (
       <p className="aih-sources">
-        <span className="aih-sources__label">{t.sources}</span>
-        {unique.slice(0, 3).map((s) => (
-          <a key={s.url} href={s.url.replace('https://aiheroes.io', '') || '/'}>
-            {s.title}
+        <span className="aih-sources__label">{cited.length === 1 ? t.source : t.sources}</span>
+        {cited.map((s) => (
+          <a key={s.href} href={s.href}>
+            {s.label}
           </a>
         ))}
       </p>

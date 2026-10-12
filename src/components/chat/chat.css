@@ -198,7 +198,7 @@
 .aih-prose th { font-weight: 700; }
 .aih-prose blockquote { padding: .625rem .875rem; background: var(--aih-paper); }
 
-.aih-sources { display: flex; flex-direction: column; align-items: flex-start; gap: .375rem; margin: .875rem 0 0; font-size: .8125rem; line-height: 1.4; }
+.aih-sources { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .875rem; margin: .75rem 0 0; font-size: .8125rem; line-height: 1.4; }
 .aih-sources__label { color: var(--aih-micro); }
 .aih-sources a { display: inline-flex; align-items: center; gap: .25rem; max-width: 100%; color: var(--aih-ink); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .2em; text-decoration-color: rgba(28, 25, 23, .3); }
 .aih-sources a:hover { text-decoration-color: currentColor; }
