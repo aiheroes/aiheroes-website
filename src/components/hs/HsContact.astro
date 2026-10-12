@@ -1,7 +1,8 @@
 ---
 // L17 offer: the ask on a colour field, the form on light. Posts to /api/contact (Resend) through
-// hs-client initForm. The topic chips are the three entries plus "Weet ik nog niet"; training
-// pages add "Training" and preselect it (docs/relaunch/01-besluiten.md §6). Language from the URL.
+// hs-client initForm. Three questions on purpose (01-besluiten §22): name, email and the question,
+// plus optional topic chips: the three entries and "Weet ik nog niet"; training pages add
+// "Training" and preselect it (§6). Budget and who decides come up in the first conversation.
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
 import { SITE, SITE_EN, entriesFor, type Entry } from '../../data/site';
@@ -30,11 +31,6 @@ const topics = [
   t.unsure,
 ];
 const preselect = training ? t.training : entry ? ENTRIES[entry].topic : undefined;
-const groups = [
-  { name: 'topics', legend: t.topic, options: topics, checked: preselect },
-  { name: 'budget', legend: t.budget, options: t.budgetOptions },
-  { name: 'owner', legend: t.owner, options: t.ownerOptions },
-];
 const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, lang).hint }));
 ---
 
@@ -87,29 +83,23 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
           <span class="hs-label">{t.email}</span>
           <input class="hs-input" type="email" name="email" autocomplete="email" required />
         </label>
-        <label class="hs-field">
-          <span class="hs-label">{t.org}</span>
-          <input class="hs-input" type="text" name="organization" autocomplete="organization" />
-        </label>
       </div>
-      {groups.map((g, gi) => (
-        <fieldset data-item style={`--i:${gi + 1}`}>
-          <legend>{g.legend}</legend>
-          <div class="hs-chips">
-            {g.options.map((o) => (
-              <label class="hs-chip">
-                <input type="radio" name={g.name} value={o} checked={g.checked === o} />
-                <span>{o}</span>
-              </label>
-            ))}
-          </div>
-        </fieldset>
-      ))}
-      <label class="hs-field" data-item style="--i:5">
+      <fieldset data-item style="--i:1">
+        <legend>{t.topic} <span class="hs-optional">{t.optional}</span></legend>
+        <div class="hs-chips">
+          {topics.map((o) => (
+            <label class="hs-chip">
+              <input type="radio" name="topics" value={o} checked={preselect === o} />
+              <span>{o}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <label class="hs-field" data-item style="--i:2">
         <span class="hs-label">{training ? t.messageTraining : t.message}</span>
-        <textarea class="hs-input" name="message" rows="3" required></textarea>
+        <textarea class="hs-input" name="message" rows="3" required placeholder={training ? t.placeholderTraining : t.placeholder}></textarea>
       </label>
-      <div class="hs-form__foot" data-item style="--i:6">
+      <div class="hs-form__foot" data-item style="--i:3">
         <p class="hs-form__status" role="status" aria-live="polite"></p>
         <button class="hs-btn hs-btn--dark" type="submit">
           {t.submit}

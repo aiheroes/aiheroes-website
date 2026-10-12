@@ -820,6 +820,7 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-form__row { display: grid; gap: 1.75rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(10.625rem, 1fr)); }
 .hs-field { display: grid; gap: .5rem; }
 .hs-label, .hs-form legend { font-weight: 600; font-size: .9375rem; color: var(--dark); padding: 0; }
+.hs-optional { font-weight: 400; color: var(--body-on-light); }
 .hs-input {
   width: 100%;
   min-height: 3.25rem;

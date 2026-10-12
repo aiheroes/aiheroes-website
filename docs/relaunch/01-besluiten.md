@@ -250,3 +250,12 @@ De jurist is akkoord met het concept (`docs/relaunch/voorwaarden-concept.md`). D
 | "AI agency" in de FAQ van L15 | **Zo laten** (het zoekwoord staat in titel en op L16) | L15 |
 | IC Commerce | Concreet: klanten zien eerst producten uit de **dichtstbijzijnde voorraadlocatie**, en wat al in het **winkelmandje** zit bepaalt uit welke voorraadlocatie de shop de volgende producten toont | C4, P3 |
 | Engels "compliance from the drawing board" | Wordt "compliance by design" / "from the start" (Nederlands "vanaf de tekentafel" blijft) | EN-pagina's |
+
+## 22. Contactformulier en sprekersfoto's (2026-10-12)
+
+| Vraag | Besluit | Raakt |
+|---|---|---|
+| Velden van het contactformulier | **Drie vragen:** naam, e-mail en de vraag zelf, plus de ingang als optionele keuzeknoppen (voorgeselecteerd per pagina). **Organisatie, budget en "wie beslist hierover" vervallen**: er komen nu nauwelijks aanvragen binnen, en kwalificeren gebeurt in het eerste gesprek. Het vraagveld krijgt een voorbeeld als placeholder. Vervangt het kwalificerende formulier uit het transformatieplan (§5.7, besluit 9) | `HsContact`, alle pagina's met een contactblok |
+| Downloadformulier AI-beleid | **Blijft** naam, e-mail en organisatie | K3 |
+| Sprekersportretten AI Salon | **Zwart-wit, zonder duotoon** | P15 |
+| Sponsors van een editie zonder bevestigde sponsor | **Eén oproep** ("Word sponsor van editie #2") in plaats van lege logovakken; geen verzonnen sponsors | P15 |

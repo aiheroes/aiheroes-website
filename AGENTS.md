@@ -91,7 +91,7 @@ netlify deploy --dir=dist --site c149a617-2ed3-4b88-af1b-297d8b60e533
 5. **Proof rule:** only current-team work at the front (Kwakkel BV, INQ22, Strive, IC Commerce, own stack). Medux, Trabu, OLX, InnoEnergy are "eerdere cases" (earlier AI Heroes), never first proof.
 
 ## Content structure (2026-09-21)
-- Copy lives in `constants.ts` (`nav.build/how/cases/about/cta/featured`, `hero.slides`, `services.items` keyed by `entry`, `standard`, `approach.text`, `socialProof.logos`, `contact.form.budget/owner`).
+- Copy lives in `constants.ts` (`nav.build/how/cases/about/cta/featured`, `hero.slides`, `services.items` keyed by `entry`, `standard`, `approach.text`, `socialProof.logos`).
 - `Entry = 'nieuw' | 'vervangen' | 'eigen-beheer'` (types.ts) drives cards, hero images, case badges (`entry`/`era` in the cases collection) and the contact-form chip preselect.
 - `SubpageLayout` props: `badge`, `entry`, `showStandard`; the hero button always links to the startsprint page.
 
