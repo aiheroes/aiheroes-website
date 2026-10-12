@@ -3,7 +3,8 @@
 import type { Lang } from './i18n';
 
 export function langOf(url: URL | string): Lang {
-  const path = typeof url === 'string' ? url : url.pathname;
+  // The build (build.format 'file') renders the English home as /en.html; dev serves it as /en.
+  const path = (typeof url === 'string' ? url : url.pathname).replace(/\.html$/, '');
   return path === '/en' || path.startsWith('/en/') ? 'en' : 'nl';
 }
 
