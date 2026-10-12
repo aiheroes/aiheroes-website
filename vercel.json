@@ -34,6 +34,306 @@
       "statusCode": 301
     },
     {
+      "source": "/diensten/specialistische-tracks",
+      "destination": "/nl/nieuwe-ai-toepassing",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-foundations",
+      "destination": "/nl/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/copilot-basics",
+      "destination": "/nl/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-voor-developers",
+      "destination": "/nl/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-privacy-security",
+      "destination": "/nl/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-media-literacy",
+      "destination": "/nl/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-readiness-scan",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/procesanalyse",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/opportunity-scouting",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/business-case-development",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-roadmap",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-implementatiebegeleiding",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-prototyping",
+      "destination": "/nl/startsprint",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/maatwerk-ai-oplossingen",
+      "destination": "/nl/maatwerk-software",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-integratie",
+      "destination": "/nl/ai-integratie",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-development-teams",
+      "destination": "/nl/extra-developers",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/digital-twins",
+      "destination": "/nl/digital-twin",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/eu-development",
+      "destination": "/nl/eigen-beheer",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/digitale-onafhankelijkheid",
+      "destination": "/nl/eigen-beheer",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/software",
+      "destination": "/nl/nieuwe-ai-toepassing",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/software-vervangen",
+      "destination": "/nl/software-vervangen",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/eu-consultancy",
+      "destination": "/nl/eigen-beheer",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/consultancy",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/training",
+      "destination": "/nl/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-bureau-nederland",
+      "destination": "/nl/ai-bureau-nederland",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-consultancy-groningen",
+      "destination": "/nl/ai-bureau-groningen",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/ai-geletterdheid-training",
+      "destination": "/nl/ai-geletterdheid-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/incompany-ai-training",
+      "destination": "/nl/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/diensten/eu-training",
+      "destination": "/nl/digitale-soevereiniteit",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/specialized-tracks",
+      "destination": "/en/new-ai-tool",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-foundations",
+      "destination": "/en/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/copilot-basics",
+      "destination": "/en/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-for-developers",
+      "destination": "/en/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-privacy-security",
+      "destination": "/en/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-media-literacy",
+      "destination": "/en/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-readiness-scan",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/process-analysis",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/opportunity-scouting",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/business-case-development",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-roadmap",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-implementation-guidance",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-prototyping",
+      "destination": "/en/start-sprint",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/custom-ai-solutions",
+      "destination": "/en/custom-software",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-integration",
+      "destination": "/en/ai-integration",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-development-teams",
+      "destination": "/en/extra-developers",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/digital-twins",
+      "destination": "/en/digital-twin",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/eu-development",
+      "destination": "/en/self-hosted",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/digital-independence",
+      "destination": "/en/self-hosted",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/consulting",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/training",
+      "destination": "/en/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/software",
+      "destination": "/en/new-ai-tool",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/replace-software",
+      "destination": "/en/replace-software",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/eu-consultancy",
+      "destination": "/en/self-hosted",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-agency-groningen",
+      "destination": "/en/ai-agency-groningen",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-agency-netherlands",
+      "destination": "/en/ai-agency-netherlands",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/ai-literacy-training",
+      "destination": "/en/ai-literacy-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/incompany-ai-training",
+      "destination": "/en/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/eu-training",
+      "destination": "/en/digital-sovereignty",
+      "statusCode": 301
+    },
+    {
+      "source": "/over-ons/aanpak",
+      "destination": "/nl/hoe-we-werken",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/approach",
+      "destination": "/en/how-we-work",
+      "statusCode": 301
+    },
+    {
       "source": "/diensten/:path*",
       "destination": "/nl/diensten/:path*",
       "statusCode": 301
