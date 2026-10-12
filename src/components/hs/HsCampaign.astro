@@ -114,7 +114,7 @@ const caseEn = {
   .campaign-cover__inner .hs-crumbs { margin-bottom: 1rem; }
   .campaign-cover__medium { height: clamp(2rem, 1.5rem + 1.5vw, 3rem); width: auto; margin-bottom: .5rem; }
   .campaign-cover h1 { max-width: 16ch; }
-  .campaign-cover h1 :global(.punch) { color: var(--red); }
+  @media (min-width: 640px) { .campaign-cover h1 :global(.punch) { color: var(--red); } }
   .campaign-cover__lede { max-width: 46ch; color: var(--body-on-dark); }
   .campaign-cover__strip { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; padding-top: 1.25rem; margin-top: .5rem; box-shadow: inset 0 1.5px 0 var(--rule-on-dark); font-size: .9375rem; font-weight: 600; color: var(--body-on-dark); }
   .campaign-cover__channel { display: inline-flex; align-items: center; height: 2.5rem; padding: 0 .875rem; background: var(--light); }
