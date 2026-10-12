@@ -462,3 +462,20 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
   .hs-case.is-text .hs-case__text > :is(.hs-body, .hs-link) { grid-column: 1; }
 }
 .hs-logos__text { font-weight: 800; font-size: 1.375rem; letter-spacing: -0.02em; opacity: .72; }
+
+/* Inline links in running text always look like links. */
+.hs :is(.hs-step__text, .hs-card__text, .hs-fit, .hs-sec__head, .hs-faq__a, .hs-pcover__lede, .hs-stdlist__extra, .hs-case__text > p, .hs-ctaband__text p) a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: .25em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+.hs :is(.hs-step__text, .hs-card__text, .hs-fit, .hs-sec__head, .hs-faq__a, .hs-pcover__lede, .hs-stdlist__extra, .hs-case__text > p, .hs-ctaband__text p) a:hover { text-decoration-color: currentColor; }
+/* a.hs-card holds no nested links; a card with a link inside its text is a div. */
+
+/* Figures with words ("6 dagen", "€8.000"): on phones the label goes under the figure. */
+@media (max-width: 559px) {
+  .hs-stats.is-wordy div { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
+  .hs-stats.is-wordy dd { min-width: 0; font-size: 2.5rem; }
+}

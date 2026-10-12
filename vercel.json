@@ -30,7 +30,7 @@
     },
     {
       "source": "/diensten",
-      "destination": "/nl/diensten",
+      "destination": "/nl/wat-we-bouwen",
       "statusCode": 301
     },
     {
@@ -140,27 +140,27 @@
     },
     {
       "source": "/nl/diensten/ai-foundations",
-      "destination": "/nl/diensten/training#ai-foundations",
+      "destination": "/nl/training",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/copilot-basics",
-      "destination": "/nl/diensten/training#copilot-basics",
+      "destination": "/nl/training",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-voor-developers",
-      "destination": "/nl/diensten/training#ai-voor-developers",
+      "destination": "/nl/training",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-privacy-security",
-      "destination": "/nl/diensten/training#ai-privacy-security",
+      "destination": "/nl/training",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-media-literacy",
-      "destination": "/nl/diensten/training#ai-media-literacy",
+      "destination": "/nl/training",
       "statusCode": 301
     },
     {
@@ -190,32 +190,32 @@
     },
     {
       "source": "/nl/diensten/ai-readiness-scan",
-      "destination": "/nl/diensten/consultancy#ai-readiness-scan",
+      "destination": "/nl/business-case",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/procesanalyse",
-      "destination": "/nl/diensten/consultancy#procesanalyse",
+      "destination": "/nl/business-case",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/opportunity-scouting",
-      "destination": "/nl/diensten/consultancy#opportunity-scouting",
+      "destination": "/nl/business-case",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/business-case-development",
-      "destination": "/nl/diensten/consultancy#business-case-development",
+      "destination": "/nl/business-case",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-roadmap",
-      "destination": "/nl/diensten/consultancy#ai-roadmap",
+      "destination": "/nl/business-case",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-implementatiebegeleiding",
-      "destination": "/nl/diensten/consultancy#ai-implementatiebegeleiding",
+      "destination": "/nl/business-case",
       "statusCode": 301
     },
     {
@@ -300,17 +300,17 @@
     },
     {
       "source": "/how-we-work/:path*",
-      "destination": "/nl/over-ons/aanpak",
+      "destination": "/nl/hoe-we-werken",
       "statusCode": 301
     },
     {
       "source": "/consultancy-track/:path*",
-      "destination": "/nl/diensten",
+      "destination": "/nl/wat-we-bouwen",
       "statusCode": 301
     },
     {
       "source": "/industries/:path*",
-      "destination": "/nl/diensten",
+      "destination": "/nl/wat-we-bouwen",
       "statusCode": 301
     },
     {
@@ -320,7 +320,7 @@
     },
     {
       "source": "/nl/success-stories/:path*",
-      "destination": "/nl/diensten",
+      "destination": "/nl/wat-we-bouwen",
       "statusCode": 301
     },
     {
@@ -416,6 +416,26 @@
     {
       "source": "/nl/diensten/eu-consultancy",
       "destination": "/nl/eigen-beheer",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten",
+      "destination": "/nl/wat-we-bouwen",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/over-ons/aanpak",
+      "destination": "/nl/hoe-we-werken",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/consultancy",
+      "destination": "/nl/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/training",
+      "destination": "/nl/training",
       "statusCode": 301
     }
   ],

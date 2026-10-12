@@ -1,0 +1,103 @@
+---
+// P8 Kosten en opbrengst vooraf (docs/relaunch/pages/P8-business-case.md). One "verkenning" without a
+// price replaces the old consultancy products; only the start sprint has a price, the "free analysis"
+// guarantee is gone and implementation support is part of the standard (docs/relaunch/01-besluiten.md
+// §1, §3, §9). Sender: Frans Hoorn.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsCtaBand from '../../components/hs/HsCtaBand.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsAuthor from '../../components/hs/HsAuthor.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { SITE } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/nl/hoe-we-werken' }];
+
+const sheet = [
+  { icon: 'wallet' as const, title: 'Kosten', text: 'Wat de bouw kost, en wat beheer, hosting en modelgebruik daarna per jaar kosten.' },
+  { icon: 'chart-histogram' as const, title: 'Opbrengst', text: 'Wat het oplevert in tijd, geld of kwaliteit, gerekend met je eigen cijfers.' },
+  { icon: 'hourglass' as const, title: 'Terugverdientijd', text: 'Wanneer de investering is terugverdiend, en wat er gebeurt als het tegenvalt.' },
+  { icon: 'protect' as const, title: 'Risico’s', text: 'Wat er mis kan gaan: data, adoptie, regels zoals de AI Act, en hoe we dat afvangen.' },
+  { icon: 'check' as const, title: 'Go of no-go', text: 'Een advies om te bouwen, bij te sturen of te stoppen. Het besluit ligt bij jou.' },
+];
+
+const faq = [
+  { q: 'Wat kost een business case?', a: `Bij een concreet ding zit hij in de startsprint: zes dagen, vanaf ${SITE.sprint.price}, met een prototype of bouwplan erbij. Een verkenning voor wie nog niets concreets heeft, prijzen we vooraf op maat.` },
+  { q: 'Wat als de uitkomst nee is?', a: 'Dan bouwen we niet, en weet je waarom. Kwakkel BV besloot na de startsprint nog niet te bouwen en houdt het prototype, het plan en de business case. Ook dat is een uitkomst.' },
+  { q: 'Waar begin je als je nog niets concreets hebt?', a: 'Met een verkenning: we lopen je processen door en rangschikken de kansen op opbrengst. Lees ook [waar begin je met AI in je organisatie](/nl/kennis/waar-begin-je-met-ai).' },
+  { q: 'Welke partij helpt bedrijven met een AI-readiness scan?', a: 'AI Heroes uit Groningen doet dat met een verkenning: een readiness scan die eindigt bij concrete kandidaten om te bouwen, met kosten en opbrengst erbij. Omdat we zelf bouwen, rekenen we met wat bouwen echt kost.' },
+  { q: 'Hoe verschilt dit van een adviesbureau?', a: 'Wij bouwen zelf. Een business case van ons eindigt bij iets dat we kunnen bouwen, met de kosten die het echt heeft. Is AI niet de oplossing, dan zeggen we dat.' },
+  { q: 'Wie maakt de business case?', a: 'Frans Hoorn, co-founder. Hij leidt de startsprint en de business case.' },
+];
+---
+
+<HsLayout
+  title="Kosten en opbrengst vooraf"
+  seoTitle="Business case voor AI: kosten en opbrengst vóór je bouwt"
+  description="Voordat AI Heroes bouwt, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient. Op één A4, in de startsprint of met een verkenning van je processen. Sluit de business case niet, dan bouwen we niet."
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Business case en verkenning', path: '/nl/business-case', serviceType: 'AI business case en readiness scan', description: 'Kosten, opbrengst en terugverdientijd van een AI-toepassing op één A4, vóór er gebouwd wordt.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Kosten en opbrengst vooraf"
+    title="Eerst weten wat het *oplevert*. | Dan bouwen."
+    lede="Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient. Op één A4, als basis voor je besluit."
+    secondary={{ label: 'Wat er op de A4 staat', href: '#a4' }}
+    facts={[
+      { value: '1 A4', label: 'business case vóór elke bouw' },
+      { value: '6 dagen', label: 'en hij ligt er, in de startsprint' },
+    ]}
+  />
+
+  <HsSection id="a4" title="Wat er op de *A4* staat" lede="Vijf vragen, in gewone taal beantwoord. Genoeg voor een directie of MT om op te besluiten.">
+    <HsCards items={sheet} />
+  </HsSection>
+
+  <HsSection tone="paper" title="Waarom onze ramingen *kloppen*" lede="We bouwen zelf. Daarom rekenen we met wat bouwen echt kost: uren, hosting, modelgebruik en beheer.">
+    <p class="hs-lead" data-item>{zet('Sluit de business case niet, dan bouwen we niet.', { display: true })}</p>
+  </HsSection>
+
+  <HsSection title="Twee manieren om er te *komen*">
+    <HsCards
+      variant="planes"
+      columns={2}
+      items={[
+        { accent: 'red', title: 'Je hebt een concreet ding', text: `De business case zit in de startsprint: zes dagen, vanaf ${SITE.sprint.price}, met een werkend prototype of bouwplan erbij.`, href: '/nl/startsprint', more: 'Bekijk de startsprint' },
+        { accent: 'dark', title: 'Je weet nog niet waar het loont', text: 'Een verkenning van je processen. We rangschikken de kansen op opbrengst en eindigen bij één of meer kandidaten voor een startsprint. Wat het kost, spreken we vooraf af.', href: '#contact', more: 'Vraag een verkenning aan' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="Wat het *opleverde*">
+    <HsCards
+      columns={2}
+      items={[
+        { meta: 'Case · sportschool', title: 'Strive', href: '/nl/cases/strive', more: 'Lees de case', text: 'De business case lag er vóór de vervanging van een te duur ledenbeheerpakket. De bouw was in één jaar terugverdiend.' },
+        { meta: 'Case · administratie', title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Na zes dagen lag er een business case naast het prototype. Kwakkel besloot nog niet te bouwen, en ook dat is een uitkomst.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsCtaBand
+    tone="dark"
+    title="Wat kost *AI-implementatie*?"
+    text={`Een startsprint vanaf ${SITE.sprint.price}, een bouw vanaf ${SITE.build.from} tot ruim €100.000. Lees wat de prijs bepaalt.`}
+    cta={{ label: 'Wat kost AI-implementatie', href: '/nl/wat-kost-ai-implementatie' }}
+  />
+
+  <HsSection title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+    <div class="hs-sec__foot" data-item><HsAuthor id="frans-hoorn" label="Je spreekt met" /></div>
+  </HsSection>
+
+  <HsContact title="Vertel waar je staat" lede={`Een concreet ding, of nog zoekende? Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een startsprint of een verkenning.`} />
+</HsLayout>

@@ -1,0 +1,155 @@
+---
+// The case template (docs/relaunch/pages/C0-case-mal.md). Fixed order, every block optional except
+// cover, question or build, and the next step: cover in the entry colour with the figures, the
+// question, what we built, the story (MDX body, passed in the slot), the timeline, the standard
+// (current team only), an approved quote, the live link, two cases with the same entry and the
+// contact block with the entry preselected.
+import HsPageCover from './HsPageCover.astro';
+import HsSection from './HsSection.astro';
+import HsSteps from './HsSteps.astro';
+import HsQuote from './HsQuote.astro';
+import HsSplit from './HsSplit.astro';
+import HsContact from './HsContact.astro';
+import HsIcon from './HsIcon.astro';
+import HsCaseCards from './HsCaseCards.astro';
+import { STANDARD_ICONS, zet } from './hs';
+import { getCases, displayName, formatStat, entryAccent, ENTRY_NEXT, type CaseStudy } from './cases';
+
+interface Props {
+  entry: CaseStudy;
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const name = displayName(entry, 'page');
+const first = d.entry[0];
+const hasBody = !!entry.body?.trim();
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Cases', href: '/nl/cases' }];
+
+const STANDARD = {
+  'business-case': { title: 'Business case vooraf', icon: STANDARD_ICONS[0] },
+  compliance: { title: 'Compliance vanaf de tekentafel', icon: STANDARD_ICONS[1] },
+  training: { title: 'Je mensen kunnen ermee werken', icon: STANDARD_ICONS[2] },
+  vendor: { title: 'Niet vast aan één AI-leverancier', icon: STANDARD_ICONS[3] },
+} as const;
+const standard = d.currentTeam ? d.standard.map((k) => STANDARD[k]) : [];
+const quote = d.quote?.approved ? d.quote : undefined;
+const coverPhoto = d.photo && !d.photo.shot ? { src: d.photo.src, alt: d.photo.alt, w: d.photo.w, h: d.photo.h, pos: d.photo.pos, duo: d.photo.duo ? ('red' as const) : undefined } : undefined;
+const shot = d.photo?.shot ? d.photo : undefined;
+const more = (await getCases()).filter((c) => c.data.slug !== d.slug && c.data.entry.some((e) => d.entry.includes(e)));
+---
+
+<HsPageCover
+  accent={entryAccent(first)}
+  crumbs={crumbs}
+  current={name}
+  title={d.headline}
+  lede={d.lede}
+  cta={{ label: 'Plan een startsprint', href: '#contact' }}
+  secondary={d.liveUrl ? { label: 'Bekijk het live', href: d.liveUrl } : undefined}
+  photo={coverPhoto}
+  facts={d.stats.map((s) => ({ value: formatStat(s), label: s.label }))}
+/>
+
+{d.question && (
+  <HsSection title="De *vraag*">
+    <p class="hs-lead hs-cs-question" data-item>{zet(d.question, { display: true })}</p>
+  </HsSection>
+)}
+
+{d.built.length > 0 && (
+  <HsSection tone="paper" title="Wat we *bouwden*">
+    <ul class="hs-cs-built">
+      {d.built.map((b, i) => (
+        <li data-item style={`--i:${i}`}><HsIcon name="check" /><span>{zet(b)}</span></li>
+      ))}
+    </ul>
+  </HsSection>
+)}
+
+{hasBody && (
+  <section class="hs-sec hs-sec--light" data-reveal>
+    <div class="hs-wrap">
+      <div class="hs-prose hs-cs-story" data-item><slot /></div>
+    </div>
+  </section>
+)}
+
+{d.timeline.length > 0 && (
+  <HsSection tone="paper" title="Zo *ging* het">
+    <HsSteps items={d.timeline.map((t, i) => {
+      // "Dag 1 | Intake" gives the step its own label; otherwise it is numbered.
+      const [label, title] = t.step.includes(' | ') ? t.step.split(' | ') : [`Stap ${i + 1}`, t.step];
+      return { label, title, text: t.text };
+    })} />
+  </HsSection>
+)}
+
+{standard.length > 0 && (
+  <HsSection title="Bij deze bouw *inbegrepen*">
+    <ul class="hs-cs-standard">
+      {standard.map((s, i) => (
+        <li data-item style={`--i:${i}`}><HsIcon name={s.icon} /><span>{zet(s.title, { display: true, cap: 20 })}</span></li>
+      ))}
+    </ul>
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/hoe-we-werken">Wat bij elke bouw inbegrepen is<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+)}
+
+{quote && (
+  <HsSection tone="dark">
+    <HsQuote text={quote.text} author={quote.author} role={quote.role} />
+  </HsSection>
+)}
+
+{d.liveUrl && shot && (
+  <HsSplit tone="paper" title="Bekijk het *live*" photo={{ src: shot.src, alt: shot.alt, w: shot.w, h: shot.h, shot: true }}>
+    <p class="hs-body hs-muted" data-item>{zet(`Wat we bouwden voor ${name} draait live. Kijk zelf.`)}</p>
+    <a class="hs-btn hs-btn--dark hs-cs-livebtn" href={d.liveUrl} rel="noopener" target="_blank" data-item>
+      {d.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+      <HsIcon name="arrow-up-right" />
+    </a>
+  </HsSplit>
+)}
+
+{more.length > 0 && (
+  <HsSection title="Meer cases zoals *deze*">
+    <HsCaseCards slugs={more.slice(0, 2).map((c) => c.data.slug)} columns={2} />
+    <p class="hs-sec__foot"><a class="hs-link" href="/nl/cases">Alle cases<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+)}
+
+<HsContact entry={first} title="Iets vergelijkbaars laten bouwen?" lede={ENTRY_NEXT[first]} />
+
+<style>
+  .hs-cs-question { max-width: 26ch; }
+  .hs-cs-story > :global(h2:first-child) { margin-top: 0; }
+  .hs-cs-livebtn { justify-self: start; }
+  .hs-cs-built { display: grid; gap: 1rem 3rem; max-width: 64rem; }
+  @media (min-width: 900px) { .hs-cs-built { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .hs-cs-built li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .875rem;
+    align-items: start;
+    padding-top: 1rem;
+    box-shadow: inset 0 1.5px 0 var(--rule-on-light);
+    font-weight: 600;
+    font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem);
+    line-height: 1.4;
+  }
+  .hs-cs-built :global(.hs-icon) { width: 1.375rem; height: 1.375rem; margin-top: .15em; color: var(--red); }
+  .hs-cs-standard { display: grid; gap: 1.25rem; }
+  @media (min-width: 900px) { .hs-cs-standard { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .hs-cs-standard li {
+    display: grid;
+    gap: .875rem;
+    align-content: start;
+    padding-top: 1.25rem;
+    box-shadow: inset 0 1.5px 0 var(--rule-on-light);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    font-size: clamp(1.25rem, 1.05rem + .6vw, 1.75rem);
+    line-height: 1.15;
+  }
+  .hs-cs-standard :global(.hs-icon) { width: 2rem; height: 2rem; color: var(--blue); }
+</style>

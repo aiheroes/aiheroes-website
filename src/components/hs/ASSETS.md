@@ -32,7 +32,13 @@ The two traced files come from low-resolution PNGs: fine at logo-wall size, soft
 
 ## Icons
 
-All icons on the page are IconPark by ByteDance (Apache License 2.0, https://github.com/bytedance/IconPark), Outline theme with square ends and mitred joins. The paths are copied from its source SVGs (`source/<Category>/<name>.svg`) into `ICONS` in `hs.ts`: Arrows/arrow-right, Arrows/arrow-right-up, Music/pause, Music/play-one, Base/hamburger-button, Character/close, Charts/chart-line, Safe/protect, Peoples/peoples, Arrows/switch. Chosen 2026-10-07 over Lucide, Phosphor, Carbon, Untitled UI, Hugeicons, Iconoir, Tabler and Heroicons as the house icon set.
+All icons on the page are IconPark by ByteDance (Apache License 2.0, https://github.com/bytedance/IconPark), Outline theme with square ends and mitred joins. The paths are copied from its source SVGs (`source/<Category>/<name>.svg`) into `ICONS` in `hs.ts`: Arrows/arrow-right, Arrows/arrow-right-up, Music/pause, Music/play-one, Base/hamburger-button, Character/close, Charts/chart-line, Safe/protect, Peoples/peoples, Arrows/switch. Chosen 2026-10-07 over Lucide, Phosphor, Carbon, Untitled UI, Hugeicons, Iconoir, Tabler and Heroicons as the house icon set. For the relaunch (2026-10-12) 82 more Outline icons were added from the npm package `@icon-park/svg@1.4.2` (`es/icons/*.js`), converted to paths; "F:" marks a filled shape.
+
+## Case screenshots
+
+| File | Source | Licence / note |
+|---|---|---|
+| `photos/cases/inq22-shop.webp` | Screenshot of https://inq22.com (homepage, 1440x900, cookie banner dismissed), 2026-10-12, headless Chrome, WebP q80 | Work built by AI Heroes for INQ22; shown on its case page |
 
 ## Font
 

@@ -16,9 +16,11 @@ interface Props {
 }
 const { items, tone = 'light' } = Astro.props;
 const width = Math.max(...items.map((f) => f.value.length)) + 0.4;
+// Values with words or currency stack their label underneath on phones.
+const wordy = items.some((f) => /\s|€/.test(f.value) || f.value.length > 5);
 ---
 
-<dl class:list={['hs-stats', { 'hs-stats--light': tone === 'light' }]} data-item style={`--n:${items.length};--fig-w:${width}ch`}>
+<dl class:list={['hs-stats', { 'hs-stats--light': tone === 'light', 'is-wordy': wordy }]} data-item style={`--n:${items.length};--fig-w:${width}ch`}>
   {items.map((f) => (
     <div>
       <dt>{zet(f.label, { cap: 24 })}</dt>

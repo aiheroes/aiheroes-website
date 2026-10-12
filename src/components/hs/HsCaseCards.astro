@@ -1,0 +1,83 @@
+---
+// Case cards from the caseStudies collection (docs/relaunch/pages/C0-case-mal.md): a photo or an
+// entry-colour plane, the sector, the client (or the name-free label where that place is
+// anonymous), the result as a line and one figure. Select by slugs, by entry or both; the current
+// team comes first (proof rule, never shown as a label). `filterTags` adds data-tags for the
+// entry filter (hs-client initFilter).
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import { getCases, displayName, formatStat, plainHeadline, SECTOR_LABEL, SECTOR_ICON, entryLabel, entryAccent, type CasePlace } from './cases';
+import type { Entry } from '../../data/site';
+
+interface Props {
+  /** Show exactly these cases, in this order. */
+  slugs?: string[];
+  /** Only cases whose entry list contains this entry. */
+  entry?: Entry;
+  /** Leave this slug out (the current case page). */
+  exclude?: string;
+  limit?: number;
+  /** Which anonymity flag applies. */
+  place?: CasePlace;
+  filterTags?: boolean;
+  columns?: 2 | 3;
+  id?: string;
+}
+const { slugs, entry, exclude, limit, place = 'overview', filterTags = false, columns = 3, id } = Astro.props;
+
+let items = await getCases();
+if (slugs) items = slugs.map((s) => items.find((c) => c.data.slug === s)).filter((c): c is NonNullable<typeof c> => !!c);
+if (entry) items = items.filter((c) => c.data.entry.includes(entry));
+if (exclude) items = items.filter((c) => c.data.slug !== exclude);
+if (limit) items = items.slice(0, limit);
+---
+
+{items.length > 0 && (
+  <ul class:list={['hs-casecards', { 'is-3': columns === 3 }]} id={id}>
+    {items.map((c, i) => {
+      const d = c.data;
+      const first = d.entry[0];
+      const stat = d.stats[0];
+      return (
+        <li data-item style={`--i:${i}`} data-tags={filterTags ? d.entry.join(' ') : undefined}>
+          <a class="hs-casecard" href={`/nl/cases/${d.slug}`}>
+            {d.photo ? (
+              <span class:list={['hs-casecard__photo', { 'is-duo': d.photo.duo && !d.photo.shot, 'is-shot': d.photo.shot }]}>
+                <img src={d.photo.src} alt="" width={d.photo.w} height={d.photo.h} style={d.photo.pos ? `object-position:${d.photo.pos}` : undefined} loading="lazy" decoding="async" />
+                <span class={`hs-casecard__plane on-${entryAccent(first)}`}>{entryLabel(first)}</span>
+              </span>
+            ) : (
+              <span class={`hs-casecard__photo hs-cc-plane on-${entryAccent(first)}`}>
+                <HsIcon name={SECTOR_ICON[d.sector]} />
+                <span class="hs-cc-plane__label">{d.entry.map(entryLabel).join(' · ')}</span>
+              </span>
+            )}
+            <span class="hs-casecard__kicker">{SECTOR_LABEL[d.sector] || ' '}</span>
+            <span class="hs-casecard__title">{displayName(c, place)}</span>
+            <span class="hs-casecard__text">{zet(plainHeadline(d.headline))}</span>
+            {stat && (
+              <span class="hs-casecard__stat"><strong>{formatStat(stat)}</strong><span>{stat.label}</span></span>
+            )}
+            <span class="hs-cc-more">Lees de case<HsIcon name="arrow-right" /></span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+)}
+
+<style>
+  /* A card without a photo: the entry colour plane with the sector icon, like the entry strip. */
+  .hs-cc-plane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+  }
+  .hs-cc-plane :global(.hs-icon) { width: clamp(2.25rem, 3vw, 3rem); height: clamp(2.25rem, 3vw, 3rem); }
+  .hs-cc-plane__label { font-size: .8125rem; font-weight: 700; letter-spacing: .02em; }
+  .hs-cc-more { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; }
+  .hs-cc-more :global(.hs-icon) { width: 1.25rem; height: 1.25rem; transition: transform .25s cubic-bezier(0.22, 0.61, 0.36, 1); }
+  .hs-casecard:hover .hs-cc-more :global(.hs-icon) { transform: translateX(.25rem); }
+  li[hidden] { display: none; }
+</style>

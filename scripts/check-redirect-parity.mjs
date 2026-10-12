@@ -15,11 +15,11 @@ if (!base) {
   process.exit(1);
 }
 
-const fixture = join(dirname(fileURLToPath(import.meta.url)), 'old-sitemap-urls.txt');
-const urls = (await readFile(fixture, 'utf8'))
-  .split(/\r?\n/)
-  .map((l) => l.trim())
-  .filter(Boolean);
+// Two fixtures: the old sitemap, and every aiheroes.io URL with impressions in Search Console
+// (2026-04-07 to 2026-10-09), so the relaunch's new URLs never strand an indexed page.
+const here = dirname(fileURLToPath(import.meta.url));
+const read = async (f) => (await readFile(join(here, f), 'utf8')).split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+const urls = [...new Set([...(await read('old-sitemap-urls.txt')), ...(await read('gsc-urls.txt'))])];
 
 const REDIRECT_OK = new Set([301, 308]);
 let failures = 0;
@@ -39,7 +39,9 @@ const results = await Promise.all(
           url = new URL(loc, url).href;
           continue;
         }
-        return { path, status: res.status, chain: hops.join(' ; '), ok: res.status === 200 };
+        // 410 is a deliberate answer for retired pages (api/gone); more than one hop is a chain.
+        const ok = res.status === 200 || res.status === 410;
+        return { path, status: res.status, chain: hops.join(' ; '), ok, multi: hops.length > 1 };
       }
       return { path, status: 'loop', chain: hops.join(' ; '), ok: false };
     } catch (err) {
@@ -50,9 +52,10 @@ const results = await Promise.all(
 
 for (const r of results.sort((a, b) => Number(a.ok) - Number(b.ok) || a.path.localeCompare(b.path))) {
   if (!r.ok) failures++;
-  const mark = r.ok ? 'OK  ' : 'FAIL';
+  const mark = !r.ok ? 'FAIL' : r.multi ? 'HOPS' : 'OK  ';
   console.log(`${mark} ${String(r.status).padEnd(4)} ${r.path}${r.chain ? `   [${r.chain}]` : ''}`);
 }
 
-console.log(`\n${results.length - failures}/${results.length} old URLs resolve to 200 on ${base}`);
+const multi = results.filter((r) => r.ok && r.multi).length;
+console.log(`\n${results.length - failures}/${results.length} old URLs resolve to 200 or 410 on ${base}; ${multi} via more than one hop`);
 process.exit(failures ? 1 : 0);

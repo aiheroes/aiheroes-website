@@ -1,0 +1,146 @@
+---
+// P10 AI-training voor je team (docs/relaunch/pages/P10-training.md): a deliberate supporting role and
+// the hub of T1, T2 and T5. From €2.500 per half day; responsible use and disinformation are part of
+// the literacy training; Copilot and developers are cards; the education and non-profit rate is only
+// named on training pages; the form preselects "Training" (docs/relaunch/01-besluiten.md §2, §6, §12).
+// Only verified date: article 4 applies since 2 February 2025.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsFigures from '../../components/hs/HsFigures.astro';
+import HsQuote from '../../components/hs/HsQuote.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsAuthor from '../../components/hs/HsAuthor.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/nl/hoe-we-werken' }];
+const t = SITE.training;
+
+const LOGOS = [
+  { name: 'Tweede Kamer', src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  { name: 'Nationale Postcode Loterij', src: '/hs/logos-white/postcode-loterij.svg', h: 32 },
+  { name: 'Envalior', src: '/hs/logos-white/envalior.svg', h: 34 },
+  { name: 'Banijay Benelux', src: '/hs/logos-white/banijay.svg', h: 26 },
+  { name: 'Prosus', src: '/hs/logos-white/prosus.svg', h: 42 },
+  { name: 'Hanzehogeschool', src: '/hs/logos-white/hanze.svg', h: 30 },
+];
+
+const faq = [
+  { q: 'Wat kost een training?', a: `Vanaf ${t.from} ${t.unit}. Een hele dag is twee dagdelen. Voorbereiding en materiaal zitten erin. Voor onderwijs en non-profit geldt een lager tarief. Vooraf is er altijd een intakegesprek.` },
+  { q: 'Komen jullie naar onze locatie?', a: 'Ja, we trainen op locatie in heel Nederland. Voor grote groepen, vanaf 150 deelnemers, geven we de training ook online live.' },
+  { q: 'Voor welke teams is het geschikt?', a: 'Voor elk team dat met AI gaat werken, van directie tot uitvoering. Inhoud en voorbeelden stemmen we af op de groep. Voor ontwikkelteams is er een eigen training.' },
+  { q: 'Telt de training voor artikel 4 van de AI Act?', a: 'De [AI-geletterdheidstraining](/nl/ai-geletterdheid-training) is daarvoor gemaakt, met een certificaat per deelnemer en een verslag van wat er behandeld is. Bouwen wij iets voor je, dan zit de training op dat systeem in het traject.' },
+  { q: 'Welke tools komen aan bod?', a: 'De tools die je team echt gebruikt: ChatGPT, Claude, Copilot of een Europees alternatief. We leren werkwijzen die ook met de volgende tool nog werken: goede vragen stellen, uitkomsten beoordelen en veilig met bedrijfsdata omgaan.' },
+];
+---
+
+<HsLayout
+  title="AI-training voor je team"
+  seoTitle="AI-training voor je team, op locatie"
+  description={`AI-training op het systeem dat je team elke dag gebruikt, in elke bouw. Losse trainingen vanaf ${t.from} ${t.unit}, op locatie in heel Nederland: incompany, AI-geletterdheid met certificaat en digitale soevereiniteit.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'AI-training voor teams', path: '/nl/training', price: t.fromValue, serviceType: 'Incompany AI-training en AI-geletterdheid', description: `AI-training op locatie in heel Nederland, vanaf ${t.from} ${t.unit}.` }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="AI-training voor je team"
+    title="Je team kan ermee *werken*."
+    lede="De training die het meest oplevert, is die op het systeem dat je team elke dag gebruikt. Die zit in elke bouw. Losse trainingen geven we ook, op locatie in heel Nederland."
+    cta={{ label: 'Vraag een training aan', href: '#contact' }}
+    secondary={{ label: 'Bekijk de trainingen', href: '#trainingen' }}
+    facts={[
+      { value: SITE.proof.trained, label: `professionals getraind sinds ${SITE.since}` },
+      { value: t.from, label: `vanaf, ${t.unit}` },
+      { value: 'Op locatie', label: 'in heel Nederland, of online live' },
+    ]}
+  />
+
+  <HsSection title="Training bij elke *bouw*" lede="We trainen het team dat het systeem gaat gebruiken, op dat systeem en op de werkvloer, vóór de overstap. En we begeleiden de invoering tot het in het dagelijkse werk zit.">
+    <p class="hs-lead" data-item>{zet('Zo voldoe je meteen aan artikel 4 van de AI Act.', { display: true })}</p>
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/hoe-we-werken">Zo werken we<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsSection id="trainingen" tone="paper" title="Losse *trainingen*" lede="Voor teams die met AI willen leren werken, ook als we niets voor je bouwen.">
+    <HsCards
+      variant="planes"
+      items={[
+        { accent: 'red', title: 'Incompany AI-training', text: 'De basistraining voor je hele team: hoe AI-tools werken, vragen die resultaat geven en uitkomsten kritisch beoordelen.', href: '/nl/incompany-ai-training', more: 'Incompany AI-training' },
+        { accent: 'blue', title: 'AI-geletterdheid met certificaat', text: 'Voor artikel 4: verantwoord AI-gebruik en desinformatie, met een live deepfake-demo. Met een certificaat per deelnemer.', href: '/nl/ai-geletterdheid-training', more: 'AI-geletterdheidstraining' },
+        { accent: 'dark', title: 'Digitale soevereiniteit', text: 'Een sessie met Jan voor directie en IT: hoe afhankelijk ben je van Amerikaanse cloud, en wat kun je eraan doen?', href: '/nl/digitale-soevereiniteit', more: 'Sessie digitale soevereiniteit' },
+      ]}
+    />
+    <div class="hs-training-extra">
+      <HsCards
+        columns={2}
+        items={[
+          { icon: 'computer', title: 'Training in de tools die je al hebt', text: 'Copilot in Word, Excel, Outlook en Teams, of de AI-tools die je team al gebruikt.', href: '/nl/incompany-ai-training', more: 'Incompany AI-training' },
+          { icon: 'code', title: 'AI voor developers', text: 'Voor ontwikkelteams die AI willen inbouwen. Wil je liever dat wij meebouwen, kijk dan bij extra developers.', href: '/nl/extra-developers', more: 'Extra developers' },
+        ]}
+      />
+    </div>
+    <p class="hs-sec__foot hs-muted" data-item>{zet('Op locatie in heel Nederland. Voor grote groepen, vanaf 150 deelnemers, ook online live.')}</p>
+  </HsSection>
+
+  <HsSection title="Zo verloopt een *training*">
+    <HsSteps
+      items={[
+        { label: 'Voorbereiding', title: 'Intake', text: 'We bespreken je team, je doelen en je werk. Daarna weet je wat de training inhoudt, wat hij kost en wanneer we starten.' },
+        { label: 'De training', title: 'Op locatie, met je eigen werk', text: 'We werken met jullie documenten, processen en vragen. Veel oefenen, weinig slides.' },
+        { label: 'Daarna', title: 'Certificaat en verslag', text: 'Waar nodig een certificaat per deelnemer en een verslag van wat er behandeld is, voor je administratie.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="Wat het *kost*" lede="Een hele dag is twee dagdelen. Voorbereiding en materiaal zitten erin. Voor onderwijs en non-profit geldt een lager tarief, en vooraf is er altijd een intakegesprek.">
+    <div class="hs-figs"><HsFigures items={[{ value: t.from, label: `vanaf, ${t.unit}` }]} /></div>
+  </HsSection>
+
+  <HsSection tone="blue" title="Artikel 4 in twee *zinnen*" lede="Sinds 2 februari 2025 moet elke organisatie die AI gebruikt ervoor zorgen dat haar mensen er verstandig mee kunnen werken. Een training met verslag helpt je om dat aan te tonen.">
+    <div class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/nl/kennis/ai-geletterdheid">Wat AI-geletterdheid vraagt<HsIcon name="arrow-right" /></a>
+      <a class="hs-link" href="/nl/compliance">Compliance en security<HsIcon name="arrow-right" /></a>
+    </div>
+  </HsSection>
+
+  <HsSection tone="dark" title="Wat deelnemers *zeggen*" lede={`Meer dan ${SITE.proof.trained} professionals getraind sinds ${SITE.since}.`}>
+    <div class="hs-training-quotes">
+      <HsQuote text="Frans gaf ons een fantastische, hands-on workshop met theorie én praktijk. Sindsdien hebben we de handvatten om AI behapbaar en toepasbaar te maken." author="Bobby Kremer" role="Nationale Postcode Loterij" />
+      <HsQuote text="Door de interactieve en hands-on workshop hebben we nu praktische tools en tips gekregen om in ons onderwijs mee aan de slag te gaan." author="Remi Thüss" role="Hanzehogeschool Groningen, TBK" />
+    </div>
+    <ul class="hs-logos" data-item>
+      {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
+    </ul>
+  </HsSection>
+
+  <HsSection title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+    <div class="hs-sec__foot" data-item><HsAuthor id="jan-brusse" label="Je spreekt met" /></div>
+  </HsSection>
+
+  <HsContact
+    training
+    title="Vraag een training aan"
+    lede={`Vertel wie je wilt trainen en wat ze moeten kunnen. Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een intake. Wil je iets laten bouwen? Kies dan een van de andere onderwerpen.`}
+  />
+</HsLayout>
+
+<style>
+  @media (max-width: 559px) {
+    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
+    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
+  }
+  .hs-training-extra { margin-top: clamp(2rem, 4vw, 3.5rem); }
+  .hs-training-quotes { display: grid; gap: 2.5rem clamp(2rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 900px) { .hs-training-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .hs-training-quotes :global(.hs-pquote blockquote) { font-size: clamp(1.25rem, 1rem + .9vw, 1.875rem); color: var(--light); }
+</style>
