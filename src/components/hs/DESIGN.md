@@ -260,7 +260,7 @@ Four flat brand colours plus a set of alpha tints of ink and cream for text, rul
 
 **The Typesetter Rule.** Every text passes through `zet()` (hs.ts), which sets Dutch line breaks with non-breaking spaces and hyphens. A line never ends on an article or possessive ("de", "een", "je") or on another function word ("met", "vanaf", "en"); numbers stay with their neighbour ("artikel 4", "9723 JJ Groningen"); fixed combinations stay whole ("AI Act", "elke dag", "Europese partij"); the tail of a sentence or clause and the last two words of a block stay together; a short sentence in running text does not break; the first word of a sentence or clause stays with the next word; a short verb or pronoun leans on the word before it ("beter kan", "voldoe je"); "AI-" and short compounds ("hands-on", "4-16") never split at the hyphen. Each glued group has a maximum length per column (display 18, running text 26, narrower where the column is narrow: entry titles 12, spec titles 14, person hints 13, the lead quote 14); when a group is too long its weakest bond opens first. A few display lines are hand-set (`HAND_SET`, `" | "` marks the only allowed breaks), as is the case lede. On top of that, paragraphs use `text-wrap: pretty` and headings, ledes, hints and footer links `text-wrap: balance`. Checked for overflow at 320, 390, 768, 1024 and 1440px.
 
-**The 76px Threshold Rule.** On a colour field the punch only turns ink at display sizes of about 76px and up (from 1330px wide for normal headlines, 1660px for long ones). Below that, a long headline's punch drops to its own line instead of changing colour.
+**The Punch Colour Rule.** On the site the punch takes its colour at every screen size: ink on a red or blue field, red on dark. The decks' size threshold (colour only from about 120px) does not apply to the web (decision 2026-10-12). A long cover headline also gives its punch its own line.
 
 **The Serifed I Rule.** `cv08` is always on, so "AI" never reads as "Al". Do not swap in a build of Inter that lacks it.
 
@@ -272,7 +272,7 @@ The module is 1/16 of the viewport (`module`). Side padding `pad-x` is one modul
 
 **Section grids.** Cover: below 900px a single stack (photo at 16/10, colour zone, band); from 900px a two-row grid with the colour zone left, the photo spanning right, and below them the dark band beside the cream square, where the square's width equals the band's height (`--band`, `clamp(240px, 32svh, 340px)`; 38svh between 900 and 1199px). Entries: heading row 8fr/6fr, planes in three equal columns from 900px. Quotes: one column, two from 720px (lead spans the row up to 1199px), an even 3 x 2 grid from 1200px with the lead quote first and larger. Standard: one column; each line is icon auto and text 1fr, the icon on the first line. Case: text 7fr, photo 5fr on the right. Place: photo 45fr, text 55fr. Contact: zone 5fr, form 7fr from 1024px. Footer: body plus a square column `clamp(220px, 23vw, 380px)` from 900px; a 112px square above the body on mobile.
 
-**Breakpoints observed:** 520, 560, 720, 768 (nav height 64 to 76px), 900 (most two-column splits), 1024 (slides, contact split), 1100 (desktop nav), 1200 (3-column quotes, one-row logo wall), 1330 and 1660 (punch colour thresholds), max-height 840 (compaction).
+**Breakpoints observed:** 520, 560, 720, 768 (nav height 64 to 76px), 900 (most two-column splits), 1024 (slides, contact split), 1100 (desktop nav), 1200 (3-column quotes, one-row logo wall), max-height 840 (compaction).
 
 ### Named Rules
 **The Slide Fits Rule.** At 1024px and up a section must fit one viewport below the nav on a 768px-tall screen; headings scale with `svh`, and short screens get the 840px compaction layer rather than a scroll inside the slide.
@@ -345,7 +345,7 @@ SVG filter "C2 drieklank licht": desaturate, gamma lift 0.8, then map luminance 
 ### Do:
 - **Do** keep whole red or blue fields to the cover zone and the contact zone; use colour as accent everywhere else.
 - **Do** set every heading in Inter HS with `cv08` on, 800 for display and 700 for titles and figures.
-- **Do** keep at most one punch word per headline, and let it change colour on a colour field only at about 76px display size and up.
+- **Do** keep at most one punch word per headline, coloured at every screen size (ink on a colour field, red on dark).
 - **Do** size side padding in modules (`pad-x`) and keep each desktop section to one viewport, scaling headings with `svh`.
 - **Do** draw rules and outlines as 1.5px inset strokes in the rule or panel-edge tints.
 - **Do** keep text off photos; duotone people, keep places and cover scenes in colour.

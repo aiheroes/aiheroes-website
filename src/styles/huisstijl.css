@@ -372,7 +372,7 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 }
 /* The deck's length ladder: a longer headline steps down (cover 176 → 132). */
 .hs-cover [data-head].is-long { font-size: clamp(2rem, 0.5rem + 4.1vw, 6.25rem); line-height: 1.02; }
-/* Below the 4.75rem threshold emphasis is a line break, not colour (posttaal §2). */
+/* A long headline also gives its punch its own line. */
 .hs-cover [data-head].is-long .punch { display: block; }
 .hs-cover [data-head], .hs-cover [data-sub] {
   align-self: end;
@@ -386,13 +386,8 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   transform: none;
   transition: opacity .5s var(--ease) .28s, transform .5s var(--ease) .28s;
 }
-/* Punch on a colour field: dark only from 4.75rem display and up. */
-@media (min-width: 1330px) {
-  .hs-cover [data-head]:not(.is-long) .punch { color: var(--dark); }
-}
-@media (min-width: 1660px) {
-  .hs-cover [data-head].is-long .punch { color: var(--dark); }
-}
+/* Punch on a colour field: ink at every screen size (the site drops the decks' size threshold). */
+.hs-cover [data-head] .punch { color: var(--dark); }
 
 .hs-cover__band {
   display: grid;
