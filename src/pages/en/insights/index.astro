@@ -1,0 +1,172 @@
+---
+// Insights (phase 7, the English P17): the overview of the English kennis entries, grouped by topic
+// with the pillar of each group, the guide to start with and the newest articles. Landings appear
+// here only as "further reading" links. No newsletter: there is none (01-besluiten §11).
+import { getCollection } from 'astro:content';
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { plainText, zet } from '../../../components/hs/hs';
+import { FOUNDERS } from '../../../data/team';
+
+const all = (await getCollection('kennis', (e) => e.data.lang === 'en' && !e.data.draft)).sort(
+  (a, b) => b.data.updatedDate.getTime() - a.data.updatedDate.getTime(),
+);
+const minutes = (body?: string) => Math.max(2, Math.round((body ?? '').split(/\s+/).filter(Boolean).length / 220));
+const KIND = { artikel: 'Article', listicle: 'Overview', gids: 'Guide' } as const;
+const card = (e: (typeof all)[number]) => ({
+  title: plainText(e.data.title),
+  text: e.data.description,
+  href: `/en/insights/${e.data.slug}`,
+  meta: `${KIND[e.data.kind]} · ${minutes(e.body)} min · ${FOUNDERS[e.data.author].name}`,
+  more: 'Read on',
+});
+const pick = (slugs: string[]) => slugs.map((s) => all.find((e) => e.data.slug === s)).filter((e): e is (typeof all)[number] => !!e);
+
+const start = all.find((e) => e.data.slug === 'where-to-start-with-ai');
+const GROUPS = [
+  {
+    id: 'compliance',
+    title: 'Compliance and *security*',
+    lede: 'What the AI Act, the GDPR and information security ask of you, and how you arrange it. With the template for your AI policy.',
+    items: all.filter((e) => e.data.group === 'compliance'),
+    links: [
+      { label: 'Compliance and security', href: '/en/compliance' },
+      { label: 'The AI Act check', href: '/en/compliance' },
+    ],
+  },
+  {
+    id: 'cost-and-approach',
+    title: 'Cost and *approach*',
+    lede: 'Where you start, what it costs and how you know whether it pays off before you build.',
+    items: pick(['where-to-start-with-ai']),
+    links: [
+      { label: 'AI implementation costs', href: '/en/ai-implementation-costs' },
+      { label: 'Cost and return up front', href: '/en/business-case' },
+      { label: 'The start sprint', href: '/en/start-sprint' },
+    ],
+  },
+  {
+    id: 'self-hosting',
+    title: 'Self-hosting and *Europe*',
+    lede: 'Which European AI tools exist, and when to run AI on your own servers or in a European cloud.',
+    items: pick(['european-chatgpt-alternatives']),
+    links: [
+      { label: 'AI on your own servers', href: '/en/ai-on-your-own-servers' },
+      { label: 'European alternative to ChatGPT', href: '/en/european-chatgpt-alternative' },
+      { label: 'Software you control', href: '/en/self-hosted' },
+    ],
+  },
+  {
+    id: 'training',
+    title: '*Training*',
+    lede: 'Teaching your team to work with AI, and meeting Article 4 of the AI Act.',
+    items: pick(['ai-literacy']),
+    links: [
+      { label: 'AI training for your team', href: '/en/training' },
+      { label: 'In-company AI training', href: '/en/incompany-ai-training' },
+      { label: 'AI literacy training', href: '/en/ai-literacy-training' },
+      { label: 'Digital sovereignty', href: '/en/digital-sovereignty' },
+    ],
+  },
+  {
+    id: 'overviews',
+    title: '*Overviews*',
+    lede: 'Comparisons we update every six months.',
+    items: pick(['top-10-ai-agencies']),
+    links: [
+      { label: 'AI agency Netherlands', href: '/en/ai-agency-netherlands' },
+      { label: 'AI agency Groningen', href: '/en/ai-agency-groningen' },
+    ],
+  },
+];
+
+const fmt = (date: Date) => date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' });
+const newest = all.slice(0, 6);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Insights',
+  url: 'https://aiheroes.io/en/insights',
+  inLanguage: 'en',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: all.length,
+    itemListElement: all.map((e, i) => ({ '@type': 'ListItem', position: i + 1, name: plainText(e.data.title), url: `https://aiheroes.io/en/insights/${e.data.slug}` })),
+  },
+};
+const crumbs = [{ label: 'Home', href: '/en' }];
+---
+
+<HsLayout
+  lang="en"
+  title="Insights"
+  seoTitle="Insights: guides on building AI, costs and the EU AI Act"
+  description="Guides and articles from people who build AI themselves: the EU AI Act, AI literacy, the GDPR and security, costs, European alternatives and where to start."
+  crumbs={crumbs}
+  jsonLd={jsonLd}
+>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="Insights"
+    title="Insights from people who *build*"
+    lede="Guides and articles on the AI Act, costs, European AI and where to start. Written by the founders, updated when the rules or the market change."
+    cta={null}
+    secondary={{ label: 'Start with the guide', href: '#start-here' }}
+  />
+
+  {start && (
+    <HsSection id="start-here" title="Start *here*" lede="New to AI in your organisation? This guide takes you through five steps, from the first process to a team that works with it.">
+      <HsCards variant="planes" columns={2} items={[{ ...card(start), accent: 'red', more: 'Read the guide' }]} />
+    </HsSection>
+  )}
+
+  {GROUPS.map((g, gi) => (
+    <HsSection id={g.id} tone={gi % 2 === 0 ? 'paper' : 'light'} title={g.title} lede={g.lede}>
+      {g.items.length > 0 && <HsCards columns={3} items={g.items.map(card)} />}
+      <div class="hs-sec__foot hs-kennis__links" data-item>
+        <span class="hs-kennis__label">Further reading</span>
+        {g.links.map((l) => <a class="hs-link" href={l.href}>{l.label}<HsIcon name="arrow-right" /></a>)}
+      </div>
+    </HsSection>
+  ))}
+
+  <HsSection title="New and *updated*">
+    <ol class="hs-kennis__list">
+      {newest.map((e, i) => (
+        <li data-item style={`--i:${i}`}>
+          <a href={`/en/insights/${e.data.slug}`}>
+            <span class="hs-kennis__title">{zet(plainText(e.data.title), { display: true, cap: 30 })}</span>
+            <span class="hs-kennis__meta">
+              {FOUNDERS[e.data.author].name} · updated <time datetime={e.data.updatedDate.toISOString().slice(0, 10)}>{fmt(e.data.updatedDate)}</time> · {minutes(e.body)} min
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </HsSection>
+
+  <HsCtaBand
+    tone="blue"
+    title="Rather talk *directly*?"
+    text="Have a concrete process or system? In a six-day start sprint you find out whether it works, what it costs and what it looks like."
+    cta={{ label: 'Plan a start sprint', href: '/en/start-sprint' }}
+    secondary={{ label: 'Book an introduction', href: '/en/about/team' }}
+  />
+</HsLayout>
+
+<style>
+  .hs-kennis__links { gap: .75rem 1.75rem; }
+  .hs-kennis__label { font-size: .875rem; font-weight: 700; letter-spacing: .04em; color: var(--micro-on-light); }
+  .hs-kennis__list { display: grid; max-width: 56rem; counter-reset: k; }
+  .hs-kennis__list li { box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
+  .hs-kennis__list li:last-child { box-shadow: inset 0 1.5px 0 var(--rule-on-light), inset 0 -1.5px 0 var(--rule-on-light); }
+  .hs-kennis__list a { display: grid; gap: .375rem; padding: 1.125rem 0; text-decoration: none; }
+  .hs-kennis__title { font-weight: 700; letter-spacing: -0.015em; font-size: clamp(1.125rem, 1rem + .4vw, 1.375rem); line-height: 1.3; }
+  .hs-kennis__list a:hover .hs-kennis__title { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; }
+  .hs-kennis__meta { font-size: .9375rem; color: var(--micro-on-light); }
+</style>

@@ -1,16 +1,43 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import HomeIsland from '../../components/islands/HomeIsland';
+// P1 Home, English (docs/relaunch/pages/P1-home.md, phase 7): the house-style homepage on /en.
+// The client of the case is not named on the homepage (docs/relaunch/01-besluiten.md §7).
+import HsLayout from '../../layouts/HsLayout.astro';
+import { CONTENT } from '../../data/content';
 import { PROFESSIONAL_SERVICE_SCHEMA, WEBSITE_SCHEMA } from '../../data/schema';
+import { SITE_EN } from '../../data/site';
+import HsCover from '../../components/hs/HsCover.astro';
+import HsEntries from '../../components/hs/HsEntries.astro';
+import HsQuotes from '../../components/hs/HsQuotes.astro';
+import HsStandard from '../../components/hs/HsStandard.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsPlace from '../../components/hs/HsPlace.astro';
+import HsStatement from '../../components/hs/HsStatement.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+
+const c = CONTENT.en;
 ---
 
-<BaseLayout
+<HsLayout
   lang="en"
   title="AI Heroes"
   seoTitle="AI tools your team uses every day"
-  description="AI Heroes builds AI tools your team uses every day, for organisations that want more than a pilot. Business case, compliance and training included. From Groningen, for all of Europe."
+  description={`AI Heroes builds AI tools your team uses every day. Start with a start sprint: six days, from ${SITE_EN.sprint.price}, a working prototype or build plan. Business case, compliance and training included. From Groningen.`}
   jsonLd={[PROFESSIONAL_SERVICE_SCHEMA, WEBSITE_SCHEMA]}
-  noChrome
 >
-  <HomeIsland lang="en" client:load />
-</BaseLayout>
+  <HsCover hero={c.hero} approach={c.approach} ctaHref="/en/start-sprint" />
+  <HsEntries />
+  <HsQuotes proof={c.socialProof} />
+  <HsStandard standard={c.standard} />
+  <HsCase
+    title="4,000 calls a month, | 80% handled by AI"
+    lede="For a Dutch care organisation whose customers would rather call than arrange things online, we built an AI voice that answers the phone, schedules appointments and answers questions."
+    stats={[
+      { value: 70, suffix: '%', decimals: 0, label: 'cost saving' },
+      { value: 7.8, suffix: '', decimals: 1, label: 'rating of AI conversations' },
+    ]}
+    close="Also outside office hours, with a hand-off to a staff member for difficult or urgent questions."
+  />
+  <HsPlace team={c.team} />
+  <HsStatement approach={c.approach} />
+  <HsContact />
+</HsLayout>

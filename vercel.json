@@ -40,7 +40,7 @@
     },
     {
       "source": "/services",
-      "destination": "/en/services",
+      "destination": "/en/what-we-build",
       "statusCode": 301
     },
     {
@@ -135,7 +135,7 @@
     },
     {
       "source": "/en/services/specialized-tracks",
-      "destination": "/en/services/software",
+      "destination": "/en/new-ai-tool",
       "statusCode": 301
     },
     {
@@ -165,27 +165,27 @@
     },
     {
       "source": "/en/services/ai-foundations",
-      "destination": "/en/services/training#ai-foundations",
+      "destination": "/en/training",
       "statusCode": 301
     },
     {
       "source": "/en/services/copilot-basics",
-      "destination": "/en/services/training#copilot-basics",
+      "destination": "/en/incompany-ai-training",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-for-developers",
-      "destination": "/en/services/training#ai-for-developers",
+      "destination": "/en/incompany-ai-training",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-privacy-security",
-      "destination": "/en/services/training#ai-privacy-security",
+      "destination": "/en/training",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-media-literacy",
-      "destination": "/en/services/training#ai-media-literacy",
+      "destination": "/en/training",
       "statusCode": 301
     },
     {
@@ -220,32 +220,32 @@
     },
     {
       "source": "/en/services/ai-readiness-scan",
-      "destination": "/en/services/consulting#ai-readiness-scan",
+      "destination": "/en/business-case",
       "statusCode": 301
     },
     {
       "source": "/en/services/process-analysis",
-      "destination": "/en/services/consulting#process-analysis",
+      "destination": "/en/business-case",
       "statusCode": 301
     },
     {
       "source": "/en/services/opportunity-scouting",
-      "destination": "/en/services/consulting#opportunity-scouting",
+      "destination": "/en/business-case",
       "statusCode": 301
     },
     {
       "source": "/en/services/business-case-development",
-      "destination": "/en/services/consulting#business-case-development",
+      "destination": "/en/business-case",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-roadmap",
-      "destination": "/en/services/consulting#ai-roadmap",
+      "destination": "/en/business-case",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-implementation-guidance",
-      "destination": "/en/services/consulting#ai-implementation-guidance",
+      "destination": "/en/business-case",
       "statusCode": 301
     },
     {
@@ -280,22 +280,22 @@
     },
     {
       "source": "/en/services/custom-ai-solutions",
-      "destination": "/en/services/software",
+      "destination": "/en/custom-software",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-integration",
-      "destination": "/en/services/replace-software",
+      "destination": "/en/ai-integration",
       "statusCode": 301
     },
     {
       "source": "/en/services/ai-development-teams",
-      "destination": "/en/services/software#dedicated-teams",
+      "destination": "/en/extra-developers",
       "statusCode": 301
     },
     {
       "source": "/en/services/digital-twins",
-      "destination": "/en/services/software",
+      "destination": "/en/digital-twin",
       "statusCode": 301
     },
     {
@@ -355,27 +355,27 @@
     },
     {
       "source": "/design-track",
-      "destination": "/en/services/software",
+      "destination": "/en/new-ai-tool",
       "statusCode": 301
     },
     {
       "source": "/ai-that-makes-your-vision-real",
-      "destination": "/en/services/software",
+      "destination": "/en/new-ai-tool",
       "statusCode": 301
     },
     {
       "source": "/making-text-more-inclusive-with-ai",
-      "destination": "/en/resources/ai-literacy",
+      "destination": "/en/insights/ai-literacy",
       "statusCode": 301
     },
     {
       "source": "/5-ways-generative-(.*)",
-      "destination": "/en/resources/ai-strategy-guide",
+      "destination": "/en/insights/where-to-start-with-ai",
       "statusCode": 301
     },
     {
       "source": "/how-to-get-started-(.*)",
-      "destination": "/en/resources/ai-strategy-guide",
+      "destination": "/en/insights/where-to-start-with-ai",
       "statusCode": 301
     },
     {
@@ -390,7 +390,7 @@
     },
     {
       "source": "/en/services/eu-development",
-      "destination": "/en/services/eu-consultancy",
+      "destination": "/en/self-hosted",
       "statusCode": 301
     },
     {
@@ -400,7 +400,7 @@
     },
     {
       "source": "/en/services/digital-independence",
-      "destination": "/en/services/eu-consultancy",
+      "destination": "/en/self-hosted",
       "statusCode": 301
     },
     {
@@ -511,6 +511,116 @@
     {
       "source": "/nl/resources/europese-chatgpt-alternatieven",
       "destination": "/nl/kennis/europese-alternatieven-chatgpt",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/about/approach",
+      "destination": "/en/how-we-work",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/consulting",
+      "destination": "/en/business-case",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/training",
+      "destination": "/en/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services",
+      "destination": "/en/what-we-build",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/software",
+      "destination": "/en/new-ai-tool",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/replace-software",
+      "destination": "/en/replace-software",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/eu-consultancy",
+      "destination": "/en/self-hosted",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources",
+      "destination": "/en/insights",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/eu-ai-act-compliance",
+      "destination": "/en/insights/ai-act",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/ai-literacy",
+      "destination": "/en/insights/ai-literacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/ai-policy-guide",
+      "destination": "/en/insights/ai-policy",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/top-10-ai-consultancy-netherlands",
+      "destination": "/en/insights/top-10-ai-agencies",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/ai-strategy-guide",
+      "destination": "/en/insights/where-to-start-with-ai",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/ai-implementation-sme",
+      "destination": "/en/insights/where-to-start-with-ai",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/european-chatgpt-alternatives",
+      "destination": "/en/insights/european-chatgpt-alternatives",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/sovereign-ai",
+      "destination": "/en/ai-on-your-own-servers",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/resources/ai-implementation-costs",
+      "destination": "/en/ai-implementation-costs",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-agency-groningen",
+      "destination": "/en/ai-agency-groningen",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-agency-netherlands",
+      "destination": "/en/ai-agency-netherlands",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/ai-literacy-training",
+      "destination": "/en/ai-literacy-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/incompany-ai-training",
+      "destination": "/en/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/eu-training",
+      "destination": "/en/digital-sovereignty",
       "statusCode": 301
     }
   ],

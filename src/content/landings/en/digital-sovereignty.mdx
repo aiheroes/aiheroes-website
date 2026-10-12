@@ -1,0 +1,83 @@
+---
+lang: en
+slug: digital-sovereignty
+plan: T5
+group: training
+entry: training
+training: true
+title: Digital sovereignty session
+seoTitle: Digital sovereignty session for the board and IT
+description: "A session for the board and IT on digital sovereignty: where you depend on American platforms and which European alternatives exist. By Jan Brusse, from €2,500 per half day."
+question: "See where you are *dependent*, | and what you can do about it"
+lede: "In one session, Jan Brusse of AI Heroes shows the board and IT where your organisation depends on American platforms, and which European alternatives exist. On digital sovereignty, or digital independence: factual and without scaremongering. From €2,500 per half day."
+author: jan-brusse
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+build:
+  title: "What the session *delivers*"
+  items:
+    - icon: map-draw
+      title: Your dependencies mapped
+      text: Which services you use, where your data is and who can reach it.
+    - icon: earth
+      title: An honest picture of the alternatives
+      text: European options such as Mistral (with its assistant Vibe), Proton Lumo and the open EuroLLM, with what they can and cannot do.
+    - icon: protect
+      title: The rules, translated to your organisation
+      text: What the GDPR and the AI Act mean for the choices you make.
+    - icon: aiming
+      title: A next step
+      text: What you can do now, and what can wait.
+sprint:
+  title: "How it *works*"
+  text: "First a short conversation about who takes part and what is going on. Then the session, on site or live online, given by Jan Brusse."
+  outcome: "An overview of your own dependencies, an honest picture of the European alternatives and the rules translated to your organisation."
+cases: []
+proofText: "AI Heroes has trained the Tweede Kamer, Envalior and the Hanzehogeschool, among others. And we practise what we explain: our own AI assistant runs on European infrastructure."
+faq:
+  - q: Who is the session for?
+    a: "For the board, CIOs, information managers and IT teams, often in government, education or organisations with sensitive data."
+  - q: Do we have to switch after the session?
+    a: "No. You know where you stand and what your options are. If you want to go further, [software you control](/en/self-hosted) is the next step."
+  - q: Which European alternatives do you discuss?
+    a: "Mistral (Vibe), Proton Lumo and the open EuroLLM among others, and hosting with European providers or on your own servers. We are tied to none of them and also name the limitations."
+  - q: Can it be online?
+    a: "Yes, the session can be on site or live online."
+  - q: What does a session cost?
+    a: "From €2,500 per half day; the board session also falls under the half-day rate. Education and non-profit organisations pay a lower rate."
+related:
+  - label: AI on your own servers
+    href: /en/ai-on-your-own-servers
+  - label: European alternative to ChatGPT
+    href: /en/european-chatgpt-alternative
+  - label: Software you control
+    href: /en/self-hosted
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+
+<HsSection tone="paper" title="The *topics*">
+  <HsCards columns={4} items={[
+    { icon: 'shield', title: 'Risks', text: 'What it means when your data and work sit with American platforms.' },
+    { icon: 'globe', title: 'The landscape', text: 'Which services exist, and who is behind them.' },
+    { icon: 'transfer', title: 'Alternatives', text: 'European models and hosting, with their strengths and weaknesses.' },
+    { icon: 'protect', title: 'Regulation', text: 'The GDPR and the AI Act, translated to your own choices.' },
+  ]} />
+</HsSection>
+
+<HsSection title="Three *formats*">
+  <HsCards items={[
+    { meta: '90 minutes', title: 'Board session', text: 'For directors: the essentials, the risks and the choices.' },
+    { meta: 'half to full day', title: 'Team session', text: 'For IT and information management, with your own environment as the example.' },
+    { meta: 'yearly', title: 'Update', text: 'What changed in the past year in offering and rules.' },
+  ]} />
+</HsSection>
+
+<HsCtaBand
+  tone="dark"
+  title="From insight to your own *environment*"
+  text="Want to go further after the session? Then we build AI on your own servers or in the European cloud. The first step is a six-day start sprint."
+  cta={{ label: 'Software you control', href: '/en/self-hosted' }}
+  secondary={{ label: 'The start sprint', href: '/en/start-sprint' }}
+/>

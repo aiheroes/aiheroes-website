@@ -136,7 +136,7 @@ export function personRef(id: string) {
   return { '@id': `${DOMAIN}/#${id}` };
 }
 
-export function articleSchema(opts: { title: string; description: string; path: string; published: Date; updated?: Date; authorId: string; authorName: string; image?: string }) {
+export function articleSchema(opts: { title: string; description: string; path: string; published: Date; updated?: Date; authorId: string; authorName: string; image?: string; lang?: 'nl' | 'en' }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -148,7 +148,7 @@ export function articleSchema(opts: { title: string; description: string; path: 
     dateModified: (opts.updated ?? opts.published).toISOString().slice(0, 10),
     author: { '@type': 'Person', '@id': `${DOMAIN}/#${opts.authorId}`, name: opts.authorName },
     publisher: ORG,
-    inLanguage: 'nl',
+    inLanguage: opts.lang ?? 'nl',
     ...(opts.image ? { image: abs(opts.image) } : {}),
   };
 }

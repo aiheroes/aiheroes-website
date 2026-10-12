@@ -1,0 +1,97 @@
+---
+// P2 What we build, English (docs/relaunch/pages/P2-wat-we-bouwen.md, phase 7): the overview of the
+// three entries and every landing (docs/relaunch/01-besluiten.md §9). The menu label only opens the
+// sub-bar; this page is reached from the homepage planes, the footer and the breadcrumbs.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsEntries from '../../components/hs/HsEntries.astro';
+import HsLandingIndex from '../../components/hs/HsLandingIndex.astro';
+import HsFigures from '../../components/hs/HsFigures.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE_EN, ENTRIES_EN } from '../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/en' }];
+
+const catalog = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI tools and custom software',
+  url: 'https://aiheroes.io/en/what-we-build',
+  provider: { '@id': 'https://aiheroes.io/#organization' },
+  areaServed: { '@type': 'Place', name: 'European Union' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'What we build',
+    itemListElement: Object.values(ENTRIES_EN).map((e) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: e.title, url: `https://aiheroes.io${e.href}` },
+    })),
+  },
+};
+---
+
+<HsLayout
+  lang="en"
+  title="What we build"
+  seoTitle="What we build: AI tools and custom software"
+  description={`AI Heroes builds AI tools your team uses every day, through three ways in: something new, replacing old software or software you control. Always starting with a six-day start sprint from ${SITE_EN.sprint.price}.`}
+  crumbs={crumbs}
+  jsonLd={catalog}
+>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="What we build"
+    title="What we *build* for you"
+    lede="We build AI tools your team uses every day. AI is a tool in that: we build software without AI just as well, when that fits better."
+    secondary={{ label: 'Everything we often build', href: '#often' }}
+  />
+
+  <HsEntries
+    title="Which way in fits your question?"
+    snap={false}
+    id="ways-in"
+    more="See this way in"
+    descriptions={{
+      nieuw: '“Can you build this for us?” A working prototype on your own data in six days, then we keep building until your team uses it every day.',
+      vervangen: '“We are fed up with our package.” We build the new next to the old, move your data over in parts and only switch off the old one once the new one runs.',
+      'eigen-beheer': '“Can it run on our own servers, within Europe?” On your own hardware or with a European provider, with the AI Act in the design.',
+    }}
+  />
+
+  <HsSection id="often" tone="paper" title="What we *often* build" lede="Coming with something specific? Find it here per way in. If yours is not on the list, we work it out in the start sprint." split>
+    <HsLandingIndex />
+  </HsSection>
+
+  <HsSection title="The first step is | *always* the same" lede="Whichever way in you choose, we start with a start sprint. After that you know whether it can be done, what it costs and what it looks like.">
+    <HsFigures
+      items={[
+        { value: '6 days', label: 'from question to prototype or build plan' },
+        { value: SITE_EN.sprint.price, label: 'fixed fee, the same for every way in' },
+        { value: '2 weeks', label: 'after the first call you can start' },
+      ]}
+    />
+    <p class="hs-sec__foot" data-item>
+      <a class="hs-btn hs-btn--dark" href="/en/start-sprint">See the start sprint<HsIcon name="arrow-right" /></a>
+    </p>
+  </HsSection>
+
+  <HsSection tone="paper" title="Where we *proved* it" lede="One example per way in. More work under the cases.">
+    <HsCards
+      items={[
+        { meta: ENTRIES_EN.nieuw.title, title: 'Kwakkel BV', href: '/en/cases/kwakkel', more: 'Read the case', text: 'From question to working prototype on the company’s own administration, with the business case, in six days.' },
+        { meta: ENTRIES_EN.vervangen.title, title: 'Strive', href: '/en/cases/strive', more: 'Read the case', text: 'An overpriced membership management package replaced by its own software, built next to the old one and earned back in one year.' },
+        { meta: ENTRIES_EN['eigen-beheer'].title, title: 'Our own assistant', href: '/en/cases/eigen-stack', more: 'Read the case', text: 'The AI assistant on this site runs on European infrastructure, makes clear that it is AI and hands you to a person when it does not know.' },
+      ]}
+    />
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/cases">All cases<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsStandardList />
+
+  <HsContact />
+</HsLayout>

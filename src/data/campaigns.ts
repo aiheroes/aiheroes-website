@@ -20,7 +20,11 @@ export interface Campaign {
   whatYouSaw: string;
   people: FounderId[];
   accent: 'red' | 'blue' | 'dark';
+  /** English copy for /en/<slug>. */
+  en: CampaignText;
 }
+
+export type CampaignText = Pick<Campaign, 'title' | 'seoTitle' | 'description' | 'headline' | 'lede' | 'dateLabel' | 'whatYouSaw'> & { mediaTitle: string };
 
 export const CAMPAIGNS: Record<string, Campaign> = {
   'de-ai-storm': {
@@ -45,5 +49,20 @@ export const CAMPAIGNS: Record<string, Campaign> = {
     whatYouSaw: 'De AI Storm laat in vier afleveringen zien hoe organisaties AI inzetten als gereedschap: om processen te vereenvoudigen, fouten te verminderen en ruimte te maken voor het werk dat ertoe doet. In onze aflevering vertelt Jan Brusse over AI-adoptie in het mkb.',
     people: ['jan-brusse'],
     accent: 'dark',
+    en: {
+      title: 'AI Heroes in De AI Storm',
+      seoTitle: 'Watch AI Heroes in De AI Storm (RTL 7, RTL Z and Videoland)',
+      description: 'Watch AI Heroes in the Dutch TV series De AI Storm on RTL 7, RTL Z and Videoland. Jan Brusse on AI adoption in SMEs, and what AI Heroes builds for your organisation.',
+      headline: 'AI Heroes in | De AI *Storm*',
+      lede: 'In De AI Storm, Dutch organisations show how they put AI to work. Co-founder Jan Brusse talks about AI adoption in SMEs.',
+      dateLabel: '7 June 2026',
+      mediaTitle: 'AI Heroes in De AI Storm',
+      whatYouSaw: 'In four episodes, De AI Storm shows how organisations use AI as a tool: to simplify processes, reduce errors and make room for the work that matters. In our episode, Jan Brusse talks about AI adoption in SMEs. The episode is in Dutch.',
+    },
   },
 };
+
+/** A campaign's copy in the page's language. */
+export function campaignText(c: Campaign, lang: 'nl' | 'en'): CampaignText {
+  return lang === 'en' ? c.en : { ...c, mediaTitle: c.media.title };
+}

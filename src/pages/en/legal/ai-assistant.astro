@@ -1,55 +1,73 @@
 ---
-// Art. 50 disclosure page (SDD D10). Draft: copy pending founder sign-off (SDD §13).
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+// H3 About our AI assistant (English): the Article 50 disclosure in the help template, translated
+// from /nl/legal/ai-assistent. Escalation reply within 4 office hours (docs/relaunch/01-besluiten.md
+// §15); no supplier names (§8). Copy awaits Frans's sign-off, together with the Dutch text.
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsHelp from '../../../components/hs/HsHelp.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { SITE, SITE_EN } from '../../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/en' }];
 ---
 
-<SubpageLayout
+<HsLayout
   lang="en"
   title="About our AI assistant"
-  subtitle="How the assistant on this site works, what it can and cannot do, and how we handle your data."
-  seoDescription="About the AI Heroes AI assistant: capabilities, limits, data handling and how to reach a human."
-  accentColor="blue"
-  showContactForm={false}
+  seoTitle="About the AI assistant of AI Heroes"
+  description="About the AI assistant of AI Heroes: what it can and cannot do, what happens to your data, how it is built and how to reach a person."
   noindex
+  crumbs={crumbs}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">You are chatting with AI</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">
-      The chat assistant on aiheroes.io is an AI system, built by AI Heroes itself. We also say
-      so in the conversation: you always know you are talking to AI, as required by the EU AI
-      Act (Article 50). The assistant is an example of what we build for clients.
-    </p>
+  <HsHelp
+    title="You are chatting with *AI*"
+    current="About our AI assistant"
+    intro="The assistant on this site is an AI system we built ourselves. Here is what it can do, what happens to your data and how to reach a person."
+    updated="October 2026"
+    crumbs={crumbs}
+    summary={[
+      'The assistant is AI, and it says so in the conversation.',
+      'It answers from our own pages and names the source.',
+      'A person is always within reach through “Talk to a human”.',
+      'Processing and storage take place within the EU.',
+      'We only ask for your name and email address if you want contact, with your consent.',
+    ]}
+    toc={[
+      { id: 'can', label: 'What the assistant can do' },
+      { id: 'data', label: 'Data and retention' },
+      { id: 'built', label: 'How it is built' },
+      { id: 'person', label: 'Rather talk to a human' },
+    ]}
+    related={[{ label: 'Privacy statement', href: '/en/legal/privacy' }, { label: 'The case: our own assistant', href: '/en/cases/eigen-stack' }, { label: 'Software you control', href: '/en/self-hosted' }]}
+  >
+    <div class="hs-prose">
+      <p>The chat assistant on aiheroes.io is an AI system, built by AI Heroes itself. We say so in the conversation as well: you always know you are talking to AI, as Article 50 of the European AI Act requires. The assistant is an example of what we build for clients.</p>
 
-    <div class="solid-block bg-brand-blue p-6 md:p-8 mb-8 not-prose">
-      <h3 class="text-xl font-serif text-brand-dark mb-3">In short</h3>
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>The assistant answers from our own site content and links its sources</li>
-        <li>Answers can be incomplete or wrong; verify important information on the linked pages</li>
-        <li>A human is always reachable via "Talk to a human" in the chat</li>
-        <li>Processing and storage happen within the EU</li>
-        <li>We only ask for your name and email when you choose to hand the conversation to the team, with your consent</li>
-      </ul>
+      <h2 id="can">What the assistant can do, and what it cannot</h2>
+      <p>The assistant answers questions about what we build, the start sprint, our cases, the team, the articles and the AI Salon. It takes you to the right page, helps you book a conversation with the team and hands the conversation over to a person if you want.</p>
+      <p>It only gives prices that are also on the site. Answers can be incomplete or wrong; check important information on the page it refers to.</p>
+
+      <h2 id="data">Data and retention</h2>
+      <p>Your chat history is stored in your own browser. On our servers we keep conversations pseudonymised, without name, IP address or profile, to improve the assistant, for at most 30 days. Only when you leave your name and email address to get in touch do we process personal data; we keep it for at most 90 days, in line with our <a href="/en/legal/privacy">privacy statement</a>.</p>
+
+      <h2 id="built">How it is built</h2>
+      <p>The assistant searches our own pages and answers only on that basis, with the source included. It runs in Frankfurt, with a database in the EU. The language model can be switched without rebuilding the assistant, and every new version first has to pass a fixed test set. That way we do ourselves what we advise clients: compliance from the drawing board and <a href="/en/self-hosted">software you control</a>. Read more in <a href="/en/cases/eigen-stack">the case</a>.</p>
+
+      <h2 id="person">Rather talk to a human?</h2>
+      <p>Use “Talk to a human” in the chat. During office hours we reply within 4 hours. You can also email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>; we reply to email within {SITE_EN.reply}.</p>
     </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">What the assistant can do</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Answer questions about our services, cases, team, articles and the AI Salon; take you to
-      the right page; help you book a conversation with the team; and hand the conversation to
-      a human. It only quotes pricing that is published on this site.
+    <p>
+      <button class="hs-btn hs-btn--dark" type="button" data-open-chat>
+        Open the assistant
+        <HsIcon name="arrow-right" />
+      </button>
     </p>
+  </HsHelp>
+</HsLayout>
 
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Data and retention</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Your chat history lives in your own browser. On our servers, conversations are stored
-      pseudonymously (no name, no IP address, no profile) for quality improvement, for at most
-      30 days. Only when you leave your name and email to get in touch do we process personal
-      data, in line with our <a href="/en/legal/privacy">privacy policy</a>.
-    </p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Prefer a human right away?</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Use "Talk to a human" in the chat, or reach us via the
-      <a href="/en#contact">contact form</a>. During office hours we respond within 4 hours.
-    </p>
-  </div>
-</SubpageLayout>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-open-chat]').forEach((b) =>
+      b.addEventListener('click', () => window.dispatchEvent(new Event('aih:open-chat'))),
+    );
+  });
+</script>

@@ -1,0 +1,130 @@
+---
+// P4 Replace old software, English (docs/relaunch/pages/P4-software-vervangen.md, phase 7): entry
+// "vervangen", hub of L09–L11. The proof is mostly the way of working; Strive and IC Commerce are the
+// cases (docs/relaunch/01-besluiten.md §3, §8).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE, SITE_EN } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
+
+const faq = [
+  { q: 'Is replacing not more expensive than keeping?', a: 'The start sprint works that out. You see what the current package costs per year, what your own software costs and when it pays for itself. Gym [Strive](/en/cases/strive) earned the build back in one year. If the sum does not add up, we advise against replacing.' },
+  { q: 'How does our data move over?', a: 'In parts, with a check after every step. The old system stays on until everything matches, so nothing gets lost.' },
+  { q: 'Our old system is tied into everything. Can it still be done?', a: 'Yes. We start with the integrations: first we connect the new system to what stays, then you switch over. That way not everything has to change at once.' },
+  { q: 'How long does a replacement take?', a: 'The start sprint takes six days. A replacement usually takes two to twelve weeks, depending on how much needs to be connected and moved over.' },
+  { q: 'Who maintains it afterwards?', a: 'We do. We keep maintaining and developing the system, and integrations and data model are documented.' },
+];
+---
+
+<HsLayout
+  lang="en"
+  title="Replace old software"
+  seoTitle="Replace legacy or SaaS software without a big bang"
+  description={`Replace overpriced or outdated software with software that fits. Built next to the old system, data moved over in parts, the old one switched off only when the new one runs. Start with a six-day start sprint from ${SITE_EN.sprint.price}.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Replace old software', path: '/en/replace-software', price: SITE.sprint.priceValue, serviceType: 'Software replacement and modernisation', description: 'Overpriced SaaS, Excel and outdated custom software replaced by your own software, built next to the old system and moved over in phases.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Replace old software"
+    title="We are fed up with | our *package.*"
+    lede="Software that is too expensive or too old, replaced by software that fits how you work. We build the new next to the old and only switch the old one off once the new one runs."
+    secondary={{ label: 'How the switch works', href: '#switch' }}
+    photo={{ src: '/hs/photos/cover-legacy.webp', alt: 'An old beige computer on an office desk', w: 1800, h: 1800, pos: '40% 55%' }}
+    facts={[
+      { value: '6 days', label: 'to architecture and migration plan' },
+      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed fee' },
+      { value: '1 year', label: 'for Strive to earn the build back' },
+    ]}
+  />
+
+  <HsSection title="Sound *familiar*?" lede="Three situations in which clients come to us. Each has its own approach.">
+    <HsCards
+      items={[
+        { icon: 'wallet', title: 'An expensive SaaS package', text: 'Every year a subscription for a package you use part of, and that dictates how you work.', href: '/en/replace-saas', more: 'Replace a SaaS package' },
+        { icon: 'list-checkbox', title: 'Excel and loose tools', text: 'Work runs through spreadsheets, email and loose tools. Nobody has the overview and errors creep in.', href: '/en/replace-excel', more: 'Replace Excel' },
+        { icon: 'hourglass', title: 'Outdated custom software', text: 'A system from years ago that nobody dares to touch anymore, or a platform that does not grow with you.', href: '/en/legacy-software', more: 'Legacy software' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection id="switch" tone="dark" title="Switching over without | everything *stopping*" lede="The risk of replacing lies in the switch. That is why we always do three things this way.">
+    <HsSteps
+      ordered={false}
+      items={[
+        { label: 'First', title: 'Integrations first', text: 'We connect the new system to what stays first: your ERP, CRM, Microsoft 365, accounting, web shop or marketplace.' },
+        { label: 'Then', title: 'Data in parts, with checks', text: 'We move your data over in parts and check every step, so nothing gets lost.' },
+        { label: 'Only when it runs', title: 'The old system stays on', text: 'The old system keeps running until the new one demonstrably works. Only then do you switch it off.' },
+      ]}
+    />
+    <div class="hs-sec__foot" data-item>
+      <ul class="hs-pills" aria-label="Systems we connect to">
+        <li>WooCommerce and web shops</li><li>Microsoft 365</li><li>ERP and CRM</li><li>Marketplaces such as bol.com</li>
+      </ul>
+      <a class="hs-link" href="/en/ai-integration">Connect to your systems<HsIcon name="arrow-right" /></a>
+    </div>
+  </HsSection>
+
+  <HsSection title="What it *returns*" lede="With a SaaS package you often pay for everything and use a fifth. The start sprint puts the sum on a single page: what the subscription costs per year, what your own software costs and when it pays for itself.">
+    <p class="hs-lead" data-item>{zet('If the sum does not add up, we advise against replacing.', { display: true })}</p>
+  </HsSection>
+
+  <HsCase
+    id="case"
+    snap={false}
+    photo={null}
+    kicker="Case · Strive"
+    title="The package out, | earned back in one year"
+    lede="Gym Strive paid every year for a membership management package it used only part of. We built its own software next to the package, with only what Strive needs."
+    stats={[{ value: 1, label: 'year payback time' }]}
+    close="The subscription was only cancelled once everything matched, and the team had been trained on the new system beforehand."
+    link={{ label: 'Read the case', href: '/en/cases/strive' }}
+  />
+
+  <HsSection tone="paper" title="From start sprint to *switch*">
+    <HsSteps
+      items={[
+        { label: 'Six days', title: 'Start sprint', text: `Architecture, a phased migration plan and the business case on a single page. From ${SITE_EN.sprint.price}, start within two weeks.` },
+        { label: 'Two-week sprints', title: 'Building next to the old', text: `A demo after every sprint; the old system simply keeps running. Build from ${SITE_EN.build.from}.` },
+        { label: 'Switch', title: 'Team trained, then over', text: 'Your team already works with the new system before the old one goes.' },
+        { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system. Integrations and data model are documented.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsStandardList extra="What matters most here: integrations and data model are documented, and you are not tied to one AI vendor." />
+
+  <HsSection title="More of our *work*">
+    <HsCards
+      columns={2}
+      items={[
+        { meta: 'Case · e-commerce', title: 'IC Commerce', href: '/en/cases/ic-commerce', more: 'Read the case', text: 'The WooCommerce shop replaced by its own platform, and the work around it automated step by step with new pipelines.' },
+        { meta: 'Case · gym', title: 'Strive', href: '/en/cases/strive', more: 'Read the case', text: 'An overpriced membership management package replaced by its own software, earned back in one year.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsOtherEntries current="vervangen" />
+
+  <HsContact entry="vervangen" title="Tell us what you want to replace" lede={`Which package or system, and what bothers you about it? You hear from us within ${SITE_EN.reply}, usually with a proposal for a start sprint.`} />
+</HsLayout>

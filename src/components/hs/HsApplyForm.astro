@@ -1,63 +1,103 @@
 ---
 // The application form in the house style. Posts multipart (with the CV) to /api/apply, which mails
 // the team through Resend; same fields and bot checks as the old React form. "Open sollicitatie" is
-// one of the choices (01-besluiten §13).
+// one of the choices (01-besluiten §13). Labels and messages follow the language of the URL; the
+// messages reach the script through data attributes.
 import HsIcon from './HsIcon.astro';
-import { JOBS } from '../../data/jobs';
+import { JOBS, jobText } from '../../data/jobs';
+import { langOf } from '../../data/ui';
 
 interface Props {
-  /** Preselected position title; empty means open application. */
+  /** Preselected position title (in the page's language); empty means open application. */
   position?: string;
   title?: string;
   id?: string;
 }
-const { position = '', title = 'Solliciteer', id = 'solliciteer' } = Astro.props;
-const OPEN = 'Open sollicitatie';
+const lang = langOf(Astro.url);
+const en = lang === 'en';
+const T = en
+  ? {
+      title: 'Apply', open: 'Open application', name: 'Name', email: 'Email', phone: 'Phone', position: 'Position',
+      motivation: 'Motivation', placeholder: 'Why AI Heroes, and what would you like to contribute?',
+      cv: 'CV (pdf or docx, up to 8 MB)', consent: 'I agree to the processing of my data for this application, as set out in the', privacy: 'privacy statement', privacyHref: '/en/legal/privacy',
+      submit: 'Send application',
+      consentMissing: 'Please give your consent to the processing of your data.', missing: 'Please fill in your name, email address and motivation.',
+      badEmail: 'That email address does not look right yet.', tooBig: 'Your CV is too large. 8 MB at most.', wrongType: 'Please send your CV as pdf or docx.',
+      success: 'Received. We will confirm your application within two working days.', busy: 'Sending…',
+      error: 'Something went wrong. Try again or email us at info@aiheroes.io.',
+    }
+  : {
+      title: 'Solliciteer', open: 'Open sollicitatie', name: 'Naam', email: 'E-mail', phone: 'Telefoon', position: 'Vacature',
+      motivation: 'Motivatie', placeholder: 'Waarom AI Heroes, en wat wil je bijdragen?',
+      cv: 'Cv (pdf of docx, maximaal 8 MB)', consent: 'Ik ga akkoord met de verwerking van mijn gegevens voor deze sollicitatie, volgens de', privacy: 'privacyverklaring', privacyHref: '/nl/legal/privacy',
+      submit: 'Verstuur sollicitatie',
+      consentMissing: 'Geef toestemming voor de verwerking van je gegevens.', missing: 'Vul je naam, e-mailadres en motivatie in.',
+      badEmail: 'Dat e-mailadres klopt nog niet helemaal.', tooBig: 'Je cv is te groot. Maximaal 8 MB.', wrongType: 'Stuur je cv als pdf of docx.',
+      success: 'Ontvangen. We bevestigen je sollicitatie binnen twee werkdagen.', busy: 'Bezig met versturen…',
+      error: 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.',
+    };
+const { position = '', title = T.title, id = en ? 'apply' : 'solliciteer' } = Astro.props;
 ---
 
 <div class="hs-apply" id={id}>
   <h2 class="hs-d-s">{title}</h2>
-  <form class="hs-form" data-hs-apply method="post" action="/api/apply" enctype="multipart/form-data" novalidate>
+  <form
+    class="hs-form"
+    data-hs-apply
+    method="post"
+    action="/api/apply"
+    enctype="multipart/form-data"
+    novalidate
+    data-msg-consent={T.consentMissing}
+    data-msg-missing={T.missing}
+    data-msg-email={T.badEmail}
+    data-msg-big={T.tooBig}
+    data-msg-type={T.wrongType}
+    data-msg-success={T.success}
+    data-msg-busy={T.busy}
+    data-msg-error={T.error}
+  >
     <input class="hs-honey" type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
     <div class="hs-form__row">
       <label class="hs-field">
-        <span class="hs-label">Naam</span>
+        <span class="hs-label">{T.name}</span>
         <input class="hs-input" type="text" name="name" autocomplete="name" required />
       </label>
       <label class="hs-field">
-        <span class="hs-label">E-mail</span>
+        <span class="hs-label">{T.email}</span>
         <input class="hs-input" type="email" name="email" autocomplete="email" required />
       </label>
       <label class="hs-field">
-        <span class="hs-label">Telefoon</span>
+        <span class="hs-label">{T.phone}</span>
         <input class="hs-input" type="tel" name="phone" autocomplete="tel" />
       </label>
     </div>
     <fieldset>
-      <legend>Vacature</legend>
+      <legend>{T.position}</legend>
       <div class="hs-chips">
-        {JOBS.map((j) => (
-          <label class="hs-chip"><input type="radio" name="position" value={j.title} checked={position === j.title} /><span>{j.title}</span></label>
-        ))}
-        <label class="hs-chip"><input type="radio" name="position" value={OPEN} checked={!position} /><span>{OPEN}</span></label>
+        {JOBS.map((j) => {
+          const t = jobText(j, lang).title;
+          return <label class="hs-chip"><input type="radio" name="position" value={t} checked={position === t} /><span>{t}</span></label>;
+        })}
+        <label class="hs-chip"><input type="radio" name="position" value={T.open} checked={!position} /><span>{T.open}</span></label>
       </div>
     </fieldset>
     <label class="hs-field">
-      <span class="hs-label">Motivatie</span>
-      <textarea class="hs-input" name="motivation" rows="5" required placeholder="Waarom AI Heroes, en wat wil je bijdragen?"></textarea>
+      <span class="hs-label">{T.motivation}</span>
+      <textarea class="hs-input" name="motivation" rows="5" required placeholder={T.placeholder}></textarea>
     </label>
     <label class="hs-field">
-      <span class="hs-label">Cv (pdf of docx, maximaal 8 MB)</span>
+      <span class="hs-label">{T.cv}</span>
       <input class="hs-input hs-apply__file" type="file" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
     </label>
     <label class="hs-apply__consent">
       <input type="checkbox" name="consent" required />
-      <span>Ik ga akkoord met de verwerking van mijn gegevens voor deze sollicitatie, volgens de <a href="/nl/legal/privacy">privacyverklaring</a>.</span>
+      <span>{T.consent} <a href={T.privacyHref}>{T.privacy}</a>.</span>
     </label>
     <div class="hs-form__foot">
       <p class="hs-form__status" role="status" aria-live="polite"></p>
       <button class="hs-btn hs-btn--dark" type="submit">
-        Verstuur sollicitatie
+        {T.submit}
         <HsIcon name="arrow-right" />
       </button>
     </div>
@@ -70,38 +110,39 @@ const OPEN = 'Open sollicitatie';
     document.querySelectorAll<HTMLFormElement>('[data-hs-apply]').forEach((form) => {
       if (form.dataset.bound) return;
       form.dataset.bound = '1';
+      const m = form.dataset;
       const opened = Date.now();
       const status = form.querySelector<HTMLElement>('.hs-form__status');
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-      const say = (t: string, state: string) => { if (status) { status.textContent = t; status.dataset.state = state; } };
+      const say = (t: string | undefined, state: string) => { if (status) { status.textContent = t ?? ''; status.dataset.state = state; } };
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const missing = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')]
           .find((f) => (f instanceof HTMLInputElement && f.type === 'checkbox' ? !f.checked : !f.value.trim()));
         if (missing) {
-          say(missing.getAttribute('type') === 'checkbox' ? 'Geef toestemming voor de verwerking van je gegevens.' : 'Vul je naam, e-mailadres en motivatie in.', 'error');
+          say(missing.getAttribute('type') === 'checkbox' ? m.msgConsent : m.msgMissing, 'error');
           missing.focus();
           return;
         }
         const email = form.querySelector<HTMLInputElement>('input[type="email"]');
-        if (email && !email.checkValidity()) { say('Dat e-mailadres klopt nog niet helemaal.', 'error'); email.focus(); return; }
+        if (email && !email.checkValidity()) { say(m.msgEmail, 'error'); email.focus(); return; }
         const file = form.querySelector<HTMLInputElement>('input[type="file"]')?.files?.[0];
-        if (file && file.size > MAX) { say('Je cv is te groot. Maximaal 8 MB.', 'error'); return; }
+        if (file && file.size > MAX) { say(m.msgBig, 'error'); return; }
         const data = new FormData(form);
-        const done = () => { form.reset(); say('Ontvangen. We bevestigen je sollicitatie binnen twee werkdagen.', 'ok'); };
+        const done = () => { form.reset(); say(m.msgSuccess, 'ok'); };
         const bot = !!data.get('bot-field') || Date.now() - opened < 3000;
         if (bot) { done(); return; }
         data.delete('consent');
-        say('Bezig met versturen…', 'busy');
+        say(m.msgBusy, 'busy');
         if (button) button.disabled = true;
         try {
           const res = await fetch(form.action, { method: 'POST', body: data });
           if (res.ok) done();
-          else if (res.status === 413) say('Je cv is te groot. Maximaal 8 MB.', 'error');
-          else if (res.status === 415) say('Stuur je cv als pdf of docx.', 'error');
-          else say('Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+          else if (res.status === 413) say(m.msgBig, 'error');
+          else if (res.status === 415) say(m.msgType, 'error');
+          else say(m.msgError, 'error');
         } catch {
-          say('Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+          say(m.msgError, 'error');
         } finally {
           if (button) button.disabled = false;
         }

@@ -4,7 +4,7 @@
 // pages add "Training" and preselect it (docs/relaunch/01-besluiten.md §6). Language from the URL.
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
-import { SITE, entriesFor, type Entry } from '../../data/site';
+import { SITE, SITE_EN, entriesFor, type Entry } from '../../data/site';
 import { FOUNDERS, FOUNDER_ORDER, founderText } from '../../data/team';
 import { ui, langOf } from '../../data/ui';
 
@@ -44,7 +44,7 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
     <p class="hs-body-l" data-item style="--i:1">{zet(lede)}</p>
     <div class="hs-contact__direct" data-item style="--i:2">
       <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-      <a href={SITE.phoneHref}>{SITE.phone}</a>
+      <a href={SITE.phoneHref}>{lang === 'en' ? SITE_EN.phone : SITE.phone}</a>
     </div>
     <div class="hs-contact__people" data-item style="--i:3">
       <h3 class="hs-title">{t.meet}</h3>

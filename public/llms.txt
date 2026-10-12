@@ -1,51 +1,53 @@
 # AI Heroes
 
-> AI Heroes B.V. (Groningen, the Netherlands, KvK 42051968) builds AI tools your team uses every day, for organisations that want more than a pilot. We design, build and implement, and make sure it works: with a solid business case, compliance from the drawing board and a team that can run it. Three ways in: build something new, replace software that no longer fits, or run AI on your own servers or European hosting. The first step is always the start sprint: one week, fixed fee from EUR 8,000, ending in a working prototype or a build plan, always with the business case. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: info@aiheroes.io.
+> AI Heroes B.V. (Groningen, the Netherlands, KvK 42051968) builds AI tools your team uses every day, for organisations that want more than a pilot. Three ways in: a new AI tool, replacing old software that no longer fits, or software you control (on your own servers or with a European provider). The first step is always the start sprint: six days, fixed fee from EUR 8,000 (the same for all three ways in), it can start within two weeks of the first call and ends in a working prototype or a build plan, always with the business case on one page. Builds start from EUR 15,000; after delivery AI Heroes keeps maintaining and developing the system. Office: Aarhusweg 4-16, 9723 JJ Groningen. Contact: info@aiheroes.io, +31 50 200 3373.
 
-AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Wij ontwerpen, bouwen en implementeren, en zorgen dat het werkt: met een sluitende business case, compliance vanaf de tekentafel en een team dat ermee overweg kan. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
+AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Drie ingangen: een nieuwe AI-toepassing, oude software vervangen of software in eigen beheer. De eerste stap is altijd de startsprint: zes dagen, vast bedrag vanaf EUR 8.000, start binnen twee weken. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
 
 ## The AI Heroes standard (included in every build)
 
 - Business case first: cost, return and payback on one page, before we build
 - Compliance from the drawing board: AI Act classification, logging, human oversight, European hosting
-- Your people trained on it: the team that will use the system is trained on that system (meets Article 4 of the EU AI Act)
+- Your people can work with it: the team that will use the system is trained on that system (Article 4 of the EU AI Act)
 - Not tied to one AI vendor: built model-agnostic, everything documented
 
 ## Start here (English)
 
-- [The start sprint](https://aiheroes.io/en/start-sprint): one week, fixed fee from EUR 8,000, working prototype or build plan plus business case
-- [What we build](https://aiheroes.io/en/services): the three entries
-- [Build something new](https://aiheroes.io/en/services/software): assistants, workflows, voice AI, internal tools, customer portals; custom builds from EUR 15,000
-- [Replace what no longer fits](https://aiheroes.io/en/services/replace-software): outdated custom systems and overpriced SaaS replaced by software that fits, connected to ERP, CRM and the rest of the landscape
-- [Run it on your own terms](https://aiheroes.io/en/services/eu-consultancy): local models, European cloud, no US cloud dependency, AI Act built in
-- [How we work](https://aiheroes.io/en/about/approach): the start sprint, the AI Heroes standard, business case, compliance, training, handover
-- [Business case and scoping](https://aiheroes.io/en/services/consulting): a phase of every build; standalone advisory work also possible
-- [Training your team](https://aiheroes.io/en/services/training): part of every build; standalone in-company training from EUR 2,500 per half-day
-- [AI literacy training](https://aiheroes.io/en/services/ai-literacy-training): Article 4 of the EU AI Act, with certificate
+- [The start sprint](https://aiheroes.io/en/start-sprint): six days, fixed fee from EUR 8,000, working prototype or build plan plus business case
+- [What we build](https://aiheroes.io/en/what-we-build): the three ways in and everything we build
+- [A new AI tool](https://aiheroes.io/en/new-ai-tool): AI customer service, agents and workflows, administration, company wiki, digital twin, integrations, extra developers, custom software
+- [Replace old software](https://aiheroes.io/en/replace-software): overpriced SaaS, Excel and legacy systems replaced next to the old system, moved over in phases
+- [Software you control](https://aiheroes.io/en/self-hosted): AI on your own servers or in the European cloud, with the AI Act in the design
+- [How we work](https://aiheroes.io/en/how-we-work): from start sprint to maintenance
+- [Cost and return up front](https://aiheroes.io/en/business-case) and [What does AI implementation cost?](https://aiheroes.io/en/ai-implementation-costs)
+- [Compliance and security](https://aiheroes.io/en/compliance): AI Act check, ISO 42001 guidance, security reviews
+- [AI training for your team](https://aiheroes.io/en/training): part of every build; standalone training from EUR 2,500 per half day
 
 ## Begin hier (Nederlands)
 
-- [De startsprint](https://aiheroes.io/nl/startsprint): één week, vast bedrag vanaf EUR 8.000, werkend prototype of bouwplan plus business case
-- [Wat we bouwen](https://aiheroes.io/nl/diensten): de drie ingangen
-- [Iets nieuws bouwen](https://aiheroes.io/nl/diensten/software): assistenten, werkstromen, spraak-AI, interne tools, klantportalen; maatwerk vanaf EUR 15.000
-- [Vervangen wat niet meer voldoet](https://aiheroes.io/nl/diensten/software-vervangen): verouderde maatwerksystemen en te dure SaaS vervangen door software die past, gekoppeld aan ERP, CRM en de rest van het landschap
-- [In eigen beheer draaien](https://aiheroes.io/nl/diensten/eu-consultancy): lokale modellen, Europese cloud, geen Amerikaanse cloud, AI Act ingebouwd
-- [Hoe we werken](https://aiheroes.io/nl/over-ons/aanpak): de startsprint, de AI Heroes-standaard, business case, compliance, training, overdracht
-- [Business case en scoping](https://aiheroes.io/nl/diensten/consultancy): een fase van elke bouw; los advieswerk kan ook
-- [Training van je team](https://aiheroes.io/nl/diensten/training): onderdeel van elke bouw; losse incompany training vanaf EUR 2.500 per dagdeel
-- [AI-geletterdheidstraining](https://aiheroes.io/nl/diensten/ai-geletterdheid-training): artikel 4 EU AI Act, met certificaat
+- [De startsprint](https://aiheroes.io/nl/startsprint): zes dagen, vast bedrag vanaf EUR 8.000, werkend prototype of bouwplan plus business case
+- [Wat we bouwen](https://aiheroes.io/nl/wat-we-bouwen): de drie ingangen en alles wat we bouwen
+- [Nieuwe AI-toepassing](https://aiheroes.io/nl/nieuwe-ai-toepassing): AI-klantenservice, agents, administratie, company wiki, digital twin, koppelingen, extra developers, maatwerk software
+- [Oude software vervangen](https://aiheroes.io/nl/software-vervangen): duur SaaS-pakket, Excel en verouderd maatwerk, naast het oude gebouwd en in fasen overgezet
+- [Software in eigen beheer](https://aiheroes.io/nl/eigen-beheer): AI op eigen servers of in de Europese cloud, met de AI Act in het ontwerp
+- [Hoe we werken](https://aiheroes.io/nl/hoe-we-werken): van startsprint tot beheer
+- [Kosten en opbrengst vooraf](https://aiheroes.io/nl/business-case) en [Wat kost AI-implementatie?](https://aiheroes.io/nl/wat-kost-ai-implementatie)
+- [Compliance en security](https://aiheroes.io/nl/compliance): AI Act-check, ISO 42001-begeleiding, security-reviews
+- [AI-training voor je team](https://aiheroes.io/nl/training): onderdeel van elke bouw; losse training vanaf EUR 2.500 per dagdeel
 
 ## Company
 
-- [About AI Heroes](https://aiheroes.io/en/about) / [Over AI Heroes](https://aiheroes.io/nl/over-ons): team, story and Groningen
-- [Cases](https://aiheroes.io/en/cases) / [NL](https://aiheroes.io/nl/cases): Kwakkel BV (prototype in 6 days), INQ22 (custom web shop), Strive (SaaS replaced), IC Commerce (e-commerce automation), and earlier cases
-- [AI Salon Groningen](https://aiheroes.io/nl/ai-salon): bimonthly community evening in Groningen
-- [De AI Storm](https://aiheroes.io/nl/de-ai-storm): as featured on Dutch television (RTL 7, RTL Z, Videoland)
+- [About AI Heroes](https://aiheroes.io/en/about) / [Over AI Heroes](https://aiheroes.io/nl/over-ons): the team, the story since 2019 and the takeover by the current team at the end of 2025
+- [Cases](https://aiheroes.io/en/cases) / [NL](https://aiheroes.io/nl/cases): Kwakkel BV, INQ22, Strive, IC Commerce, our own assistant, Medux, Trabu, InnoEnergy, OLX
+- [AI Salon Groningen](https://aiheroes.io/en/ai-salon) / [NL](https://aiheroes.io/nl/ai-salon): community evening in Groningen
+- [De AI Storm](https://aiheroes.io/en/de-ai-storm) / [NL](https://aiheroes.io/nl/de-ai-storm): as featured on Dutch television (RTL 7, RTL Z, Videoland)
+- [Careers](https://aiheroes.io/en/careers) / [Vacatures](https://aiheroes.io/nl/vacatures)
 
-## Resources
+## Insights / Kennis
 
-- [Resources overview](https://aiheroes.io/en/resources) / [NL](https://aiheroes.io/nl/resources)
-- [What does AI implementation cost?](https://aiheroes.io/en/resources/ai-implementation-costs) / [Wat kost AI-implementatie?](https://aiheroes.io/nl/resources/wat-kost-ai-implementatie)
-- [EU AI Act compliance guide](https://aiheroes.io/en/resources/eu-ai-act-compliance) / [NL](https://aiheroes.io/nl/resources/eu-ai-act-compliance)
-- [AI literacy and EU AI Act Article 4](https://aiheroes.io/en/resources/ai-literacy) / [AI-geletterdheid](https://aiheroes.io/nl/resources/ai-geletterdheid)
-- [Sovereign AI](https://aiheroes.io/en/resources/sovereign-ai) / [Soevereine AI](https://aiheroes.io/nl/resources/soevereine-ai)
+- [Insights](https://aiheroes.io/en/insights) / [Kennis](https://aiheroes.io/nl/kennis)
+- [The AI Act](https://aiheroes.io/en/insights/ai-act) / [De AI Act](https://aiheroes.io/nl/kennis/ai-act)
+- [AI literacy (Article 4)](https://aiheroes.io/en/insights/ai-literacy) / [AI-geletterdheid](https://aiheroes.io/nl/kennis/ai-geletterdheid)
+- [ISO 42001](https://aiheroes.io/en/insights/iso-42001) / [NL](https://aiheroes.io/nl/kennis/iso-42001)
+- [European alternatives to ChatGPT](https://aiheroes.io/en/insights/european-chatgpt-alternatives) / [Europese alternatieven voor ChatGPT](https://aiheroes.io/nl/kennis/europese-alternatieven-chatgpt)
+- [Where to start with AI](https://aiheroes.io/en/insights/where-to-start-with-ai) / [Waar begin je met AI](https://aiheroes.io/nl/kennis/waar-begin-je-met-ai)

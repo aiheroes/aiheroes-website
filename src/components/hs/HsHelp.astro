@@ -2,10 +2,12 @@
 // H0 hulp-template (docs/relaunch/pages/H0-hulp-template.md): a quiet header on the light blueprint
 // grid (crumbs, title, one sentence, "Laatst bijgewerkt"), an optional summary plane, the reading
 // column with an optional table of contents, and one line with the right contact channel. No cover
-// photo and no start-sprint button as the main action; nav and footer carry that.
+// photo and no start-sprint button as the main action; nav and footer carry that. Labels follow the
+// language of the URL.
 import HsIcon from './HsIcon.astro';
 import { display, rich, zet } from './hs';
 import type { Crumb } from '../../data/schema';
+import { langOf } from '../../data/ui';
 
 interface Props {
   title: string;
@@ -24,13 +26,17 @@ interface Props {
   contact?: string;
   related?: { label: string; href: string }[];
 }
-const { title, current, intro, updated, crumbs = [], meta = [], summary = [], summaryTitle = 'In het kort', toc = [], contact, related = [] } = Astro.props;
+const en = langOf(Astro.url) === 'en';
+const T = en
+  ? { crumbs: 'Breadcrumb', summary: 'In short', updated: 'Last updated', related: 'See also', toc: 'Contents' }
+  : { crumbs: 'Kruimelpad', summary: 'In het kort', updated: 'Laatst bijgewerkt', related: 'Zie ook', toc: 'Inhoud' };
+const { title, current, intro, updated, crumbs = [], meta = [], summary = [], summaryTitle = T.summary, toc = [], contact, related = [] } = Astro.props;
 ---
 
 <header class="hs-help__head hs-grid">
   <div class="hs-wrap">
     {crumbs.length > 0 && (
-      <nav class="hs-crumbs" aria-label="Kruimelpad">
+      <nav class="hs-crumbs" aria-label={T.crumbs}>
         <ol>
           {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
           <li aria-current="page">{current ?? title.replace(/\*/g, '')}</li>
@@ -42,7 +48,7 @@ const { title, current, intro, updated, crumbs = [], meta = [], summary = [], su
     {meta.length > 0 && (
       <ul class="hs-help__meta">{meta.map((m) => <li>{m}</li>)}</ul>
     )}
-    {updated && <p class="hs-meta">Laatst bijgewerkt: {updated}</p>}
+    {updated && <p class="hs-meta">{T.updated}: {updated}</p>}
   </div>
 </header>
 
@@ -59,16 +65,16 @@ const { title, current, intro, updated, crumbs = [], meta = [], summary = [], su
         <slot />
         {contact && <p class="hs-help__contact" set:html={rich(contact)} />}
         {related.length > 0 && (
-          <nav class="hs-help__related" aria-label="Zie ook">
-            <h2>Zie ook</h2>
+          <nav class="hs-help__related" aria-label={T.related}>
+            <h2>{T.related}</h2>
             <ul>{related.map((r) => <li><a class="hs-link" href={r.href}>{r.label}<HsIcon name="arrow-right" /></a></li>)}</ul>
           </nav>
         )}
       </div>
       {toc.length > 0 && (
         <aside class="hs-article__aside">
-          <nav class="hs-toc" aria-label="Inhoud">
-            <h2>Inhoud</h2>
+          <nav class="hs-toc" aria-label={T.toc}>
+            <h2>{T.toc}</h2>
             <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{zet(t.label, { cap: 30 })}</a></li>)}</ol>
           </nav>
         </aside>

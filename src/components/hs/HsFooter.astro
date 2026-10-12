@@ -4,7 +4,7 @@
 import HsLogo from './HsLogo.astro';
 import { zet } from './hs';
 import { navFor } from '../../data/nav';
-import { SITE } from '../../data/site';
+import { SITE, SITE_EN } from '../../data/site';
 import type { Lang } from '../../data/i18n';
 import { UI } from '../../data/ui';
 
@@ -33,7 +33,7 @@ const a = SITE.address;
       <span>{footer.copyright}</span>
       <span>{zet(SITE.legalName, { cap: 30 })} · {zet(`${a.street},`)} {zet(`${a.postcode} ${a.city}`, { cap: 30 })} · {zet(`KvK ${SITE.kvk}`)}</span>
       <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-      <a href={SITE.phoneHref}>{SITE.phone}</a>
+      <a href={SITE.phoneHref}>{lang === 'en' ? SITE_EN.phone : SITE.phone}</a>
       {footer.legal.map((l) => <a href={l.href}>{l.label}</a>)}
       <span>{zet(footer.madeIn)}</span>
     </div>

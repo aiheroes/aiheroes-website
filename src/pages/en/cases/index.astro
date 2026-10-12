@@ -1,46 +1,88 @@
 ---
-import { getCollection } from 'astro:content';
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
-import CardGrid from '../../../components/blocks/CardGrid.astro';
-import ProofRow from '../../../components/blocks/ProofRow.astro';
+// P16 Cases in English (docs/relaunch/pages/P16-cases.md): Strive featured, all cases as cards with
+// a filter on entry, the homepage logo set and the contact block. Medux is named here
+// (docs/relaunch/01-besluiten.md §7); a case with two entries shows under both filters.
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCase from '../../../components/hs/HsCase.astro';
+import HsCaseCards from '../../../components/hs/HsCaseCards.astro';
+import HsContact from '../../../components/hs/HsContact.astro';
+import { getCases, displayName, sectorLabel } from '../../../components/hs/cases';
+import { ENTRIES_EN, SITE_EN, type Entry } from '../../../data/site';
 
-const ENTRY_LABEL = { nieuw: 'Build something new', vervangen: 'Replace what no longer fits', 'eigen-beheer': 'Run it on your own terms' } as const;
-const ERA_LABEL = 'Earlier case';
+const cases = await getCases('en');
+const featured = cases.find((c) => c.data.featured) ?? cases[0];
+const f = featured.data;
+const featuredSector = sectorLabel(f.sector, 'en');
 
-const items = (await getCollection('cases', (e) => e.data.lang === 'en' && !e.data.draft))
-  .sort((a, b) => a.data.order - b.data.order);
-
-const cards = items.map((e) => ({
-  title: e.data.client ?? e.data.title,
-  eyebrow: e.data.era === 'eerder' ? ERA_LABEL : ENTRY_LABEL[e.data.entry],
-  description: e.data.subtitle,
-  href: `/en/cases/${e.data.slug}`,
-  accent: e.data.accentColor,
-}));
+const LOGOS = [
+  { name: 'UMCG', src: '/hs/logos-white/umcg.svg', h: 22 },
+  { name: 'Tweede Kamer', src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  { name: 'Nationale Postcode Loterij', src: '/hs/logos-white/postcode-loterij.svg', h: 32 },
+  { name: 'Envalior', src: '/hs/logos-white/envalior.svg', h: 34 },
+  { name: 'Banijay Benelux', src: '/hs/logos-white/banijay.svg', h: 26 },
+  { name: 'Prosus', src: '/hs/logos-white/prosus.svg', h: 42 },
+  { name: 'Hanzehogeschool', src: '/hs/logos-white/hanze.svg', h: 30 },
+];
 
 const listSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: items.map((e, i) => ({
+  name: 'AI Heroes cases',
+  itemListElement: cases.map((c, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    url: `https://aiheroes.io/en/cases/${e.data.slug}`,
-    name: e.data.client ?? e.data.title,
+    url: `https://aiheroes.io/en/cases/${c.data.slug}`,
+    name: displayName(c, 'overview'),
   })),
 };
+const entryKeys = Object.keys(ENTRIES_EN) as Entry[];
 ---
 
-<SubpageLayout
+<HsLayout
   lang="en"
   title="Cases"
-  subtitle="Work by the current team first: Kwakkel BV, INQ22, Strive and IC Commerce. Then the cases from before the takeover."
-  seoTitle="Cases: AI tools in everyday use"
-  seoDescription="See what AI Heroes built: administrative automation at Kwakkel BV, a custom web shop for INQ22, a SaaS package replaced at Strive, e-commerce automated at IC Commerce, and our own European-hosted assistant."
-  accentColor="red"
+  seoTitle="Cases: AI tools that people use every day"
+  description="What AI Heroes built and what it delivered: Strive replaced a membership management package and the build paid for itself in one year, Medux handles 4,000 calls a month with 80% by AI, Kwakkel had a working prototype in six days."
+  crumbs={[{ label: 'Home', href: '/en' }]}
   jsonLd={listSchema}
 >
-  <section class="mb-12">
-    <CardGrid items={cards} cols={2} />
-  </section>
-  <ProofRow label="Trusted by" items={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG", "Tweede Kamer"]} />
-</SubpageLayout>
+  <HsPageCover
+    accent="red"
+    crumbs={[{ label: 'Home', href: '/en' }]}
+    current="Cases"
+    title="What we built, and what it *delivered*"
+    lede="From an AI voice that handles 4,000 calls a month to a package replacement that paid for itself in one year. Choose a way in, or see them all."
+    cta={{ label: 'Plan a start sprint', href: '#contact' }}
+    secondary={{ label: 'All cases', href: '#all-cases' }}
+  />
+
+  <HsCase
+    id="featured"
+    snap={false}
+    photo={f.photo && !f.photo.shot ? { src: f.photo.src, alt: f.photo.alt, w: f.photo.w, h: f.photo.h, pos: f.photo.pos } : null}
+    kicker={`Featured${featuredSector ? ` · ${featuredSector}` : ''}`}
+    title={f.headline}
+    lede={f.lede}
+    stats={f.stats.map((s) => ({ value: s.value, decimals: s.decimals, suffix: s.suffix, label: s.label }))}
+    close=""
+    link={{ label: `Read the ${displayName(featured, 'overview')} case`, href: `/en/cases/${f.slug}` }}
+  />
+
+  <HsSection id="all-cases" title="All *cases*" lede="A case can belong to more than one way in. Choose one to filter.">
+    <div class="hs-filter" data-filter-group="case-list" role="group" aria-label="Filter by way in" data-item>
+      <button type="button" data-filter="all" aria-pressed="true">All cases</button>
+      {entryKeys.map((k) => <button type="button" data-filter={k} aria-pressed="false">{ENTRIES_EN[k].title}</button>)}
+    </div>
+    <HsCaseCards id="case-list" filterTags columns={3} />
+  </HsSection>
+
+  <HsSection tone="paper" title="Organisations we have *worked with*">
+    <ul class="hs-logos hs-logos--light hs-logos--bare" data-item>
+      {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
+    </ul>
+  </HsSection>
+
+  <HsContact title="Does your question look like this?" lede={`Plan a start sprint: in six days you know whether it can be done, what it costs and what it looks like. You hear from us within ${SITE_EN.reply}.`} />
+</HsLayout>

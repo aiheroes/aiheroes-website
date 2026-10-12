@@ -39,7 +39,7 @@ function initCover(signal: AbortSignal) {
   const syncPause = () => {
     root.classList.toggle('is-paused', held || hovering || focused || document.hidden);
     root.classList.toggle('is-held', held);
-    pauseBtn?.setAttribute('aria-label', held ? 'Speel de wisseling af' : 'Pauzeer de wisseling');
+    pauseBtn?.setAttribute('aria-label', held ? pauseBtn.dataset.labelPlay ?? 'Speel de wisseling af' : pauseBtn.dataset.labelPause ?? 'Pauzeer de wisseling');
   };
 
   // Words and photo rotate within one colour field; only a visitor's choice changes the colour.
@@ -105,7 +105,8 @@ function countUp(el: HTMLElement) {
   const decimals = Number(el.dataset.decimals ?? 0);
   const suffix = el.dataset.suffix ?? '';
   const prefix = el.dataset.prefix ?? '';
-  const nf = new Intl.NumberFormat('nl-NL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  const locale = document.documentElement.lang === 'en' ? 'en-GB' : 'nl-NL';
+  const nf = new Intl.NumberFormat(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   const fmt = (v: number) => prefix + nf.format(v) + suffix;
   if (reduceMotion() || !Number.isFinite(target)) { el.textContent = fmt(target); return; }
   const start = performance.now();

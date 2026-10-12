@@ -5,14 +5,40 @@
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
 import { DOWNLOADS, type DownloadId } from '../../../server/downloads';
+import { langOf } from '../../data/ui';
 
 interface Props {
   template: DownloadId;
   title?: string;
   text?: string;
 }
-const { template, title = 'Download het sjabloon', text } = Astro.props;
+const en = langOf(Astro.url) === 'en';
+const L = en
+  ? {
+      title: 'Download the template',
+      soon: 'The template is coming soon. Want help with your AI policy now? Let us know.',
+      success: 'Sent. The template will be in your inbox shortly.',
+      name: 'Name', email: 'Email', org: 'Organisation',
+      fine: 'We email you the template (Word and PDF) and only use your address to respond to your questions.',
+      privacy: '/en/legal/privacy', submit: 'Send me the template',
+      help: 'Ask for help with your AI policy', helpHref: '/en/compliance#contact',
+      missing: 'Please fill in your name and email address.', badEmail: 'That email address does not look right yet.',
+      busy: 'Sending…', error: 'Something went wrong. Try again or email us at info@aiheroes.io.',
+    }
+  : {
+      title: 'Download het sjabloon',
+      soon: 'Het sjabloon komt binnenkort. Wil je nu al hulp bij je AI-beleid? Laat het ons weten.',
+      success: '',
+      name: 'Naam', email: 'E-mail', org: 'Organisatie',
+      fine: 'We sturen je het sjabloon (Word en pdf) per mail en gebruiken je adres verder alleen om te reageren op je vragen.',
+      privacy: '/nl/legal/privacy', submit: 'Stuur mij het sjabloon',
+      help: 'Vraag hulp bij je AI-beleid', helpHref: '/nl/compliance#contact',
+      missing: 'Vul je naam en e-mailadres in.', badEmail: 'Dat e-mailadres klopt nog niet helemaal.',
+      busy: 'Bezig met versturen…', error: 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.',
+    };
+const { template, title = L.title, text } = Astro.props;
 const t = DOWNLOADS[template];
+const success = L.success || `Verstuurd. Het ${t.title.toLowerCase()} staat zo in je mailbox.`;
 ---
 
 <aside class="hs-dl on-blue" aria-labelledby={`dl-${template}`} data-reveal>
@@ -21,7 +47,7 @@ const t = DOWNLOADS[template];
     {text && <p class="hs-dl__lede" data-item style="--i:1">{zet(text)}</p>}
     {!t.enabled && (
       <p class="hs-dl__soon" data-item style="--i:2">
-        {zet('Het sjabloon komt binnenkort. Wil je nu al hulp bij je AI-beleid? Laat het ons weten.')}
+        {zet(L.soon)}
       </p>
     )}
   </div>
@@ -31,34 +57,38 @@ const t = DOWNLOADS[template];
       data-hs-form
       method="post"
       action="/api/download"
-      data-success={`Verstuurd. Het ${t.title.toLowerCase()} staat zo in je mailbox.`}
+      data-success={success}
+      data-msg-missing={L.missing}
+      data-msg-email={L.badEmail}
+      data-msg-busy={L.busy}
+      data-msg-error={L.error}
       novalidate
     >
       <input type="hidden" name="template" value={template} />
       <input class="hs-honey" type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div class="hs-form__row">
         <label class="hs-field">
-          <span class="hs-label">Naam</span>
+          <span class="hs-label">{L.name}</span>
           <input class="hs-input" type="text" name="name" autocomplete="name" required />
         </label>
         <label class="hs-field">
-          <span class="hs-label">E-mail</span>
+          <span class="hs-label">{L.email}</span>
           <input class="hs-input" type="email" name="email" autocomplete="email" required />
         </label>
         <label class="hs-field">
-          <span class="hs-label">Organisatie</span>
+          <span class="hs-label">{L.org}</span>
           <input class="hs-input" type="text" name="organization" autocomplete="organization" />
         </label>
       </div>
-      <p class="hs-dl__fine">{zet('We sturen je het sjabloon (Word en pdf) per mail en gebruiken je adres verder alleen om te reageren op je vragen.')} <a href="/nl/legal/privacy">Privacy</a></p>
+      <p class="hs-dl__fine">{zet(L.fine)} <a href={L.privacy}>Privacy</a></p>
       <div class="hs-form__foot">
         <p class="hs-form__status" role="status" aria-live="polite"></p>
-        <button class="hs-btn hs-btn--light" type="submit">Stuur mij het sjabloon<HsIcon name="arrow-right" /></button>
+        <button class="hs-btn hs-btn--light" type="submit">{L.submit}<HsIcon name="arrow-right" /></button>
       </div>
     </form>
   ) : (
     <div class="hs-dl__form" data-item style="--i:3">
-      <a class="hs-btn hs-btn--light" href="/nl/compliance#contact">Vraag hulp bij je AI-beleid<HsIcon name="arrow-right" /></a>
+      <a class="hs-btn hs-btn--light" href={L.helpHref}>{L.help}<HsIcon name="arrow-right" /></a>
     </div>
   )}
 </aside>

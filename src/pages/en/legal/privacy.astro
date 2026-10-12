@@ -1,80 +1,88 @@
 ---
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+// H1 Privacy (English), in the help template: a faithful translation of /nl/legal/privacy (no
+// newsletter, processors in general terms, the AI-policy template row). Needs Frans's approval
+// before the launch, together with the Dutch text.
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsHelp from '../../../components/hs/HsHelp.astro';
+import { SITE } from '../../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/en' }];
+const rows = [
+  { what: 'Contact form', data: 'Name, email address, organisation, your choices in the form and your message', why: 'Getting back to you about your question', where: 'Our email service and mailbox', how: 'Up to two years after the last contact' },
+  { what: 'Job application', data: 'Name, email address, phone number, motivation and CV', why: 'Assessing your application', where: 'Our mailbox; we do not store the CV anywhere else', how: 'Up to four weeks after the procedure ends, or longer if you give your consent' },
+  { what: 'AI assistant', data: 'Your questions and the answers, pseudonymised: without name, IP address or profile', why: 'Running and improving the assistant', where: 'In the EU', how: 'At most 30 days' },
+  { what: 'Contact through the assistant', data: 'Name and email address, only if you ask for contact yourself', why: 'Passing your question to the team and replying', where: 'In the EU', how: 'At most 90 days' },
+  { what: 'Booking an introduction', data: 'Name, email address and the time you choose', why: 'Making and keeping the appointment', where: 'Our calendar service', how: 'Up to two years after the last contact' },
+  { what: 'AI policy template download', data: 'Email address', why: 'Sending you the template and, if you wish, contacting you about your AI policy', where: 'Our email service and mailbox', how: 'Up to two years after the last contact' },
+  { what: 'Visiting the website', data: 'Anonymised and aggregated usage data', why: 'Understanding how the site is used', where: 'Our hosting provider in the EU', how: 'Kept anonymised' },
+];
 ---
 
-<SubpageLayout
+<HsLayout
   lang="en"
-  title="Privacy Policy"
-  subtitle="How we handle your data. Last updated: May 2026."
-  seoDescription="AI Heroes privacy policy. How we handle your data and protect your privacy."
-  accentColor="blue"
-  showContactForm={false}
+  title="Privacy statement"
+  seoTitle="Privacy statement AI Heroes"
+  description="How AI Heroes handles your data: what we process, why, where and for how long, and how to exercise your rights."
   noindex
+  crumbs={crumbs}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Our principles</h2>
+  <HsHelp
+    title="Privacy statement"
+    intro="What we do with your data, why, where and for how long."
+    updated="October 2026"
+    crumbs={crumbs}
+    summary={[
+      'We only collect what is needed for the purpose you give it for.',
+      'We do not sell your data and do not share it for commercial purposes.',
+      'We process as much as possible within the EU.',
+      'You can always ask to see, correct or delete your data.',
+      'We comply with the GDPR.',
+    ]}
+    toc={[
+      { id: 'processing', label: 'What we process' },
+      { id: 'processors', label: 'Who helps us' },
+      { id: 'assistant', label: 'The AI assistant' },
+      { id: 'rights', label: 'Your rights' },
+      { id: 'controller', label: 'Controller' },
+    ]}
+    contact={`Questions about your privacy, or want to exercise one of your rights? Email [${SITE.email}](mailto:${SITE.email}) or call +31 50 200 3373.`}
+    related={[{ label: 'About our AI assistant', href: '/en/legal/ai-assistant' }, { label: 'Terms and conditions', href: '/en/legal/terms' }]}
+  >
+    <div class="hs-prose">
+      <p>At AI Heroes we take privacy seriously. We only collect the data we need, keep it no longer than necessary and never share it with third parties for commercial purposes.</p>
 
-    <p class="text-stone-600 leading-relaxed mb-8">At AI Heroes, we take privacy seriously. We only collect data we need, don't keep it longer than necessary, and never share it with third parties for commercial purposes.</p>
+      <h2 id="processing">What we process</h2>
+      <p>Per situation: which data, what for, where it is stored and how long we keep it.</p>
+    </div>
+    <div class="hs-table-wrap">
+      <table class="hs-table">
+        <thead><tr><th scope="col">Situation</th><th scope="col">Data</th><th scope="col">Purpose</th><th scope="col">Where</th><th scope="col">How long</th></tr></thead>
+        <tbody>
+          {rows.map((r) => <tr><th scope="row">{r.what}</th><td>{r.data}</td><td>{r.why}</td><td>{r.where}</td><td>{r.how}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+    <div class="hs-prose">
+      <p>We do not use third-party cookies for advertising and do not track you across other sites.</p>
 
-    <div class="solid-block bg-brand-blue p-6 md:p-8 mb-8 not-prose">
-      <h3 class="text-xl font-serif text-brand-dark mb-3">In short</h3>
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>We only collect what's necessary</li>
-        <li>Your data is not sold</li>
-        <li>You can always request access or deletion</li>
-        <li>We comply with GDPR</li>
+      <h2 id="processors">Who helps us</h2>
+      <p>For part of the work we use service providers: our hosting provider, our email service, the service behind the AI assistant, our calendar service and the party we use to handle registrations for the AI Salon. We make agreements with them about the processing of your data. Where possible, processing takes place within the EU. Our email service sends from the EU, but may store delivery data outside the EU.</p>
+
+      <h2 id="assistant">The AI assistant on this site</h2>
+      <p>On aiheroes.io you can chat with our AI assistant. Your chat history is stored in your own browser. On our servers we keep conversations pseudonymised, without name, IP address or profile, to improve the assistant, for at most 30 days. Only if you ask for contact with the team yourself and leave your name and email address do we process personal data. We use it only to reply and keep it for at most 90 days. You can read more about the assistant on <a href="/en/legal/ai-assistant">this page</a>.</p>
+
+      <h2 id="rights">Your rights</h2>
+      <p>Under the GDPR you have these rights:</p>
+      <ul>
+        <li><strong>Access:</strong> you can ask which data we hold about you.</li>
+        <li><strong>Rectification:</strong> you can have incorrect data corrected.</li>
+        <li><strong>Erasure:</strong> you can ask us to delete your data.</li>
+        <li><strong>Objection:</strong> you can object to certain processing.</li>
       </ul>
+      <p>You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens). We would rather hear it from you first, so we can put it right.</p>
+
+      <h2 id="controller">Controller</h2>
+      <p>{SITE.legalName}, {SITE.address.street}, {SITE.address.postcode} {SITE.address.city}, the Netherlands, is the controller of the personal data in this statement. Chamber of Commerce number {SITE.kvk}, VAT number {SITE.vat}. We are subject to Dutch and European privacy law.</p>
     </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">What data do we collect?</h2>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-3">Contact forms</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">When you fill out our contact form, we collect your name, email address, and the content of your message. We use this data exclusively to contact you about your inquiry or request.</p>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-3">Website visits</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">We use simple analytics to understand how visitors use our website. We don't collect personal data through tracking and don't use third-party cookies for advertising purposes.</p>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-3">Newsletter</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">If you sign up for our newsletter, we store your email address. You can unsubscribe at any time via the link at the bottom of each newsletter.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">How do we use your data?</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">We only use your data for the purposes for which you provided it:</p>
-    <ul class="text-stone-600 leading-relaxed mb-8 space-y-2 list-disc ml-5">
-      <li>To contact you about your inquiry or request</li>
-      <li>To send you our newsletter (if you signed up)</li>
-      <li>To improve our services based on general usage patterns</li>
-    </ul>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">The AI assistant on this site</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      On aiheroes.io you can chat with our AI assistant. Your chat history lives in your own
-      browser. On our servers, conversations are stored pseudonymously (no name, IP address or
-      profile) to improve the assistant, for at most 30 days. The assistant runs on Google
-      Vertex AI in the EU. Only when you ask to be contacted by the team and leave your email
-      address do we process personal data; we use it solely to respond and keep it for at most
-      90 days. Messages from our forms and contact requests are delivered via Resend (sent from
-      the EU; Resend stores delivery records in the United States). Read more about the
-      assistant on <a href="/en/legal/ai-assistant">this page</a>.
-    </p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">How long do we keep your data?</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">We keep contact information for a maximum of 2 years after the last contact. Newsletter subscriptions are kept until you unsubscribe. Analytics data is stored anonymized and aggregated.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Your rights</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">Under GDPR, you have the following rights:</p>
-    <div class="grid md:grid-cols-2 gap-4 mb-8 not-prose">
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Access</h4><p class="text-sm text-stone-600">You can request what data we have about you.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Rectification</h4><p class="text-sm text-stone-600">You can have incorrect data corrected.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Erasure</h4><p class="text-sm text-stone-600">You can request deletion of your data.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Objection</h4><p class="text-sm text-stone-600">You can object to certain processing activities.</p></div>
-    </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Contact</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">Have questions about your privacy or want to exercise one of your rights? Contact us at info@aiheroes.io or call 050-200 3373.</p>
-
-    <div class="dark-box-content bg-brand-dark p-8 my-8 not-prose">
-      <h3>Data Controller</h3>
-      <p>AI Heroes B.V., located at Aarhusweg 4-16, 9723 JJ Groningen, the Netherlands, is the data controller for the personal data described in this privacy policy. Chamber of Commerce (KvK) number 42051968, VAT number NL869486263B01. We fall under Dutch and European privacy legislation (GDPR).</p>
-    </div>
-  </div>
-</SubpageLayout>
+  </HsHelp>
+</HsLayout>

@@ -1,0 +1,143 @@
+---
+// P10 AI training for your team, English (docs/relaunch/pages/P10-training.md, phase 7): mirrors
+// /nl/training. A deliberate supporting role and the hub of the three training landings. From €2,500
+// per half day; responsible use and disinformation are part of the literacy training; Copilot and
+// developers are cards; the education and non-profit rate is only named on training pages; the form
+// preselects "Training". Only verified date: Article 4 applies since 2 February 2025.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsFigures from '../../components/hs/HsFigures.astro';
+import HsQuote from '../../components/hs/HsQuote.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsAuthor from '../../components/hs/HsAuthor.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE, SITE_EN as S } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'How we work', href: '/en/how-we-work' }];
+const t = S.training;
+
+const LOGOS = [
+  { name: 'Tweede Kamer', src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  { name: 'Nationale Postcode Loterij', src: '/hs/logos-white/postcode-loterij.svg', h: 32 },
+  { name: 'Envalior', src: '/hs/logos-white/envalior.svg', h: 34 },
+  { name: 'Banijay Benelux', src: '/hs/logos-white/banijay.svg', h: 26 },
+  { name: 'Prosus', src: '/hs/logos-white/prosus.svg', h: 42 },
+  { name: 'Hanzehogeschool', src: '/hs/logos-white/hanze.svg', h: 30 },
+];
+
+const faq = [
+  { q: 'What does a training cost?', a: `From ${t.from} ${t.unit}. A full day is two half days. Preparation and materials are included. A lower rate applies to education and non-profits. There is always an intake call first.` },
+  { q: 'Do you come to our location?', a: 'Yes, we train on location anywhere in the Netherlands. For large groups, from 150 participants, we also give the training online and live.' },
+  { q: 'Which teams is it for?', a: 'For every team that is going to work with AI, from the board to the work floor. We tailor content and examples to the group. Development teams have a training of their own.' },
+  { q: 'Does the training count for Article 4 of the AI Act?', a: 'The [AI literacy training](/en/ai-literacy-training) is made for it, with a certificate per participant and a report of what was covered. When we build something for you, training on that system is part of the track.' },
+  { q: 'Which tools do you cover?', a: 'The tools your team actually uses: ChatGPT, Claude, Copilot or a European alternative. We teach ways of working that still hold with the next tool: asking good questions, judging the output and handling company data safely.' },
+];
+---
+
+<HsLayout
+  lang="en"
+  title="AI training for your team"
+  seoTitle="AI training for your team, on location"
+  description={`AI training on the system your team uses every day, in every build. Standalone training from ${t.from} ${t.unit}, on location anywhere in the Netherlands: in-company, AI literacy with a certificate and digital sovereignty.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'AI training for teams', path: '/en/training', price: SITE.training.fromValue, serviceType: 'In-company AI training and AI literacy', description: `AI training on location anywhere in the Netherlands, from ${t.from} ${t.unit}.` }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="AI training for your team"
+    title="Your team can *work* with it."
+    lede="The training that pays off most is the one on the system your team uses every day. It is part of every build. We also give standalone training, on location anywhere in the Netherlands."
+    cta={{ label: 'Ask for a training', href: '#contact' }}
+    secondary={{ label: 'See the trainings', href: '#trainings' }}
+    facts={[
+      { value: S.proof.trained, label: `professionals trained since ${SITE.since}` },
+      { value: t.from, label: `from, ${t.unit}` },
+      { value: 'On location', label: 'anywhere in the Netherlands, or online live' },
+    ]}
+  />
+
+  <HsSection title="Training in every *build*" lede="We train the team that will use the system, on that system and on the work floor, before the switch. And we guide the roll-out until it is part of daily work.">
+    <p class="hs-lead" data-item>{zet('That also covers Article 4 of the AI Act.', { display: true })}</p>
+    <p class="hs-sec__foot" data-item><a class="hs-link" href="/en/how-we-work">How we work<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsSection id="trainings" tone="paper" title="Standalone *trainings*" lede="For teams that want to learn to work with AI, also when we are not building anything for you.">
+    <HsCards
+      variant="planes"
+      items={[
+        { accent: 'red', title: 'In-company AI training', text: 'The core training for your whole team: how AI tools work, questions that get results and judging the output critically.', href: '/en/incompany-ai-training', more: 'In-company AI training' },
+        { accent: 'blue', title: 'AI literacy with a certificate', text: 'For Article 4: responsible use of AI and disinformation, with a live deepfake demo. With a certificate per participant.', href: '/en/ai-literacy-training', more: 'AI literacy training' },
+        { accent: 'dark', title: 'Digital sovereignty', text: 'A session with Jan for the board and IT: how dependent are you on US cloud, and what can you do about it?', href: '/en/digital-sovereignty', more: 'Digital sovereignty session' },
+      ]}
+    />
+    <div class="training-extra">
+      <HsCards
+        columns={2}
+        items={[
+          { icon: 'computer', title: 'Training in the tools you already have', text: 'Copilot in Word, Excel, Outlook and Teams, or the AI tools your team already uses.', href: '/en/incompany-ai-training', more: 'In-company AI training' },
+          { icon: 'code', title: 'AI for developers', text: 'For development teams that want to build AI in. Would you rather have us build with you? Then see extra developers.', href: '/en/extra-developers', more: 'Extra developers' },
+        ]}
+      />
+    </div>
+    <p class="hs-sec__foot hs-muted" data-item>{zet('On location anywhere in the Netherlands. For large groups, from 150 participants, also online and live.')}</p>
+  </HsSection>
+
+  <HsSection title="How a training *runs*">
+    <HsSteps
+      items={[
+        { label: 'Preparation', title: 'Intake', text: 'We discuss your team, your goals and your work. Afterwards you know what the training covers, what it costs and when we start.' },
+        { label: 'The training', title: 'On location, with your own work', text: 'We work with your documents, processes and questions. Lots of practice, few slides.' },
+        { label: 'Afterwards', title: 'Certificate and report', text: 'Where needed, a certificate per participant and a report of what was covered, for your records.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="What it *costs*" lede="A full day is two half days. Preparation and materials are included. A lower rate applies to education and non-profits, and there is always an intake call first.">
+    <HsFigures items={[{ value: t.from, label: `from, ${t.unit}` }]} />
+  </HsSection>
+
+  <HsSection tone="blue" title="Article 4 in two *sentences*" lede="Since 2 February 2025, every organisation that uses AI has to make sure its people can work with it sensibly. A training with a report helps you show that you do.">
+    <div class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/en/insights/ai-literacy">What AI literacy requires<HsIcon name="arrow-right" /></a>
+      <a class="hs-link" href="/en/compliance">Compliance and security<HsIcon name="arrow-right" /></a>
+    </div>
+  </HsSection>
+
+  <HsSection tone="dark" title="What participants *say*" lede={`More than ${S.proof.trained} professionals trained since ${SITE.since}.`}>
+    <div class="training-quotes">
+      <HsQuote text="Frans gave us a fantastic, hands-on workshop covering both theory and practice. We now have the tools to make AI manageable and applicable." author="Bobby Kremer" role="Nationale Postcode Loterij" />
+      <HsQuote text="Thanks to the interactive, hands-on workshop, we now have practical tools and tips to put to work in our teaching." author="Remi Thüss" role="Hanze University of Applied Sciences, Industrial Engineering" />
+    </div>
+    <ul class="hs-logos" data-item>
+      {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
+    </ul>
+  </HsSection>
+
+  <HsSection title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+    <div class="hs-sec__foot" data-item><HsAuthor id="jan-brusse" label="You talk to" /></div>
+  </HsSection>
+
+  <HsContact
+    training
+    title="Ask for a training"
+    lede={`Tell us who you want to train and what they need to be able to do. You hear from us within ${S.reply}, with a proposal for an intake. Want something built? Then pick one of the other topics.`}
+  />
+</HsLayout>
+
+<style>
+  .training-extra { margin-top: clamp(2rem, 4vw, 3.5rem); }
+  .training-quotes { display: grid; gap: 2.5rem clamp(2rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 900px) { .training-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .training-quotes :global(.hs-pquote blockquote) { font-size: clamp(1.25rem, 1rem + .9vw, 1.875rem); color: var(--light); }
+</style>

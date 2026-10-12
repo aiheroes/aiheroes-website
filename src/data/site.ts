@@ -54,4 +54,6 @@ export const SITE_EN = {
   reply: '24 hours',
   escalationReply: '4 office hours',
   proof: { orgs: '50+', trained: '1,000+' },
+  /** International notation for English pages. */
+  phone: '+31 50 200 3373',
 } as const;

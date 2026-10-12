@@ -5,6 +5,7 @@
 // 7,8 is the rating of the AI conversations. Other pages pass the named case.
 import HsIcon from './HsIcon.astro';
 import { display, zet } from './hs';
+import { langOf } from '../../data/ui';
 
 interface Stat {
   value: number;
@@ -38,7 +39,8 @@ const {
   id = 'case',
   snap = true,
 } = Astro.props;
-const nf = (s: Stat) => new Intl.NumberFormat('nl-NL', { minimumFractionDigits: s.decimals ?? 0, maximumFractionDigits: s.decimals ?? 0 }).format(s.value) + (s.suffix ?? '');
+const locale = langOf(Astro.url) === 'en' ? 'en-GB' : 'nl-NL';
+const nf = (s: Stat) => new Intl.NumberFormat(locale, { minimumFractionDigits: s.decimals ?? 0, maximumFractionDigits: s.decimals ?? 0 }).format(s.value) + (s.suffix ?? '');
 ---
 
 <section class:list={['hs-case on-dark', { 'hs-snap': snap, 'is-text': !photo }]} id={id} data-reveal>

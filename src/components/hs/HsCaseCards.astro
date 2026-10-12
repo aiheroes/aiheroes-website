@@ -6,8 +6,9 @@
 // entry filter (hs-client initFilter).
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
-import { getCases, displayName, formatStat, plainHeadline, SECTOR_LABEL, SECTOR_ICON, entryLabel, entryAccent, type CasePlace } from './cases';
+import { getCases, displayName, formatStat, plainHeadline, sectorLabel, SECTOR_ICON, entryLabel, entryAccent, caseHref, CASE_UI, type CasePlace } from './cases';
 import type { Entry } from '../../data/site';
+import { langOf } from '../../data/ui';
 
 interface Props {
   /** Show exactly these cases, in this order. */
@@ -24,8 +25,10 @@ interface Props {
   id?: string;
 }
 const { slugs, entry, exclude, limit, place = 'overview', filterTags = false, columns = 3, id } = Astro.props;
+const lang = langOf(Astro.url);
+const t = CASE_UI[lang];
 
-let items = await getCases();
+let items = await getCases(lang);
 if (slugs) items = slugs.map((s) => items.find((c) => c.data.slug === s)).filter((c): c is NonNullable<typeof c> => !!c);
 if (entry) items = items.filter((c) => c.data.entry.includes(entry));
 if (exclude) items = items.filter((c) => c.data.slug !== exclude);
@@ -40,25 +43,25 @@ if (limit) items = items.slice(0, limit);
       const stat = d.stats[0];
       return (
         <li data-item style={`--i:${i}`} data-tags={filterTags ? d.entry.join(' ') : undefined}>
-          <a class="hs-casecard" href={`/nl/cases/${d.slug}`}>
+          <a class="hs-casecard" href={caseHref(d.slug, lang)}>
             {d.photo ? (
               <span class:list={['hs-casecard__photo', { 'is-duo': d.photo.duo && !d.photo.shot, 'is-shot': d.photo.shot }]}>
                 <img src={d.photo.src} alt="" width={d.photo.w} height={d.photo.h} style={d.photo.pos ? `object-position:${d.photo.pos}` : undefined} loading="lazy" decoding="async" />
-                <span class={`hs-casecard__plane on-${entryAccent(first)}`}>{entryLabel(first)}</span>
+                <span class={`hs-casecard__plane on-${entryAccent(first)}`}>{entryLabel(first, lang)}</span>
               </span>
             ) : (
               <span class={`hs-casecard__photo hs-cc-plane on-${entryAccent(first)}`}>
                 <HsIcon name={SECTOR_ICON[d.sector]} />
-                <span class="hs-cc-plane__label">{d.entry.map(entryLabel).join(' · ')}</span>
+                <span class="hs-cc-plane__label">{d.entry.map((e) => entryLabel(e, lang)).join(' · ')}</span>
               </span>
             )}
-            <span class="hs-casecard__kicker">{SECTOR_LABEL[d.sector] || ' '}</span>
+            <span class="hs-casecard__kicker">{sectorLabel(d.sector, lang) || ' '}</span>
             <span class="hs-casecard__title">{displayName(c, place)}</span>
             <span class="hs-casecard__text">{zet(plainHeadline(d.headline))}</span>
             {stat && (
-              <span class="hs-casecard__stat"><strong>{formatStat(stat)}</strong><span>{stat.label}</span></span>
+              <span class="hs-casecard__stat"><strong>{formatStat(stat, lang)}</strong><span>{stat.label}</span></span>
             )}
-            <span class="hs-cc-more">Lees de case<HsIcon name="arrow-right" /></span>
+            <span class="hs-cc-more">{t.readCase}<HsIcon name="arrow-right" /></span>
           </a>
         </li>
       );

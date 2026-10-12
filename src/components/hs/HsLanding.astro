@@ -2,7 +2,9 @@
 // The landing template (docs/relaunch/pages/L00-landing-template.md): one buyer's question, fixed
 // blocks in a fixed order. Content comes from the `landings` collection; the MDX body (optional)
 // renders after "Wat we bouwen" for the blocks a single landing needs (place, routes, checklist).
-// Proof comes from the `caseStudies` collection; a missing case falls back to `proofText`.
+// Proof comes from the `caseStudies` collection in the page's language. In Dutch a case that is
+// not written yet still gets a card with its name; in English it is left out until it exists.
+// The language comes from the URL (langOf), so /nl/<slug> and /en/<slug> share this template.
 import { getCollection, type CollectionEntry } from 'astro:content';
 import HsLayout from '../../layouts/HsLayout.astro';
 import HsPageCover from './HsPageCover.astro';
@@ -18,60 +20,165 @@ import HsAuthor from './HsAuthor.astro';
 import HsContact from './HsContact.astro';
 import HsIcon from './HsIcon.astro';
 import { ICONS, plainText, rich, zet, type IconName } from './hs';
-import { SITE, type Entry } from '../../data/site';
+import { SITE, SITE_EN, type Entry } from '../../data/site';
 import { PROFESSIONAL_SERVICE_SCHEMA, faqSchema, serviceSchema } from '../../data/schema';
 import { FOUNDERS } from '../../data/team';
+import { langOf } from '../../data/ui';
 
 interface Props {
   entry: CollectionEntry<'landings'>;
 }
 const { entry } = Astro.props;
 const d = entry.data;
-const path = `/nl/${d.slug}`;
+const lang = langOf(Astro.url);
+const en = lang === 'en';
+const path = `/${lang}/${d.slug}`;
+
+type Pillar = { label: string; href: string; accent: 'red' | 'blue' | 'dark'; chip?: Entry };
+type Door = { cta: string; facts: { value: string; label: string }[]; price?: number; logos?: string[] };
+
+// Everything this template says itself, per language. The Dutch strings are the original ones.
+const T = en
+  ? {
+      home: '/en',
+      pillars: {
+        nieuw: { label: 'A new AI tool', href: '/en/new-ai-tool', accent: 'red', chip: 'nieuw' },
+        vervangen: { label: 'Replace old software', href: '/en/replace-software', accent: 'blue', chip: 'vervangen' },
+        'eigen-beheer': { label: 'Software you control', href: '/en/self-hosted', accent: 'dark', chip: 'eigen-beheer' },
+        alle: { label: 'Cost and return up front', href: '/en/business-case', accent: 'blue' },
+        plaats: { label: 'About AI Heroes', href: '/en/about', accent: 'red' },
+        training: { label: 'AI training for your team', href: '/en/training', accent: 'blue' },
+      } as Record<typeof d.entry, Pillar>,
+      doors: {
+        L07: { cta: 'Book an introduction', facts: [] },
+        T1: { cta: 'Book an intake', price: SITE.training.fromValue, logos: ['tweede-kamer', 'postcode-loterij', 'envalior', 'banijay', 'prosus', 'hanze'], facts: [
+          { value: SITE_EN.training.from, label: 'from, per half day' },
+          { value: 'On site', label: 'anywhere in the Netherlands, or live online' },
+          { value: SITE_EN.proof.trained, label: `professionals trained since ${SITE.since}` },
+        ] },
+        T2: { cta: 'Book an intake', price: SITE.training.fromValue, logos: ['tweede-kamer', 'postcode-loterij', 'envalior', 'hanze'], facts: [
+          { value: 'Per audience', label: 'board, users, IT and HR' },
+          { value: 'Certificate', label: 'per participant, with a report' },
+          { value: SITE_EN.training.from, label: 'from, per half day' },
+        ] },
+        T5: { cta: 'Book a session', price: SITE.training.fromValue, logos: ['tweede-kamer', 'envalior', 'hanze'], facts: [
+          { value: '90 minutes', label: 'for the board, or a half or full day' },
+          { value: SITE_EN.training.from, label: 'from, per half day' },
+        ] },
+      } as Record<string, Door>,
+      sprintCta: 'Plan a start sprint',
+      sprintFacts: [
+        { value: `${SITE_EN.sprint.days} days`, label: 'from question to result' },
+        { value: SITE_EN.sprint.price, label: 'fixed fee, for every way in' },
+        { value: '2 weeks', label: 'after the first call you can start' },
+      ],
+      secondary: { training: 'How it works', L07: 'How we start', other: 'How to start' },
+      sprintTitle: 'How to start: *the start sprint*',
+      outcomeLabel: { training: 'What you take away', L07: 'What you know afterwards', other: 'After six days you have' },
+      allTrainings: 'All training',
+      team: 'The team',
+      teamHref: '/en/about/team',
+      sprintLink: 'How the start sprint works',
+      sprintHref: '/en/start-sprint',
+      then: `Then we build in two-week sprints, from ${SITE_EN.build.from}.`,
+      caseKicker: 'Case',
+      readCase: 'Read the case',
+      moreWork: 'More of our *work*',
+      fromWork: 'From our *work*',
+      trained: 'Who we have *trained*',
+      approach: 'How we *approach* this',
+      forWhom: 'Who this is *for*',
+      yes: 'A good fit if you',
+      no: 'Less of a fit if you',
+      faq: 'Frequently asked *questions*',
+      responsible: 'Responsible at AI Heroes',
+      related: 'Also worth reading',
+      contactTitle: { T5: 'Book a session', training: 'Book an intake', L07: 'Book an introduction', other: 'Tell us what you want to build' },
+      contactLede: {
+        training: `Tell us who you want to train and on what. You hear from us within ${SITE_EN.reply}, with a proposal for an intake.`,
+        L07: `Tell us what your team is building and where it gets stuck. You hear from us within ${SITE_EN.reply}, with a proposal for an introduction.`,
+        other: `You hear from us within ${SITE_EN.reply}, usually with a proposal for a start sprint.`,
+      },
+      country: 'Netherlands',
+    }
+  : {
+      home: '/',
+      pillars: {
+        nieuw: { label: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', accent: 'red', chip: 'nieuw' },
+        vervangen: { label: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', chip: 'vervangen' },
+        'eigen-beheer': { label: 'Software in eigen beheer', href: '/nl/eigen-beheer', accent: 'dark', chip: 'eigen-beheer' },
+        alle: { label: 'Kosten en opbrengst vooraf', href: '/nl/business-case', accent: 'blue' },
+        plaats: { label: 'Over AI Heroes', href: '/nl/over-ons', accent: 'red' },
+        training: { label: 'AI-training voor je team', href: '/nl/training', accent: 'blue' },
+      } as Record<typeof d.entry, Pillar>,
+      // The few landings whose front door is not the start sprint (01-besluiten §10, §6).
+      doors: {
+        L07: { cta: 'Plan een kennismaking', facts: [] },
+        T1: { cta: 'Plan een intake', price: SITE.training.fromValue, logos: ['tweede-kamer', 'postcode-loterij', 'envalior', 'banijay', 'prosus', 'hanze'], facts: [
+          { value: SITE.training.from, label: 'vanaf, per dagdeel' },
+          { value: 'Op locatie', label: 'in heel Nederland, of online live' },
+          { value: SITE.proof.trained, label: `professionals getraind sinds ${SITE.since}` },
+        ] },
+        T2: { cta: 'Plan een intake', price: SITE.training.fromValue, logos: ['tweede-kamer', 'postcode-loterij', 'envalior', 'hanze'], facts: [
+          { value: 'Per doelgroep', label: 'directie, gebruikers, IT en HR' },
+          { value: 'Certificaat', label: 'per deelnemer, met verslag' },
+          { value: SITE.training.from, label: 'vanaf, per dagdeel' },
+        ] },
+        T5: { cta: 'Plan een sessie', price: SITE.training.fromValue, logos: ['tweede-kamer', 'envalior', 'hanze'], facts: [
+          { value: '90 minuten', label: 'voor bestuurders, of een halve of hele dag' },
+          { value: SITE.training.from, label: 'vanaf, per dagdeel' },
+        ] },
+      } as Record<string, Door>,
+      sprintCta: 'Plan een startsprint',
+      sprintFacts: [
+        { value: `${SITE.sprint.days} dagen`, label: 'van vraag tot resultaat' },
+        { value: SITE.sprint.price, label: 'vast bedrag, voor alle ingangen' },
+        { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
+      ],
+      secondary: { training: 'Hoe het werkt', L07: 'Hoe we beginnen', other: 'Zo begin je' },
+      sprintTitle: 'Zo begin je: *de startsprint*',
+      outcomeLabel: { training: 'Wat je eraan overhoudt', L07: 'Wat je daarna weet', other: 'Na zes dagen heb je' },
+      allTrainings: 'Alle trainingen',
+      team: 'Het team',
+      teamHref: '/nl/over-ons/team',
+      sprintLink: 'Zo werkt de startsprint',
+      sprintHref: '/nl/startsprint',
+      then: `Daarna bouwen we in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}.`,
+      caseKicker: 'Case',
+      readCase: 'Lees de case',
+      moreWork: 'Meer van ons *werk*',
+      fromWork: 'Uit ons *werk*',
+      trained: 'Wie we al *trainden*',
+      approach: 'Hoe we dit *aanpakken*',
+      forWhom: 'Voor wie dit *is*',
+      yes: 'Wel voor je als je',
+      no: 'Minder voor je als je',
+      faq: 'Veelgestelde *vragen*',
+      responsible: 'Verantwoordelijk bij AI Heroes',
+      related: 'Ook interessant',
+      contactTitle: { T5: 'Plan een sessie', training: 'Plan een intake', L07: 'Plan een kennismaking', other: 'Vertel wat je wilt bouwen' },
+      contactLede: {
+        training: `Vertel wie je wilt trainen en waarop. Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een intake.`,
+        L07: `Vertel wat je team bouwt en waar het knelt. Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een kennismaking.`,
+        other: `Binnen ${SITE.reply} hoor je van ons, meestal met een voorstel voor een startsprint.`,
+      },
+      country: 'Nederland',
+    };
 
 // Where the landing hangs (hub-and-spoke), its colour and the contact chip.
-const PILLARS: Record<typeof d.entry, { label: string; href: string; accent: 'red' | 'blue' | 'dark'; chip?: Entry }> = {
-  nieuw: { label: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', accent: 'red', chip: 'nieuw' },
-  vervangen: { label: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', chip: 'vervangen' },
-  'eigen-beheer': { label: 'Software in eigen beheer', href: '/nl/eigen-beheer', accent: 'dark', chip: 'eigen-beheer' },
-  alle: { label: 'Kosten en opbrengst vooraf', href: '/nl/business-case', accent: 'blue' },
-  plaats: { label: 'Over AI Heroes', href: '/nl/over-ons', accent: 'red' },
-  training: { label: 'AI-training voor je team', href: '/nl/training', accent: 'blue' },
-};
-const pillar = PILLARS[d.entry];
-const crumbs = [{ label: 'Home', href: '/' }, { label: pillar.label, href: pillar.href }];
+const pillar = T.pillars[d.entry];
+const crumbs = [{ label: 'Home', href: T.home }, { label: pillar.label, href: pillar.href }];
 const isTraining = d.group === 'training';
+const kind = isTraining ? 'training' : d.plan === 'L07' ? 'L07' : 'other';
 
-// The few landings whose front door is not the start sprint (01-besluiten §10, §6).
-const DOORS: Record<string, { cta: string; facts: { value: string; label: string }[]; price?: number; logos?: string[] }> = {
-  L07: { cta: 'Plan een kennismaking', facts: [] },
-  T1: { cta: 'Plan een intake', price: SITE.training.fromValue, logos: ['tweede-kamer', 'postcode-loterij', 'envalior', 'banijay', 'prosus', 'hanze'], facts: [
-    { value: SITE.training.from, label: 'vanaf, per dagdeel' },
-    { value: 'Op locatie', label: 'in heel Nederland, of online live' },
-    { value: SITE.proof.trained, label: `professionals getraind sinds ${SITE.since}` },
-  ] },
-  T2: { cta: 'Plan een intake', price: SITE.training.fromValue, logos: ['tweede-kamer', 'postcode-loterij', 'envalior', 'hanze'], facts: [
-    { value: 'Per doelgroep', label: 'directie, gebruikers, IT en HR' },
-    { value: 'Certificaat', label: 'per deelnemer, met verslag' },
-    { value: SITE.training.from, label: 'vanaf, per dagdeel' },
-  ] },
-  T5: { cta: 'Plan een sessie', price: SITE.training.fromValue, logos: ['tweede-kamer', 'envalior', 'hanze'], facts: [
-    { value: '90 minuten', label: 'voor bestuurders, of een halve of hele dag' },
-    { value: SITE.training.from, label: 'vanaf, per dagdeel' },
-  ] },
-};
-const door = DOORS[d.plan];
+const door = T.doors[d.plan];
 // White logos (public/hs/logos-white), heights balanced as on the homepage logo wall.
 const LOGOS: Record<string, { name: string; h: number }> = {
   umcg: { name: 'UMCG', h: 22 }, 'tweede-kamer': { name: 'Tweede Kamer', h: 36 }, 'postcode-loterij': { name: 'Nationale Postcode Loterij', h: 32 },
   envalior: { name: 'Envalior', h: 34 }, banijay: { name: 'Banijay Benelux', h: 26 }, prosus: { name: 'Prosus', h: 42 }, hanze: { name: 'Hanzehogeschool', h: 30 },
 };
-const ctaLabel = door?.cta ?? 'Plan een startsprint';
-const sprintFacts = door ? door.facts : [
-  { value: `${SITE.sprint.days} dagen`, label: 'van vraag tot resultaat' },
-  { value: SITE.sprint.price, label: 'vast bedrag, voor alle ingangen' },
-  { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
-];
+const ctaLabel = door?.cta ?? T.sprintCta;
+const sprintFacts = door ? door.facts : T.sprintFacts;
 
 // Icons are strings in frontmatter: fail the build on a name the set does not have.
 const icon = (name?: string): IconName | undefined => {
@@ -83,16 +190,18 @@ const buildItems = d.build.items.map((it) => ({ title: it.title, text: it.text, 
 const buildCols = (buildItems.length === 4 ? 2 : buildItems.length >= 3 ? 3 : 2) as 2 | 3;
 
 // Proof: the cases this landing names, in order; anonymous where the case says so for pages.
-const allCases = await getCollection('caseStudies', (c) => c.data.lang === 'nl' && !c.data.draft);
+const allCases = await getCollection('caseStudies', (c) => c.data.lang === lang && !c.data.draft);
 const proof = d.cases.map((slug) => allCases.find((c) => c.data.slug === slug)).filter((c): c is NonNullable<typeof c> => !!c);
 const [lead, ...more] = proof;
-// A case another part of the build has not written yet still gets a card with its name.
+// Dutch: a case another part of the build has not written yet still gets a card with its name.
+// English: a case without an English version is left out.
 const CASE_NAMES: Record<string, string> = {
   kwakkel: 'Kwakkel BV', inq22: 'INQ22', strive: 'Strive', 'ic-commerce': 'IC Commerce', 'eigen-stack': 'Onze eigen AI-assistent',
   medux: 'Medux', trabu: 'Trabu', innoenergy: 'InnoEnergy', olx: 'OLX',
 };
-const missing = d.cases.filter((slug) => !proof.some((c) => c.data.slug === slug));
+const missing = en ? [] : d.cases.filter((slug) => !proof.some((c) => c.data.slug === slug));
 const caseName = (c: CollectionEntry<'caseStudies'>) => (c.data.anonymous.page && c.data.anonymousLabel ? c.data.anonymousLabel : c.data.client);
+const caseHref = (slug: string) => `/${lang}/cases/${slug}`;
 
 const author = FOUNDERS[d.author];
 const updated = d.updatedDate.toISOString().slice(0, 10);
@@ -109,7 +218,7 @@ const jsonLd: object[] = [
     '@type': 'WebPage',
     url: `https://aiheroes.io${path}`,
     name: d.seoTitle,
-    inLanguage: 'nl',
+    inLanguage: lang,
     datePublished: d.publishDate.toISOString().slice(0, 10),
     dateModified: updated,
     author: { '@type': 'Person', '@id': `https://aiheroes.io/#${author.id}`, name: author.name },
@@ -126,13 +235,13 @@ if (d.plan === 'L15') {
       { '@type': 'State', name: 'Groningen' },
       { '@type': 'State', name: 'Friesland' },
       { '@type': 'State', name: 'Drenthe' },
-      { '@type': 'Country', name: 'Nederland' },
+      { '@type': 'Country', name: T.country },
     ],
   });
 }
 ---
 
-<HsLayout title={d.title} seoTitle={d.seoTitle} description={d.description} crumbs={crumbs} jsonLd={jsonLd}>
+<HsLayout lang={lang} title={d.title} seoTitle={d.seoTitle} description={d.description} crumbs={crumbs} jsonLd={jsonLd}>
   <HsPageCover
     accent={pillar.accent}
     crumbs={crumbs}
@@ -140,31 +249,31 @@ if (d.plan === 'L15') {
     title={d.question}
     lede={d.lede}
     cta={{ label: ctaLabel, href: '#contact' }}
-    secondary={{ label: isTraining ? 'Hoe het werkt' : d.plan === 'L07' ? 'Hoe we beginnen' : 'Zo begin je', href: '#start' }}
+    secondary={{ label: T.secondary[kind], href: '#start' }}
     photo={d.photo}
   />
 
-  <HsSection id="wat-we-bouwen" title={d.build.title} lede={d.build.intro}>
+  <HsSection id={en ? 'what-we-build' : 'wat-we-bouwen'} title={d.build.title} lede={d.build.intro}>
     <HsCards columns={buildCols} items={buildItems} />
   </HsSection>
 
   <slot />
 
-  <HsSection id="start" tone="paper" title={d.sprint.title ?? 'Zo begin je: *de startsprint*'} lede={d.sprint.text}>
+  <HsSection id="start" tone="paper" title={d.sprint.title ?? T.sprintTitle} lede={d.sprint.text}>
     {sprintFacts.length > 0 && <HsFigures items={sprintFacts} />}
     <div class="hs-landing__outcome" data-item>
-      <p class="hs-landing__label">{isTraining ? 'Wat je eraan overhoudt' : d.plan === 'L07' ? 'Wat je daarna weet' : 'Na zes dagen heb je'}</p>
+      <p class="hs-landing__label">{T.outcomeLabel[kind]}</p>
       <p class="hs-lead" set:html={rich(d.sprint.outcome)} />
     </div>
     <p class="hs-sec__foot" data-item>
       {isTraining ? (
-        <a class="hs-link" href={pillar.href}>Alle trainingen<HsIcon name="arrow-right" /></a>
+        <a class="hs-link" href={pillar.href}>{T.allTrainings}<HsIcon name="arrow-right" /></a>
       ) : d.plan === 'L07' ? (
-        <a class="hs-link" href="/nl/over-ons/team">Het team<HsIcon name="arrow-right" /></a>
+        <a class="hs-link" href={T.teamHref}>{T.team}<HsIcon name="arrow-right" /></a>
       ) : (
         <>
-          <a class="hs-link" href="/nl/startsprint">Zo werkt de startsprint<HsIcon name="arrow-right" /></a>
-          <span class="hs-landing__then">{zet(`Daarna bouwen we in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}.`)}</span>
+          <a class="hs-link" href={T.sprintHref}>{T.sprintLink}<HsIcon name="arrow-right" /></a>
+          <span class="hs-landing__then">{zet(T.then)}</span>
         </>
       )}
     </p>
@@ -173,14 +282,14 @@ if (d.plan === 'L15') {
   {lead ? (
     <>
       <HsCase
-        id="bewijs"
+        id={en ? 'proof' : 'bewijs'}
         snap={false}
-        kicker={`Case · ${caseName(lead)}`}
+        kicker={`${T.caseKicker} · ${caseName(lead)}`}
         title={lead.data.headline}
         lede={lead.data.lede}
         stats={lead.data.stats}
         close={d.proofText}
-        link={{ label: 'Lees de case', href: `/nl/cases/${lead.data.slug}` }}
+        link={{ label: T.readCase, href: caseHref(lead.data.slug) }}
         photo={lead.data.photo ? { src: lead.data.photo.src, alt: '', w: lead.data.photo.w, h: lead.data.photo.h, pos: lead.data.photo.pos } : null}
       />
       {lead.data.quote?.approved && (
@@ -189,23 +298,23 @@ if (d.plan === 'L15') {
         </HsSection>
       )}
       {more.length + missing.length > 0 && (
-        <HsSection title="Meer van ons *werk*">
+        <HsSection title={T.moreWork}>
           <HsCards
             columns={more.length + missing.length === 1 ? 2 : 3}
             items={[
-              ...more.map((c) => ({ meta: `Case · ${caseName(c)}`, title: plainText(c.data.headline), text: c.data.lede, href: `/nl/cases/${c.data.slug}`, more: 'Lees de case' })),
-              ...missing.map((slug) => ({ meta: 'Case', title: CASE_NAMES[slug] ?? slug, href: `/nl/cases/${slug}`, more: 'Lees de case' })),
+              ...more.map((c) => ({ meta: `${T.caseKicker} · ${caseName(c)}`, title: plainText(c.data.headline), text: c.data.lede, href: caseHref(c.data.slug), more: T.readCase })),
+              ...missing.map((slug) => ({ meta: T.caseKicker, title: CASE_NAMES[slug] ?? slug, href: caseHref(slug), more: T.readCase })),
             ]}
           />
         </HsSection>
       )}
     </>
   ) : missing.length > 0 ? (
-    <HsSection id="bewijs" tone="dark" title="Uit ons *werk*" lede={d.proofText}>
-      <HsCards columns={missing.length === 1 ? 2 : 3} items={missing.map((slug) => ({ meta: 'Case', title: CASE_NAMES[slug] ?? slug, href: `/nl/cases/${slug}`, more: 'Lees de case' }))} />
+    <HsSection id="bewijs" tone="dark" title={T.fromWork} lede={d.proofText}>
+      <HsCards columns={missing.length === 1 ? 2 : 3} items={missing.map((slug) => ({ meta: T.caseKicker, title: CASE_NAMES[slug] ?? slug, href: caseHref(slug), more: T.readCase }))} />
     </HsSection>
   ) : isTraining && d.proofText ? (
-    <HsSection id="bewijs" tone="dark" title="Wie we al *trainden*" lede={d.proofText}>
+    <HsSection id={en ? 'proof' : 'bewijs'} tone="dark" title={T.trained} lede={d.proofText}>
       {door?.logos && (
         <ul class="hs-logos" data-item>
           {door.logos.map((k) => <li><img src={`/hs/logos-white/${k}.svg`} alt={LOGOS[k].name} style={`--h:${LOGOS[k].h / 16}rem`} loading="lazy" decoding="async" /></li>)}
@@ -213,7 +322,7 @@ if (d.plan === 'L15') {
       )}
     </HsSection>
   ) : d.proofText ? (
-    <HsSection id="bewijs" tone="dark" title="Hoe we dit *aanpakken*" lede={d.proofText} />
+    <HsSection id={en ? 'proof' : 'bewijs'} tone="dark" title={T.approach} lede={d.proofText} />
   ) : null}
 
   {d.pills && (
@@ -238,25 +347,25 @@ if (d.plan === 'L15') {
   )}
 
   {d.forWhom && (
-    <HsSection title="Voor wie dit *is*">
-      <HsFit yes={{ title: 'Wel voor je als je', items: d.forWhom.yes }} no={{ title: 'Minder voor je als je', items: d.forWhom.no }} />
+    <HsSection title={T.forWhom}>
+      <HsFit yes={{ title: T.yes, items: d.forWhom.yes }} no={{ title: T.no, items: d.forWhom.no }} />
     </HsSection>
   )}
 
   {!isTraining && <HsStandardList extra={d.standardExtra} />}
 
   {d.faq.length > 0 && (
-    <HsSection tone="paper" title="Veelgestelde *vragen*">
+    <HsSection tone="paper" title={T.faq}>
       <HsFaq items={d.faq} />
     </HsSection>
   )}
 
   <HsSection>
     <div class="hs-landing__end">
-      <HsAuthor id={d.author} label="Verantwoordelijk bij AI Heroes" />
+      <HsAuthor id={d.author} label={T.responsible} />
       {d.related.length > 0 && (
-        <nav class="hs-landing__related" aria-label="Ook interessant">
-          <h2>Ook interessant</h2>
+        <nav class="hs-landing__related" aria-label={T.related}>
+          <h2>{T.related}</h2>
           <ul>
             {d.related.slice(0, 3).map((r) => <li><a class="hs-link" href={r.href}>{r.label}<HsIcon name="arrow-right" /></a></li>)}
           </ul>
@@ -268,12 +377,8 @@ if (d.plan === 'L15') {
   <HsContact
     entry={pillar.chip}
     training={d.training || isTraining}
-    title={isTraining ? (d.plan === 'T5' ? 'Plan een sessie' : 'Plan een intake') : d.plan === 'L07' ? 'Plan een kennismaking' : 'Vertel wat je wilt bouwen'}
-    lede={isTraining
-      ? `Vertel wie je wilt trainen en waarop. Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een intake.`
-      : d.plan === 'L07'
-        ? `Vertel wat je team bouwt en waar het knelt. Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een kennismaking.`
-        : `Binnen ${SITE.reply} hoor je van ons, meestal met een voorstel voor een startsprint.`}
+    title={isTraining ? (d.plan === 'T5' ? T.contactTitle.T5 : T.contactTitle.training) : d.plan === 'L07' ? T.contactTitle.L07 : T.contactTitle.other}
+    lede={T.contactLede[kind]}
   />
 </HsLayout>
 

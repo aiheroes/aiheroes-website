@@ -1,0 +1,19 @@
+---
+// The English SEO landings (docs/relaunch phase 7): flat URLs /en/<topic>, one entry each in
+// src/content/landings/en/, paired with the Dutch ones in PATH_PAIRS. Static pages in
+// src/pages/en/ win over this route.
+import { getCollection, render } from 'astro:content';
+import HsLanding from '../../components/hs/HsLanding.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('landings', (e) => e.data.lang === 'en' && !e.data.draft);
+  return items.map((entry) => ({ params: { landing: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<HsLanding entry={entry}>
+  <Content />
+</HsLanding>

@@ -22,7 +22,11 @@ export interface Job {
   description: string[];
   requirements: string[];
   offerings: string[];
+  /** The same position in English for /en/careers. */
+  en: JobText;
 }
+
+export type JobText = Pick<Job, 'title' | 'team' | 'location' | 'hours' | 'type' | 'summary' | 'description' | 'requirements' | 'offerings'>;
 
 export const JOBS: Job[] = [
   {
@@ -53,6 +57,31 @@ export const JOBS: Job[] = [
       'Een persoonlijk ontwikkelbudget',
       'Flexibele werktijden en een plek op ons kantoor in Groningen',
     ],
+    en: {
+      title: 'AI Engineer',
+      team: 'Build and compliance',
+      location: 'Groningen',
+      hours: '32 to 40 hours a week',
+      type: 'Full-time',
+      summary: 'You build AI tools that teams use every day, from a working prototype in six days to a system running in the client’s own landscape.',
+      description: [
+        'As an AI Engineer you help build everything AI Heroes delivers: AI customer service, agents and workflows, document processing, knowledge assistants and the connections to the systems a client already has.',
+        'You work in six-day start sprints and then in two-week sprints, with a demo after every sprint. Compliance is part of the design from the drawing board: AI Act classification, logging, human oversight and the choice of hosting. After delivery we keep maintaining and developing what we built, so you see your work actually being used.',
+      ],
+      requirements: [
+        'Experience with Python or TypeScript and with modern AI frameworks',
+        'Knowledge of language models, RAG architectures or agents',
+        'Experience with cloud platforms and with connecting systems through APIs',
+        'You work independently and collaborate well in a small team',
+        'You communicate clearly in Dutch or English',
+      ],
+      offerings: [
+        'A variety of builds for organisations across the Netherlands and Europe',
+        'Working with the latest models, including European and local ones',
+        'A personal development budget',
+        'Flexible hours and a desk at our office in Groningen',
+      ],
+    },
   },
   {
     id: 'ai-trainer',
@@ -83,6 +112,32 @@ export const JOBS: Job[] = [
       'Parttime is bespreekbaar',
       'Een plek op ons kantoor in Groningen',
     ],
+    en: {
+      title: 'AI Trainer',
+      team: 'Training and adoption',
+      location: 'Groningen and on site in the Netherlands',
+      hours: '24 to 40 hours a week',
+      type: 'Full-time or part-time',
+      summary: 'You make sure teams can work with what we build, and you give training that makes organisations AI literate.',
+      description: [
+        'As an AI Trainer you make sure the people who will use a delivered system can actually work with it: training on the system itself, on the work floor, and support in the first weeks. That way a client also meets Article 4 of the AI Act straight away.',
+        'You also give standalone training, from in-company AI training to the AI literacy training with certificate, for groups from the board to developers, on site or live online. Together with Jan you develop new material and keep existing training up to date.',
+      ],
+      requirements: [
+        'Proven experience in giving training or workshops',
+        'Broad knowledge of AI tools and how teams use them in their work',
+        'You make complex subjects understandable for everyone in the room',
+        'You present with ease to groups of 5 to 50 people',
+        'You travel across the Netherlands for on-site training',
+        'Excellent Dutch',
+      ],
+      offerings: [
+        'New teams and organisations all the time, also after a build is delivered',
+        'Room to develop your own training formats',
+        'Part-time is open for discussion',
+        'A desk at our office in Groningen',
+      ],
+    },
   },
   {
     id: 'sales-intern',
@@ -111,6 +166,30 @@ export const JOBS: Job[] = [
       'Een stagevergoeding',
       'Een plek op ons kantoor in Groningen',
     ],
+    en: {
+      title: 'Sales and business development intern',
+      team: 'Business case and strategy',
+      location: 'Groningen',
+      hours: '32 to 40 hours a week',
+      type: 'Internship, at least five months',
+      summary: 'You help build the commercial pipeline, from the first conversation to a proposal for a start sprint.',
+      description: [
+        'AI Heroes builds AI tools that teams use every day, from Groningen. The first step with every client is a six-day start sprint.',
+        'As our sales and business development intern you find organisations with a concrete process that could work better, hold first conversations and prepare proposals. You work directly with the three founders and get a lot of ownership.',
+      ],
+      requirements: [
+        'You study Commercial Economics, International Business or something similar (applied sciences or bachelor level)',
+        'You are proactive and pick up the phone without hesitating',
+        'You have an affinity with technology and AI',
+        'You are available for at least five months, 32 to 40 hours a week',
+      ],
+      offerings: [
+        'Working directly with the three founders',
+        'Plenty of room for your own initiative',
+        'An internship allowance',
+        'A desk at our office in Groningen',
+      ],
+    },
   },
   {
     id: 'marketing-intern',
@@ -140,5 +219,35 @@ export const JOBS: Job[] = [
       'Een stagevergoeding',
       'Een plek op ons kantoor in Groningen',
     ],
+    en: {
+      title: 'Marketing with AI intern',
+      team: 'Business case and strategy',
+      location: 'Groningen',
+      hours: '32 to 40 hours a week',
+      type: 'Internship, at least five months',
+      summary: 'You create content that shows what we build, with the latest AI tools.',
+      description: [
+        'As our marketing intern you make visible what AI Heroes builds: LinkedIn posts, cases, articles, video and images. You use AI tools yourself and share what works with the team.',
+        'You work directly with the founders on marketing, from the content calendar to the AI Salon, and learn how a company that builds AI tools presents itself.',
+      ],
+      requirements: [
+        'You study Communication, Media, Marketing or something similar (applied sciences or bachelor level)',
+        'You have experience with content for LinkedIn, Instagram or YouTube',
+        'You already use AI tools for your own work',
+        'You write good Dutch; English is a plus',
+        'You are available for at least five months, 32 to 40 hours a week',
+      ],
+      offerings: [
+        'Hands-on experience with the latest AI tools for content',
+        'Setting up and running your own content calendar',
+        'An internship allowance',
+        'A desk at our office in Groningen',
+      ],
+    },
   },
 ];
+
+/** A position's texts in the page's language. */
+export function jobText(job: Job, lang: 'nl' | 'en'): JobText {
+  return lang === 'en' ? job.en : job;
+}

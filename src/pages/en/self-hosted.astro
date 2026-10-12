@@ -1,0 +1,124 @@
+---
+// P5 Software you control, English (docs/relaunch/pages/P5-eigen-beheer.md, phase 7): entry
+// "eigen-beheer", hub of L12 and L13. No server price (docs/relaunch/01-besluiten.md §2); European
+// providers may be named as examples (§10); logos as "working with us" without claiming self-hosting.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { SITE, SITE_EN } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
+
+const faq = [
+  { q: 'Are European models good enough?', a: 'For most business applications, yes: summarising, searching documents, answering customer questions, processing forms. In the start sprint we test it on your data and your questions. If a European model is not good enough for your application, we tell you.' },
+  { q: 'What does a server of our own cost?', a: 'That depends on the number of users and what the model has to do. In the start sprint we put the costs of hardware, hosting and management in the business case, next to what the same application would cost in the cloud.' },
+  { q: 'Why would I want to move away from US cloud?', a: 'The US CLOUD Act can require US companies to hand over data, even when it is stored in Europe. That also applies to services such as ChatGPT, Azure OpenAI and AWS Bedrock. For many organisations that is a problem with sensitive data or in tenders.' },
+  { q: 'Can I get just a plan?', a: 'Yes. The start sprint delivers a hosting design, a risk assessment and the business case. Then you decide whether to go on.' },
+  { q: 'Who maintains it?', a: 'We keep maintaining and developing the system. We train your own administrators on the environment, so they know what is running.' },
+];
+
+const LOGOS = [
+  { name: 'UMCG', src: '/hs/logos-white/umcg.svg', h: 22 },
+  { name: 'Tweede Kamer', src: '/hs/logos-white/tweede-kamer.svg', h: 36 },
+  { name: 'Envalior', src: '/hs/logos-white/envalior.svg', h: 34 },
+];
+---
+
+<HsLayout
+  lang="en"
+  title="Software you control"
+  seoTitle="AI on your own servers or hosted in Europe"
+  description={`AI and software on your own servers or with a European provider, with the AI Act in the design. Start with a six-day start sprint from ${SITE_EN.sprint.price}: hosting design, risk assessment and business case.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Software you control', path: '/en/self-hosted', price: SITE.sprint.priceValue, serviceType: 'Self-hosted AI and European hosting', description: 'AI and software on your own servers or with a European provider, with the AI Act in the design.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="dark"
+    crumbs={crumbs}
+    current="Software you control"
+    title="On our own servers, | within Europe? *Yes.*"
+    lede="AI and software on your own servers or with a European provider, connected to your systems and with the AI Act in the design. We do it ourselves too: the assistant on this site runs in Europe."
+    secondary={{ label: 'The three forms', href: '#forms' }}
+    photo={{ src: '/hs/photos/cover-datacenter.webp', alt: 'A bright server room in a data centre', w: 1800, h: 1012, pos: '50% 55%' }}
+    facts={[
+      { value: '6 days', label: 'to hosting design and risk assessment' },
+      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed fee' },
+    ]}
+  />
+
+  <HsSection title="Why this *matters*" lede="For many organisations, where the data lives is a requirement: in tenders, with health data or with sensitive customer data." split>
+    <HsCards
+      items={[
+        { icon: 'earth', title: 'The CLOUD Act', text: 'US companies can be required to hand over data, even when it is stored in Europe. That includes ChatGPT, Azure OpenAI and AWS Bedrock.' },
+        { icon: 'protect', title: 'European rules', text: 'The GDPR and the AI Act require you to know where your data is, who has access and how an AI system reaches an outcome.' },
+        { icon: 'switch', title: 'A choice with the facts on the table', text: 'Running it yourself is an option we put next to the cloud. You choose, with the costs and risks of both on a single page.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection id="forms" tone="paper" title="Three *forms*">
+    <HsCards
+      items={[
+        { icon: 'server', title: 'On your own hardware', text: 'A language model and your software on your own servers. We train your administrators on the environment.', href: '/en/ai-on-your-own-servers', more: 'AI on your own servers' },
+        { icon: 'cloud-storage', title: 'In the European cloud', text: 'With a European provider, using European models such as those from Mistral or the open EuroLLM. We stay model-agnostic.', href: '/en/ai-on-your-own-servers', more: 'European hosting' },
+        { icon: 'transfer', title: 'Switching over', text: 'From ChatGPT, Copilot or Azure OpenAI to a European alternative, without your team having to work differently.', href: '/en/european-chatgpt-alternative', more: 'European alternative to ChatGPT' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection title="Is it *good enough*?" lede="For most business applications, yes: summarising, searching documents, answering customer questions, processing forms. In the start sprint we test it on your data and your questions.">
+    <p class="hs-lead" data-item>{zet('If a European model is not good enough for your application, we tell you.', { display: true })}</p>
+  </HsSection>
+
+  <HsCase
+    id="done-ourselves"
+    snap={false}
+    photo={null}
+    kicker="Done ourselves"
+    title="Our own AI assistant, | hosted in Europe"
+    lede="The assistant on this site answers questions from our own pages, with the source alongside. It runs on European infrastructure, makes clear that it is AI and hands you to a person when it does not know."
+    stats={[]}
+    close="The model can be switched, and every new version first has to pass a fixed test set."
+    link={{ label: 'How the assistant works', href: '/en/legal/ai-assistant' }}
+  />
+
+  <HsSection title="Working with *us*">
+    <ul class="hs-logos hs-logos--light hs-logos--bare" data-item>
+      {LOGOS.map((l) => <li><img src={l.src} alt={l.name} style={`--h:${l.h / 16}rem`} loading="lazy" decoding="async" /></li>)}
+      <li><span class="hs-logos__text">050-IT</span></li>
+    </ul>
+  </HsSection>
+
+  <HsSection tone="paper" title="From start sprint to *management*">
+    <HsSteps
+      items={[
+        { label: 'Six days', title: 'Start sprint', text: `Your environment mapped, a hosting design, a risk assessment and the business case. From ${SITE_EN.sprint.price}, start within two weeks.` },
+        { label: 'In phases', title: 'Building and migrating', text: `We build or migrate in phases, next to what runs today. Build from ${SITE_EN.build.from}.` },
+        { label: 'Go-live', title: 'Administrators trained', text: 'Your own administrators are trained on the environment before it goes live.' },
+        { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system, documented and not tied to one AI vendor.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsStandardList extra="What matters most here: the AI Act is part of the design. More under [compliance and security](/en/compliance)." />
+
+  <HsSection tone="paper" title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsOtherEntries current="eigen-beheer" />
+
+  <HsContact entry="eigen-beheer" title="Tell us where it needs to run" lede={`Which application, which data and which requirements? You hear from us within ${SITE_EN.reply}, usually with a proposal for a start sprint.`} />
+</HsLayout>

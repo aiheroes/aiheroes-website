@@ -13,29 +13,36 @@ import HsContact from './HsContact.astro';
 import HsIcon from './HsIcon.astro';
 import HsCaseCards from './HsCaseCards.astro';
 import { STANDARD_ICONS, zet } from './hs';
-import { getCases, displayName, formatStat, entryAccent, ENTRY_NEXT, type CaseStudy } from './cases';
+import { getCases, displayName, formatStat, entryAccent, ENTRY_NEXT_BY_LANG, CASE_UI, type CaseStudy } from './cases';
+import { ui, langOf } from '../../data/ui';
 
 interface Props {
   entry: CaseStudy;
 }
 const { entry } = Astro.props;
+const lang = langOf(Astro.url);
+const t = CASE_UI[lang];
+const u = ui(Astro.url);
 const d = entry.data;
 const name = displayName(entry, 'page');
 const first = d.entry[0];
 const hasBody = !!entry.body?.trim();
-const crumbs = [{ label: 'Home', href: '/' }, { label: 'Cases', href: '/nl/cases' }];
+const home = lang === 'en' ? '/en' : '/';
+const casesHref = `/${lang}/cases`;
+const crumbs = [{ label: u.home, href: home }, { label: 'Cases', href: casesHref }];
 
+// The four parts of the standard, in the page's language (src/data/ui.ts).
 const STANDARD = {
-  'business-case': { title: 'Business case vooraf', icon: STANDARD_ICONS[0] },
-  compliance: { title: 'Compliance vanaf de tekentafel', icon: STANDARD_ICONS[1] },
-  training: { title: 'Je mensen kunnen ermee werken', icon: STANDARD_ICONS[2] },
-  vendor: { title: 'Niet vast aan één AI-leverancier', icon: STANDARD_ICONS[3] },
+  'business-case': { title: u.standard[0].title, icon: STANDARD_ICONS[0] },
+  compliance: { title: u.standard[1].title, icon: STANDARD_ICONS[1] },
+  training: { title: u.standard[2].title, icon: STANDARD_ICONS[2] },
+  vendor: { title: u.standard[3].title, icon: STANDARD_ICONS[3] },
 } as const;
 const standard = d.currentTeam ? d.standard.map((k) => STANDARD[k]) : [];
 const quote = d.quote?.approved ? d.quote : undefined;
 const coverPhoto = d.photo && !d.photo.shot ? { src: d.photo.src, alt: d.photo.alt, w: d.photo.w, h: d.photo.h, pos: d.photo.pos, duo: d.photo.duo ? ('red' as const) : undefined } : undefined;
 const shot = d.photo?.shot ? d.photo : undefined;
-const more = (await getCases()).filter((c) => c.data.slug !== d.slug && c.data.entry.some((e) => d.entry.includes(e)));
+const more = (await getCases(lang)).filter((c) => c.data.slug !== d.slug && c.data.entry.some((e) => d.entry.includes(e)));
 ---
 
 <HsPageCover
@@ -44,20 +51,20 @@ const more = (await getCases()).filter((c) => c.data.slug !== d.slug && c.data.e
   current={name}
   title={d.headline}
   lede={d.lede}
-  cta={{ label: 'Plan een startsprint', href: '#contact' }}
-  secondary={d.liveUrl ? { label: 'Bekijk het live', href: d.liveUrl } : undefined}
+  cta={{ label: t.sprint, href: '#contact' }}
+  secondary={d.liveUrl ? { label: t.liveButton, href: d.liveUrl } : undefined}
   photo={coverPhoto}
-  facts={d.stats.map((s) => ({ value: formatStat(s), label: s.label }))}
+  facts={d.stats.map((s) => ({ value: formatStat(s, lang), label: s.label }))}
 />
 
 {d.question && (
-  <HsSection title="De *vraag*">
+  <HsSection title={t.question}>
     <p class="hs-lead hs-cs-question" data-item>{zet(d.question, { display: true })}</p>
   </HsSection>
 )}
 
 {d.built.length > 0 && (
-  <HsSection tone="paper" title="Wat we *bouwden*">
+  <HsSection tone="paper" title={t.built}>
     <ul class="hs-cs-built">
       {d.built.map((b, i) => (
         <li data-item style={`--i:${i}`}><HsIcon name="check" /><span>{zet(b)}</span></li>
@@ -75,23 +82,23 @@ const more = (await getCases()).filter((c) => c.data.slug !== d.slug && c.data.e
 )}
 
 {d.timeline.length > 0 && (
-  <HsSection tone="paper" title="Zo *ging* het">
-    <HsSteps items={d.timeline.map((t, i) => {
+  <HsSection tone="paper" title={t.timeline}>
+    <HsSteps items={d.timeline.map((s, i) => {
       // "Dag 1 | Intake" gives the step its own label; otherwise it is numbered.
-      const [label, title] = t.step.includes(' | ') ? t.step.split(' | ') : [`Stap ${i + 1}`, t.step];
-      return { label, title, text: t.text };
+      const [label, title] = s.step.includes(' | ') ? s.step.split(' | ') : [`${t.step} ${i + 1}`, s.step];
+      return { label, title, text: s.text };
     })} />
   </HsSection>
 )}
 
 {standard.length > 0 && (
-  <HsSection title="Bij deze bouw *inbegrepen*">
+  <HsSection title={t.standard}>
     <ul class="hs-cs-standard">
       {standard.map((s, i) => (
         <li data-item style={`--i:${i}`}><HsIcon name={s.icon} /><span>{zet(s.title, { display: true, cap: 20 })}</span></li>
       ))}
     </ul>
-    <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/hoe-we-werken">Wat bij elke bouw inbegrepen is<HsIcon name="arrow-right" /></a></p>
+    <p class="hs-sec__foot" data-item><a class="hs-link" href={u.howHref}>{t.standardLink}<HsIcon name="arrow-right" /></a></p>
   </HsSection>
 )}
 
@@ -102,8 +109,8 @@ const more = (await getCases()).filter((c) => c.data.slug !== d.slug && c.data.e
 )}
 
 {d.liveUrl && shot && (
-  <HsSplit tone="paper" title="Bekijk het *live*" photo={{ src: shot.src, alt: shot.alt, w: shot.w, h: shot.h, shot: true }}>
-    <p class="hs-body hs-muted" data-item>{zet(`Wat we bouwden voor ${name} draait live. Kijk zelf.`)}</p>
+  <HsSplit tone="paper" title={t.live} photo={{ src: shot.src, alt: shot.alt, w: shot.w, h: shot.h, shot: true }}>
+    <p class="hs-body hs-muted" data-item>{zet(t.liveText(name))}</p>
     <a class="hs-btn hs-btn--dark hs-cs-livebtn" href={d.liveUrl} rel="noopener" target="_blank" data-item>
       {d.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}
       <HsIcon name="arrow-up-right" />
@@ -112,13 +119,13 @@ const more = (await getCases()).filter((c) => c.data.slug !== d.slug && c.data.e
 )}
 
 {more.length > 0 && (
-  <HsSection title="Meer cases zoals *deze*">
+  <HsSection title={t.more}>
     <HsCaseCards slugs={more.slice(0, 2).map((c) => c.data.slug)} columns={2} />
-    <p class="hs-sec__foot"><a class="hs-link" href="/nl/cases">Alle cases<HsIcon name="arrow-right" /></a></p>
+    <p class="hs-sec__foot"><a class="hs-link" href={casesHref}>{t.all}<HsIcon name="arrow-right" /></a></p>
   </HsSection>
 )}
 
-<HsContact entry={first} title="Iets vergelijkbaars laten bouwen?" lede={ENTRY_NEXT[first]} />
+<HsContact entry={first} title={t.contact} lede={ENTRY_NEXT_BY_LANG[lang][first]} />
 
 <style>
   .hs-cs-question { max-width: 26ch; }

@@ -1,0 +1,101 @@
+---
+lang: en
+slug: ai-act
+plan: K1
+kind: artikel
+group: compliance
+title: "The AI Act: what does your organisation need to *arrange*?"
+seoTitle: "The EU AI Act: what your organisation needs to do (2026)"
+description: "Does the EU AI Act apply to your organisation, what applies now and what is still to come? The risk classes, the timeline after the Digital Omnibus and four steps to get compliant. Updated October 2026."
+answer: "The AI Act applies to every organisation that uses AI, even if that is only ChatGPT or Copilot. Today you already have to avoid prohibited practices, make your people AI literate and show that chatbots and generated content are AI. The heavy requirements for high-risk AI, such as AI in recruitment or credit scoring, only apply from 2 December 2027."
+author: david-homan
+publishDate: 2026-06-11
+updatedDate: 2026-10-12
+pillar:
+  label: "See the AI Act check"
+  href: "/en/compliance"
+  text: "Want to know where you stand? With the AI Act check we map your current use of AI, classify it and show you what you need to arrange."
+related: [ai-literacy, ai-policy, human-oversight]
+faq:
+  - q: "Does the AI Act apply to small companies too?"
+    a: "Yes. There is no exemption for SMEs. Fines for SMEs are capped at the lower of the two maximums, and small companies get lighter documentation requirements when they provide AI systems themselves."
+  - q: "What are the fines?"
+    a: "Up to €35 million or 7% of worldwide annual turnover for prohibited practices, up to €15 million or 3% for most other obligations, and up to €7.5 million or 1% for supplying incorrect information to regulators. For SMEs the lower of the two amounts applies. The regulation sets no separate fine for Article 4 (AI literacy)."
+  - q: "Who supervises the AI Act in the Netherlands?"
+    a: "That is set out in the Dutch implementation act for the AI regulation, which is still being prepared in October 2026. The proposal gives the Dutch Data Protection Authority (AP) and the Dutch Authority for Digital Infrastructure (RDI) a coordinating role, next to sector regulators. The European rules apply directly in the meantime."
+  - q: "Does using ChatGPT already count as deploying AI under the law?"
+    a: "Yes. Anyone who uses an AI system in their work is a deployer. For ordinary office use that mainly means: take care of AI literacy and agree on what may and may not go into the tool."
+  - q: "When is an application high risk?"
+    a: "When it falls under the areas listed in Annex III of the AI Act, such as recruitment and selection, credit scoring, access to education or essential services, or when it is a safety component of a regulated product. An AI that ranks job applicants is high risk; an AI that summarises emails is not."
+  - q: "Is an AI policy mandatory?"
+    a: "The law does not name the document. You do need it to show that you meet Article 4 and the transparency rules. Read [how to write an AI policy](/en/insights/ai-policy)."
+---
+
+## Does the AI Act apply to your organisation?
+
+Almost always. The AI Act ([Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)) has two main roles:
+
+- **Provider:** whoever develops an AI system, or has one developed, and places it on the market or puts it into service under their own name.
+- **Deployer:** whoever uses an AI system in their work. An organisation whose staff use ChatGPT, Copilot or an AI feature in their CRM is a deployer.
+
+If you have your own AI application built and use it under your own name, you can be a provider yourself. That decides which obligations sit with you, and it is one of the first things we record in a build.
+
+## Which risk class does your application fall into?
+
+The law works with four levels. Most applications in an ordinary organisation fall into the lowest two.
+
+| Class | What falls under it | What you have to do |
+|---|---|---|
+| **Prohibited** | Social scoring, emotion recognition at work or in education, manipulation that harms people | Do not use it |
+| **High risk** | AI in recruitment and selection, credit scoring, access to education or essential services, safety components of products | Risk management, logging, human oversight, documentation, registration |
+| **Limited risk** | Chatbots, AI voices, generated text, images and audio | Show that it is AI |
+| **Minimal risk** | Summarising, searching documents, spam filters, most internal tools | No extra requirements, AI literacy still applies |
+
+An example: an AI assistant that answers customer questions is limited risk. It has to say that it is AI. A system that preselects job applicants is high risk, even if a recruiter has the final say.
+
+## What applies when?
+
+The timeline changed in 2026. With the Digital Omnibus ([Regulation (EU) 2026/1744](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601744), in force since 27 July 2026) the rules for high-risk AI were postponed. This is the position in October 2026:
+
+| Date | What applies | What it means for you |
+|---|---|---|
+| 1 August 2024 | The AI Act enters into force | The clock starts |
+| 2 February 2025 | Prohibited practices and AI literacy (Article 4) | Do not use prohibited practices; teach your people to work with AI |
+| 2 August 2025 | Rules for general-purpose AI models, supervision and fines | Mainly for the makers of large models |
+| 2 August 2026 | Transparency rules (Article 50) and most remaining provisions | Chatbots and generated content show that they are AI |
+| 2 December 2026 | Marking of generated content for systems already on the market before 2 August 2026 | The transition period for existing systems ends |
+| 2 December 2027 | High-risk rules for the applications in Annex III | Recruitment, credit, education and similar applications must meet every requirement |
+| 2 August 2028 | High-risk rules for AI in regulated products (Annex I) | Medical devices, machinery and similar products |
+
+The Omnibus also reworded Article 4. Organisations must take measures that support the AI literacy of their people; the law no longer demands a guaranteed level per person. The obligation itself remains. Read more in [AI literacy](/en/insights/ai-literacy).
+
+We keep this timeline up to date and check it against the official text every quarter. The date at the top shows when that last happened.
+
+## What do you arrange now, in four steps?
+
+1. **Take stock.** List all the AI you use: standalone tools, AI features in existing software and anything you have had built. Done when: every application has an owner.
+2. **Classify.** Decide the risk class of each application and whether you are the deployer or the provider. Done when: you know which applications carry extra requirements.
+3. **Take care of AI literacy.** Make sure everyone who works with AI knows what it can do, where it goes wrong and what does not belong in a prompt, to the level their role needs. Done when: you can show who was trained on what, and when. See [AI literacy](/en/insights/ai-literacy).
+4. **Put agreements in writing.** Which tools are allowed, which data may go into them, who oversees them and how you show that something is AI. Done when: there is a short AI policy with an owner. See [writing an AI policy](/en/insights/ai-policy).
+
+If you use high-risk AI, human oversight and logging come on top. How you build those into a system is explained in [human oversight and logging](/en/insights/human-oversight).
+
+## If you have AI built for you
+
+Classification, logging and human oversight are design choices. Adding them afterwards costs more than getting them right from the start. In every build we therefore decide the risk class during the start sprint and record who the provider is. Logging, handing over to a person and transparency are in the system from the first version.
+
+One example is the assistant on this site. It says that it is AI, and [the transparency page](/en/legal/ai-assistant) explains how it works and what happens to conversations.
+
+## What AI Heroes does here
+
+<div class="hs-note">
+
+With the **AI Act check** we map your current use of AI, classify each application and give you a list of what to arrange, in order of importance. If you have something built by us, the AI Act is part of the design from the drawing board. That is part of the [standard in every build](/en/compliance).
+
+</div>
+
+## Sources
+
+- [AI Act, Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), EUR-Lex
+- [Digital Omnibus on AI, Regulation (EU) 2026/1744](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601744), EUR-Lex
+- [Nederlands toezicht op AI-verordening bekend](https://www.binnenlandsbestuur.nl/juridisch/nederlands-toezicht-op-ai-verordening-bekend) (Dutch supervision of the AI regulation), Binnenlands Bestuur, 21 April 2026

@@ -1,64 +1,94 @@
 ---
 // A0 campagne-template: recognition (cover with the medium), the fragment behind a house-style poster
 // (nothing loads from the platform until play), what you saw, from the screen to your organisation
-// (the three entries), one proof block and the contact block. Content from src/data/campaigns.ts.
+// (the three entries), one proof block and the contact block. Content from src/data/campaigns.ts;
+// copy and labels follow the language of the URL.
 import HsSection from './HsSection.astro';
 import HsEntries from './HsEntries.astro';
 import HsCase from './HsCase.astro';
 import HsContact from './HsContact.astro';
 import HsIcon from './HsIcon.astro';
 import { display, zet } from './hs';
-import { SITE } from '../../data/site';
-import type { Campaign } from '../../data/campaigns';
+import { SITE, SITE_EN } from '../../data/site';
+import { campaignText, type Campaign } from '../../data/campaigns';
 import type { Crumb } from '../../data/schema';
+import { langOf } from '../../data/ui';
 
 interface Props {
   campaign: Campaign;
   crumbs?: Crumb[];
 }
 const { campaign: c, crumbs = [] } = Astro.props;
+const lang = langOf(Astro.url);
+const en = lang === 'en';
+const t = campaignText(c, lang);
+const T = en
+  ? {
+      crumbs: 'Breadcrumb', firstBroadcast: 'First broadcast', play: 'Play', note: 'The video loads from YouTube once you press play.',
+      saw: 'What you *saw*', about: 'About Jan Brusse', aboutHref: '/en/about/team#jan-brusse',
+      entries: 'From the screen to your organisation', entriesId: 'what-we-build',
+      proofTitle: `${SITE_EN.proof.orgs} organisations`,
+      proofText: `That is how many organisations AI Heroes has helped since 2019. The first step is always the start sprint: six days, from ${SITE_EN.sprint.price}.`,
+      cta: 'Plan a start sprint', ctaHref: '/en/start-sprint', episode: 'episode',
+    }
+  : {
+      crumbs: 'Kruimelpad', firstBroadcast: 'Eerste uitzending', play: 'Speel af', note: 'De video laadt van YouTube zodra je op afspelen klikt.',
+      saw: 'Wat je *zag*', about: 'Over Jan Brusse', aboutHref: '/nl/over-ons/team#jan-brusse',
+      entries: 'Van het scherm naar jouw organisatie', entriesId: 'wat-we-bouwen',
+      proofTitle: `${SITE.proof.orgs} organisaties`,
+      proofText: `Zoveel organisaties hielp AI Heroes sinds 2019. De eerste stap is altijd de startsprint: zes dagen, vanaf ${SITE.sprint.price}.`,
+      cta: 'Plan een startsprint', ctaHref: '/nl/startsprint', episode: 'aflevering',
+    };
+// The homepage case, anonymous; in English the 7.8 rating goes into the text (the figure row formats
+// decimals the Dutch way).
+const caseEn = {
+  title: '4,000 calls a month, | 80% handled by AI',
+  lede: 'For a Dutch healthcare organisation whose clients would rather call than arrange things online, we built an AI voice that answers calls, schedules appointments and answers questions.',
+  stats: [{ value: 70, suffix: '%', decimals: 0, label: 'cost savings' }],
+  close: 'Clients rate the AI calls a 7.8. Difficult or urgent questions go straight to an employee, also outside office hours.',
+};
 ---
 
 <section class={`campaign-cover on-${c.accent}`}>
   <div class="hs-wrap campaign-cover__inner">
     {crumbs.length > 0 && (
-      <nav class="hs-crumbs" aria-label="Kruimelpad">
+      <nav class="hs-crumbs" aria-label={T.crumbs}>
         <ol>{crumbs.map((cr) => <li><a href={cr.href}>{cr.label}</a></li>)}<li aria-current="page">{c.medium.name}</li></ol>
       </nav>
     )}
     <img class="campaign-cover__medium" src={c.medium.logo} alt={c.medium.name} width="1250" height="250" />
-    <h1 class="hs-d-m" set:html={display(c.headline)} />
-    <p class="hs-body-l campaign-cover__lede">{zet(c.lede)}</p>
+    <h1 class="hs-d-m" set:html={display(t.headline)} />
+    <p class="hs-body-l campaign-cover__lede">{zet(t.lede)}</p>
     <ul class="campaign-cover__strip">
-      <li>Eerste uitzending {c.dateLabel}</li>
+      <li>{T.firstBroadcast} {t.dateLabel}</li>
       {c.medium.channels.map((ch) => <li class="campaign-cover__channel"><img src={ch.src} alt={ch.name} loading="eager" /></li>)}
     </ul>
   </div>
 </section>
 
-<section class={`campaign-video on-${c.accent}`} id="aflevering">
+<section class={`campaign-video on-${c.accent}`} id={T.episode}>
   <div class="hs-wrap">
-    <div class="campaign-video__frame" data-video={c.media.youtubeId} data-title={c.media.title}>
-      <button class="campaign-video__poster" type="button" aria-label={`Speel af: ${c.media.title}`}>
+    <div class="campaign-video__frame" data-video={c.media.youtubeId} data-title={t.mediaTitle}>
+      <button class="campaign-video__poster" type="button" aria-label={`${T.play}: ${t.mediaTitle}`}>
         <span class="campaign-video__play"><HsIcon name="play" /></span>
-        <span class="campaign-video__label">{c.media.title}</span>
-        <span class="campaign-video__note">De video laadt van YouTube zodra je op afspelen klikt.</span>
+        <span class="campaign-video__label">{t.mediaTitle}</span>
+        <span class="campaign-video__note">{T.note}</span>
       </button>
     </div>
   </div>
 </section>
 
-<HsSection title="Wat je *zag*" lede={c.whatYouSaw}>
-  <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/over-ons/team#jan-brusse">Over Jan Brusse<HsIcon name="arrow-right" /></a></p>
+<HsSection title={T.saw} lede={t.whatYouSaw}>
+  <p class="hs-sec__foot" data-item><a class="hs-link" href={T.aboutHref}>{T.about}<HsIcon name="arrow-right" /></a></p>
 </HsSection>
 
-<HsEntries title="Van het scherm naar jouw organisatie" snap={false} id="wat-we-bouwen" />
+<HsEntries title={T.entries} snap={false} id={T.entriesId} />
 
-<HsSection tone="paper" title={`${SITE.proof.orgs} organisaties`} lede={`Zoveel organisaties hielp AI Heroes sinds 2019. De eerste stap is altijd de startsprint: zes dagen, vanaf ${SITE.sprint.price}.`}>
-  <p class="hs-sec__foot" data-item><a class="hs-btn hs-btn--dark" href="/nl/startsprint">Plan een startsprint<HsIcon name="arrow-right" /></a></p>
+<HsSection tone="paper" title={T.proofTitle} lede={T.proofText}>
+  <p class="hs-sec__foot" data-item><a class="hs-btn hs-btn--dark" href={T.ctaHref}>{T.cta}<HsIcon name="arrow-right" /></a></p>
 </HsSection>
 
-<HsCase snap={false} />
+{en ? <HsCase snap={false} {...caseEn} /> : <HsCase snap={false} />}
 
 <HsContact />
 

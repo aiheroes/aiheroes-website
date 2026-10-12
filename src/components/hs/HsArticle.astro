@@ -15,6 +15,7 @@ import { display, plainText, rich, zet } from './hs';
 import { FOUNDERS, personSchema, type FounderId } from '../../data/team';
 import { articleSchema, faqSchema } from '../../data/schema';
 import type { MarkdownHeading } from 'astro';
+import { langOf } from '../../data/ui';
 
 interface Related {
   title: string;
@@ -46,25 +47,40 @@ interface Props {
   kicker?: string;
 }
 const { data: d, headings, minutes, related, kicker } = Astro.props;
+const lang = langOf(Astro.url);
+const en = lang === 'en';
 
-const GROUPS = {
-  compliance: { label: 'Compliance en security', accent: 'blue' },
-  kern: { label: 'Kosten en aanpak', accent: 'red' },
-  training: { label: 'Training', accent: 'red' },
-  overig: { label: 'Overzicht', accent: 'dark' },
-} as const;
-const group = GROUPS[d.group];
-const KIND = { artikel: 'Artikel', listicle: 'Overzicht', gids: 'Gids' } as const;
+// Interface strings in both languages; the article itself comes from the collection.
+const T = en
+  ? {
+      groups: { compliance: 'Compliance and security', kern: 'Cost and approach', training: 'Training', overig: 'Overview' },
+      kind: { artikel: 'Article', listicle: 'Overview', gids: 'Guide' },
+      base: '/en/insights', home: '/en', section: 'Insights', locale: 'en-GB', crumbs: 'Breadcrumb',
+      published: 'Published', updated: 'updated', read: 'min read', answer: 'The short answer',
+      toc: 'In this article', contents: 'Contents', faq: 'Frequently asked *questions*', more: 'Further *reading*', readOn: 'Read on',
+      dlTitle: 'The template for your AI policy', dlText: 'Two pages with every section from this article, in Word and PDF. Fill in your details and we will send it to you.',
+    }
+  : {
+      groups: { compliance: 'Compliance en security', kern: 'Kosten en aanpak', training: 'Training', overig: 'Overzicht' },
+      kind: { artikel: 'Artikel', listicle: 'Overzicht', gids: 'Gids' },
+      base: '/nl/kennis', home: '/', section: 'Kennis', locale: 'nl-NL', crumbs: 'Kruimelpad',
+      published: 'Gepubliceerd', updated: 'bijgewerkt', read: 'min lezen', answer: 'Het korte antwoord',
+      toc: 'In dit artikel', contents: 'Inhoud', faq: 'Veelgestelde *vragen*', more: 'Verder *lezen*', readOn: 'Lees verder',
+      dlTitle: 'Het sjabloon voor je AI-beleid', dlText: 'Twee A4 met alle onderdelen uit dit artikel, in Word en pdf. Vul je gegevens in, dan sturen we het je toe.',
+    };
+const ACCENTS = { compliance: 'blue', kern: 'red', training: 'red', overig: 'dark' } as const;
+const group = { label: T.groups[d.group], accent: ACCENTS[d.group] };
+const KIND = T.kind;
 const author = FOUNDERS[d.author];
-const path = `/nl/kennis/${d.slug}`;
+const path = `${T.base}/${d.slug}`;
 const title = plainText(d.title);
-const fmt = (date: Date) => date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' });
+const fmt = (date: Date) => date.toLocaleDateString(T.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' });
 const iso = (date: Date) => date.toISOString().slice(0, 10);
 const toc = headings.filter((h) => h.depth === 2);
-const crumbs = [{ label: 'Home', href: '/' }, { label: 'Kennis', href: '/nl/kennis' }];
+const crumbs = [{ label: 'Home', href: T.home }, { label: T.section, href: T.base }];
 
 const jsonLd: object[] = [
-  articleSchema({ title, description: d.description, path, published: d.publishDate, updated: d.updatedDate, authorId: author.id, authorName: author.name }),
+  { ...articleSchema({ title, description: d.description, path, published: d.publishDate, updated: d.updatedDate, authorId: author.id, authorName: author.name }), inLanguage: lang },
   personSchema(author.id),
 ];
 if (d.faq.length) jsonLd.push(faqSchema(d.faq));
@@ -80,10 +96,10 @@ if (d.items.length) {
 }
 ---
 
-<HsLayout title={title} seoTitle={d.seoTitle ?? title} description={d.description} crumbs={crumbs} jsonLd={jsonLd}>
+<HsLayout lang={lang} title={title} seoTitle={d.seoTitle ?? title} description={d.description} crumbs={crumbs} jsonLd={jsonLd}>
   <header class={`hs-acov on-${group.accent}`}>
     <div class="hs-wrap hs-acov__inner">
-      <nav class="hs-crumbs" aria-label="Kruimelpad">
+      <nav class="hs-crumbs" aria-label={T.crumbs}>
         <ol>
           {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
           <li aria-current="page">{KIND[d.kind]}</li>
@@ -96,14 +112,14 @@ if (d.items.length) {
         <span class="hs-acov__by">
           <a href="#auteur">{author.name}</a>
           <span>
-            <time datetime={iso(d.publishDate)}>Gepubliceerd {fmt(d.publishDate)}</time>
-            {iso(d.updatedDate) !== iso(d.publishDate) && <> · <time datetime={iso(d.updatedDate)}>bijgewerkt {fmt(d.updatedDate)}</time></>}
-            {' '}· {minutes} min lezen
+            <time datetime={iso(d.publishDate)}>{T.published} {fmt(d.publishDate)}</time>
+            {iso(d.updatedDate) !== iso(d.publishDate) && <> · <time datetime={iso(d.updatedDate)}>{T.updated} {fmt(d.updatedDate)}</time></>}
+            {' '}· {minutes} {T.read}
           </span>
         </span>
       </div>
       <div class="hs-acov__answer">
-        <p class="hs-acov__answer-label">Het korte antwoord</p>
+        <p class="hs-acov__answer-label">{T.answer}</p>
         <p class="hs-acov__answer-text">{zet(d.answer)}</p>
       </div>
     </div>
@@ -115,8 +131,8 @@ if (d.items.length) {
         <slot />
       </div>
       {toc.length > 2 && (
-        <aside class="hs-article__aside hs-toc" aria-label="Inhoud">
-          <h2>In dit artikel</h2>
+        <aside class="hs-article__aside hs-toc" aria-label={T.contents}>
+          <h2>{T.toc}</h2>
           <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
         </aside>
       )}
@@ -125,15 +141,15 @@ if (d.items.length) {
       <div class="hs-wrap">
         <HsDownloadForm
           template="ai-beleid"
-          title="Het sjabloon voor je AI-beleid"
-          text="Twee A4 met alle onderdelen uit dit artikel, in Word en pdf. Vul je gegevens in, dan sturen we het je toe."
+          title={T.dlTitle}
+          text={T.dlText}
         />
       </div>
     )}
   </section>
 
   {d.faq.length > 0 && (
-    <HsSection tone="paper" title="Veelgestelde *vragen*" id="vragen">
+    <HsSection tone="paper" title={T.faq} id={en ? "questions" : "vragen"}>
       <HsFaq items={d.faq} />
     </HsSection>
   )}
@@ -149,8 +165,8 @@ if (d.items.length) {
   </section>
 
   {related.length > 0 && (
-    <HsSection tone="paper" title="Verder *lezen*">
-      <HsCards columns={3} items={related.map((r) => ({ title: r.title, text: r.text, href: r.href, meta: r.meta, more: 'Lees verder' }))} />
+    <HsSection tone="paper" title={T.more}>
+      <HsCards columns={3} items={related.map((r) => ({ title: r.title, text: r.text, href: r.href, meta: r.meta, more: T.readOn }))} />
     </HsSection>
   )}
 </HsLayout>

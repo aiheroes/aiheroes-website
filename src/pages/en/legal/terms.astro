@@ -1,73 +1,102 @@
 ---
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+// H2 Terms and conditions (English), in the help template: a faithful translation of
+// /nl/legal/voorwaarden, whose Dutch text prevails. The legal update for the start sprint and builds
+// (what the client keeps, maintenance, the source-code line) comes from Frans and a lawyer and blocks
+// the launch (docs/relaunch/01-besluiten.md §15). No pdf (§16).
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsHelp from '../../../components/hs/HsHelp.astro';
+import { SITE } from '../../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/en' }];
+const toc = [
+  { id: 'definitions', label: '1. Definitions' },
+  { id: 'applicability', label: '2. Applicability' },
+  { id: 'quotes', label: '3. Quotes and agreements' },
+  { id: 'performance', label: '4. Performance of services' },
+  { id: 'payment', label: '5. Payment' },
+  { id: 'cancellation', label: '6. Cancellation' },
+  { id: 'ip', label: '7. Intellectual property' },
+  { id: 'liability', label: '8. Liability' },
+  { id: 'confidentiality', label: '9. Confidentiality' },
+  { id: 'disputes', label: '10. Disputes' },
+];
 ---
 
-<SubpageLayout
+<HsLayout
   lang="en"
-  title="Terms of Service"
-  subtitle="The ground rules for our collaboration. Last updated: May 2026."
-  seoDescription="AI Heroes terms of service. The rules for our collaboration."
-  accentColor="red"
-  showContactForm={false}
+  title="Terms and conditions"
+  seoTitle="Terms and conditions AI Heroes"
+  description="The terms and conditions of AI Heroes: quotes, performance, payment, cancellation, intellectual property, liability and disputes."
   noindex
+  crumbs={crumbs}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Article 1 - Definitions</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">In these terms of service, the following definitions apply:</p>
-    <ul class="text-stone-600 leading-relaxed mb-8 space-y-2 list-disc ml-5">
-      <li><strong>AI Heroes:</strong> AI Heroes B.V., located at Aarhusweg 4-16, 9723 JJ Groningen, registered with the Dutch Chamber of Commerce (KvK) under number 42051968, VAT number NL869486263B01</li>
-      <li><strong>Client:</strong> The natural or legal person entering into an agreement with AI Heroes</li>
-      <li><strong>Services:</strong> All work performed by AI Heroes for the client, including workshops, training, consulting, and software development</li>
-    </ul>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 2 - Applicability</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">These terms of service apply to all offers, quotes, and agreements between AI Heroes and the client. Deviations are only valid if agreed upon in writing.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 3 - Quotes and Agreements</h2>
-    <div class="solid-block bg-brand-dark p-6 md:p-8 mb-8 not-prose">
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>Quotes are non-binding and valid for 30 days</li>
-        <li>An agreement is established upon written confirmation by AI Heroes</li>
-        <li>Prices are exclusive of VAT unless otherwise stated</li>
+  <HsHelp
+    title="Terms and conditions"
+    intro="The ground rules for working together. This is a translation; the Dutch text prevails."
+    updated="May 2026"
+    crumbs={crumbs}
+    summary={[
+      'Quotes are without obligation and valid for 30 days.',
+      'Invoices are payable within 14 days.',
+      'Rights to what AI Heroes develops remain with AI Heroes; you receive a right of use for your own use.',
+      'Liability is limited to the invoiced amount of the assignment.',
+      'Dutch law applies.',
+    ]}
+    toc={toc}
+    contact={`Questions about these terms? Email [${SITE.email}](mailto:${SITE.email}). We are happy to explain them in plain language.`}
+    related={[{ label: 'Privacy statement', href: '/en/legal/privacy' }, { label: 'The start sprint', href: '/en/start-sprint' }, { label: 'Algemene voorwaarden (Dutch)', href: '/nl/legal/voorwaarden' }]}
+  >
+    <div class="hs-prose">
+      <h2 id="definitions">Article 1. Definitions</h2>
+      <p>In these terms and conditions:</p>
+      <ul>
+        <li><strong>AI Heroes:</strong> {SITE.legalName}, located at {SITE.address.street}, {SITE.address.postcode} {SITE.address.city}, the Netherlands, registered with the Dutch Chamber of Commerce under number {SITE.kvk}, VAT number {SITE.vat}.</li>
+        <li><strong>Client:</strong> the natural or legal person who enters into an agreement with AI Heroes.</li>
+        <li><strong>Services:</strong> all work AI Heroes carries out for the client, including workshops, training, advice and software development.</li>
       </ul>
+
+      <h2 id="applicability">Article 2. Applicability</h2>
+      <p>These terms and conditions apply to all offers, quotes and agreements between AI Heroes and the client. Deviations are only valid if agreed in writing.</p>
+
+      <h2 id="quotes">Article 3. Quotes and agreements</h2>
+      <ul>
+        <li>Quotes are without obligation and valid for 30 days.</li>
+        <li>An agreement comes into effect after written confirmation by AI Heroes.</li>
+        <li>Prices exclude VAT, unless stated otherwise.</li>
+      </ul>
+
+      <h2 id="performance">Article 4. Performance of services</h2>
+      <p>AI Heroes performs all services to the best of its ability in accordance with the standards of good workmanship. Our services are best-efforts obligations, unless an obligation of result has been expressly agreed.</p>
+      <p>For workshops and training, the content is tailored to the moment of delivery. AI and technology develop quickly; we guarantee that the knowledge is current at the time of the workshop.</p>
+
+      <h2 id="payment">Article 5. Payment</h2>
+      <ul>
+        <li><strong>Payment term:</strong> invoices must be paid within 14 days of the invoice date.</li>
+        <li><strong>Advance payment:</strong> advance payment may be requested for certain services.</li>
+        <li><strong>Default:</strong> in case of late payment, the statutory commercial interest is due.</li>
+        <li><strong>Collection costs:</strong> extrajudicial collection costs are borne by the client.</li>
+      </ul>
+
+      <h2 id="cancellation">Article 6. Cancellation</h2>
+      <p>The following cancellation terms apply to workshops and training:</p>
+      <ul>
+        <li>Up to 14 days before the start: cancellation free of charge.</li>
+        <li>7 to 14 days before the start: 50% of the amount is due.</li>
+        <li>Less than 7 days before the start: 100% of the amount is due.</li>
+        <li>Moving to another date is possible in consultation.</li>
+      </ul>
+
+      <h2 id="ip">Article 7. Intellectual property</h2>
+      <p>All rights to materials, methods and software developed by AI Heroes remain with AI Heroes, unless agreed otherwise in writing. The client receives a right of use for its own use. Materials may not be distributed or resold without permission.</p>
+
+      <h2 id="liability">Article 8. Liability</h2>
+      <p>The liability of AI Heroes is limited to the amount paid out by our liability insurance in the case in question, with a maximum of the invoiced amount of the assignment concerned. AI Heroes is not liable for indirect damage, consequential damage or loss of profit.</p>
+
+      <h2 id="confidentiality">Article 9. Confidentiality</h2>
+      <p>Both parties are obliged to keep confidential all confidential information they have obtained from each other in the context of the agreement. This obligation continues after the agreement has ended.</p>
+
+      <h2 id="disputes">Article 10. Disputes</h2>
+      <p>Dutch law applies to all agreements. Disputes are submitted to the competent court in the district where AI Heroes is located.</p>
     </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 4 - Execution of Services</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">AI Heroes performs all services to the best of its ability in accordance with good professional standards. Our services are obligations of effort, not results, unless explicitly agreed otherwise.</p>
-    <p class="text-stone-600 leading-relaxed mb-8">For workshops and training, the content is tailored to the time of delivery. AI and technology evolve rapidly; we guarantee that the knowledge is current at the time of the workshop.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 5 - Payment</h2>
-    <div class="grid md:grid-cols-2 gap-4 mb-8 not-prose">
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Payment Term</h4><p class="text-sm text-stone-600">Invoices must be paid within 14 days of the invoice date.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Advance Payment</h4><p class="text-sm text-stone-600">For certain services, advance payment may be required.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Default</h4><p class="text-sm text-stone-600">Late payment incurs statutory commercial interest.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Collection Costs</h4><p class="text-sm text-stone-600">Extrajudicial collection costs are borne by the client.</p></div>
-    </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 6 - Cancellation</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">The following cancellation terms apply to workshops and training:</p>
-    <ul class="text-stone-600 leading-relaxed mb-8 space-y-2 list-disc ml-5">
-      <li>Up to 14 days before: free cancellation</li>
-      <li>7-14 days before: 50% of the amount due</li>
-      <li>Less than 7 days before: 100% of the amount due</li>
-      <li>Rescheduling to another date is possible in consultation</li>
-    </ul>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 7 - Intellectual Property</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">All rights to materials, methodologies, and software developed by AI Heroes remain with AI Heroes unless otherwise agreed in writing. The client receives a license for personal use. Materials may not be distributed or resold without permission.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 8 - Liability</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">AI Heroes' liability is limited to the amount paid out by our liability insurance in the relevant case, with a maximum of the invoice amount of the assignment in question. AI Heroes is not liable for indirect damage, consequential damage, or lost profits.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 9 - Confidentiality</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">Both parties are obliged to maintain confidentiality of all confidential information they have obtained from each other in the context of the agreement. This obligation continues after termination of the agreement.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Article 10 - Disputes</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">Dutch law applies to all agreements. Disputes are submitted to the competent court in the district where AI Heroes is established.</p>
-
-    <div class="dark-box-content bg-brand-dark p-8 my-8 not-prose">
-      <h3>Questions?</h3>
-      <p>Have questions about these terms of service? Feel free to contact us. We're happy to explain in plain language.</p>
-    </div>
-  </div>
-</SubpageLayout>
+  </HsHelp>
+</HsLayout>

@@ -1,0 +1,126 @@
+---
+// P3 A new AI tool, English (docs/relaunch/pages/P3-nieuwe-ai-toepassing.md, phase 7): entry "nieuw",
+// the hub of the landings L01–L08. Medux may be named here (docs/relaunch/01-besluiten.md §7).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE, SITE_EN } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+
+const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
+
+const kinds = [
+  { icon: 'headset' as const, title: 'AI customer service', href: '/en/ai-customer-service', text: 'An AI voice or chat that answers, schedules appointments and handles questions, with a hand-off to a staff member.' },
+  { icon: 'robot' as const, title: 'AI agents and workflows', href: '/en/ai-agents', text: 'Agents that handle recurring work on their own: processing requests, transferring data, following up.' },
+  { icon: 'file-text' as const, title: 'Administration and documents', href: '/en/automate-administration', text: 'Invoices, orders, applications and forms processed automatically, with a staff member when in doubt.' },
+  { icon: 'book' as const, title: 'Company wiki', href: '/en/company-wiki', text: 'A knowledge assistant that answers from your own documents, with the source alongside.' },
+  { icon: 'analysis' as const, title: 'Digital twin', href: '/en/digital-twin', text: 'A digital copy of your business that you can ask questions and run scenarios on.' },
+  { icon: 'link' as const, title: 'Connect to your systems', href: '/en/ai-integration', text: 'AI in your ERP, CRM, Microsoft 365, web shop or marketplace, without your team switching systems.' },
+  { icon: 'code' as const, title: 'Extra developers', href: '/en/extra-developers', text: 'A tech lead with one to five developers who build along in your own team.' },
+  { icon: 'computer' as const, title: 'Custom software', href: '/en/custom-software', text: 'Internal tools, customer portals and web applications, with or without AI.' },
+].map((k) => ({ ...k, more: 'Read more' }));
+
+const faq = [
+  { q: 'What does a new AI tool cost?', a: `The start sprint costs from ${SITE_EN.sprint.price}. A build starts from ${SITE_EN.build.from} and for larger systems runs to well over €100,000. After the start sprint you know the amount for your situation. More in [what AI implementation costs](/en/ai-implementation-costs).` },
+  { q: 'How soon is there something to see?', a: 'The start sprint can begin within two weeks, and after six days there is a working prototype. A build usually takes two to twelve weeks.' },
+  { q: 'Do you also build software without AI?', a: 'Yes. We use AI where it adds value. The web shop of [INQ22](/en/cases/inq22) contains no AI itself and was built with AI.' },
+  { q: 'What about the AI Act?', a: 'In the start sprint we determine which risk class your application falls into. We build in logging, human oversight and transparency. More under [compliance and security](/en/compliance).' },
+  { q: 'Who maintains it after delivery?', a: 'We do. We keep maintaining and developing the system, and everything is documented. You are not tied to one AI vendor: the model can be switched without rebuilding.' },
+  { q: 'Can it run on our own servers?', a: 'Yes. That is a separate way in: [software you control](/en/self-hosted).' },
+];
+---
+
+<HsLayout
+  lang="en"
+  title="A new AI tool"
+  seoTitle="Have an AI tool built: a working prototype in six days"
+  description={`AI Heroes builds AI tools your team uses every day: customer service, agents, administration, knowledge and integrations. Start with a six-day start sprint from ${SITE_EN.sprint.price}.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'A new AI tool', path: '/en/new-ai-tool', price: SITE.sprint.priceValue, serviceType: 'Custom AI application development', description: 'From a working prototype in six days to an AI tool your team uses every day.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="A new AI tool"
+    title="Can you build this | for us? *Yes.*"
+    lede="An assistant, a workflow or a tool you are missing today. In six days there is a working prototype on your own data, then we keep building until your team uses it every day."
+    secondary={{ label: 'What we build', href: '#what-we-build' }}
+    photo={{ src: '/hs/photos/cover-screen.webp', alt: 'Two people working together at one screen, one of them pointing something out', w: 1800, h: 1198, pos: '50% 50%' }}
+    facts={[
+      { value: '6 days', label: 'to a working prototype' },
+      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed fee' },
+      { value: SITE_EN.build.from, label: 'from, for the build' },
+    ]}
+  />
+
+  <HsSection id="what-we-build" title="What we *build*" lede="This is what clients ask us most. If yours is not on the list, we work it out in the start sprint." split>
+    <HsCards columns={4} items={kinds} />
+  </HsSection>
+
+  <HsCase
+    id="case"
+    snap={false}
+    kicker="Case"
+    title="4,000 calls a month, | 80% handled by AI"
+    lede="Medux has many customers who would rather call than arrange things online. We built an AI voice that answers the phone, schedules appointments and answers questions, also outside office hours."
+    stats={[
+      { value: 70, suffix: '%', decimals: 0, label: 'cost saving' },
+      { value: 7.8, suffix: '', decimals: 1, label: 'rating of AI conversations' },
+    ]}
+    close="Difficult or urgent questions go straight to a staff member. The figures were measured by Medux."
+    link={{ label: 'Read the case', href: '/en/cases/medux' }}
+  />
+
+  <HsSection tone="paper" title="More of our *work*">
+    <HsCards
+      items={[
+        { meta: 'Case · e-commerce', title: 'IC Commerce', href: '/en/cases/ic-commerce', more: 'Read the case', text: 'Its own platform instead of WooCommerce, with an AI media pipeline for product images, automatic stock locations and smart product display.' },
+        { meta: 'Case · administration', title: 'Kwakkel BV', href: '/en/cases/kwakkel', more: 'Read the case', text: 'From question to working prototype on the company’s own administration, with the business case, in six days.' },
+        { meta: 'Case · B2B web shop', title: 'INQ22', href: '/en/cases/inq22', more: 'Read the case', text: 'A custom web shop for a wholesaler of tattoo supplies, built with AI as a tool.' },
+      ]}
+    />
+    <p class="hs-sec__foot"><a class="hs-link" href="/en/cases">All cases<HsIcon name="arrow-right" /></a></p>
+  </HsSection>
+
+  <HsSection title="From week one to *in use*" lede="Every build follows the same line. You know what it costs up front and see after every sprint what is there.">
+    <HsSteps
+      items={[
+        { label: 'Six days', title: 'Start sprint', text: `A working prototype on your data and the business case on a single page. From ${SITE_EN.sprint.price}, start within two weeks.` },
+        { label: 'Two-week sprints', title: 'Build', text: `A demo after every sprint. Compliance, logging and oversight are part of the design. From ${SITE_EN.build.from}.` },
+        { label: 'Go-live', title: 'In use', text: 'Your team is trained on the system itself, on the work floor. Only then do we call it done.' },
+        { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system. Everything is documented and you are not tied to one AI vendor.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsStandardList extra="What matters most here: you can switch AI models without rebuilding." />
+
+  <HsSection title="With your own *developers*" lede="Do you have your own development team? Then we agree up front who does what.">
+    <HsCards
+      items={[
+        { icon: 'computer', title: 'We build it', text: 'We build independently. Your team sees after every sprint what is there and thinks along.' },
+        { icon: 'peoples', title: 'We strengthen your team', text: 'A tech lead and developers of ours work along in your team.', href: '/en/extra-developers', more: 'Extra developers' },
+        { icon: 'switch', title: 'Together', text: 'We build the AI parts, your team the rest. Who maintains what is agreed up front.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsOtherEntries current="nieuw" />
+
+  <HsContact entry="nieuw" title="Tell us what you want to build" />
+</HsLayout>

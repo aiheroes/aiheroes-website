@@ -7,6 +7,8 @@ export interface SalonSpeaker {
   name: string;
   /** Organisation and role in a few words. */
   org?: string;
+  /** The same in English, when it differs. */
+  orgEn?: string;
   /** Talk title; null until announced. */
   topic: string | null;
   photo: string | null;
@@ -33,6 +35,8 @@ export interface SalonEdition {
   speakers?: SalonSpeaker[];
   sponsors?: SalonSponsor[];
   note?: string;
+  /** English labels for /en/ai-salon. */
+  en?: { title: string; dateLabel: string; shortDate: string; note?: string };
 }
 
 export const SALON_EMAIL = 'salon@aiheroes.io';
@@ -47,7 +51,7 @@ export const SALON_NETWORK = {
   ],
 };
 
-export const SALON_FOLLOW = { label: 'Volg AI Heroes op LinkedIn', url: 'https://www.linkedin.com/company/aiheroes' };
+export const SALON_FOLLOW = { label: 'Volg AI Heroes op LinkedIn', labelEn: 'Follow AI Heroes on LinkedIn', url: 'https://www.linkedin.com/company/aiheroes' };
 
 /** The next edition. */
 export const SALON_NEXT: SalonEdition = {
@@ -65,21 +69,22 @@ export const SALON_NEXT: SalonEdition = {
     // Founder and director of Energiso (energy management, ISO 50001). Portrait from energiso.nl.
     { name: 'Ilse Gosliga', org: 'Energiso', topic: null, photo: '/speakers/ilse-gosliga.jpg' },
     // Entrepreneur and business coach in Groningen. Confirmed 2026-10-05; portrait and topic requested.
-    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', topic: null, photo: null },
+    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: null, photo: null },
   ],
   // Edition #2 starts with a clean sponsor list; add entries here as they confirm.
   sponsors: [],
   note: 'De locatie volgt binnenkort.',
+  en: { title: 'Edition #2', dateLabel: 'Thursday 5 November 2026', shortDate: 'Thu 5 Nov', note: 'The venue will be announced soon.' },
 };
 
 /** Start, programme and end of the next evening (local time). */
 export const SALON_TIMES = { doors: '17:30', start: '18:00', end: '21:00' };
 
 export const SALON_AGENDA = [
-  { time: '17:30', title: 'Inloop' },
-  { time: '18:00', title: 'Twee talks van zo’n twintig minuten' },
-  { time: '18:40', title: 'Pitches van een minuut', note: 'Pitchen? Mail salon@aiheroes.io.' },
-  { time: '19:00', title: 'Eten, drinken en netwerken', note: 'Tot 21:00.' },
+  { time: '17:30', title: 'Inloop', en: { title: 'Walk-in' } },
+  { time: '18:00', title: 'Twee talks van zo’n twintig minuten', en: { title: 'Two talks of around twenty minutes' } },
+  { time: '18:40', title: 'Pitches van een minuut', note: 'Pitchen? Mail salon@aiheroes.io.', en: { title: 'One-minute pitches', note: 'Want to pitch? Email salon@aiheroes.io.' } },
+  { time: '19:00', title: 'Eten, drinken en netwerken', note: 'Tot 21:00.', en: { title: 'Food, drinks and networking', note: 'Until 21:00.' } },
 ];
 
 /** Total speaker tiles per edition (confirmed plus open) and sponsor tiles. */
@@ -106,6 +111,13 @@ export const SALON_EDITIONS: SalonEdition[] = [
       { name: 'Helm', src: '/sponsors/helm.svg' },
     ],
     note: 'Uitverkocht, met ruim 70 gasten.',
+    en: { title: 'Kick-off', dateLabel: 'Thursday 3 September 2026', shortDate: 'Thu 3 Sep', note: 'Sold out, with more than 70 guests.' },
   },
   SALON_NEXT,
 ];
+
+/** An edition's labels in the page's language. */
+export function editionText(e: SalonEdition, lang: 'nl' | 'en') {
+  if (lang === 'en' && e.en) return e.en;
+  return { title: e.title, dateLabel: e.dateLabel, shortDate: e.shortDate, note: e.note };
+}

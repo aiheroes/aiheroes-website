@@ -5,6 +5,7 @@
 import HsIcon from './HsIcon.astro';
 import HsLogo from './HsLogo.astro';
 import { punch, plain, zet } from './hs';
+import { langOf } from '../../data/ui';
 import type { Content } from '../../data/types';
 
 interface Props {
@@ -13,6 +14,16 @@ interface Props {
   ctaHref: string;
 }
 const { hero, approach, ctaHref } = Astro.props;
+const en = langOf(Astro.url) === 'en';
+const L = en
+  ? { region: 'What AI Heroes builds', tabs: 'Choose a topic', pause: 'Pause the rotation', play: 'Play the rotation' }
+  : { region: 'Wat AI Heroes bouwt', tabs: 'Kies een onderwerp', pause: 'Pauzeer de wisseling', play: 'Speel de wisseling af' };
+const ALT_EN = [
+  'An employee works at a screen in an office with files',
+  'Two people work together at one screen, one of them points at something',
+  'An old beige computer on an office desk',
+  'A bright server room in a data centre',
+];
 
 // The cover leads with the core line (what we do); the slogan closes the page in the statement.
 const coreLine = approach.text.split(/\n\s*\n/)[0].replace(/\n/g, ' ').trim();
@@ -39,7 +50,7 @@ const slides = sources.map((s, i) => {
     html: punch(zet(s.headline, { display: true }), PUNCH[i % PUNCH.length]),
     text,
     long: text.length > 40,
-    photo: PHOTOS[i % PHOTOS.length],
+    photo: en ? { ...PHOTOS[i % PHOTOS.length], alt: ALT_EN[i % ALT_EN.length] } : PHOTOS[i % PHOTOS.length],
   };
 });
 ---
@@ -48,7 +59,7 @@ const slides = sources.map((s, i) => {
   class="hs-cover hs-snap"
   data-accent={slides[0].accent}
   aria-roledescription="carrousel"
-  aria-label="Wat AI Heroes bouwt"
+  aria-label={L.region}
 >
   <div class="hs-cover__zone">
     <div class="hs-cover__wipe" aria-hidden="true"></div>
@@ -91,7 +102,7 @@ const slides = sources.map((s, i) => {
       <HsIcon name="arrow-right" />
     </a>
     <div class="hs-cover__progress">
-      <div class="hs-cover__tabs" role="tablist" aria-label="Kies een onderwerp">
+      <div class="hs-cover__tabs" role="tablist" aria-label={L.tabs}>
         {slides.map((s, i) => (
           <button
             class="hs-cover__tab"
@@ -109,7 +120,7 @@ const slides = sources.map((s, i) => {
           </button>
         ))}
       </div>
-      <button class="hs-cover__pause" type="button" data-pause aria-label="Pauzeer de wisseling">
+      <button class="hs-cover__pause" type="button" data-pause aria-label={L.pause} data-label-pause={L.pause} data-label-play={L.play}>
         <HsIcon name="pause" class="is-pause" />
         <HsIcon name="play" class="is-play" />
       </button>

@@ -5,9 +5,12 @@
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
 import { navFor } from '../../data/nav';
-import { ENTRIES, type Entry } from '../../data/site';
+import { entriesFor, type Entry } from '../../data/site';
+import { langOf } from '../../data/ui';
 
-const columns = navFor('nl').footer.columns;
+const lang = langOf(Astro.url);
+const ENTRIES = entriesFor(lang);
+const columns = navFor(lang).footer.columns;
 const keys = Object.keys(ENTRIES) as Entry[];
 const groups = keys.map((k) => {
   const col = columns.find((c) => c.href === ENTRIES[k].href);

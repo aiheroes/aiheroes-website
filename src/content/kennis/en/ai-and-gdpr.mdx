@@ -1,0 +1,90 @@
+---
+lang: en
+slug: ai-and-gdpr
+plan: K6
+kind: artikel
+group: compliance
+title: "AI and the GDPR: what to arrange before you use *personal data*"
+seoTitle: "AI and the GDPR: what to arrange before you use personal data"
+description: "When the GDPR applies to AI, what you need to arrange (legal basis, data minimisation, data processing agreement, DPIA), where the data may be stored and how the GDPR and the AI Act work side by side."
+answer: "As soon as personal data is in prompts, documents or training data, the GDPR simply applies. You need a legal basis, a data processing agreement with every party that processes the data, and a DPIA when the risk to the people involved is high. The AI Act comes on top of that and replaces nothing in the GDPR."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+pillar:
+  label: "Go to compliance and security"
+  href: "/en/compliance"
+  text: "Want to be sure your AI application is in line with the GDPR and the AI Act? Privacy is part of the design in every build, and the AI Act check shows you where you stand."
+related: [ai-security, ai-act, ai-policy]
+faq:
+  - q: "May I put customer data into ChatGPT?"
+    a: "Only with a legal basis, a business version with a data processing agreement and clear agreements about which data may go in. A free consumer account gives you none of those agreements, and then you cannot justify it."
+  - q: "Do I need a DPIA for an AI application?"
+    a: "Often, yes. A DPIA is mandatory when processing is likely to result in a high risk, for example with profiling, health data, monitoring employees or large-scale processing with new technology. Data protection authorities publish lists of processing for which a DPIA is always required; in the Netherlands that is the Autoriteit Persoonsgegevens."
+  - q: "Is an American AI provider GDPR compliant?"
+    a: "Transfers to the US are allowed under the EU-US Data Privacy Framework if the provider has signed up to it. The EU General Court upheld that framework in 2025; an appeal to the Court of Justice is still pending. Separately, the CLOUD Act still applies. If you do not want that risk, choose European hosting."
+  - q: "May a model learn from our data?"
+    a: "Only if you allow it deliberately and there is a legal basis for it. In the business versions of most AI tools, training on customer data is off by default; check it in the terms and record it."
+  - q: "How long may you keep conversations with an AI assistant?"
+    a: "No longer than the purpose requires. Set a period per purpose. Our own assistant keeps conversations pseudonymised for at most 30 days, and contact details you leave yourself for at most 90 days."
+---
+
+## When does the GDPR apply to AI?
+
+As soon as personal data passes through the system. That happens more often than you think:
+
+- a member of staff pastes a customer email with a name and address into an AI tool;
+- an assistant searches files, CVs or patient records;
+- an AI voice holds conversations with customers and transcribes them;
+- you use your own data to train or fine-tune a model.
+
+In all those cases the ordinary rules of the GDPR apply. The AI technology changes nothing about that.
+
+## The four things you arrange
+
+**1. A legal basis.** Why may you use this data for this purpose? Usually that is the performance of a contract or a legitimate interest. Record the assessment.
+
+**2. Data minimisation.** Use only what you need. Remove names and numbers from texts the model does not need to know, and do not keep outputs longer than necessary.
+
+**3. A data processing agreement.** With every party that processes the data on your behalf: the builder, the hosting party and the model provider. Check where the data is stored and whether the provider trains on it.
+
+**4. A DPIA when the risk is high.** A data protection impact assessment is mandatory when processing is likely to result in a high risk to the people involved. Think of profiling, health data, monitoring employees or large-scale processing with new technology. In the Netherlands the [Autoriteit Persoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/praktisch-avg/data-protection-impact-assessment-dpia) keeps a list of processing for which a DPIA is always required.
+
+An example from healthcare: in the AI voice we built for Medux, customer calls pass through the system. Who is calling, what about, and which appointment gets booked. Calls are transcribed for quality and review. It then has to be settled in advance which data the system needs, how long the transcripts are kept and who has access.
+
+## Where is the data?
+
+Two things are often mixed up:
+
+- **Calling a model:** you send a question to a model and get an answer. The question may be logged by the provider.
+- **Storing data:** documents, conversations and outputs you keep in a database or search index.
+
+For both: know where it is. Transfers outside the EU are only allowed on an appropriate basis, such as the EU-US Data Privacy Framework for American companies that have signed up to it. That framework is under legal pressure: the EU General Court upheld it in September 2025, and the appeal to the Court of Justice is still pending. On top of that, the US CLOUD Act can oblige American companies to hand over data, also when it is stored in Europe. For sensitive data, European hosting or your [own server](/en/ai-on-your-own-servers) is the safest choice.
+
+## The GDPR and the AI Act side by side
+
+| | GDPR | AI Act |
+|---|---|---|
+| **Covers** | Personal data | AI systems |
+| **Applies when** | Personal data is processed | AI is provided or used |
+| **Core** | Legal basis, minimisation, rights of data subjects | Risk class, transparency, oversight, literacy |
+| **Assessment in advance** | DPIA when the risk is high | Risk management and documentation for high-risk AI |
+| **Supervision in the Netherlands** | Autoriteit Persoonsgegevens | Being prepared; the AP gets a coordinating role |
+
+An AI application that uses personal data has to meet both. Read more about the AI Act in [the AI Act](/en/insights/ai-act).
+
+## What AI Heroes does here
+
+<div class="hs-note">
+
+In every build, privacy is part of the design: data minimisation, European hosting as an option, and logging with fixed retention periods. **As the controller, you carry out the DPIA yourself.** On request we supply the technical information you need for it: which data, where it is stored, how long it is kept and which suppliers are involved.
+
+Our own assistant shows what that looks like: conversations pseudonymised, kept for at most 30 days, and everything described on [the transparency page](/en/legal/ai-assistant).
+
+</div>
+
+## Sources
+
+- [Data protection impact assessment (DPIA)](https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/praktisch-avg/data-protection-impact-assessment-dpia), Autoriteit Persoonsgegevens (Dutch DPA)
+- [Opinion 28/2024 on AI models](https://www.edpb.europa.eu/our-work-tools/our-documents/opinion-board-art-64/opinion-282024-certain-data-protection-aspects_en), European Data Protection Board
+- [General Data Protection Regulation](https://eur-lex.europa.eu/eli/reg/2016/679/oj), EUR-Lex
