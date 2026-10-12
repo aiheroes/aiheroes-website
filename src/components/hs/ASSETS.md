@@ -16,7 +16,7 @@ Downloaded at 1400 to 1800px wide and converted to WebP (quality 78). The case p
 
 ## Client logos (trademarks of their owners; use on the site cleared by the clients, see PRODUCT.md)
 
-The page uses white SVGs in `public/experiment/logos-white/`: every fill and stroke recoloured to the house cream #FDFCF8 and the viewBox cropped to the artwork. The originals they were made from are kept, unserved, in `src/components/experiment/logo-sources/`.
+The page uses white SVGs in `public/hs/logos-white/`: every fill and stroke recoloured to the house cream #FDFCF8 and the viewBox cropped to the artwork. The originals they were made from are kept, unserved, in `src/components/experiment/logo-sources/`.
 
 | White file | Made from | Source licence |
 |---|---|---|

@@ -1,0 +1,33 @@
+---
+// A short ask on a colour field: heading, one line and the action.
+import HsIcon from './HsIcon.astro';
+import { display, rich } from './hs';
+
+interface Props {
+  title: string;
+  text?: string;
+  cta?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  tone?: 'red' | 'blue' | 'dark';
+}
+const { title, text, cta = { label: 'Plan een startsprint', href: '/nl/startsprint' }, secondary, tone = 'dark' } = Astro.props;
+---
+
+<section class={`hs-ctaband on-${tone}`} data-reveal>
+  <div class="hs-ctaband__text">
+    <h2 class="hs-d-s" data-item set:html={display(title)} />
+    {text && <p class="hs-body-l" data-item style="--i:1" set:html={rich(text)} />}
+  </div>
+  <div class="hs-ctaband__actions" data-item style="--i:2">
+    <a class="hs-btn hs-btn--light" href={cta.href}>
+      {cta.label}
+      <HsIcon name="arrow-right" />
+    </a>
+    {secondary && (
+      <a class="hs-link" href={secondary.href}>
+        {secondary.label}
+        <HsIcon name="arrow-right" />
+      </a>
+    )}
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+// Author box for articles and landings: duotone-free mono portrait, name, role, bio, LinkedIn.
+import { FOUNDERS, type FounderId } from '../../data/team';
+import { zet } from './hs';
+
+interface Props {
+  id: FounderId;
+  label?: string;
+}
+const { id, label = 'Geschreven door' } = Astro.props;
+const f = FOUNDERS[id];
+---
+
+<aside class="hs-author" aria-label={label}>
+  <div class="hs-author__photo"><img src={f.photo} alt="" width="300" height="400" loading="lazy" decoding="async" /></div>
+  <div>
+    <p class="hs-author__role">{label}</p>
+    <p class="hs-author__name">{f.name}</p>
+    <p class="hs-author__role">{f.role}</p>
+    <p class="hs-author__bio">{zet(f.bio)}</p>
+    <p class="hs-author__links">
+      <a class="hs-link" href="/nl/over-ons/team">Het team</a>
+      {f.linkedin && <a class="hs-link" href={f.linkedin} rel="me noopener" target="_blank">LinkedIn</a>}
+    </p>
+  </div>
+</aside>

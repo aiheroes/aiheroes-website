@@ -1,0 +1,53 @@
+---
+// Cream slide; the three entries are one strip of colour fields (post "merkkaart"), the only
+// colour in the section, with their text below. Names, colours and pages come from ENTRIES
+// (src/data/site.ts), so the menu, the planes and the pillar pages say the same thing.
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import { ENTRIES, type Entry } from '../../data/site';
+
+interface Props {
+  title?: string;
+  /** One line per entry, in the order nieuw, vervangen, eigen-beheer. */
+  descriptions?: Partial<Record<Entry, string>>;
+  more?: string;
+  snap?: boolean;
+  id?: string;
+}
+const {
+  title = 'Wat we voor je bouwen',
+  descriptions = {},
+  more = 'Lees meer',
+  snap = true,
+  id = 'wat-we-bouwen',
+} = Astro.props;
+const DEFAULTS: Record<Entry, string> = {
+  nieuw: 'Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna bouwen we door tot je team er elke dag mee werkt.',
+  vervangen: 'Software die te duur of te oud is, vervangen door software die past bij hoe je werkt. Gekoppeld aan je ERP, CRM en de rest van je systemen.',
+  'eigen-beheer': 'AI en software op je eigen servers of bij een Europese partij. Zonder Amerikaanse cloud, met de AI Act ingebouwd.',
+};
+const keys = Object.keys(ENTRIES) as Entry[];
+---
+
+<section class:list={['hs-entries', { 'hs-snap': snap }]} id={id} data-reveal>
+  <div class="hs-wrap hs-entries__head">
+    <h2 class="hs-d-m" data-item>{zet(title, { display: true })}</h2>
+  </div>
+  <div class="hs-wrap hs-entries__row">
+    {keys.map((k, i) => (
+      <a class="hs-entry" href={ENTRIES[k].href} style={`--i:${i}`}>
+        <div class={`hs-entry__plane on-${ENTRIES[k].accent}`}>
+          <h3 class="hs-entry__title">{zet(ENTRIES[k].title, { display: true, cap: 12 })}</h3>
+          <HsIcon name="arrow-up-right" />
+        </div>
+        <div class="hs-entry__text">
+          <p class="hs-body" data-item style={`--i:${i + 3}`}>{zet(descriptions[k] ?? DEFAULTS[k], { cap: 28 })}</p>
+          <span class="hs-entry__more" data-item style={`--i:${i + 4}`}>
+            <span>{more}</span>
+            <HsIcon name="arrow-right" />
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

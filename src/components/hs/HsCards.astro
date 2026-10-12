@@ -1,0 +1,64 @@
+---
+// Cards in three forms: "rules" (items under a 1.5px rule, the default), "planes" (the homepage's
+// colour planes with the title inside) and "tiles" (light cards on a paper or colour section).
+import HsIcon from './HsIcon.astro';
+import { rich, zet } from './hs';
+import type { IconName } from './hs';
+
+export interface Card {
+  title: string;
+  text?: string;
+  href?: string;
+  more?: string;
+  icon?: IconName;
+  meta?: string;
+  accent?: 'red' | 'blue' | 'dark';
+  tags?: string;
+}
+interface Props {
+  items: Card[];
+  variant?: 'rules' | 'planes' | 'tiles';
+  columns?: 2 | 3 | 4;
+  id?: string;
+}
+const { items, variant = 'rules', columns = 3, id } = Astro.props;
+const ACCENTS = ['red', 'blue', 'dark'] as const;
+---
+
+<ul class={`hs-cards hs-cards--${variant} hs-cards--${columns}`} id={id}>
+  {items.map((c, i) => {
+    const Tag = c.href ? 'a' : 'div';
+    return (
+      <li data-item style={`--i:${i}`} data-tags={c.tags}>
+        <Tag class="hs-card" href={c.href}>
+          {variant === 'planes' ? (
+            <>
+              <div class={`hs-card__plane on-${c.accent ?? ACCENTS[i % 3]}`}>
+                <h3 class="hs-card__title">{zet(c.title, { display: true, cap: 13 })}</h3>
+                {c.href && <HsIcon name="arrow-up-right" class="is-arrow" />}
+              </div>
+              {(c.text || c.href) && (
+                <div class="hs-card__body">
+                  {c.text && <p class="hs-card__text" set:html={rich(c.text, { cap: 28 })} />}
+                  {c.href && (
+                    <span class="hs-card__more"><span>{c.more ?? 'Lees meer'}</span><HsIcon name="arrow-right" /></span>
+                  )}
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              {c.icon && <HsIcon name={c.icon} />}
+              {c.meta && <span class="hs-card__meta">{c.meta}</span>}
+              <h3 class="hs-card__title">{zet(c.title, { display: true, cap: 22 })}</h3>
+              {c.text && <p class="hs-card__text" set:html={rich(c.text)} />}
+              {c.href && (
+                <span class="hs-card__more"><span>{c.more ?? 'Lees meer'}</span><HsIcon name="arrow-right" /></span>
+              )}
+            </>
+          )}
+        </Tag>
+      </li>
+    );
+  })}
+</ul>

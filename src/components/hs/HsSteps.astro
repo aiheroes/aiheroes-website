@@ -1,0 +1,29 @@
+---
+// Steps or days as a timeline: columns under a rule on wide screens, a list on phones. Six or more
+// steps wrap to three columns until 1200px.
+import { rich, zet } from './hs';
+
+export interface Step {
+  label: string;
+  title: string;
+  text?: string;
+  meta?: string;
+}
+interface Props {
+  items: Step[];
+  ordered?: boolean;
+}
+const { items, ordered = true } = Astro.props;
+const List = ordered ? 'ol' : 'ul';
+---
+
+<List class:list={['hs-steps', { 'is-many': items.length > 4 }]} style={`--n:${items.length}`}>
+  {items.map((s, i) => (
+    <li class="hs-step" data-item style={`--i:${i}`}>
+      <span class="hs-step__label">{s.label}</span>
+      <h3 class="hs-step__title">{zet(s.title, { display: true, cap: 20 })}</h3>
+      {s.text && <p class="hs-step__text" set:html={rich(s.text)} />}
+      {s.meta && <p class="hs-step__meta">{zet(s.meta)}</p>}
+    </li>
+  ))}
+</List>

@@ -266,7 +266,7 @@ export default function ChatPanel({
       return (
         <div
           key={index}
-          className="mb-1 rounded-2xl rounded-bl-md border border-stone-200/80 bg-white px-3.5 py-2.5 shadow-sm last:mb-0"
+          className="mb-1 rounded-[2px] border border-stone-200/80 bg-white px-3.5 py-2.5 last:mb-0"
         >
           <ChatMarkdown text={part.text} />
         </div>
@@ -342,7 +342,7 @@ export default function ChatPanel({
           if (closing && e.target === panelRef.current) onClosed();
         }}
         style={dragOffset > 0 ? { transform: `translateY(${dragOffset}px)` } : undefined}
-        className={`${closing ? 'aih-panel-out' : 'aih-panel-in'} aih-sheet ${dragOffset > 0 ? 'aih-dragging' : ''} fixed inset-x-0 bottom-0 z-[95] flex ${maximized ? 'h-[calc(100dvh-0.75rem)]' : 'h-[85dvh]'} touch-manipulation flex-col rounded-t-2xl bg-brand-light pb-[env(safe-area-inset-bottom)] text-brand-dark shadow-2xl [-webkit-tap-highlight-color:transparent] sm:inset-x-auto sm:right-5 sm:bottom-5 sm:h-[38rem] sm:max-h-[calc(100vh-3rem)] sm:w-[25rem] sm:rounded-2xl sm:border sm:border-stone-200 sm:pb-0`}
+        className={`${closing ? 'aih-panel-out' : 'aih-panel-in'} aih-sheet ${dragOffset > 0 ? 'aih-dragging' : ''} fixed inset-x-0 bottom-0 z-[95] flex ${maximized ? 'h-[calc(100dvh-0.75rem)]' : 'h-[85dvh]'} touch-manipulation flex-col rounded-t-[4px] bg-brand-light pb-[env(safe-area-inset-bottom)] text-brand-dark [-webkit-tap-highlight-color:transparent] sm:inset-x-auto sm:right-5 sm:bottom-5 sm:h-[38rem] sm:max-h-[calc(100vh-3rem)] sm:w-[25rem] sm:rounded-[4px] sm:border sm:border-stone-200 sm:pb-0`}
       >
         {/* Grabber (mobile): tap toggles size, drag dismisses or expands. */}
         <button
@@ -365,7 +365,7 @@ export default function ChatPanel({
       {/* Header with the always-visible AI badge (SDD D10). */}
       <header className="flex items-center justify-between gap-2 border-b border-stone-200 px-4 pt-1 pb-3 sm:pt-3">
         <div>
-          <p className="font-serif text-base font-semibold">{t.title}</p>
+          <p className="text-base font-bold tracking-tight">{t.title}</p>
           <p className="text-[0.68rem] font-medium uppercase tracking-wide text-stone-500">
             {t.aiBadge}
           </p>
@@ -377,7 +377,7 @@ export default function ChatPanel({
               onClick={newConversation}
               title={t.newChat}
               aria-label={t.newChat}
-              className={`rounded-md p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
+              className={`rounded-[2px] p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
             >
               <RotateCcw size={16} aria-hidden />
             </button>
@@ -388,7 +388,7 @@ export default function ChatPanel({
             onClick={onCloseRequest}
             aria-label={t.minimize}
             title={t.minimize}
-            className={`rounded-md p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
+            className={`rounded-[2px] p-2 text-stone-500 hover:bg-stone-100 hover:text-brand-dark ${RING}`}
           >
             <ChevronDown size={20} aria-hidden className="sm:hidden" />
             <X size={18} aria-hidden className="hidden sm:block" />
@@ -404,7 +404,7 @@ export default function ChatPanel({
           className="flex-1 overflow-y-auto overscroll-contain px-4 py-3"
         >
           {showDisclosure && (
-            <div className="mb-3 rounded-xl border border-stone-200 bg-white p-3 text-xs leading-relaxed text-stone-600">
+            <div className="mb-3 rounded-[4px] border border-stone-200 bg-white p-3 text-xs leading-relaxed text-stone-600">
               {t.disclosure}{' '}
               <a
                 href={DISCLOSURE_PATH[locale]}
@@ -417,14 +417,14 @@ export default function ChatPanel({
 
           {messages.length === 0 && (
             <div className="mt-3">
-              <p className="mb-3 font-serif text-xl text-balance">{t.suggestionsTitle}</p>
+              <p className="mb-3 text-xl font-bold tracking-tight text-balance">{t.suggestionsTitle}</p>
               <div className="flex flex-col items-start gap-2">
                 {suggestions.map((s) => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => submit(s)}
-                    className={`rounded-2xl border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm shadow-sm hover:border-brand-blue hover:text-brand-blue ${RING}`}
+                    className={`rounded-[4px] border border-stone-200 bg-white px-3.5 py-2.5 text-left text-sm hover:border-brand-blue hover:text-brand-blue ${RING}`}
                   >
                     {s}
                   </button>
@@ -436,7 +436,7 @@ export default function ChatPanel({
           {messages.map((message) => (
             <div key={message.id} className="aih-msg-in mb-3">
               {message.role === 'user' ? (
-                <div className="ml-8 min-w-0 break-words rounded-2xl rounded-br-md bg-brand-blue px-3.5 py-2.5 text-[0.95rem] text-white">
+                <div className="ml-8 min-w-0 break-words rounded-[2px] bg-brand-blue px-3.5 py-2.5 text-[0.95rem] text-white">
                   {textOf(message)}
                 </div>
               ) : (
@@ -463,7 +463,7 @@ export default function ChatPanel({
                           <a
                             key={s.url}
                             href={s.url.replace('https://aiheroes.io', '')}
-                            className={`max-w-[12rem] truncate rounded-full bg-stone-100 px-2 py-0.5 text-[0.68rem] text-stone-600 hover:bg-stone-200 ${RING}`}
+                            className={`max-w-[12rem] truncate rounded-[2px] bg-stone-100 px-2 py-0.5 text-[0.68rem] text-stone-600 hover:bg-stone-200 ${RING}`}
                           >
                             {s.title}
                           </a>
@@ -486,7 +486,7 @@ export default function ChatPanel({
           )}
 
           {(errorKind || silentFail) && (
-            <div className="mb-2 rounded-lg bg-brand-red/10 p-3 text-xs text-brand-red">
+            <div className="mb-2 rounded-[4px] bg-brand-red/10 p-3 text-xs text-brand-red">
               <p>
                 {errorKind === 'budget'
                   ? t.errorBudget
@@ -501,7 +501,7 @@ export default function ChatPanel({
                     setSilentFail(false);
                     void regenerate();
                   }}
-                  className={`mt-1.5 rounded-md bg-brand-red px-2.5 py-1 text-[0.7rem] font-semibold text-white hover:bg-brand-red/85 ${RING}`}
+                  className={`mt-1.5 rounded-[2px] bg-brand-red px-2.5 py-1 text-[0.7rem] font-semibold text-white hover:bg-brand-red/85 ${RING}`}
                 >
                   {t.retry}
                 </button>
@@ -526,7 +526,7 @@ export default function ChatPanel({
           <button
             type="button"
             onClick={jumpToLatest}
-            className={`absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-stone-200 bg-white px-3 py-1 text-[0.7rem] font-medium text-stone-600 shadow-md hover:text-brand-dark ${RING}`}
+            className={`absolute bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-[2px] border border-stone-200 bg-white px-3 py-1 text-[0.7rem] font-medium text-stone-600 hover:text-brand-dark ${RING}`}
           >
             <ArrowDown size={12} aria-hidden /> {t.newAnswer}
           </button>
@@ -542,7 +542,7 @@ export default function ChatPanel({
           <button
             type="button"
             onClick={newConversation}
-            className={`rounded-lg bg-brand-dark px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark/85 ${RING}`}
+            className={`rounded-[4px] bg-brand-dark px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark/85 ${RING}`}
           >
             {t.newChat}
           </button>
@@ -573,7 +573,7 @@ export default function ChatPanel({
             maxLength={2000}
             placeholder={t.inputPlaceholder}
             aria-label={t.inputPlaceholder}
-            className="max-h-28 flex-1 resize-none rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 text-base field-sizing-content focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25 sm:text-sm"
+            className="max-h-28 flex-1 resize-none rounded-[4px] border border-stone-300 bg-white px-3.5 py-2.5 text-base field-sizing-content focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/25 sm:text-sm"
           />
           {/* Buttons mirror the textarea's vertical metrics (padding + border +
               line-height-sized icon box), so they match its height exactly and
@@ -583,7 +583,7 @@ export default function ChatPanel({
               type="button"
               onClick={() => stop()}
               aria-label={t.stop}
-              className={`rounded-xl border border-transparent bg-stone-200 p-2.5 text-stone-700 hover:bg-stone-300 ${RING}`}
+              className={`rounded-[4px] border border-transparent bg-stone-200 p-2.5 text-stone-700 hover:bg-stone-300 ${RING}`}
             >
               <span className="flex h-6 w-6 items-center justify-center sm:h-5 sm:w-5" aria-hidden>
                 <Square size={16} />
@@ -594,7 +594,7 @@ export default function ChatPanel({
               type="submit"
               aria-label={t.send}
               disabled={!input.trim()}
-              className={`rounded-xl border border-transparent bg-brand-red p-2.5 text-white hover:bg-brand-red/85 disabled:opacity-40 ${RING}`}
+              className={`rounded-[4px] border border-transparent bg-brand-red p-2.5 text-white hover:bg-brand-red/85 disabled:opacity-40 ${RING}`}
             >
               <span className="flex h-6 w-6 items-center justify-center sm:h-5 sm:w-5" aria-hidden>
                 <Send size={17} />

@@ -1,0 +1,43 @@
+---
+// The closing slide: dark band with every page of the site in columns (so each landing has a fixed
+// link) and the light square with the logo, echoing the cover. Content lives in src/data/nav.ts.
+import HsLogo from './HsLogo.astro';
+import { zet } from './hs';
+import { navFor } from '../../data/nav';
+import { SITE } from '../../data/site';
+import type { Lang } from '../../data/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const { footer } = navFor(lang);
+const a = SITE.address;
+---
+
+<footer class="hs-footer on-dark">
+  <div class="hs-footer__body">
+    <p class="hs-footer__tagline">{zet(footer.tagline)}</p>
+    <nav class="hs-footer__cols" aria-label="Alle pagina's">
+      {footer.columns.map((c) => (
+        <div>
+          <h2>{c.href ? <a href={c.href}>{c.heading}</a> : c.heading}</h2>
+          <ul>
+            {c.links.map((i) => <li><a href={i.href}>{zet(i.label, { display: true, cap: 24 })}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </nav>
+    <div class="hs-footer__legal hs-micro">
+      <span>{footer.copyright}</span>
+      <span>{zet(SITE.legalName, { cap: 30 })} · {zet(`${a.street},`)} {zet(`${a.postcode} ${a.city}`, { cap: 30 })} · {zet(`KvK ${SITE.kvk}`)}</span>
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <a href={SITE.phoneHref}>{SITE.phone}</a>
+      {footer.legal.map((l) => <a href={l.href}>{l.label}</a>)}
+      <span>{zet(footer.madeIn)}</span>
+    </div>
+  </div>
+  <div class="hs-footer__square">
+    <HsLogo mark="wordmark" />
+  </div>
+</footer>

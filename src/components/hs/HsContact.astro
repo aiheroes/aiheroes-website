@@ -1,0 +1,113 @@
+---
+// L17 offer: the ask on a colour field, the form on light. Posts to /api/contact (Resend) through
+// hs-client initForm. The topic chips are the three entries plus "Weet ik nog niet"; training
+// pages add "Training" and preselect it (docs/relaunch/01-besluiten.md §6).
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import { SITE, ENTRIES, type Entry } from '../../data/site';
+import { FOUNDERS, FOUNDER_ORDER } from '../../data/team';
+
+interface Props {
+  title?: string;
+  lede?: string;
+  /** Preselects the entry chip. */
+  entry?: Entry;
+  /** Training pages: adds and preselects the "Training" chip. */
+  training?: boolean;
+  /** Colour of the ask field. */
+  accent?: 'blue' | 'red' | 'dark';
+  id?: string;
+}
+const {
+  title = 'Vertel wat je wilt bouwen',
+  lede = `Binnen ${SITE.reply} hoor je van ons, meestal met een voorstel voor een startsprint.`,
+  entry,
+  training = false,
+  accent = 'blue',
+  id = 'contact',
+} = Astro.props;
+
+const topics = [
+  ...(training ? ['Training'] : []),
+  ...(Object.keys(ENTRIES) as Entry[]).map((k) => ENTRIES[k].topic),
+  'Weet ik nog niet',
+];
+const preselect = training ? 'Training' : entry ? ENTRIES[entry].topic : undefined;
+const groups = [
+  { name: 'topics', legend: 'Waar gaat het om?', options: topics, checked: preselect },
+  { name: 'budget', legend: 'Aan welk budget denk je?', options: ['Onder €10.000', '€10.000 tot €25.000', '€25.000 tot €100.000', 'Meer dan €100.000', 'Nog geen idee'] },
+  { name: 'owner', legend: 'Wie beslist hierover?', options: ['Ik beslis zelf', 'Ik beslis mee', 'Ik oriënteer me voor iemand anders'] },
+];
+const people = FOUNDER_ORDER.map((k) => FOUNDERS[k]);
+---
+
+<section class="hs-contact hs-snap" id={id}>
+  <div class={`hs-contact__zone on-${accent}`} data-reveal>
+    <h2 class="hs-d-m" data-item>{zet(title, { display: true, cap: 13 })}</h2>
+    <p class="hs-body-l" data-item style="--i:1">{zet(lede)}</p>
+    <div class="hs-contact__direct" data-item style="--i:2">
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <a href={SITE.phoneHref}>{SITE.phone}</a>
+    </div>
+    <div class="hs-contact__people" data-item style="--i:3">
+      <h3 class="hs-title">Plan een kennismaking</h3>
+      <ul>
+        {people.map((m) => (
+          <li>
+            <a class="hs-person" href={m.calendar} target="_blank" rel="noopener">
+              <span class="hs-person__photo">
+                <img src={m.photo} alt="" width="300" height="400" loading="lazy" decoding="async" />
+              </span>
+              <span class="hs-person__name">{m.name}</span>
+              <span class="hs-person__hint">{zet(m.hint, { cap: 13 })}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="hs-contact__form" data-reveal>
+    <form class="hs-form" data-hs-form method="post" action="/api/contact" novalidate>
+      <input class="hs-honey" type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="hs-form__row" data-item>
+        <label class="hs-field">
+          <span class="hs-label">Naam</span>
+          <input class="hs-input" type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">E-mail</span>
+          <input class="hs-input" type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">Organisatie</span>
+          <input class="hs-input" type="text" name="organization" autocomplete="organization" />
+        </label>
+      </div>
+      {groups.map((g, gi) => (
+        <fieldset data-item style={`--i:${gi + 1}`}>
+          <legend>{g.legend}</legend>
+          <div class="hs-chips">
+            {g.options.map((o) => (
+              <label class="hs-chip">
+                <input type="radio" name={g.name} value={o} checked={g.checked === o} />
+                <span>{o}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+      <label class="hs-field" data-item style="--i:5">
+        <span class="hs-label">{training ? 'Wat wil je je team leren?' : 'Wat wil je bouwen?'}</span>
+        <textarea class="hs-input" name="message" rows="3" required></textarea>
+      </label>
+      <div class="hs-form__foot" data-item style="--i:6">
+        <p class="hs-form__status" role="status" aria-live="polite"></p>
+        <button class="hs-btn hs-btn--dark" type="submit">
+          Verstuur
+          <HsIcon name="arrow-right" />
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,5 +1,5 @@
-// Behaviour for the house-style experiment: cover rotation, section build-ups, counting numbers,
-// mobile menu and the (non-posting) form. Re-initialised on every Astro page load.
+// Behaviour of the house-style site: cover rotation, section build-ups, counting numbers, the menu,
+// forms, FAQ anchors and filters. Re-initialised on every Astro page load.
 
 let teardown: AbortController | null = null;
 const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -104,7 +104,9 @@ function countUp(el: HTMLElement) {
   const target = Number(el.dataset.count);
   const decimals = Number(el.dataset.decimals ?? 0);
   const suffix = el.dataset.suffix ?? '';
-  const fmt = (v: number) => v.toFixed(decimals).replace('.', ',') + suffix;
+  const prefix = el.dataset.prefix ?? '';
+  const nf = new Intl.NumberFormat('nl-NL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  const fmt = (v: number) => prefix + nf.format(v) + suffix;
   if (reduceMotion() || !Number.isFinite(target)) { el.textContent = fmt(target); return; }
   const start = performance.now();
   const step = (now: number) => {
@@ -266,14 +268,82 @@ function initSubnav(signal: AbortSignal) {
   signal.addEventListener('abort', clear);
 }
 
+/**
+ * Forms post JSON to their action (/api/contact). The bot checks of the old React form stay: a
+ * honeypot, a minimum fill time, links in the message and name equal to organisation all get a
+ * silent "success". The server adds origin checks and a rate limit.
+ */
 function initForm(signal: AbortSignal) {
-  const form = document.querySelector<HTMLFormElement>('[data-hs-form]');
-  if (!form) return;
-  const status = form.querySelector<HTMLElement>('.hs-form__status');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (status) status.textContent = 'Dit is een testversie van de homepage. Het formulier verstuurt niets; mail ons via info@aiheroes.io.';
-  }, { signal });
+  document.querySelectorAll<HTMLFormElement>('[data-hs-form]').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('.hs-form__status');
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const opened = Date.now();
+    const say = (text: string, state: 'ok' | 'error' | 'busy') => {
+      if (!status) return;
+      status.textContent = text;
+      status.dataset.state = state;
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+      const missing = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')].find((f) => !f.value.trim());
+      if (missing) {
+        say('Vul je naam, e-mailadres en je vraag in.', 'error');
+        missing.focus();
+        return;
+      }
+      const email = form.querySelector<HTMLInputElement>('input[type="email"]');
+      if (email && !email.checkValidity()) {
+        say('Dat e-mailadres klopt nog niet helemaal.', 'error');
+        email.focus();
+        return;
+      }
+      const done = () => {
+        form.reset();
+        say(form.dataset.success ?? 'Ontvangen. Binnen 24 uur hoor je van ons.', 'ok');
+      };
+      const bot = !!data.botField || Date.now() - opened < 3000 || /<a[\s>]/i.test(data.message ?? '')
+        || (!!data.name?.trim() && data.name.trim() === data.organization?.trim());
+      if (bot) { done(); return; }
+      say('Bezig met versturen…', 'busy');
+      if (button) button.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ botField: '', ...data }),
+        });
+        if (res.ok) done();
+        else say('Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+      } catch {
+        say('Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+      } finally {
+        if (button) button.disabled = false;
+      }
+    }, { signal });
+  });
+}
+
+/** FAQ answers are <details>; a link to one (#faq-...) opens it. */
+function initFaq() {
+  if (!location.hash) return;
+  const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (target instanceof HTMLDetailsElement) target.open = true;
+}
+
+/** Case and card filters: buttons with data-filter show only the items whose data-tags match. */
+function initFilter(signal: AbortSignal) {
+  document.querySelectorAll<HTMLElement>('[data-filter-group]').forEach((group) => {
+    const buttons = [...group.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const list = document.getElementById(group.dataset.filterGroup!);
+    if (!list) return;
+    const items = [...list.querySelectorAll<HTMLElement>('[data-tags]')];
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      const f = b.dataset.filter!;
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      items.forEach((it) => { it.hidden = f !== 'all' && !(it.dataset.tags ?? '').split(' ').includes(f); });
+    }, { signal }));
+  });
 }
 
 function init() {
@@ -291,6 +361,8 @@ function init() {
   initReveal(observers);
   initAI(observers);
   initForm(signal);
+  initFaq();
+  initFilter(signal);
 }
 
 document.addEventListener('astro:page-load', init);

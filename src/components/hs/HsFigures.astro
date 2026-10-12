@@ -1,0 +1,32 @@
+---
+// A row of figures over labels; numbers count up on entry (hs-client), the server-rendered text is
+// the final value. On light or dark; the first figure is red.
+import { zet } from './hs';
+
+export interface Figure {
+  /** Shown as is when `count` is not set (e.g. "€8.000", "6 dagen"). */
+  value: string;
+  label: string;
+  /** Count up to this number, with these decimals and suffix. */
+  count?: { to: number; decimals?: number; prefix?: string; suffix?: string };
+}
+interface Props {
+  items: Figure[];
+  tone?: 'light' | 'dark';
+}
+const { items, tone = 'light' } = Astro.props;
+const width = Math.max(...items.map((f) => f.value.length)) + 0.4;
+---
+
+<dl class:list={['hs-stats', { 'hs-stats--light': tone === 'light' }]} data-item style={`--n:${items.length};--fig-w:${width}ch`}>
+  {items.map((f) => (
+    <div>
+      <dt>{zet(f.label, { cap: 24 })}</dt>
+      {f.count ? (
+        <dd data-count={f.count.to} data-decimals={f.count.decimals ?? 0} data-suffix={f.count.suffix ?? ''} data-prefix={f.count.prefix ?? ''}>{f.value}</dd>
+      ) : (
+        <dd>{f.value}</dd>
+      )}
+    </div>
+  ))}
+</dl>

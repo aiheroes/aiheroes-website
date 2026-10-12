@@ -19,6 +19,16 @@
   },
   "redirects": [
     {
+      "source": "/nl/experiment/huisstijl",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/diensten",
       "destination": "/nl/diensten",
       "statusCode": 301
@@ -395,6 +405,34 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/Brand_Package/_favicon_test.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/Brand_Package/_favicon_test",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/og-image-generator.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/og-image-generator",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/nl/menu",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/hanze/:path*",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/hanze",
+      "destination": "/api/gone"
+    },
     {
       "source": "/category/:path*",
       "destination": "/api/gone"

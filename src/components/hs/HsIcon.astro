@@ -1,0 +1,19 @@
+---
+// IconPark Outline on its 48 grid; paint, stroke 4, square ends and mitred joins come from CSS
+// (.hs-icon). Strokes draw themselves (pathLength=1); "F:" paths are filled shapes (dots, small
+// blocks), "FS:" are filled and stroked.
+import { ICONS, type IconName } from './hs';
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+const { name, class: cls } = Astro.props;
+const parts = (ICONS[name] as readonly string[]).map((d) =>
+  d.startsWith('FS:') ? { d: d.slice(3), kind: 'fs' } : d.startsWith('F:') ? { d: d.slice(2), kind: 'f' } : { d, kind: 's' },
+);
+---
+
+<svg class:list={['hs-icon', cls]} viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+  {parts.map((p) => (p.kind === 's' ? <path d={p.d} pathLength="1" /> : <path d={p.d} class={p.kind === 'f' ? 'is-fill' : 'is-fill is-stroke'} />))}
+</svg>

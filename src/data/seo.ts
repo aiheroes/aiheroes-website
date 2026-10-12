@@ -3,13 +3,10 @@
 // noindexed and sitemapped sends a contradictory signal crawlers handle badly).
 // Keep this list in sync with every page that passes `noindex` to its layout.
 export const NOINDEX_PATHS = [
-  '/hanze',
-  '/nl/menu',
   '/nl/legal/privacy',
   '/nl/legal/voorwaarden',
   '/en/legal/privacy',
   '/en/legal/terms',
   '/nl/legal/ai-assistent',
   '/en/legal/ai-assistant',
-  '/nl/experiment/huisstijl',
 ];
