@@ -69,9 +69,11 @@ export const SALON_NEXT: SalonEdition = {
   lumaUrl: 'https://luma.com/AI-Salon-Gro-2',
   speakers: [
     // Founder and director of Energiso (energy management, ISO 50001). Portrait from energiso.nl.
-    { name: 'Ilse Gosliga', org: 'Energiso', topic: null, photo: '/speakers/ilse-gosliga.jpg' },
-    // Entrepreneur and business coach in Groningen. Confirmed 2026-10-05; portrait and topic requested.
-    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: null, photo: null },
+    { name: 'Ilse Gosliga', org: 'Energiso', topic: 'Buildings that learn: 26% less energy, no new hardware', photo: '/speakers/ilse-gosliga.jpg' },
+    // Business coach in Groningen since 2016, 150+ entrepreneurs; runs the workshop 'Ondernemen met AI'.
+    // Portrait cropped from alexvanginneken.com. His title is not known yet (2026-10-12): the page shows
+    // "Onderwerp volgt" until it is.
+    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: null, photo: '/speakers/alex-van-ginneken.jpg' },
   ],
   // Edition #2 starts with a clean sponsor list; add entries here as they confirm.
   sponsors: [],
@@ -104,7 +106,7 @@ export const SALON_EDITIONS: SalonEdition[] = [
     city: 'Groningen',
     status: 'soldout',
     speakers: [
-      { name: 'Ruben Molenaars', org: 'Mindr-ai', topic: 'Keeping our minds sharp in the age of AI', photo: '/speakers/ruben-molenaars.jpg' },
+      { name: 'Ruben Molenaars', org: 'YourMindr', topic: 'Keeping our minds sharp in the age of AI', photo: '/speakers/ruben-molenaars.jpg' },
       { name: 'Lilian Peters', org: 'UMCG, FemHealthData', topic: 'FemHealthData: using AI to improve women’s health', photo: '/speakers/lilian-peters.jpg' },
     ],
     sponsors: [
