@@ -11,8 +11,9 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
 const SCAN = ['*.astro', '*.tsx', '*.ts', '*.jsx', '*.mdx', '*.md', '*.css', '*.html'];
-// Archives and docs that quote old markup; not rendered on the site.
-const SKIP = [/^migration\//, /^docs\//, /^showreel\//, /^scripts\/check-side-stripes\.mjs$/, /(^|\/)AGENTS\.md$/, /(^|\/)CLAUDE\.md$/, /^AUDIT/, /README\.md$/];
+// Archives and docs that quote old markup, plus standalone presentation exports
+// whose bundled template styles must stay intact (they don't use the site's UI).
+const SKIP = [/^migration\//, /^docs\//, /^showreel\//, /^src\/assets\/deck\//, /^scripts\/check-side-stripes\.mjs$/, /(^|\/)AGENTS\.md$/, /(^|\/)CLAUDE\.md$/, /^AUDIT/, /README\.md$/];
 
 const RULES = [
   { re: /\bborder-(?:l|s)-(?:[2-9]|\[)/, what: 'Tailwind side stripe (border-l-2…8 / border-l-[…])' },
