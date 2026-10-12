@@ -1,8 +1,8 @@
 ---
-// H2 Algemene voorwaarden (docs/relaunch/pages/H2-voorwaarden.md), in the hulp-template. The text of
-// the articles is unchanged: the legal update for the start sprint and builds (what the client keeps,
-// maintenance, the source-code line) comes from Frans and a lawyer and blocks the launch
-// (01-besluiten §15). No pdf (§16).
+// H2 Algemene voorwaarden (docs/relaunch/pages/H2-voorwaarden.md), in the hulp-template. Text from
+// docs/relaunch/voorwaarden-concept.md with Frans's business choices (01-besluiten §18), approved by
+// a lawyer on 2026-10-12. Start sprint, build, maintenance, AI models and the AI Act, intellectual
+// property (source code stays with AI Heroes, perpetual right of use after full payment). No pdf.
 import HsLayout from '../../../layouts/HsLayout.astro';
 import HsHelp from '../../../components/hs/HsHelp.astro';
 import { SITE } from '../../../data/site';
@@ -12,33 +12,38 @@ const toc = [
   { id: 'definities', label: '1. Definities' },
   { id: 'toepasselijkheid', label: '2. Toepasselijkheid' },
   { id: 'offertes', label: '3. Offertes en overeenkomsten' },
-  { id: 'uitvoering', label: '4. Uitvoering van diensten' },
-  { id: 'betaling', label: '5. Betaling' },
-  { id: 'annulering', label: '6. Annulering' },
-  { id: 'eigendom', label: '7. Intellectueel eigendom' },
-  { id: 'aansprakelijkheid', label: '8. Aansprakelijkheid' },
-  { id: 'geheimhouding', label: '9. Geheimhouding' },
-  { id: 'geschillen', label: '10. Geschillen' },
+  { id: 'uitvoering', label: '4. Uitvoering' },
+  { id: 'startsprint', label: '5. De startsprint' },
+  { id: 'bouw', label: '6. Bouw en oplevering' },
+  { id: 'beheer', label: '7. Beheer en doorontwikkeling' },
+  { id: 'ai', label: '8. AI-modellen en de AI Act' },
+  { id: 'eigendom', label: '9. Intellectueel eigendom' },
+  { id: 'persoonsgegevens', label: '10. Persoonsgegevens' },
+  { id: 'betaling', label: '11. Betaling' },
+  { id: 'annulering', label: '12. Annulering' },
+  { id: 'aansprakelijkheid', label: '13. Aansprakelijkheid' },
+  { id: 'geheimhouding', label: '14. Geheimhouding' },
+  { id: 'geschillen', label: '15. Geschillen' },
 ];
 ---
 
 <HsLayout
   title="Algemene voorwaarden"
   seoTitle="Algemene voorwaarden AI Heroes"
-  description="De algemene voorwaarden van AI Heroes: offertes, uitvoering, betaling, annulering, intellectueel eigendom, aansprakelijkheid en geschillen."
+  description="De algemene voorwaarden van AI Heroes: startsprint, bouw, beheer, AI-modellen en de AI Act, intellectueel eigendom, betaling, annulering, aansprakelijkheid en geschillen."
   noindex
   crumbs={crumbs}
 >
   <HsHelp
     title="Algemene voorwaarden"
     intro="De spelregels voor onze samenwerking."
-    updated="mei 2026"
+    updated="oktober 2026"
     crumbs={crumbs}
     summary={[
-      'Offertes zijn vrijblijvend en 30 dagen geldig.',
-      'Facturen betaal je binnen 14 dagen.',
-      'Rechten op wat AI Heroes ontwikkelt blijven bij AI Heroes; je krijgt een gebruiksrecht voor eigen gebruik.',
-      'De aansprakelijkheid is beperkt tot het factuurbedrag van de opdracht.',
+      'De startsprint duurt zes werkdagen tegen een vast bedrag: 50% bij de opdracht, 50% na dag zes.',
+      'De broncode blijft bij AI Heroes; na volledige betaling heb je een eeuwigdurend gebruiksrecht voor je eigen bedrijfsvoering.',
+      'Je gegevens blijven van jou en worden standaard binnen de Europese Unie verwerkt.',
+      'Facturen betaal je binnen 14 dagen; de aansprakelijkheid is beperkt.',
       'Nederlands recht is van toepassing.',
     ]}
     toc={toc}
@@ -51,50 +56,100 @@ const toc = [
       <ul>
         <li><strong>AI Heroes:</strong> {SITE.legalName}, gevestigd aan {SITE.address.street}, {SITE.address.postcode} {SITE.address.city}, ingeschreven bij de Kamer van Koophandel onder nummer {SITE.kvk}, btw-nummer {SITE.vat}.</li>
         <li><strong>Opdrachtgever:</strong> de natuurlijke of rechtspersoon die met AI Heroes een overeenkomst aangaat.</li>
-        <li><strong>Diensten:</strong> alle werkzaamheden die AI Heroes voor opdrachtgever verricht, waaronder workshops, trainingen, advies en softwareontwikkeling.</li>
+        <li><strong>Startsprint:</strong> het afgebakende traject van zes werkdagen tegen een vast bedrag, dat eindigt in een prototype of een bouwplan en een business case.</li>
+        <li><strong>Bouw:</strong> de ontwikkeling van software na de startsprint, in sprints van twee weken.</li>
+        <li><strong>Beheer:</strong> het in de lucht houden, onderhouden, beveiligen en doorontwikkelen van opgeleverde software na oplevering.</li>
+        <li><strong>Training:</strong> workshops, trainingen en sessies, los of als onderdeel van een bouw.</li>
+        <li><strong>Resultaten:</strong> alles wat AI Heroes in het kader van de overeenkomst maakt of levert, waaronder prototypes, software, broncode, documentatie, bouwplannen, business cases en trainingsmateriaal.</li>
       </ul>
 
       <h2 id="toepasselijkheid">Artikel 2. Toepasselijkheid</h2>
-      <p>Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen AI Heroes en opdrachtgever. Afwijkingen zijn alleen geldig indien schriftelijk overeengekomen.</p>
+      <p>Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen AI Heroes en opdrachtgever. Afwijkingen zijn alleen geldig als ze schriftelijk zijn overeengekomen. Algemene voorwaarden van opdrachtgever zijn niet van toepassing.</p>
 
       <h2 id="offertes">Artikel 3. Offertes en overeenkomsten</h2>
-      <ul>
+      <ol>
         <li>Offertes zijn vrijblijvend en geldig gedurende 30 dagen.</li>
-        <li>Een overeenkomst komt tot stand na schriftelijke bevestiging door AI Heroes.</li>
+        <li>Een overeenkomst komt tot stand na schriftelijke bevestiging door AI Heroes of doordat AI Heroes met de uitvoering begint.</li>
         <li>Prijzen zijn exclusief btw, tenzij anders vermeld.</li>
-      </ul>
+      </ol>
 
-      <h2 id="uitvoering">Artikel 4. Uitvoering van diensten</h2>
-      <p>AI Heroes voert alle diensten naar beste vermogen uit conform de eisen van goed vakmanschap. Onze diensten zijn inspanningsverplichtingen, tenzij uitdrukkelijk een resultaatsverplichting is overeengekomen.</p>
-      <p>Voor workshops en trainingen geldt dat de inhoud is afgestemd op het moment van levering. AI en technologie ontwikkelen zich snel; we garanderen dat de kennis actueel is op het moment van de workshop.</p>
+      <h2 id="uitvoering">Artikel 4. Uitvoering</h2>
+      <ol>
+        <li>AI Heroes voert de overeenkomst naar beste vermogen uit, volgens de eisen van goed vakmanschap. Het gaat om inspanningsverplichtingen, tenzij uitdrukkelijk een resultaatsverplichting is overeengekomen.</li>
+        <li>Opdrachtgever verleent de medewerking die nodig is: hij stelt tijdig de afgesproken mensen, gegevens, systemen en toegang beschikbaar. Vertraging door het ontbreken daarvan komt voor rekening van opdrachtgever.</li>
+        <li>AI Heroes mag derden inschakelen voor de uitvoering, onder dezelfde geheimhouding.</li>
+      </ol>
 
-      <h2 id="betaling">Artikel 5. Betaling</h2>
-      <ul>
-        <li><strong>Betalingstermijn:</strong> facturen dienen binnen 14 dagen na factuurdatum te worden voldaan.</li>
-        <li><strong>Vooruitbetaling:</strong> voor bepaalde diensten kan vooruitbetaling worden gevraagd.</li>
-        <li><strong>Verzuim:</strong> bij niet-tijdige betaling is de wettelijke handelsrente verschuldigd.</li>
-        <li><strong>Incassokosten:</strong> buitengerechtelijke incassokosten komen voor rekening van opdrachtgever.</li>
-      </ul>
+      <h2 id="startsprint">Artikel 5. De startsprint</h2>
+      <ol>
+        <li>De startsprint duurt zes werkdagen en kost het vaste bedrag uit de offerte. AI Heroes factureert 50% bij de opdracht en 50% na dag zes.</li>
+        <li>Aan het eind levert AI Heroes, afhankelijk van de vraag, een prototype of een bouwplan, en een business case.</li>
+        <li>Opdrachtgever zorgt dat de eigenaar van de vraag aanwezig is op dag één en dag zes, en dat de afgesproken gebruikers en een kenner van de data en systemen beschikbaar zijn.</li>
+        <li>Na de startsprint besluit opdrachtgever of er een bouw volgt. Er is geen verplichting tot een vervolgopdracht. Gaat de bouw niet door, dan behoudt opdrachtgever het gebruiksrecht uit artikel 9 op het prototype of bouwplan en de business case.</li>
+        <li>Blijkt in de startsprint dat AI geen passende oplossing is of dat de business case niet sluit, dan meldt AI Heroes dat. Het vaste bedrag blijft verschuldigd.</li>
+      </ol>
 
-      <h2 id="annulering">Artikel 6. Annulering</h2>
-      <p>Voor workshops en trainingen gelden de volgende annuleringsvoorwaarden:</p>
-      <ul>
+      <h2 id="bouw">Artikel 6. Bouw en oplevering</h2>
+      <ol>
+        <li>De bouw verloopt in sprints van twee weken, met een demonstratie na elke sprint. Omvang, planning en prijs staan in de offerte of het bouwplan.</li>
+        <li>Wijzigingen in de omvang worden schriftelijk afgesproken en kunnen gevolgen hebben voor planning en prijs.</li>
+        <li>Na oplevering test opdrachtgever de software binnen 10 werkdagen. Meldt opdrachtgever in die termijn geen wezenlijke gebreken, of neemt hij de software in gebruik, dan geldt de software als geaccepteerd.</li>
+        <li>Gebreken die binnen de acceptatietermijn worden gemeld en die aan AI Heroes zijn toe te rekenen, herstelt AI Heroes zonder extra kosten.</li>
+      </ol>
+
+      <h2 id="beheer">Artikel 7. Beheer en doorontwikkeling</h2>
+      <ol>
+        <li>Na oplevering beheert en ontwikkelt AI Heroes de software door, op basis van een beheerovereenkomst met de afgesproken diensten, beschikbaarheid, vergoeding, looptijd en opzegtermijn. Die laatste twee worden per opdrachtgever afgesproken.</li>
+        <li>Hosting vindt plaats bij een partij en op een locatie die vooraf met opdrachtgever zijn afgesproken, standaard binnen de Europese Unie, of op de eigen servers van opdrachtgever.</li>
+        <li>AI Heroes documenteert de software, de koppelingen en het datamodel, zodat beheer en doorontwikkeling niet afhankelijk zijn van één persoon.</li>
+        <li>Bij beëindiging van het beheer ontvangt opdrachtgever de documentatie van de software en een export van zijn eigen gegevens in een gangbaar formaat. Op verzoek helpt AI Heroes bij de overdracht naar een andere partij, tegen het geldende uurtarief. Opdrachtgever kan de broncode overnemen tegen een vergoeding die partijen dan afspreken.</li>
+      </ol>
+
+      <h2 id="ai">Artikel 8. AI-modellen en de AI Act</h2>
+      <ol>
+        <li>AI Heroes bouwt modelonafhankelijk: het gebruikte AI-model is te vervangen zonder de toepassing opnieuw te bouwen. Gebruik van modellen of diensten van derden valt onder de voorwaarden van die derden; de kosten daarvan staan in de business case of de beheerovereenkomst.</li>
+        <li>AI Heroes neemt in het ontwerp de eisen op die de AI Act stelt aan de toepassing, voor zover bekend bij het ontwerp: classificatie, logging, menselijk toezicht en transparantie.</li>
+        <li>Opdrachtgever is verantwoordelijk voor het gebruik van de software in zijn organisatie, waaronder de verplichtingen die de AI Act aan de gebruiksverantwoordelijke stelt en de AI-geletterdheid van zijn medewerkers.</li>
+        <li>Zet opdrachtgever de toepassing onder eigen naam of merk in gebruik, dan is opdrachtgever de aanbieder in de zin van de AI Act. AI Heroes levert de technische documentatie en de ontwerpkeuzes die opdrachtgever daarvoor nodig heeft.</li>
+      </ol>
+
+      <h2 id="eigendom">Artikel 9. Intellectueel eigendom</h2>
+      <ol>
+        <li>Alle intellectuele eigendomsrechten op de resultaten, waaronder de broncode, blijven bij AI Heroes, tenzij schriftelijk anders overeengekomen.</li>
+        <li>Opdrachtgever krijgt een niet-exclusief en niet-overdraagbaar gebruiksrecht op de resultaten voor zijn eigen bedrijfsvoering, zolang hij aan zijn betalingsverplichtingen voldoet. Na volledige betaling is het gebruiksrecht eeuwigdurend, ook als het beheer eindigt.</li>
+        <li>Gegevens van opdrachtgever blijven van opdrachtgever. AI Heroes gebruikt ze alleen voor de uitvoering van de overeenkomst.</li>
+        <li>Werkt AI Heroes als extra capaciteit in de code van opdrachtgever, dan komen de rechten op de bijdragen aan die code toe aan opdrachtgever, zodra de bijbehorende facturen betaald zijn.</li>
+        <li>Trainingsmateriaal mag niet zonder toestemming worden verspreid of doorverkocht.</li>
+      </ol>
+
+      <h2 id="persoonsgegevens">Artikel 10. Persoonsgegevens</h2>
+      <p>Verwerkt AI Heroes persoonsgegevens namens opdrachtgever, dan sluiten partijen een verwerkersovereenkomst. AI Heroes verwerkt die gegevens binnen de Europese Unie, tenzij schriftelijk anders afgesproken.</p>
+
+      <h2 id="betaling">Artikel 11. Betaling</h2>
+      <ol>
+        <li>Facturen worden binnen 14 dagen na factuurdatum voldaan.</li>
+        <li>Voor bepaalde diensten kan vooruitbetaling worden gevraagd.</li>
+        <li>Bij niet-tijdige betaling is de wettelijke handelsrente verschuldigd en mag AI Heroes de uitvoering opschorten.</li>
+        <li>Buitengerechtelijke incassokosten komen voor rekening van opdrachtgever.</li>
+      </ol>
+
+      <h2 id="annulering">Artikel 12. Annulering</h2>
+      <p>Voor trainingen geldt:</p>
+      <ol>
         <li>Tot 14 dagen voor aanvang: kosteloos annuleren.</li>
-        <li>7 tot 14 dagen voor aanvang: 50% van het bedrag verschuldigd.</li>
-        <li>Minder dan 7 dagen voor aanvang: 100% van het bedrag verschuldigd.</li>
+        <li>Van 14 tot 7 dagen voor aanvang: 50% van het bedrag is verschuldigd.</li>
+        <li>Minder dan 7 dagen voor aanvang: 100% van het bedrag is verschuldigd.</li>
         <li>Verplaatsen naar een andere datum is in overleg mogelijk.</li>
-      </ul>
+      </ol>
+      <p>Voor een geplande startsprint geldt: verplaatsen kan altijd in overleg. Annuleren is kosteloos tot 7 dagen voor de start; de aanbetaling wordt dan terugbetaald. Bij annulering binnen 7 dagen voor de start is 50% van het bedrag verschuldigd.</p>
 
-      <h2 id="eigendom">Artikel 7. Intellectueel eigendom</h2>
-      <p>Alle rechten op door AI Heroes ontwikkelde materialen, methodieken en software blijven bij AI Heroes, tenzij schriftelijk anders overeengekomen. Opdrachtgever krijgt een gebruiksrecht voor eigen gebruik. Materialen mogen niet zonder toestemming worden verspreid of doorverkocht.</p>
+      <h2 id="aansprakelijkheid">Artikel 13. Aansprakelijkheid</h2>
+      <p>De aansprakelijkheid van AI Heroes is beperkt tot het bedrag dat in het betreffende geval door haar aansprakelijkheidsverzekering wordt uitbetaald, met als maximum het factuurbedrag van de betreffende opdracht, en bij beheer de vergoeding over de laatste 6 maanden. AI Heroes is niet aansprakelijk voor indirecte schade, gevolgschade of gederfde winst, en niet voor uitkomsten van AI-modellen die opdrachtgever zonder het afgesproken menselijk toezicht gebruikt.</p>
 
-      <h2 id="aansprakelijkheid">Artikel 8. Aansprakelijkheid</h2>
-      <p>De aansprakelijkheid van AI Heroes is beperkt tot het bedrag dat in het desbetreffende geval door onze aansprakelijkheidsverzekering wordt uitbetaald, met als maximum het factuurbedrag van de betreffende opdracht. AI Heroes is niet aansprakelijk voor indirecte schade, gevolgschade of gederfde winst.</p>
+      <h2 id="geheimhouding">Artikel 14. Geheimhouding</h2>
+      <p>Beide partijen houden alle vertrouwelijke informatie geheim die zij in het kader van de overeenkomst van elkaar verkrijgen. Deze verplichting geldt ook na beëindiging van de overeenkomst.</p>
 
-      <h2 id="geheimhouding">Artikel 9. Geheimhouding</h2>
-      <p>Beide partijen zijn verplicht tot geheimhouding van alle vertrouwelijke informatie die zij in het kader van de overeenkomst van elkaar hebben verkregen. Deze verplichting geldt ook na beëindiging van de overeenkomst.</p>
-
-      <h2 id="geschillen">Artikel 10. Geschillen</h2>
+      <h2 id="geschillen">Artikel 15. Geschillen</h2>
       <p>Op alle overeenkomsten is Nederlands recht van toepassing. Geschillen worden voorgelegd aan de bevoegde rechter in het arrondissement waar AI Heroes is gevestigd.</p>
     </div>
   </HsHelp>

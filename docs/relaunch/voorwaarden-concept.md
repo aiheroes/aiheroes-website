@@ -1,6 +1,7 @@
 # Concept: algemene voorwaarden AI Heroes (relaunch)
 
-**Status:** concept van 2026-10-12, geschreven door Claude op basis van het aanbod in
+**Status:** goedgekeurd door de jurist op 2026-10-12 en zo op de site gezet (`/nl/legal/voorwaarden`,
+`/en/legal/terms`). Oorspronkelijk concept van 2026-10-12, geschreven door Claude op basis van het aanbod in
 `docs/company-profile.md` en de besluiten in `docs/relaunch/01-besluiten.md`. **Dit is geen
 juridisch advies.** Een jurist toetst de tekst voordat hij op `/nl/legal/voorwaarden` komt
 (besluit 2026-10-12). Daarna volgt de Engelse versie op `/en/legal/terms`.
@@ -102,8 +103,7 @@ overeengekomen. Algemene voorwaarden van opdrachtgever zijn niet van toepassing.
    van zijn medewerkers.
 4. Zet opdrachtgever de toepassing onder eigen naam of merk in gebruik, dan is opdrachtgever de
    aanbieder in de zin van de AI Act. AI Heroes levert de technische documentatie en de
-   ontwerpkeuzes die opdrachtgever daarvoor nodig heeft. **[Voor de jurist: toetsen of deze
-   rolverdeling in alle situaties houdbaar is]**
+   ontwerpkeuzes die opdrachtgever daarvoor nodig heeft.
 
 ## Artikel 9. Intellectueel eigendom
 

@@ -235,3 +235,8 @@ Dit bestand gaat voor op de open vragen in de paginaplannen. Waar een besluit ie
 | Spraaktechniek op L01 | Voorbeelden (Deepgram, ElevenLabs, Mistral) **blijven staan**; David checkt later | L01 |
 | AI Salon | Brabant-chapter **zonder link**; volgen via **LinkedIn** en de **Luma-kalender** (https://luma.com/aisalon-groningen) | P15 |
 | LinkedIn founders | Frans `/in/frans-hoorn-057b082a/`, David `/in/davidnhoman/`, Jan `/in/jan-brusse-42a5a3139/` (ook als `sameAs` in het Person-schema) | team.ts |
+
+## 20. Voorwaarden goedgekeurd (2026-10-12)
+
+De jurist is akkoord met het concept (`docs/relaunch/voorwaarden-concept.md`). De tekst staat op
+`/nl/legal/voorwaarden` en, als vertaling waarbij de Nederlandse tekst voorgaat, op `/en/legal/terms`.

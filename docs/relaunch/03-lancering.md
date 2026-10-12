@@ -21,7 +21,6 @@ fase 8 is alles klaar behalve de lancering zelf.
 
 | Wat | Blokkeert | Waar |
 |---|---|---|
-| Voorwaarden: jurist toetst het concept `docs/relaunch/voorwaarden-concept.md` en de **[KEUZE]**-punten worden ingevuld; daarna komt de tekst op de site (NL en EN) | **de lancering** | `/nl/legal/voorwaarden`, `/en/legal/terms` |
 | David bevestigt de spraaktechniek-voorbeelden op L01 (Deepgram, ElevenLabs, Mistral) | nee | `ai-klantenservice.mdx` (NL/EN) |
 | Jan leest K2 na | nee | `kennis/nl/ai-geletterdheid.mdx` |
 | Quotes Kwakkel, Strive en INQ22 | nee | `case-studies/*` (`quote.approved`) |
@@ -30,7 +29,8 @@ fase 8 is alles klaar behalve de lancering zelf.
 | Eigen AI-beleid als basis voor het sjabloon (daarna `enabled: true` in `server/downloads.ts`) | nee | K3 |
 | DNS-record `aoplatform.backend.aiheroes.io` verwijderen | nee | registrar |
 
-Afgerond in het interview van 2026-10-12 (01-besluiten §17): akkoord op privacy en de
+Afgerond op 2026-10-12: de voorwaarden zijn door de jurist goedgekeurd en staan op de site (NL en EN).
+Uit het interview (01-besluiten §17): akkoord op privacy en de
 AI-assistentpagina, founder-bio's, de naam Basistraining AI, geen einddatum voor vacatures.
 
 ## Lanceringsdag
