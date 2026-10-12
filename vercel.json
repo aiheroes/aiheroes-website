@@ -19,6 +19,16 @@
   },
   "redirects": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap-index.xml",
+      "statusCode": 301
+    },
+    {
       "source": "/nl/experiment/huisstijl",
       "destination": "/",
       "statusCode": 301
