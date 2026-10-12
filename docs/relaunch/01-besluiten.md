@@ -259,4 +259,5 @@ De jurist is akkoord met het concept (`docs/relaunch/voorwaarden-concept.md`). D
 | Downloadformulier AI-beleid | **Blijft** naam, e-mail en organisatie | K3 |
 | Sprekersportretten AI Salon | **Zwart-wit, zonder duotoon** | P15 |
 | Naam van de derde ingang | **Lokale AI** (NL) en **Self-hosted AI** (EN); was "Software in eigen beheer" / "Software you control", te vaag en in het Engels ook te lezen als eigendom van de code. De URL's (`/nl/eigen-beheer`, `/en/self-hosted`) blijven. De landing eronder houdt "AI op eigen servers" / "AI on your own servers"; de covertab heet "Lokale AI" / "Self-hosted" | menu, footer, ingangskaarten, formulierchips, P5, landings, kennis, llms.txt, assistent-prompt |
+| Accentwoord op telefoons | **Geen eigen kleur onder 640px**: te moeilijk leesbaar op die maat. Vanaf 640px rood op licht en donker, inkt op een kleurvlak (na de lancering, 2026-10-12) | alle koppen |
 | Sponsors van een editie zonder bevestigde sponsor | **Eén oproep** ("Word sponsor van editie #2") in plaats van lege logovakken; geen verzonnen sponsors | P15 |

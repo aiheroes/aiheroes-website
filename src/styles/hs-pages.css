@@ -79,8 +79,10 @@ button.hs-nav__top { cursor: pointer; }
   line-height: 1.01;
 }
 .hs-pcover__title.is-long { font-size: clamp(min(2rem, 8.4vw), 0.6rem + 3.9vw, 5.5rem); line-height: 1.03; max-width: 15em; }
-.hs-pcover__zone.on-dark .punch { color: var(--red); }
-.hs-pcover__zone:is(.on-red, .on-blue) .hs-pcover__title .punch { color: var(--dark); }
+@media (min-width: 640px) {
+  .hs-pcover__zone.on-dark .punch { color: var(--red); }
+  .hs-pcover__zone:is(.on-red, .on-blue) .hs-pcover__title .punch { color: var(--dark); }
+}
 .hs-pcover__photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--dark); }
 @media (orientation: landscape) and (max-height: 540px) and (max-width: 899px) {
   .hs-pcover__photo { aspect-ratio: auto; height: 55svh; }
