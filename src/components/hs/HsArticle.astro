@@ -120,7 +120,7 @@ if (d.items.length) {
       </div>
       <div class="hs-acov__answer">
         <p class="hs-acov__answer-label">{T.answer}</p>
-        <p class="hs-acov__answer-text">{zet(d.answer)}</p>
+        <p class="hs-acov__answer-text">{zet(d.answer, { cap: 18 })}</p>
       </div>
     </div>
   </header>
@@ -175,7 +175,7 @@ if (d.items.length) {
   .hs-acov { padding-block: 1.25rem max(2.5rem, calc(var(--module) * .75)); }
   .hs-acov__inner { display: grid; gap: 1.5rem; }
   .hs-acov__kicker { margin-top: max(1.5rem, calc(var(--module) * .6)); font-weight: 700; font-size: clamp(.875rem, .8rem + .25vw, 1.0625rem); letter-spacing: .12em; text-transform: uppercase; color: var(--body-on-dark); }
-  .hs-acov__title { max-width: 18em; margin-top: -.5rem; font-size: clamp(2.125rem, 0.9rem + 3.6vw, 5rem); line-height: 1.03; }
+  .hs-acov__title { max-width: 18em; margin-top: -.5rem; font-size: clamp(min(2.125rem, 8vw), 0.9rem + 3.6vw, 5rem); line-height: 1.03; }
   .hs-acov.on-dark :global(.punch) { color: var(--red); }
   .hs-acov:is(.on-red, .on-blue) :global(.punch) { color: var(--dark); }
   .hs-acov__meta { display: flex; align-items: center; gap: .875rem; font-size: .9375rem; color: var(--body-on-dark); }

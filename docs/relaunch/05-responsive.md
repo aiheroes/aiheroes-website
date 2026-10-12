@@ -63,6 +63,10 @@ bereikbaar, sluiten en "Verder met je gesprek" werken.
 | Bij een onvolledig formulier was de melding op telefoons buiten beeld | contact en sollicitatie | lege en foute velden krijgen een rode rand, tot je ze aanpast |
 | Foto's tot 2,5× opgeschaald op 4K en schermen met hoge dichtheid | covers, case | varianten van 900 en 2800px naast de bestaande, via `srcset` |
 | Chatkop brak over twee regels | chat, 320px | compacter onder 360px |
+| Sectiekoppen en casetekst liepen tot 32px over de schermrand ("From WooCommerce" vastgelijmd) | 320 en 344px | koptekstmaten (`hs-d-l`, `hs-d-m`, `hs-d-s`, homepagecover) schalen onder 390px mee |
+| Knoppen die niet mochten afbreken duwden hun kolom te breed ("Plan een gesprek met David", "Vraag ISO 42001-begeleiding aan") | teampagina 320px, artikelen op tablet liggend | een knop blijft op één regel zolang hij past en breekt pas af als hij breder is dan zijn kolom |
+| Artikelcover te breed: "informatiebeveiliging" en vastgelijmde groepen in het korte antwoord | kennisartikelen, 320 en 344px | titelmaat schaalt mee, zacht afbreekstreepje in de titel (meta-tags laten het weg), het korte antwoord breekt eerder |
+| "verwerkingsverantwoordelijke" (28 tekens) liep uit een notitieblok | kennisartikel AI en de AVG, 320px | zacht afbreekstreepje |
 
 ## Bewust zo gelaten
 
@@ -75,10 +79,27 @@ bereikbaar, sluiten en "Verder met je gesprek" werken.
 - **INQ22-screenshot** (1440px) wordt op 4K 1,56× opgeschaald; alleen op 4K bij 100 %.
 - **`/deck`** (Davids deck) valt buiten de huisstijl en buiten deze audit.
 - **Privacy (EN), 320px:** "We comply with the GDPR." steekt 4px in de marge; onzichtbaar.
+- **Tablet liggend (1180px):** in een paar tweekoloms secties (kaarten, Groningen, case) is het
+  vak van een kop 6 tot 8px breder dan zijn kolom; het valt in de binnenmarge, de tekst zelf past.
+  Op de homepage is het vak van de coverkop 23px breder doordat de vier slides één cel delen;
+  de zichtbare kop past ruim.
+- **Meetkanttekening:** headless Chrome op deze laptop meldt `pointer: coarse`, dus de grotere
+  tikvlakken gelden ook in de desktopmetingen; de 8px "overlap" tussen auteursnaam en datum op
+  QHD en 4K is dat onzichtbare tikvlak, niet de tekst. Echte iOS Safari en Samsung Internet zijn
+  niet getest; de site gebruikt `svh`/`dvh` en `safe-area-inset`, dus daar wordt hetzelfde
+  verwacht.
 
 ## Eindstand
 
-EINDSTAND_PLACEHOLDER
+- **Pagina's:** 127 pagina's × 11 formaten = 1.397 metingen. Nergens zijwaarts scrollen, geen
+  element over de schermrand, geen afgesneden tekst, geen tekst onder 12px, geen tikdoel onder
+  24px, geen kapot beeld, geen consolefout, elke pagina een h1. Na de laatste fixes opnieuw
+  gemeten op alle kennisartikelen, de teampagina's en vier regressiepagina's (320, 344, 390,
+  tablet liggend, desktop): niets meer over de schermrand.
+- **Interacties:** 22 tests per formaat, alle formaten geslaagd. Twee eenmalige fouten onder
+  zware parallelle belasting (menu op 390px, submenu op desktop) slaagden los herhaald (37/37).
+- **Chat:** 55 controles over 11 formaten, 0 fout.
+- **Typecheck:** `npm run check` groen.
 
 ## Opnieuw draaien
 

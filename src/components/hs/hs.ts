@@ -317,7 +317,8 @@ export function display(text: string, opts: { cap?: number } = {}): string {
 
 /** The same text without punch or break marks, for titles, alt text and meta tags. */
 export function plainText(text: string): string {
-  return text.replace(/\*/g, '').replace(/\s+\|\s+/g, ' ').trim();
+  // Soft hyphens (U+00AD) only help a heading break on a phone; titles and meta tags drop them.
+  return text.replace(/\*/g, '').replace(/\u00AD/g, '').replace(/\s+\|\s+/g, ' ').trim();
 }
 
 /** Running text with inline links written as [label](href); everything else is escaped. */

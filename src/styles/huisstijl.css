@@ -170,7 +170,10 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   border-radius: .25rem;
   font: 600 1.0625rem/1.1 var(--font);
   text-decoration: none;
-  white-space: nowrap;
+  /* One line while it fits; a button wider than its column wraps instead of pushing the column. */
+  max-width: 100%;
+  flex-shrink: 0;
+  text-align: left;
   transition: background-color .15s, color .15s, box-shadow .15s;
 }
 .hs-btn .hs-icon { width: 1.25rem; height: 1.25rem; transition: transform .25s var(--ease); }
