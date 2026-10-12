@@ -136,10 +136,13 @@ const FORWARD = new Set([
   'van', 'voor', 'in', 'op', 'aan', 'bij', 'met', 'naar', 'uit', 'door', 'over', 'vanaf', 'binnen',
   'zonder', 'onder', 'tussen', 'je', 'jouw', 'ons', 'onze', 'hun', 'uw', 'elke', 'iedere', 'geen', 'zo', 'er',
   'één', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen', 'tien', 'heel', 'én',
+  // English pages (phase 7) use the same setter: their function words bind forward too.
+  'the', 'a', 'an', 'of', 'to', 'for', 'with', 'and', 'or', 'your', 'our', 'their', 'its', 'my', 'from',
+  'by', 'at', 'on', 'into', 'than', 'no', 'not', 'every', 'each', 'one', 'two', 'three', 'four', 'five', 'six',
 ]);
 
 /** Articles and possessives bind hardest: a line never ends on "de", "een" or "je". */
-const DETERMINERS = new Set(['de', 'het', 'een', "'t", 'je', 'jouw', 'ons', 'onze', 'hun', 'uw', 'elke', 'iedere']);
+const DETERMINERS = new Set(['de', 'het', 'een', "'t", 'je', 'jouw', 'ons', 'onze', 'hun', 'uw', 'elke', 'iedere', 'the', 'a', 'an', 'your', 'our', 'their', 'its', 'my']);
 
 /** Display headings a typesetter sets by hand: " | " marks the only allowed breaks. */
 const HAND_SET: Record<string, string> = {

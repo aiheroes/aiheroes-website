@@ -145,12 +145,12 @@
     },
     {
       "source": "/nl/diensten/copilot-basics",
-      "destination": "/nl/training",
+      "destination": "/nl/incompany-ai-training",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-voor-developers",
-      "destination": "/nl/training",
+      "destination": "/nl/incompany-ai-training",
       "statusCode": 301
     },
     {
@@ -255,22 +255,22 @@
     },
     {
       "source": "/nl/diensten/maatwerk-ai-oplossingen",
-      "destination": "/nl/nieuwe-ai-toepassing",
+      "destination": "/nl/maatwerk-software",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-integratie",
-      "destination": "/nl/software-vervangen",
+      "destination": "/nl/ai-integratie",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-development-teams",
-      "destination": "/nl/nieuwe-ai-toepassing",
+      "destination": "/nl/extra-developers",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/digital-twins",
-      "destination": "/nl/nieuwe-ai-toepassing",
+      "destination": "/nl/digital-twin",
       "statusCode": 301
     },
     {
@@ -436,6 +436,41 @@
     {
       "source": "/nl/diensten/training",
       "destination": "/nl/training",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-bureau-nederland",
+      "destination": "/nl/ai-bureau-nederland",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-consultancy-groningen",
+      "destination": "/nl/ai-bureau-groningen",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/ai-geletterdheid-training",
+      "destination": "/nl/ai-geletterdheid-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/incompany-ai-training",
+      "destination": "/nl/incompany-ai-training",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/eu-training",
+      "destination": "/nl/digitale-soevereiniteit",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/soevereine-ai",
+      "destination": "/nl/ai-op-eigen-servers",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/wat-kost-ai-implementatie",
+      "destination": "/nl/wat-kost-ai-implementatie",
       "statusCode": 301
     }
   ],

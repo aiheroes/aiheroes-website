@@ -2,6 +2,7 @@
 // A short ask on a colour field: heading, one line and the action.
 import HsIcon from './HsIcon.astro';
 import { display, rich } from './hs';
+import { ui } from '../../data/ui';
 
 interface Props {
   title: string;
@@ -10,7 +11,8 @@ interface Props {
   secondary?: { label: string; href: string };
   tone?: 'red' | 'blue' | 'dark';
 }
-const { title, text, cta = { label: 'Plan een startsprint', href: '/nl/startsprint' }, secondary, tone = 'dark' } = Astro.props;
+const t = ui(Astro.url);
+const { title, text, cta = { label: t.sprintCta, href: t.sprintHref }, secondary, tone = 'dark' } = Astro.props;
 ---
 
 <section class={`hs-ctaband on-${tone}`} data-reveal>

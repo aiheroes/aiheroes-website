@@ -1,0 +1,78 @@
+---
+lang: nl
+slug: ai-op-eigen-servers
+plan: L12
+group: kern
+entry: eigen-beheer
+title: AI op eigen servers
+seoTitle: AI op je eigen servers of Europees gehost
+description: "Taalmodellen op je eigen hardware of in de Europese cloud, gekoppeld aan je systemen en buiten de Amerikaanse cloud. Onze eigen assistent draait zo. Startsprint van zes dagen, vanaf €8.000."
+question: "Kan het op je *eigen* | servers? Ja."
+lede: "AI Heroes bouwt AI die in Europa blijft: op je eigen hardware of bij een Europese partij, gekoppeld aan je systemen. De eerste stap is een startsprint van zes dagen, vanaf €8.000."
+author: david-homan
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+photo:
+  src: /hs/photos/cover-datacenter.webp
+  alt: Een lichte serverruimte in een datacenter
+  w: 1800
+  h: 1012
+  pos: "50% 55%"
+build:
+  title: "Wat we *bouwen*"
+  items:
+    - icon: server
+      title: Taalmodellen op je eigen hardware
+      text: In je eigen serverruimte of datacenter, met je beheerders getraind op de omgeving.
+    - icon: cloud-storage
+      title: Toepassingen in de Europese cloud
+      text: Bij een Europese partij, met Europese modellen zoals die van Mistral of Aleph Alpha.
+    - icon: transfer
+      title: Overstappen zonder dat je team het merkt
+      text: Van ChatGPT of Azure OpenAI naar een Europees alternatief, met dezelfde manier van werken.
+    - icon: link
+      title: Gekoppeld aan je systemen
+      text: Je documenten, ERP en CRM, met de rechten die er al zijn.
+sprint:
+  text: "We maken een hostingontwerp: eigen hardware, Europese cloud of een mix. Op de gekozen plek draait in zes dagen een model met je eigen data."
+  outcome: "Een hostingontwerp, een werkend model op de gekozen plek, een risicobeoordeling van wat onder Amerikaanse jurisdictie valt, en de business case: cloud tegen eigen hardware."
+cases: [eigen-stack]
+proofText: "Hij draait op Europese infrastructuur. Zo doen we zelf wat we adviseren."
+standardExtra: "Hier telt vooral: de hostingkeuze is onderdeel van compliance vanaf de tekentafel."
+faq:
+  - q: Zijn Europese of open modellen goed genoeg?
+    a: "Voor de meeste bedrijfstoepassingen wel. In de startsprint testen we het op jouw data en jouw vragen, en zeggen we het als het niet volstaat."
+  - q: Wat kost eigen hardware?
+    a: "Dat hangt af van het aantal gebruikers en wat het model moet kunnen. De afweging tussen cloud en eigen hardware staat in de business case van de startsprint."
+  - q: Waarom is een Europese server bij een Amerikaans bedrijf niet genoeg?
+    a: "Door de Amerikaanse CLOUD Act kan een Amerikaans bedrijf verplicht worden data te overhandigen, ook als die in Europa staat. Een Europese partij zonder Amerikaanse moeder, of je eigen servers, hebben dat risico niet."
+  - q: Wie beheert het?
+    a: "Wij blijven beheren en doorontwikkelen, gedocumenteerd en niet vast aan één AI-leverancier. Je eigen beheerders trainen we op de omgeving."
+  - q: Helpt dit bij de AI Act?
+    a: "Het helpt: je weet waar je data staat en wie erbij kan. Wat de AI Act verder vraagt, lees je in [de AI Act voor organisaties](/nl/kennis/ai-act)."
+related:
+  - label: Europees alternatief voor ChatGPT
+    href: /nl/europees-alternatief-chatgpt
+  - label: Company wiki
+    href: /nl/company-wiki
+  - label: Sessie digitale soevereiniteit
+    href: /nl/digitale-soevereiniteit
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+
+<HsSection tone="paper" title="Drie *routes*" lede="Voor sommige organisaties is eigen hardware een eis. Voor anderen is het een afweging, en die maken we samen in de startsprint.">
+  <HsCards items={[
+    { icon: 'server', title: 'Eigen hardware', text: 'Als data het pand niet uit mag, of bij veel gebruik. Je hebt alles zelf in de hand.' },
+    { icon: 'cloud-storage', title: 'Europese cloud', text: 'Snel starten zonder eigen serverbeheer, bij een Europese partij.' },
+    { icon: 'connection', title: 'Een mix', text: 'Gevoelige delen bij jou, de rest in de Europese cloud.' },
+  ]} />
+</HsSection>
+
+<HsSection title="Werken met *ons*" lede="Organisaties die met AI Heroes werkten, onder meer:">
+  <ul class="hs-logos hs-logos--light hs-logos--bare">
+    <li><img src="/hs/logos-white/umcg.svg" alt="UMCG" style="--h:1.375rem" loading="lazy" decoding="async" /></li>
+    <li><img src="/hs/logos-white/tweede-kamer.svg" alt="Tweede Kamer" style="--h:2.25rem" loading="lazy" decoding="async" /></li>
+    <li><img src="/hs/logos-white/envalior.svg" alt="Envalior" style="--h:2.125rem" loading="lazy" decoding="async" /></li>
+  </ul>
+</HsSection>

@@ -1,0 +1,83 @@
+---
+lang: nl
+slug: digitale-soevereiniteit
+plan: T5
+group: training
+entry: training
+training: true
+title: Sessie digitale soevereiniteit
+seoTitle: Sessie digitale soevereiniteit voor directie en IT
+description: "Een sessie voor directie en IT over digitale soevereiniteit: waar je afhankelijk bent van Amerikaanse platformen en welke Europese alternatieven er zijn. Door Jan Brusse, vanaf €2.500 per dagdeel."
+question: "Weten waar je *afhankelijk* bent, | en wat je eraan kunt doen"
+lede: "Jan Brusse van AI Heroes laat directie en IT in één sessie zien waar je organisatie afhankelijk is van Amerikaanse platformen, en welke Europese alternatieven er zijn. Over digitale soevereiniteit, of digitale onafhankelijkheid: feitelijk en zonder angst te zaaien. Vanaf €2.500 per dagdeel."
+author: jan-brusse
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+build:
+  title: "Wat de sessie *oplevert*"
+  items:
+    - icon: map-draw
+      title: Je afhankelijkheden in kaart
+      text: Welke diensten je gebruikt, waar je data staat en wie erbij kan.
+    - icon: earth
+      title: Een eerlijk beeld van de alternatieven
+      text: Europese aanbieders zoals Mistral, Aleph Alpha en Le Chat, met wat ze wel en niet kunnen.
+    - icon: protect
+      title: De regels, vertaald naar jouw organisatie
+      text: Wat de AVG en de AI Act betekenen voor de keuzes die je maakt.
+    - icon: aiming
+      title: Een volgende stap
+      text: Wat je nu kunt doen, en wat kan wachten.
+sprint:
+  title: "Hoe het *werkt*"
+  text: "Eerst een kort gesprek over wie er meedoet en wat er speelt. Daarna de sessie, op locatie of online live, gegeven door Jan Brusse."
+  outcome: "Een overzicht van je eigen afhankelijkheden, een eerlijk beeld van de Europese alternatieven en de regels vertaald naar jouw organisatie."
+cases: []
+proofText: "AI Heroes trainde onder meer de Tweede Kamer, Envalior en de Hanzehogeschool. En we doen zelf wat we uitleggen: onze eigen AI-assistent draait op Europese infrastructuur."
+faq:
+  - q: Voor wie is de sessie bedoeld?
+    a: "Voor directie, CIO's, informatiemanagers en IT-teams, vaak bij overheid, onderwijs of organisaties met gevoelige data."
+  - q: Moeten we na de sessie overstappen?
+    a: "Nee. Je weet waar je staat en wat je opties zijn. Wil je verder, dan is [software in eigen beheer](/nl/eigen-beheer) de volgende stap."
+  - q: Welke Europese alternatieven bespreken jullie?
+    a: "Onder meer Mistral, Aleph Alpha en Le Chat, en hosting bij Europese partijen of op je eigen servers. We zijn aan geen van hen gebonden en noemen ook de beperkingen."
+  - q: Kan het online?
+    a: "Ja, de sessie kan op locatie of online live."
+  - q: Wat kost een sessie?
+    a: "Vanaf €2.500 per dagdeel; ook de directiesessie valt onder het dagdeeltarief. Voor onderwijs en non-profit geldt een lager tarief."
+related:
+  - label: AI op eigen servers
+    href: /nl/ai-op-eigen-servers
+  - label: Europees alternatief voor ChatGPT
+    href: /nl/europees-alternatief-chatgpt
+  - label: Software in eigen beheer
+    href: /nl/eigen-beheer
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+
+<HsSection tone="paper" title="De *onderwerpen*">
+  <HsCards columns={4} items={[
+    { icon: 'shield', title: 'Risico’s', text: 'Wat het betekent als je data en werk bij Amerikaanse platformen liggen.' },
+    { icon: 'globe', title: 'Het landschap', text: 'Welke diensten er zijn, en wie erachter zit.' },
+    { icon: 'transfer', title: 'Alternatieven', text: 'Europese modellen en hosting, met hun sterke en zwakke punten.' },
+    { icon: 'protect', title: 'Regelgeving', text: 'De AVG en de AI Act, vertaald naar je eigen keuzes.' },
+  ]} />
+</HsSection>
+
+<HsSection title="Drie *vormen*">
+  <HsCards items={[
+    { meta: '90 minuten', title: 'Directiesessie', text: 'Voor bestuurders: de kern, de risico’s en de keuzes.' },
+    { meta: 'halve tot hele dag', title: 'Teamsessie', text: 'Voor IT en informatiemanagement, met je eigen omgeving als voorbeeld.' },
+    { meta: 'jaarlijks', title: 'Update', text: 'Wat er het afgelopen jaar veranderde in aanbod en regels.' },
+  ]} />
+</HsSection>
+
+<HsCtaBand
+  tone="dark"
+  title="Van inzicht naar je eigen *omgeving*"
+  text="Wil je na de sessie verder? Dan bouwen we AI op je eigen servers of in de Europese cloud. De eerste stap is een startsprint van zes dagen."
+  cta={{ label: 'Software in eigen beheer', href: '/nl/eigen-beheer' }}
+  secondary={{ label: 'De startsprint', href: '/nl/startsprint' }}
+/>

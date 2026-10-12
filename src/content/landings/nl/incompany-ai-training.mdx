@@ -1,0 +1,77 @@
+---
+lang: nl
+slug: incompany-ai-training
+plan: T1
+group: training
+entry: training
+training: true
+title: Incompany AI-training
+seoTitle: "Incompany AI-training op locatie, vanaf €2.500 per dagdeel"
+description: "AI-training bij jou op locatie in heel Nederland, of online live, met jullie eigen werk als oefenmateriaal. Werken met AI, AI-geletterdheid, Copilot en meer. Vanaf €2.500 per dagdeel."
+question: "AI-training bij jou op locatie, | met jullie *eigen* werk"
+lede: "AI Heroes traint je team op locatie in heel Nederland, of online live, met jullie eigen werk als oefenmateriaal. Vanaf €2.500 per dagdeel, met een certificaat waar dat nodig is."
+author: jan-brusse
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+build:
+  title: "Wat je team na afloop *kan*"
+  items:
+    - icon: write
+      title: Sneller schrijven met AI
+      text: Een offerte, mail of rapport opzetten in een deel van de tijd, in de eigen toon.
+    - icon: check
+      title: Uitkomsten kritisch controleren
+      text: Herkennen wanneer AI zich vergist, en weten hoe je dat nakijkt.
+    - icon: lock
+      title: Veilig werken met bedrijfsdata
+      text: Weten wat wel en niet in een prompt mag.
+    - icon: tool
+      title: De tools gebruiken die je al hebt
+      text: Copilot, ChatGPT of een Europees alternatief, toegepast op het werk van elke dag.
+sprint:
+  title: "Hoe het *werkt*"
+  text: "Eerst een intake: wie doet mee, met welke tools en welk werk. Binnen een week na de intake heb je een voorstel. Daarna trainen we op locatie, of online live voor grote groepen, en leggen we vast wat er behandeld is."
+  outcome: "Een team dat AI veilig en productief gebruikt in het eigen werk, met een verslag voor je dossier en een certificaat waar dat nodig is."
+cases: []
+proofText: "Sinds 2019 trainde AI Heroes meer dan 1.000 professionals, onder meer bij de Tweede Kamer, de Nationale Postcode Loterij, Envalior, Banijay, Prosus en de Hanzehogeschool."
+faq:
+  - q: Wat kost een incompany AI-training?
+    a: "Vanaf €2.500 per dagdeel, inclusief voorbereiding, materiaal en opvolging. Voor onderwijs en non-profit geldt een lager tarief."
+  - q: Hoeveel deelnemers kunnen er meedoen, en kan het online?
+    a: "De groepsgrootte stemmen we af in de intake. Voor grote groepen geven we de training online live, zodat iedereen tegelijk kan meedoen."
+  - q: Komen jullie door heel Nederland?
+    a: "Ja. We trainen op locatie in heel Nederland, en online live waar dat beter past."
+  - q: Welke tools behandelen jullie?
+    a: "De tools die jullie al hebben of krijgen: Copilot in Microsoft 365, ChatGPT of een Europees alternatief."
+  - q: Telt de training voor de AI-geletterdheidsplicht?
+    a: "Daar is de [AI-geletterdheidstraining](/nl/ai-geletterdheid-training) voor gemaakt: per doelgroep, met certificaat en verslag."
+related:
+  - label: AI-geletterdheidstraining
+    href: /nl/ai-geletterdheid-training
+  - label: Sessie digitale soevereiniteit
+    href: /nl/digitale-soevereiniteit
+  - label: "AI-geletterdheid: wat de wet vraagt"
+    href: /nl/kennis/ai-geletterdheid
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsCtaBand from '../../../components/hs/HsCtaBand.astro';
+
+<HsSection tone="paper" title="De *trainingen*" lede="Elke training stemmen we in de intake af op jullie werk en jullie tools.">
+  <HsCards items={[
+    { meta: '1 dag · basistraining', title: 'Werken met AI', text: 'Voor iedereen die AI in zijn werk gaat gebruiken: wat het kan, waar het misgaat en hoe je het inzet in je eigen werk.' },
+    { meta: 'met certificaat', title: 'AI-geletterdheid', text: 'Wat artikel 4 van de AI Act vraagt, per doelgroep, met verantwoord AI-gebruik en een deepfake-demo die blijft hangen.', href: '/nl/ai-geletterdheid-training', more: 'AI-geletterdheidstraining' },
+    { meta: 'halve dag · hands-on', title: 'Training in de tools die je al hebt', text: 'Copilot in Microsoft 365, ChatGPT of een Europees alternatief, toegepast op jullie eigen werk.' },
+    { meta: 'voor softwareteams', title: 'AI voor developers', text: 'Hands-on in je eigen stack. Liever extra capaciteit in je team? Zie [extra developers](/nl/extra-developers).' },
+    { meta: 'voor directie en IT', title: 'Sessie digitale soevereiniteit', text: 'Waar je afhankelijk bent van Amerikaanse platformen, en wat de Europese alternatieven zijn.', href: '/nl/digitale-soevereiniteit', more: 'Over de sessie' },
+  ]} />
+</HsSection>
+
+<HsSection title="Wat het *kost*" lede="Vanaf €2.500 per dagdeel, inclusief voorbereiding, materiaal en opvolging. Voor onderwijs en non-profit geldt een lager tarief." />
+
+<HsCtaBand
+  tone="dark"
+  title="Werk je aan een eigen *AI-toepassing*?"
+  text="Dan zit training van je team in de bouw: we trainen je mensen op het systeem zelf, op de werkvloer."
+  cta={{ label: 'Bekijk de startsprint', href: '/nl/startsprint' }}
+/>

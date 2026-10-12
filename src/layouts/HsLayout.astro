@@ -14,6 +14,7 @@ import HsNav from '../components/hs/HsNav.astro';
 import HsFooter from '../components/hs/HsFooter.astro';
 import ChatWidget from '../components/chat/ChatWidget';
 import { CHAT_ENABLED, CHAT_BOOKING_URL, CHAT_SOURCE_CHIPS } from '../data/chat-flags';
+import { UI } from '../data/ui';
 
 export interface Props {
   lang?: Lang;
@@ -92,7 +93,7 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
   </head>
   <body class="hs-body-root">
     <div class="hs">
-      <a class="hs-skip" href="#inhoud">Naar de inhoud</a>
+      <a class="hs-skip" href="#inhoud">{UI[lang].skip}</a>
       <HsDuotone />
       <HsNav lang={lang} path={path} alternate={other} />
       <main id="inhoud" tabindex="-1">

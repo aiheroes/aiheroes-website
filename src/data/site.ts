@@ -34,3 +34,14 @@ export const ENTRIES: Record<Entry, { title: string; href: string; accent: 'red'
   vervangen: { title: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', topic: 'Oude software vervangen' },
   'eigen-beheer': { title: 'Software in eigen beheer', href: '/nl/eigen-beheer', accent: 'dark', topic: 'Software in eigen beheer' },
 };
+
+/** The entries in English (docs/relaunch phase 7); same keys, colours and order. */
+export const ENTRIES_EN: typeof ENTRIES = {
+  nieuw: { title: 'A new AI tool', href: '/en/new-ai-tool', accent: 'red', topic: 'A new AI tool' },
+  vervangen: { title: 'Replace old software', href: '/en/replace-software', accent: 'blue', topic: 'Replace old software' },
+  'eigen-beheer': { title: 'Software you control', href: '/en/self-hosted', accent: 'dark', topic: 'Software you control' },
+};
+
+export function entriesFor(lang: 'nl' | 'en'): typeof ENTRIES {
+  return lang === 'en' ? ENTRIES_EN : ENTRIES;
+}

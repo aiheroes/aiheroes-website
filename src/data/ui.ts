@@ -1,0 +1,122 @@
+// Interface strings of the house-style components in both languages. Components read the
+// language from the URL (langOf), so a page never has to pass it down.
+import type { Lang } from './i18n';
+
+export function langOf(url: URL | string): Lang {
+  const path = typeof url === 'string' ? url : url.pathname;
+  return path === '/en' || path.startsWith('/en/') ? 'en' : 'nl';
+}
+
+const NL = {
+  skip: 'Naar de inhoud',
+  homeLabel: 'AI Heroes, naar de homepage',
+  mainMenu: 'Hoofdmenu',
+  allPages: "Alle pagina's",
+  crumbs: 'Kruimelpad',
+  home: 'Home',
+  readMore: 'Lees meer',
+  sprintCta: 'Plan een startsprint',
+  sprintHref: '/nl/startsprint',
+  howHref: '/nl/hoe-we-werken',
+  howLink: 'Zo werken we',
+  teamHref: '/nl/over-ons/team',
+  team: 'Het team',
+  writtenBy: 'Geschreven door',
+  standardTitle: 'Bij elke bouw *inbegrepen*',
+  standard: [
+    { title: 'Business case vooraf', text: 'Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient.' },
+    { title: 'Compliance vanaf de tekentafel', text: 'AI Act-classificatie, logging, menselijk toezicht en Europese hosting zitten in het ontwerp.' },
+    { title: 'Je mensen kunnen ermee werken', text: 'Het team dat het systeem gaat gebruiken, trainen we op dat systeem. Zo voldoe je aan artikel 4 van de AI Act.' },
+    { title: 'Niet vast aan één AI-leverancier', text: 'Je kunt van AI-model wisselen zonder opnieuw te bouwen. Alles komt met documentatie.' },
+  ],
+  otherEntries: 'Of past een *andere* ingang?',
+  otherEntriesMore: 'Bekijk deze ingang',
+  otherEntriesText: {
+    nieuw: 'Een assistent, een werkstroom of een tool die je nu mist, van prototype tot dagelijks gebruik.',
+    vervangen: 'Te dure of te oude software vervangen, naast het oude gebouwd en in fasen overgezet.',
+    'eigen-beheer': 'AI en software op je eigen servers of bij een Europese partij, met de AI Act in het ontwerp.',
+  },
+  contact: {
+    title: 'Vertel wat je wilt bouwen',
+    lede: 'Binnen 24 uur hoor je van ons, meestal met een voorstel voor een startsprint.',
+    meet: 'Plan een kennismaking',
+    name: 'Naam',
+    email: 'E-mail',
+    org: 'Organisatie',
+    topic: 'Waar gaat het om?',
+    training: 'Training',
+    unsure: 'Weet ik nog niet',
+    budget: 'Aan welk budget denk je?',
+    budgetOptions: ['Onder €10.000', '€10.000 tot €25.000', '€25.000 tot €100.000', 'Meer dan €100.000', 'Nog geen idee'],
+    owner: 'Wie beslist hierover?',
+    ownerOptions: ['Ik beslis zelf', 'Ik beslis mee', 'Ik oriënteer me voor iemand anders'],
+    message: 'Wat wil je bouwen?',
+    messageTraining: 'Wat wil je je team leren?',
+    submit: 'Verstuur',
+    success: 'Ontvangen. Binnen 24 uur hoor je van ons.',
+    missing: 'Vul je naam, e-mailadres en je vraag in.',
+    badEmail: 'Dat e-mailadres klopt nog niet helemaal.',
+    busy: 'Bezig met versturen…',
+    error: 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.',
+  },
+};
+
+const EN: typeof NL = {
+  skip: 'Skip to content',
+  homeLabel: 'AI Heroes, to the homepage',
+  mainMenu: 'Main menu',
+  allPages: 'All pages',
+  crumbs: 'Breadcrumb',
+  home: 'Home',
+  readMore: 'Read more',
+  sprintCta: 'Plan a start sprint',
+  sprintHref: '/en/start-sprint',
+  howHref: '/en/how-we-work',
+  howLink: 'How we work',
+  teamHref: '/en/about/team',
+  team: 'The team',
+  writtenBy: 'Written by',
+  standardTitle: '*Included* in every build',
+  standard: [
+    { title: 'Business case first', text: 'Before we build, you know what it costs, what it returns and when it pays for itself.' },
+    { title: 'Compliance from the drawing board', text: 'AI Act classification, logging, human oversight and European hosting are part of the design.' },
+    { title: 'Your people can work with it', text: 'We train the team that will use the system on that system. That also covers Article 4 of the AI Act.' },
+    { title: 'Not tied to one AI vendor', text: 'You can switch AI models without rebuilding. Everything comes with documentation.' },
+  ],
+  otherEntries: 'Or does *another* way in fit?',
+  otherEntriesMore: 'See this way in',
+  otherEntriesText: {
+    nieuw: 'An assistant, a workflow or a tool you are missing today, from prototype to daily use.',
+    vervangen: 'Software that is too expensive or too old, replaced next to the old system and moved over in phases.',
+    'eigen-beheer': 'AI and software on your own servers or with a European provider, with the AI Act in the design.',
+  },
+  contact: {
+    title: 'Tell us what you want to build',
+    lede: 'You hear from us within 24 hours, usually with a proposal for a start sprint.',
+    meet: 'Book an introduction',
+    name: 'Name',
+    email: 'Email',
+    org: 'Organisation',
+    topic: 'What is it about?',
+    training: 'Training',
+    unsure: 'Not sure yet',
+    budget: 'What budget do you have in mind?',
+    budgetOptions: ['Under €10,000', '€10,000 to €25,000', '€25,000 to €100,000', 'More than €100,000', 'No idea yet'],
+    owner: 'Who decides on this?',
+    ownerOptions: ['I decide', 'I co-decide', 'I am exploring for someone else'],
+    message: 'What do you want to build?',
+    messageTraining: 'What do you want your team to learn?',
+    submit: 'Send',
+    success: 'Received. You will hear from us within 24 hours.',
+    missing: 'Please fill in your name, email address and question.',
+    badEmail: 'That email address does not look right yet.',
+    busy: 'Sending…',
+    error: 'Something went wrong. Try again or email us at info@aiheroes.io.',
+  },
+};
+
+export const UI: Record<Lang, typeof NL> = { nl: NL, en: EN };
+
+export function ui(url: URL | string) {
+  return UI[langOf(url)];
+}

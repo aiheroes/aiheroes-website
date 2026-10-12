@@ -5,6 +5,7 @@
 import HsIcon from './HsIcon.astro';
 import { display, plainText, zet } from './hs';
 import type { Crumb } from '../../data/schema';
+import { ui } from '../../data/ui';
 
 interface Fact {
   value: string;
@@ -28,7 +29,7 @@ const {
   lede,
   accent = 'red',
   crumbs = [],
-  cta = { label: 'Plan een startsprint', href: '/nl/startsprint' },
+  cta = { label: ui(Astro.url).sprintCta, href: ui(Astro.url).sprintHref },
   secondary,
   photo,
   facts = [],
@@ -39,7 +40,7 @@ const long = plainText(title).length > 46;
 <section class:list={['hs-pcover hs-snap', { 'has-photo': photo }]}>
   <div class={`hs-pcover__zone on-${accent}`}>
     {crumbs.length > 0 && (
-      <nav class="hs-crumbs" aria-label="Kruimelpad">
+      <nav class="hs-crumbs" aria-label={ui(Astro.url).crumbs}>
         <ol>
           {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
           <li aria-current="page">{current ?? plainText(title)}</li>

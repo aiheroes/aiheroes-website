@@ -1,0 +1,18 @@
+---
+// The Dutch SEO landings (docs/relaunch/00-opzet.md, groups 1 and 3): flat URLs /nl/<onderwerp>,
+// one entry each in src/content/landings/nl/. Static pages in src/pages/nl/ win over this route.
+import { getCollection, render } from 'astro:content';
+import HsLanding from '../../components/hs/HsLanding.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('landings', (e) => e.data.lang === 'nl' && !e.data.draft);
+  return items.map((entry) => ({ params: { landing: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<HsLanding entry={entry}>
+  <Content />
+</HsLanding>

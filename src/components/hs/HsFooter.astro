@@ -6,6 +6,7 @@ import { zet } from './hs';
 import { navFor } from '../../data/nav';
 import { SITE } from '../../data/site';
 import type { Lang } from '../../data/i18n';
+import { UI } from '../../data/ui';
 
 interface Props {
   lang: Lang;
@@ -18,7 +19,7 @@ const a = SITE.address;
 <footer class="hs-footer on-dark">
   <div class="hs-footer__body">
     <p class="hs-footer__tagline">{zet(footer.tagline)}</p>
-    <nav class="hs-footer__cols" aria-label="Alle pagina's">
+    <nav class="hs-footer__cols" aria-label={UI[lang].allPages}>
       {footer.columns.map((c) => (
         <div>
           <h2>{c.href ? <a href={c.href}>{c.heading}</a> : c.heading}</h2>

@@ -1,14 +1,17 @@
 ---
 // Author box for articles and landings: duotone-free mono portrait, name, role, bio, LinkedIn.
-import { FOUNDERS, type FounderId } from '../../data/team';
+import { FOUNDERS, founderText, type FounderId } from '../../data/team';
+import { ui, langOf } from '../../data/ui';
 import { zet } from './hs';
 
 interface Props {
   id: FounderId;
   label?: string;
 }
-const { id, label = 'Geschreven door' } = Astro.props;
+const t = ui(Astro.url);
+const { id, label = t.writtenBy } = Astro.props;
 const f = FOUNDERS[id];
+const ft = founderText(id, langOf(Astro.url));
 ---
 
 <aside class="hs-author" aria-label={label}>
@@ -16,10 +19,10 @@ const f = FOUNDERS[id];
   <div>
     <p class="hs-author__role">{label}</p>
     <p class="hs-author__name">{f.name}</p>
-    <p class="hs-author__role">{f.role}</p>
-    <p class="hs-author__bio">{zet(f.bio)}</p>
+    <p class="hs-author__role">{ft.role}</p>
+    <p class="hs-author__bio">{zet(ft.bio)}</p>
     <p class="hs-author__links">
-      <a class="hs-link" href="/nl/over-ons/team">Het team</a>
+      <a class="hs-link" href={t.teamHref}>{t.team}</a>
       {f.linkedin && <a class="hs-link" href={f.linkedin} rel="me noopener" target="_blank">LinkedIn</a>}
     </p>
   </div>

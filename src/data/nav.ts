@@ -140,8 +140,109 @@ const NL: NavContent = {
   },
 };
 
-export const NAV: Partial<Record<Lang, NavContent>> = { nl: NL };
+
+const EN: NavContent = {
+  home: '/en',
+  items: [
+    {
+      key: 'build', label: 'What we build', accent: 'red', subs: [
+        { label: 'A new AI tool', href: '/en/new-ai-tool' },
+        { label: 'Replace old software', href: '/en/replace-software' },
+        { label: 'Software you control', href: '/en/self-hosted' },
+      ],
+    },
+    {
+      key: 'how', label: 'How we work', href: '/en/how-we-work', accent: 'blue', subs: [
+        { label: 'First step: the start sprint', href: '/en/start-sprint' },
+        { label: 'Cost and return up front', href: '/en/business-case' },
+        { label: 'Compliance and security', href: '/en/compliance' },
+        { label: 'AI training for your team', href: '/en/training' },
+      ],
+    },
+    {
+      key: 'about', label: 'About', href: '/en/about', accent: 'dark', subs: [
+        { label: 'About AI Heroes', href: '/en/about' },
+        { label: 'The team', href: '/en/about/team' },
+        { label: 'Careers', href: '/en/careers' },
+        { label: 'AI Salon evenings', href: '/en/ai-salon' },
+        { label: 'On TV: De AI Storm', href: '/en/de-ai-storm' },
+        { label: 'Press', href: '/en/press' },
+        { label: 'Insights', href: '/en/insights' },
+      ],
+    },
+    { key: 'cases', label: 'Cases', href: '/en/cases' },
+  ],
+  cta: { label: 'Plan a start sprint', href: '/en/start-sprint' },
+  langLabel: 'NL',
+  langName: 'Nederlands',
+  menuLabel: 'Menu',
+  footer: {
+    tagline: 'We build AI tools your team uses every day. Business case, compliance and training included.',
+    columns: [
+      {
+        heading: 'A new AI tool', href: '/en/new-ai-tool', links: [
+          { label: 'AI customer service', href: '/en/ai-customer-service' },
+          { label: 'AI agents and workflows', href: '/en/ai-agents' },
+          { label: 'Automate administration', href: '/en/automate-administration' },
+          { label: 'Company wiki', href: '/en/company-wiki' },
+          { label: 'Digital twin', href: '/en/digital-twin' },
+          { label: 'Connect AI to your systems', href: '/en/ai-integration' },
+          { label: 'Extra developers', href: '/en/extra-developers' },
+          { label: 'Custom software', href: '/en/custom-software' },
+        ],
+      },
+      {
+        heading: 'Replace old software', href: '/en/replace-software', links: [
+          { label: 'Replace a SaaS package', href: '/en/replace-saas' },
+          { label: 'Replace Excel', href: '/en/replace-excel' },
+          { label: 'Legacy software', href: '/en/legacy-software' },
+        ],
+      },
+      {
+        heading: 'Software you control', href: '/en/self-hosted', links: [
+          { label: 'AI on your own servers', href: '/en/ai-on-your-own-servers' },
+          { label: 'European alternative to ChatGPT', href: '/en/european-chatgpt-alternative' },
+        ],
+      },
+      {
+        heading: 'How we work', href: '/en/how-we-work', links: [
+          { label: 'The start sprint', href: '/en/start-sprint' },
+          { label: 'Cost and return up front', href: '/en/business-case' },
+          { label: 'AI implementation costs', href: '/en/ai-implementation-costs' },
+          { label: 'Compliance and security', href: '/en/compliance' },
+          { label: 'AI training for your team', href: '/en/training' },
+          { label: 'In-company AI training', href: '/en/incompany-ai-training' },
+          { label: 'AI literacy training', href: '/en/ai-literacy-training' },
+          { label: 'Digital sovereignty', href: '/en/digital-sovereignty' },
+        ],
+      },
+      {
+        heading: 'Company', href: '/en/about', links: [
+          { label: 'About AI Heroes', href: '/en/about' },
+          { label: 'The team', href: '/en/about/team' },
+          { label: 'Cases', href: '/en/cases' },
+          { label: 'Careers', href: '/en/careers' },
+          { label: 'AI Salon', href: '/en/ai-salon' },
+          { label: 'De AI Storm', href: '/en/de-ai-storm' },
+          { label: 'Press', href: '/en/press' },
+          { label: 'Insights', href: '/en/insights' },
+          { label: 'AI agency Groningen', href: '/en/ai-agency-groningen' },
+          { label: 'AI agency Netherlands', href: '/en/ai-agency-netherlands' },
+        ],
+      },
+    ],
+    legal: [
+      { label: 'Privacy', href: '/en/legal/privacy' },
+      { label: 'Terms', href: '/en/legal/terms' },
+      { label: 'AI assistant', href: '/en/legal/ai-assistant' },
+    ],
+    copyright: `© ${new Date().getFullYear()} AI Heroes`,
+    madeIn: 'Proudly made in Groningen, AI Capital of Europe',
+  },
+};
+
+export const NAV: Record<Lang, NavContent> = { nl: NL, en: EN };
 
 export function navFor(lang: Lang): NavContent {
-  return NAV[lang] ?? NL;
+  return NAV[lang];
 }

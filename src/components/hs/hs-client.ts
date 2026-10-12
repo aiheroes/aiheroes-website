@@ -288,13 +288,13 @@ function initForm(signal: AbortSignal) {
       const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
       const missing = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')].find((f) => !f.value.trim());
       if (missing) {
-        say('Vul je naam, e-mailadres en je vraag in.', 'error');
+        say(form.dataset.msgMissing ?? 'Vul je naam, e-mailadres en je vraag in.', 'error');
         missing.focus();
         return;
       }
       const email = form.querySelector<HTMLInputElement>('input[type="email"]');
       if (email && !email.checkValidity()) {
-        say('Dat e-mailadres klopt nog niet helemaal.', 'error');
+        say(form.dataset.msgEmail ?? 'Dat e-mailadres klopt nog niet helemaal.', 'error');
         email.focus();
         return;
       }
@@ -305,7 +305,7 @@ function initForm(signal: AbortSignal) {
       const bot = !!data.botField || Date.now() - opened < 3000 || /<a[\s>]/i.test(data.message ?? '')
         || (!!data.name?.trim() && data.name.trim() === data.organization?.trim());
       if (bot) { done(); return; }
-      say('Bezig met versturen…', 'busy');
+      say(form.dataset.msgBusy ?? 'Bezig met versturen…', 'busy');
       if (button) button.disabled = true;
       try {
         const res = await fetch(form.action, {
@@ -314,9 +314,9 @@ function initForm(signal: AbortSignal) {
           body: JSON.stringify({ botField: '', ...data }),
         });
         if (res.ok) done();
-        else say('Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+        else say(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
       } catch {
-        say('Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+        say(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
       } finally {
         if (button) button.disabled = false;
       }

@@ -4,7 +4,8 @@
 // (src/data/site.ts), so the menu, the planes and the pillar pages say the same thing.
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
-import { ENTRIES, type Entry } from '../../data/site';
+import { entriesFor, type Entry } from '../../data/site';
+import { langOf } from '../../data/ui';
 
 interface Props {
   title?: string;
@@ -14,18 +15,26 @@ interface Props {
   snap?: boolean;
   id?: string;
 }
+const lang = langOf(Astro.url);
+const ENTRIES = entriesFor(lang);
 const {
-  title = 'Wat we voor je bouwen',
+  title = lang === 'en' ? 'What we build for you' : 'Wat we voor je bouwen',
   descriptions = {},
-  more = 'Lees meer',
+  more = lang === 'en' ? 'Read more' : 'Lees meer',
   snap = true,
-  id = 'wat-we-bouwen',
+  id = lang === 'en' ? 'what-we-build' : 'wat-we-bouwen',
 } = Astro.props;
-const DEFAULTS: Record<Entry, string> = {
+const DEFAULTS_EN: Record<Entry, string> = {
+  nieuw: 'An assistant, a workflow or a tool you are missing today. A working prototype in six days, then we keep building until your team uses it every day.',
+  vervangen: 'Software that is too expensive or too old, replaced by software that fits how you work. Connected to your ERP, CRM and the rest of your systems.',
+  'eigen-beheer': 'AI and software on your own servers or with a European provider. Without US cloud, with the AI Act built in.',
+};
+const DEFAULTS_NL: Record<Entry, string> = {
   nieuw: 'Een assistent, een werkstroom of een tool die je nu mist. In zes dagen een werkend prototype, daarna bouwen we door tot je team er elke dag mee werkt.',
   vervangen: 'Software die te duur of te oud is, vervangen door software die past bij hoe je werkt. Gekoppeld aan je ERP, CRM en de rest van je systemen.',
   'eigen-beheer': 'AI en software op je eigen servers of bij een Europese partij. Zonder Amerikaanse cloud, met de AI Act ingebouwd.',
 };
+const DEFAULTS = lang === 'en' ? DEFAULTS_EN : DEFAULTS_NL;
 const keys = Object.keys(ENTRIES) as Entry[];
 ---
 

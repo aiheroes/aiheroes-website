@@ -1,0 +1,71 @@
+---
+lang: nl
+slug: wat-kost-ai-implementatie
+plan: L14
+group: kern
+entry: alle
+title: Wat kost AI-implementatie?
+seoTitle: "Wat kost AI-implementatie? Prijzen 2026"
+description: "Wat kost AI-implementatie? De startsprint kost vanaf €8.000 (zes dagen, vast), een bouw vanaf €15.000. Wat er na de bouw nog bij komt en hoe je vooraf weet wat jouw toepassing kost."
+question: "Wat kost AI-implementatie? | Na zes dagen weet je het *precies*."
+lede: "Een AI-toepassing laten bouwen begint bij AI Heroes met een startsprint van zes dagen, vanaf €8.000. Een bouw begint vanaf €15.000 en loopt bij grote systemen op tot ruim €100.000. Na de startsprint weet je wat jouw toepassing kost."
+author: frans-hoorn
+publishDate: 2026-10-12
+updatedDate: 2026-10-12
+build:
+  title: "Wat je *betaalt*"
+  intro: "Dezelfde bedragen als overal op deze site."
+  items:
+    - icon: rocket
+      title: "Startsprint: vanaf €8.000"
+      text: Zes dagen, vast bedrag, voor alle drie de ingangen. Start binnen twee weken na het eerste gesprek.
+    - icon: code
+      title: "Bouw: vanaf €15.000"
+      text: Meestal twee tot twaalf weken, in sprints van twee weken met een demo na elke sprint.
+    - icon: data-server
+      title: "Grote systemen: tot ruim €100.000"
+      text: Bij veel koppelingen, migraties of meerdere toepassingen tegelijk.
+    - icon: refresh
+      title: "Daarna: beheer en doorontwikkeling"
+      text: "Hosting, modelgebruik, beheer en doorontwikkeling. Wat dat kost, staat in je business case."
+    - icon: peoples
+      title: "Training: vanaf €2.500 per dagdeel"
+      text: "Los te boeken voor je team. Bij een bouw zit training op het systeem erin. Zie [AI-training](/nl/training)."
+sprint:
+  title: "Hoe je zeker weet wat het *kost*"
+  text: "Daar is de startsprint voor: in zes dagen bouwen we een prototype of bouwplan en rekenen we uit wat de volledige versie kost en oplevert."
+  outcome: "De business case op één A4: wat jouw toepassing kost, wat hij oplevert en wanneer hij zich terugverdient. Sluit hij niet, dan bouwen we niet."
+cases: [kwakkel]
+proofText: "Kwakkel weet na zes dagen wat de volledige versie kost en oplevert, en besluit zelf wanneer de bouw begint."
+faq:
+  - q: Waarom geen vaste prijs voor de bouw?
+    a: "Omdat elke toepassing anders is. De startsprint zoekt uit wat jouw toepassing kost; daarna staat het bedrag in de business case."
+  - q: Wat zijn de lopende kosten na de bouw?
+    a: "Hosting, modelgebruik, beheer en doorontwikkeling. Wat die bepaalt, lees je hierboven; de bedragen voor jouw situatie staan in je business case."
+  - q: Is een SaaS-tool niet goedkoper?
+    a: "Soms wel. Soms betaal je jaar na jaar voor een pakket waarvan je een deel gebruikt; zie [SaaS-pakket vervangen](/nl/saas-vervangen). In de startsprint rekenen we beide uit."
+  - q: Wat als de business case niet sluit?
+    a: "Dan bouwen we niet. Je houdt het prototype of plan en de business case."
+  - q: Krijg ik het geld van de startsprint terug als de bouw niet doorgaat?
+    a: "Nee. Je betaalt voor zes dagen werk en houdt het prototype of plan en de business case."
+related:
+  - label: Kosten en opbrengst vooraf
+    href: /nl/business-case
+  - label: De startsprint
+    href: /nl/startsprint
+  - label: SaaS-pakket vervangen
+    href: /nl/saas-vervangen
+---
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+
+<HsSection tone="paper" title="Waar de kosten *zitten*" lede="Wat een toepassing kost, hangt van een paar dingen af. Ook na de oplevering.">
+  <HsCards items={[
+    { icon: 'link', title: 'Koppelingen', text: 'Hoeveel systemen erbij betrokken zijn, en of ze een goede API hebben.' },
+    { icon: 'data-server', title: 'Data', text: 'Hoe schoon je gegevens zijn en hoeveel er overgezet moet worden.' },
+    { icon: 'server', title: 'Hosting', text: 'Europese cloud of je eigen servers, en hoeveel gebruikers er zijn.' },
+    { icon: 'cpu', title: 'Modelgebruik', text: 'Hoeveel vragen of documenten het AI-model per maand verwerkt.' },
+    { icon: 'refresh', title: 'Beheer en doorontwikkeling', text: 'Wat er na oplevering bij moet: onderhoud, updates en nieuwe wensen.' },
+    { icon: 'peoples', title: 'Training', text: 'Hoeveel mensen ermee gaan werken, en waar.' },
+  ]} />
+</HsSection>

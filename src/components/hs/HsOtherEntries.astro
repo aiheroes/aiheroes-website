@@ -2,22 +2,21 @@
 // "De andere ingangen": the two entries this page is not about, as colour planes.
 import HsSection from './HsSection.astro';
 import HsCards from './HsCards.astro';
-import { ENTRIES, type Entry } from '../../data/site';
+import { entriesFor, type Entry } from '../../data/site';
+import { ui, langOf } from '../../data/ui';
 
 interface Props {
   current: Entry;
 }
 const { current } = Astro.props;
-const TEXT: Record<Entry, string> = {
-  nieuw: 'Een assistent, een werkstroom of een tool die je nu mist, van prototype tot dagelijks gebruik.',
-  vervangen: 'Te dure of te oude software vervangen, naast het oude gebouwd en in fasen overgezet.',
-  'eigen-beheer': 'AI en software op je eigen servers of bij een Europese partij, met de AI Act in het ontwerp.',
-};
+const t = ui(Astro.url);
+const ENTRIES = entriesFor(langOf(Astro.url));
+const TEXT: Record<Entry, string> = t.otherEntriesText;
 const items = (Object.keys(ENTRIES) as Entry[])
   .filter((k) => k !== current)
-  .map((k) => ({ title: ENTRIES[k].title, href: ENTRIES[k].href, accent: ENTRIES[k].accent, text: TEXT[k], more: 'Bekijk deze ingang' }));
+  .map((k) => ({ title: ENTRIES[k].title, href: ENTRIES[k].href, accent: ENTRIES[k].accent, text: TEXT[k], more: t.otherEntriesMore }));
 ---
 
-<HsSection title="Of past een *andere* ingang?">
+<HsSection title={t.otherEntries}>
   <HsCards variant="planes" columns={2} items={items} />
 </HsSection>
