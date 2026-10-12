@@ -56,6 +56,13 @@ No unit-test framework is configured; `npm run check` is the gate.
 - **House rules for copy:** no em-dashes, no "geen X maar Y" / "not X but Y", one punch word per heading, never claim the source code belongs to the client (exception: extra developers working in the client's own code), Medux never named on the homepage, no invented facts. `npm run check` also fails on side stripes.
 - **Moving a URL:** add a 301 in `vercel.json` (no chains: point older redirects straight at the new target) and run `node scripts/check-redirect-parity.mjs <preview-url>` (it checks the old sitemap and every Search Console URL).
 
+## Search, GEO and agents
+
+- `npm run build` = `astro build` + `scripts/build-markdown.mjs` (every indexable page also as `<path>.md`, the homepage as `/index.md`, plus `/llms-full.txt`; served with `X-Robots-Tag: noindex`, linked from each page's head and from `public/llms.txt`) + the chat index.
+- The sitemap's `<lastmod>` comes from each page's last commit (`scripts/lastmod.mjs`); the deploy job checks out full history for it.
+- IndexNow (Bing, which feeds ChatGPT search and Copilot): the deploy workflow runs `node scripts/indexnow.mjs --since <previous master>` after each production deploy; by hand: `--all`, a list of URLs, or `--dry-run`. The key is `public/<32 hex>.txt`.
+- Organisation schema (`src/data/schema.ts`): `sameAs` holds only verified profiles (LinkedIn, GitHub, the Google Business Profile kgmid); `knowsAbout` lists the specialisms.
+
 ## Preview workflow
 
 Hosting is **Vercel** (team `ai-heroes`, project `aiheroes-website`, functions in `api/`

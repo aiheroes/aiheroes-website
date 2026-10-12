@@ -51,7 +51,7 @@ De inhoud is klaar en goedgekeurd. Dit plan beschrijft alleen wat er bij de verh
   - In: elke pagina via het logo.
   - De case-sectie linkt niet naar de Medux-pagina; dat blijft zo.
 - **SEO/GEO:**
-  - Intentie: merk en navigatie. Titel blijft in de lijn van de huidige: "AI laten bouwen die je team elke dag gebruikt | AI Heroes".
+  - Intentie: merk en navigatie. Titel: "AI-toepassingen die je team elke dag gebruikt | AI Heroes" (2026-10-12; "AI laten bouwen" was dubbelzinnig).
   - Meta: kernzin, drie entries, startsprint, Groningen.
   - Generieke termen ("ai agency nederland") vangen we op met L16, niet met de homepage.
 
