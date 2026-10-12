@@ -273,6 +273,26 @@ export function zet(text: string, { display = false, cap }: { display?: boolean;
   return tokens.reduce((out, t, i) => (i === 0 ? t : out + (glued[i - 1] ? NBSP : ' ') + t), '');
 }
 
+/**
+ * Photos with extra widths next to the main file (name-900.webp, name.webp, name-2800.webp), so
+ * phones load less and 4K and high-density screens stay sharp. The main file's width comes last.
+ */
+const PHOTO_WIDTHS: Record<string, number> = {
+  '/hs/photos/cover-office.webp': 1800,
+  '/hs/photos/cover-screen.webp': 1800,
+  '/hs/photos/cover-legacy.webp': 1800,
+  '/hs/photos/cover-datacenter.webp': 1800,
+  '/hs/photos/case-support.webp': 1400,
+};
+
+/** The srcset for a photo with extra widths, or undefined for any other image. */
+export function photoSrcset(src: string): string | undefined {
+  const main = PHOTO_WIDTHS[src];
+  if (!main) return undefined;
+  const base = src.replace(/\.webp$/, '');
+  return `${base}-900.webp 900w, ${src} ${main}w, ${base}-2800.webp 2800w`;
+}
+
 /** Inlined brand SVGs share gradient ids; make them unique per instance. */
 let n = 0;
 export function uniqueSvg(svg: string): string {
@@ -286,7 +306,13 @@ export function uniqueSvg(svg: string): string {
  * hand-set breaks as in zet().
  */
 export function display(text: string, opts: { cap?: number } = {}): string {
-  return zet(text, { display: true, ...opts }).replace(/\*([^*]+)\*/g, '<span class="punch">$1</span>');
+  // The punch never breaks (a no-wrap span), so zet() measures a punch of several words as one
+  // word; otherwise it glues the words before it into a run wider than the heading.
+  const KEEP = String.fromCharCode(1);
+  const joined = text.replace(/\*([^*]+)\*/g, (_, p: string) => `*${p.replace(/ /g, KEEP)}*`);
+  return zet(joined, { display: true, ...opts })
+    .split(KEEP).join(' ')
+    .replace(/\*([^*]+)\*/g, '<span class="punch">$1</span>');
 }
 
 /** The same text without punch or break marks, for titles, alt text and meta tags. */

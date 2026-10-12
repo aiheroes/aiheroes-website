@@ -163,7 +163,8 @@ function initNav(signal: AbortSignal) {
   const menuBtn = document.querySelector<HTMLButtonElement>('.hs-nav__menu');
   if (!nav) return;
   const nearTop = () => scrollY < nav.offsetHeight * 2;
-  const pinned = () => menuBtn?.getAttribute('aria-expanded') === 'true' || nav.contains(document.activeElement) || !!nav.dataset.open;
+  // Only keyboard focus pins the bar: a tapped or clicked menu button keeps focus, and the bar must still hide.
+  const pinned = () => menuBtn?.getAttribute('aria-expanded') === 'true' || !!nav.querySelector(':focus-visible') || !!nav.dataset.open;
   const show = () => nav.classList.remove('is-hidden');
   const hide = () => { if (!nearTop() && !pinned()) nav.classList.add('is-hidden'); };
   const go = (up: boolean) => (up ? show() : hide());
@@ -289,10 +290,14 @@ function initForm(signal: AbortSignal) {
       status.textContent = text;
       status.dataset.state = state;
     };
+    // A marked field (aria-invalid, red ring) clears as soon as the visitor changes it.
+    form.addEventListener('input', (e) => (e.target as Element).removeAttribute('aria-invalid'), { signal });
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
-      const missing = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')].find((f) => !f.value.trim());
+      const empty = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')].filter((f) => !f.value.trim());
+      empty.forEach((f) => f.setAttribute('aria-invalid', 'true'));
+      const missing = empty[0];
       if (missing) {
         say(form.dataset.msgMissing ?? 'Vul je naam, e-mailadres en je vraag in.', 'error');
         missing.focus();
@@ -300,6 +305,7 @@ function initForm(signal: AbortSignal) {
       }
       const email = form.querySelector<HTMLInputElement>('input[type="email"]');
       if (email && !email.checkValidity()) {
+        email.setAttribute('aria-invalid', 'true');
         say(form.dataset.msgEmail ?? 'Dat e-mailadres klopt nog niet helemaal.', 'error');
         email.focus();
         return;

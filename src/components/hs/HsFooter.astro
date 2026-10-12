@@ -24,7 +24,7 @@ const a = SITE.address;
         <div>
           <h2>{c.href ? <a href={c.href}>{c.heading}</a> : c.heading}</h2>
           <ul>
-            {c.links.map((i) => <li><a href={i.href}>{zet(i.label, { display: true, cap: 24 })}</a></li>)}
+            {c.links.map((i) => <li><a href={i.href}>{zet(i.label, { display: true, cap: 14 })}</a></li>)}
           </ul>
         </div>
       ))}

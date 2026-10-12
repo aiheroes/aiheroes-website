@@ -115,17 +115,22 @@ const { position = '', title = T.title, id = en ? 'apply' : 'solliciteer' } = As
       const status = form.querySelector<HTMLElement>('.hs-form__status');
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       const say = (t: string | undefined, state: string) => { if (status) { status.textContent = t ?? ''; status.dataset.state = state; } };
+      const clear = (e: Event) => (e.target as Element).removeAttribute('aria-invalid');
+      form.addEventListener('input', clear);
+      form.addEventListener('change', clear);
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const missing = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')]
-          .find((f) => (f instanceof HTMLInputElement && f.type === 'checkbox' ? !f.checked : !f.value.trim()));
+        const empty = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')]
+          .filter((f) => (f instanceof HTMLInputElement && f.type === 'checkbox' ? !f.checked : !f.value.trim()));
+        empty.forEach((f) => f.setAttribute('aria-invalid', 'true'));
+        const missing = empty[0];
         if (missing) {
           say(missing.getAttribute('type') === 'checkbox' ? m.msgConsent : m.msgMissing, 'error');
           missing.focus();
           return;
         }
         const email = form.querySelector<HTMLInputElement>('input[type="email"]');
-        if (email && !email.checkValidity()) { say(m.msgEmail, 'error'); email.focus(); return; }
+        if (email && !email.checkValidity()) { email.setAttribute('aria-invalid', 'true'); say(m.msgEmail, 'error'); email.focus(); return; }
         const file = form.querySelector<HTMLInputElement>('input[type="file"]')?.files?.[0];
         if (file && file.size > MAX) { say(m.msgBig, 'error'); return; }
         const data = new FormData(form);
@@ -156,6 +161,7 @@ const { position = '', title = T.title, id = en ? 'apply' : 'solliciteer' } = As
   .hs-apply__file { padding: .75rem 1rem; }
   .hs-apply__file::file-selector-button { margin-right: 1rem; padding: .5rem .875rem; border: 0; border-radius: 2px; background: var(--dark); color: var(--light); font: 600 .9375rem/1 var(--font); cursor: pointer; }
   .hs-apply__consent { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .75rem; align-items: start; font-size: .9375rem; color: var(--body-on-light); }
-  .hs-apply__consent input { width: 1.125rem; height: 1.125rem; margin-top: .15em; accent-color: var(--dark); }
+  .hs-apply__consent input { width: 1.5rem; height: 1.5rem; margin-top: -.05em; accent-color: var(--dark); }
   .hs-apply__consent a { text-decoration: underline; text-underline-offset: .2em; }
+  .hs-apply__consent input[aria-invalid="true"] { outline: 2px solid var(--red); outline-offset: 2px; }
 </style>

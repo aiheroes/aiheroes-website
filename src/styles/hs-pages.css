@@ -53,7 +53,7 @@ button.hs-nav__top { cursor: pointer; }
 
 /* ---------- Type additions ---------- */
 
-.hs-d-s { font-size: clamp(1.875rem, 1rem + 2.7vw, 4.25rem); }
+.hs-d-s { font-size: clamp(min(1.875rem, 8vw), 1rem + 2.7vw, 4.25rem); }
 .hs .hs-h3 { font-weight: 700; letter-spacing: -0.018em; font-size: clamp(1.25rem, 1.05rem + .6vw, 1.75rem); line-height: 1.15; }
 .hs .hs-muted { color: var(--body-on-light); }
 .hs .on-dark .hs-muted, .hs .on-blue .hs-muted, .hs .on-red .hs-muted { color: var(--body-on-dark); }
@@ -72,15 +72,19 @@ button.hs-nav__top { cursor: pointer; }
   padding: 1.25rem var(--pad-x) 2rem;
   min-height: 16rem;
 }
+/* Below 390px the minimum size follows the screen, so the longest word group still fits 320px. */
 .hs-pcover__title {
   max-width: 13em;
-  font-size: clamp(2.25rem, 0.7rem + 4.6vw, 6.5rem);
+  font-size: clamp(min(2.25rem, 9.4vw), 0.7rem + 4.6vw, 6.5rem);
   line-height: 1.01;
 }
-.hs-pcover__title.is-long { font-size: clamp(2rem, 0.6rem + 3.9vw, 5.5rem); line-height: 1.03; max-width: 15em; }
+.hs-pcover__title.is-long { font-size: clamp(min(2rem, 8.4vw), 0.6rem + 3.9vw, 5.5rem); line-height: 1.03; max-width: 15em; }
 .hs-pcover__zone.on-dark .punch { color: var(--red); }
 .hs-pcover__zone:is(.on-red, .on-blue) .hs-pcover__title .punch { color: var(--dark); }
 .hs-pcover__photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--dark); }
+@media (orientation: landscape) and (max-height: 540px) and (max-width: 899px) {
+  .hs-pcover__photo { aspect-ratio: auto; height: 55svh; }
+}
 .hs-pcover__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hs-pcover__photo.is-duo img { filter: contrast(1.05) url(#hs-duo-red); }
 .hs-pcover__photo.is-duo-blue img { filter: contrast(1.05) url(#hs-duo-blue); }
@@ -342,6 +346,12 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
 .hs-prose table { width: 100%; border-collapse: collapse; font-size: .9375em; display: block; overflow-x: auto; }
 .hs-prose th, .hs-prose td { text-align: left; vertical-align: top; padding: .75rem 1rem .75rem 0; box-shadow: inset 0 -1.5px 0 var(--rule-on-light); }
 .hs-prose th { font-weight: 700; color: var(--dark); }
+/* Phones: a wide table scrolls sideways with readable columns instead of squeezing them to a few
+   words per line; the cut-off column shows there is more. */
+@media (max-width: 719px) {
+  .hs-prose :is(th, td) { min-width: 9.5rem; }
+  .hs-prose :is(th, td):first-child { min-width: 6.5rem; }
+}
 .hs-prose code { font-size: .9em; background: #F0EDE4; padding: .1em .3em; border-radius: 2px; }
 .hs-prose .hs-answer { padding: 1.5rem 1.75rem; background: var(--blue); color: var(--light); font-weight: 450; font-size: 1.125em; line-height: 1.5; }
 .hs-prose .hs-answer p { color: var(--light); }
@@ -472,6 +482,12 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
 .hs :is(.hs-step__text, .hs-card__text, .hs-fit, .hs-sec__head, .hs-faq__a, .hs-pcover__lede, .hs-stdlist__extra, .hs-case__text > p, .hs-ctaband__text p) a:hover { text-decoration-color: currentColor; }
 /* a.hs-card holds no nested links; a card with a link inside its text is a div. */
 
+/* Figures with words ("Certificaat", "6 dagen") in columns: the figure shrinks until its longest
+   word fits the column, so it never runs into the next one. */
+@media (min-width: 560px) {
+  .hs-stats.is-wordy div { container-type: inline-size; }
+  .hs-stats.is-wordy dd { font-size: min(clamp(2.5rem, 1.2rem + 4.4vw, 7rem), calc(100cqi / (var(--fig-n, 6) * .62))); }
+}
 /* Figures with words ("6 dagen", "€8.000"): on phones the label goes under the figure. */
 @media (max-width: 559px) {
   .hs-stats.is-wordy div { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }

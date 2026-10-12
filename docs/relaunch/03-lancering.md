@@ -16,6 +16,9 @@ fase 8 is alles klaar behalve de lancering zelf.
   `.html`-varianten die via cleanUrls op dezelfde 410 uitkomen.
 - **Controles:** `npm run check` groen (0 errors, 0 warnings, geen zijstrepen), 0 dode interne
   links in beide talen, `llms.txt` en de assistent-index op de nieuwe structuur.
+- **Responsiveness:** elke pagina (127) op elf formaten van 320px tot 4K, inclusief foldables,
+  tablets en een liggende telefoon, plus alle interacties en de chat; gevonden problemen
+  opgelost (`05-responsive.md`).
 
 ## Wacht op Frans
 
@@ -28,6 +31,7 @@ fase 8 is alles klaar behalve de lancering zelf.
 | Foto's AI Salon-kick-off, onderwerp van de AI Storm-aflevering | nee | `src/data/salon.ts`, `src/data/campaigns.ts` |
 | Eigen AI-beleid als basis voor het sjabloon (daarna `enabled: true` in `server/downloads.ts`) | nee | K3 |
 | DNS-record `aoplatform.backend.aiheroes.io` verwijderen | nee | registrar |
+| Testset van de assistent bijwerken: `evals/promptfooconfig.yaml` test nog de oude positionering ("full-service AI-agency", drie pijlers) en draait alleen met de Vertex-credential; de AI-assistentpagina belooft dat elke nieuwe versie die set haalt | nee | `npm run eval:chat` |
 
 Afgerond op 2026-10-12: de voorwaarden zijn door de jurist goedgekeurd en staan op de site (NL en EN).
 Uit het interview (01-besluiten §17): akkoord op privacy en de

@@ -3,7 +3,7 @@
 // breadcrumbs and the headline, an optional photo beside it, and an ink band with the lede, the
 // action and up to three facts. Mark the one punch word in the title with *asterisks*.
 import HsIcon from './HsIcon.astro';
-import { display, plainText, zet } from './hs';
+import { display, photoSrcset, plainText, zet } from './hs';
 import type { Crumb } from '../../data/schema';
 import { ui } from '../../data/ui';
 
@@ -51,7 +51,7 @@ const long = plainText(title).length > 46;
   </div>
   {photo && (
     <div class:list={['hs-pcover__photo', { 'is-duo': photo.duo === 'red', 'is-duo-blue': photo.duo === 'blue' }]}>
-      <img src={photo.src} alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
+      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 1024px) 75vw, 100vw" alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
     </div>
   )}
   {(lede || cta || facts.length > 0) && (
@@ -77,7 +77,7 @@ const long = plainText(title).length > 46;
         <dl class="hs-pcover__facts">
           {facts.map((f) => (
             <div>
-              <dt>{zet(f.label, { cap: 22 })}</dt>
+              <dt>{zet(f.label, { cap: 16 })}</dt>
               <dd>{f.value}</dd>
             </div>
           ))}

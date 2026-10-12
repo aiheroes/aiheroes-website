@@ -31,6 +31,8 @@ export interface NavContent {
   langLabel: string;
   langName: string;
   menuLabel: string;
+  /** The menu button's label while the menu is open. */
+  closeLabel: string;
   footer: {
     tagline: string;
     columns: FooterColumn[];
@@ -75,6 +77,7 @@ const NL: NavContent = {
   langLabel: 'EN',
   langName: 'English',
   menuLabel: 'Menu',
+  closeLabel: 'Sluiten',
   footer: {
     tagline: 'Wij bouwen AI-toepassingen die je team elke dag gebruikt. Business case, compliance en training inbegrepen.',
     columns: [
@@ -111,7 +114,7 @@ const NL: NavContent = {
           { label: 'Compliance en security', href: '/nl/compliance' },
           { label: 'AI-training voor je team', href: '/nl/training' },
           { label: 'Incompany AI-training', href: '/nl/incompany-ai-training' },
-          { label: 'AI-geletterdheidstraining', href: '/nl/ai-geletterdheid-training' },
+          { label: 'AI-geletterdheids­training', href: '/nl/ai-geletterdheid-training' },
           { label: 'Digitale soevereiniteit', href: '/nl/digitale-soevereiniteit' },
         ],
       },
@@ -176,6 +179,7 @@ const EN: NavContent = {
   langLabel: 'NL',
   langName: 'Nederlands',
   menuLabel: 'Menu',
+  closeLabel: 'Close',
   footer: {
     tagline: 'We build AI tools your team uses every day. Business case, compliance and training included.',
     columns: [

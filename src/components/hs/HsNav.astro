@@ -65,8 +65,9 @@ const itemActive = (subs?: { href: string }[], href?: string) => isCurrent(href)
     <a class="hs-nav__lang" href={langHref} hreflang={otherLang} lang={otherLang} aria-label={nav.langName}>{nav.langLabel}</a>
     <a class="hs-btn hs-btn--dark hs-btn--s hs-nav__cta" href={nav.cta.href}>{nav.cta.label}</a>
     <button class="hs-nav__menu" type="button" aria-expanded="false" aria-controls="hs-menu">
-      <HsIcon name="menu" />
-      <span>{nav.menuLabel}</span>
+      <HsIcon name="menu" class="is-closed" />
+      <HsIcon name="close" class="is-open" />
+      <span class="hs-nav__menu-label"><span class="is-closed">{nav.menuLabel}</span><span class="is-open">{nav.closeLabel}</span></span>
     </button>
   </div>
 </header>

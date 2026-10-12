@@ -4,7 +4,7 @@
 // the logo, exactly as wide as the band is tall.
 import HsIcon from './HsIcon.astro';
 import HsLogo from './HsLogo.astro';
-import { punch, plain, zet } from './hs';
+import { photoSrcset, punch, plain, zet } from './hs';
 import { langOf } from '../../data/ui';
 import type { Content } from '../../data/types';
 
@@ -78,6 +78,8 @@ const slides = sources.map((s, i) => {
     {slides.map((s, i) => (
       <img
         src={s.photo.src}
+        srcset={photoSrcset(s.photo.src)}
+        sizes="(min-width: 1024px) 75vw, 100vw"
         alt={i === 0 ? s.photo.alt : ''}
         data-photo
         class:list={{ 'is-active': i === 0 }}

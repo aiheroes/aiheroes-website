@@ -116,8 +116,9 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   line-height: 1.03;
   text-wrap: balance;
 }
-.hs-d-l { font-size: clamp(2.25rem, 0.8rem + 5vw, 7rem); line-height: 1.02; }
-.hs-d-m { font-size: clamp(2.125rem, 0.75rem + 4.4vw, 6rem); }
+.hs-d-l { font-size: clamp(min(2.25rem, 9.4vw), 0.8rem + 5vw, 7rem); line-height: 1.02; }
+/* Display minimums follow the screen below 390px, so the longest word group still fits 320px. */
+.hs-d-m { font-size: clamp(min(2.125rem, 8.6vw), 0.75rem + 4.4vw, 6rem); }
 .hs .hs-title {
   font-weight: 700;
   letter-spacing: -0.018em;
@@ -240,10 +241,25 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-nav__top:hover::after, .hs-nav__top[aria-expanded="true"]::after, .hs-sub__list a:hover::after { transform: scaleX(1); }
 .hs-nav__end { display: flex; align-items: center; gap: clamp(1rem, 1.8vw, 1.75rem); margin-left: auto; }
 .hs-nav__lang { padding: .5rem 0; color: var(--body-on-light); }
+/* Touch: small links get a hit area of at least 24px (WCAG 2.5.8) without moving anything; the
+   padding is taken back by a negative margin. */
+@media (pointer: coarse) {
+  .hs-nav__lang { padding-inline: .5rem; margin-inline: -.5rem; }
+  .hs :is(.hs-footer__cols a, .hs-footer__legal a, .hs-crumbs a, .hs-author__links a, .hs-acov__by a, .hs-toc a, dd a) {
+    display: inline-block;
+    padding-block: .3125rem;
+    margin-block: -.3125rem;
+  }
+}
 .hs-nav__lang:hover { color: var(--dark); }
 .hs-nav__cta { display: none; }
 .hs-nav__menu { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; }
 .hs-nav__menu .hs-icon { width: 1.5rem; height: 1.5rem; }
+/* Open, the button says what it does next: close. Both labels share one cell, so the width holds. */
+.hs-nav__menu-label { display: grid; }
+.hs-nav__menu-label > span { grid-area: 1 / 1; }
+.hs-nav__menu[aria-expanded="true"] .hs-icon.is-closed, .hs-nav__menu:not([aria-expanded="true"]) .hs-icon.is-open { display: none; }
+.hs-nav__menu[aria-expanded="true"] .hs-nav__menu-label .is-closed, .hs-nav__menu:not([aria-expanded="true"]) .hs-nav__menu-label .is-open { visibility: hidden; }
 @media (min-width: 1100px) {
   .hs-nav__links { display: flex; }
   .hs-nav__end { margin-left: 0; }
@@ -345,6 +361,10 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   transition: opacity .8s var(--ease);
 }
 .hs-cover__photo img.is-active { opacity: 1; }
+/* A phone on its side: the stacked 16:10 photo would be taller than the screen. */
+@media (orientation: landscape) and (max-height: 540px) and (max-width: 899px) {
+  .hs-cover__photo { aspect-ratio: auto; height: 55svh; }
+}
 .hs-cover__zone {
   position: relative;
   display: flex;
@@ -370,11 +390,11 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-cover__stack > *, .hs-cover__subs > * { grid-area: 1 / 1; }
 .hs-cover [data-head] {
   max-width: 11em;
-  font-size: clamp(2.25rem, 0.6rem + 5vw, 7.5rem);
+  font-size: clamp(min(2.25rem, 9.4vw), 0.6rem + 5vw, 7.5rem);
   line-height: 1;
 }
 /* The deck's length ladder: a longer headline steps down (cover 176 → 132). */
-.hs-cover [data-head].is-long { font-size: clamp(2rem, 0.5rem + 4.1vw, 6.25rem); line-height: 1.02; }
+.hs-cover [data-head].is-long { font-size: clamp(min(2rem, 8.4vw), 0.5rem + 4.1vw, 6.25rem); line-height: 1.02; }
 /* A long headline also gives its punch its own line. */
 .hs-cover [data-head].is-long .punch { display: block; }
 .hs-cover [data-head], .hs-cover [data-sub] {
@@ -812,6 +832,7 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-input::placeholder { color: var(--micro-on-light); }
 .hs-input:hover { box-shadow: inset 0 0 0 1.5px var(--micro-on-light); }
 .hs-input:focus { outline: none; box-shadow: inset 0 0 0 2px var(--dark); }
+.hs-input[aria-invalid="true"], .hs-input[aria-invalid="true"]:focus { box-shadow: inset 0 0 0 2px var(--red); }
 textarea.hs-input { min-height: 8.75rem; resize: vertical; }
 .hs-form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: .75rem; }
 .hs-chips { display: flex; flex-wrap: wrap; gap: .5rem; }

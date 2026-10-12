@@ -129,6 +129,11 @@
 .aih-iconbtn .aih-icon { width: 1.125rem; height: 1.125rem; }
 .aih-iconbtn:hover { background: rgba(253, 252, 248, .16); }
 .aih-head .aih-iconbtn:focus-visible { outline-color: var(--aih-cream); outline-offset: -3px; }
+/* The narrowest phones: keep the AI label on one line next to the two actions. */
+@media (max-width: 359px) {
+  .aih-head__bar { padding-left: 1rem; gap: .5rem; }
+  .aih-head__title { gap: .5rem; font-size: .875rem; }
+}
 .aih-desk { display: none; }
 @media (min-width: 640px) {
   .aih-grab, .aih-mob { display: none; }
