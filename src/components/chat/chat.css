@@ -60,7 +60,8 @@
 }
 .aih-launcher.is-new { animation: aih-launch-in .45s var(--aih-ease) .5s both; }
 .aih-launcher .aih-icon { width: 1.375rem; height: 1.375rem; }
-.aih-launcher__label { max-width: 16rem; overflow: hidden; white-space: nowrap; transition: max-width .3s var(--aih-ease), opacity .2s; }
+/* Its own line height: with overflow hidden (for the collapse) a line height of 1 clips the g and j. */
+.aih-launcher__label { max-width: 16rem; overflow: hidden; white-space: nowrap; line-height: 1.375; transition: max-width .3s var(--aih-ease), opacity .2s; }
 .aih-launcher:hover { background: var(--aih-cream); color: var(--aih-ink); box-shadow: inset 0 0 0 1.5px var(--aih-ink), 0 0 0 1.5px var(--aih-cream); }
 .aih-launcher:active { transform: translateY(1px); }
 .aih-launcher:focus-visible { outline: 2px solid var(--aih-blue); outline-offset: 3px; }
