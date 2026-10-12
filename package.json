@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && tsx scripts/build-index/index.ts",
+    "build": "astro build && node scripts/build-markdown.mjs && tsx scripts/build-index/index.ts",
     "build:index": "tsx scripts/build-index/index.ts",
     "preview": "astro preview",
     "astro": "astro",

@@ -48,6 +48,10 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: the sitemap's <lastmod> comes from each page's last commit
+          # (scripts/lastmod.mjs), and IndexNow diffs against the previous master.
+          fetch-depth: 0
 
       - name: Re-author HEAD as the Vercel account owner
         run: |
@@ -74,6 +78,12 @@ jobs:
           url=$(vercel deploy --prebuilt ${{ env.PRODUCTION == 'true' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "Deployed: $url" >> "$GITHUB_STEP_SUMMARY"
+
+      # Tell Bing (ChatGPT search, Copilot) and the other IndexNow engines which pages changed.
+      - name: Notify IndexNow
+        if: env.PRODUCTION == 'true'
+        continue-on-error: true
+        run: node scripts/indexnow.mjs --since ${{ github.event.before }}
 
       - name: Comment preview URL on PR
         if: github.event_name == 'pull_request'

@@ -26,7 +26,28 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   openingHours: 'Mo-Fr 09:00-17:00',
   // Extend as directory profiles get claimed (Wikidata QID, Clutch, Sortlist, ensun —
   // see docs/seo-offsite-checklist.md). Only verified, live profile URLs belong here.
-  sameAs: ['https://www.linkedin.com/company/aiheroes'],
+  // The Google entry is the Business Profile's Knowledge Graph id (kgmid), the stable form of
+  // its share link; it ties this site to the Groningen entity, not the Amsterdam namesake.
+  sameAs: [
+    'https://www.linkedin.com/company/aiheroes',
+    'https://github.com/AIHeroes',
+    'https://www.google.com/search?kgmid=/g/11l2p250xl',
+  ],
+  // What the company is an authority on, for search and AI assistants (entity understanding).
+  knowsAbout: [
+    'Artificial intelligence',
+    'AI applications for businesses',
+    'AI agents and workflow automation',
+    'AI customer service and voice assistants',
+    'Replacing legacy software and SaaS',
+    'Self-hosted AI and European hosting',
+    'Digital sovereignty',
+    'EU AI Act compliance',
+    'AI literacy (EU AI Act Article 4)',
+    'ISO/IEC 42001',
+    'AI business cases',
+    'AI training for teams',
+  ],
   founder: [
     { '@type': 'Person', '@id': 'https://aiheroes.io/#frans-hoorn', name: 'Frans Hoorn', jobTitle: 'Co-Founder, business case en strategie', sameAs: ['https://www.linkedin.com/in/frans-hoorn-057b082a/'] },
     { '@type': 'Person', '@id': 'https://aiheroes.io/#david-homan', name: 'David Homan', jobTitle: 'Co-Founder, software en compliance', sameAs: ['https://www.linkedin.com/in/davidnhoman/'] },

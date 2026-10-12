@@ -5,6 +5,10 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { NOINDEX_PATHS } from './src/data/seo.ts';
+import { lastmodByPath, lastmodFor } from './scripts/lastmod.mjs';
+
+// <lastmod> per page from the git history of its source (scripts/lastmod.mjs).
+const LASTMOD = lastmodByPath();
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +26,11 @@ export default defineConfig({
     // Noindexed pages must not appear in the sitemap (contradictory signal).
     sitemap({
       filter: (page) => !NOINDEX_PATHS.includes(new URL(page).pathname),
+      serialize(item) {
+        const date = lastmodFor(LASTMOD, new URL(item.url).pathname);
+        if (date) item.lastmod = date;
+        return item;
+      },
     }),
   ],
   vite: {

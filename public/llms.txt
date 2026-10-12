@@ -4,6 +4,11 @@
 
 AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties die verder willen dan een pilot. Drie ingangen: een nieuwe AI-toepassing, oude software vervangen of lokale AI. De eerste stap is altijd de startsprint: zes dagen, vaste prijs, vanaf EUR 8.000, start binnen twee weken. Van ambitie tot implementatie. Vanuit Groningen, voor heel Europa.
 
+## For agents
+
+- [All pages as Markdown](https://aiheroes.io/llms-full.txt): the full text of every public page, Dutch first, then English
+- Every page is also available as Markdown: add .md to its URL, for example https://aiheroes.io/en/start-sprint.md (the Dutch homepage is https://aiheroes.io/index.md)
+
 ## The AI Heroes standard (included in every build)
 
 - Business case first: cost, return and payback on one page, before we build
