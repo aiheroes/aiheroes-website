@@ -13,7 +13,7 @@ import HsContact from './HsContact.astro';
 import HsIcon from './HsIcon.astro';
 import HsCaseCards from './HsCaseCards.astro';
 import { STANDARD_ICONS, zet } from './hs';
-import { getCases, displayName, formatStat, entryAccent, ENTRY_NEXT_BY_LANG, CASE_UI, type CaseStudy } from './cases';
+import { getCases, displayName, formatStat, entryAccent, entryPhotoTone, ENTRY_NEXT_BY_LANG, CASE_UI, type CaseStudy } from './cases';
 import { ui, langOf } from '../../data/ui';
 
 interface Props {
@@ -40,7 +40,7 @@ const STANDARD = {
 } as const;
 const standard = d.currentTeam ? d.standard.map((k) => STANDARD[k]) : [];
 const quote = d.quote?.approved ? d.quote : undefined;
-const coverPhoto = d.photo && !d.photo.shot ? { src: d.photo.src, alt: d.photo.alt, w: d.photo.w, h: d.photo.h, pos: d.photo.pos, duo: d.photo.duo ? ('red' as const) : undefined } : undefined;
+const coverPhoto = d.photo && !d.photo.shot ? { src: d.photo.src, alt: d.photo.alt, w: d.photo.w, h: d.photo.h, pos: d.photo.pos, duo: d.photo.duo ? entryPhotoTone(first) : undefined } : undefined;
 const shot = d.screenshot ?? (d.photo?.shot ? d.photo : undefined);
 const more = (await getCases(lang)).filter((c) => c.data.slug !== d.slug && c.data.entry.some((e) => d.entry.includes(e)));
 ---

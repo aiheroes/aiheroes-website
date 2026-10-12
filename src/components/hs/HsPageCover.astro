@@ -20,7 +20,7 @@ interface Props {
   crumbs?: Crumb[];
   cta?: { label: string; href: string } | null;
   secondary?: { label: string; href: string };
-  photo?: { src: string; alt: string; w: number; h: number; pos?: string; duo?: 'red' | 'blue' };
+  photo?: { src: string; alt: string; w: number; h: number; pos?: string; duo?: 'red' | 'blue' | 'bw' };
   facts?: Fact[];
 }
 const {
@@ -50,7 +50,7 @@ const long = plainText(title).length > 46;
     <h1 class:list={['hs-pcover__title', { 'is-long': long }]} set:html={display(title)} />
   </div>
   {photo && (
-    <div class:list={['hs-pcover__photo', { 'is-duo': photo.duo === 'red', 'is-duo-blue': photo.duo === 'blue' }]}>
+    <div class:list={['hs-pcover__photo', { 'is-duo': photo.duo === 'red', 'is-duo-blue': photo.duo === 'blue', 'is-bw': photo.duo === 'bw' }]}>
       <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 1024px) 75vw, 100vw" alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
     </div>
   )}

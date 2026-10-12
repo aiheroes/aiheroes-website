@@ -101,6 +101,8 @@ export const CASE_UI = {
 
 export const entryLabel = (e: Entry, lang: Lang = 'nl') => entriesFor(lang)[e].title;
 export const entryAccent = (e: Entry) => ENTRIES[e].accent;
+/** A stand-in case photo takes the colour of its first entry: red or blue duotone, black and white for the dark entry. */
+export const entryPhotoTone = (e: Entry) => ({ red: 'red', blue: 'blue', dark: 'bw' } as const)[ENTRIES[e].accent];
 export const caseHref = (slug: string, lang: Lang = 'nl') => `/${lang}/cases/${slug}`;
 
 /** All cases in one language, current team first (proof rule, never shown as a label), then by order. */

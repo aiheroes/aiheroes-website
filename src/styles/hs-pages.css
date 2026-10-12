@@ -88,6 +88,7 @@ button.hs-nav__top { cursor: pointer; }
 .hs-pcover__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hs-pcover__photo.is-duo img { filter: contrast(1.05) url(#hs-duo-red); }
 .hs-pcover__photo.is-duo-blue img { filter: contrast(1.05) url(#hs-duo-blue); }
+.hs-pcover__photo.is-bw img { filter: grayscale(1) contrast(1.05); }
 .hs-pcover__band {
   display: grid;
   gap: 1.5rem;
@@ -404,7 +405,10 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
 .hs-casecard[hidden] { display: none; }
 .hs-casecard__photo { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--dark); }
 .hs-casecard__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); transform: translateZ(0); backface-visibility: hidden; }
-.hs-casecard__photo.is-duo img { filter: contrast(1.05) url(#hs-duo-red); }
+/* Stand-in photos take the colour of the case's first entry. */
+.hs-casecard__photo.is-tone-red img { filter: contrast(1.05) url(#hs-duo-red); }
+.hs-casecard__photo.is-tone-blue img { filter: contrast(1.05) url(#hs-duo-blue); }
+.hs-casecard__photo.is-tone-bw img { filter: grayscale(1) contrast(1.05); }
 .hs-casecard__photo.is-shot { background: #EDEAE2; }
 .hs-casecard__photo.is-shot img { object-fit: contain; padding: 1.25rem; }
 .hs-casecard:hover .hs-casecard__photo img { transform: translateZ(0) scale(1.03); }
