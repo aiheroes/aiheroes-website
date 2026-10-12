@@ -28,6 +28,7 @@ export const FOUNDERS: Record<FounderId, Founder> = {
     bio: 'Frans leidt de startsprint en de business case: wat kost het, wat levert het op en wanneer verdient het zich terug. Hij combineert strategisch denken met een scherp oog voor hoe mensen software echt gebruiken.',
     photo: '/team/frans.webp',
     calendar: 'https://calendar.app.google/juFpF3MDmikH4BVS8',
+    linkedin: 'https://www.linkedin.com/in/frans-hoorn-057b082a/',
     en: {
       role: 'Co-Founder, business case and strategy',
       hint: 'Business case and scoping',
@@ -43,6 +44,7 @@ export const FOUNDERS: Record<FounderId, Founder> = {
     bio: 'David leidt de bouw, van prototype tot een systeem dat in je eigen landschap draait. AI Act-classificatie, logging, security en hosting zitten bij hem vanaf de tekentafel in het ontwerp.',
     photo: '/team/david.webp',
     calendar: 'https://calendar.app.google/GcA1oBNwzyFZtW5W6',
+    linkedin: 'https://www.linkedin.com/in/davidnhoman/',
     en: {
       role: 'Co-Founder, software and compliance',
       hint: 'Build, hosting and compliance',
@@ -58,6 +60,7 @@ export const FOUNDERS: Record<FounderId, Founder> = {
     bio: 'Jan zorgt dat het team dat met een systeem gaat werken er ook mee kan werken, met training op het systeem zelf en op de werkvloer. Hij maakt technologie toegankelijk, van AI-geletterdheid tot de directiesessie over digitale soevereiniteit.',
     photo: '/team/jan.webp',
     calendar: 'https://calendar.app.google/un3fLvb7ht4f7PBWA',
+    linkedin: 'https://www.linkedin.com/in/jan-brusse-42a5a3139/',
     en: {
       role: 'Co-Founder, training and adoption',
       hint: 'Adoption and training for your team',

@@ -21,13 +21,15 @@ interface Props {
   variant?: 'rules' | 'planes' | 'tiles';
   columns?: 2 | 3 | 4;
   id?: string;
+  /** Random order per visit (the founders, who share one rank). */
+  shuffle?: boolean;
 }
-const { items, variant = 'rules', columns = 3, id } = Astro.props;
+const { items, variant = 'rules', columns = 3, id, shuffle = false } = Astro.props;
 const ACCENTS = ['red', 'blue', 'dark'] as const;
 const readMore = ui(Astro.url).readMore;
 ---
 
-<ul class={`hs-cards hs-cards--${variant} hs-cards--${columns}`} id={id}>
+<ul class={`hs-cards hs-cards--${variant} hs-cards--${columns}`} id={id} data-shuffle={shuffle ? '' : undefined}>
   {items.map((c, i) => {
     const Tag = c.href ? 'a' : 'div';
     return (

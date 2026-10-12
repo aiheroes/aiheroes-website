@@ -325,6 +325,24 @@ function initForm(signal: AbortSignal) {
   });
 }
 
+/**
+ * The three founders have the same rank, so lists marked data-shuffle show them in a random order
+ * per visit. The HTML keeps a fixed order for search engines; "alternate" re-applies is-reverse.
+ */
+function initShuffle() {
+  document.querySelectorAll<HTMLElement>('[data-shuffle]').forEach((list) => {
+    const items = [...list.children] as HTMLElement[];
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    items.forEach((el, i) => {
+      list.appendChild(el);
+      if (list.dataset.shuffle === 'alternate') el.classList.toggle('is-reverse', i % 2 === 1);
+    });
+  });
+}
+
 /** FAQ answers are <details>; a link to one (#faq-...) opens it. */
 function initFaq() {
   if (!location.hash) return;
@@ -362,6 +380,7 @@ function init() {
   initReveal(observers);
   initAI(observers);
   initForm(signal);
+  initShuffle();
   initFaq();
   initFilter(signal);
 }

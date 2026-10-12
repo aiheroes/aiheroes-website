@@ -52,6 +52,8 @@ export const SALON_NETWORK = {
 };
 
 export const SALON_FOLLOW = { label: 'Volg AI Heroes op LinkedIn', labelEn: 'Follow AI Heroes on LinkedIn', url: 'https://www.linkedin.com/company/aiheroes' };
+/** The Luma calendar: every edition, and a way to be told about the next one. */
+export const SALON_CALENDAR = { label: 'Volg de Luma-kalender', labelEn: 'Follow the Luma calendar', url: 'https://luma.com/aisalon-groningen' };
 
 /** The next edition. */
 export const SALON_NEXT: SalonEdition = {

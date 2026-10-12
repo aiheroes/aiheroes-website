@@ -48,7 +48,7 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
     </div>
     <div class="hs-contact__people" data-item style="--i:3">
       <h3 class="hs-title">{t.meet}</h3>
-      <ul>
+      <ul data-shuffle>
         {people.map((m) => (
           <li>
             <a class="hs-person" href={m.calendar} target="_blank" rel="noopener">

@@ -4,9 +4,7 @@
 // Keep this list in sync with every page that passes `noindex` to its layout.
 export const NOINDEX_PATHS = [
   '/deck',
-  '/nl/legal/privacy',
   '/nl/legal/voorwaarden',
-  '/en/legal/privacy',
   '/en/legal/terms',
   '/nl/legal/ai-assistent',
   '/en/legal/ai-assistant',

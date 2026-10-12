@@ -122,7 +122,7 @@ const LOGO_FILES = [
   </HsSection>
 
   <HsSection title="The *people*" lede="Want to interview someone? These are the founders. Jan Brusse appeared in De AI Storm.">
-    <ul class="press-people">
+    <ul class="press-people" data-shuffle>
       {FOUNDER_ORDER.map((id, i) => {
         const f = FOUNDERS[id];
         return (

@@ -21,20 +21,17 @@ fase 8 is alles klaar behalve de lancering zelf.
 
 | Wat | Blokkeert | Waar |
 |---|---|---|
-| Voorwaarden juridisch bijwerken voor startsprint en bouw | **de lancering** | `/nl/legal/voorwaarden`, `/en/legal/terms` |
-| Akkoord op de tekst van privacy (incl. nieuwe bewaartermijnen voor sollicitaties, sjabloonaanvragen en agenda-afspraken) | de lancering | `/nl/legal/privacy`, `/en/legal/privacy` |
-| Akkoord op de tekst van de AI-assistentpagina | de lancering | `/nl/legal/ai-assistent` |
-| Akkoord van de founders op hun bio | nee | `src/data/team.ts` |
-| LinkedIn-URL's van de founders | nee | `linkedin` in `src/data/team.ts` |
-| Naam basistraining (werktitel "Werken met AI" / "Working with AI") | nee | T1 |
+| Voorwaarden: jurist toetst het concept `docs/relaunch/voorwaarden-concept.md` en de **[KEUZE]**-punten worden ingevuld; daarna komt de tekst op de site (NL en EN) | **de lancering** | `/nl/legal/voorwaarden`, `/en/legal/terms` |
 | David bevestigt de spraaktechniek-voorbeelden op L01 (Deepgram, ElevenLabs, Mistral) | nee | `ai-klantenservice.mdx` (NL/EN) |
 | Jan leest K2 na | nee | `kennis/nl/ai-geletterdheid.mdx` |
 | Quotes Kwakkel, Strive en INQ22 | nee | `case-studies/*` (`quote.approved`) |
 | Details Trabu, InnoEnergy en OLX | nee | `case-studies/*` |
 | Foto's AI Salon-kick-off, onderwerp van de AI Storm-aflevering | nee | `src/data/salon.ts`, `src/data/campaigns.ts` |
 | Eigen AI-beleid als basis voor het sjabloon (daarna `enabled: true` in `server/downloads.ts`) | nee | K3 |
-| Einddatum vacatures | nee | `validThrough` in `src/data/jobs.ts` |
 | DNS-record `aoplatform.backend.aiheroes.io` verwijderen | nee | registrar |
+
+Afgerond in het interview van 2026-10-12 (01-besluiten §17): akkoord op privacy en de
+AI-assistentpagina, founder-bio's, de naam Basistraining AI, geen einddatum voor vacatures.
 
 ## Lanceringsdag
 

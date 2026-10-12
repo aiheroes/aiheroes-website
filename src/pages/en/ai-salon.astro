@@ -11,7 +11,7 @@ import HsIcon from '../../components/hs/HsIcon.astro';
 import HsLuma from '../../components/hs/HsLuma.astro';
 import { zet } from '../../components/hs/hs';
 import {
-  SALON_NEXT, SALON_EDITIONS, SALON_AGENDA, SALON_TIMES, SALON_NETWORK, SALON_FOLLOW,
+  SALON_NEXT, SALON_EDITIONS, SALON_AGENDA, SALON_TIMES, SALON_NETWORK, SALON_FOLLOW, SALON_CALENDAR,
   SALON_EMAIL, SALON_SPEAKER_SLOTS, SALON_SPONSOR_SLOTS, editionText,
 } from '../../data/salon';
 
@@ -152,6 +152,7 @@ const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open
         Register on Luma
         <HsIcon name="arrow-right" />
       </HsLuma>
+      <a class="hs-link" href={SALON_CALENDAR.url} rel="noopener" target="_blank">{SALON_CALENDAR.labelEn}<HsIcon name="arrow-up-right" /></a>
       <a class="hs-link" href={SALON_FOLLOW.url} rel="noopener" target="_blank">{SALON_FOLLOW.labelEn}<HsIcon name="arrow-up-right" /></a>
     </div>
     <div class="salon-embed" data-item>

@@ -52,6 +52,7 @@ const persons = founders.map((f) => ({
     cta={{ label: 'Plan a start sprint', href: '/en/start-sprint' }}
   />
 
+  <div data-shuffle="alternate">
   {founders.map((f, i) => (
     <section class:list={['team-person', { 'is-reverse': i % 2 === 1 }]} id={f.id} data-reveal>
       <div class="team-person__photo"><img src={f.photo} alt={`Portrait of ${f.name}`} width="900" height="1200" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>
@@ -68,6 +69,7 @@ const persons = founders.map((f) => ({
       </div>
     </section>
   ))}
+  </div>
 
   <HsSection tone="paper" title="How we *work together*" lede="In a start sprint and a build, the three roles come together. You have one contact person per phase.">
     <HsSteps

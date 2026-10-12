@@ -201,3 +201,37 @@ Dit bestand gaat voor op de open vragen in de paginaplannen. Waar een besluit ie
 - Founders keuren hun bio (Claude schrijft).
 - DNS-record `aoplatform.backend.aiheroes.io` verwijderen (Frans).
 - ~~Company profile bijwerken~~: gedaan 2026-10-12 (zes dagen, garantie vervalt, AI Act-check los, ISO-traject).
+
+## 17. Open punten na de bouw (interview 2026-10-12)
+
+| Vraag | Besluit | Raakt |
+|---|---|---|
+| Voorwaarden | **Claude schrijft een concept, een jurist toetst** vóór de lancering: `docs/relaunch/voorwaarden-concept.md` | H2 |
+| Bewaartermijnen privacy | **Akkoord**: contact 2 jaar na laatste contact, sollicitatie 4 weken na de procedure (langer met toestemming), kennismaking plannen 2 jaar, sjabloon-download 2 jaar | H1 |
+| Tekst AI-assistentpagina | **Akkoord** | H3 |
+| Indexeren | **Privacy indexeerbaar**, voorwaarden en AI-assistent blijven noindex | H1, seo.ts |
+| Naam basistraining | **Basistraining AI** (EN: Basic AI training) | T1, P10 |
+| Founder-bio's | **Akkoord voor alle drie**; de founders staan gelijk, dus lijsten met de drie tonen ze **per bezoek in willekeurige volgorde** (de HTML houdt een vaste volgorde voor zoekmachines) | team, over ons, contactblok, pers, hoe we werken |
+| Tab "Van A tot I" op home | **Blijft** (de initialen van de slogan) | P1 |
+| Einddatum vacatures | **Geen einddatum**; een vacature gaat eruit als hij sluit | H4 |
+
+## 18. Zakelijke keuzes in de voorwaarden (interview 2026-10-12)
+
+| Vraag | Besluit |
+|---|---|
+| Betaling startsprint | 50% bij opdracht, 50% na dag zes |
+| Gebruiksrecht | Niet-exclusief, voor eigen bedrijfsvoering; **eeuwigdurend na volledige betaling**, ook als het beheer eindigt. Broncode blijft bij AI Heroes |
+| Beheerovereenkomst | Looptijd en opzegtermijn **per klant** afspreken |
+| Einde beheer | Documentatie, export van de eigen data, hulp bij overdracht tegen uurtarief, en de broncode overnemen tegen een vergoeding |
+| Acceptatie na oplevering | 10 werkdagen |
+| Annuleren startsprint | Verplaatsen kan altijd; kosteloos tot 7 dagen voor de start (aanbetaling terug), daarbinnen 50% |
+| Aansprakelijkheid bij beheer | Maximaal de vergoeding over de laatste 6 maanden |
+| AI Act-rol | Zet de klant de toepassing onder eigen naam in, dan is de klant aanbieder; AI Heroes levert de documentatie. De jurist toetst dit |
+
+## 19. Laatste details (interview 2026-10-12)
+
+| Vraag | Besluit | Raakt |
+|---|---|---|
+| Spraaktechniek op L01 | Voorbeelden (Deepgram, ElevenLabs, Mistral) **blijven staan**; David checkt later | L01 |
+| AI Salon | Brabant-chapter **zonder link**; volgen via **LinkedIn** en de **Luma-kalender** (https://luma.com/aisalon-groningen) | P15 |
+| LinkedIn founders | Frans `/in/frans-hoorn-057b082a/`, David `/in/davidnhoman/`, Jan `/in/jan-brusse-42a5a3139/` (ook als `sameAs` in het Person-schema) | team.ts |

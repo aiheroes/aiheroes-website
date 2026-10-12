@@ -41,6 +41,7 @@ const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
     cta={{ label: 'Plan een startsprint', href: '/nl/startsprint' }}
   />
 
+  <div data-shuffle="alternate">
   {founders.map((f, i) => (
     <section class:list={['team-person', { 'is-reverse': i % 2 === 1 }]} id={f.id} data-reveal>
       <div class="team-person__photo"><img src={f.photo} alt={`Portret van ${f.name}`} width="900" height="1200" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>
@@ -57,6 +58,7 @@ const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
       </div>
     </section>
   ))}
+  </div>
 
   <HsSection tone="paper" title="Hoe we *samenwerken*" lede="In een startsprint en een bouw komen de drie rollen samen. Je hebt één aanspreekpunt per fase.">
     <HsSteps

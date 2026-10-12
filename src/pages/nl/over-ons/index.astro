@@ -70,7 +70,7 @@ const team = { ...CONTENT.nl.team, cta: { text: 'AI-bureau in Groningen', href: 
   </HsSection>
 
   <HsSection tone="paper" title="De drie *oprichters*" lede="Elk van hen draagt een deel van hetzelfde traject: de business case, de bouw en de training van je mensen.">
-    <ul class="about-founders">
+    <ul class="about-founders" data-shuffle>
       {founders.map((f, i) => (
         <li data-item style={`--i:${i}`}>
           <a href="/nl/over-ons/team">

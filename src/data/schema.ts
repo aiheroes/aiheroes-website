@@ -28,9 +28,9 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
   // see docs/seo-offsite-checklist.md). Only verified, live profile URLs belong here.
   sameAs: ['https://www.linkedin.com/company/aiheroes'],
   founder: [
-    { '@type': 'Person', '@id': 'https://aiheroes.io/#frans-hoorn', name: 'Frans Hoorn', jobTitle: 'Co-Founder, business case en strategie' },
-    { '@type': 'Person', '@id': 'https://aiheroes.io/#david-homan', name: 'David Homan', jobTitle: 'Co-Founder, software en compliance' },
-    { '@type': 'Person', '@id': 'https://aiheroes.io/#jan-brusse', name: 'Jan Brusse', jobTitle: 'Co-Founder, training en adoptie' },
+    { '@type': 'Person', '@id': 'https://aiheroes.io/#frans-hoorn', name: 'Frans Hoorn', jobTitle: 'Co-Founder, business case en strategie', sameAs: ['https://www.linkedin.com/in/frans-hoorn-057b082a/'] },
+    { '@type': 'Person', '@id': 'https://aiheroes.io/#david-homan', name: 'David Homan', jobTitle: 'Co-Founder, software en compliance', sameAs: ['https://www.linkedin.com/in/davidnhoman/'] },
+    { '@type': 'Person', '@id': 'https://aiheroes.io/#jan-brusse', name: 'Jan Brusse', jobTitle: 'Co-Founder, training en adoptie', sameAs: ['https://www.linkedin.com/in/jan-brusse-42a5a3139/'] },
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
