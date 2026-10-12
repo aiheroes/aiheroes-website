@@ -24,18 +24,23 @@ fase 8 is alles klaar behalve de lancering zelf.
 
 | Wat | Blokkeert | Waar |
 |---|---|---|
-| David bevestigt de spraaktechniek-voorbeelden op L01 (Deepgram, ElevenLabs, Mistral) | nee | `ai-klantenservice.mdx` (NL/EN) |
-| Jan leest K2 na | nee | `kennis/nl/ai-geletterdheid.mdx` |
-| Quotes Kwakkel, Strive en INQ22 | nee | `case-studies/*` (`quote.approved`) |
-| Details Trabu, InnoEnergy en OLX | nee | `case-studies/*` |
+| Onderwerp van Alex van Ginneken (AI Salon #2); tot die tijd "Onderwerp volgt" | nee | `src/data/salon.ts` |
 | Foto's AI Salon-kick-off, onderwerp van de AI Storm-aflevering | nee | `src/data/salon.ts`, `src/data/campaigns.ts` |
 | Eigen AI-beleid als basis voor het sjabloon (daarna `enabled: true` in `server/downloads.ts`) | nee | K3 |
 | DNS-record `aoplatform.backend.aiheroes.io` verwijderen | nee | registrar |
-| Testset van de assistent bijwerken: `evals/promptfooconfig.yaml` test nog de oude positionering ("full-service AI-agency", drie pijlers) en draait alleen met de Vertex-credential; de AI-assistentpagina belooft dat elke nieuwe versie die set haalt | nee | `npm run eval:chat` |
 
 Afgerond op 2026-10-12: de voorwaarden zijn door de jurist goedgekeurd en staan op de site (NL en EN).
+Jan heeft K2 en David de spraaktechniek-voorbeelden op L01 geaccepteerd. Frans heeft de assistent met
+de hand getest en de antwoordtijd is in orde.
 Uit het interview (01-besluiten §17): akkoord op privacy en de
 AI-assistentpagina, founder-bio's, de naam Basistraining AI, geen einddatum voor vacatures.
+
+## Na de lancering (todo)
+
+| Wat | Waar |
+|---|---|
+| Case-verrijking: quotes Kwakkel, Strive en INQ22 (`quote.approved`) en de details van Trabu, InnoEnergy en OLX | `case-studies/*` |
+| De geautomatiseerde testset van de assistent op de nieuwe positionering zetten (`evals/promptfooconfig.yaml` test nog "full-service AI-agency" en drie pijlers); deze release is met de hand getest | `npm run eval:chat` |
 
 ## Lanceringsdag
 
@@ -44,7 +49,8 @@ AI-assistentpagina, founder-bio's, de naam Basistraining AI, geen einddatum voor
    `VERCEL_BYPASS=<secret> node scripts/check-redirect-parity.mjs <preview>` en
    `VERCEL_BYPASS=<secret> node scripts/check-parity.mjs <preview>`.
 3. Pull request `relaunch` naar `master`; na de merge deployt GitHub Actions naar productie.
-4. Op productie dezelfde twee controles zonder bypass, plus een rondje desktop en mobiel.
+4. Op productie dezelfde twee controles zonder bypass, plus een rondje op een echte iPhone en een
+   Android-toestel (de responsiveness-audit was in Chrome-emulatie).
 5. In Search Console de sitemap opnieuw indienen en de belangrijkste nieuwe URL's laten indexeren.
 6. Bypass-secret van de previews roteren (Vercel, project `aiheroes-website`).
 7. Stil live: geen aankondiging.
