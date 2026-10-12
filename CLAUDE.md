@@ -19,47 +19,42 @@ No unit-test framework is configured; `npm run check` is the gate.
 
 ## Architecture
 
-**Tech Stack:** Astro 5 (static output / SSG), React 19 islands via `@astrojs/react`, Tailwind CSS 4 via `@tailwindcss/vite`, MDX content collections via `@astrojs/mdx`, `@astrojs/sitemap`. Serverless functions live in `api/` (Vercel).
+**Tech Stack:** Astro 5 (static output / SSG), MDX content collections via `@astrojs/mdx`, `@astrojs/sitemap`, a React 19 island only for the chat assistant (`@astrojs/react`), Tailwind CSS 4 only for that chat widget. Serverless functions live in `api/` (Vercel).
 
 **Deployment:** Vercel, static pages plus a few functions in `api/`. `astro.config.mjs` sets `site: 'https://aiheroes.io'`, `trailingSlash: 'never'`, and `build.format: 'file'` (emits `page.html`, not `page/index.html`, so the host serves no-slash URLs with a 200 instead of 301ing to a trailing slash — this matches the no-slash canonicals/sitemap/hreflang).
 
+**The site is in the AI Heroes house style** since the relaunch (branch `relaunch`, 2026-10). Plan, decisions and per-page plans: `docs/relaunch/` (`00-opzet.md` URLs and redirects, `01-besluiten.md` decisions, `02-bouwplan.md` build plan, `pages/` one plan per page). Design rules: `src/components/hs/DESIGN.md`; asset provenance: `src/components/hs/ASSETS.md`.
+
+### Layout and building blocks
+
+- `src/layouts/HsLayout.astro` is the only layout: SEO head (title/seoTitle/description/OG/canonical/hreflang/robots/JSON-LD, organisation schema on every page, BreadcrumbList from `crumbs`), self-hosted Inter (`/fonts/inter`, `cv08` for the serifed I), nav, footer, the chat widget and `<ClientRouter />`.
+- `src/components/hs/` holds every block: `HsPageCover`, `HsSection`, `HsCards`, `HsSteps`, `HsFigures`, `HsFaq`, `HsCase`, `HsStandardList`, `HsSplit`, `HsFit`, `HsCtaBand`, `HsContact` (posts to `/api/contact`), `HsOtherEntries`, the homepage blocks (`HsCover`, `HsEntries`, `HsQuotes`, `HsStandard`, `HsPlace`, `HsStatement`) and the templates `HsLanding`, `HsArticle`, `HsCaseStudy`, `HsCampaign`, `HsHelp`. Styles: `src/styles/huisstijl.css` (tokens, homepage) and `src/styles/hs-pages.css` (subpage blocks), scoped under `.hs`.
+- `hs.ts`: `zet()` sets Dutch (and English) line breaks; `display()` marks the one punch word written as `*word*` in a heading, `" | "` marks hand-set breaks; `rich()` renders `[label](href)` links; `ICONS` is the IconPark Outline set (only icons from this map).
+- `hs-client.ts`: cover rotation, reveals, counting figures, menu and sub-menu bar, forms, filters.
+- Components read the language from the URL (`langOf()` / `ui()` in `src/data/ui.ts`); Dutch is the default.
+
+### Data and content
+
+- `src/data/site.ts` — recurring facts (start sprint six days from €8.000, start within two weeks, builds from €15.000, training from €2.500 per dagdeel, contact data) and the three entries (`ENTRIES`, `ENTRIES_EN`, `entriesFor`); `SITE_EN` for English notation. Change prices and terms here, never in page copy.
+- `src/data/nav.ts` — menu and footer per language. `src/data/team.ts` — the founders (bios, calendars, `en` texts). `src/data/salon.ts`, `jobs.ts`, `campaigns.ts` — AI Salon editions/speakers/sponsors, vacancies, De AI Storm.
+- `src/data/i18n.ts` — `PATH_PAIRS` (whole-path NL/EN pairs for the flat URLs) plus `SEGMENT_NL_TO_EN`; `counterpart()` drives hreflang and the language switch.
+- `src/data/schema.ts` — JSON-LD builders (organisation, Service, FAQPage, Article, BreadcrumbList).
+- **Content Collections** (`src/content.config.ts`): `caseStudies` (`src/content/case-studies/{nl,en}`), `landings` (`src/content/landings/{nl,en}`), `kennis` (`src/content/kennis/{nl,en}`), all MDX with typed frontmatter. Routes: `src/pages/{nl,en}/cases/[slug].astro`, `src/pages/{nl,en}/[landing].astro`, `src/pages/nl/kennis/[slug].astro`, `src/pages/en/insights/[slug].astro`.
+- **`constants.ts` (root)** still feeds the homepage blocks (`CONTENT` via `src/data/content.ts`, types via `src/data/types.ts`). The old React SPA tree (`pages/`, `components/`, `hooks/`, islands, `BaseLayout`, `SubpageLayout`) was removed in the relaunch.
+- Positioning: `docs/company-profile.md` (canonical) and `AGENTS.md`.
+
 ### Routing
 
-Pages are `.astro` files under `src/pages/{nl,en}/...`, mirrored per language:
-- Dutch: `/nl/diensten/...`, `/nl/over-ons/...`
-- English: `/en/services/...`, `/en/about/...`
-- Homepage (`/`, `/en`) renders the legacy React `HomePage` as a single island to preserve the snap-scroll feel; the body is still SSR'd for SEO.
-- `src/pages/404.astro` is a client-side bare-path catch-all (replicates the old `BarePathRedirect`): prefix-less URLs like `/over-ons`, `/about`, `/ai-salon` resolve to the right `/nl|/en` page.
-
-### Islands vs static pages
-
-- **Islands** (`client:load`): complex/interactive legacy React pages — homepage, diensten/services overviews, press, careers listings, AI Salon, /hanze. Each is wrapped in `src/components/islands/*Island.tsx` and rendered inside `BaseLayout` with `noChrome`. SSR'd to HTML for SEO; schema is baked server-side in the `.astro` wrapper.
-- **Static** (zero-JS): simple content pages — services, about prose, legal (noindex), cases, job detail — built with `SubpageLayout.astro`.
-
-The islands reuse legacy React components via `src/lib/react-router-shim.tsx`, aliased to `react-router-dom` in `astro.config.mjs` (`Link`→`<a>`, `useNavigate`→`window.location`), so any legacy page runs as an island without a Router.
-
-### Layouts & SEO
-
-- `src/layouts/BaseLayout.astro` reproduces the old `useSEO` hook at **build time**: title/seoTitle/description/OG/Twitter/canonical/hreflang/robots/JSON-LD and `<ClientRouter />` view transitions. Props include `seoTitle`, `jsonLd`, `noindex`, `noChrome`.
-- `src/layouts/SubpageLayout.astro` = static Navbar/Footer + hero (`badge`, `entry` picks the photo and preselects the contact chip, the button always links to the startsprint page) + `<slot/>` + optional `StandardBand` (`showStandard`) + `PageContactForm` island. Forms post to `/api/contact` (budget and ownership chips included).
+- Dutch home on `/`, English on `/en`; `/nl` redirects to `/`. Pillars and landings are flat (`/nl/startsprint`, `/nl/nieuwe-ai-toepassing`, `/nl/ai-klantenservice`, `/en/start-sprint`, `/en/new-ai-tool` …); knowledge on `/nl/kennis/*` and `/en/insights/*`.
+- `src/pages/404.astro` is bilingual and a client-side bare-path catch-all: prefix-less URLs like `/over-ons`, `/about`, `/ai-salon` resolve to the right `/nl|/en` page.
 - Noindexed paths live in `src/data/seo.ts` (`NOINDEX_PATHS`) and are filtered out of the sitemap.
-
-### Content & data
-
-- **`constants.ts` (root)** is still the single source of all bilingual UI copy (`CONTENT` keyed by `'nl'`/`'en'`), re-exported through `src/data/content.ts` during the migration. `types.ts` (root) likewise via `src/data/types.ts`. Positioning (three entries, the startsprint, the AI Heroes standard, proof rule) is documented in `docs/company-profile.md`; the site copy follows it and `docs/transformatieplan-website-2026-09-21.md` explains why.
-- `src/data/i18n.ts` — single slug-map source (`alternatePath`, `SEGMENT_NL_TO_EN`) driving language switching + hreflang. (Replaced the old three duplicated copies in `useSEO.ts` / `PageLayout.tsx`.)
-- `src/data/schema.ts` — JSON-LD builders (e.g. `ProfessionalService`).
-- **Content Collections** (`src/content.config.ts`): `articles` and `cases` as MDX with frontmatter schemas. Routes: `src/pages/{nl,en}/resources/[slug].astro` and `cases/[slug].astro` via `getStaticPaths`, with auto Article schema. The cases loader sets `generateId` to include the lang subfolder so `nl/x.mdx` and `en/x.mdx` don't collide.
-
-### Legacy React tree (still live)
-
-`pages/`, `components/`, `hooks/`, `constants.ts`, `types.ts` at the repo root are the original Vite SPA. They are **not dead** — the islands import from them, and `constants.ts` is the copy source. Don't delete them; full cutover (inlining `constants.ts` into `src/data`, removing the legacy tree) is a deliberate later step.
 
 ## Adding pages / content
 
-- **New static page:** create `src/pages/{nl,en}/.../x.astro` using `SubpageLayout` and the blocks in `src/components/blocks/`. Write the Dutch page first, then the English mirror. Add shared UI copy to `constants.ts`. If URL segments differ between languages, update the slug map in `src/data/i18n.ts`.
-- **New article/case:** add an MDX file under the matching content collection folder with valid frontmatter; the `[slug]` route and schema generate automatically.
-- **Navbar gotcha:** the logo must be `variant="wordmark"` at `h-16` (`variant="logo"` is invalid and falls back to a tiny icon).
+- **New page:** `src/pages/{nl,en}/x.astro` with `HsLayout` and the blocks in `src/components/hs/`; Dutch first, then English. Add the NL/EN pair to `PATH_PAIRS` in `src/data/i18n.ts` and, if it belongs in the menu or footer, to `src/data/nav.ts`.
+- **New case, landing or article:** an MDX file in the matching collection folder with valid frontmatter; the route, schema and links generate automatically.
+- **House rules for copy:** no em-dashes, no "geen X maar Y" / "not X but Y", one punch word per heading, never claim the source code belongs to the client (exception: extra developers working in the client's own code), Medux never named on the homepage, no invented facts. `npm run check` also fails on side stripes.
+- **Moving a URL:** add a 301 in `vercel.json` (no chains: point older redirects straight at the new target) and run `node scripts/check-redirect-parity.mjs <preview-url>` (it checks the old sitemap and every Search Console URL).
 
 ## Preview workflow
 
