@@ -45,3 +45,13 @@ export const ENTRIES_EN: typeof ENTRIES = {
 export function entriesFor(lang: 'nl' | 'en'): typeof ENTRIES {
   return lang === 'en' ? ENTRIES_EN : ENTRIES;
 }
+
+/** The recurring facts as English copy writes them (thousands with a comma, "half day"). */
+export const SITE_EN = {
+  sprint: { days: 6, daysWord: 'six', price: '€8,000', startWithin: 'two weeks' },
+  build: { from: '€15,000', sprintWeeks: 2 },
+  training: { from: '€2,500', unit: 'per half day' },
+  reply: '24 hours',
+  escalationReply: '4 office hours',
+  proof: { orgs: '50+', trained: '1,000+' },
+} as const;
