@@ -1,0 +1,40 @@
+---
+// "Bij elke bouw inbegrepen" for subpages: the four parts of the standard with their icons and one
+// line each, plus an optional sentence that counts on this page. The homepage keeps the big poster
+// (HsStandard); this is the compact version (docs/relaunch/02-bouwplan.md §2).
+import HsIcon from './HsIcon.astro';
+import HsSection from './HsSection.astro';
+import { STANDARD_ICONS, rich, zet } from './hs';
+
+interface Props {
+  /** One sentence that matters on this page, shown under the four items. */
+  extra?: string;
+  tone?: 'light' | 'paper' | 'blue';
+  title?: string;
+}
+const { extra, tone = 'blue', title = 'Bij elke bouw *inbegrepen*' } = Astro.props;
+const ITEMS = [
+  { title: 'Business case vooraf', text: 'Voordat we bouwen, weet je wat het kost, wat het oplevert en wanneer het zich terugverdient.' },
+  { title: 'Compliance vanaf de tekentafel', text: 'AI Act-classificatie, logging, menselijk toezicht en Europese hosting zitten in het ontwerp.' },
+  { title: 'Je mensen kunnen ermee werken', text: 'Het team dat het systeem gaat gebruiken, trainen we op dat systeem. Zo voldoe je aan artikel 4 van de AI Act.' },
+  { title: 'Niet vast aan één AI-leverancier', text: 'Je kunt van AI-model wisselen zonder opnieuw te bouwen. Alles komt met documentatie.' },
+];
+---
+
+<HsSection tone={tone} title={title} class="hs-stdlist">
+  <ul class="hs-cards hs-cards--rules hs-cards--4">
+    {ITEMS.map((it, i) => (
+      <li data-item style={`--i:${i}`}>
+        <div class="hs-card">
+          <HsIcon name={STANDARD_ICONS[i]} />
+          <h3 class="hs-card__title">{zet(it.title, { display: true, cap: 20 })}</h3>
+          <p class="hs-card__text">{zet(it.text)}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+  {(extra) && <p class="hs-stdlist__extra hs-body-l" data-item set:html={rich(extra)} />}
+  <p class="hs-sec__foot" data-item>
+    <a class="hs-link" href="/nl/hoe-we-werken">Zo werken we<HsIcon name="arrow-right" /></a>
+  </p>
+</HsSection>

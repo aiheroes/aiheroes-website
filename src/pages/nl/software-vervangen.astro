@@ -1,0 +1,129 @@
+---
+// P4 Oude software vervangen (docs/relaunch/pages/P4-software-vervangen.md): entry "vervangen", hub
+// of L09–L11. The proof is mostly the way of working; Strive and IC Commerce are the cases
+// (docs/relaunch/01-besluiten.md §3, §8).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsStandardList from '../../components/hs/HsStandardList.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import HsIcon from '../../components/hs/HsIcon.astro';
+import { SITE } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+import { zet } from '../../components/hs/hs';
+
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/nl/wat-we-bouwen' }];
+
+const faq = [
+  { q: 'Is vervangen niet duurder dan houden?', a: 'Dat rekent de startsprint uit. Je ziet wat het huidige pakket per jaar kost, wat eigen software kost en wanneer die zich terugverdient. Sportschool [Strive](/nl/cases/strive) had de bouw in één jaar terugverdiend. Sluit de rekensom niet, dan raden we vervangen af.' },
+  { q: 'Hoe gaat onze data over?', a: 'In delen, met een controle na elke stap. Het oude systeem blijft aan tot alles klopt, zodat er niets kwijtraakt.' },
+  { q: 'Ons oude systeem zit aan alles vast. Kan het toch?', a: 'Ja. We beginnen met de koppelingen: eerst verbinden we het nieuwe systeem met wat blijft, daarna stap je over. Zo hoeft niet alles tegelijk om.' },
+  { q: 'Hoe lang duurt een vervanging?', a: 'De startsprint duurt zes dagen. Een vervanging duurt meestal twee tot twaalf weken, afhankelijk van hoeveel er gekoppeld en overgezet moet worden.' },
+  { q: 'Wie beheert het daarna?', a: 'Wij. We blijven beheren en doorontwikkelen, en koppelingen en datamodel zijn gedocumenteerd.' },
+];
+---
+
+<HsLayout
+  title="Oude software vervangen"
+  seoTitle="Oude software vervangen zonder big bang"
+  description={`Te dure of verouderde software vervangen door software die past. Naast het oude gebouwd, data in delen overgezet, het oude pas uit als het nieuwe draait. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Oude software vervangen', path: '/nl/software-vervangen', price: SITE.sprint.priceValue, serviceType: 'Software vervangen en moderniseren', description: 'Te dure SaaS, Excel en verouderd maatwerk vervangen door eigen software, naast het oude gebouwd en in fasen overgezet.' }),
+    faqSchema(faq),
+  ]}
+>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Oude software vervangen"
+    title="We zijn ons | pakket *zat.*"
+    lede="Software die te duur of te oud is, vervangen door software die past bij hoe je werkt. We bouwen het nieuwe naast het oude en zetten het oude pas uit als het nieuwe draait."
+    secondary={{ label: 'Zo gaat de overstap', href: '#overstap' }}
+    photo={{ src: '/hs/photos/cover-legacy.webp', alt: 'Een oude beige computer op een kantoorbureau', w: 1800, h: 1800, pos: '40% 55%' }}
+    facts={[
+      { value: '6 dagen', label: 'tot architectuur en migratieplan' },
+      { value: SITE.sprint.price, label: 'de startsprint, vast bedrag' },
+      { value: '1 jaar', label: 'en Strive had de bouw terugverdiend' },
+    ]}
+  />
+
+  <HsSection title="Herken je *dit*?" lede="Drie situaties waarin klanten bij ons komen. Elk heeft een eigen aanpak.">
+    <HsCards
+      items={[
+        { icon: 'wallet', title: 'Een duur SaaS-pakket', text: 'Elk jaar een abonnement voor een pakket waarvan je een deel gebruikt, en dat bepaalt hoe je werkt.', href: '/nl/saas-vervangen', more: 'SaaS-pakket vervangen' },
+        { icon: 'list-checkbox', title: 'Excel en losse tools', text: 'Het werk loopt via spreadsheets, mail en losse tools. Niemand heeft het overzicht en fouten sluipen erin.', href: '/nl/excel-vervangen', more: 'Excel vervangen' },
+        { icon: 'hourglass', title: 'Verouderd maatwerk', text: 'Een systeem van jaren geleden dat niemand meer durft aan te passen, of een platform dat niet meegroeit.', href: '/nl/verouderde-software', more: 'Verouderde software' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection id="overstap" tone="dark" title="Overstappen zonder dat | alles *stilvalt*" lede="Het risico van vervangen zit in de overstap. Daarom doen we drie dingen altijd zo.">
+    <HsSteps
+      ordered={false}
+      items={[
+        { label: 'Eerst', title: 'Koppelingen eerst', text: 'We verbinden het nieuwe systeem eerst met wat blijft: je ERP, CRM, Microsoft 365, boekhouding, webshop of marktplaats.' },
+        { label: 'Dan', title: 'Data in delen, met controle', text: 'We zetten je data in delen over en controleren elke stap, zodat er niets kwijtraakt.' },
+        { label: 'Pas als het draait', title: 'Het oude blijft aan', text: 'Het oude systeem draait door tot het nieuwe aantoonbaar werkt. Pas dan zet je het uit.' },
+      ]}
+    />
+    <div class="hs-sec__foot" data-item>
+      <ul class="hs-pills" aria-label="Systemen waar we op aansluiten">
+        <li>WooCommerce en webshops</li><li>Microsoft 365</li><li>ERP en CRM</li><li>Marktplaatsen zoals bol.com</li>
+      </ul>
+      <a class="hs-link" href="/nl/ai-integratie">Koppelen aan je systemen<HsIcon name="arrow-right" /></a>
+    </div>
+  </HsSection>
+
+  <HsSection title="Wat het *oplevert*" lede="Bij een SaaS-pakket betaal je vaak voor alles en gebruik je een vijfde. De startsprint zet de rekensom op één A4: wat het abonnement per jaar kost, wat eigen software kost en wanneer die zich terugverdient.">
+    <p class="hs-lead" data-item>{zet('Sluit de rekensom niet, dan raden we vervangen af.', { display: true })}</p>
+  </HsSection>
+
+  <HsCase
+    id="case"
+    snap={false}
+    photo={null}
+    kicker="Case · Strive"
+    title="Het pakket eruit, | in één jaar terugverdiend"
+    lede="Sportschool Strive betaalde elk jaar voor een ledenbeheerpakket waarvan het een deel gebruikte. We bouwden eigen software naast het pakket, met alleen wat Strive nodig heeft."
+    stats={[{ value: 1, label: 'jaar terugverdientijd' }]}
+    close="Het abonnement ging pas uit toen alles klopte, en het team was vooraf getraind op het nieuwe systeem."
+    link={{ label: 'Lees de case', href: '/nl/cases/strive' }}
+  />
+
+  <HsSection tone="paper" title="Van startsprint tot *overstap*">
+    <HsSteps
+      items={[
+        { label: 'Zes dagen', title: 'Startsprint', text: `Architectuur, een migratieplan in fasen en de business case op één A4. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
+        { label: 'Sprints van twee weken', title: 'Bouwen naast het oude', text: `Na elke sprint een demo; het oude systeem draait gewoon door. Bouw vanaf ${SITE.build.from}.` },
+        { label: 'Overstap', title: 'Team getraind, dan over', text: 'Je team werkt al met het nieuwe systeem voordat het oude uitgaat.' },
+        { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Koppelingen en datamodel zijn gedocumenteerd.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsStandardList extra="Hier telt vooral: koppelingen en datamodel zijn gedocumenteerd, en je zit niet vast aan één AI-leverancier." />
+
+  <HsSection title="Meer van ons *werk*">
+    <HsCards
+      columns={2}
+      items={[
+        { meta: 'Case · e-commerce', title: 'IC Commerce', href: '/nl/cases/ic-commerce', more: 'Lees de case', text: 'De WooCommerce-winkel vervangen door een eigen platform, en het werk eromheen stap voor stap geautomatiseerd met nieuwe pipelines.' },
+        { meta: 'Case · sportschool', title: 'Strive', href: '/nl/cases/strive', more: 'Lees de case', text: 'Een te duur ledenbeheerpakket vervangen door eigen software, in één jaar terugverdiend.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="paper" title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsOtherEntries current="vervangen" />
+
+  <HsContact entry="vervangen" title="Vertel wat je wilt vervangen" lede={`Welk pakket of systeem, en wat zit je dwars? Binnen ${SITE.reply} hoor je van ons, meestal met een voorstel voor een startsprint.`} />
+</HsLayout>

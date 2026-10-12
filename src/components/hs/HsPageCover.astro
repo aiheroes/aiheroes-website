@@ -12,6 +12,8 @@ interface Fact {
 }
 interface Props {
   title: string;
+  /** Short page name for the breadcrumb trail (the title is often a sentence). */
+  current?: string;
   lede?: string;
   accent?: 'red' | 'blue' | 'dark';
   crumbs?: Crumb[];
@@ -22,6 +24,7 @@ interface Props {
 }
 const {
   title,
+  current,
   lede,
   accent = 'red',
   crumbs = [],
@@ -39,7 +42,7 @@ const long = plainText(title).length > 46;
       <nav class="hs-crumbs" aria-label="Kruimelpad">
         <ol>
           {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
-          <li aria-current="page">{plainText(title).length > 34 ? plainText(title).slice(0, 32).replace(/\s+\S*$/, '') + '…' : plainText(title)}</li>
+          <li aria-current="page">{current ?? plainText(title)}</li>
         </ol>
       </nav>
     )}

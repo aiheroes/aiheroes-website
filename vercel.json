@@ -130,7 +130,7 @@
     },
     {
       "source": "/nl/diensten/specialistische-tracks",
-      "destination": "/nl/diensten/software",
+      "destination": "/nl/nieuwe-ai-toepassing",
       "statusCode": 301
     },
     {
@@ -255,22 +255,22 @@
     },
     {
       "source": "/nl/diensten/maatwerk-ai-oplossingen",
-      "destination": "/nl/diensten/software",
+      "destination": "/nl/nieuwe-ai-toepassing",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-integratie",
-      "destination": "/nl/diensten/software-vervangen",
+      "destination": "/nl/software-vervangen",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/ai-development-teams",
-      "destination": "/nl/diensten/software#dedicated-teams",
+      "destination": "/nl/nieuwe-ai-toepassing",
       "statusCode": 301
     },
     {
       "source": "/nl/diensten/digital-twins",
-      "destination": "/nl/diensten/software",
+      "destination": "/nl/nieuwe-ai-toepassing",
       "statusCode": 301
     },
     {
@@ -385,7 +385,7 @@
     },
     {
       "source": "/nl/diensten/eu-development",
-      "destination": "/nl/diensten/eu-consultancy",
+      "destination": "/nl/eigen-beheer",
       "statusCode": 301
     },
     {
@@ -395,12 +395,27 @@
     },
     {
       "source": "/nl/diensten/digitale-onafhankelijkheid",
-      "destination": "/nl/diensten/eu-consultancy",
+      "destination": "/nl/eigen-beheer",
       "statusCode": 301
     },
     {
       "source": "/en/services/digital-independence",
       "destination": "/en/services/eu-consultancy",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/software",
+      "destination": "/nl/nieuwe-ai-toepassing",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/software-vervangen",
+      "destination": "/nl/software-vervangen",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/diensten/eu-consultancy",
+      "destination": "/nl/eigen-beheer",
       "statusCode": 301
     }
   ],

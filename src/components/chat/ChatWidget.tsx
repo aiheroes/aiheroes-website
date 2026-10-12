@@ -93,7 +93,7 @@ export default function ChatWidget({
           onMouseEnter={prewarm}
           onFocus={prewarm}
           aria-label={ctaShown ? ctaLabel : t.launcherLabel}
-          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex h-[3.25rem] min-w-[3.25rem] touch-manipulation items-center rounded-[4px] bg-brand-blue px-[15px] text-white transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
+          className="fixed right-5 bottom-[calc(1.25rem+env(safe-area-inset-bottom))] z-[94] flex h-[3.25rem] min-w-[3.25rem] touch-manipulation items-center rounded-[4px] bg-brand-blue px-[15px] text-white ring-2 ring-[#FDFCF8] transition-transform [-webkit-tap-highlight-color:transparent] hover:scale-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 motion-reduce:transition-none"
         >
           <MessageCircle size={22} aria-hidden className="shrink-0" />
           <span

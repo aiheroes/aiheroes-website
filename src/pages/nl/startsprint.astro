@@ -1,100 +1,112 @@
 ---
-import SubpageLayout from '../../layouts/SubpageLayout.astro';
-import CardGrid from '../../components/blocks/CardGrid.astro';
-import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
-import StatGrid from '../../components/blocks/StatGrid.astro';
-import Callout from '../../components/blocks/Callout.astro';
-import Faq from '../../components/blocks/Faq.astro';
-import StandardBand from '../../components/blocks/StandardBand.astro';
+// P7 De startsprint (docs/relaunch/pages/P7-startsprint.md): the front door. Six days, from €8.000
+// for all three entries, start within two weeks (docs/relaunch/01-besluiten.md §1).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsPageCover from '../../components/hs/HsPageCover.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCase from '../../components/hs/HsCase.astro';
+import HsFit from '../../components/hs/HsFit.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { SITE, ENTRIES } from '../../data/site';
+import { serviceSchema, faqSchema } from '../../data/schema';
+
+const s = SITE.sprint;
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/nl/hoe-we-werken' }];
 
 const outcomes = [
-  { title: 'Iets nieuws bouwen', eyebrow: 'Uitkomst: werkend prototype', accent: 'red' as const, href: '/nl/diensten/software', description: 'Aan het eind van de week staat er een prototype dat werkt op jouw data. Bij Kwakkel BV stond het er na zes dagen.' },
-  { title: 'Vervangen wat niet meer voldoet', eyebrow: 'Uitkomst: architectuur en migratieplan', accent: 'blue' as const, href: '/nl/diensten/software-vervangen', description: 'Welke koppelingen er nodig zijn, hoe de data overgaat, wat er in fasen kan. Een bouwplan waar je een besluit op kunt nemen.' },
-  { title: 'In eigen beheer draaien', eyebrow: 'Uitkomst: hostingontwerp en risicobeoordeling', accent: 'dark' as const, href: '/nl/diensten/eu-consultancy', description: 'Welk model, welke hardware of Europese cloud, wat het kost en wat de AI Act van je vraagt. Getest op jouw situatie.' },
+  { title: ENTRIES.nieuw.title, accent: 'red' as const, href: ENTRIES.nieuw.href, more: 'Meer over nieuwe AI-toepassingen', text: 'Een werkend prototype op je eigen data. Je team probeert het uit voordat er een bouwbesluit ligt.' },
+  { title: ENTRIES.vervangen.title, accent: 'blue' as const, href: ENTRIES.vervangen.href, more: 'Meer over software vervangen', text: 'Een architectuur en een migratieplan: wat er komt, wat er blijft en in welke volgorde je overstapt.' },
+  { title: ENTRIES['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES['eigen-beheer'].href, more: 'Meer over software in eigen beheer', text: 'Een hostingontwerp en een risicobeoordeling: waar het draait, wie erbij kan en wat de AI Act vraagt.' },
 ];
 
-const week = [
-  { title: 'Intake en scope', eyebrow: 'Dag 1', body: 'We zitten met de eigenaar van het probleem en de mensen die ermee werken. Wat moet het doen, welke data is er, wat is de eerste versie die al waarde heeft.' },
-  { title: 'Bouwen of ontwerpen', eyebrow: 'Dag 2 en 3', body: 'Bij iets nieuws bouwen we het prototype. Bij vervangen of eigen beheer ontwerpen we de architectuur en testen we de kritieke onderdelen.' },
-  { title: 'Koppelen aan je echte omgeving', eyebrow: 'Dag 4', body: 'Echte data, echte systemen, echte gebruikers. Hier blijkt of het werkt buiten de demo.' },
-  { title: 'Demo, business case en go/no-go', eyebrow: 'Dag 5', body: 'We laten zien wat er staat en leggen de business case op één A4 naast je: wat het kost, wat het oplevert, wanneer het zich terugverdient. Daarna beslis jij.' },
-];
-
-const stats = [
-  { value: '1 week', label: 'van vraag naar besluit' },
-  { value: 'Vanaf €8.000', label: 'vast bedrag, vooraf bekend' },
-  { value: '6 dagen', label: 'tot werkend prototype bij Kwakkel BV' },
+const days = [
+  { label: 'Dag 1', title: 'Intake en scope', text: 'We zitten met de eigenaar en de mensen die het werk doen. Samen bepalen we wat er op dag zes moet staan.', meta: 'Van jou: de eigenaar en twee of drie gebruikers, een halve dag.' },
+  { label: 'Dag 2 en 3', title: 'Bouwen of ontwerpen', text: 'We bouwen het prototype, of we ontwerpen de nieuwe architectuur of de hosting.', meta: 'Van jou: iemand voor vragen, een uur per dag.' },
+  { label: 'Dag 4', title: 'Koppelen aan je echte data', text: 'Het prototype gaat draaien op je eigen data en systemen, naast het huidige werk.', meta: 'Van jou: iemand die je data en systemen kent, een paar uur.' },
+  { label: 'Dag 5', title: 'Testen met gebruikers', text: 'Je mensen werken ermee. Wat schuurt, passen we dezelfde dag aan.', meta: 'Van jou: de gebruikers, een uur.' },
+  { label: 'Dag 6', title: 'Demo, business case en besluit', text: 'We laten zien wat er staat, met de business case op één A4. Jij besluit: bouwen, bijsturen of stoppen.', meta: 'Van jou: de eigenaar, een uur.' },
 ];
 
 const faq = [
-  { q: 'Wat als het niet lukt in een week?', a: 'Dan weet je dat aan het eind van de week, en weet je ook waarom. Je houdt het prototype of het plan, de business case en een eerlijk advies over wat er wel kan. Dat is precies waar de startsprint voor is: een klein bedrag om een groot besluit goed te nemen.' },
-  { q: 'Moeten wij iemand vrijmaken?', a: 'Ja, beperkt. We hebben de eigenaar van het probleem nodig op dag 1 en dag 5, en een paar uur van iemand die de data en systemen kent. De rest doen wij.' },
-  { q: 'Wat gebeurt er na de sprint?', a: 'Gaat de bouw door, dan is de startsprint de eerste fase van het traject en bouwen we in sprints verder tot het af is en werkt. Gaat hij niet door, dan houd je alles wat er gemaakt is. Geen verplichtingen.' },
-  { q: 'Kunnen we ook zonder startsprint beginnen?', a: 'Als je al precies weet wat je wilt bouwen en de business case al hebt, kan dat. In de praktijk levert de week bijna altijd inzichten op die de bouw korter en goedkoper maken, dus we raden hem aan.' },
-  { q: 'Werkt dit ook voor software zonder AI?', a: 'Ja. Een webwinkel, een klantportaal, een intern systeem: we bouwen software, met AI waar dat waarde heeft en zonder waar dat niet zo is. INQ22 is daar een voorbeeld van: een maatwerkwebwinkel die gewoon live draait.' },
-  { q: 'Wat is het verschil met een workshop of een readiness scan?', a: 'Een workshop leert je team wat AI kan. Een scan zegt waar kansen liggen. De startsprint bouwt er een, op jouw data, en zegt wat het kost. Als je nog geen concreet proces of systeem hebt, is een training of scan een betere eerste stap; die vind je onder Hoe we werken.' },
+  { q: 'Wat kost een startsprint?', a: `Vanaf ${s.price}, vast bedrag, voor alle drie de ingangen. De prijs ligt vast voordat we beginnen.` },
+  { q: 'Hoe snel kunnen we beginnen?', a: `Binnen ${s.startWithin} na het eerste gesprek. Na je aanvraag hoor je binnen ${SITE.reply} van ons, meestal met een voorstel.` },
+  { q: 'Wat moeten wij zelf vrijmaken?', a: 'De eigenaar op dag 1 en dag 6, een paar gebruikers voor de intake en de test, en een paar uur van iemand die je data en systemen kent. Het bouwen doen wij.' },
+  { q: 'Wat als het niet lukt in zes dagen?', a: 'Dan weet je dat na zes dagen, met de reden erbij. Soms is een vraag groter dan gedacht; dan staat in het plan wat er nodig is. Is AI niet de oplossing, dan zeggen we dat.' },
+  { q: 'Is de prijs anders per ingang?', a: `Nee. Vanaf ${s.price}, of je nu iets nieuws laat bouwen, oude software vervangt of software in eigen beheer wilt draaien.` },
+  { q: 'Kan het ook zonder startsprint?', a: 'Bijna nooit. De startsprint voorkomt dat we iets bouwen waarvan de business case niet sluit. Alleen als je [extra developers in je team](/nl/extra-developers) zoekt, beginnen we met een kennismaking.' },
+  { q: 'Werkt het ook voor software zonder AI?', a: 'Ja. We bouwen wat je nodig hebt, met of zonder AI. De webwinkel van [INQ22](/nl/cases/inq22) bevat zelf geen AI en is wel met AI gebouwd.' },
+  { q: 'Wat gebeurt er na de startsprint?', a: `Gaat de bouw door, dan is de startsprint fase 1. We bouwen in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}, en na oplevering blijven wij beheren en doorontwikkelen. Gaat hij niet door, dan houd je prototype of plan en de business case.` },
 ];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })),
-};
-
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Startsprint',
-  serviceType: 'Software and AI discovery sprint',
-  description: 'Eén week, vast bedrag vanaf EUR 8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
-  provider: { '@id': 'https://aiheroes.io/#organization' },
-  areaServed: { '@type': 'Place', name: 'European Union' },
-  availableLanguage: ['Dutch', 'English'],
-  offers: { '@type': 'Offer', priceCurrency: 'EUR', price: '8000', url: 'https://aiheroes.io/nl/startsprint' },
-  url: 'https://aiheroes.io/nl/startsprint',
-};
 ---
 
-<SubpageLayout
-  lang="nl"
+<HsLayout
   title="De startsprint"
-  subtitle="Eén week. Vast bedrag. Aan het eind weet je of het kan, wat het kost en hoe het eruitziet."
-  seoTitle="De startsprint: in één week van vraag naar werkend prototype of bouwplan"
-  seoDescription="De startsprint van AI Heroes: één week, vast bedrag vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij. De eerste stap van elke bouw."
-  accentColor="red"
-  badge="De eerste stap"
-  ctaLabel="Plan een startsprint"
-  ctaHref="#contact-form"
-  trustedBy={["Kwakkel BV", "INQ22", "Strive", "IC Commerce", "UMCG"]}
-  jsonLd={[serviceSchema, faqSchema]}
+  seoTitle="De startsprint: in zes dagen een werkend prototype of bouwplan"
+  description={`De startsprint van AI Heroes: zes dagen, vast bedrag vanaf ${s.price}, start binnen twee weken. Een werkend prototype of bouwplan met de business case op één A4.`}
+  crumbs={crumbs}
+  jsonLd={[
+    serviceSchema({ name: 'Startsprint', path: '/nl/startsprint', price: s.priceValue, serviceType: 'AI-prototype en business case', description: `Zes dagen, vast bedrag vanaf ${s.price}: een werkend prototype of bouwplan met de business case op één A4.` }),
+    faqSchema(faq),
+  ]}
 >
-  <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-4">Eén week om een groot besluit goed te nemen</h2>
-    <p class="text-lg text-stone-600 leading-relaxed mb-4">
-      Je hebt een proces dat geld kost, een systeem dat aan vervanging toe is of een idee waarvan je wilt weten of het kan. De startsprint is de manier om dat in één week te leren, met iets tastbaars in handen: een werkend prototype op jouw data of een bouwplan waar je op kunt beslissen. Altijd met de business case erbij.
-    </p>
-    <p class="text-stone-600 leading-relaxed">Voor organisaties met een concreet proces, product of systeem, en een eigenaar die kan beslissen. Wil je eerst kennismaken met wat AI kan? Dan is een <a href="/nl/diensten/training" class="text-brand-red underline underline-offset-2 hover:no-underline">training</a> een betere eerste stap.</p>
-    <StatGrid stats={stats} accent="red" cols={3} class="mt-8" />
-  </section>
+  <HsPageCover
+    accent="red"
+    crumbs={crumbs}
+    current="De startsprint"
+    title="Zes dagen. Vast bedrag. | Dan *weet* je het."
+    lede={`De startsprint is de eerste stap van elke bouw. Aan het eind van dag zes weet je of het kan, wat het kost en hoe het eruitziet.`}
+    cta={{ label: 'Plan een startsprint', href: '#contact' }}
+    secondary={{ label: 'Bekijk de zes dagen', href: '#zes-dagen' }}
+    facts={[
+      { value: '6 dagen', label: 'van vraag naar prototype of bouwplan' },
+      { value: s.price, label: 'vast bedrag, voor alle ingangen' },
+      { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
+    ]}
+  />
 
-  <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-2">Wat je aan het eind van de week hebt</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">De uitkomst hangt af van de ingang waarmee je binnenkomt.</p>
-    <CardGrid items={outcomes} cols={3} />
-  </section>
+  <HsSection title="Wat je na zes dagen *in handen* hebt" lede="Wat er op dag zes ligt, hangt af van je vraag. Altijd met de business case op één A4: wat de bouw kost, wat hij oplevert en wanneer hij zich terugverdient." split>
+    <HsCards variant="planes" items={outcomes} />
+  </HsSection>
 
-  <section class="mb-16">
-    <h2 class="font-serif text-2xl md:text-3xl text-brand-dark mb-6">Hoe de week eruitziet</h2>
-    <ProcessSteps steps={week} />
-  </section>
+  <HsSection id="zes-dagen" tone="paper" title="Zes dagen, *dag voor dag*" lede="Het werk ligt bij ons. Van jouw kant zijn er per dag een paar mensen nodig, een paar uur.">
+    <HsSteps items={days} />
+  </HsSection>
 
-  <section class="mb-16">
-    <Callout variant="dark" accent="red" eyebrow="Prijs" title="Vanaf €8.000, vast bedrag, vooraf bekend">
-      <p>Gaat de bouw door, dan is de startsprint de eerste fase van het traject. Gaat hij niet door, dan houd je het prototype, het plan en de business case. Een maatwerkbouw daarna begint vanaf €15.000; wat het precies wordt, staat aan het eind van de week op papier.</p>
-    </Callout>
-  </section>
+  <HsCase
+    id="voorbeeld"
+    snap={false}
+    kicker="Voorbeeld"
+    title="Van vraag naar | werkend prototype | in zes dagen"
+    lede="Kwakkel BV wilde zien of het administratieve handwerk eruit kon, en dat niet uit een rapport halen. Na zes dagen draaide een prototype op hun eigen administratie, met de business case op één A4."
+    stats={[{ value: 6, label: 'dagen van vraag tot werkend prototype' }]}
+    close="Wat het systeem niet zeker weet, legt het voor aan een medewerker. Kwakkel houdt het prototype, het plan en de business case, en besluit zelf wanneer de bouw begint."
+    link={{ label: 'Lees de case', href: '/nl/cases/kwakkel' }}
+    photo={{ src: '/hs/photos/cover-office.webp', w: 1800, h: 1200, pos: '55% 50%' }}
+  />
 
-  <StandardBand lang="nl" class="mb-16" />
+  <HsSection title="En *daarna*">
+    <HsCards
+      columns={2}
+      items={[
+        { icon: 'check', title: 'Gaat de bouw door', text: `Dan is de startsprint fase 1. We bouwen in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}, met een demo na elke sprint. Na oplevering blijven wij beheren en doorontwikkelen.`, href: '/nl/hoe-we-werken', more: 'Zo werken we' },
+        { icon: 'close', title: 'Sluit de business case niet', text: 'Dan bouwen we niet. Je houdt het prototype of het plan en de business case. Een eerlijk besluit na zes dagen bespaart je een project dat niemand gebruikt.', href: '/nl/business-case', more: 'Kosten en opbrengst vooraf' },
+      ]}
+    />
+  </HsSection>
 
-  <Faq items={faq} title="Veelgestelde vragen" />
-</SubpageLayout>
+  <HsSection tone="paper" title="Is dit iets *voor jou*?">
+    <HsFit
+      yes={{ title: 'Ja, als je', items: ['een proces, systeem of idee hebt dat geld kost of groei remt', 'iemand hebt die over de bouw kan beslissen', 'zes dagen een paar uur van je eigen mensen kunt vrijmaken'] }}
+      no={{ title: 'Nog niet, als je', items: ['eerst wilt weten waar AI in je organisatie iets oplevert: begin dan met [kosten en opbrengst vooraf](/nl/business-case)', 'vooral je team wilt leren werken met AI: kijk dan bij [AI-training voor je team](/nl/training)'] }}
+    />
+  </HsSection>
+
+  <HsSection title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsContact title="Plan je startsprint" lede={`Vertel wat je wilt bouwen. Binnen ${SITE.reply} hoor je van ons, meestal met een voorstel voor je startsprint.`} />
+</HsLayout>

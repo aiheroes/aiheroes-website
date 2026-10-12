@@ -19,7 +19,8 @@ interface Props {
   stats?: Stat[];
   close?: string;
   link?: { label: string; href: string };
-  photo?: { src: string; alt?: string; w: number; h: number; pos?: string };
+  /** null: a text-only case band (no stand-in fits yet). */
+  photo?: { src: string; alt?: string; w: number; h: number; pos?: string } | null;
   id?: string;
   snap?: boolean;
 }
@@ -40,10 +41,12 @@ const {
 const nf = (s: Stat) => new Intl.NumberFormat('nl-NL', { minimumFractionDigits: s.decimals ?? 0, maximumFractionDigits: s.decimals ?? 0 }).format(s.value) + (s.suffix ?? '');
 ---
 
-<section class:list={['hs-case on-dark', { 'hs-snap': snap }]} id={id} data-reveal>
-  <div class="hs-case__photo">
-    <img src={photo.src} alt={photo.alt ?? ''} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="lazy" decoding="async" />
-  </div>
+<section class:list={['hs-case on-dark', { 'hs-snap': snap, 'is-text': !photo }]} id={id} data-reveal>
+  {photo && (
+    <div class="hs-case__photo">
+      <img src={photo.src} alt={photo.alt ?? ''} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="lazy" decoding="async" />
+    </div>
+  )}
   <div class="hs-case__text">
     <p class="hs-case__kicker" data-item>{kicker}</p>
     <h2 class="hs-d-m" data-item style="--i:1" set:html={display(title)} />
