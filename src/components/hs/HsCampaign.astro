@@ -1,0 +1,104 @@
+---
+// A0 campagne-template: recognition (cover with the medium), the fragment behind a house-style poster
+// (nothing loads from the platform until play), what you saw, from the screen to your organisation
+// (the three entries), one proof block and the contact block. Content from src/data/campaigns.ts.
+import HsSection from './HsSection.astro';
+import HsEntries from './HsEntries.astro';
+import HsCase from './HsCase.astro';
+import HsContact from './HsContact.astro';
+import HsIcon from './HsIcon.astro';
+import { display, zet } from './hs';
+import { SITE } from '../../data/site';
+import type { Campaign } from '../../data/campaigns';
+import type { Crumb } from '../../data/schema';
+
+interface Props {
+  campaign: Campaign;
+  crumbs?: Crumb[];
+}
+const { campaign: c, crumbs = [] } = Astro.props;
+---
+
+<section class={`campaign-cover on-${c.accent}`}>
+  <div class="hs-wrap campaign-cover__inner">
+    {crumbs.length > 0 && (
+      <nav class="hs-crumbs" aria-label="Kruimelpad">
+        <ol>{crumbs.map((cr) => <li><a href={cr.href}>{cr.label}</a></li>)}<li aria-current="page">{c.medium.name}</li></ol>
+      </nav>
+    )}
+    <img class="campaign-cover__medium" src={c.medium.logo} alt={c.medium.name} width="1250" height="250" />
+    <h1 class="hs-d-m" set:html={display(c.headline)} />
+    <p class="hs-body-l campaign-cover__lede">{zet(c.lede)}</p>
+    <ul class="campaign-cover__strip">
+      <li>Eerste uitzending {c.dateLabel}</li>
+      {c.medium.channels.map((ch) => <li class="campaign-cover__channel"><img src={ch.src} alt={ch.name} loading="eager" /></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class={`campaign-video on-${c.accent}`} id="aflevering">
+  <div class="hs-wrap">
+    <div class="campaign-video__frame" data-video={c.media.youtubeId} data-title={c.media.title}>
+      <button class="campaign-video__poster" type="button" aria-label={`Speel af: ${c.media.title}`}>
+        <span class="campaign-video__play"><HsIcon name="play" /></span>
+        <span class="campaign-video__label">{c.media.title}</span>
+        <span class="campaign-video__note">De video laadt van YouTube zodra je op afspelen klikt.</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<HsSection title="Wat je *zag*" lede={c.whatYouSaw}>
+  <p class="hs-sec__foot" data-item><a class="hs-link" href="/nl/over-ons/team#jan-brusse">Over Jan Brusse<HsIcon name="arrow-right" /></a></p>
+</HsSection>
+
+<HsEntries title="Van het scherm naar jouw organisatie" snap={false} id="wat-we-bouwen" />
+
+<HsSection tone="paper" title={`${SITE.proof.orgs} organisaties`} lede={`Zoveel organisaties hielp AI Heroes sinds 2019. De eerste stap is altijd de startsprint: zes dagen, vanaf ${SITE.sprint.price}.`}>
+  <p class="hs-sec__foot" data-item><a class="hs-btn hs-btn--dark" href="/nl/startsprint">Plan een startsprint<HsIcon name="arrow-right" /></a></p>
+</HsSection>
+
+<HsCase snap={false} />
+
+<HsContact />
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLElement>('[data-video]').forEach((frame) => {
+      frame.querySelector('button')?.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${frame.dataset.video}?rel=0&autoplay=1`;
+        iframe.title = frame.dataset.title ?? 'Video';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        frame.replaceChildren(iframe);
+        iframe.focus();
+      });
+    });
+  });
+</script>
+
+<style>
+  .campaign-cover { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); }
+  .campaign-cover__inner { display: grid; gap: 1.25rem; }
+  .campaign-cover__inner .hs-crumbs { margin-bottom: 1rem; }
+  .campaign-cover__medium { height: clamp(2rem, 1.5rem + 1.5vw, 3rem); width: auto; margin-bottom: .5rem; }
+  .campaign-cover h1 { max-width: 16ch; }
+  .campaign-cover h1 :global(.punch) { color: var(--red); }
+  .campaign-cover__lede { max-width: 46ch; color: var(--body-on-dark); }
+  .campaign-cover__strip { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; padding-top: 1.25rem; margin-top: .5rem; box-shadow: inset 0 1.5px 0 var(--rule-on-dark); font-size: .9375rem; font-weight: 600; color: var(--body-on-dark); }
+  .campaign-cover__channel { display: inline-flex; align-items: center; height: 2.5rem; padding: 0 .875rem; background: var(--light); }
+  .campaign-cover__strip img { height: 1.25rem; width: auto; }
+  .campaign-video { padding-bottom: clamp(3rem, 6vw, 5rem); }
+  .campaign-video__frame { position: relative; aspect-ratio: 16 / 9; max-width: 72rem; background: #0F0E0D; }
+  .campaign-video__frame :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .campaign-video__poster { position: absolute; inset: 0; display: grid; align-content: end; justify-items: start; gap: .5rem; padding: clamp(1.25rem, 3vw, 2.5rem); text-align: left; box-shadow: inset 0 0 0 1.5px var(--rule-on-dark); }
+  .campaign-video__play { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: clamp(4rem, 8vw, 6rem); height: clamp(4rem, 8vw, 6rem); border-radius: .25rem; background: var(--red); color: var(--light); transform: translate(-50%, -50%); transition: background-color .15s; }
+  .campaign-video__play :global(.hs-icon) { width: 45%; height: 45%; fill: currentColor; }
+  .campaign-video__poster:hover .campaign-video__play { background: var(--blue); }
+  .campaign-video__label { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.25rem, 1rem + 1vw, 2rem); }
+  .campaign-video__note { font-size: .875rem; color: var(--micro-on-dark); }
+  @media (max-width: 599px) {
+    .campaign-video__label, .campaign-video__note { display: none; }
+  }
+</style>

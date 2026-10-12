@@ -1,81 +1,87 @@
 ---
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+// H1 Privacy (docs/relaunch/pages/H1-privacy.md), in the hulp-template. Form and facts updated for
+// the relaunch: no newsletter (01-besluiten §11), processors described in general terms (§15), a new
+// row for the AI-policy template download (K3). The text needs Frans's approval before the launch.
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsHelp from '../../../components/hs/HsHelp.astro';
+import { SITE } from '../../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/' }];
+const rows = [
+  { what: 'Contactformulier', data: 'Naam, e-mailadres, organisatie, je keuzes in het formulier en je bericht', why: 'Contact met je opnemen over je vraag', where: 'Onze e-maildienst en mailbox', how: 'Tot twee jaar na het laatste contact' },
+  { what: 'Sollicitatie', data: 'Naam, e-mailadres, telefoonnummer, motivatie en cv', why: 'Je sollicitatie beoordelen', where: 'Onze mailbox; het cv slaan we nergens anders op', how: 'Tot vier weken na afloop van de procedure, of langer als je daar toestemming voor geeft' },
+  { what: 'AI-assistent', data: 'Je vragen en de antwoorden, pseudoniem: zonder naam, IP-adres of profiel', why: 'De assistent laten werken en verbeteren', where: 'In de EU', how: 'Maximaal 30 dagen' },
+  { what: 'Contact via de assistent', data: 'Naam en e-mailadres, alleen als je zelf om contact vraagt', why: 'Je vraag aan het team doorgeven en reageren', where: 'In de EU', how: 'Maximaal 90 dagen' },
+  { what: 'Kennismaking plannen', data: 'Naam, e-mailadres en het tijdstip dat je kiest', why: 'De afspraak maken en houden', where: 'Onze agendadienst', how: 'Tot twee jaar na het laatste contact' },
+  { what: 'Download AI-beleidsjabloon', data: 'E-mailadres', why: 'Je het sjabloon sturen en, als je dat wilt, contact opnemen over je AI-beleid', where: 'Onze e-maildienst en mailbox', how: 'Tot twee jaar na het laatste contact' },
+  { what: 'Websitebezoek', data: 'Geanonimiseerde en samengevoegde gebruiksgegevens', why: 'Begrijpen hoe de site gebruikt wordt', where: 'Onze hostingpartij in de EU', how: 'Geanonimiseerd bewaard' },
+];
 ---
 
-<SubpageLayout
-  lang="nl"
-  title="Privacybeleid"
-  subtitle="Hoe wij omgaan met je gegevens. Laatst bijgewerkt: mei 2026."
-  seoDescription="Privacybeleid van AI Heroes. Hoe wij omgaan met je gegevens en je privacy beschermen."
-  accentColor="blue"
-  showContactForm={false}
+<HsLayout
+  title="Privacyverklaring"
+  seoTitle="Privacyverklaring AI Heroes"
+  description="Hoe AI Heroes omgaat met je gegevens: wat we verwerken, waarvoor, waar en hoe lang, en hoe je je rechten gebruikt."
   noindex
+  crumbs={crumbs}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Onze principes</h2>
+  <HsHelp
+    title="Privacyverklaring"
+    intro="Wat we met je gegevens doen, waarvoor, waar en hoe lang."
+    updated="oktober 2026"
+    crumbs={crumbs}
+    summary={[
+      'We verzamelen alleen wat nodig is voor het doel waarvoor je het geeft.',
+      'We verkopen je gegevens niet en delen ze niet voor commerciële doeleinden.',
+      'We verwerken zoveel mogelijk binnen de EU.',
+      'Je kunt altijd inzage, correctie of verwijdering vragen.',
+      'We voldoen aan de AVG.',
+    ]}
+    toc={[
+      { id: 'verwerkingen', label: 'Wat we verwerken' },
+      { id: 'verwerkers', label: 'Wie ons helpt' },
+      { id: 'assistent', label: 'De AI-assistent' },
+      { id: 'rechten', label: 'Je rechten' },
+      { id: 'verantwoordelijke', label: 'Verantwoordelijke' },
+    ]}
+    contact={`Vragen over je privacy, of een van je rechten gebruiken? Mail [${SITE.email}](mailto:${SITE.email}) of bel ${SITE.phone}.`}
+    related={[{ label: 'Over onze AI-assistent', href: '/nl/legal/ai-assistent' }, { label: 'Algemene voorwaarden', href: '/nl/legal/voorwaarden' }]}
+  >
+    <div class="hs-prose">
+      <p>Bij AI Heroes nemen we privacy serieus. We verzamelen alleen de gegevens die we nodig hebben, bewaren ze niet langer dan nodig en delen ze nooit met derden voor commerciële doeleinden.</p>
 
-    <p class="text-stone-600 leading-relaxed mb-8">Bij AI Heroes nemen we privacy serieus. We verzamelen alleen gegevens die we nodig hebben, bewaren ze niet langer dan noodzakelijk, en delen ze nooit met derden voor commerciële doeleinden.</p>
+      <h2 id="verwerkingen">Wat we verwerken</h2>
+      <p>Per situatie: welke gegevens, waarvoor, waar ze staan en hoe lang we ze bewaren.</p>
+    </div>
+    <div class="hs-table-wrap">
+      <table class="hs-table">
+        <thead><tr><th scope="col">Situatie</th><th scope="col">Gegevens</th><th scope="col">Waarvoor</th><th scope="col">Waar</th><th scope="col">Hoe lang</th></tr></thead>
+        <tbody>
+          {rows.map((r) => <tr><th scope="row">{r.what}</th><td>{r.data}</td><td>{r.why}</td><td>{r.where}</td><td>{r.how}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+    <div class="hs-prose">
+      <p>We gebruiken geen cookies van derden voor advertenties en volgen je niet over andere sites.</p>
 
-    <div class="solid-block bg-brand-blue p-6 md:p-8 mb-8 not-prose">
-      <h3 class="text-xl font-serif text-brand-dark mb-3">In het kort</h3>
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>We verzamelen alleen wat nodig is</li>
-        <li>Je gegevens worden niet verkocht</li>
-        <li>Je kunt altijd inzage vragen of verwijdering aanvragen</li>
-        <li>We voldoen aan de AVG/GDPR</li>
+      <h2 id="verwerkers">Wie ons helpt</h2>
+      <p>Voor een deel van het werk gebruiken we dienstverleners: onze hostingpartij, onze e-maildienst, de dienst achter de AI-assistent, onze agendadienst en de partij waarmee we de aanmeldingen voor de AI Salon regelen. Met hen maken we afspraken over de verwerking van je gegevens. Waar het kan, gebeurt de verwerking binnen de EU. Onze e-maildienst verstuurt vanuit de EU, maar kan verzendgegevens buiten de EU bewaren.</p>
+
+      <h2 id="assistent">De AI-assistent op deze site</h2>
+      <p>Op aiheroes.io kun je chatten met onze AI-assistent. Je chatgeschiedenis staat in je eigen browser. Op onze servers bewaren we gesprekken pseudoniem, zonder naam, IP-adres of profiel, om de assistent te verbeteren, maximaal 30 dagen. Alleen als je zelf om contact met het team vraagt en daarvoor je naam en e-mailadres achterlaat, verwerken we persoonsgegevens. Die gebruiken we uitsluitend om te reageren en bewaren we maximaal 90 dagen. Meer over de assistent lees je op <a href="/nl/legal/ai-assistent">deze pagina</a>.</p>
+
+      <h2 id="rechten">Je rechten</h2>
+      <p>Onder de AVG heb je deze rechten:</p>
+      <ul>
+        <li><strong>Inzage:</strong> je kunt opvragen welke gegevens we van je hebben.</li>
+        <li><strong>Correctie:</strong> je kunt onjuiste gegevens laten aanpassen.</li>
+        <li><strong>Verwijdering:</strong> je kunt vragen je gegevens te verwijderen.</li>
+        <li><strong>Bezwaar:</strong> je kunt bezwaar maken tegen bepaalde verwerkingen.</li>
       </ul>
+      <p>Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens. We horen het liever eerst zelf, zodat we het kunnen oplossen.</p>
+
+      <h2 id="verantwoordelijke">Verantwoordelijke</h2>
+      <p>{SITE.legalName}, {SITE.address.street}, {SITE.address.postcode} {SITE.address.city}, is verwerkingsverantwoordelijke voor de persoonsgegevens in deze verklaring. KvK-nummer {SITE.kvk}, btw-nummer {SITE.vat}. We vallen onder de Nederlandse en Europese privacywetgeving.</p>
     </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Welke gegevens verzamelen we?</h2>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-3">Contactformulieren</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">Als je ons contactformulier invult, verzamelen we je naam, e-mailadres, en de inhoud van je bericht. Deze gegevens gebruiken we uitsluitend om contact met je op te nemen over je vraag of aanvraag.</p>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-3">Websitebezoek</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">We gebruiken eenvoudige analytics om te begrijpen hoe bezoekers onze website gebruiken. We verzamelen geen persoonlijke gegevens via tracking en gebruiken geen cookies van derden voor advertentiedoeleinden.</p>
-
-    <h3 class="text-xl font-serif text-brand-dark mb-3">Nieuwsbrief</h3>
-    <p class="text-stone-600 leading-relaxed mb-6">Als je je aanmeldt voor onze nieuwsbrief, bewaren we je e-mailadres. Je kunt je op elk moment uitschrijven via de link onderaan elke nieuwsbrief.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Hoe gebruiken we je gegevens?</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">We gebruiken je gegevens alleen voor de doeleinden waarvoor je ze hebt verstrekt:</p>
-    <ul class="text-stone-600 leading-relaxed mb-8 space-y-2 list-disc ml-5">
-      <li>Om contact met je op te nemen over je vraag of aanvraag</li>
-      <li>Om je onze nieuwsbrief te sturen (als je je hebt aangemeld)</li>
-      <li>Om onze diensten te verbeteren op basis van algemene gebruikspatronen</li>
-    </ul>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">De AI-assistent op deze site</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Op aiheroes.io kun je chatten met onze AI-assistent. Je chatgeschiedenis staat in je eigen
-      browser. Op onze servers bewaren we gesprekken pseudoniem (zonder naam, IP-adres of
-      profiel) om de assistent te verbeteren, maximaal 30 dagen. De assistent draait op Google
-      Vertex AI in de EU. Alleen als je zelf vraagt om contact met het team en daarvoor je
-      e-mailadres achterlaat, verwerken we persoonsgegevens; die gebruiken we uitsluitend om te
-      reageren en bewaren we maximaal 90 dagen. Berichten uit onze formulieren en
-      contactverzoeken versturen we via Resend (verzending vanuit de EU; Resend bewaart
-      verzendgegevens in de Verenigde Staten). Meer over de assistent lees je op
-      <a href="/nl/legal/ai-assistent">deze pagina</a>.
-    </p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Hoe lang bewaren we je gegevens?</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">Contactgegevens bewaren we maximaal 2 jaar na het laatste contact. Nieuwsbriefabonnementen bewaren we tot je je uitschrijft. Analytics-data wordt geanonimiseerd en geaggregeerd bewaard.</p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Je rechten</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">Onder de AVG/GDPR heb je de volgende rechten:</p>
-    <div class="grid md:grid-cols-2 gap-4 mb-8 not-prose">
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Inzage</h4><p class="text-sm text-stone-600">Je kunt opvragen welke gegevens we van je hebben.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Rectificatie</h4><p class="text-sm text-stone-600">Je kunt onjuiste gegevens laten corrigeren.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Verwijdering</h4><p class="text-sm text-stone-600">Je kunt vragen om je gegevens te verwijderen.</p></div>
-      <div class="p-4 bg-white border border-stone-200"><h4 class="font-bold text-brand-dark mb-2">Bezwaar</h4><p class="text-sm text-stone-600">Je kunt bezwaar maken tegen bepaalde verwerkingen.</p></div>
-    </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Contact</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">Heb je vragen over je privacy of wil je een van je rechten uitoefenen? Neem contact met ons op via info@aiheroes.io of bel 050-200 3373.</p>
-
-    <div class="dark-box-content bg-brand-dark p-8 my-8 not-prose">
-      <h3>Verantwoordelijke</h3>
-      <p>AI Heroes B.V., gevestigd aan Aarhusweg 4-16, 9723 JJ Groningen, is verwerkingsverantwoordelijke voor de persoonsgegevens zoals beschreven in dit privacybeleid. KvK-nummer 42051968, BTW-nummer NL869486263B01. We vallen onder de Nederlandse en Europese privacywetgeving (AVG/GDPR).</p>
-    </div>
-  </div>
-</SubpageLayout>
+  </HsHelp>
+</HsLayout>

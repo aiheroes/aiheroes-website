@@ -105,7 +105,7 @@
     },
     {
       "source": "/resources",
-      "destination": "/nl/resources",
+      "destination": "/nl/kennis",
       "statusCode": 301
     },
     {
@@ -471,6 +471,46 @@
     {
       "source": "/nl/resources/wat-kost-ai-implementatie",
       "destination": "/nl/wat-kost-ai-implementatie",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources",
+      "destination": "/nl/kennis",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/eu-ai-act-compliance",
+      "destination": "/nl/kennis/ai-act",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/ai-geletterdheid",
+      "destination": "/nl/kennis/ai-geletterdheid",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/ai-beleid-opstellen",
+      "destination": "/nl/kennis/ai-beleid",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/top-10-ai-consultancy-nederland",
+      "destination": "/nl/kennis/top-10-ai-bureaus",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/ai-implementatie-mkb",
+      "destination": "/nl/kennis/waar-begin-je-met-ai",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/ai-strategie-gids",
+      "destination": "/nl/kennis/waar-begin-je-met-ai",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/resources/europese-chatgpt-alternatieven",
+      "destination": "/nl/kennis/europese-alternatieven-chatgpt",
       "statusCode": 301
     }
   ],

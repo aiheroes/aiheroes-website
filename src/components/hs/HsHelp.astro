@@ -1,0 +1,99 @@
+---
+// H0 hulp-template (docs/relaunch/pages/H0-hulp-template.md): a quiet header on the light blueprint
+// grid (crumbs, title, one sentence, "Laatst bijgewerkt"), an optional summary plane, the reading
+// column with an optional table of contents, and one line with the right contact channel. No cover
+// photo and no start-sprint button as the main action; nav and footer carry that.
+import HsIcon from './HsIcon.astro';
+import { display, rich, zet } from './hs';
+import type { Crumb } from '../../data/schema';
+
+interface Props {
+  title: string;
+  /** Short page name for the breadcrumb trail. */
+  current?: string;
+  intro?: string;
+  /** e.g. "oktober 2026"; shown as "Laatst bijgewerkt: …". */
+  updated?: string;
+  crumbs?: Crumb[];
+  /** Small facts under the title (vacancies: team, hours, place). */
+  meta?: string[];
+  summary?: string[];
+  summaryTitle?: string;
+  toc?: { id: string; label: string }[];
+  /** One line with the right channel; [links](href) allowed. */
+  contact?: string;
+  related?: { label: string; href: string }[];
+}
+const { title, current, intro, updated, crumbs = [], meta = [], summary = [], summaryTitle = 'In het kort', toc = [], contact, related = [] } = Astro.props;
+---
+
+<header class="hs-help__head hs-grid">
+  <div class="hs-wrap">
+    {crumbs.length > 0 && (
+      <nav class="hs-crumbs" aria-label="Kruimelpad">
+        <ol>
+          {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+          <li aria-current="page">{current ?? title.replace(/\*/g, '')}</li>
+        </ol>
+      </nav>
+    )}
+    <h1 class="hs-d-m" set:html={display(title)} />
+    {intro && <p class="hs-body-l hs-help__intro" set:html={rich(intro)} />}
+    {meta.length > 0 && (
+      <ul class="hs-help__meta">{meta.map((m) => <li>{m}</li>)}</ul>
+    )}
+    {updated && <p class="hs-meta">Laatst bijgewerkt: {updated}</p>}
+  </div>
+</header>
+
+<section class="hs-sec hs-help__body">
+  <div class="hs-wrap">
+    <div class:list={['hs-article', { 'has-toc': toc.length > 0 }]}>
+      <div class="hs-help__main">
+        {summary.length > 0 && (
+          <div class="hs-help__summary">
+            <h2>{summaryTitle}</h2>
+            <ul>{summary.map((s) => <li><HsIcon name="check" /><span set:html={rich(s)} /></li>)}</ul>
+          </div>
+        )}
+        <slot />
+        {contact && <p class="hs-help__contact" set:html={rich(contact)} />}
+        {related.length > 0 && (
+          <nav class="hs-help__related" aria-label="Zie ook">
+            <h2>Zie ook</h2>
+            <ul>{related.map((r) => <li><a class="hs-link" href={r.href}>{r.label}<HsIcon name="arrow-right" /></a></li>)}</ul>
+          </nav>
+        )}
+      </div>
+      {toc.length > 0 && (
+        <aside class="hs-article__aside">
+          <nav class="hs-toc" aria-label="Inhoud">
+            <h2>Inhoud</h2>
+            <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{zet(t.label, { cap: 30 })}</a></li>)}</ol>
+          </nav>
+        </aside>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hs-help__head { padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(2.25rem, 5vw, 4.5rem); box-shadow: inset 0 -1.5px 0 var(--rule-on-light); }
+  .hs-help__head .hs-wrap { display: grid; gap: 1.25rem; }
+  .hs-help__head .hs-crumbs { color: var(--body-on-light); margin-bottom: .5rem; }
+  .hs-help__head h1 { max-width: 18ch; }
+  .hs-help__intro { max-width: 46ch; color: var(--body-on-light); }
+  .hs-help__meta { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .hs-help__meta li { display: inline-flex; align-items: center; min-height: 2.25rem; padding: 0 .875rem; background: var(--light); box-shadow: inset 0 0 0 1.5px var(--panel-edge); font-weight: 600; font-size: .9375rem; }
+  .hs-help__body { padding-top: clamp(2.5rem, 5vw, 4rem); }
+  .hs-help__main { display: grid; gap: 2.5rem; align-content: start; min-width: 0; }
+  .hs-help__summary { padding: clamp(1.25rem, 2.4vw, 2rem); background: #F5F3EC; max-width: 44rem; }
+  .hs-help__summary h2 { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1rem; }
+  .hs-help__summary ul { display: grid; gap: .625rem; }
+  .hs-help__summary li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .75rem; align-items: start; color: var(--dark); }
+  .hs-help__summary .hs-icon { width: 1.125rem; height: 1.125rem; margin-top: .25em; color: var(--blue); }
+  .hs-help__contact { max-width: 44rem; padding-top: 1.5rem; box-shadow: inset 0 1.5px 0 var(--rule-on-light); font-weight: 500; }
+  .hs-help__contact :global(a) { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; }
+  .hs-help__related h2 { font-size: .875rem; font-weight: 700; letter-spacing: .04em; color: var(--micro-on-light); margin-bottom: .75rem; }
+  .hs-help__related ul { display: flex; flex-wrap: wrap; gap: .75rem 2rem; }
+</style>

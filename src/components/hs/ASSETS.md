@@ -43,3 +43,7 @@ All icons on the page are IconPark by ByteDance (Apache License 2.0, https://git
 ## Font
 
 `public/fonts/inter/InterVariable.woff2` is Inter 4.1 from https://github.com/rsms/inter/releases/tag/v4.1 (SIL OFL 1.1, licence next to the file). It replaces the Inter Tight and Google Fonts Inter builds on this page because those lack `cv08`, the capital I with serifs.
+
+## Press kit
+
+`public/pers/ai-heroes-perspakket.zip` (2026-10-12): the brand logos and icon (full colour, black, white; SVG and PNG) from `public/Brand_Package`, and the three founder portraits from `public/team` as JPG. Our own assets.

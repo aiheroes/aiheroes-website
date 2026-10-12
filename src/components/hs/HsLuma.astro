@@ -1,0 +1,32 @@
+---
+// A link that opens Luma's registration modal. The href is the fallback (the Luma event page);
+// Luma's checkout-button.js takes over the click through data-luma-action, so the link keeps the
+// house style. The script loads once and re-binds after every Astro page load.
+interface Props {
+  eventId: string;
+  class?: string;
+  href?: string;
+}
+const { eventId, class: cls, href = `https://luma.com/event/${eventId}` } = Astro.props;
+---
+
+<a class={cls} href={href} data-luma-action="checkout" data-luma-event-id={eventId}><slot /></a>
+
+<script>
+  type LumaWindow = Window & { luma?: { initCheckout?: () => void } };
+  const bind = () => {
+    if (!document.querySelector('[data-luma-action="checkout"]')) return;
+    const init = () => (window as LumaWindow).luma?.initCheckout?.();
+    if (document.getElementById('luma-checkout')) {
+      init();
+      return;
+    }
+    const s = document.createElement('script');
+    s.id = 'luma-checkout';
+    s.src = 'https://embed.lu.ma/checkout-button.js';
+    s.async = true;
+    s.onload = init;
+    document.body.appendChild(s);
+  };
+  document.addEventListener('astro:page-load', bind);
+</script>

@@ -1,57 +1,72 @@
 ---
-// Art. 50 disclosure page (SDD D10). Draft: copy pending founder sign-off (SDD §13).
-import SubpageLayout from '../../../layouts/SubpageLayout.astro';
+// H3 Over onze AI-assistent (docs/relaunch/pages/H3-ai-assistent.md): the article 50 disclosure, in
+// the hulp-template, and an example of compliance from the drawing board. Escalation reply within
+// 4 office hours (01-besluiten §15); no supplier names (§8). Copy awaits Frans's sign-off.
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsHelp from '../../../components/hs/HsHelp.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { SITE } from '../../../data/site';
+
+const crumbs = [{ label: 'Home', href: '/' }];
 ---
 
-<SubpageLayout
-  lang="nl"
+<HsLayout
   title="Over onze AI-assistent"
-  subtitle="Hoe de assistent op deze site werkt, wat hij wel en niet kan, en hoe we met je gegevens omgaan."
-  seoDescription="Uitleg over de AI-assistent van AI Heroes: mogelijkheden, beperkingen, gegevensverwerking en hoe je een mens bereikt."
-  accentColor="blue"
-  showContactForm={false}
+  seoTitle="Over de AI-assistent van AI Heroes"
+  description="Uitleg over de AI-assistent van AI Heroes: wat hij wel en niet kan, wat er met je gegevens gebeurt, hoe hij gebouwd is en hoe je een mens bereikt."
   noindex
+  crumbs={crumbs}
 >
-  <div class="prose prose-lg max-w-none">
-    <h2 class="text-2xl md:text-3xl font-serif text-brand-dark mb-6">Je chat met AI</h2>
-    <p class="text-stone-600 leading-relaxed mb-8">
-      De chatassistent op aiheroes.io is een AI-systeem, gebouwd door AI Heroes zelf. Dat melden
-      we ook in het gesprek: je weet altijd dat je met AI praat, zoals de Europese
-      AI-verordening (artikel 50) voorschrijft. De assistent is een voorbeeld van wat we voor
-      klanten bouwen.
-    </p>
+  <HsHelp
+    title="Je chat met *AI*"
+    current="Over onze AI-assistent"
+    intro="De assistent op deze site is een AI-systeem, door ons zelf gebouwd. Hier staat wat hij kan, wat er met je gegevens gebeurt en hoe je een mens bereikt."
+    updated="oktober 2026"
+    crumbs={crumbs}
+    summary={[
+      'De assistent is AI, en dat zegt hij ook in het gesprek.',
+      'Hij antwoordt uit onze eigen pagina’s en noemt de bron.',
+      'Een mens is altijd bereikbaar via “Praat met een mens”.',
+      'Verwerking en opslag gebeuren binnen de EU.',
+      'Je naam en e-mailadres vragen we alleen als jij contact wilt, met je toestemming.',
+    ]}
+    toc={[
+      { id: 'kan', label: 'Wat de assistent kan' },
+      { id: 'gegevens', label: 'Gegevens en bewaartermijn' },
+      { id: 'gebouwd', label: 'Hoe hij gebouwd is' },
+      { id: 'mens', label: 'Liever een mens' },
+    ]}
+    related={[{ label: 'Privacyverklaring', href: '/nl/legal/privacy' }, { label: 'De case: onze eigen assistent', href: '/nl/cases/eigen-stack' }, { label: 'Software in eigen beheer', href: '/nl/eigen-beheer' }]}
+  >
+    <div class="hs-prose">
+      <p>De chatassistent op aiheroes.io is een AI-systeem, gebouwd door AI Heroes zelf. Dat melden we ook in het gesprek: je weet altijd dat je met AI praat, zoals artikel 50 van de Europese AI-verordening voorschrijft. De assistent is een voorbeeld van wat we voor klanten bouwen.</p>
 
-    <div class="solid-block bg-brand-blue p-6 md:p-8 mb-8 not-prose">
-      <h3 class="text-xl font-serif text-brand-dark mb-3">In het kort</h3>
-      <ul class="space-y-2 text-stone-600 list-disc ml-5">
-        <li>De assistent beantwoordt vragen op basis van onze eigen site-informatie en verwijst naar bronnen</li>
-        <li>Antwoorden kunnen onvolledig of onjuist zijn; controleer belangrijke informatie op de gelinkte pagina's</li>
-        <li>Een mens is altijd bereikbaar via "Praat met een mens" in de chat</li>
-        <li>Verwerking en opslag gebeuren binnen de EU</li>
-        <li>We vragen alleen om je naam en e-mailadres als jij het gesprek wilt doorzetten naar het team, met jouw toestemming</li>
-      </ul>
+      <h2 id="kan">Wat de assistent kan, en wat niet</h2>
+      <p>De assistent beantwoordt vragen over wat we bouwen, de startsprint, onze cases, het team, de artikelen en de AI Salon. Hij brengt je naar de juiste pagina, helpt je een gesprek met het team in te plannen en draagt het gesprek over aan een mens als je dat wilt.</p>
+      <p>Hij geeft alleen prijzen die ook op de site staan. Antwoorden kunnen onvolledig of onjuist zijn; controleer belangrijke informatie op de pagina waar hij naar verwijst.</p>
+
+      <h2 id="gegevens">Gegevens en bewaartermijn</h2>
+      <p>Je chatgeschiedenis staat in je eigen browser. Op onze servers bewaren we gesprekken pseudoniem, zonder naam, IP-adres of profiel, om de assistent te verbeteren, maximaal 30 dagen. Pas als je zelf je naam en e-mailadres achterlaat om contact te krijgen, verwerken we persoonsgegevens; die bewaren we maximaal 90 dagen, volgens onze <a href="/nl/legal/privacy">privacyverklaring</a>.</p>
+
+      <h2 id="gebouwd">Hoe hij gebouwd is</h2>
+      <p>De assistent zoekt in onze eigen pagina’s en antwoordt alleen op basis daarvan, met de bron erbij. Hij draait in Frankfurt, met een database in de EU. Het taalmodel is te wisselen zonder de assistent opnieuw te bouwen, en elke nieuwe versie moet eerst een vaste testset halen. Zo doen we zelf wat we bij klanten adviseren: compliance vanaf de tekentafel en <a href="/nl/eigen-beheer">software in eigen beheer</a>. Lees er meer over in <a href="/nl/cases/eigen-stack">de case</a>.</p>
+
+      <h2 id="mens">Liever een mens?</h2>
+      <p>Gebruik “Praat met een mens” in de chat. Binnen kantooruren reageren we dan binnen 4 uur. Mailen kan ook, via <a href={`mailto:${SITE.email}`}>{SITE.email}</a>; daarop reageren we binnen {SITE.reply}.</p>
     </div>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Wat de assistent kan</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Vragen beantwoorden over onze diensten, cases, team, artikelen en de AI Salon; je naar de
-      juiste pagina brengen; een gesprek met het team inplannen; en het gesprek overdragen aan
-      een mens. De assistent geeft alleen prijsinformatie die ook op de site staat.
+    <p>
+      <button class="hs-btn hs-btn--dark" type="button" data-open-chat>
+        Open de assistent
+        <HsIcon name="arrow-right" />
+      </button>
     </p>
+  </HsHelp>
+</HsLayout>
 
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Gegevens en bewaartermijn</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Je chatgeschiedenis staat in je eigen browser. Op onze servers bewaren we gesprekken
-      pseudoniem (zonder naam, IP-adres of profiel) voor kwaliteitsverbetering, maximaal 30
-      dagen. Pas als je zelf je naam en e-mailadres achterlaat om contact te krijgen, verwerken
-      we persoonsgegevens; dat doen we volgens ons
-      <a href="/nl/legal/privacy">privacybeleid</a>.
-    </p>
-
-    <h2 class="text-2xl font-serif text-brand-dark mb-4">Liever direct een mens?</h2>
-    <p class="text-stone-600 leading-relaxed mb-6">
-      Gebruik "Praat met een mens" in de chat, of mail ons via het
-      <a href="/#contact">contactformulier</a>. Binnen kantooruren reageren we binnen 4 uur.
-    </p>
-  </div>
-</SubpageLayout>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-open-chat]').forEach((b) =>
+      b.addEventListener('click', () => window.dispatchEvent(new Event('aih:open-chat'))),
+    );
+  });
+</script>

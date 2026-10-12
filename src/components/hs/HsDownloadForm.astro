@@ -1,0 +1,85 @@
+---
+// A template download in exchange for an email address (docs/relaunch/01-besluiten.md §11). Posts
+// to /api/download through hs-client initForm. While the template is switched off in
+// server/downloads.ts, the block says the template is coming and links to the contact form.
+import HsIcon from './HsIcon.astro';
+import { zet } from './hs';
+import { DOWNLOADS, type DownloadId } from '../../../server/downloads';
+
+interface Props {
+  template: DownloadId;
+  title?: string;
+  text?: string;
+}
+const { template, title = 'Download het sjabloon', text } = Astro.props;
+const t = DOWNLOADS[template];
+---
+
+<aside class="hs-dl on-blue" aria-labelledby={`dl-${template}`} data-reveal>
+  <div class="hs-dl__text">
+    <h2 id={`dl-${template}`} class="hs-dl__title" data-item>{zet(title, { display: true })}</h2>
+    {text && <p class="hs-dl__lede" data-item style="--i:1">{zet(text)}</p>}
+    {!t.enabled && (
+      <p class="hs-dl__soon" data-item style="--i:2">
+        {zet('Het sjabloon komt binnenkort. Wil je nu al hulp bij je AI-beleid? Laat het ons weten.')}
+      </p>
+    )}
+  </div>
+  {t.enabled ? (
+    <form
+      class="hs-form hs-dl__form"
+      data-hs-form
+      method="post"
+      action="/api/download"
+      data-success={`Verstuurd. Het ${t.title.toLowerCase()} staat zo in je mailbox.`}
+      novalidate
+    >
+      <input type="hidden" name="template" value={template} />
+      <input class="hs-honey" type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="hs-form__row">
+        <label class="hs-field">
+          <span class="hs-label">Naam</span>
+          <input class="hs-input" type="text" name="name" autocomplete="name" required />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">E-mail</span>
+          <input class="hs-input" type="email" name="email" autocomplete="email" required />
+        </label>
+        <label class="hs-field">
+          <span class="hs-label">Organisatie</span>
+          <input class="hs-input" type="text" name="organization" autocomplete="organization" />
+        </label>
+      </div>
+      <p class="hs-dl__fine">{zet('We sturen je het sjabloon (Word en pdf) per mail en gebruiken je adres verder alleen om te reageren op je vragen.')} <a href="/nl/legal/privacy">Privacy</a></p>
+      <div class="hs-form__foot">
+        <p class="hs-form__status" role="status" aria-live="polite"></p>
+        <button class="hs-btn hs-btn--light" type="submit">Stuur mij het sjabloon<HsIcon name="arrow-right" /></button>
+      </div>
+    </form>
+  ) : (
+    <div class="hs-dl__form" data-item style="--i:3">
+      <a class="hs-btn hs-btn--light" href="/nl/compliance#contact">Vraag hulp bij je AI-beleid<HsIcon name="arrow-right" /></a>
+    </div>
+  )}
+</aside>
+
+<style>
+  .hs-dl {
+    display: grid;
+    gap: 1.75rem;
+    margin-block: max(2.5rem, calc(var(--module) * .6));
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    max-width: 44rem;
+  }
+  .hs-dl__title { font-weight: 800; letter-spacing: -0.022em; font-size: clamp(1.625rem, 1.2rem + 1.2vw, 2.375rem); line-height: 1.1; }
+  .hs-dl__lede { margin-top: .75rem; color: var(--body-on-dark); max-width: 46ch; }
+  .hs-dl__soon { margin-top: 1rem; padding: .875rem 1rem; background: var(--light); color: var(--blue); font-weight: 600; max-width: 46ch; }
+  .hs-dl__fine { font-size: .875rem; color: var(--body-on-dark); }
+  .hs-dl__fine a { color: var(--light); text-decoration: underline; text-underline-offset: .2em; }
+  /* The shared form styles assume a light ground; on blue the fields and labels go cream. */
+  .hs-dl :global(.hs-label) { color: var(--light); }
+  .hs-dl :global(.hs-input) { color: var(--light); box-shadow: inset 0 0 0 1.5px var(--rule-on-dark); }
+  .hs-dl :global(.hs-input:hover) { box-shadow: inset 0 0 0 1.5px var(--body-on-dark); }
+  .hs-dl :global(.hs-input:focus) { box-shadow: inset 0 0 0 2px var(--light); }
+  .hs-dl :global(.hs-form__status) { color: var(--light); }
+</style>

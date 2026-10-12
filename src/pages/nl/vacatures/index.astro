@@ -1,16 +1,122 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CareersIsland from '../../../components/islands/CareersIsland';
-import { CONTENT } from '../../../data/content';
+// P13 Vacatures (docs/relaunch/pages/P13-vacatures.md): the open positions straight under the cover,
+// then how we work, what you get, Groningen and the open application (01-besluiten §13).
+import HsLayout from '../../../layouts/HsLayout.astro';
+import HsPageCover from '../../../components/hs/HsPageCover.astro';
+import HsSection from '../../../components/hs/HsSection.astro';
+import HsCards from '../../../components/hs/HsCards.astro';
+import HsSteps from '../../../components/hs/HsSteps.astro';
+import HsApplyForm from '../../../components/hs/HsApplyForm.astro';
+import HsIcon from '../../../components/hs/HsIcon.astro';
+import { JOBS } from '../../../data/jobs';
+import { SITE } from '../../../data/site';
 
-const content = CONTENT.nl.careersPage;
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Over ons', href: '/nl/over-ons' }];
 ---
 
-<BaseLayout
-  lang="nl"
-  title={content.hero.title}
-  description="Werken bij AI Heroes: bekijk onze vacatures en sluit je aan bij een groeiende AI agency in Groningen. AI Engineer, Trainer en meer."
-  noChrome
+<HsLayout
+  title="Werken bij AI Heroes"
+  seoTitle="Vacatures bij AI Heroes: bouw AI-toepassingen vanuit Groningen"
+  description="Werken bij AI Heroes in Groningen: vacatures voor AI Engineer, AI Trainer en stages in sales en marketing. Bouw mee aan AI-toepassingen die teams elke dag gebruiken."
+  crumbs={crumbs}
 >
-  <CareersIsland lang="nl" client:load />
-</BaseLayout>
+  <HsPageCover
+    accent="blue"
+    crumbs={crumbs}
+    current="Vacatures"
+    title="Werken bij *AI Heroes*"
+    lede="We bouwen AI-toepassingen die teams elke dag gebruiken, vanuit Groningen. Het team groeit mee met de vraag."
+    cta={{ label: 'Bekijk de vacatures', href: '#vacatures' }}
+    secondary={{ label: 'Open sollicitatie', href: '#solliciteer' }}
+    facts={[
+      { value: `${JOBS.length}`, label: 'vacatures open' },
+      { value: SITE.proof.orgs, label: 'organisaties geholpen sinds 2019' },
+      { value: SITE.proof.trained, label: 'professionals getraind sinds 2019' },
+    ]}
+  />
+
+  <HsSection id="vacatures" title="Open *vacatures*">
+    <ul class="jobs">
+      {JOBS.map((j, i) => (
+        <li data-item style={`--i:${i}`}>
+          <a class="jobs__item" href={`/nl/vacatures/${j.id}`}>
+            <span class="jobs__team">{j.team}</span>
+            <span class="jobs__title">{j.title}</span>
+            <span class="jobs__text">{j.summary}</span>
+            <span class="jobs__meta">{j.location} · {j.hours} · {j.type}</span>
+            <HsIcon name="arrow-right" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </HsSection>
+
+  <HsSection tone="paper" title="Drie rollen in *elk* traject" lede="Elke bouw volgt dezelfde lijn. Waar je ook begint, je ziet waar je werk in het geheel past.">
+    <HsSteps
+      items={[
+        { label: 'Business case en strategie', title: 'Wat kost het, wat levert het op', text: 'Vóór er gebouwd wordt, ligt er een business case op één A4. Hier zitten ook sales en marketing.' },
+        { label: 'Bouw en compliance', title: 'Van prototype tot systeem', text: 'Een werkend prototype in zes dagen, daarna sprints van twee weken, met de AI Act in het ontwerp.' },
+        { label: 'Training en adoptie', title: 'Een team dat ermee werkt', text: 'Het team van de klant leert werken met wat we bouwen, op het systeem zelf en op de werkvloer.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection title="Wat je bij ons *krijgt*">
+    <HsCards
+      items={[
+        { icon: 'robot', title: 'We gebruiken wat we bouwen', text: 'Ons eigen werk loopt via zelfgebouwde AI-tools: van verslagen tot rapportages en presentaties.' },
+        { icon: 'lightning', title: 'Snelheid', text: 'Een prototype in zes dagen en een reactie binnen een dag. Je ziet je werk snel landen.' },
+        { icon: 'comments', title: 'Eerlijk en direct', text: 'We zeggen wat we denken, ook tegen klanten. Als AI niet de oplossing is, zeggen we dat.' },
+        { icon: 'peoples', title: 'Een platte organisatie', text: 'Korte lijnen met de drie oprichters en verantwoordelijkheid vanaf dag één.' },
+        { icon: 'book', title: 'Leren hoort erbij', text: 'AI verandert elke week. Je krijgt tijd en budget om bij te blijven en te experimenteren.' },
+        { icon: 'local', title: 'Kantoor in Groningen', text: 'Aan de Aarhusweg, in de AI-hoofdstad van Europa. Thuiswerken combineer je zoals het past.' },
+      ]}
+    />
+  </HsSection>
+
+  <HsSection tone="dark" title="Gebouwd in *Groningen*" lede="Met de AI Fabriek komt er 200 miljoen euro aan AI-rekenkracht naar Groningen. Elke twee maanden organiseren we de AI Salon, de avond waar de AI-scene van het Noorden elkaar treft.">
+    <p class="hs-sec__foot" data-item>
+      <a class="hs-link" href="/nl/ai-salon">De AI Salon<HsIcon name="arrow-right" /></a>
+      <a class="hs-link" href="/nl/over-ons/team">Het team<HsIcon name="arrow-right" /></a>
+    </p>
+  </HsSection>
+
+  <HsSection tone="paper" title="Zo gaat *solliciteren*">
+    <HsSteps
+      items={[
+        { label: 'Stap 1', title: 'Sollicitatie', text: 'Stuur je cv en motivatie via het formulier. We bevestigen de ontvangst binnen twee werkdagen.' },
+        { label: 'Stap 2', title: 'Kennismaking', text: 'Een informeel gesprek van een half uur om elkaar te leren kennen.' },
+        { label: 'Stap 3', title: 'Verdieping', text: 'Een inhoudelijk gesprek of een praktijkopdracht, afhankelijk van de rol.' },
+        { label: 'Stap 4', title: 'Aanbod', text: 'Past het, dan doen we je een voorstel. We communiceren snel en duidelijk.' },
+      ]}
+    />
+  </HsSection>
+
+  <section class="hs-sec" data-reveal>
+    <div class="hs-wrap">
+      <p class="hs-body-l jobs__open" data-item>Herken je jezelf niet in een vacature? Stuur een open sollicitatie en vertel wat jij kunt bijdragen.</p>
+      <HsApplyForm title="Solliciteer" />
+    </div>
+  </section>
+</HsLayout>
+
+<style>
+  .jobs { display: grid; max-width: 72rem; }
+  .jobs__item {
+    position: relative;
+    display: grid;
+    gap: .375rem;
+    padding: 1.5rem 3rem 1.75rem 0;
+    box-shadow: inset 0 1.5px 0 var(--rule-on-light);
+    text-decoration: none;
+  }
+  .jobs li:last-child .jobs__item { box-shadow: inset 0 1.5px 0 var(--rule-on-light), inset 0 -1.5px 0 var(--rule-on-light); }
+  .jobs__team { font-size: .875rem; font-weight: 700; color: var(--red); }
+  .jobs__title { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.5rem); line-height: 1.1; }
+  .jobs__text { color: var(--body-on-light); max-width: 56ch; }
+  .jobs__meta { font-size: .9375rem; font-weight: 500; color: var(--micro-on-light); }
+  .jobs__item :global(.hs-icon) { position: absolute; right: 0; top: 50%; width: 1.75rem; height: 1.75rem; transform: translateY(-50%); transition: transform .25s var(--ease); }
+  .jobs__item:hover :global(.hs-icon) { transform: translate(.375rem, -50%); }
+  .jobs__item:hover .jobs__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+  .jobs__open { max-width: 44ch; margin-bottom: 2rem; color: var(--body-on-light); }
+</style>

@@ -5,9 +5,11 @@ import { Footer } from '../components/Footer';
 import { CONTENT } from '../constants';
 import { useSEO } from '../hooks/useSEO';
 import type { Language } from '../types';
+import { SALON_NEXT, SALON_SPEAKER_SLOTS } from '../src/data/salon';
 
 const LANG_STORAGE_KEY = 'aiheroes-lang';
-const LUMA_EVENT_ID = 'evt-IyAX8Koq2RAY8V3'; // Edition #2 · Thu 5 Nov 2026
+// Edition data (Luma event, speakers, sponsors) comes from src/data/salon.ts, shared with the NL page.
+const LUMA_EVENT_ID = SALON_NEXT.lumaEventId!;
 
 // The venue for edition #2 is TBA (the planned venue fell through); the page carries a want-to-host call.
 
@@ -221,22 +223,10 @@ const COPY: Record<Language, Copy> = {
   },
 };
 
-// Confirmed sponsors for edition #2 (not language-specific). Rendered ahead of the open
-// slots. Empty for now: edition #2 starts with a clean sponsor list (kick-off sponsors were
-// Drydock, Chordify and Helm — re-add entries here as they confirm).
-const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = [];
-
-// Confirmed speakers for edition #2 (not language-specific). Rendered ahead of the open
-// TBA slots. photo: null = portrait not supplied yet; topic: null = topic to be announced.
-const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = [
-  // Ilse Gosliga — founder/director of Energiso (energy management, ISO 50001). Topic TBA.
-  // Portrait from energiso.nl, greyscaled like the other speaker portraits.
-  { name: 'Ilse Gosliga', topic: null, photo: '/speakers/ilse-gosliga.jpg' },
-  // Alex van Ginneken — entrepreneur and business coach in Groningen (alexvanginneken.com).
-  // Confirmed 2026-10-05; portrait and topic requested from him.
-  { name: 'Alex van Ginneken', topic: null, photo: null },
-];
-const SPEAKER_SLOTS = 2; // total speaker tiles shown (confirmed + open)
+// Confirmed sponsors and speakers for the next edition, from src/data/salon.ts.
+const SPONSOR_LOGOS: { name: string; src: string; href?: string }[] = SALON_NEXT.sponsors ?? [];
+const SPEAKERS: { name: string; topic: string | null; photo: string | null }[] = SALON_NEXT.speakers ?? [];
+const SPEAKER_SLOTS = SALON_SPEAKER_SLOTS; // total speaker tiles shown (confirmed + open)
 
 const PracticalCol: React.FC<PracticalEntry> = ({ label, lines, mail, logo }) => (
   <div>

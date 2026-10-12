@@ -1,0 +1,198 @@
+---
+// The article template of the kennis collection (docs/relaunch/pages/B0-blog-template.md): a cover
+// plane with kicker, title, author and both dates; the short answer on a cream label (the block AI
+// search engines quote); the text in the reading column with a table of contents; an optional
+// template download; FAQ; author; a soft step to the pillar; related reading. Listicles and guides
+// use the same template; their structure lives in the Markdown body.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsSection from './HsSection.astro';
+import HsFaq from './HsFaq.astro';
+import HsAuthor from './HsAuthor.astro';
+import HsCards from './HsCards.astro';
+import HsIcon from './HsIcon.astro';
+import HsDownloadForm from './HsDownloadForm.astro';
+import { display, plainText, rich, zet } from './hs';
+import { FOUNDERS, personSchema, type FounderId } from '../../data/team';
+import { articleSchema, faqSchema } from '../../data/schema';
+import type { MarkdownHeading } from 'astro';
+
+interface Related {
+  title: string;
+  text?: string;
+  href: string;
+  meta?: string;
+}
+interface Props {
+  data: {
+    slug: string;
+    kind: 'artikel' | 'listicle' | 'gids';
+    group: 'compliance' | 'kern' | 'training' | 'overig';
+    title: string;
+    seoTitle?: string;
+    description: string;
+    answer: string;
+    author: FounderId;
+    publishDate: Date;
+    updatedDate: Date;
+    pillar: { label: string; href: string; text: string };
+    faq: { q: string; a: string }[];
+    items: { name: string; url?: string }[];
+    download: boolean;
+  };
+  headings: MarkdownHeading[];
+  minutes: number;
+  related: Related[];
+  /** Overrides the group label in the kicker (e.g. "Eigen beheer en Europa"). */
+  kicker?: string;
+}
+const { data: d, headings, minutes, related, kicker } = Astro.props;
+
+const GROUPS = {
+  compliance: { label: 'Compliance en security', accent: 'blue' },
+  kern: { label: 'Kosten en aanpak', accent: 'red' },
+  training: { label: 'Training', accent: 'red' },
+  overig: { label: 'Overzicht', accent: 'dark' },
+} as const;
+const group = GROUPS[d.group];
+const KIND = { artikel: 'Artikel', listicle: 'Overzicht', gids: 'Gids' } as const;
+const author = FOUNDERS[d.author];
+const path = `/nl/kennis/${d.slug}`;
+const title = plainText(d.title);
+const fmt = (date: Date) => date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' });
+const iso = (date: Date) => date.toISOString().slice(0, 10);
+const toc = headings.filter((h) => h.depth === 2);
+const crumbs = [{ label: 'Home', href: '/' }, { label: 'Kennis', href: '/nl/kennis' }];
+
+const jsonLd: object[] = [
+  articleSchema({ title, description: d.description, path, published: d.publishDate, updated: d.updatedDate, authorId: author.id, authorName: author.name }),
+  personSchema(author.id),
+];
+if (d.faq.length) jsonLd.push(faqSchema(d.faq));
+if (d.items.length) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: title,
+    itemListOrder: d.kind === 'listicle' ? 'https://schema.org/ItemListOrderAscending' : 'https://schema.org/ItemListUnordered',
+    numberOfItems: d.items.length,
+    itemListElement: d.items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, ...(it.url ? { url: it.url } : {}) })),
+  });
+}
+---
+
+<HsLayout title={title} seoTitle={d.seoTitle ?? title} description={d.description} crumbs={crumbs} jsonLd={jsonLd}>
+  <header class={`hs-acov on-${group.accent}`}>
+    <div class="hs-wrap hs-acov__inner">
+      <nav class="hs-crumbs" aria-label="Kruimelpad">
+        <ol>
+          {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+          <li aria-current="page">{KIND[d.kind]}</li>
+        </ol>
+      </nav>
+      <p class="hs-acov__kicker">{kicker ?? group.label}</p>
+      <h1 class="hs-acov__title" set:html={display(d.title)} />
+      <div class="hs-acov__meta">
+        <span class="hs-acov__face"><img src={author.photo} alt="" width="300" height="400" decoding="async" /></span>
+        <span class="hs-acov__by">
+          <a href="#auteur">{author.name}</a>
+          <span>
+            <time datetime={iso(d.publishDate)}>Gepubliceerd {fmt(d.publishDate)}</time>
+            {iso(d.updatedDate) !== iso(d.publishDate) && <> · <time datetime={iso(d.updatedDate)}>bijgewerkt {fmt(d.updatedDate)}</time></>}
+            {' '}· {minutes} min lezen
+          </span>
+        </span>
+      </div>
+      <div class="hs-acov__answer">
+        <p class="hs-acov__answer-label">Het korte antwoord</p>
+        <p class="hs-acov__answer-text">{zet(d.answer)}</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="hs-sec hs-sec--light hs-abody">
+    <div class="hs-wrap hs-article">
+      <div class="hs-prose">
+        <slot />
+      </div>
+      {toc.length > 2 && (
+        <aside class="hs-article__aside hs-toc" aria-label="Inhoud">
+          <h2>In dit artikel</h2>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </aside>
+      )}
+    </div>
+    {d.download && (
+      <div class="hs-wrap">
+        <HsDownloadForm
+          template="ai-beleid"
+          title="Het sjabloon voor je AI-beleid"
+          text="Twee A4 met alle onderdelen uit dit artikel, in Word en pdf. Vul je gegevens in, dan sturen we het je toe."
+        />
+      </div>
+    )}
+  </section>
+
+  {d.faq.length > 0 && (
+    <HsSection tone="paper" title="Veelgestelde *vragen*" id="vragen">
+      <HsFaq items={d.faq} />
+    </HsSection>
+  )}
+
+  <section class="hs-sec hs-sec--light hs-aend" id="auteur" data-reveal>
+    <div class="hs-wrap hs-aend__grid">
+      <div data-item><HsAuthor id={d.author} /></div>
+      <div class="hs-anext" data-item style="--i:1">
+        <p class="hs-anext__text" set:html={rich(d.pillar.text)} />
+        <a class="hs-btn hs-btn--dark" href={d.pillar.href}>{d.pillar.label}<HsIcon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <HsSection tone="paper" title="Verder *lezen*">
+      <HsCards columns={3} items={related.map((r) => ({ title: r.title, text: r.text, href: r.href, meta: r.meta, more: 'Lees verder' }))} />
+    </HsSection>
+  )}
+</HsLayout>
+
+<style>
+  .hs-acov { padding-block: 1.25rem max(2.5rem, calc(var(--module) * .75)); }
+  .hs-acov__inner { display: grid; gap: 1.5rem; }
+  .hs-acov__kicker { margin-top: max(1.5rem, calc(var(--module) * .6)); font-weight: 700; font-size: clamp(.875rem, .8rem + .25vw, 1.0625rem); letter-spacing: .12em; text-transform: uppercase; color: var(--body-on-dark); }
+  .hs-acov__title { max-width: 18em; margin-top: -.5rem; font-size: clamp(2.125rem, 0.9rem + 3.6vw, 5rem); line-height: 1.03; }
+  .hs-acov.on-dark :global(.punch) { color: var(--red); }
+  @media (min-width: 1330px) {
+    .hs-acov:is(.on-red, .on-blue) :global(.punch) { color: var(--dark); }
+  }
+  .hs-acov__meta { display: flex; align-items: center; gap: .875rem; font-size: .9375rem; color: var(--body-on-dark); }
+  .hs-acov__face { flex: none; width: 2.75rem; aspect-ratio: 1; overflow: hidden; filter: grayscale(1) contrast(1.08); background: var(--dark); }
+  .hs-acov__face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .hs-acov__by { display: grid; gap: 2px; }
+  .hs-acov__by a { font-weight: 600; color: var(--light); text-decoration: none; }
+  .hs-acov__by a:hover { text-decoration: underline; text-underline-offset: .2em; }
+  .hs-acov__answer {
+    margin-top: .75rem;
+    max-width: 46rem;
+    padding: clamp(1.25rem, 2.4vw, 2rem) clamp(1.25rem, 2.6vw, 2.25rem);
+    background: var(--light);
+    color: var(--blue);
+  }
+  .hs-acov.on-red .hs-acov__answer { color: var(--red); }
+  .hs-acov.on-dark .hs-acov__answer { color: var(--dark); }
+  .hs-acov__answer-label { margin-bottom: .5rem; font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .hs-acov__answer-text { font-weight: 600; font-size: clamp(1.1875rem, 1rem + .6vw, 1.5rem); line-height: 1.42; letter-spacing: -0.01em; text-wrap: pretty; }
+
+  .hs-abody { padding-top: max(3rem, calc(var(--module) * .8)); }
+  .hs-abody :global(.hs-prose > h2:first-child) { margin-top: 0; }
+  .hs-abody :global(.hs-prose h2), .hs-abody :global(.hs-prose h3) { scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+  .hs-abody :global(.hs-prose table) { display: table; }
+  @media (max-width: 719px) { .hs-abody :global(.hs-prose table) { display: block; } }
+  .hs-abody :global(.hs-prose .hs-note) { margin-block: 1.75em; }
+  .hs-abody :global(.hs-prose .hs-note > * + *) { margin-top: .75em; }
+
+  .hs-aend__grid { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 1024px) { .hs-aend__grid { grid-template-columns: minmax(0, 44rem) minmax(0, 1fr); gap: var(--module); } }
+  .hs-anext { display: grid; gap: 1.25rem; justify-items: start; padding-top: 1.5rem; box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
+  .hs-anext__text { font-weight: 600; font-size: clamp(1.125rem, 1rem + .4vw, 1.375rem); line-height: 1.4; max-width: 34ch; }
+  .hs-anext__text :global(a) { text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1.5px; }
+</style>
