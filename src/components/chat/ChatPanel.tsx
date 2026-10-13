@@ -50,12 +50,14 @@ function textOf(message: UIMessage): string {
  * Whether an assistant message shows anything ON SCREEN. search_knowledge renders
  * nothing (server-side retrieval), so it must not count, or the typing indicator
  * dies during the invisible search step while the visitor stares at a blank gap.
+ * `withCards: false` counts the text only: cards of an answer that is still streaming
+ * are held back (see `streamingId`), so they are not on screen yet.
  */
-function hasVisibleContent(message: UIMessage | undefined): boolean {
+function hasVisibleContent(message: UIMessage | undefined, withCards = true): boolean {
   return (
     message?.role === 'assistant' &&
     (textOf(message).trim().length > 0 ||
-      message.parts.some((p) => p.type.startsWith('tool-') && p.type !== 'tool-search_knowledge'))
+      (withCards && message.parts.some((p) => p.type.startsWith('tool-') && p.type !== 'tool-search_knowledge')))
   );
 }
 
@@ -259,10 +261,14 @@ export default function ChatPanel({
 
   const busy = status === 'submitted' || status === 'streaming';
   const lastMessage = messages[messages.length - 1];
+  // The answer that is still streaming keeps its cards back until it is done. The model
+  // often calls show_page before it writes; a card that pops up on its own and is then
+  // pushed down by the text reads as if it came before the answer.
+  const streamingId = busy && lastMessage?.role === 'assistant' ? lastMessage.id : null;
 
   // The typing squares must reflect what the visitor SEES, not the stream state:
-  // metadata and invisible search steps arrive long before visible content.
-  const awaitingContent = busy && !hasVisibleContent(lastMessage);
+  // metadata, invisible search steps and held-back cards arrive before the text.
+  const awaitingContent = busy && !hasVisibleContent(lastMessage, false);
 
   // Honest waiting: after 15s without visible content, say it's slower than usual.
   useEffect(() => {
@@ -331,7 +337,9 @@ export default function ChatPanel({
   // The route to a person disappears while a forward form is already on screen.
   const forwardOnScreen =
     errorKind === 'budget' ||
-    (lastMessage?.role === 'assistant' && lastMessage.parts.some((p) => p.type === 'tool-escalate_to_human'));
+    (lastMessage?.role === 'assistant' &&
+      lastMessage.id !== streamingId &&
+      lastMessage.parts.some((p) => p.type === 'tool-escalate_to_human'));
 
   function renderPart(part: UIMessage['parts'][number], index: number) {
     if (part.type === 'text') {
@@ -505,12 +513,14 @@ export default function ChatPanel({
                     {textOf(message)}
                   </p>
                 </div>
-              ) : hasVisibleContent(message) ? (
+              ) : hasVisibleContent(message, message.id !== streamingId) ? (
                 <div key={message.id} className="aih-msg">
                   {/* Text first, then the action cards: the model often calls a tool before it
-                      writes, yet refers to the card as "below". */}
+                      writes, yet refers to the card as "below". The cards wait until the answer
+                      has finished streaming, so they always appear after it. */}
                   {message.parts.map((part, i) => (part.type === 'text' ? renderPart(part, i) : null))}
-                  {message.parts.map((part, i) => (part.type === 'text' ? null : renderPart(part, i)))}
+                  {message.id !== streamingId &&
+                    message.parts.map((part, i) => (part.type === 'text' ? null : renderPart(part, i)))}
                   {renderSources(message)}
                 </div>
               ) : null,

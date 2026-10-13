@@ -150,6 +150,8 @@ const DETERMINERS = new Set(['de', 'het', 'een', "'t", 'je', 'jouw', 'ons', 'onz
 const HAND_SET: Record<string, string> = {
   'Vertel wat je wilt bouwen': 'Vertel wat je | wilt bouwen',
   'Vervangen wat niet meer voldoet': 'Vervangen | wat niet meer voldoet',
+  // Never "Kosten / en opbrengst vooraf" in a narrow column (footer on phones).
+  'Kosten en opbrengst vooraf': 'Kosten en | opbrengst vooraf',
 };
 
 /** Fixed combinations that never break. */
