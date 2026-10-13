@@ -447,7 +447,9 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   transition: color .2s;
 }
 .hs-cover__tab:hover, .hs-cover__tab[aria-selected="true"] { color: var(--light); }
-.hs-cover__tab span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* The label has its own class: `span:first-child` also caught the fill (the first span in the
+   track) and clipped it to nothing on phones, so the bars never filled below 520px. */
+.hs-cover__label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hs-cover__track { position: relative; height: .1875rem; background: var(--rule-on-dark); overflow: hidden; }
 .hs-cover__fill { position: absolute; inset: 0; background: var(--light); transform: scaleX(0); transform-origin: left; }
 .hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards; }
@@ -476,7 +478,7 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-cover__square { display: none; }
 @media (max-width: 519px) {
   /* Four labels do not fit a phone: keep the tracks, label stays for screen readers. */
-  .hs-cover__tab span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .hs-cover__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .hs-cover__tab { padding-block: 1.125rem .75rem; }
 }
 
@@ -1068,7 +1070,14 @@ textarea.hs-input { min-height: 8.75rem; resize: vertical; }
   .hs-js .hs-place:not(.is-in) .hs-place__photo img,
   .hs-js .hs-case:not(.is-in) .hs-case__photo img { clip-path: none; }
   .hs-js .hs-statement[data-ai] .hs-ai__l { opacity: 1; transform: none; filter: none; }
-  .hs-cover__tab[aria-selected="true"] .hs-cover__fill { transform: scaleX(1); }
-  .hs-cover__pause { display: none; }
+  /* The cover keeps its clock: the fill shows how long until the next slide and its end moves the
+     cover on. Switched off, the bar stood full and a visitor only ever saw the first of four slides.
+     The slides fade in place without the rise, the colour switches without the wipe (hs-client),
+     and the pause button stays. */
+  .hs .hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards !important; }
+  .hs .hs-cover.is-paused .hs-cover__tab .hs-cover__fill { animation-play-state: paused !important; }
+  .hs .hs-cover [data-head], .hs .hs-cover [data-sub] { transform: none; transition: opacity .2s linear !important; }
+  .hs .hs-cover .is-active[data-head], .hs .hs-cover .is-active[data-sub] { transition: opacity .4s linear .2s !important; }
+  .hs .hs-cover__photo img { transition: opacity .6s linear !important; }
   html:has(.hs) { scroll-snap-type: none; }
 }
