@@ -22,7 +22,7 @@ const a = SITE.address;
     <nav class="hs-footer__cols" aria-label={UI[lang].allPages}>
       {footer.columns.map((c) => (
         <div>
-          <h2>{c.href ? <a href={c.href}>{c.heading}</a> : c.heading}</h2>
+          <h2>{c.href ? <a href={c.href}>{zet(c.heading, { cap: 12 })}</a> : zet(c.heading, { cap: 12 })}</h2>
           <ul>
             {c.links.map((i) => <li><a href={i.href}>{zet(i.label, { display: true, cap: 14 })}</a></li>)}
           </ul>
@@ -32,9 +32,11 @@ const a = SITE.address;
     <div class="hs-footer__legal hs-micro">
       <span>{footer.copyright}</span>
       <span>{zet(SITE.legalName, { cap: 30 })} · {zet(`${a.street},`)} {zet(`${a.postcode} ${a.city}`, { cap: 30 })} · {zet(`KvK ${SITE.kvk}`)}</span>
-      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-      <a href={SITE.phoneHref}>{lang === 'en' ? SITE_EN.phone : SITE.phone}</a>
-      {footer.legal.map((l) => <a href={l.href}>{l.label}</a>)}
+      <span class="hs-footer__set">
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        <a href={SITE.phoneHref}>{lang === 'en' ? SITE_EN.phone : SITE.phone}</a>
+      </span>
+      <span class="hs-footer__set">{footer.legal.map((l) => <a href={l.href}>{l.label}</a>)}</span>
       <span>{zet(footer.madeIn)}</span>
     </div>
   </div>
