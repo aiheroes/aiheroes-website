@@ -94,11 +94,3 @@ const catalog = {
 
   <HsContact />
 </HsLayout>
-
-<style>
-  /* Figures with words ("6 dagen", "€8.000") need the label under the number on phones. */
-  @media (max-width: 559px) {
-    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
-    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
-  }
-</style>

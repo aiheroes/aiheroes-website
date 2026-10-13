@@ -35,6 +35,8 @@ const {
   facts = [],
 } = Astro.props;
 const long = plainText(title).length > 46;
+// On phones the facts stack as rows; their labels line up behind the longest figure.
+const figW = facts.length ? Math.max(...facts.map((f) => f.value.length)) + 0.6 : 0;
 ---
 
 <section class:list={['hs-pcover hs-snap', { 'has-photo': photo }]}>
@@ -74,7 +76,7 @@ const long = plainText(title).length > 46;
         </div>
       )}
       {facts.length > 0 && (
-        <dl class="hs-pcover__facts">
+        <dl class="hs-pcover__facts" style={`--fig-w:${figW}ch`}>
           {facts.map((f) => (
             <div>
               <dt>{zet(f.label, { cap: 16 })}</dt>

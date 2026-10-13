@@ -125,15 +125,23 @@ function countUp(el: HTMLElement) {
 }
 
 function initReveal(observers: IntersectionObserver[]) {
+  // data-reveal="content": the block is taller than its content (the statement on phones), so the
+  // reveal waits for its first item to come into view instead of the block's top edge.
+  const blockOf = new Map<Element, Element>();
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
-      e.target.classList.add('is-in');
-      e.target.querySelectorAll<HTMLElement>('[data-count]').forEach((n) => setTimeout(() => countUp(n), 180));
+      const block = blockOf.get(e.target) ?? e.target;
+      block.classList.add('is-in');
+      block.querySelectorAll<HTMLElement>('[data-count]').forEach((n) => setTimeout(() => countUp(n), 180));
       io.unobserve(e.target);
     });
   }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-  document.querySelectorAll('.hs [data-reveal]').forEach((el) => io.observe(el));
+  document.querySelectorAll<HTMLElement>('.hs [data-reveal]').forEach((el) => {
+    const watch = el.dataset.reveal === 'content' ? el.querySelector('[data-item]') ?? el : el;
+    blockOf.set(watch, el);
+    io.observe(watch);
+  });
   observers.push(io);
 }
 

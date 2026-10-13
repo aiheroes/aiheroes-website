@@ -114,9 +114,4 @@ const faq = [
   /* Links inside step text read as links (shared fix requested). */
   :global(.hs-step__text a) { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
   :global(.hs-step__text a:hover) { text-decoration-color: currentColor; }
-  /* Figures with words ("6 dagen", "€8.000") need the label under the number on phones. */
-  @media (max-width: 559px) {
-    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
-    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
-  }
 </style>
