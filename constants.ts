@@ -16,7 +16,7 @@ export const CONTENT: Record<Language, Content> = {
         label: "Hoe we werken",
         href: "/nl/over-ons/aanpak",
         children: [
-          { label: "De startsprint", href: "/nl/startsprint", description: "Eén week, vast bedrag, werkend prototype of bouwplan" },
+          { label: "De startsprint", href: "/nl/startsprint", description: "Zes dagen, vaste prijs, werkend prototype of bouwplan" },
           { label: "De AI Heroes-standaard", href: "/nl/over-ons/aanpak#standaard", description: "Wat bij elke bouw inbegrepen is" },
           { label: "Business case en scoping", href: "/nl/diensten/consultancy", description: "Weten wat het kost en oplevert vóór we bouwen" },
           { label: "Compliance vanaf de tekentafel", href: "/nl/over-ons/aanpak#compliance", description: "AI Act, logging, toezicht en hosting in het ontwerp" },
@@ -63,7 +63,7 @@ export const CONTENT: Record<Language, Content> = {
       featured: {
         label: "De startsprint",
         href: "/nl/startsprint",
-        description: "Eén week, vast bedrag. Daarna weet je of het kan, wat het kost en hoe het eruitziet."
+        description: "Zes dagen, vaste prijs. Daarna weet je of het kan, wat het kost en hoe het eruitziet."
       }
     },
     hero: {
@@ -93,7 +93,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/glass.webp"
         },
         {
-          label: "Lokale AI",
+          label: "Lokaal draaien",
           headline: "AI op <red>eigen</red> grond, <blue>Europees</blue> gehost",
           subhead: "Op je eigen servers of bij een Europese partij. Zonder afhankelijkheid van Amerikaanse cloud, met de AI Act ingebouwd.",
           ctaLabel: "Plan een startsprint",
@@ -574,7 +574,7 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "Wij bouwen AI-toepassingen die je team elke dag gebruikt. Business case, compliance en training inbegrepen.",
+      tagline: "Wij bouwen AI-toepassingen die je team elke dag gebruikt. Bij elke bouw inbegrepen: business case, compliance en training.",
       columns: {
         build: "Wat we bouwen",
         how: "Hoe we werken",
@@ -606,7 +606,7 @@ export const CONTENT: Record<Language, Content> = {
         label: "How we work",
         href: "/en/about/approach",
         children: [
-          { label: "The start sprint", href: "/en/start-sprint", description: "One week, fixed fee, working prototype or build plan" },
+          { label: "The start sprint", href: "/en/start-sprint", description: "Six days, fixed price, working prototype or build plan" },
           { label: "The AI Heroes standard", href: "/en/about/approach#standard", description: "What every build includes" },
           { label: "Business case and scoping", href: "/en/services/consulting", description: "Knowing the cost and the return before we build" },
           { label: "Compliance from the drawing board", href: "/en/about/approach#compliance", description: "AI Act, logging, oversight and hosting in the design" },
@@ -653,7 +653,7 @@ export const CONTENT: Record<Language, Content> = {
       featured: {
         label: "The start sprint",
         href: "/en/start-sprint",
-        description: "One week, fixed fee. Then you know whether it can be done, what it costs and what it looks like."
+        description: "Six days, fixed price. Then you know whether it can be done, what it costs and what it looks like."
       }
     },
     hero: {
@@ -683,7 +683,7 @@ export const CONTENT: Record<Language, Content> = {
           image: "/hero/glass.webp"
         },
         {
-          label: "Self-hosted",
+          label: "Run locally",
           headline: "AI on <red>your own</red> ground, <blue>hosted in Europe</blue>",
           subhead: "On your own servers or with a European provider. No dependency on US cloud, with the AI Act built in.",
           ctaLabel: "Plan a start sprint",
@@ -1164,7 +1164,7 @@ export const CONTENT: Record<Language, Content> = {
       }
     },
     footer: {
-      tagline: "We build AI tools your team uses every day. Business case, compliance and training included.",
+      tagline: "We build AI tools your team uses every day. Included in every build: business case, compliance and training.",
       columns: {
         build: "What we build",
         how: "How we work",

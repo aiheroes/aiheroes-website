@@ -10,6 +10,12 @@ interface Props {
   standard: Content['standard'];
 }
 const { standard } = Astro.props;
+// On phones the three longer labels wrap to two lines; the short first one is broken by hand there,
+// so all four read as equal blocks (the break is hidden from 560px up, see huisstijl.css).
+const PHONE_BREAK: Record<string, string> = {
+  'Business case first': 'Business case',
+  'Business case vooraf': 'Business case',
+};
 ---
 
 <section class="hs-standard on-blue hs-snap" id="standaard" data-reveal>
@@ -19,7 +25,11 @@ const { standard } = Astro.props;
       {standard.items.map((item, i) => (
         <li style={`--i:${i + 1}`}>
           <HsIcon name={STANDARD_ICONS[i % STANDARD_ICONS.length]} />
-          <span class="hs-standard__label">{zet(item.title, { display: true })}</span>
+          {PHONE_BREAK[item.title] ? (
+            <span class="hs-standard__label">{zet(PHONE_BREAK[item.title], { display: true })}<br class="hs-standard__br" /> {zet(item.title.slice(PHONE_BREAK[item.title].length).trim(), { display: true })}</span>
+          ) : (
+            <span class="hs-standard__label">{zet(item.title, { display: true })}</span>
+          )}
         </li>
       ))}
     </ul>

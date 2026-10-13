@@ -13,7 +13,7 @@ import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import HsIcon from '../../components/hs/HsIcon.astro';
 import { SITE } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 
 const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/nl/wat-we-bouwen' }];
 
@@ -29,12 +29,12 @@ const kinds = [
 ].map((k) => ({ ...k, more: 'Lees meer' }));
 
 const faq = [
-  { q: 'Wat kost een nieuwe AI-toepassing?', a: `De startsprint kost vanaf ${SITE.sprint.price}. Een bouw begint vanaf ${SITE.build.from} en loopt bij grotere systemen op tot ruim €100.000. Na de startsprint weet je het bedrag voor jouw situatie. Meer in [wat kost AI-implementatie](/nl/wat-kost-ai-implementatie).` },
+  { q: 'Wat kost een nieuwe AI-toepassing?', a: `De startsprint heeft een vaste prijs, vanaf ${SITE.sprint.price}. Een bouw heeft een vaste prijs per project, vanaf ${SITE.build.from}, en loopt bij grotere systemen op tot ruim €100.000. ${SITE.build.credit} Na de startsprint weet je het bedrag voor jouw situatie. Meer in [wat kost AI-implementatie](/nl/wat-kost-ai-implementatie).` },
   { q: 'Hoe snel staat er iets?', a: 'De startsprint kan binnen twee weken beginnen en na zes dagen staat er een werkend prototype. Een bouw duurt meestal twee tot twaalf weken.' },
   { q: 'Bouwen jullie ook software zonder AI?', a: 'Ja. AI zetten we in waar het waarde heeft. De webwinkel van [INQ22](/nl/cases/inq22) bevat zelf geen AI en is wel met AI gebouwd.' },
   { q: 'Hoe zit het met de AI Act?', a: 'In de startsprint bepalen we in welke risicoklasse je toepassing valt. Logging, menselijk toezicht en transparantie bouwen we in. Meer bij [compliance en security](/nl/compliance).' },
   { q: 'Wie beheert het na oplevering?', a: 'Wij. We blijven beheren en doorontwikkelen, en alles is gedocumenteerd. Je zit niet vast aan één AI-leverancier: het model is te wisselen zonder opnieuw te bouwen.' },
-  { q: 'Kan het ook op onze eigen servers?', a: 'Ja. Dat is een eigen ingang: [lokale AI](/nl/eigen-beheer).' },
+  { q: 'Kan het ook op onze eigen servers?', a: 'Ja. Dat is een eigen ingang: [AI lokaal draaien](/nl/eigen-beheer).' },
 ];
 ---
 
@@ -44,7 +44,7 @@ const faq = [
   description={`AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt: klantenservice, agents, administratie, kennis en koppelingen. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Nieuwe AI-toepassing', path: '/nl/nieuwe-ai-toepassing', price: SITE.sprint.priceValue, serviceType: 'AI-toepassing laten bouwen', description: 'Van werkend prototype in zes dagen tot een AI-toepassing die je team elke dag gebruikt.' }),
+    serviceSchema({ name: 'Nieuwe AI-toepassing', path: '/nl/nieuwe-ai-toepassing', offers: [OFFERS.nl.sprint, OFFERS.nl.build], serviceType: 'AI-toepassing laten bouwen', description: 'Van werkend prototype in zes dagen tot een AI-toepassing die je team elke dag gebruikt.' }),
     faqSchema(faq),
   ]}
 >
@@ -58,8 +58,8 @@ const faq = [
     photo={{ src: '/hs/photos/cover-screen.webp', alt: 'Twee mensen werken samen aan één scherm, een van hen wijst iets aan', w: 1800, h: 1198, pos: '50% 50%' }}
     facts={[
       { value: '6 dagen', label: 'tot een werkend prototype' },
-      { value: SITE.sprint.price, label: 'de startsprint, vaste prijs' },
-      { value: SITE.build.from, label: 'vanaf, voor de bouw' },
+      { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint' },
+      { value: SITE.build.from, label: 'vanaf, een vaste prijs per bouwproject' },
     ]}
   />
 
@@ -81,18 +81,18 @@ const faq = [
     <HsCards
       items={[
         { meta: 'Case · e-commerce', title: 'IC Commerce', href: '/nl/cases/ic-commerce', more: 'Lees de case', text: 'Een eigen platform in plaats van WooCommerce, met een AI-mediapipeline voor productbeelden en een shop die producten toont vanuit de dichtstbijzijnde voorraadlocatie en het winkelmandje.' },
-        { meta: 'Case · administratie', title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Van vraag naar werkend prototype op de eigen administratie, met de business case erbij, in zes dagen.' },
+        { meta: 'Case · administratie', title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Van vraag naar werkend prototype op data uit de eigen administratie, met de business case erbij, in zes dagen.' },
         { meta: 'Case · B2B-webwinkel', title: 'INQ22', href: '/nl/cases/inq22', more: 'Lees de case', text: 'Een webwinkel op maat voor een groothandel in tattoo-benodigdheden, gebouwd met AI als gereedschap.' },
       ]}
     />
     <p class="hs-sec__foot"><a class="hs-link" href="/nl/cases">Alle cases<HsIcon name="arrow-right" /></a></p>
   </HsSection>
 
-  <HsSection title="Van week één tot *in gebruik*" lede="Elke bouw volgt dezelfde lijn. Je weet vooraf wat het kost en ziet na elke sprint wat er staat.">
+  <HsSection title="Van week één tot *in gebruik*" lede="Elke bouw volgt dezelfde lijn. Je weet vooraf wat het kost en ziet bij elke mijlpaal wat er staat.">
     <HsSteps
       items={[
-        { label: 'Zes dagen', title: 'Startsprint', text: `Een werkend prototype op je data en de business case op één A4. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
-        { label: 'Sprints van twee weken', title: 'Bouwen', text: `Na elke sprint een demo. Compliance, logging en toezicht zitten in het ontwerp. Vanaf ${SITE.build.from}.` },
+        { label: 'Zes dagen', title: 'Startsprint', text: `Een werkend prototype op je data, nog niet gekoppeld aan je systemen, en de business case op één A4. Vaste prijs, vanaf ${SITE.sprint.price}; start binnen twee weken.` },
+        { label: 'Twee tot twaalf weken', title: 'Bouwen in mijlpalen', text: `${SITE.build.price} ${SITE.build.credit} Bij elke mijlpaal een demo. Compliance, logging en toezicht zitten in het ontwerp.` },
         { label: 'Livegang', title: 'In gebruik', text: 'Je team is getraind op het systeem zelf, op de werkvloer. Pas dan noemen we het af.' },
         { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Alles is gedocumenteerd en je zit niet vast aan één AI-leverancier.' },
       ]}
@@ -104,7 +104,7 @@ const faq = [
   <HsSection title="Met je eigen *developers*" lede="Heb je zelf een ontwikkelteam? Dan spreken we vooraf af wie wat doet.">
     <HsCards
       items={[
-        { icon: 'computer', title: 'Wij bouwen het', text: 'We bouwen zelfstandig. Je team ziet na elke sprint wat er staat en denkt mee.' },
+        { icon: 'computer', title: 'Wij bouwen het', text: 'We bouwen zelfstandig. Je team ziet bij elke mijlpaal wat er staat en denkt mee.' },
         { icon: 'peoples', title: 'Wij versterken je team', text: 'Een tech lead en developers van ons werken mee in jouw team.', href: '/nl/extra-developers', more: 'Extra developers' },
         { icon: 'switch', title: 'Samen', text: 'Wij bouwen de AI-onderdelen, jouw team de rest. Vooraf ligt vast wie wat beheert.' },
       ]}

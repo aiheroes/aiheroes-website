@@ -12,8 +12,8 @@ import HsFaq from '../../components/hs/HsFaq.astro';
 import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import HsIcon from '../../components/hs/HsIcon.astro';
-import { SITE, SITE_EN } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { SITE_EN } from '../../data/site';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 
 const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
 
@@ -29,12 +29,12 @@ const kinds = [
 ].map((k) => ({ ...k, more: 'Read more' }));
 
 const faq = [
-  { q: 'What does a new AI tool cost?', a: `The start sprint costs from ${SITE_EN.sprint.price}. A build starts from ${SITE_EN.build.from} and for larger systems runs to well over €100,000. After the start sprint you know the amount for your situation. More in [what AI implementation costs](/en/ai-implementation-costs).` },
+  { q: 'What does a new AI tool cost?', a: `The start sprint has a fixed price, from ${SITE_EN.sprint.price}. A build has a fixed price per project, from ${SITE_EN.build.from}, and for larger systems runs to well over €100,000. ${SITE_EN.build.credit} After the start sprint you know the amount for your situation. More in [what AI implementation costs](/en/ai-implementation-costs).` },
   { q: 'How soon is there something to see?', a: 'The start sprint can begin within two weeks, and after six days there is a working prototype. A build usually takes two to twelve weeks.' },
   { q: 'Do you also build software without AI?', a: 'Yes. We use AI where it adds value. The [INQ22](/en/cases/inq22) web shop has no AI in it, yet we built it with AI.' },
   { q: 'What about the AI Act?', a: 'In the start sprint we determine which risk class your application falls into. We build in logging, human oversight and transparency. More under [compliance and security](/en/compliance).' },
   { q: 'Who maintains it after delivery?', a: 'We do. We keep maintaining and developing the system, and everything is documented. You are not tied to one AI vendor: the model can be switched without rebuilding.' },
-  { q: 'Can it run on our own servers?', a: 'Yes. That is a separate way in: [self-hosted AI](/en/self-hosted).' },
+  { q: 'Can it run on our own servers?', a: 'Yes. That is a separate way in: [running AI locally](/en/self-hosted).' },
 ];
 ---
 
@@ -45,7 +45,7 @@ const faq = [
   description={`AI Heroes builds AI tools your team uses every day: customer service, agents, administration, knowledge and integrations. Start with a six-day start sprint from ${SITE_EN.sprint.price}.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'A new AI tool', path: '/en/new-ai-tool', price: SITE.sprint.priceValue, serviceType: 'Custom AI application development', description: 'From a working prototype in six days to an AI tool your team uses every day.' }),
+    serviceSchema({ name: 'A new AI tool', path: '/en/new-ai-tool', offers: [OFFERS.en.sprint, OFFERS.en.build], serviceType: 'Custom AI application development', description: 'From a working prototype in six days to an AI tool your team uses every day.' }),
     faqSchema(faq),
   ]}
 >
@@ -59,8 +59,8 @@ const faq = [
     photo={{ src: '/hs/photos/cover-screen.webp', alt: 'Two people working together at one screen, one of them pointing something out', w: 1800, h: 1198, pos: '50% 50%' }}
     facts={[
       { value: '6 days', label: 'to a working prototype' },
-      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed price' },
-      { value: SITE_EN.build.from, label: 'starting price of a build' },
+      { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
+      { value: SITE_EN.build.from, label: 'from, a fixed price per build project' },
     ]}
   />
 
@@ -86,18 +86,18 @@ const faq = [
     <HsCards
       items={[
         { meta: 'Case · e-commerce', title: 'IC Commerce', href: '/en/cases/ic-commerce', more: 'Read the case', text: 'Its own platform instead of WooCommerce, with an AI media pipeline for product images and a shop that shows products based on the nearest stock location and the shopping cart.' },
-        { meta: 'Case · administration', title: 'Kwakkel BV', href: '/en/cases/kwakkel', more: 'Read the case', text: 'From question to working prototype on the company’s own administration, with the business case, in six days.' },
+        { meta: 'Case · administration', title: 'Kwakkel BV', href: '/en/cases/kwakkel', more: 'Read the case', text: 'From question to working prototype on data from the company’s own administration, with the business case, in six days.' },
         { meta: 'Case · B2B web shop', title: 'INQ22', href: '/en/cases/inq22', more: 'Read the case', text: 'A custom web shop for a wholesaler of tattoo supplies, built with AI as a tool.' },
       ]}
     />
     <p class="hs-sec__foot"><a class="hs-link" href="/en/cases">All cases<HsIcon name="arrow-right" /></a></p>
   </HsSection>
 
-  <HsSection title="From week one to *daily use*" lede="Every build follows the same path. You know the cost up front and after every sprint you see what has been built.">
+  <HsSection title="From week one to *daily use*" lede="Every build follows the same path. You know the cost up front and at every milestone you see what has been built.">
     <HsSteps
       items={[
-        { label: 'Six days', title: 'Start sprint', text: `A working prototype on your data and the business case on a single page. From ${SITE_EN.sprint.price}, start within two weeks.` },
-        { label: 'Two-week sprints', title: 'Build', text: `A demo after every sprint. Compliance, logging and oversight are part of the design. From ${SITE_EN.build.from}.` },
+        { label: 'Six days', title: 'Start sprint', text: `A working prototype on your data, not yet connected to your systems, and the business case on a single page. Fixed price, from ${SITE_EN.sprint.price}; start within two weeks.` },
+        { label: 'Two to twelve weeks', title: 'Build in milestones', text: `${SITE_EN.build.price} ${SITE_EN.build.credit} A demo at every milestone. Compliance, logging and oversight are part of the design.` },
         { label: 'Go-live', title: 'In use', text: 'Your team is trained on the system itself, on the job. Only then do we call it done.' },
         { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system. Everything is documented and you are not tied to one AI vendor.' },
       ]}
@@ -109,7 +109,7 @@ const faq = [
   <HsSection title="With your own *developers*" lede="Do you have your own development team? Then we agree up front who does what.">
     <HsCards
       items={[
-        { icon: 'computer', title: 'We build it', text: 'We build independently. After every sprint your team sees what has been built and gives input.' },
+        { icon: 'computer', title: 'We build it', text: 'We build independently. At every milestone your team sees what has been built and gives input.' },
         { icon: 'peoples', title: 'We strengthen your team', text: 'Our tech lead and developers work inside your team.', href: '/en/extra-developers', more: 'Extra developers' },
         { icon: 'switch', title: 'Together', text: 'We build the AI parts, your team the rest. Who maintains what is agreed up front.' },
       ]}

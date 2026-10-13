@@ -19,9 +19,10 @@ import HsFaq from '../../components/hs/HsFaq.astro';
 const crumbs = [{ label: 'Home', href: '/' }];
 
 const track = [
-  { label: `Binnen ${SITE.sprint.startWithin}`, title: 'Startsprint', text: `Zes dagen, vaste prijs, vanaf ${SITE.sprint.price}. We werken met de eigenaar en de gebruikers aan een prototype of een plan. [Over de startsprint](/nl/startsprint).`, meta: 'Jij levert: de eigenaar en een paar gebruikers. Je krijgt: een prototype of bouwplan.' },
+  { label: 'Vooraf', title: 'Intake', text: `We spreken de eigenaar en de mensen die het werk doen, en vragen de documenten en data op die we nodig hebben. Binnen ${SITE.sprint.startWithin} na het eerste gesprek kan de startsprint beginnen.`, meta: 'Jij levert: de eigenaar, een paar mensen uit het werk en de documenten.' },
+  { label: 'Zes dagen', title: 'Startsprint', text: `Vaste prijs, vanaf ${SITE.sprint.price}. We bouwen een prototype op je eigen data, nog niet gekoppeld aan je systemen, of we maken een bouwplan. [Over de startsprint](/nl/startsprint).`, meta: 'Je krijgt: een prototype of bouwplan.' },
   { label: 'Dag zes', title: 'Besluit', text: 'Op basis van de business case op één A4 besluit je: bouwen, bijsturen of stoppen. Sluit de business case niet, dan bouwen we niet. [Kosten en opbrengst vooraf](/nl/business-case).', meta: 'Je krijgt: kosten, opbrengst en terugverdientijd op papier.' },
-  { label: 'Week 2 tot 12', title: 'Bouwen in sprints', text: `Sprints van ${SITE.build.sprintWeeks} weken, met na elke sprint een demo. Compliance, logging en toezicht zitten in het ontwerp. Een bouw begint vanaf ${SITE.build.from}.`, meta: 'Jij levert: een aanspreekpunt en feedback na elke demo.' },
+  { label: 'Twee tot twaalf weken', title: 'Bouwen in mijlpalen', text: `${SITE.build.price} ${SITE.build.credit} Bij elke mijlpaal een demo. Compliance, logging en toezicht zitten in het ontwerp.`, meta: 'Jij levert: een aanspreekpunt en feedback bij elke demo.' },
   { label: 'Livegang', title: 'Overstap met een getraind team', text: 'Je team is getraind op het systeem zelf, op de werkvloer. Vervangen we iets, dan gaat het oude pas uit als het nieuwe draait.', meta: 'Je krijgt: een team dat er elke dag mee werkt.' },
   { label: 'Daarna', title: 'Wij blijven beheren en doorontwikkelen', text: 'De software blijft bij ons in beheer. Alles is gedocumenteerd en je kunt van AI-model wisselen zonder opnieuw te bouwen.', meta: 'Je krijgt: software die blijft werken en meegroeit.' },
 ];
@@ -43,8 +44,8 @@ const promises = [
 const people = FOUNDER_ORDER.map((id) => FOUNDERS[id]);
 
 const faq = [
-  { q: 'Hoe lang duurt een traject?', a: 'De startsprint duurt zes dagen. Een bouw duurt meestal twee tot twaalf weken, in sprints van twee weken. Daarna blijven wij beheren en doorontwikkelen.' },
-  { q: 'Wat kost het?', a: `De startsprint kost vanaf ${SITE.sprint.price}, vast, voor alle drie de ingangen. Een bouw begint vanaf ${SITE.build.from}. Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier. Meer in [wat kost AI-implementatie](/nl/wat-kost-ai-implementatie).` },
+  { q: 'Hoe lang duurt een traject?', a: 'Na de intake duurt de startsprint zes dagen. Een bouw duurt meestal twee tot twaalf weken, verdeeld in mijlpalen. Daarna blijven wij beheren en doorontwikkelen.' },
+  { q: 'Wat kost het?', a: `De startsprint heeft een vaste prijs, vanaf ${SITE.sprint.price}, dezelfde voor alle drie de ingangen. ${SITE.build.price} ${SITE.build.credit} Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier. Meer in [wat kost AI-implementatie](/nl/wat-kost-ai-implementatie).` },
   { q: 'Wie beheert de software na oplevering?', a: 'Wij. De software blijft bij ons in beheer en we ontwikkelen hem door. Alles is gedocumenteerd, en je zit niet vast aan één AI-leverancier.' },
   { q: 'Kunnen onze eigen developers meebouwen?', a: 'Ja. We bouwen zelfstandig, versterken je team of verdelen het werk. Voor extra capaciteit in je eigen team zie [extra developers](/nl/extra-developers).' },
 ];
@@ -53,7 +54,7 @@ const faq = [
 <HsLayout
   title="Hoe we werken"
   seoTitle="Hoe we werken: van startsprint tot software die draait"
-  description={`Zo werkt AI Heroes: een startsprint van zes dagen vanaf ${SITE.sprint.price}, een besluit op basis van de business case, bouwen in sprints van twee weken en daarna beheer en doorontwikkeling. Business case, compliance en training inbegrepen.`}
+  description={`Zo werkt AI Heroes: een startsprint van zes dagen, vaste prijs, vanaf ${SITE.sprint.price}, een besluit op basis van de business case, een bouw met een vaste prijs per project in mijlpalen, en daarna beheer en doorontwikkeling. Bij elke bouw inbegrepen: business case, compliance en training.`}
   crumbs={crumbs}
   jsonLd={faqSchema(faq)}
 >
@@ -79,11 +80,11 @@ const faq = [
     <HsCards columns={4} items={standard} />
   </HsSection>
 
-  <HsSection title="Wat het *kost*" lede="Dit zijn de prijzen die we publiceren. Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier.">
+  <HsSection title="Wat het *kost*" lede="Dit zijn de prijzen die we publiceren. Wat jouw bouw precies kost, staat aan het eind van de startsprint op papier. Gaat de bouw door, dan gaat de startsprint van de bouwprijs af.">
     <div class="hs-figs"><HsFigures
       items={[
-        { value: SITE.sprint.price, label: 'startsprint van zes dagen, vaste prijs' },
-        { value: SITE.build.from, label: 'vanaf, voor een bouw' },
+        { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint van zes dagen' },
+        { value: SITE.build.from, label: 'vanaf, een vaste prijs per bouwproject' },
         { value: SITE.training.from, label: 'vanaf, per dagdeel voor een losse training' },
       ]}
     /></div>
@@ -113,9 +114,4 @@ const faq = [
   /* Links inside step text read as links (shared fix requested). */
   :global(.hs-step__text a) { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .25em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
   :global(.hs-step__text a:hover) { text-decoration-color: currentColor; }
-  /* Figures with words ("6 dagen", "€8.000") need the label under the number on phones. */
-  @media (max-width: 559px) {
-    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
-    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
-  }
 </style>

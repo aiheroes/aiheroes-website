@@ -1,6 +1,9 @@
 ---
 // P7 De startsprint (docs/relaunch/pages/P7-startsprint.md): the front door. Six days, from €8.000
-// for all three entries, start within two weeks (docs/relaunch/01-besluiten.md §1).
+// for all three entries, start within two weeks (docs/relaunch/01-besluiten.md §1). The plan below
+// is how a sprint really runs (2026-10-13): the intake comes before the start, day 1 is the
+// kick-off, the prototype runs on the client's data without being connected to their systems yet,
+// and day 6 is the demo, the business case and the decision.
 import HsLayout from '../../layouts/HsLayout.astro';
 import HsPageCover from '../../components/hs/HsPageCover.astro';
 import HsSection from '../../components/hs/HsSection.astro';
@@ -11,34 +14,36 @@ import HsFit from '../../components/hs/HsFit.astro';
 import HsFaq from '../../components/hs/HsFaq.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import { SITE, ENTRIES } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 
 const s = SITE.sprint;
+const b = SITE.build;
 const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/nl/hoe-we-werken' }];
 
 const outcomes = [
-  { title: ENTRIES.nieuw.title, accent: 'red' as const, href: ENTRIES.nieuw.href, more: 'Meer over nieuwe AI-toepassingen', text: 'Een werkend prototype op je eigen data. Je team probeert het uit voordat er een bouwbesluit ligt.' },
+  { title: ENTRIES.nieuw.title, accent: 'red' as const, href: ENTRIES.nieuw.href, more: 'Meer over nieuwe AI-toepassingen', text: 'Een werkend prototype op je eigen data. Je team ziet het werken in de demo, voordat er een bouwbesluit ligt.' },
   { title: ENTRIES.vervangen.title, accent: 'blue' as const, href: ENTRIES.vervangen.href, more: 'Meer over software vervangen', text: 'Een architectuur en een migratieplan: wat er komt, wat er blijft en in welke volgorde je overstapt.' },
-  { title: ENTRIES['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES['eigen-beheer'].href, more: 'Meer over lokale AI', text: 'Een hostingontwerp en een risicobeoordeling: waar het draait, wie erbij kan en wat de AI Act vraagt.' },
+  { title: ENTRIES['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES['eigen-beheer'].href, more: 'Meer over AI lokaal draaien', text: 'Een hostingontwerp en een risicobeoordeling: waar het draait, wie erbij kan en wat de AI Act vraagt.' },
 ];
 
 const days = [
-  { label: 'Dag 1', title: 'Intake en scope', text: 'We gaan om tafel met de eigenaar en de mensen die het werk doen. Samen bepalen we wat er op dag zes moet staan.', meta: 'Van jou: de eigenaar en twee of drie gebruikers, een halve dag.' },
-  { label: 'Dag 2 en 3', title: 'Bouwen of ontwerpen', text: 'We bouwen het prototype, of we ontwerpen de nieuwe architectuur of de hosting.', meta: 'Van jou: iemand voor vragen, een uur per dag.' },
-  { label: 'Dag 4', title: 'Koppelen aan je echte data', text: 'Het prototype gaat draaien op je eigen data en systemen, naast het huidige werk.', meta: 'Van jou: iemand die je data en systemen kent, een paar uur.' },
-  { label: 'Dag 5', title: 'Testen met gebruikers', text: 'Je mensen werken ermee. Wat schuurt, passen we dezelfde dag aan.', meta: 'Van jou: de gebruikers, een uur.' },
-  { label: 'Dag 6', title: 'Demo, business case en besluit', text: 'We laten zien wat er staat, met de business case op één A4. Jij besluit: bouwen, bijsturen of stoppen.', meta: 'Van jou: de eigenaar, een uur.' },
+  { label: 'Vooraf', title: 'Intake', text: 'We gaan om tafel met de eigenaar en de mensen die het werk doen. Samen bepalen we wat er op dag zes moet staan, en welke documenten en data we daarvoor nodig hebben.', meta: 'Van jou: de eigenaar en twee of drie mensen uit het werk, een dagdeel.' },
+  { label: 'Voor de start', title: 'Je levert aan', text: 'Procesbeschrijvingen, voorbeelden uit het werk en een export van de data. Zo bouwen we op jouw data en volgens jouw werkwijze.', meta: 'Van jou: iemand die weet waar alles staat.' },
+  { label: 'Dag 1', title: 'Aftrap', text: 'We lopen samen door wat er ligt en zetten de laatste vragen op tafel. Daarna gaan we bouwen.', meta: 'Van jou: de eigenaar en een vast aanspreekpunt.' },
+  { label: 'Dag 2 tot 5', title: 'Bouwen of ontwerpen', text: 'We bouwen het prototype op je eigen data, of we ontwerpen de nieuwe architectuur of de hosting. Het prototype is nog niet gekoppeld aan je systemen; dat gebeurt in de bouw.', meta: 'Van jou: het aanspreekpunt, voor vragen tussendoor.' },
+  { label: 'Dag 6', title: 'Demo, business case en besluit', text: 'We laten zien wat er staat, met de business case op één A4. Jij besluit: bouwen, bijsturen of stoppen.', meta: 'Van jou: de eigenaar en de mensen uit de intake.' },
 ];
 
 const faq = [
-  { q: 'Wat kost een startsprint?', a: `Een vaste prijs, vanaf ${s.price}, voor alle drie de ingangen. De prijs ligt vast voordat we beginnen.` },
-  { q: 'Hoe snel kunnen we beginnen?', a: `Binnen ${s.startWithin} na het eerste gesprek. Na je aanvraag hoor je binnen ${SITE.reply} van ons, meestal met een voorstel.` },
-  { q: 'Wat moeten wij zelf vrijmaken?', a: 'De eigenaar op dag 1 en dag 6, een paar gebruikers voor de intake en de test, en een paar uur van iemand die je data en systemen kent. Het bouwen doen wij.' },
+  { q: 'Wat kost een startsprint?', a: `Een vaste prijs, vanaf ${s.price}, dezelfde voor alle drie de ingangen. De prijs ligt vast voordat we beginnen. Gaat de bouw door, dan gaat dit bedrag van de bouwprijs af.` },
+  { q: 'Hoe snel kunnen we beginnen?', a: `Binnen ${s.startWithin} na het eerste gesprek. In die tijd doen we de intake en verzamel jij de documenten en data. Na je aanvraag hoor je binnen ${SITE.reply} van ons, meestal met een voorstel.` },
+  { q: 'Wat moeten wij zelf vrijmaken?', a: 'Een dagdeel voor de intake, met de eigenaar en twee of drie mensen uit het werk. Daarna de documenten en data die we vragen, de eigenaar bij de aftrap op dag 1 en bij de demo op dag 6, en een aanspreekpunt voor vragen tussendoor. Het bouwen doen wij.' },
+  { q: 'Werkt het prototype al in onze systemen?', a: 'Nog niet. Het prototype draait op je eigen data en volgt je werkwijze. Aan je software koppelen we het in de bouw, samen met de beveiliging en de invoering. Tot die tijd raakt de startsprint je lopende systemen niet.' },
   { q: 'Wat als het niet lukt in zes dagen?', a: 'Dan weet je dat na zes dagen, met de reden erbij. Soms is een vraag groter dan gedacht; dan staat in het plan wat er nodig is. Is AI niet de oplossing, dan zeggen we dat.' },
   { q: 'Is de prijs anders per ingang?', a: `Nee. Vanaf ${s.price} voor alle drie: iets nieuws laten bouwen, oude software vervangen of AI lokaal laten draaien.` },
-  { q: 'Kan het ook zonder startsprint?', a: 'Bijna nooit. De startsprint voorkomt dat we iets bouwen waarvan de business case niet sluit. Alleen als je [extra developers in je team](/nl/extra-developers) zoekt, beginnen we met een kennismaking.' },
+  { q: 'Kan het ook zonder startsprint?', a: 'Voor een bouw bijna nooit: de startsprint voorkomt dat we iets bouwen waarvan de business case niet sluit. Weet je nog niet waar AI iets oplevert, dan begin je met een [verkenning](/nl/business-case#verkenning). Zoek je [extra developers in je team](/nl/extra-developers), dan beginnen we met een kennismaking. Voor een [training](/nl/training) of de [AI Act-check](/nl/compliance) is geen startsprint nodig.' },
   { q: 'Werkt het ook voor software zonder AI?', a: 'Ja. We bouwen wat je nodig hebt, met of zonder AI. De webwinkel van [INQ22](/nl/cases/inq22) bevat zelf geen AI en is wel met AI gebouwd.' },
-  { q: 'Wat gebeurt er na de startsprint?', a: `Gaat de bouw door, dan is de startsprint fase 1. We bouwen in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}, en na oplevering blijven wij beheren en doorontwikkelen. Gaat hij niet door, dan houd je prototype of plan en de business case.` },
+  { q: 'Wat gebeurt er na de startsprint?', a: `Gaat de bouw door, dan krijg je een offerte voor het hele project. ${b.price} ${b.credit} ${b.milestones} Na oplevering blijven wij beheren en doorontwikkelen; die kosten staan apart in de business case. Gaat de bouw niet door, dan houd je prototype of plan en de business case.` },
 ];
 ---
 
@@ -48,7 +53,7 @@ const faq = [
   description={`De startsprint van AI Heroes: zes dagen, vaste prijs, vanaf ${s.price}, start binnen twee weken. Een werkend prototype of bouwplan met de business case op één A4.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Startsprint', path: '/nl/startsprint', price: s.priceValue, serviceType: 'AI-prototype en business case', description: `Zes dagen, vaste prijs, vanaf ${s.price}: een werkend prototype of bouwplan met de business case op één A4.` }),
+    serviceSchema({ name: 'Startsprint', path: '/nl/startsprint', offers: [OFFERS.nl.sprint], serviceType: 'AI-prototype en business case', description: `Zes dagen, vaste prijs, vanaf ${s.price}: een werkend prototype of bouwplan met de business case op één A4.` }),
     faqSchema(faq),
   ]}
 >
@@ -59,10 +64,10 @@ const faq = [
     title="Zes dagen. Vaste prijs. | Dan *weet* je het."
     lede={`De startsprint is de eerste stap van elke bouw. Aan het eind van dag zes weet je of het kan, wat het kost en hoe het eruitziet.`}
     cta={{ label: 'Plan een startsprint', href: '#contact' }}
-    secondary={{ label: 'Bekijk de zes dagen', href: '#zes-dagen' }}
+    secondary={{ label: 'Zo verloopt de startsprint', href: '#zes-dagen' }}
     facts={[
-      { value: '6 dagen', label: 'van vraag naar prototype of bouwplan' },
-      { value: s.price, label: 'vaste prijs, voor alle ingangen' },
+      { value: '6 dagen', label: 'van aftrap tot prototype of bouwplan' },
+      { value: s.price, label: 'vanaf, een vaste prijs per startsprint' },
       { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
     ]}
   />
@@ -71,7 +76,7 @@ const faq = [
     <HsCards variant="planes" items={outcomes} />
   </HsSection>
 
-  <HsSection id="zes-dagen" tone="paper" title="Zes dagen, *dag voor dag*" lede="Het werk ligt bij ons. Van jouw kant zijn er per dag een paar mensen nodig, een paar uur.">
+  <HsSection id="zes-dagen" tone="paper" title="Van intake tot *besluit*" lede="Het werk ligt bij ons. Van jouw kant vragen we een intake vooraf, de documenten en data die we nodig hebben, en de eigenaar bij de aftrap en de demo.">
     <HsSteps items={days} />
   </HsSection>
 
@@ -80,9 +85,9 @@ const faq = [
     snap={false}
     kicker="Voorbeeld"
     title="Van vraag naar | werkend prototype | in zes dagen"
-    lede="Kwakkel BV wilde zelf zien of het administratieve handwerk eruit kon, in plaats van erover te lezen in een rapport. Na zes dagen draaide een prototype op hun eigen administratie, met de business case op één A4."
-    stats={[{ value: 6, label: 'dagen van vraag tot werkend prototype' }]}
-    close="Wat het systeem niet zeker weet, legt het voor aan een medewerker. Kwakkel houdt het prototype, het plan en de business case, en besluit zelf wanneer de bouw begint."
+    lede="Kwakkel BV wilde zelf zien of het administratieve handwerk eruit kon, in plaats van erover te lezen in een rapport. Na zes dagen draaide een prototype op data uit hun eigen administratie, met de business case op één A4."
+    stats={[{ value: 6, label: 'dagen tot een werkend prototype' }]}
+    close="Wat het prototype niet zeker weet, legt het voor aan een medewerker. Kwakkel houdt het prototype, het plan en de business case, en besluit zelf wanneer de bouw begint."
     link={{ label: 'Lees de case', href: '/nl/cases/kwakkel' }}
     photo={{ src: '/hs/photos/cover-office.webp', w: 1800, h: 1200, pos: '55% 50%' }}
   />
@@ -91,7 +96,7 @@ const faq = [
     <HsCards
       columns={2}
       items={[
-        { icon: 'check', title: 'Gaat de bouw door', text: `Dan is de startsprint fase 1. We bouwen in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}, met een demo na elke sprint. Na oplevering blijven wij beheren en doorontwikkelen.`, href: '/nl/hoe-we-werken', more: 'Zo werken we' },
+        { icon: 'check', title: 'Gaat de bouw door', text: `${b.price} ${b.credit} ${b.milestones} Na oplevering blijven wij beheren en doorontwikkelen.`, href: '/nl/hoe-we-werken', more: 'Zo werken we' },
         { icon: 'close', title: 'Sluit de business case niet', text: 'Dan bouwen we niet. Je houdt het prototype of het plan en de business case. Een eerlijk besluit na zes dagen bespaart je een project dat niemand gebruikt.', href: '/nl/business-case', more: 'Kosten en opbrengst vooraf' },
       ]}
     />
@@ -99,8 +104,8 @@ const faq = [
 
   <HsSection tone="paper" title="Is dit iets *voor jou*?">
     <HsFit
-      yes={{ title: 'Ja, als je', items: ['een proces, systeem of idee hebt dat geld kost of groei remt', 'iemand hebt die over de bouw kan beslissen', 'zes dagen een paar uur van je eigen mensen kunt vrijmaken'] }}
-      no={{ title: 'Nog niet, als je', items: ['eerst wilt weten waar AI in je organisatie iets oplevert: begin dan met [kosten en opbrengst vooraf](/nl/business-case)', 'vooral je team wilt leren werken met AI: kijk dan bij [AI-training voor je team](/nl/training)'] }}
+      yes={{ title: 'Ja, als je', items: ['een proces, systeem of idee hebt dat geld kost of groei remt', 'iemand hebt die over de bouw kan beslissen', 'de documenten en data kunt aanleveren waar het werk op draait'] }}
+      no={{ title: 'Nog niet, als je', items: ['eerst wilt weten waar AI in je organisatie iets oplevert: begin dan met een [verkenning](/nl/business-case#verkenning)', 'vooral je team wilt leren werken met AI: kijk dan bij [AI-training voor je team](/nl/training)'] }}
     />
   </HsSection>
 

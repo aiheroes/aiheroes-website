@@ -28,7 +28,7 @@ const layers = [
 const inBuild = [
   { icon: 'list-checkbox' as const, title: 'Classificatie', text: 'In de startsprint bepalen we in welke risicoklasse je toepassing valt: minimaal, beperkt of hoog.' },
   { icon: 'preview-open' as const, title: 'Logging en menselijk toezicht', text: 'Elke beslissing is terug te vinden en een mens kan ingrijpen. Bij een AI-klantenservice is dat doorschakeling naar een medewerker, bij een werkstroom een controlestap.' },
-  { icon: 'server' as const, title: 'Hosting en data in Europa', text: 'Data die Europa niet uit mag, blijft in Europa. Op je eigen servers kan ook.', href: '/nl/eigen-beheer', more: 'Lokale AI' },
+  { icon: 'server' as const, title: 'Hosting en data in Europa', text: 'Data die Europa niet uit mag, blijft in Europa. Op je eigen servers kan ook.', href: '/nl/eigen-beheer', more: 'AI lokaal draaien' },
   { icon: 'peoples' as const, title: 'Een team dat ermee kan werken', text: 'We trainen het team op het systeem dat het gaat gebruiken, op de werkvloer.', href: '/nl/training', more: 'AI-training voor je team' },
 ];
 
@@ -111,7 +111,7 @@ const faq = [
     <div class="hs-sec__foot" data-item><HsAuthor id="david-homan" label="Je spreekt met" /></div>
   </HsSection>
 
-  <HsContact title="Vraag de AI Act-check aan" lede={`Of laat ons iets bouwen dat vanaf de tekentafel voldoet. Binnen ${SITE.reply} hoor je van ons.`} />
+  <HsContact intent="ai-act-check" title="Vraag de AI Act-check aan" lede={`Ook voor ISO 42001-begeleiding, een security-review of iets dat vanaf de tekentafel voldoet. Binnen ${SITE.reply} hoor je van ons.`} />
 </HsLayout>
 
 <style>

@@ -43,7 +43,7 @@ interface Props {
   headings: MarkdownHeading[];
   minutes: number;
   related: Related[];
-  /** Overrides the group label in the kicker (e.g. "Lokale AI en Europa"). */
+  /** Overrides the group label in the kicker (e.g. "AI lokaal en in Europa"). */
   kicker?: string;
 }
 const { data: d, headings, minutes, related, kicker } = Astro.props;
@@ -114,7 +114,7 @@ if (d.items.length) {
           <span>
             <time datetime={iso(d.publishDate)}>{T.published} {fmt(d.publishDate)}</time>
             {iso(d.updatedDate) !== iso(d.publishDate) && <> · <time datetime={iso(d.updatedDate)}>{T.updated} {fmt(d.updatedDate)}</time></>}
-            {' '}· {minutes} {T.read}
+            {' '}· {`${minutes} ${T.read.replace(/ /g, ' ')}`}
           </span>
         </span>
       </div>
@@ -127,6 +127,12 @@ if (d.items.length) {
 
   <section class="hs-sec hs-sec--light hs-abody">
     <div class="hs-wrap hs-article">
+      {toc.length > 2 && (
+        <details class="hs-toc-m">
+          <summary><span>{T.toc}</span><HsIcon name="plus" /></summary>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </details>
+      )}
       <div class="hs-prose">
         <slot />
       </div>

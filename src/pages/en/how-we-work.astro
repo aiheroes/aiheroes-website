@@ -18,9 +18,10 @@ import { faqSchema } from '../../data/schema';
 const crumbs = [{ label: 'Home', href: '/en' }];
 
 const track = [
-  { label: `Within ${S.sprint.startWithin}`, title: 'Start sprint', text: `Six days, fixed price, from ${S.sprint.price}. We work with the owner and the users on a prototype or a plan. [About the start sprint](/en/start-sprint).`, meta: 'You bring: the owner and a few users. You get: a prototype or build plan.' },
+  { label: 'Beforehand', title: 'Intake', text: `We talk to the owner and the people who do the work, and ask for the documents and data we need. The start sprint can begin within ${S.sprint.startWithin} of the first call.`, meta: 'You bring: the owner, a few people who do the work and the documents.' },
+  { label: 'Six days', title: 'Start sprint', text: `Fixed price, from ${S.sprint.price}. We build a prototype on your own data, not yet connected to your systems, or we make a build plan. [About the start sprint](/en/start-sprint).`, meta: 'You get: a prototype or build plan.' },
   { label: 'Day six', title: 'Decision', text: 'Based on the one-page business case you decide: build, adjust or stop. If the business case does not add up, we do not build. [Cost and return up front](/en/business-case).', meta: 'You get: cost, return and payback time on paper.' },
-  { label: 'Week 2 to 12', title: 'Building in sprints', text: `Two-week sprints, with a demo after every sprint. Compliance, logging and oversight are part of the design. A build starts from ${S.build.from}.`, meta: 'You bring: one contact person and feedback after each demo.' },
+  { label: 'Two to twelve weeks', title: 'Building in milestones', text: `${S.build.price} ${S.build.credit} A demo at every milestone. Compliance, logging and oversight are part of the design.`, meta: 'You bring: one contact person and feedback at each demo.' },
   { label: 'Go-live', title: 'Switching over with a trained team', text: 'Your team is trained on the system itself, on the job. When we replace something, the old system is only switched off once the new one runs.', meta: 'You get: a team that works with it every day.' },
   { label: 'After that', title: 'We keep maintaining and developing it', text: 'The software stays in our care. Everything is documented and you can switch AI models without rebuilding.', meta: 'You get: software that keeps working and grows with you.' },
 ];
@@ -42,8 +43,8 @@ const promises = [
 const people = FOUNDER_ORDER.map((id) => ({ ...FOUNDERS[id], ...founderText(id, 'en') }));
 
 const faq = [
-  { q: 'How long does a project take?', a: 'The start sprint takes six days. A build usually takes two to twelve weeks, in sprints of two weeks. After that we keep maintaining and developing the system.' },
-  { q: 'What does it cost?', a: `The start sprint costs from ${S.sprint.price}, fixed, for all three ways in. A build starts from ${S.build.from}. At the end of the start sprint you have the cost of your build on paper. More in [AI implementation costs](/en/ai-implementation-costs).` },
+  { q: 'How long does a project take?', a: 'After the intake, the start sprint takes six days. A build usually takes two to twelve weeks, split into milestones. After that we keep maintaining and developing the system.' },
+  { q: 'What does it cost?', a: `The start sprint has a fixed price, from ${S.sprint.price}, the same for all three ways in. ${S.build.price} ${S.build.credit} At the end of the start sprint you have the cost of your build on paper. More in [AI implementation costs](/en/ai-implementation-costs).` },
   { q: 'Who maintains the software after delivery?', a: 'We do. The software stays in our care and we keep developing it. Everything is documented, and you are not tied to one AI vendor.' },
   { q: 'Can our own developers build with you?', a: 'Yes. We build on our own, strengthen your team or split the work. For extra capacity inside your own team, see [extra developers](/en/extra-developers).' },
 ];
@@ -53,7 +54,7 @@ const faq = [
   lang="en"
   title="How we work"
   seoTitle="How we work: from start sprint to software that runs"
-  description={`How AI Heroes works: a six-day start sprint from ${S.sprint.price}, a decision based on the business case, building in two-week sprints, then maintenance and further development. Business case, compliance and training included.`}
+  description={`How AI Heroes works: a six-day start sprint at a fixed price from ${S.sprint.price}, a decision based on the business case, a build at a fixed price per project in milestones, then maintenance and further development. Included in every build: business case, compliance and training.`}
   crumbs={crumbs}
   jsonLd={faqSchema(faq)}
 >
@@ -79,11 +80,11 @@ const faq = [
     <HsCards columns={4} items={standard} />
   </HsSection>
 
-  <HsSection title="What it *costs*" lede="These are the prices we publish. At the end of the start sprint you have the cost of your build on paper.">
+  <HsSection title="What it *costs*" lede="These are the prices we publish. At the end of the start sprint you have the cost of your build on paper. If the build goes ahead, the start sprint is deducted from the build price.">
     <HsFigures
       items={[
-        { value: S.sprint.price, label: 'six-day start sprint, fixed price' },
-        { value: S.build.from, label: 'starting price of a build' },
+        { value: S.sprint.price, label: 'from, a fixed price per six-day start sprint' },
+        { value: S.build.from, label: 'from, a fixed price per build project' },
         { value: S.training.from, label: 'starting price per half day of standalone training' },
       ]}
     />

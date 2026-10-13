@@ -55,6 +55,12 @@ const { title, current, intro, updated, crumbs = [], meta = [], summary = [], su
 <section class="hs-sec hs-help__body">
   <div class="hs-wrap">
     <div class:list={['hs-article', { 'has-toc': toc.length > 0 }]}>
+      {toc.length > 0 && (
+        <details class="hs-toc-m">
+          <summary><span>{T.toc}</span><HsIcon name="plus" /></summary>
+          <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{zet(t.label, { cap: 30 })}</a></li>)}</ol>
+        </details>
+      )}
       <div class="hs-help__main">
         {summary.length > 0 && (
           <div class="hs-help__summary">

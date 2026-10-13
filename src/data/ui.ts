@@ -45,12 +45,47 @@ const NL = {
     email: 'E-mail',
     topic: 'Waar gaat het om?',
     optional: '(optioneel)',
-    training: 'Training',
     unsure: 'Weet ik nog niet',
     message: 'Wat wil je bouwen?',
-    messageTraining: 'Wat wil je je team leren?',
     placeholder: 'Bijvoorbeeld: een assistent die klantvragen beantwoordt, of het Excel-bestand vervangen waar alles op draait.',
-    placeholderTraining: 'Bijvoorbeeld: ons team wil leren werken met Copilot en ChatGPT.',
+    // Pages for visitors who do not come to build yet: their own chip, ask and question.
+    intents: {
+      training: {
+        chip: 'Training',
+        title: 'Plan een intake',
+        lede: 'Vertel wie je wilt trainen en waarop. Binnen 24 uur hoor je van ons, met een voorstel voor een intake.',
+        message: 'Wat wil je je team leren?',
+        placeholder: 'Bijvoorbeeld: ons team wil leren werken met Copilot en ChatGPT.',
+      },
+      verkenning: {
+        chip: 'Verkenning',
+        title: 'Vraag een verkenning aan',
+        lede: 'Vertel waar je staat. Binnen 24 uur hoor je van ons, met een voorstel voor een verkenning. Liever eerst praten? Plan hieronder een kennismaking.',
+        message: 'Waar wil je meer grip op?',
+        placeholder: 'Bijvoorbeeld: we willen weten in welke processen AI ons de meeste tijd bespaart.',
+      },
+      kennismaking: {
+        chip: 'Kennismaking',
+        title: 'Plan een kennismaking',
+        lede: 'Plan direct een gesprek met een van de oprichters, of laat een bericht achter. Binnen 24 uur hoor je van ons.',
+        message: 'Waar wil je het over hebben?',
+        placeholder: 'Bijvoorbeeld: we hebben een idee en willen eerst sparren voordat we iets plannen.',
+      },
+      'ai-act-check': {
+        chip: 'AI Act-check',
+        title: 'Vraag de AI Act-check aan',
+        lede: 'Of laat ons iets bouwen dat vanaf de tekentafel voldoet. Binnen 24 uur hoor je van ons.',
+        message: 'Welke AI gebruik je, of wil je gaan gebruiken?',
+        placeholder: 'Bijvoorbeeld: we hebben een chatbot op de website en willen weten in welke risicoklasse die valt.',
+      },
+      developers: {
+        chip: 'Extra developers',
+        title: 'Plan een kennismaking',
+        lede: 'Vertel wat je team bouwt en waar het knelt. Binnen 24 uur hoor je van ons, met een voorstel voor een kennismaking.',
+        message: 'Wat bouwt je team, en waar knelt het?',
+        placeholder: 'Bijvoorbeeld: we bouwen ons platform in TypeScript en zoeken voor drie maanden twee developers.',
+      },
+    },
     submit: 'Verstuur',
     success: 'Ontvangen. Binnen 24 uur hoor je van ons.',
     missing: 'Vul je naam, e-mailadres en je vraag in.',
@@ -97,12 +132,46 @@ const EN: typeof NL = {
     email: 'Email',
     topic: 'What is it about?',
     optional: '(optional)',
-    training: 'Training',
     unsure: 'Not sure yet',
     message: 'What do you want to build?',
-    messageTraining: 'What do you want your team to learn?',
     placeholder: 'For example: an assistant that answers customer questions, or replacing the spreadsheet everything runs on.',
-    placeholderTraining: 'For example: our team wants to learn to work with Copilot and ChatGPT.',
+    intents: {
+      training: {
+        chip: 'Training',
+        title: 'Book an intake',
+        lede: 'Tell us who you want to train and on what. You hear from us within 24 hours, with a proposal for an intake.',
+        message: 'What do you want your team to learn?',
+        placeholder: 'For example: our team wants to learn to work with Copilot and ChatGPT.',
+      },
+      verkenning: {
+        chip: 'Exploration',
+        title: 'Ask for an exploration',
+        lede: 'Tell us where you stand. You hear from us within 24 hours, with a proposal for an exploration. Rather talk first? Book an introduction below.',
+        message: 'What do you want a better grip on?',
+        placeholder: 'For example: we want to know in which processes AI saves us the most time.',
+      },
+      kennismaking: {
+        chip: 'Introduction',
+        title: 'Book an introduction',
+        lede: 'Book a call with one of the founders straight away, or leave a message. You hear from us within 24 hours.',
+        message: 'What would you like to talk about?',
+        placeholder: 'For example: we have an idea and want to talk it through before we plan anything.',
+      },
+      'ai-act-check': {
+        chip: 'AI Act check',
+        title: 'Ask for the AI Act check',
+        lede: 'Or have us build something that is compliant from day one. You hear from us within 24 hours.',
+        message: 'Which AI do you use, or plan to use?',
+        placeholder: 'For example: we have a chatbot on our website and want to know which risk class it falls into.',
+      },
+      developers: {
+        chip: 'Extra developers',
+        title: 'Book an introduction',
+        lede: 'Tell us what your team is building and where it gets stuck. You hear from us within 24 hours, with a proposal for an introduction.',
+        message: 'What is your team building, and where does it get stuck?',
+        placeholder: 'For example: we build our platform in TypeScript and need two developers for three months.',
+      },
+    },
     submit: 'Send',
     success: 'Received. You will hear from us within 24 hours.',
     missing: 'Please fill in your name, email address and question.',
@@ -113,6 +182,9 @@ const EN: typeof NL = {
 };
 
 export const UI: Record<Lang, typeof NL> = { nl: NL, en: EN };
+
+/** What a contact block is for when the visitor does not come to build (yet). */
+export type ContactIntent = keyof typeof NL.contact.intents;
 
 export function ui(url: URL | string) {
   return UI[langOf(url)];

@@ -12,10 +12,18 @@ export const SITE = {
   phoneHref: 'tel:+31502003373',
   since: 2019,
 
-  /** The front door: same duration and price for all three entries. */
+  /** The front door: same duration and price for all three entries. The intake comes before the
+   *  six days (it decides which documents and data we ask for); day 1 is the kick-off. */
   sprint: { days: 6, daysWord: 'zes', price: '€8.000', priceValue: 8000, startWithin: 'twee weken' },
-  /** A build after the sprint, in two-week sprints. */
-  build: { from: '€15.000', fromValue: 15000, sprintWeeks: 2 },
+  /** A build after the sprint: a fixed price per project in milestones, the sprint fee deducted
+   *  (decided 2026-10-13). Use these sentences, so the price never sits next to a cadence. */
+  build: {
+    from: '€15.000',
+    fromValue: 15000,
+    price: 'Een bouw heeft een vaste prijs per project, vanaf €15.000.',
+    credit: 'Wat je voor de startsprint betaalde, gaat daar af.',
+    milestones: 'We bouwen in mijlpalen, met een demo bij elke mijlpaal.',
+  },
   /** Standalone training, a supporting role. */
   training: { from: '€2.500', fromValue: 2500, unit: 'per dagdeel' },
   /** Reply promise for the contact form; chat escalation answers within 4 office hours. */
@@ -32,14 +40,14 @@ export type Entry = 'nieuw' | 'vervangen' | 'eigen-beheer';
 export const ENTRIES: Record<Entry, { title: string; href: string; accent: 'red' | 'blue' | 'dark'; topic: string }> = {
   nieuw: { title: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', accent: 'red', topic: 'Nieuwe AI-toepassing' },
   vervangen: { title: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', topic: 'Oude software vervangen' },
-  'eigen-beheer': { title: 'Lokale AI', href: '/nl/eigen-beheer', accent: 'dark', topic: 'Lokale AI' },
+  'eigen-beheer': { title: 'AI lokaal draaien', href: '/nl/eigen-beheer', accent: 'dark', topic: 'AI lokaal draaien' },
 };
 
 /** The entries in English (docs/relaunch phase 7); same keys, colours and order. */
 export const ENTRIES_EN: typeof ENTRIES = {
   nieuw: { title: 'A new AI tool', href: '/en/new-ai-tool', accent: 'red', topic: 'A new AI tool' },
   vervangen: { title: 'Replace old software', href: '/en/replace-software', accent: 'blue', topic: 'Replace old software' },
-  'eigen-beheer': { title: 'Self-hosted AI', href: '/en/self-hosted', accent: 'dark', topic: 'Self-hosted AI' },
+  'eigen-beheer': { title: 'Run AI locally', href: '/en/self-hosted', accent: 'dark', topic: 'Run AI locally' },
 };
 
 export function entriesFor(lang: 'nl' | 'en'): typeof ENTRIES {
@@ -49,7 +57,12 @@ export function entriesFor(lang: 'nl' | 'en'): typeof ENTRIES {
 /** The recurring facts as English copy writes them (thousands with a comma, "half day"). */
 export const SITE_EN = {
   sprint: { days: 6, daysWord: 'six', price: '€8,000', startWithin: 'two weeks' },
-  build: { from: '€15,000', sprintWeeks: 2 },
+  build: {
+    from: '€15,000',
+    price: 'A build has a fixed price per project, from €15,000.',
+    credit: 'What you paid for the start sprint is deducted from it.',
+    milestones: 'We build in milestones, with a demo at every milestone.',
+  },
   training: { from: '€2,500', unit: 'per half day' },
   reply: '24 hours',
   escalationReply: '4 office hours',

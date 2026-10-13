@@ -16,7 +16,7 @@ import HsAuthor from '../../components/hs/HsAuthor.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import HsIcon from '../../components/hs/HsIcon.astro';
 import { SITE } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/' }, { label: 'Hoe we werken', href: '/nl/hoe-we-werken' }];
@@ -46,7 +46,7 @@ const faq = [
   description={`AI-training op het systeem dat je team elke dag gebruikt, in elke bouw. Losse trainingen vanaf ${t.from} ${t.unit}, op locatie in heel Nederland: incompany, AI-geletterdheid met certificaat en digitale soevereiniteit.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'AI-training voor teams', path: '/nl/training', price: t.fromValue, serviceType: 'Incompany AI-training en AI-geletterdheid', description: `AI-training op locatie in heel Nederland, vanaf ${t.from} ${t.unit}.` }),
+    serviceSchema({ name: 'AI-training voor teams', path: '/nl/training', offers: [OFFERS.nl.training], serviceType: 'Incompany AI-training en AI-geletterdheid', description: `AI-training op locatie in heel Nederland, vanaf ${t.from} ${t.unit}.` }),
     faqSchema(faq),
   ]}
 >
@@ -128,17 +128,13 @@ const faq = [
   </HsSection>
 
   <HsContact
-    training
+    intent="training"
     title="Vraag een training aan"
     lede={`Vertel wie je wilt trainen en wat ze moeten kunnen. Binnen ${SITE.reply} hoor je van ons, met een voorstel voor een intake. Wil je iets laten bouwen? Kies dan een van de andere onderwerpen.`}
   />
 </HsLayout>
 
 <style>
-  @media (max-width: 559px) {
-    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
-    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
-  }
   .hs-training-extra { margin-top: clamp(2rem, 4vw, 3.5rem); }
   .hs-training-quotes { display: grid; gap: 2.5rem clamp(2rem, 4vw, 4rem); grid-template-columns: minmax(0, 1fr); }
   @media (min-width: 900px) { .hs-training-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

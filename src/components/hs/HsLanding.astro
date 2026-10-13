@@ -21,7 +21,7 @@ import HsContact from './HsContact.astro';
 import HsIcon from './HsIcon.astro';
 import { ICONS, plainText, rich, zet, type IconName } from './hs';
 import { SITE, SITE_EN, type Entry } from '../../data/site';
-import { PROFESSIONAL_SERVICE_SCHEMA, faqSchema, serviceSchema } from '../../data/schema';
+import { OFFERS, PROFESSIONAL_SERVICE_SCHEMA, faqSchema, serviceSchema } from '../../data/schema';
 import { FOUNDERS } from '../../data/team';
 import { langOf } from '../../data/ui';
 
@@ -44,7 +44,7 @@ const T = en
       pillars: {
         nieuw: { label: 'A new AI tool', href: '/en/new-ai-tool', accent: 'red', chip: 'nieuw' },
         vervangen: { label: 'Replace old software', href: '/en/replace-software', accent: 'blue', chip: 'vervangen' },
-        'eigen-beheer': { label: 'Self-hosted AI', href: '/en/self-hosted', accent: 'dark', chip: 'eigen-beheer' },
+        'eigen-beheer': { label: 'Run AI locally', href: '/en/self-hosted', accent: 'dark', chip: 'eigen-beheer' },
         alle: { label: 'Cost and return up front', href: '/en/business-case', accent: 'blue' },
         plaats: { label: 'About AI Heroes', href: '/en/about', accent: 'red' },
         training: { label: 'AI training for your team', href: '/en/training', accent: 'blue' },
@@ -68,8 +68,8 @@ const T = en
       } as Record<string, Door>,
       sprintCta: 'Plan a start sprint',
       sprintFacts: [
-        { value: `${SITE_EN.sprint.days} days`, label: 'from question to result' },
-        { value: SITE_EN.sprint.price, label: 'fixed price, for every way in' },
+        { value: `${SITE_EN.sprint.days} days`, label: 'from kick-off to result' },
+        { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
         { value: '2 weeks', label: 'from the first call to the start' },
       ],
       secondary: { training: 'How it works', L07: 'How we start', other: 'How to start' },
@@ -80,7 +80,7 @@ const T = en
       teamHref: '/en/about/team',
       sprintLink: 'How the start sprint works',
       sprintHref: '/en/start-sprint',
-      then: `Then we build in two-week sprints, from ${SITE_EN.build.from}.`,
+      then: `${SITE_EN.build.price} ${SITE_EN.build.credit}`,
       caseKicker: 'Case',
       readCase: 'Read the case',
       moreWork: 'More of our *work*',
@@ -106,7 +106,7 @@ const T = en
       pillars: {
         nieuw: { label: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', accent: 'red', chip: 'nieuw' },
         vervangen: { label: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', chip: 'vervangen' },
-        'eigen-beheer': { label: 'Lokale AI', href: '/nl/eigen-beheer', accent: 'dark', chip: 'eigen-beheer' },
+        'eigen-beheer': { label: 'AI lokaal draaien', href: '/nl/eigen-beheer', accent: 'dark', chip: 'eigen-beheer' },
         alle: { label: 'Kosten en opbrengst vooraf', href: '/nl/business-case', accent: 'blue' },
         plaats: { label: 'Over AI Heroes', href: '/nl/over-ons', accent: 'red' },
         training: { label: 'AI-training voor je team', href: '/nl/training', accent: 'blue' },
@@ -131,8 +131,8 @@ const T = en
       } as Record<string, Door>,
       sprintCta: 'Plan een startsprint',
       sprintFacts: [
-        { value: `${SITE.sprint.days} dagen`, label: 'van vraag tot resultaat' },
-        { value: SITE.sprint.price, label: 'vaste prijs, voor alle ingangen' },
+        { value: `${SITE.sprint.days} dagen`, label: 'van aftrap tot resultaat' },
+        { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint' },
         { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
       ],
       secondary: { training: 'Hoe het werkt', L07: 'Hoe we beginnen', other: 'Zo begin je' },
@@ -143,7 +143,7 @@ const T = en
       teamHref: '/nl/over-ons/team',
       sprintLink: 'Zo werkt de startsprint',
       sprintHref: '/nl/startsprint',
-      then: `Daarna bouwen we in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}.`,
+      then: `${SITE.build.price} ${SITE.build.credit}`,
       caseKicker: 'Case',
       readCase: 'Lees de case',
       moreWork: 'Meer van ons *werk*',
@@ -211,7 +211,8 @@ const jsonLd: object[] = [
     description: d.description,
     path,
     serviceType: d.title,
-    price: door ? door.price : SITE.sprint.priceValue,
+    // Training doors carry the training price; the kennismaking door (L07) has none.
+    offers: door ? (door.price ? [OFFERS[lang].training] : []) : [OFFERS[lang].sprint, OFFERS[lang].build],
   }),
   {
     '@context': 'https://schema.org',
@@ -376,14 +377,14 @@ if (d.plan === 'L15') {
 
   <HsContact
     entry={pillar.chip}
-    training={d.training || isTraining}
+    intent={d.training || isTraining ? 'training' : d.plan === 'L07' ? 'developers' : undefined}
     title={isTraining ? (d.plan === 'T5' ? T.contactTitle.T5 : T.contactTitle.training) : d.plan === 'L07' ? T.contactTitle.L07 : T.contactTitle.other}
     lede={T.contactLede[kind]}
   />
 </HsLayout>
 
 <style>
-  .hs-landing__outcome { margin-top: clamp(2rem, 4vw, 3.5rem); display: grid; gap: .75rem; max-width: 52rem; }
+  .hs-landing__outcome { margin-top: clamp(3rem, 4vw, 3.5rem); display: grid; gap: .75rem; max-width: 52rem; }
   .hs-landing__outcome .hs-lead { max-width: 34ch; font-size: clamp(1.375rem, 1rem + 1.05vw, 2.125rem); line-height: 1.2; }
   .hs-landing__label { font-weight: 700; font-size: .9375rem; letter-spacing: .02em; color: var(--red); }
   .hs-landing__then { color: var(--body-on-light); font-size: .9375rem; }

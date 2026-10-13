@@ -37,7 +37,9 @@
   /* The deck canvas is 16 modules wide; on the web one module is 1/16 of the viewport. */
   --module: clamp(1.5rem, 6.25vw, 7.5rem);
   --pad-x: max(1.25rem, var(--module), calc((100vw - 105rem) / 2));
-  --sec-y: max(4rem, calc(var(--module) * 1.5));
+  /* Section padding. On phones the module sits at its floor, so the floor sets the breathing room
+     between sections: 5rem keeps groups apart without loosening what is inside them. */
+  --sec-y: max(5rem, calc(var(--module) * 1.5));
   --nav-h: 4rem;
   --focus: var(--dark);
 
@@ -560,6 +562,8 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs .hs-entry__title { font-weight: 700; letter-spacing: -0.02em; font-size: clamp(1.75rem, 1rem + 1.7vw, 3rem); line-height: 1.04; max-width: 12ch; }
 .hs-entry__text { display: grid; gap: 1.125rem; align-content: start; padding: 1.5rem var(--pad) 2.25rem; }
 .hs-entry__text p { color: var(--body-on-light); max-width: 40ch; }
+/* Stacked entries: the text hugs its own colour block and keeps clear of the next one. */
+@media (max-width: 899px) { .hs-entry__text { padding-bottom: 3.5rem; } }
 .hs-entry__more { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; }
 .hs-entry__more .hs-icon { width: 1.25rem; height: 1.25rem; transition: transform .25s var(--ease); }
 .hs-entry:hover .hs-entry__more .hs-icon { transform: translateX(.25rem); }
@@ -639,8 +643,10 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-logos li { display: flex; align-items: center; }
 .hs-logos img { width: auto; height: calc(var(--h, 1.875rem) * var(--logo-scale)); opacity: .88; transition: opacity .2s; }
 .hs-logos li:hover img { opacity: 1; }
+/* Phones: four logos over three, each centred in a quarter, so no logo is left alone on a row. */
 @media (max-width: 719px) {
-  .hs-logos { justify-content: flex-start; gap: 1.625rem 2.25rem; --logo-scale: .74; }
+  .hs-logos { justify-content: center; gap: 1.625rem 1rem; --logo-scale: .74; }
+  .hs-logos li { flex: 0 0 calc((100% - 3rem) / 4); justify-content: center; }
 }
 
 /* ---------- Standard: a poster on blue ----------
@@ -679,6 +685,14 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 }
 .hs .hs-standard__label::selection, .hs .hs-standard__label ::selection { background: var(--dark); color: var(--light); }
 .hs-standard__list .hs-icon { width: .72em; height: .72em; margin-top: .28em; }
+/* Phones: the three longer labels wrap to two lines; the short first one is broken by hand
+   (HsStandard) and every label is a full-width block, so the four read as equal labels. */
+@media (max-width: 559px) {
+  .hs-standard__label { justify-self: stretch; }
+}
+@media (min-width: 560px) {
+  .hs-standard__br { display: none; }
+}
 
 /* ---------- Case (post "klantcase"): the work in numbers ---------- */
 
@@ -748,6 +762,11 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   gap: max(1.75rem, calc(var(--module) * .4));
   padding-block: var(--sec-y);
 }
+/* Below desktop the statement keeps the weight it has as a slide: most of a screen, the lede and
+   the slogan centred with room between them, a quiet pause before the ask. */
+@media (max-width: 1023px) {
+  .hs-statement { min-height: min(calc(100svh - var(--nav-h)), 46rem); gap: 3rem; }
+}
 .hs-statement__lede {
   max-width: 30ch;
   font-size: clamp(1.25rem, 1rem + 0.9vw, 2rem);
@@ -765,6 +784,8 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
   font-size: min(9.2vw, clamp(2.25rem, 0.8rem + 5vw, 7rem));
   line-height: 1.04;
 }
+/* "to Implementation" sets wider than "tot Implementatie": a slightly smaller step keeps it inside the margin. */
+.hs-ai:lang(en) { font-size: min(8.6vw, clamp(2.25rem, 0.8rem + 5vw, 7rem)); }
 .hs-ai__row { display: contents; }
 .hs-ai__lead { justify-self: end; }
 .hs-ai__word { white-space: nowrap; }

@@ -37,7 +37,7 @@ const catalog = {
 <HsLayout
   title="Wat we bouwen"
   seoTitle="Wat we bouwen: AI-toepassingen en maatwerksoftware"
-  description={`AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, langs drie ingangen: iets nieuws, oude software vervangen of lokale AI. Altijd met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
+  description={`AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, langs drie ingangen: iets nieuws, oude software vervangen of AI lokaal draaien. Altijd met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
   crumbs={crumbs}
   jsonLd={catalog}
 >
@@ -70,7 +70,7 @@ const catalog = {
     <div class="hs-figs"><HsFigures
       items={[
         { value: '6 dagen', label: 'van vraag naar prototype of bouwplan' },
-        { value: SITE.sprint.price, label: 'vaste prijs, gelijk voor alle ingangen' },
+        { value: SITE.sprint.price, label: 'vanaf, een vaste prijs, gelijk voor alle ingangen' },
         { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
       ]}
     /></div>
@@ -82,7 +82,7 @@ const catalog = {
   <HsSection tone="paper" title="Waar we het *bewezen*" lede="Eén voorbeeld per ingang. Meer werk staat bij de cases.">
     <HsCards
       items={[
-        { meta: ENTRIES.nieuw.title, title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Van vraag naar werkend prototype op de eigen administratie, met de business case erbij, in zes dagen.' },
+        { meta: ENTRIES.nieuw.title, title: 'Kwakkel BV', href: '/nl/cases/kwakkel', more: 'Lees de case', text: 'Van vraag naar werkend prototype op data uit de eigen administratie, met de business case erbij, in zes dagen.' },
         { meta: ENTRIES.vervangen.title, title: 'Strive', href: '/nl/cases/strive', more: 'Lees de case', text: 'Een te duur ledenbeheerpakket vervangen door eigen software, naast het oude gebouwd en in één jaar terugverdiend.' },
         { meta: ENTRIES['eigen-beheer'].title, title: 'Onze eigen assistent', href: '/nl/cases/eigen-stack', more: 'Lees de case', text: 'De AI-assistent op deze site draait op Europese infrastructuur, laat zien dat hij AI is en geeft je een mens als hij het niet weet.' },
       ]}
@@ -94,11 +94,3 @@ const catalog = {
 
   <HsContact />
 </HsLayout>
-
-<style>
-  /* Figures with words ("6 dagen", "€8.000") need the label under the number on phones. */
-  @media (max-width: 559px) {
-    .hs-figs :global(.hs-stats div) { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
-    .hs-figs :global(.hs-stats dd) { min-width: 0; font-size: 2.5rem; }
-  }
-</style>

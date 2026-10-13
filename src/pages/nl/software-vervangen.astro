@@ -14,7 +14,7 @@ import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import HsIcon from '../../components/hs/HsIcon.astro';
 import { SITE } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/nl/wat-we-bouwen' }];
@@ -34,7 +34,7 @@ const faq = [
   description={`Te dure of verouderde software vervangen door software die past. Naast het oude gebouwd, data in delen overgezet, het oude pas uit als het nieuwe draait. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Oude software vervangen', path: '/nl/software-vervangen', price: SITE.sprint.priceValue, serviceType: 'Software vervangen en moderniseren', description: 'Te dure SaaS, Excel en verouderd maatwerk vervangen door eigen software, naast het oude gebouwd en in fasen overgezet.' }),
+    serviceSchema({ name: 'Oude software vervangen', path: '/nl/software-vervangen', offers: [OFFERS.nl.sprint, OFFERS.nl.build], serviceType: 'Software vervangen en moderniseren', description: 'Te dure SaaS, Excel en verouderd maatwerk vervangen door eigen software, naast het oude gebouwd en in fasen overgezet.' }),
     faqSchema(faq),
   ]}
 >
@@ -48,7 +48,7 @@ const faq = [
     photo={{ src: '/hs/photos/cover-legacy.webp', alt: 'Een oude beige computer op een kantoorbureau', w: 1800, h: 1800, pos: '40% 55%' }}
     facts={[
       { value: '6 dagen', label: 'tot architectuur en migratieplan' },
-      { value: SITE.sprint.price, label: 'de startsprint, vaste prijs' },
+      { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint' },
       { value: '1 jaar', label: 'en Strive had de bouw terugverdiend' },
     ]}
   />
@@ -100,7 +100,7 @@ const faq = [
     <HsSteps
       items={[
         { label: 'Zes dagen', title: 'Startsprint', text: `Architectuur, een migratieplan in fasen en de business case op één A4. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
-        { label: 'Sprints van twee weken', title: 'Bouwen naast het oude', text: `Na elke sprint een demo; het oude systeem draait gewoon door. Bouw vanaf ${SITE.build.from}.` },
+        { label: 'Twee tot twaalf weken', title: 'Bouwen naast het oude', text: `${SITE.build.price} ${SITE.build.credit} Bij elke mijlpaal een demo; het oude systeem draait gewoon door.` },
         { label: 'Overstap', title: 'Team getraind, dan over', text: 'Je team werkt al met het nieuwe systeem voordat het oude uitgaat.' },
         { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Koppelingen en datamodel zijn gedocumenteerd.' },
       ]}

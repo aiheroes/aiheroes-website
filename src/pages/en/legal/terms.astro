@@ -39,7 +39,7 @@ const toc = [
     updated="October 2026"
     crumbs={crumbs}
     summary={[
-      'The start sprint takes six working days for a fixed fee: 50% on order, 50% after day six.',
+      'The start sprint takes six working days for a fixed fee: 50% on order, 50% after day six. If a build follows, that fee is deducted from the build price.',
       'The source code stays with AI Heroes; after full payment you have a perpetual right of use for your own business.',
       'Your data remains yours and is processed within the European Union by default.',
       'Invoices are payable within 14 days; liability is limited.',
@@ -55,8 +55,8 @@ const toc = [
       <ul>
         <li><strong>AI Heroes:</strong> {SITE.legalName}, located at {SITE.address.street}, {SITE.address.postcode} {SITE.address.city}, the Netherlands, registered with the Chamber of Commerce under number {SITE.kvk}, VAT number {SITE.vat}.</li>
         <li><strong>Client:</strong> the natural or legal person that enters into an agreement with AI Heroes.</li>
-        <li><strong>Start sprint:</strong> the defined track of six working days for a fixed fee, ending in a prototype or a build plan and a business case.</li>
-        <li><strong>Build:</strong> the development of software after the start sprint, in two-week sprints.</li>
+        <li><strong>Start sprint:</strong> the defined track of six working days for a fixed fee, preceded by an intake, ending in a prototype or a build plan and a business case.</li>
+        <li><strong>Build:</strong> the development of software after the start sprint, at a fixed price per project and in milestones.</li>
         <li><strong>Maintenance:</strong> keeping delivered software running, maintaining, securing and developing it further after delivery.</li>
         <li><strong>Training:</strong> workshops, training courses and sessions, on their own or as part of a build.</li>
         <li><strong>Results:</strong> everything AI Heroes makes or delivers under the agreement, including prototypes, software, source code, documentation, build plans, business cases and training material.</li>
@@ -83,14 +83,15 @@ const toc = [
       <ol>
         <li>The start sprint takes six working days and costs the fixed fee in the quote. AI Heroes invoices 50% on order and 50% after day six.</li>
         <li>At the end, AI Heroes delivers, depending on the question, a prototype or a build plan, and a business case.</li>
-        <li>The client ensures that the owner of the question is present on day one and day six, and that the agreed users and someone who knows the data and systems are available.</li>
-        <li>After the start sprint, the client decides whether a build follows. There is no obligation to place a follow-up order. If the build does not go ahead, the client keeps the right of use under Article 9 to the prototype or build plan and the business case.</li>
+        <li>A prototype runs on the data the client supplies. During the start sprint AI Heroes does not connect it to the client's systems; that happens in the build.</li>
+        <li>The client takes part in the intake before the start, supplies the documents and data agreed there in time, and ensures that the owner of the question is present at the kick-off on day one and the demonstration on day six.</li>
+        <li>After the start sprint, the client decides whether a build follows. There is no obligation to place a follow-up order. If a build follows, AI Heroes deducts the start sprint fee from the price of the build. If the build does not go ahead, the client keeps the right of use under Article 9 to the prototype or build plan and the business case.</li>
         <li>If the start sprint shows that AI is not a suitable solution or that the business case does not add up, AI Heroes says so. The fixed fee remains payable.</li>
       </ol>
 
       <h2 id="build">Article 6. Build and delivery</h2>
       <ol>
-        <li>The build runs in two-week sprints, with a demonstration after each sprint. Scope, planning and price are set out in the quote or the build plan.</li>
+        <li>The build has a fixed price per project and runs in milestones, with a demonstration at each milestone. Scope, milestones, planning and price are set out in the quote or the build plan.</li>
         <li>Changes in scope are agreed in writing and may affect planning and price.</li>
         <li>After delivery, the client tests the software within 10 working days. If the client reports no material defects within that period, or takes the software into use, the software is deemed accepted.</li>
         <li>Defects reported within the acceptance period that are attributable to AI Heroes are fixed by AI Heroes at no extra cost.</li>

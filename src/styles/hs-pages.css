@@ -109,6 +109,13 @@ button.hs-nav__top { cursor: pointer; }
 .hs-pcover__facts div:first-child dd { color: var(--red); }
 .hs-pcover__zone.on-red ~ .hs-pcover__band .hs-pcover__facts div:first-child dd { color: var(--light); }
 .hs-pcover__facts dt { font-size: .9375rem; font-weight: 500; color: var(--body-on-dark); }
+/* Phones: one fact per row, the figure beside its label (as .hs-stats does), so a third fact never
+   stands alone under a pair. --fig-w is the longest figure, set by HsPageCover. */
+@media (max-width: 559px) {
+  .hs-pcover__facts { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .hs-pcover__facts div { flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 1rem; }
+  .hs-pcover__facts dd { flex: none; min-width: var(--fig-w, 6.4ch); font-size: 2rem; }
+}
 @media (min-width: 900px) {
   .hs-pcover { grid-template-columns: minmax(0, 1fr) minmax(0, 40vw); }
   .hs-pcover:not(.has-photo) { grid-template-columns: minmax(0, 1fr); }
@@ -138,7 +145,7 @@ button.hs-nav__top { cursor: pointer; }
 .hs-sec { padding-block: var(--sec-y); background: var(--light); }
 .hs-sec--paper { background: #F5F3EC; }
 .hs-sec + .hs-sec--light:not(.hs-sec--flush), .hs-sec--light + .hs-sec--light { box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
-.hs-sec__head { display: grid; gap: 1.25rem; margin-bottom: max(2.25rem, calc(var(--module) * .75)); }
+.hs-sec__head { display: grid; gap: 1.25rem; margin-bottom: max(2.5rem, calc(var(--module) * .75)); }
 .hs-sec__head h2 { max-width: 18ch; }
 .hs-sec__head p { max-width: 52ch; }
 .hs-sec--light .hs-sec__head p, .hs-sec--paper .hs-sec__head p { color: var(--body-on-light); }
@@ -277,13 +284,13 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
 
 /* ---------- Action band ---------- */
 
-.hs-ctaband { display: grid; gap: 1.5rem; padding: max(3rem, var(--module)) var(--pad-x); }
+.hs-ctaband { display: grid; gap: 2rem; padding: max(4rem, var(--module)) var(--pad-x); }
 .hs-ctaband h2 { max-width: 16ch; }
 .hs-ctaband p { max-width: 50ch; }
+.hs-ctaband .hs-ctaband__text { display: grid; gap: 1.25rem; }
 .hs-ctaband .hs-ctaband__actions { display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: center; }
 @media (min-width: 1024px) {
   .hs-ctaband { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem var(--module); }
-  .hs-ctaband .hs-ctaband__text { display: grid; gap: 1.25rem; }
 }
 
 /* ---------- Split: text beside a photo ---------- */
@@ -366,6 +373,18 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
   .hs-article { grid-template-columns: minmax(0, 44rem) minmax(0, 18rem); justify-content: space-between; }
   .hs-article__aside { position: sticky; top: calc(var(--nav-h) + 2rem); align-self: start; }
 }
+/* Contents below 1100px: a closed disclosure above the text, there when you want it, never a block
+   after the article. From 1100px the sticky side column takes over. */
+.hs-toc-m { box-shadow: inset 0 1.5px 0 var(--rule-on-light), inset 0 -1.5px 0 var(--rule-on-light); }
+.hs-toc-m summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; cursor: pointer; list-style: none; font-weight: 700; }
+.hs-toc-m summary::-webkit-details-marker { display: none; }
+.hs-toc-m summary .hs-icon { width: 1.25rem; height: 1.25rem; transition: transform .25s var(--ease); }
+.hs-toc-m[open] summary .hs-icon { transform: rotate(45deg); }
+.hs-toc-m ol { display: grid; gap: .625rem; padding-bottom: 1.25rem; font-size: .9375rem; }
+.hs-toc-m a { color: var(--body-on-light); text-decoration: none; }
+.hs-toc-m a:hover { color: var(--dark); text-decoration: underline; text-underline-offset: .25em; }
+@media (max-width: 1099px) { .hs-article__aside { display: none; } }
+@media (min-width: 1100px) { .hs-toc-m { display: none; } }
 .hs-toc h2 { font-size: .875rem; font-weight: 700; letter-spacing: .04em; margin-bottom: .75rem; color: var(--micro-on-light); }
 .hs-toc ol { display: grid; gap: .5rem; font-size: .9375rem; }
 .hs-toc a { text-decoration: none; color: var(--body-on-light); }
@@ -496,6 +515,8 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
 }
 /* Figures with words ("6 dagen", "€8.000"): on phones the label goes under the figure. */
 @media (max-width: 559px) {
-  .hs-stats.is-wordy div { flex-direction: column-reverse; align-items: flex-start; gap: .25rem; }
+  /* A label sits tight under its figure; the next figure starts clearly further down. */
+  .hs-stats.is-wordy { gap: 1.75rem; }
+  .hs-stats.is-wordy div { flex-direction: column-reverse; align-items: flex-start; gap: .375rem; }
   .hs-stats.is-wordy dd { min-width: 0; font-size: 2.5rem; }
 }

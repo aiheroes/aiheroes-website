@@ -1,5 +1,5 @@
 ---
-// P5 Self-hosted AI, English (docs/relaunch/pages/P5-eigen-beheer.md, phase 7): entry
+// P5 Run AI locally, English (docs/relaunch/pages/P5-eigen-beheer.md, phase 7): entry
 // "eigen-beheer", hub of L12 and L13. No server price (docs/relaunch/01-besluiten.md §2); European
 // providers may be named as examples (§10); logos as "working with us" without claiming self-hosting.
 import HsLayout from '../../layouts/HsLayout.astro';
@@ -12,8 +12,8 @@ import HsStandardList from '../../components/hs/HsStandardList.astro';
 import HsFaq from '../../components/hs/HsFaq.astro';
 import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
-import { SITE, SITE_EN } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { SITE_EN } from '../../data/site';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
@@ -35,26 +35,26 @@ const LOGOS = [
 
 <HsLayout
   lang="en"
-  title="Self-hosted AI"
+  title="Run AI locally"
   seoTitle="AI on your own servers or hosted in Europe"
   description={`AI and software on your own servers or with a European provider, with the AI Act in the design. Start with a six-day start sprint from ${SITE_EN.sprint.price}: hosting design, risk assessment and business case.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Self-hosted AI', path: '/en/self-hosted', price: SITE.sprint.priceValue, serviceType: 'Self-hosted AI and European hosting', description: 'AI and software on your own servers or with a European provider, with the AI Act in the design.' }),
+    serviceSchema({ name: 'Run AI locally', path: '/en/self-hosted', offers: [OFFERS.en.sprint, OFFERS.en.build], serviceType: 'Self-hosted AI and European hosting', description: 'AI and software on your own servers or with a European provider, with the AI Act in the design.' }),
     faqSchema(faq),
   ]}
 >
   <HsPageCover
     accent="dark"
     crumbs={crumbs}
-    current="Self-hosted AI"
+    current="Run AI locally"
     title="On our own servers, | within Europe? *Yes.*"
     lede="AI and software on your own servers or with a European provider, connected to your systems and with the AI Act in the design. We do it ourselves too: the assistant on this site runs in Europe."
     secondary={{ label: 'The three options', href: '#forms' }}
     photo={{ src: '/hs/photos/cover-datacenter.webp', alt: 'A bright server room in a data centre', w: 1800, h: 1012, pos: '50% 55%' }}
     facts={[
       { value: '6 days', label: 'to hosting design and risk assessment' },
-      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed price' },
+      { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
     ]}
   />
 
@@ -105,7 +105,7 @@ const LOGOS = [
     <HsSteps
       items={[
         { label: 'Six days', title: 'Start sprint', text: `Your environment mapped, a hosting design, a risk assessment and the business case. From ${SITE_EN.sprint.price}, start within two weeks.` },
-        { label: 'In phases', title: 'Building and migrating', text: `We build or migrate in phases, next to what runs today. Build from ${SITE_EN.build.from}.` },
+        { label: 'In milestones', title: 'Building and migrating', text: `We build or migrate next to what runs today, with a demo at every milestone. ${SITE_EN.build.price} ${SITE_EN.build.credit}` },
         { label: 'Go-live', title: 'Administrators trained', text: 'Your own administrators are trained on the environment before it goes live.' },
         { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system, documented and not tied to one AI vendor.' },
       ]}
