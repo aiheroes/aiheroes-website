@@ -679,6 +679,14 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 }
 .hs .hs-standard__label::selection, .hs .hs-standard__label ::selection { background: var(--dark); color: var(--light); }
 .hs-standard__list .hs-icon { width: .72em; height: .72em; margin-top: .28em; }
+/* Phones: the three longer labels wrap to two lines; the short first one is broken by hand
+   (HsStandard) and every label is a full-width block, so the four read as equal labels. */
+@media (max-width: 559px) {
+  .hs-standard__label { justify-self: stretch; }
+}
+@media (min-width: 560px) {
+  .hs-standard__br { display: none; }
+}
 
 /* ---------- Case (post "klantcase"): the work in numbers ---------- */
 
