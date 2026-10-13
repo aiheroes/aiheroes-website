@@ -203,7 +203,7 @@ Density is low: one heading, one supporting paragraph, one action per slide. Pho
 - Blueprint grid only behind a light zone with little text; no slide uses it at the moment.
 - The square: wordmark square on the cover and in the footer.
 - One icon set everywhere: IconPark Outline (Apache 2.0) on its 48 grid, stroke 4, square ends, mitred joins, drawn inline so each path can draw itself.
-- Motion builds each section up once; reduced motion switches every transition, animation and the snap off.
+- Motion builds each section up once; reduced motion switches every transition, animation and the snap off, except the cover's clock (see Cover).
 
 ## Colors
 
@@ -314,7 +314,7 @@ Transparent field, 1.5px `panel-edge` inset outline, 2px radius, min-height 52px
 - **Sub-menu bar:** from 1100px, hovering (after a 90ms pause) or focusing a link with sub-pages drops a full-width bar, one line high (3.5rem), under the menu: a flat plane in red (Wat we bouwen), blue (Hoe we werken) or ink (Over ons), without a rule; it may run into a section of the same colour, such as the red cover, and that is accepted; its sub-pages in 700 at 19px (large text, so cream on red passes contrast), right-aligned on the menu's right edge on every screen. Each label says what a visitor who knows nothing of AI Heroes gets when clicking ("Eerste stap: de startsprint", "Kosten en opbrengst vooraf", "Software op je eigen servers"); the three entry planes on the page carry the same names. The open link keeps its underline. It drops in with a clip from the top (220ms); moving to another link keeps it open and wipes the next colour in from the left (300ms). It closes 260ms after the pointer leaves the menu, on a link without sub-pages, on Escape (focus back to the link), when focus leaves and when the page scrolls down. On touch the first tap opens a bar, the second follows the link. Below 1100px the menu panel lists the sub-pages under each link, one per line.
 
 ### Cover (signature)
-Colour zone (red default, blue by choice) with the headline bottom-aligned, the photo panel beside it, the ink band below with subline, light CTA and four progress tabs, and the cream square holding the full-colour wordmark at 74% width, closed by a 1.5px ink bottom rule because the next section is cream too. The first slide leads with the core line. Each tab's 3px track fills over 7s and the end of the fill advances the slide; hover, focus, a hidden tab and the pause button pause it. Headline and subline crossfade (500ms after a 280ms delay, 10px rise), photos crossfade over 800ms. Arrow keys move between tabs. Below 520px the tab labels are visually hidden and only the tracks remain.
+Colour zone (red default, blue by choice) with the headline bottom-aligned, the photo panel beside it, the ink band below with subline, light CTA and four progress tabs, and the cream square holding the full-colour wordmark at 74% width, closed by a 1.5px ink bottom rule because the next section is cream too. The first slide leads with the core line. Each tab's 3px track fills over 7s and the end of the fill advances the slide; hover, focus, a hidden tab and the pause button pause it. Headline and subline crossfade (500ms after a 280ms delay, 10px rise), photos crossfade over 800ms. Arrow keys move between tabs. Below 520px the tab labels are visually hidden and only the tracks remain. With reduced motion the clock keeps running: the tracks still fill and advance the slides, which fade in place (200ms out, 400ms in, no rise; photos 600ms), a chosen colour switches without the wipe, and the pause button stays (decision 2026-10-13). The fill is a timer, not movement; stopping it left a full, frozen bar and only the first of four slides.
 
 ### Entry planes (signature)
 Three linked colour planes in red, blue and ink, at least three modules tall (`clamp(150px, 23svh, 270px)` at desktop), with the title bottom-left and an up-right arrow top-right that nudges 4px on hover. Text and an underlined "more" action sit below on cream. On entry the planes grow from the bottom (600ms, 90ms stagger) before their content fades in.
@@ -352,7 +352,7 @@ SVG filter "C2 drieklank licht": desaturate, gamma lift 0.8, then map luminance 
 - **Do** draw rules and outlines as 1.5px inset strokes in the rule or panel-edge tints.
 - **Do** keep text off photos; duotone people, keep places and cover scenes in colour.
 - **Do** use the square: nav brand tile at bar height, wordmark squares on the cover and in the footer.
-- **Do** build a section up once on entry and give every motion a reduced-motion fallback that shows the final state.
+- **Do** build a section up once on entry and give every motion a reduced-motion fallback that shows the final state (the cover's clock is the one exception).
 
 ### Don't:
 - **Don't** use drop shadows, gradients or glows; depth is colour fields and photos.

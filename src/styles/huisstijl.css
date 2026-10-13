@@ -1068,7 +1068,14 @@ textarea.hs-input { min-height: 8.75rem; resize: vertical; }
   .hs-js .hs-place:not(.is-in) .hs-place__photo img,
   .hs-js .hs-case:not(.is-in) .hs-case__photo img { clip-path: none; }
   .hs-js .hs-statement[data-ai] .hs-ai__l { opacity: 1; transform: none; filter: none; }
-  .hs-cover__tab[aria-selected="true"] .hs-cover__fill { transform: scaleX(1); }
-  .hs-cover__pause { display: none; }
+  /* The cover keeps its clock: the 3px fill is a timer, not movement, and without it a visitor only
+     ever sees the first of four slides (phones with "Remove animations" showed a full, frozen bar).
+     The slides fade in place without the rise, the colour switches without the wipe (hs-client),
+     and the pause button stays. */
+  .hs .hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards !important; }
+  .hs .hs-cover.is-paused .hs-cover__tab .hs-cover__fill { animation-play-state: paused !important; }
+  .hs .hs-cover [data-head], .hs .hs-cover [data-sub] { transform: none; transition: opacity .2s linear !important; }
+  .hs .hs-cover .is-active[data-head], .hs .hs-cover .is-active[data-sub] { transition: opacity .4s linear .2s !important; }
+  .hs .hs-cover__photo img { transition: opacity .6s linear !important; }
   html:has(.hs) { scroll-snap-type: none; }
 }
