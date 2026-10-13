@@ -36,6 +36,17 @@ const DEFAULTS_NL: Record<Entry, string> = {
 };
 const DEFAULTS = lang === 'en' ? DEFAULTS_EN : DEFAULTS_NL;
 const keys = Object.keys(ENTRIES) as Entry[];
+// Every plane title stands on two lines ("Nieuwe / AI-toepassing", "Oude software / vervangen").
+// Titles that would fit on one get a set break; a renamed entry falls back to zet() until it is
+// set here again.
+const SET_LINES: Record<'nl' | 'en', Partial<Record<Entry, [string, string]>>> = {
+  nl: { 'eigen-beheer': ['AI lokaal', 'draaien'] },
+  en: { nieuw: ['A new', 'AI tool'], 'eigen-beheer': ['Run AI', 'locally'] },
+};
+const lines = (k: Entry) => {
+  const set = SET_LINES[lang][k];
+  return set && set.join(' ') === ENTRIES[k].title ? set : null;
+};
 ---
 
 <section class:list={['hs-entries', { 'hs-snap': snap }]} id={id} data-reveal>
@@ -46,7 +57,9 @@ const keys = Object.keys(ENTRIES) as Entry[];
     {keys.map((k, i) => (
       <a class="hs-entry" href={ENTRIES[k].href} style={`--i:${i}`}>
         <div class={`hs-entry__plane on-${ENTRIES[k].accent}`}>
-          <h3 class="hs-entry__title">{zet(ENTRIES[k].title, { display: true, cap: 12 })}</h3>
+          <h3 class="hs-entry__title">
+            {lines(k) ? <>{lines(k)![0]}<br />{lines(k)![1]}</> : zet(ENTRIES[k].title, { display: true, cap: 12 })}
+          </h3>
           <HsIcon name="arrow-up-right" />
         </div>
         <div class="hs-entry__text">
