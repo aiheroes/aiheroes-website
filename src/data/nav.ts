@@ -49,7 +49,7 @@ const NL: NavContent = {
       key: 'build', label: 'Wat we bouwen', accent: 'red', subs: [
         { label: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing' },
         { label: 'Oude software vervangen', href: '/nl/software-vervangen' },
-        { label: 'AI lokaal draaien', href: '/nl/eigen-beheer' },
+        { label: 'Lokaal AI draaien', href: '/nl/eigen-beheer' },
       ],
     },
     {
@@ -101,7 +101,7 @@ const NL: NavContent = {
         ],
       },
       {
-        heading: 'AI lokaal draaien', href: '/nl/eigen-beheer', links: [
+        heading: 'Lokaal AI draaien', href: '/nl/eigen-beheer', links: [
           { label: 'AI op eigen servers', href: '/nl/ai-op-eigen-servers' },
           { label: 'Europees alternatief voor ChatGPT', href: '/nl/europees-alternatief-chatgpt' },
         ],

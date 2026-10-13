@@ -40,7 +40,7 @@ const keys = Object.keys(ENTRIES) as Entry[];
 // Titles that would fit on one get a set break; a renamed entry falls back to zet() until it is
 // set here again.
 const SET_LINES: Record<'nl' | 'en', Partial<Record<Entry, [string, string]>>> = {
-  nl: { 'eigen-beheer': ['AI lokaal', 'draaien'] },
+  nl: { 'eigen-beheer': ['Lokaal AI', 'draaien'] },
   en: { nieuw: ['A new', 'AI tool'], 'eigen-beheer': ['Run AI', 'locally'] },
 };
 const lines = (k: Entry) => {

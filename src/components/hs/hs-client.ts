@@ -96,10 +96,14 @@ function initCover(signal: AbortSignal) {
   }, { signal });
 
   pauseBtn?.addEventListener('click', () => { held = !held; syncPause(); }, { signal });
-  root.addEventListener('mouseenter', () => { hovering = true; syncPause(); }, { signal });
-  root.addEventListener('mouseleave', () => { hovering = false; syncPause(); }, { signal });
-  root.addEventListener('focusin', () => { focused = true; syncPause(); }, { signal });
-  root.addEventListener('focusout', () => { focused = root.contains(document.activeElement); syncPause(); }, { signal });
+  // Hover and focus hold the rotation for a mouse and a keyboard only. On a phone a tap fakes a
+  // mouseenter that never gets its mouseleave, and the tapped tab keeps focus: the cover froze
+  // after the first tap. A clicked tab keeps focus too, so focus counts only when it is visible.
+  root.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'mouse') return; hovering = true; syncPause(); }, { signal });
+  root.addEventListener('pointerleave', (e) => { if (e.pointerType !== 'mouse') return; hovering = false; syncPause(); }, { signal });
+  const keyboardFocus = () => !!root.querySelector(':focus-visible');
+  root.addEventListener('focusin', () => { focused = keyboardFocus(); syncPause(); }, { signal });
+  root.addEventListener('focusout', () => { focused = root.contains(document.activeElement) && keyboardFocus(); syncPause(); }, { signal });
   document.addEventListener('visibilitychange', syncPause, { signal });
   syncPause();
 }

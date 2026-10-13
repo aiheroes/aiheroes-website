@@ -40,7 +40,7 @@ export type Entry = 'nieuw' | 'vervangen' | 'eigen-beheer';
 export const ENTRIES: Record<Entry, { title: string; href: string; accent: 'red' | 'blue' | 'dark'; topic: string }> = {
   nieuw: { title: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', accent: 'red', topic: 'Nieuwe AI-toepassing' },
   vervangen: { title: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', topic: 'Oude software vervangen' },
-  'eigen-beheer': { title: 'AI lokaal draaien', href: '/nl/eigen-beheer', accent: 'dark', topic: 'AI lokaal draaien' },
+  'eigen-beheer': { title: 'Lokaal AI draaien', href: '/nl/eigen-beheer', accent: 'dark', topic: 'Lokaal AI draaien' },
 };
 
 /** The entries in English (docs/relaunch phase 7); same keys, colours and order. */

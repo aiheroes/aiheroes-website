@@ -95,7 +95,7 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
       },
       {
         '@type': 'OfferCatalog',
-        name: 'AI lokaal draaien',
+        name: 'Lokaal AI draaien',
         itemListElement: [
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Soevereine AI en hosting', description: 'AI en software op eigen servers of bij een Europese partij, zonder Amerikaanse cloud, met de AI Act ingebouwd', url: 'https://aiheroes.io/nl/eigen-beheer' } },
         ],
