@@ -340,7 +340,7 @@ Blue zone with the heading, a lede, direct mail and phone links and three people
 Ink band with a 450 tagline, four link columns (headings in 600 0.875rem micro tint, links at body tint turning cream and underlined on hover), a legal line above a 1.5px rule, and the cream square with the full-colour wordmark at 78%, aligned to the bottom right.
 
 ### Duotone people
-SVG filter "C2 drieklank licht": desaturate, gamma lift 0.8, then map luminance onto dark accent, accent, cream. Applied with `contrast(1.05)`; red for the homepage case photo, blue for the contact people. Case stand-in photos (tiles and case covers) take the colour of the case's first entry: red or blue duotone, black and white for Lokale AI (decision 2026-10-12). The cover photos and the place photo stay in colour. The AI Salon speaker portraits are black and white without duotone (`grayscale(1)`, decision 2026-10-12).
+SVG filter "C2 drieklank licht": desaturate, gamma lift 0.8, then map luminance onto dark accent, accent, cream. Applied with `contrast(1.05)`; red for the homepage case photo, blue for the contact people. Case stand-in photos (tiles and case covers) take the colour of the case's first entry: red or blue duotone, black and white for AI lokaal draaien (decision 2026-10-12). The cover photos and the place photo stay in colour. The AI Salon speaker portraits are black and white without duotone (`grayscale(1)`, decision 2026-10-12).
 
 ## Do's and Don'ts
 

@@ -23,7 +23,7 @@ const crumbs = [{ label: 'Home', href: '/en' }, { label: 'How we work', href: '/
 const outcomes = [
   { title: ENTRIES_EN.nieuw.title, accent: 'red' as const, href: ENTRIES_EN.nieuw.href, more: 'More about new AI tools', text: 'A working prototype on your own data. Your team sees it work in the demo, before anyone decides to build.' },
   { title: ENTRIES_EN.vervangen.title, accent: 'blue' as const, href: ENTRIES_EN.vervangen.href, more: 'More about replacing software', text: 'An architecture and a migration plan: what is new, what stays and in which order you switch over.' },
-  { title: ENTRIES_EN['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES_EN['eigen-beheer'].href, more: 'More about self-hosted AI', text: 'A hosting design and a risk assessment: where it runs, who has access and what the AI Act asks.' },
+  { title: ENTRIES_EN['eigen-beheer'].title, accent: 'dark' as const, href: ENTRIES_EN['eigen-beheer'].href, more: 'More about running AI locally', text: 'A hosting design and a risk assessment: where it runs, who has access and what the AI Act asks.' },
 ];
 
 const days = [
@@ -40,7 +40,7 @@ const faq = [
   { q: 'What do we need to free up?', a: 'Half a day for the intake, with the owner and two or three people who do the work. After that, the documents and data we ask for, the owner at the kick-off on day 1 and at the demo on day 6, and a contact person for questions along the way. We do the building.' },
   { q: 'Does the prototype already work in our systems?', a: 'Not yet. The prototype runs on your own data and follows the way you work. We connect it to your software in the build, together with the security and the roll-out. Until then the start sprint does not touch your live systems.' },
   { q: 'What if it does not work in six days?', a: 'Then you know after six days, and you know why. Sometimes a question turns out bigger than expected; the plan then says what it takes. If AI is not the answer, we say so.' },
-  { q: 'Is the price different per way in?', a: `No. From ${s.price} for all three: a new AI tool, replacing old software or self-hosted AI.` },
+  { q: 'Is the price different per way in?', a: `No. From ${s.price} for all three: a new AI tool, replacing old software or running AI locally.` },
   { q: 'Can we skip the start sprint?', a: 'For a build, almost never: the start sprint keeps us from building something whose business case does not add up. If you do not know yet where AI pays off, start with an [exploration](/en/business-case#exploration). If you are looking for [extra developers in your team](/en/extra-developers), we start with an introduction. [Training](/en/training) or the [AI Act check](/en/compliance) need no start sprint.' },
   { q: 'Does it work for software without AI?', a: 'Yes. We build what you need, with or without AI. The [INQ22](/en/cases/inq22) web shop has no AI in it, yet we built it with AI.' },
   { q: 'What happens after the start sprint?', a: `If the build goes ahead, you get a quote for the whole project. ${b.price} ${b.credit} ${b.milestones} After delivery we keep maintaining and developing the system; those costs are listed separately in the business case. If it does not go ahead, you keep the prototype or plan and the business case.` },

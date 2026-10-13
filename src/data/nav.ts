@@ -49,7 +49,7 @@ const NL: NavContent = {
       key: 'build', label: 'Wat we bouwen', accent: 'red', subs: [
         { label: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing' },
         { label: 'Oude software vervangen', href: '/nl/software-vervangen' },
-        { label: 'Lokale AI', href: '/nl/eigen-beheer' },
+        { label: 'AI lokaal draaien', href: '/nl/eigen-beheer' },
       ],
     },
     {
@@ -101,7 +101,7 @@ const NL: NavContent = {
         ],
       },
       {
-        heading: 'Lokale AI', href: '/nl/eigen-beheer', links: [
+        heading: 'AI lokaal draaien', href: '/nl/eigen-beheer', links: [
           { label: 'AI op eigen servers', href: '/nl/ai-op-eigen-servers' },
           { label: 'Europees alternatief voor ChatGPT', href: '/nl/europees-alternatief-chatgpt' },
         ],
@@ -151,7 +151,7 @@ const EN: NavContent = {
       key: 'build', label: 'What we build', accent: 'red', subs: [
         { label: 'A new AI tool', href: '/en/new-ai-tool' },
         { label: 'Replace old software', href: '/en/replace-software' },
-        { label: 'Self-hosted AI', href: '/en/self-hosted' },
+        { label: 'Run AI locally', href: '/en/self-hosted' },
       ],
     },
     {
@@ -203,7 +203,7 @@ const EN: NavContent = {
         ],
       },
       {
-        heading: 'Self-hosted AI', href: '/en/self-hosted', links: [
+        heading: 'Run AI locally', href: '/en/self-hosted', links: [
           { label: 'AI on your own servers', href: '/en/ai-on-your-own-servers' },
           { label: 'European alternative to ChatGPT', href: '/en/european-chatgpt-alternative' },
         ],

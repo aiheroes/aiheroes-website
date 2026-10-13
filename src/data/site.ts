@@ -40,14 +40,14 @@ export type Entry = 'nieuw' | 'vervangen' | 'eigen-beheer';
 export const ENTRIES: Record<Entry, { title: string; href: string; accent: 'red' | 'blue' | 'dark'; topic: string }> = {
   nieuw: { title: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', accent: 'red', topic: 'Nieuwe AI-toepassing' },
   vervangen: { title: 'Oude software vervangen', href: '/nl/software-vervangen', accent: 'blue', topic: 'Oude software vervangen' },
-  'eigen-beheer': { title: 'Lokale AI', href: '/nl/eigen-beheer', accent: 'dark', topic: 'Lokale AI' },
+  'eigen-beheer': { title: 'AI lokaal draaien', href: '/nl/eigen-beheer', accent: 'dark', topic: 'AI lokaal draaien' },
 };
 
 /** The entries in English (docs/relaunch phase 7); same keys, colours and order. */
 export const ENTRIES_EN: typeof ENTRIES = {
   nieuw: { title: 'A new AI tool', href: '/en/new-ai-tool', accent: 'red', topic: 'A new AI tool' },
   vervangen: { title: 'Replace old software', href: '/en/replace-software', accent: 'blue', topic: 'Replace old software' },
-  'eigen-beheer': { title: 'Self-hosted AI', href: '/en/self-hosted', accent: 'dark', topic: 'Self-hosted AI' },
+  'eigen-beheer': { title: 'Run AI locally', href: '/en/self-hosted', accent: 'dark', topic: 'Run AI locally' },
 };
 
 export function entriesFor(lang: 'nl' | 'en'): typeof ENTRIES {
