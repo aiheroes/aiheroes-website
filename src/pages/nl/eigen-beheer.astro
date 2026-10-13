@@ -13,7 +13,7 @@ import HsFaq from '../../components/hs/HsFaq.astro';
 import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import { SITE } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/' }, { label: 'Wat we bouwen', href: '/nl/wat-we-bouwen' }];
@@ -39,7 +39,7 @@ const LOGOS = [
   description={`AI en software op je eigen servers of bij een Europese partij, met de AI Act in het ontwerp. Begin met een startsprint van zes dagen, vanaf ${SITE.sprint.price}: hostingontwerp, risicobeoordeling en business case.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Lokale AI', path: '/nl/eigen-beheer', price: SITE.sprint.priceValue, serviceType: 'AI op eigen servers en Europese hosting', description: 'AI en software op eigen servers of bij een Europese partij, met de AI Act in het ontwerp.' }),
+    serviceSchema({ name: 'Lokale AI', path: '/nl/eigen-beheer', offers: [OFFERS.nl.sprint, OFFERS.nl.build], serviceType: 'AI op eigen servers en Europese hosting', description: 'AI en software op eigen servers of bij een Europese partij, met de AI Act in het ontwerp.' }),
     faqSchema(faq),
   ]}
 >
@@ -53,7 +53,7 @@ const LOGOS = [
     photo={{ src: '/hs/photos/cover-datacenter.webp', alt: 'Een lichte serverruimte in een datacenter', w: 1800, h: 1012, pos: '50% 55%' }}
     facts={[
       { value: '6 dagen', label: 'tot hostingontwerp en risicobeoordeling' },
-      { value: SITE.sprint.price, label: 'de startsprint, vaste prijs' },
+      { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint' },
     ]}
   />
 
@@ -104,7 +104,7 @@ const LOGOS = [
     <HsSteps
       items={[
         { label: 'Zes dagen', title: 'Startsprint', text: `Je omgeving in kaart, een hostingontwerp, een risicobeoordeling en de business case. Vanaf ${SITE.sprint.price}, start binnen twee weken.` },
-        { label: 'In fasen', title: 'Bouwen en migreren', text: `We bouwen of migreren in fasen, naast wat er nu draait. Bouw vanaf ${SITE.build.from}.` },
+        { label: 'In mijlpalen', title: 'Bouwen en migreren', text: `We bouwen of migreren naast wat er nu draait, met een demo bij elke mijlpaal. ${SITE.build.price} ${SITE.build.credit}` },
         { label: 'Livegang', title: 'Beheerders getraind', text: 'Je eigen beheerders zijn getraind op de omgeving voordat die live gaat.' },
         { label: 'Daarna', title: 'Beheer en doorontwikkeling', text: 'Wij blijven beheren en doorontwikkelen. Alles is gedocumenteerd en je zit niet vast aan één AI-leverancier.' },
       ]}

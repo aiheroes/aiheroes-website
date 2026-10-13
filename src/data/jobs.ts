@@ -42,7 +42,7 @@ export const JOBS: Job[] = [
     summary: 'Je bouwt AI-toepassingen die teams elke dag gebruiken, van werkend prototype in zes dagen tot een systeem dat bij de klant draait.',
     description: [
       'Als AI Engineer bouw je mee aan alles wat AI Heroes oplevert: AI-klantenservice, agents en workflows, documentverwerking, kennisassistenten en de koppelingen met de systemen die een klant al heeft.',
-      'Je werkt in startsprints van zes dagen en daarna in sprints van twee weken, met een demo na elke sprint. Compliance zit vanaf de tekentafel in het ontwerp: AI Act-classificatie, logging, menselijk toezicht en de keuze voor de hosting. Na oplevering blijven we beheren en doorontwikkelen, dus je ziet wat je bouwt ook echt gebruikt worden.',
+      'Je werkt in startsprints van zes dagen en daarna in mijlpalen, met een demo bij elke mijlpaal. Compliance zit vanaf de tekentafel in het ontwerp: AI Act-classificatie, logging, menselijk toezicht en de keuze voor de hosting. Na oplevering blijven we beheren en doorontwikkelen, dus je ziet wat je bouwt ook echt gebruikt worden.',
     ],
     requirements: [
       'Ervaring met Python of TypeScript en met moderne AI-frameworks',
@@ -66,7 +66,7 @@ export const JOBS: Job[] = [
       summary: 'You build AI tools that teams use every day, from a working prototype in six days to a system running in the client’s own IT landscape.',
       description: [
         'As an AI Engineer you help build everything AI Heroes delivers: AI customer service, agents and workflows, document processing, knowledge assistants and the connections to the systems a client already has.',
-        'You work in six-day start sprints and then in two-week sprints, with a demo after every sprint. Compliance is built into the design from day one: AI Act classification, logging, human oversight and the choice of hosting. After delivery we keep maintaining and developing what we built, so you see your work actually being used.',
+        'You work in six-day start sprints and then in milestones, with a demo at every milestone. Compliance is built into the design from day one: AI Act classification, logging, human oversight and the choice of hosting. After delivery we keep maintaining and developing what we built, so you see your work actually being used.',
       ],
       requirements: [
         'Experience with Python or TypeScript and with modern AI frameworks',
@@ -151,7 +151,7 @@ export const JOBS: Job[] = [
     contact: 'frans-hoorn',
     summary: 'Je helpt nieuwe klanten binnenhalen, van het eerste gesprek tot een voorstel voor een startsprint.',
     description: [
-      'AI Heroes bouwt AI-toepassingen die teams elke dag gebruiken, vanuit Groningen. De eerste stap bij elke klant is een startsprint van zes dagen.',
+      'AI Heroes bouwt AI-toepassingen die teams elke dag gebruiken, vanuit Groningen. De eerste stap bij elke bouw is een startsprint van zes dagen.',
       'Als stagiair sales en business development zoek je organisaties met een concreet proces dat beter kan, voer je eerste gesprekken en bereid je voorstellen voor. Je werkt direct samen met de drie oprichters en krijgt veel verantwoordelijkheid.',
     ],
     requirements: [
@@ -174,7 +174,7 @@ export const JOBS: Job[] = [
       type: 'Internship, at least five months',
       summary: 'You help build the commercial pipeline, from the first conversation to a proposal for a start sprint.',
       description: [
-        'AI Heroes builds AI tools that teams use every day, from Groningen. The first step with every client is a six-day start sprint.',
+        'AI Heroes builds AI tools that teams use every day, from Groningen. The first step of every build is a six-day start sprint.',
         'As our sales and business development intern you find organisations with a concrete process that could work better, hold first conversations and prepare proposals. You work directly with the three founders and get a lot of ownership.',
       ],
       requirements: [

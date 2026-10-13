@@ -21,7 +21,7 @@ import HsContact from './HsContact.astro';
 import HsIcon from './HsIcon.astro';
 import { ICONS, plainText, rich, zet, type IconName } from './hs';
 import { SITE, SITE_EN, type Entry } from '../../data/site';
-import { PROFESSIONAL_SERVICE_SCHEMA, faqSchema, serviceSchema } from '../../data/schema';
+import { OFFERS, PROFESSIONAL_SERVICE_SCHEMA, faqSchema, serviceSchema } from '../../data/schema';
 import { FOUNDERS } from '../../data/team';
 import { langOf } from '../../data/ui';
 
@@ -68,8 +68,8 @@ const T = en
       } as Record<string, Door>,
       sprintCta: 'Plan a start sprint',
       sprintFacts: [
-        { value: `${SITE_EN.sprint.days} days`, label: 'from question to result' },
-        { value: SITE_EN.sprint.price, label: 'fixed price, for every way in' },
+        { value: `${SITE_EN.sprint.days} days`, label: 'from kick-off to result' },
+        { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
         { value: '2 weeks', label: 'from the first call to the start' },
       ],
       secondary: { training: 'How it works', L07: 'How we start', other: 'How to start' },
@@ -80,7 +80,7 @@ const T = en
       teamHref: '/en/about/team',
       sprintLink: 'How the start sprint works',
       sprintHref: '/en/start-sprint',
-      then: `Then we build in two-week sprints, from ${SITE_EN.build.from}.`,
+      then: `${SITE_EN.build.price} ${SITE_EN.build.credit}`,
       caseKicker: 'Case',
       readCase: 'Read the case',
       moreWork: 'More of our *work*',
@@ -131,8 +131,8 @@ const T = en
       } as Record<string, Door>,
       sprintCta: 'Plan een startsprint',
       sprintFacts: [
-        { value: `${SITE.sprint.days} dagen`, label: 'van vraag tot resultaat' },
-        { value: SITE.sprint.price, label: 'vaste prijs, voor alle ingangen' },
+        { value: `${SITE.sprint.days} dagen`, label: 'van aftrap tot resultaat' },
+        { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint' },
         { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
       ],
       secondary: { training: 'Hoe het werkt', L07: 'Hoe we beginnen', other: 'Zo begin je' },
@@ -143,7 +143,7 @@ const T = en
       teamHref: '/nl/over-ons/team',
       sprintLink: 'Zo werkt de startsprint',
       sprintHref: '/nl/startsprint',
-      then: `Daarna bouwen we in sprints van ${SITE.build.sprintWeeks} weken, vanaf ${SITE.build.from}.`,
+      then: `${SITE.build.price} ${SITE.build.credit}`,
       caseKicker: 'Case',
       readCase: 'Lees de case',
       moreWork: 'Meer van ons *werk*',
@@ -211,7 +211,8 @@ const jsonLd: object[] = [
     description: d.description,
     path,
     serviceType: d.title,
-    price: door ? door.price : SITE.sprint.priceValue,
+    // Training doors carry the training price; the kennismaking door (L07) has none.
+    offers: door ? (door.price ? [OFFERS[lang].training] : []) : [OFFERS[lang].sprint, OFFERS[lang].build],
   }),
   {
     '@context': 'https://schema.org',
@@ -376,7 +377,7 @@ if (d.plan === 'L15') {
 
   <HsContact
     entry={pillar.chip}
-    training={d.training || isTraining}
+    intent={d.training || isTraining ? 'training' : d.plan === 'L07' ? 'developers' : undefined}
     title={isTraining ? (d.plan === 'T5' ? T.contactTitle.T5 : T.contactTitle.training) : d.plan === 'L07' ? T.contactTitle.L07 : T.contactTitle.other}
     lede={T.contactLede[kind]}
   />

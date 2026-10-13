@@ -12,8 +12,8 @@ import HsStandardList from '../../components/hs/HsStandardList.astro';
 import HsFaq from '../../components/hs/HsFaq.astro';
 import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
-import { SITE, SITE_EN } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { SITE_EN } from '../../data/site';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
@@ -40,7 +40,7 @@ const LOGOS = [
   description={`AI and software on your own servers or with a European provider, with the AI Act in the design. Start with a six-day start sprint from ${SITE_EN.sprint.price}: hosting design, risk assessment and business case.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Self-hosted AI', path: '/en/self-hosted', price: SITE.sprint.priceValue, serviceType: 'Self-hosted AI and European hosting', description: 'AI and software on your own servers or with a European provider, with the AI Act in the design.' }),
+    serviceSchema({ name: 'Self-hosted AI', path: '/en/self-hosted', offers: [OFFERS.en.sprint, OFFERS.en.build], serviceType: 'Self-hosted AI and European hosting', description: 'AI and software on your own servers or with a European provider, with the AI Act in the design.' }),
     faqSchema(faq),
   ]}
 >
@@ -54,7 +54,7 @@ const LOGOS = [
     photo={{ src: '/hs/photos/cover-datacenter.webp', alt: 'A bright server room in a data centre', w: 1800, h: 1012, pos: '50% 55%' }}
     facts={[
       { value: '6 days', label: 'to hosting design and risk assessment' },
-      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed price' },
+      { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
     ]}
   />
 
@@ -105,7 +105,7 @@ const LOGOS = [
     <HsSteps
       items={[
         { label: 'Six days', title: 'Start sprint', text: `Your environment mapped, a hosting design, a risk assessment and the business case. From ${SITE_EN.sprint.price}, start within two weeks.` },
-        { label: 'In phases', title: 'Building and migrating', text: `We build or migrate in phases, next to what runs today. Build from ${SITE_EN.build.from}.` },
+        { label: 'In milestones', title: 'Building and migrating', text: `We build or migrate next to what runs today, with a demo at every milestone. ${SITE_EN.build.price} ${SITE_EN.build.credit}` },
         { label: 'Go-live', title: 'Administrators trained', text: 'Your own administrators are trained on the environment before it goes live.' },
         { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system, documented and not tied to one AI vendor.' },
       ]}

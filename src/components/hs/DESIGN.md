@@ -334,6 +334,8 @@ A dark slide: the "how" paragraph as a 450-weight lede at the body-on-dark tint,
 ### Contact (L17)
 Blue zone with the heading, a lede, direct mail and phone links and three people cards with unframed black-and-white portraits, the deck's L24 "mono" treatment (`grayscale(1) contrast(1.08)`), so they stand apart from the blue (photo zooms to 1.04 on hover, name underlines) beside the cream form.
 
+**Every page has the right door (decision 2026-10-13).** The start sprint is the door for visitors who are ready to build; `HsPageCover`'s default button ("Plan een startsprint") is only for those pages. A page for visitors who are not ready yet sets its own cover button (usually to `#contact`) and an `HsContact intent`: `verkenning` (business case), `kennismaking` (team, campaigns), `ai-act-check` (compliance), `training`, `developers` (extra developers). The intent adds and preselects its chip and swaps the ask and the question, so the form never asks "Wat wil je bouwen?" of someone who is not there yet. A "nog niet" link never leads to a page whose main button sends the visitor back to the start sprint.
+
 ### Footer
 Ink band with a 450 tagline, four link columns (headings in 600 0.875rem micro tint, links at body tint turning cream and underlined on hover), a legal line above a 1.5px rule, and the cream square with the full-colour wordmark at 78%, aligned to the bottom right.
 

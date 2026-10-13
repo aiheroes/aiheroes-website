@@ -24,6 +24,8 @@ const otherLang = lang === 'nl' ? 'en' : 'nl';
 const langHref = alternate ?? (lang === 'nl' ? '/en' : '/');
 const isCurrent = (href?: string) => !!href && (path === href || path.startsWith(`${href}/`));
 const itemActive = (subs?: { href: string }[], href?: string) => isCurrent(href) || !!subs?.some((s) => isCurrent(s.href));
+// On the page the button points to (the start sprint), it jumps to that page's form instead of reloading it.
+const ctaHref = path === nav.cta.href ? '#contact' : nav.cta.href;
 ---
 
 <header class="hs-nav" data-subnav>
@@ -63,7 +65,7 @@ const itemActive = (subs?: { href: string }[], href?: string) => isCurrent(href)
   </nav>
   <div class="hs-nav__end">
     <a class="hs-nav__lang" href={langHref} hreflang={otherLang} lang={otherLang} aria-label={nav.langName}>{nav.langLabel}</a>
-    <a class="hs-btn hs-btn--dark hs-btn--s hs-nav__cta" href={nav.cta.href}>{nav.cta.label}</a>
+    <a class="hs-btn hs-btn--dark hs-btn--s hs-nav__cta" href={ctaHref}>{nav.cta.label}</a>
     <button class="hs-nav__menu" type="button" aria-expanded="false" aria-controls="hs-menu">
       <HsIcon name="menu" class="is-closed" />
       <HsIcon name="close" class="is-open" />
@@ -85,7 +87,7 @@ const itemActive = (subs?: { href: string }[], href?: string) => isCurrent(href)
       </li>
     ))}
   </ul>
-  <a class="hs-btn hs-btn--light" href={nav.cta.href}>
+  <a class="hs-btn hs-btn--light" href={ctaHref}>
     {nav.cta.label}
     <HsIcon name="arrow-right" />
   </a>

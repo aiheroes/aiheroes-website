@@ -13,8 +13,8 @@ import HsFaq from '../../components/hs/HsFaq.astro';
 import HsOtherEntries from '../../components/hs/HsOtherEntries.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import HsIcon from '../../components/hs/HsIcon.astro';
-import { SITE, SITE_EN } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { SITE_EN } from '../../data/site';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/en' }, { label: 'What we build', href: '/en/what-we-build' }];
@@ -35,7 +35,7 @@ const faq = [
   description={`Replace overpriced or outdated software with software that fits. Built next to the old system, data moved over in parts, the old one switched off only when the new one runs. Start with a six-day start sprint from ${SITE_EN.sprint.price}.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'Replace old software', path: '/en/replace-software', price: SITE.sprint.priceValue, serviceType: 'Software replacement and modernisation', description: 'Overpriced SaaS, Excel and outdated custom software replaced by your own software, built next to the old system and moved over in phases.' }),
+    serviceSchema({ name: 'Replace old software', path: '/en/replace-software', offers: [OFFERS.en.sprint, OFFERS.en.build], serviceType: 'Software replacement and modernisation', description: 'Overpriced SaaS, Excel and outdated custom software replaced by your own software, built next to the old system and moved over in phases.' }),
     faqSchema(faq),
   ]}
 >
@@ -49,7 +49,7 @@ const faq = [
     photo={{ src: '/hs/photos/cover-legacy.webp', alt: 'An old beige computer on an office desk', w: 1800, h: 1800, pos: '40% 55%' }}
     facts={[
       { value: '6 days', label: 'to architecture and migration plan' },
-      { value: SITE_EN.sprint.price, label: 'the start sprint, fixed price' },
+      { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
       { value: '1 year', label: 'for Strive to earn the build back' },
     ]}
   />
@@ -101,7 +101,7 @@ const faq = [
     <HsSteps
       items={[
         { label: 'Six days', title: 'Start sprint', text: `Architecture, a phased migration plan and the business case on a single page. From ${SITE_EN.sprint.price}, start within two weeks.` },
-        { label: 'Two-week sprints', title: 'Building next to the old system', text: `A demo after every sprint; the old system simply keeps running. Build from ${SITE_EN.build.from}.` },
+        { label: 'Two to twelve weeks', title: 'Building next to the old system', text: `${SITE_EN.build.price} ${SITE_EN.build.credit} A demo at every milestone; the old system simply keeps running.` },
         { label: 'Switch', title: 'Team trained, then switch', text: 'Your team already works with the new system before the old one goes.' },
         { label: 'After that', title: 'Maintenance and development', text: 'We keep maintaining and developing the system. The integrations and data model are documented.' },
       ]}

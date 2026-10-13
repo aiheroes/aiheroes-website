@@ -62,11 +62,22 @@ export const PROFESSIONAL_SERVICE_SCHEMA = {
         itemOffered: {
           '@type': 'Service',
           name: 'Startsprint',
-          description: 'Zes dagen, vaste prijs, vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij.',
+          description: 'Zes dagen, vaste prijs, vanaf €8.000. Uitkomst: een werkend prototype of een bouwplan, altijd met de business case erbij. Gaat de bouw door, dan gaat dit bedrag van de bouwprijs af.',
           url: 'https://aiheroes.io/nl/startsprint',
         },
-        price: '8000',
         priceCurrency: 'EUR',
+        priceSpecification: { '@type': 'PriceSpecification', minPrice: '8000', priceCurrency: 'EUR' },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Bouw',
+          description: 'Een vaste prijs per project, vanaf €15.000, in mijlpalen met een demo bij elke mijlpaal. Na oplevering beheer en doorontwikkeling, apart geprijsd in de business case.',
+          url: 'https://aiheroes.io/nl/hoe-we-werken',
+        },
+        priceCurrency: 'EUR',
+        priceSpecification: { '@type': 'PriceSpecification', minPrice: '15000', priceCurrency: 'EUR' },
       },
       {
         '@type': 'OfferCatalog',
@@ -137,7 +148,25 @@ export function faqSchema(items: FaqItem[]) {
   };
 }
 
-export function serviceSchema(opts: { name: string; description: string; path: string; serviceType?: string; price?: number }) {
+/** A published price is always a minimum ("vanaf"), so offers carry a minPrice and no exact price. */
+export type OfferSpec = { name: string; minPrice: number; description: string; unitText?: string };
+
+/** The published prices as offers, per language. A service lists the ones that apply to it, so a
+ *  pillar or landing never carries the sprint price as the price of the whole service (2026-10-13). */
+export const OFFERS: Record<'nl' | 'en', Record<'sprint' | 'build' | 'training', OfferSpec>> = {
+  nl: {
+    sprint: { name: 'Startsprint', minPrice: 8000, description: 'Zes dagen, vaste prijs, vanaf €8.000: een werkend prototype of bouwplan met de business case. Gaat de bouw door, dan gaat dit bedrag van de bouwprijs af.' },
+    build: { name: 'Bouw', minPrice: 15000, description: 'Een vaste prijs per project, vanaf €15.000, in mijlpalen met een demo bij elke mijlpaal.' },
+    training: { name: 'Training', minPrice: 2500, unitText: 'per dagdeel', description: 'Incompany AI-training, vanaf €2.500 per dagdeel.' },
+  },
+  en: {
+    sprint: { name: 'Start sprint', minPrice: 8000, description: 'Six days, fixed price, from €8,000: a working prototype or build plan with the business case. If the build goes ahead, this amount is deducted from the build price.' },
+    build: { name: 'Build', minPrice: 15000, description: 'A fixed price per project, from €15,000, in milestones with a demo at every milestone.' },
+    training: { name: 'Training', minPrice: 2500, unitText: 'per half day', description: 'In-company AI training, from €2,500 per half day.' },
+  },
+};
+
+export function serviceSchema(opts: { name: string; description: string; path: string; serviceType?: string; offers?: OfferSpec[] }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -147,8 +176,16 @@ export function serviceSchema(opts: { name: string; description: string; path: s
     serviceType: opts.serviceType ?? opts.name,
     provider: ORG,
     areaServed: { '@type': 'Country', name: 'Nederland' },
-    ...(opts.price
-      ? { offers: { '@type': 'Offer', price: String(opts.price), priceCurrency: 'EUR', priceSpecification: { '@type': 'PriceSpecification', minPrice: String(opts.price), priceCurrency: 'EUR' } } }
+    ...(opts.offers?.length
+      ? {
+          offers: opts.offers.map((o) => ({
+            '@type': 'Offer',
+            name: o.name,
+            description: o.description,
+            priceCurrency: 'EUR',
+            priceSpecification: { '@type': 'PriceSpecification', minPrice: String(o.minPrice), priceCurrency: 'EUR', ...(o.unitText ? { unitText: o.unitText } : {}) },
+          })),
+        }
       : {}),
   };
 }

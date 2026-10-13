@@ -16,7 +16,7 @@ import HsAuthor from '../../components/hs/HsAuthor.astro';
 import HsContact from '../../components/hs/HsContact.astro';
 import HsIcon from '../../components/hs/HsIcon.astro';
 import { SITE, SITE_EN as S } from '../../data/site';
-import { serviceSchema, faqSchema } from '../../data/schema';
+import { OFFERS, serviceSchema, faqSchema } from '../../data/schema';
 import { zet } from '../../components/hs/hs';
 
 const crumbs = [{ label: 'Home', href: '/en' }, { label: 'How we work', href: '/en/how-we-work' }];
@@ -47,7 +47,7 @@ const faq = [
   description={`AI training on the system your team uses every day, in every build. Standalone training from ${t.from} ${t.unit}, on location anywhere in the Netherlands: in-company, AI literacy with a certificate and digital sovereignty.`}
   crumbs={crumbs}
   jsonLd={[
-    serviceSchema({ name: 'AI training for teams', path: '/en/training', price: SITE.training.fromValue, serviceType: 'In-company AI training and AI literacy', description: `AI training on location anywhere in the Netherlands, from ${t.from} ${t.unit}.` }),
+    serviceSchema({ name: 'AI training for teams', path: '/en/training', offers: [OFFERS.en.training], serviceType: 'In-company AI training and AI literacy', description: `AI training on location anywhere in the Netherlands, from ${t.from} ${t.unit}.` }),
     faqSchema(faq),
   ]}
 >
@@ -129,7 +129,7 @@ const faq = [
   </HsSection>
 
   <HsContact
-    training
+    intent="training"
     title="Ask about training"
     lede={`Tell us who you want to train and what they need to be able to do. You hear from us within ${S.reply}, with a proposal for an intake. Want something built? Then pick one of the other topics.`}
   />

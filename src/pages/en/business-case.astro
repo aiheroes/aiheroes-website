@@ -1,7 +1,8 @@
 ---
 // P8 Cost and return up front, English (docs/relaunch/pages/P8-business-case.md, phase 7): mirrors
 // /nl/business-case. One exploration without a price; only the start sprint has a price; no "free
-// analysis" guarantee; implementation support is part of the standard. Sender: Frans Hoorn.
+// analysis" guarantee; implementation support is part of the standard. Sender: Frans Hoorn. The cover
+// and the form lead to the exploration; #exploration is the anchor other pages link to (2026-10-13).
 import HsLayout from '../../layouts/HsLayout.astro';
 import HsPageCover from '../../components/hs/HsPageCover.astro';
 import HsSection from '../../components/hs/HsSection.astro';
@@ -27,7 +28,7 @@ const sheet = [
 const faq = [
   { q: 'What does a business case cost?', a: `When you have something concrete, it is part of the start sprint: six days, from ${S.sprint.price}, with a prototype or build plan included. An exploration for organisations without a concrete question yet is priced up front for your situation.` },
   { q: 'What if the answer is no?', a: 'Then we do not build, and you know why. Kwakkel BV decided not to build yet after the start sprint and keeps the prototype, the plan and the business case. That is an outcome too.' },
-  { q: 'Where do you start if you have nothing concrete yet?', a: 'With an exploration: we go through your processes and rank the opportunities by return. You can also read [where to start with AI in your organisation](/en/insights/where-to-start-with-ai).' },
+  { q: 'Where do you start if you have nothing concrete yet?', a: 'With an exploration: we go through your processes and rank the opportunities by return. [Ask for an exploration](#contact), or first read [where to start with AI in your organisation](/en/insights/where-to-start-with-ai).' },
   { q: 'Who helps companies with an AI readiness scan?', a: 'AI Heroes in Groningen does this through an exploration: a readiness scan that ends with concrete candidates to build, with cost and return attached. Because we build ourselves, our figures reflect what building really costs.' },
   { q: 'How is this different from a consultancy firm?', a: 'We build ourselves. Our business case ends with something we can build, at its real cost. If AI is not the answer, we say so.' },
   { q: 'Who makes the business case?', a: 'Frans Hoorn, co-founder. He leads the start sprint and the business case.' },
@@ -51,6 +52,7 @@ const faq = [
     current="Cost and return up front"
     title="First know what it *returns*. | Then build."
     lede="Before we build, you know what it costs, what it returns and when it pays for itself. On one page, as the basis for your decision."
+    cta={{ label: 'Ask for an exploration', href: '#contact' }}
     secondary={{ label: 'What is on the page', href: '#one-page' }}
     facts={[
       { value: '1 page', label: 'business case before every build' },
@@ -66,7 +68,7 @@ const faq = [
     <p class="hs-lead" data-item>{zet('If the business case does not add up, we do not build.', { display: true })}</p>
   </HsSection>
 
-  <HsSection title="Two ways to *get* there">
+  <HsSection id="exploration" title="Two ways to *get* there">
     <HsCards
       variant="planes"
       columns={2}
@@ -99,5 +101,5 @@ const faq = [
     <div class="hs-sec__foot" data-item><HsAuthor id="frans-hoorn" label="You talk to" /></div>
   </HsSection>
 
-  <HsContact title="Tell us where you stand" lede={`Something concrete, or still looking? You hear from us within ${S.reply}, with a proposal for a start sprint or an exploration.`} />
+  <HsContact intent="verkenning" title="Tell us where you stand" lede={`Something concrete, or still looking? You hear from us within ${S.reply}, with a proposal for an exploration or a start sprint. Rather talk first? Book an introduction below.`} />
 </HsLayout>

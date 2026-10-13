@@ -40,7 +40,7 @@ const toc = [
     updated="oktober 2026"
     crumbs={crumbs}
     summary={[
-      'De startsprint duurt zes werkdagen tegen een vast bedrag: 50% bij de opdracht, 50% na dag zes.',
+      'De startsprint duurt zes werkdagen tegen een vast bedrag: 50% bij de opdracht, 50% na dag zes. Volgt er een bouw, dan gaat dat bedrag van de bouwprijs af.',
       'De broncode blijft bij AI Heroes; na volledige betaling heb je een eeuwigdurend gebruiksrecht voor je eigen bedrijfsvoering.',
       'Je gegevens blijven van jou en worden standaard binnen de Europese Unie verwerkt.',
       'Facturen betaal je binnen 14 dagen; de aansprakelijkheid is beperkt.',
@@ -56,8 +56,8 @@ const toc = [
       <ul>
         <li><strong>AI Heroes:</strong> {SITE.legalName}, gevestigd aan {SITE.address.street}, {SITE.address.postcode} {SITE.address.city}, ingeschreven bij de Kamer van Koophandel onder nummer {SITE.kvk}, btw-nummer {SITE.vat}.</li>
         <li><strong>Opdrachtgever:</strong> de natuurlijke of rechtspersoon die met AI Heroes een overeenkomst aangaat.</li>
-        <li><strong>Startsprint:</strong> het afgebakende traject van zes werkdagen tegen een vast bedrag, dat eindigt in een prototype of een bouwplan en een business case.</li>
-        <li><strong>Bouw:</strong> de ontwikkeling van software na de startsprint, in sprints van twee weken.</li>
+        <li><strong>Startsprint:</strong> het afgebakende traject van zes werkdagen tegen een vast bedrag, voorafgegaan door een intake, dat eindigt in een prototype of een bouwplan en een business case.</li>
+        <li><strong>Bouw:</strong> de ontwikkeling van software na de startsprint, tegen een vaste prijs per project en in mijlpalen.</li>
         <li><strong>Beheer:</strong> het in de lucht houden, onderhouden, beveiligen en doorontwikkelen van opgeleverde software na oplevering.</li>
         <li><strong>Training:</strong> workshops, trainingen en sessies, los of als onderdeel van een bouw.</li>
         <li><strong>Resultaten:</strong> alles wat AI Heroes in het kader van de overeenkomst maakt of levert, waaronder prototypes, software, broncode, documentatie, bouwplannen, business cases en trainingsmateriaal.</li>
@@ -84,14 +84,15 @@ const toc = [
       <ol>
         <li>De startsprint duurt zes werkdagen en kost het vaste bedrag uit de offerte. AI Heroes factureert 50% bij de opdracht en 50% na dag zes.</li>
         <li>Aan het eind levert AI Heroes, afhankelijk van de vraag, een prototype of een bouwplan, en een business case.</li>
-        <li>Opdrachtgever zorgt dat de eigenaar van de vraag aanwezig is op dag één en dag zes, en dat de afgesproken gebruikers en een kenner van de data en systemen beschikbaar zijn.</li>
-        <li>Na de startsprint besluit opdrachtgever of er een bouw volgt. Er is geen verplichting tot een vervolgopdracht. Gaat de bouw niet door, dan behoudt opdrachtgever het gebruiksrecht uit artikel 9 op het prototype of bouwplan en de business case.</li>
+        <li>Een prototype draait op de data die opdrachtgever aanlevert. In de startsprint koppelt AI Heroes het niet aan de systemen van opdrachtgever; dat gebeurt in de bouw.</li>
+        <li>Opdrachtgever neemt deel aan de intake vóór de start, levert de daarin afgesproken documenten en data tijdig aan, en zorgt dat de eigenaar van de vraag aanwezig is bij de aftrap op dag één en de demonstratie op dag zes.</li>
+        <li>Na de startsprint besluit opdrachtgever of er een bouw volgt. Er is geen verplichting tot een vervolgopdracht. Volgt er een bouw, dan verrekent AI Heroes het bedrag van de startsprint met de prijs van de bouw. Gaat de bouw niet door, dan behoudt opdrachtgever het gebruiksrecht uit artikel 9 op het prototype of bouwplan en de business case.</li>
         <li>Blijkt in de startsprint dat AI geen passende oplossing is of dat de business case niet sluit, dan meldt AI Heroes dat. Het vaste bedrag blijft verschuldigd.</li>
       </ol>
 
       <h2 id="bouw">Artikel 6. Bouw en oplevering</h2>
       <ol>
-        <li>De bouw verloopt in sprints van twee weken, met een demonstratie na elke sprint. Omvang, planning en prijs staan in de offerte of het bouwplan.</li>
+        <li>De bouw heeft een vaste prijs per project en verloopt in mijlpalen, met een demonstratie bij elke mijlpaal. Omvang, mijlpalen, planning en prijs staan in de offerte of het bouwplan.</li>
         <li>Wijzigingen in de omvang worden schriftelijk afgesproken en kunnen gevolgen hebben voor planning en prijs.</li>
         <li>Na oplevering test opdrachtgever de software binnen 10 werkdagen. Meldt opdrachtgever in die termijn geen wezenlijke gebreken, of neemt hij de software in gebruik, dan geldt de software als geaccepteerd.</li>
         <li>Gebreken die binnen de acceptatietermijn worden gemeld en die aan AI Heroes zijn toe te rekenen, herstelt AI Heroes zonder extra kosten.</li>

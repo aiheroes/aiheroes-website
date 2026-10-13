@@ -75,6 +75,7 @@
 3. Toezegging: de startsprint kan binnen twee weken na het eerste gesprek beginnen (zie 01-besluiten §1).
 4. De garantie "business-case-analyse gratis als er niets waardevols uit komt" vervalt (zie 01-besluiten §1).
 5. Kwakkel eindigt bij prototype en business case (zie 01-besluiten §8).
+6. **Vervangen 2026-10-13 (01-besluiten §23):** de dagindeling in §2.3 hierboven was een voorstel en klopte niet met de praktijk. Het echte verloop: intake vóór de start (bepaalt de documenten en data), dag 1 aftrap, dag 2 tot 5 bouwen of ontwerpen, dag 6 demo, business case en besluit. Het prototype draait op de data van de klant en is nog niet gekoppeld aan de systemen. Gaat de bouw door, dan gaat de startsprint van de bouwprijs af; een bouw heeft een vaste prijs per project in mijlpalen. "Nog niet"-links gaan naar de verkenning, nooit terug naar de startsprint.
 
 **Wacht op**
 - Quote Kwakkel (actiepunt); niet blokkerend.

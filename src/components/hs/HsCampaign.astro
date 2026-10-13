@@ -2,7 +2,9 @@
 // A0 campagne-template: recognition (cover with the medium), the fragment behind a house-style poster
 // (nothing loads from the platform until play), what you saw, from the screen to your organisation
 // (the three entries), one proof block and the contact block. Content from src/data/campaigns.ts;
-// copy and labels follow the language of the URL.
+// copy and labels follow the language of the URL. Viewers mostly come curious, without something to
+// build yet: the start sprint is the step for those who do, and the contact block leads with a
+// kennismaking (2026-10-13).
 import HsSection from './HsSection.astro';
 import HsEntries from './HsEntries.astro';
 import HsCase from './HsCase.astro';
@@ -28,16 +30,16 @@ const T = en
       saw: 'What you *saw*', about: 'About Jan Brusse', aboutHref: '/en/about/team#jan-brusse',
       entries: 'From the screen to your organisation', entriesId: 'what-we-build',
       proofTitle: `${SITE_EN.proof.orgs} organisations`,
-      proofText: `That is how many organisations AI Heroes has helped since 2019. The first step is always the start sprint: six days, from ${SITE_EN.sprint.price}.`,
-      cta: 'Plan a start sprint', ctaHref: '/en/start-sprint', episode: 'episode',
+      proofText: `That is how many organisations AI Heroes has helped since 2019. Want something built? The first step is the start sprint: six days, from ${SITE_EN.sprint.price}.`,
+      cta: 'Plan a start sprint', ctaHref: '/en/start-sprint', meet: 'Get to know us first', episode: 'episode',
     }
   : {
       crumbs: 'Kruimelpad', firstBroadcast: 'Eerste uitzending', play: 'Speel af', note: 'De video laadt van YouTube zodra je op afspelen klikt.',
       saw: 'Wat je *zag*', about: 'Over Jan Brusse', aboutHref: '/nl/over-ons/team#jan-brusse',
       entries: 'Van het scherm naar jouw organisatie', entriesId: 'wat-we-bouwen',
       proofTitle: `${SITE.proof.orgs} organisaties`,
-      proofText: `Zoveel organisaties hielp AI Heroes sinds 2019. De eerste stap is altijd de startsprint: zes dagen, vanaf ${SITE.sprint.price}.`,
-      cta: 'Plan een startsprint', ctaHref: '/nl/startsprint', episode: 'aflevering',
+      proofText: `Zoveel organisaties hielp AI Heroes sinds 2019. Wil je iets laten bouwen? De eerste stap is de startsprint: zes dagen, vanaf ${SITE.sprint.price}.`,
+      cta: 'Plan een startsprint', ctaHref: '/nl/startsprint', meet: 'Eerst kennismaken', episode: 'aflevering',
     };
 // The homepage case, anonymous; in English the 7.8 rating goes into the text (the figure row formats
 // decimals the Dutch way).
@@ -85,12 +87,15 @@ const caseEn = {
 <HsEntries title={T.entries} snap={false} id={T.entriesId} />
 
 <HsSection tone="paper" title={T.proofTitle} lede={T.proofText}>
-  <p class="hs-sec__foot" data-item><a class="hs-btn hs-btn--dark" href={T.ctaHref}>{T.cta}<HsIcon name="arrow-right" /></a></p>
+  <p class="hs-sec__foot" data-item>
+    <a class="hs-btn hs-btn--dark" href={T.ctaHref}>{T.cta}<HsIcon name="arrow-right" /></a>
+    <a class="hs-link" href="#contact">{T.meet}<HsIcon name="arrow-right" /></a>
+  </p>
 </HsSection>
 
 {en ? <HsCase snap={false} {...caseEn} /> : <HsCase snap={false} />}
 
-<HsContact />
+<HsContact intent="kennismaking" />
 
 <script>
   document.addEventListener('astro:page-load', () => {

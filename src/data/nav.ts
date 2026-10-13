@@ -79,7 +79,7 @@ const NL: NavContent = {
   menuLabel: 'Menu',
   closeLabel: 'Sluiten',
   footer: {
-    tagline: 'Wij bouwen AI-toepassingen die je team elke dag gebruikt. Business case, compliance en training inbegrepen.',
+    tagline: 'Wij bouwen AI-toepassingen die je team elke dag gebruikt. Bij elke bouw inbegrepen: business case, compliance en training.',
     columns: [
       {
         heading: 'Nieuwe AI-toepassing', href: '/nl/nieuwe-ai-toepassing', links: [
@@ -181,7 +181,7 @@ const EN: NavContent = {
   menuLabel: 'Menu',
   closeLabel: 'Close',
   footer: {
-    tagline: 'We build AI tools your team uses every day. Business case, compliance and training included.',
+    tagline: 'We build AI tools your team uses every day. Included in every build: business case, compliance and training.',
     columns: [
       {
         heading: 'A new AI tool', href: '/en/new-ai-tool', links: [
