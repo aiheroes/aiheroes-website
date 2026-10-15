@@ -166,6 +166,6 @@ Internal role logic follows the path of one build: Frans owns the business case 
 - Proof to cite first: Kwakkel BV (prototype in 6 days), INQ22 (live web shop), Strive (SaaS replaced), IC Commerce, own stack. Earlier cases (Medux, Trabu, OLX, InnoEnergy) only as "eerdere cases".
 - Groningen is the AI capital of Europe — present tense. "AI Fabriek (AI Factory)" at first mention in English.
 - Dates: Dutch AI Act supervision has been operational since 2 August 2026 (past tense).
-- Founded framing: brand since 2019, current team since the takeover at the end of 2025.
+- Founded framing: brand since 2019, current team since the takeover at the end of 2025. In visitor copy tell it as continuity, through the founders (Frans three years in management at AI Heroes, David two years in operations, then the takeover with Jan); never "started again", "relaunched", "the previous owner", "the original AI Heroes" or "the AI Heroes brand", and no B.V. founding date (decided 2026-10-15: it read as a shaky start to serious buyers).
 - Numbers safe to cite: 50+ organisations, 1,000+ professionals trained, 6-day prototype (Kwakkel BV).
 - Not for external use: anything about funding terms, salaries, margins, deal sizes of unclosed work, or prospect names — those never belonged in this document and should stay out of derived copy too.

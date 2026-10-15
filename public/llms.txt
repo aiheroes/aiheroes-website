@@ -42,7 +42,7 @@ AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties
 
 ## Company
 
-- [About AI Heroes](https://aiheroes.io/en/about) / [Over AI Heroes](https://aiheroes.io/nl/over-ons): the team, the story since 2019 and the takeover by the current team at the end of 2025
+- [About AI Heroes](https://aiheroes.io/en/about) / [Over AI Heroes](https://aiheroes.io/nl/over-ons): why AI Heroes exists, what we believe in and the three founders (the brand since 2019; Frans Hoorn, David Homan and Jan Brusse took it over at the end of 2025)
 - [Cases](https://aiheroes.io/en/cases) / [NL](https://aiheroes.io/nl/cases): Kwakkel BV, INQ22, Strive, IC Commerce, our own assistant, Medux, Trabu, InnoEnergy, OLX
 - [AI Salon Groningen](https://aiheroes.io/en/ai-salon) / [NL](https://aiheroes.io/nl/ai-salon): community evening in Groningen
 - [De AI Storm](https://aiheroes.io/en/de-ai-storm) / [NL](https://aiheroes.io/nl/de-ai-storm): as featured on Dutch television (RTL 7, RTL Z, Videoland)

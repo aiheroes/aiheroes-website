@@ -23,7 +23,7 @@ Dit bestand gaat voor op de open vragen in de paginaplannen. Waar een besluit ie
 | "Enkele duizenden euro's voor een eigen server" | **Niet noemen** | P5, L12 |
 | "Maatwerk is goedkoper door AI-gereedschap" | **Niet noemen** | L08 |
 | "70% van AI-projecten faalt" | **Schrappen** (geen bron) | overal |
-| Herkomst | **Overname eind 2025 expliciet** noemen in het herkomstverhaal | P11, P14 |
+| Herkomst | **Overname eind 2025 expliciet** noemen in het herkomstverhaal. **Verteld via de oprichters, als continuïteit** (2026-10-15): Frans werkte drie jaar in het management van AI Heroes, David twee jaar in de operatie, en eind 2025 namen zij met Jan Brusse het merk en de klantrelaties over. Staat in de lede van "De drie oprichters", niet als eigen sectie. Nooit "opnieuw begonnen", "de vorige eigenaar", "het oorspronkelijke AI Heroes" of "het merk AI Heroes", en geen oprichtingsdatum van de B.V. in bezoekerstekst: dat las als een wankele start. Het persfeitenblad houdt "huidige team sinds eind 2025" | P11, P12, P14, landings, C1 |
 
 ## 3. Entries en aanbod
 

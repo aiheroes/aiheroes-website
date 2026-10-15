@@ -38,7 +38,7 @@
 - **Met welke vraag komt de bezoeker binnen:** "Wie zijn dit, bestaan ze echt, en kan ik ze vertrouwen met iets dat elke dag moet werken?"
 - **Wat moet hij weten om de volgende stap te zetten:**
   1. **Cover:** wie we zijn in één zin, in de lijn van de homepage ("Wij bouwen AI-toepassingen die je team elke dag gebruikt"). Kopvoorstel: "Over AI Heroes". Daaronder de belofte "Van ambitie tot implementatie".
-  2. **Herkomst:** het merk sinds 2019; eind 2025 namen Frans Hoorn, David Homan en Jan Brusse het merk en de klantrelaties over (de overname wordt expliciet genoemd; zie 01-besluiten §2). Doel: echtheid en continuïteit tonen zonder het oude aanbod op te rakelen. Kort, als feit.
+  2. **Herkomst:** verteld via de oprichters, in de lede van "De drie oprichters" (geen eigen sectie meer, 2026-10-15): Frans werkte drie jaar in het management van AI Heroes, David twee jaar in de operatie; eind 2025 namen zij met Jan Brusse het merk en de klantrelaties over (de overname wordt expliciet genoemd; zie 01-besluiten §2). Doel: echtheid en continuïteit tonen zonder het oude aanbod op te rakelen. Nooit als herstart.
   2a. **Waarom AI Heroes bestaat:** het marktverhaal, verhuisd van P6 (zie 01-besluiten §9). De AI-markt is versnipperd: adviesbureaus schrijven rapporten, trainingsbureaus trainen en vertrekken, techbedrijven bouwen tools die niemand gebruikt. Wij bouwen wat je team elke dag gebruikt, en blijven het beheren. Feitelijk, zonder concurrenten af te kraken.
   3. **Waar we in geloven:** de waarden uit het company profile, met bewijs per waarde:
      - "Als AI niet de oplossing is, zeggen we dat" (+ "Sluit de business case niet, dan bouwen we niet");
@@ -57,12 +57,12 @@
 - **SEO/GEO:**
   - Zoekintentie: merk en navigatie ("ai heroes", "ai heroes groningen").
   - Titelvoorstel: "Over AI Heroes: AI-toepassingen bouwen vanuit Groningen".
-  - Meta-richting: wie, sinds wanneer, waar, wat we bouwen.
+  - Meta-richting: wat we bouwen, wie, waar.
   - Schema: `Organization`/`ProfessionalService` met adres, KvK, founders en `sameAs` (LinkedIn). AI-zoekmachines halen bedrijfsfeiten vaak van deze pagina, dus de kernfeiten moeten letterlijk in de tekst staan.
 **Besluiten**
 1. "50+ organisaties" en "1.000+ professionals getraind" blijven, als prestatie van het merk "sinds 2019" (zie 01-besluiten §2).
 2. Joseph Groot Kormelink gaat eraf, op alle pagina's (zie 01-besluiten §13).
-3. De overname eind 2025 wordt expliciet genoemd in het herkomstverhaal (zie 01-besluiten §2).
+3. De overname eind 2025 wordt expliciet genoemd, via de oprichters en als continuïteit (zie 01-besluiten §2).
 4. Het marktverhaal (gefragmenteerde AI-markt) staat hier, niet op P6 (zie 01-besluiten §9).
 5. Portretten in duotoon tot de eigen shoot (zie 01-besluiten §13).
 
