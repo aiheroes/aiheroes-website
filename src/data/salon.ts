@@ -62,7 +62,7 @@ export const SALON_NEXT: SalonEdition = {
   date: '2026-11-05',
   dateLabel: 'donderdag 5 november 2026',
   shortDate: 'Do 5 nov',
-  venue: 'Plus Ultra, Zernikelaan 14',
+  venue: 'Plus Ultra Groningen, Zernikelaan 14',
   city: 'Groningen',
   status: 'open',
   lumaEventId: 'evt-IyAX8Koq2RAY8V3',
@@ -76,13 +76,13 @@ export const SALON_NEXT: SalonEdition = {
     // "Onderwerp volgt" until it is.
     { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: null, photo: '/speakers/alex-van-ginneken.jpg' },
   ],
-  // Kadans hosts the evening in its Plus Ultra building (confirmed 2026-10-15). Researchable, which
+  // Kadans hosts the evening in Plus Ultra Groningen (confirmed 2026-10-15; always use the full name). Researchable, which
   // made the introduction, follows once Frans has mailed them.
   sponsors: [
     { name: 'Kadans Science Partner', src: '/sponsors/kadans.svg', href: 'https://www.kadans.com/properties/plus-ultra-groningen/' },
   ],
-  note: 'Bij Kadans Science Partner, op de begane grond van Plus Ultra op de Zernike Campus.',
-  en: { title: 'Edition #2', dateLabel: 'Thursday 5 November 2026', shortDate: 'Thu 5 Nov', note: 'Hosted by Kadans Science Partner, on the ground floor of Plus Ultra on the Zernike Campus.' },
+  note: 'Bij Kadans Science Partner, op de begane grond van Plus Ultra Groningen op de Zernike Campus.',
+  en: { title: 'Edition #2', dateLabel: 'Thursday 5 November 2026', shortDate: 'Thu 5 Nov', note: 'Hosted by Kadans Science Partner, on the ground floor of Plus Ultra Groningen on the Zernike Campus.' },
 };
 
 /** Start, programme and end of the next evening (local time). */
