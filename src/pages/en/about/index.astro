@@ -1,7 +1,8 @@
 ---
 // P11 About, English (docs/relaunch/pages/P11-over-ons.md, phase 7): mirrors /nl/over-ons. Who is
-// behind AI Heroes. The takeover at the end of 2025 is told explicitly and the market story lives
-// here; 50+ and 1,000+ always "since 2019"; no industry advisor.
+// behind AI Heroes. The takeover at the end of 2025 is told through the founders, as continuity,
+// never as a restart; the market story lives here; 50+ and 1,000+ always "since 2019"; no
+// industry advisor.
 import HsLayout from '../../../layouts/HsLayout.astro';
 import HsPageCover from '../../../components/hs/HsPageCover.astro';
 import HsSection from '../../../components/hs/HsSection.astro';
@@ -32,7 +33,7 @@ const team = { ...CONTENT.en.team, cta: { text: 'AI agency in Groningen', href: 
   lang="en"
   title="About AI Heroes"
   seoTitle="About AI Heroes: building AI tools from Groningen"
-  description="AI Heroes builds AI tools your team uses every day. A brand since 2019, taken over at the end of 2025 by Frans Hoorn, David Homan and Jan Brusse. From Groningen, on the Aarhusweg."
+  description="AI Heroes builds AI tools your team uses every day. Meet Frans Hoorn, David Homan and Jan Brusse, from Groningen on the Aarhusweg."
   crumbs={crumbs}
 >
   <HsPageCover
@@ -48,17 +49,11 @@ const team = { ...CONTENT.en.team, cta: { text: 'AI agency in Groningen', href: 
     ]}
   />
 
-  <HsSection title="A brand from 2019, | *relaunched*" lede="The name AI Heroes has existed since 2019. At the end of 2025, Frans Hoorn, David Homan and Jan Brusse took over the brand and the client relationships from the previous owner and relaunched it.">
-    <div class="hs-prose about-story" data-item>
-      <p>{zet('Frans spent three years in the management of the original AI Heroes, David two years in its operations. AI Heroes B.V. was founded in Groningen on 1 May 2026. Since then we have been building from the Aarhusweg for organisations across the Netherlands and Europe.')}</p>
-    </div>
-  </HsSection>
-
-  <HsSection tone="dark" title="Why AI Heroes *exists*" lede="The AI market is fragmented. Advisory firms write reports, training firms train and leave, tech companies build tools few people use.">
+  <HsSection title="Why AI Heroes *exists*" lede="The AI market is fragmented. Advisory firms write reports, training firms train and leave, tech companies build tools few people use.">
     <p class="hs-lead" data-item>{zet('We build what your team uses every day, and keep maintaining it.', { display: true })}</p>
   </HsSection>
 
-  <HsSection title="What we *believe* in">
+  <HsSection tone="dark" title="What we *believe* in">
     <HsCards
       columns={4}
       items={[
@@ -70,7 +65,7 @@ const team = { ...CONTENT.en.team, cta: { text: 'AI agency in Groningen', href: 
     />
   </HsSection>
 
-  <HsSection tone="paper" title="The three *founders*" lede="Each of them leads one part of the same process: the business case, the build and the training of your people.">
+  <HsSection tone="paper" title="The three *founders*" lede="Frans spent three years in management at AI Heroes and David two years in its operations. At the end of 2025 they took over the brand and the client relationships together with Jan Brusse. Each of them leads one part of the same process: the business case, the build and the training of your people.">
     <ul class="about-founders" data-shuffle>
       {founders.map((f, i) => (
         <li data-item style={`--i:${i}`}>
@@ -109,7 +104,6 @@ const team = { ...CONTENT.en.team, cta: { text: 'AI agency in Groningen', href: 
 </HsLayout>
 
 <style>
-  .about-story { max-width: 46rem; }
   .about-founders { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 2vw, 2rem); max-width: 56rem; }
   .about-founders a { display: grid; gap: .5rem; text-decoration: none; }
   .about-founders__photo { aspect-ratio: 3 / 4; overflow: hidden; background: var(--dark); }
