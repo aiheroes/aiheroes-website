@@ -62,23 +62,27 @@ export const SALON_NEXT: SalonEdition = {
   date: '2026-11-05',
   dateLabel: 'donderdag 5 november 2026',
   shortDate: 'Do 5 nov',
-  venue: null,
+  venue: 'Plus Ultra, Zernikelaan 14',
   city: 'Groningen',
   status: 'open',
   lumaEventId: 'evt-IyAX8Koq2RAY8V3',
   lumaUrl: 'https://luma.com/AI-Salon-Gro-2',
   speakers: [
-    // Founder and director of Energiso (energy management, ISO 50001). Portrait from energiso.nl.
-    { name: 'Ilse Gosliga', org: 'Energiso', topic: 'Buildings that learn: 26% less energy, no renovation', photo: '/speakers/ilse-gosliga.jpg' },
+    // AIMZ (AI on existing building management systems) and founder/director of Energiso (energy
+    // management, ISO 50001); both companies on request (2026-10-15). Portrait from energiso.nl.
+    { name: 'Ilse Gosliga', org: 'AIMZ · Energiso', topic: 'Buildings that learn: 26% less energy, no renovation', photo: '/speakers/ilse-gosliga.jpg' },
     // Business coach in Groningen since 2016, 150+ entrepreneurs; runs the workshop 'Ondernemen met AI'.
     // Portrait cropped from alexvanginneken.com. His title is not known yet (2026-10-12): the page shows
     // "Onderwerp volgt" until it is.
     { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: null, photo: '/speakers/alex-van-ginneken.jpg' },
   ],
-  // Edition #2 starts with a clean sponsor list; add entries here as they confirm.
-  sponsors: [],
-  note: 'De locatie volgt binnenkort.',
-  en: { title: 'Edition #2', dateLabel: 'Thursday 5 November 2026', shortDate: 'Thu 5 Nov', note: 'The venue will be announced soon.' },
+  // Kadans hosts the evening in its Plus Ultra building (confirmed 2026-10-15). Researchable, which
+  // made the introduction, follows once Frans has mailed them.
+  sponsors: [
+    { name: 'Kadans Science Partner', src: '/sponsors/kadans.svg', href: 'https://www.kadans.com/properties/plus-ultra-groningen/' },
+  ],
+  note: 'Bij Kadans Science Partner, op de begane grond van Plus Ultra op de Zernike Campus.',
+  en: { title: 'Edition #2', dateLabel: 'Thursday 5 November 2026', shortDate: 'Thu 5 Nov', note: 'Hosted by Kadans Science Partner, on the ground floor of Plus Ultra on the Zernike Campus.' },
 };
 
 /** Start, programme and end of the next evening (local time). */
