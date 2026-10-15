@@ -104,7 +104,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     services: {
       title: "Wat we voor je bouwen",
-      intro: "Kies wat bij je vraag past. De eerste stap is altijd een startsprint van zes dagen.",
+      intro: "Kies wat bij je vraag past. Elke bouw begint met een startsprint van zes dagen.",
       cta: "Lees meer",
       items: [
         {
@@ -694,7 +694,7 @@ export const CONTENT: Record<Language, Content> = {
     },
     services: {
       title: "What we build for you",
-      intro: "Pick the entry that fits your question. The first step is always a six-day start sprint.",
+      intro: "Pick the entry that fits your question. Every build starts with a six-day start sprint.",
       cta: "Read more",
       items: [
         {

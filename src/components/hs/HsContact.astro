@@ -4,8 +4,10 @@
 // plus optional topic chips: the three entries and "Weet ik nog niet". A page for visitors who do
 // not come to build yet sets an `intent` (training, verkenning, kennismaking, AI Act-check, extra
 // developers): its chip is added and preselected, and the ask and the question follow it, so the
-// form never asks "Wat wil je bouwen?" of someone who is not there yet (2026-10-13). Budget and
-// who decides come up in the first conversation.
+// form never asks "Wat wil je bouwen?" of someone who is not there yet (2026-10-13). A build form
+// can `offer` another door as an extra chip (the landings offer a free kennismaking); picking it
+// swaps the question to that door's (2026-10-15). Budget and who decides come up in the first
+// conversation.
 import HsIcon from './HsIcon.astro';
 import { zet } from './hs';
 import { SITE, SITE_EN, entriesFor, type Entry } from '../../data/site';
@@ -19,6 +21,8 @@ interface Props {
   entry?: Entry;
   /** What the visitor comes for when it is not a build; sets the chip, ask and question. */
   intent?: ContactIntent;
+  /** Other doors offered as chips (not preselected); picking one swaps the question. */
+  offer?: ContactIntent[];
   /** Colour of the ask field. */
   accent?: 'blue' | 'red' | 'dark';
   id?: string;
@@ -26,14 +30,16 @@ interface Props {
 const lang = langOf(Astro.url);
 const t = ui(Astro.url).contact;
 const ENTRIES = entriesFor(lang);
-const { entry, intent, accent = 'blue', id = 'contact' } = Astro.props;
+const { entry, intent, offer = [], accent = 'blue', id = 'contact' } = Astro.props;
 const ask = intent ? t.intents[intent] : undefined;
 const { title = ask?.title ?? t.title, lede = ask?.lede ?? t.lede } = Astro.props;
 
-const topics = [
-  ...(ask ? [ask.chip] : []),
-  ...(Object.keys(ENTRIES) as Entry[]).map((k) => ENTRIES[k].topic),
-  t.unsure,
+type Topic = { label: string; intent?: ContactIntent };
+const topics: Topic[] = [
+  ...(intent ? [{ label: t.intents[intent].chip, intent }] : []),
+  ...(Object.keys(ENTRIES) as Entry[]).map((k) => ({ label: ENTRIES[k].topic })),
+  ...offer.filter((k) => k !== intent).map((k) => ({ label: t.intents[k].chip, intent: k })),
+  { label: t.unsure },
 ];
 const preselect = ask ? ask.chip : entry ? ENTRIES[entry].topic : undefined;
 const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, lang).hint }));
@@ -94,14 +100,22 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
         <div class="hs-chips">
           {topics.map((o) => (
             <label class="hs-chip">
-              <input type="radio" name="topics" value={o} checked={preselect === o} />
-              <span>{o}</span>
+              <input
+                type="radio"
+                name="topics"
+                value={o.label}
+                checked={preselect === o.label}
+                data-intent={o.intent}
+                data-message={o.intent ? t.intents[o.intent].message : undefined}
+                data-placeholder={o.intent ? t.intents[o.intent].placeholder : undefined}
+              />
+              <span>{o.label}</span>
             </label>
           ))}
         </div>
       </fieldset>
       <label class="hs-field" data-item style="--i:2">
-        <span class="hs-label">{ask?.message ?? t.message}</span>
+        <span class="hs-label" data-question>{ask?.message ?? t.message}</span>
         <textarea class="hs-input" name="message" rows="3" required placeholder={ask?.placeholder ?? t.placeholder}></textarea>
       </label>
       <div class="hs-form__foot" data-item style="--i:3">

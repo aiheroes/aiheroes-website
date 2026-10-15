@@ -19,7 +19,8 @@ interface Props {
   accent?: 'red' | 'blue' | 'dark';
   crumbs?: Crumb[];
   cta?: { label: string; href: string } | null;
-  secondary?: { label: string; href: string };
+  /** `intent` picks that chip in the form the link points to (hs-client initForm). */
+  secondary?: { label: string; href: string; intent?: string };
   photo?: { src: string; alt: string; w: number; h: number; pos?: string; duo?: 'red' | 'blue' | 'bw' };
   facts?: Fact[];
 }
@@ -68,7 +69,7 @@ const figW = facts.length ? Math.max(...facts.map((f) => f.value.length)) + 0.6 
             </a>
           )}
           {secondary && (
-            <a class="hs-link" href={secondary.href}>
+            <a class="hs-link" href={secondary.href} data-intent={secondary.intent}>
               {secondary.label}
               <HsIcon name="arrow-right" />
             </a>

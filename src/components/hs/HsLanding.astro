@@ -72,7 +72,7 @@ const T = en
         { value: SITE_EN.sprint.price, label: 'from, a fixed price per start sprint' },
         { value: '2 weeks', label: 'from the first call to the start' },
       ],
-      secondary: { training: 'How it works', L07: 'How we start', other: 'How to start' },
+      secondary: { training: 'How it works', L07: 'How we start', other: 'Meet us first, for free' },
       sprintTitle: 'How to start: *the start sprint*',
       outcomeLabel: { training: 'What you take away', L07: 'What you know afterwards', other: 'After six days you have' },
       allTrainings: 'All training',
@@ -135,7 +135,7 @@ const T = en
         { value: SITE.sprint.price, label: 'vanaf, een vaste prijs per startsprint' },
         { value: '2 weken', label: 'na het eerste gesprek kun je beginnen' },
       ],
-      secondary: { training: 'Hoe het werkt', L07: 'Hoe we beginnen', other: 'Zo begin je' },
+      secondary: { training: 'Hoe het werkt', L07: 'Hoe we beginnen', other: 'Eerst gratis kennismaken' },
       sprintTitle: 'Zo begin je: *de startsprint*',
       outcomeLabel: { training: 'Wat je eraan overhoudt', L07: 'Wat je daarna weet', other: 'Na zes dagen heb je' },
       allTrainings: 'Alle trainingen',
@@ -172,6 +172,11 @@ const isTraining = d.group === 'training';
 const kind = isTraining ? 'training' : d.plan === 'L07' ? 'L07' : 'other';
 
 const door = T.doors[d.plan];
+// Build landings: next to the start sprint, a softer door to a free introduction. It opens the
+// same form with the Kennismaking chip picked (data-intent, hs-client initForm).
+const secondary = kind === 'other'
+  ? { label: T.secondary.other, href: '#contact', intent: 'kennismaking' }
+  : { label: T.secondary[kind], href: '#start' };
 // White logos (public/hs/logos-white), heights balanced as on the homepage logo wall.
 const LOGOS: Record<string, { name: string; h: number }> = {
   umcg: { name: 'UMCG', h: 22 }, 'tweede-kamer': { name: 'Tweede Kamer', h: 36 }, 'postcode-loterij': { name: 'Nationale Postcode Loterij', h: 32 },
@@ -250,7 +255,7 @@ if (d.plan === 'L15') {
     title={d.question}
     lede={d.lede}
     cta={{ label: ctaLabel, href: '#contact' }}
-    secondary={{ label: T.secondary[kind], href: '#start' }}
+    secondary={secondary}
     photo={d.photo}
   />
 
@@ -380,6 +385,7 @@ if (d.plan === 'L15') {
     intent={d.training || isTraining ? 'training' : d.plan === 'L07' ? 'developers' : undefined}
     title={isTraining ? (d.plan === 'T5' ? T.contactTitle.T5 : T.contactTitle.training) : d.plan === 'L07' ? T.contactTitle.L07 : T.contactTitle.other}
     lede={T.contactLede[kind]}
+    offer={kind === 'other' ? ['kennismaking'] : undefined}
   />
 </HsLayout>
 

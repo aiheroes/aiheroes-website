@@ -40,7 +40,7 @@ const NL = {
   contact: {
     title: 'Vertel wat je wilt bouwen',
     lede: 'Binnen 24 uur hoor je van ons, meestal met een voorstel voor een startsprint.',
-    meet: 'Plan een kennismaking',
+    meet: 'Plan een gratis kennismaking',
     name: 'Naam',
     email: 'E-mail',
     topic: 'Waar gaat het om?',
@@ -67,7 +67,7 @@ const NL = {
       kennismaking: {
         chip: 'Kennismaking',
         title: 'Plan een kennismaking',
-        lede: 'Plan direct een gesprek met een van de oprichters, of laat een bericht achter. Binnen 24 uur hoor je van ons.',
+        lede: 'Plan direct een gratis gesprek met een van de oprichters, of laat een bericht achter. Binnen 24 uur hoor je van ons.',
         message: 'Waar wil je het over hebben?',
         placeholder: 'Bijvoorbeeld: we hebben een idee en willen eerst sparren voordat we iets plannen.',
       },
@@ -127,7 +127,7 @@ const EN: typeof NL = {
   contact: {
     title: 'Tell us what you want to build',
     lede: 'You hear from us within 24 hours, usually with a proposal for a start sprint.',
-    meet: 'Book an introduction',
+    meet: 'Book a free introduction',
     name: 'Name',
     email: 'Email',
     topic: 'What is it about?',
@@ -153,7 +153,7 @@ const EN: typeof NL = {
       kennismaking: {
         chip: 'Introduction',
         title: 'Book an introduction',
-        lede: 'Book a call with one of the founders straight away, or leave a message. You hear from us within 24 hours.',
+        lede: 'Book a free call with one of the founders straight away, or leave a message. You hear from us within 24 hours.',
         message: 'What would you like to talk about?',
         placeholder: 'For example: we have an idea and want to talk it through before we plan anything.',
       },

@@ -54,7 +54,7 @@ const NL: NavContent = {
     },
     {
       key: 'how', label: 'Hoe we werken', href: '/nl/hoe-we-werken', accent: 'blue', subs: [
-        { label: 'Eerste stap: de startsprint', href: '/nl/startsprint' },
+        { label: 'Startsprint: zes dagen, vaste prijs', href: '/nl/startsprint' },
         { label: 'Kosten en opbrengst vooraf', href: '/nl/business-case' },
         { label: 'Compliance en security', href: '/nl/compliance' },
         { label: 'AI-training voor je team', href: '/nl/training' },
@@ -156,7 +156,7 @@ const EN: NavContent = {
     },
     {
       key: 'how', label: 'How we work', href: '/en/how-we-work', accent: 'blue', subs: [
-        { label: 'First step: the start sprint', href: '/en/start-sprint' },
+        { label: 'Start sprint: six days, fixed price', href: '/en/start-sprint' },
         { label: 'Cost and return up front', href: '/en/business-case' },
         { label: 'Compliance and security', href: '/en/compliance' },
         { label: 'AI training for your team', href: '/en/training' },
