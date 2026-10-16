@@ -7,7 +7,10 @@ AI Heroes bouwt AI-toepassingen die je team elke dag gebruikt, voor organisaties
 ## For agents
 
 - [All pages as Markdown](https://aiheroes.io/llms-full.txt): the full text of every public page, Dutch first, then English
-- Every page is also available as Markdown: add .md to its URL, for example https://aiheroes.io/en/start-sprint.md (the Dutch homepage is https://aiheroes.io/index.md)
+- Every page is also available as Markdown: add .md to its URL, for example https://aiheroes.io/en/start-sprint.md (the Dutch homepage is https://aiheroes.io/index.md), or request the page itself with Accept: text/markdown
+- [MCP server](https://aiheroes.io/.well-known/mcp/server-card.json): https://aiheroes.io/mcp (Streamable HTTP, read-only, no authentication) with the tools search, get_page, list_pages and get_company_facts
+- [Agent skills](https://aiheroes.io/.well-known/agent-skills/index.json): answering questions about AI Heroes, and getting in touch on a user's behalf
+- [AI catalog](https://aiheroes.io/.well-known/ai-catalog.json): every agent resource on this site
 
 ## The AI Heroes standard (included in every build)
 

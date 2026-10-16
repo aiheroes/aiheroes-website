@@ -1,0 +1,21 @@
+{
+  "name": "io.aiheroes/aiheroes",
+  "title": "AI Heroes",
+  "version": "1.0.0",
+  "description": "Read-only MCP server for aiheroes.io: search the site, read any page as Markdown, list the pages and get the recurring company facts (start sprint, prices, ways in, founders, contact). No authentication.",
+  "websiteUrl": "https://aiheroes.io",
+  "icons": [
+    { "src": "https://aiheroes.io/favicon-512.png", "mimeType": "image/png", "sizes": ["512x512"] }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://aiheroes.io/mcp",
+      "supportedProtocolVersions": ["2025-11-25", "2025-06-18", "2025-03-26"]
+    }
+  ],
+  "protocolVersion": "2025-11-25",
+  "serverInfo": { "name": "aiheroes", "title": "AI Heroes", "version": "1.0.0" },
+  "transport": { "type": "streamable-http", "url": "https://aiheroes.io/mcp", "endpoint": "https://aiheroes.io/mcp" },
+  "capabilities": { "tools": { "listChanged": false } }
+}

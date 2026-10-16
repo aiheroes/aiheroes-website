@@ -72,6 +72,7 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
     <meta name="theme-color" content="#FDFCF8" />
     <link rel="canonical" href={canonical} />
     {!noindex && <link rel="alternate" type="text/markdown" href={markdownHref} />}
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/json" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
@@ -117,6 +118,7 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
 
     <script>
       import '../components/hs/hs-client';
+      import '../components/hs/webmcp';
     </script>
   </body>
 </html>

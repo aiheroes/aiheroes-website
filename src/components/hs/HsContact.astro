@@ -78,21 +78,23 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
       method="post"
       action="/api/contact"
       novalidate
+      toolname="contact_aiheroes"
+      tooldescription={`Send a question to AI Heroes on behalf of the user. They reply by email within ${SITE_EN.reply}. The user reviews the filled-in form and clicks send.`}
       data-success={t.success}
       data-msg-missing={t.missing}
       data-msg-email={t.badEmail}
       data-msg-busy={t.busy}
       data-msg-error={t.error}
     >
-      <input class="hs-honey" type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input class="hs-honey" type="text" name="botField" tabindex="-1" autocomplete="off" aria-hidden="true" toolparamdescription="Leave empty." />
       <div class="hs-form__row" data-item>
         <label class="hs-field">
           <span class="hs-label">{t.name}</span>
-          <input class="hs-input" type="text" name="name" autocomplete="name" required />
+          <input class="hs-input" type="text" name="name" autocomplete="name" required toolparamdescription="Full name of the person asking" />
         </label>
         <label class="hs-field">
           <span class="hs-label">{t.email}</span>
-          <input class="hs-input" type="email" name="email" autocomplete="email" required />
+          <input class="hs-input" type="email" name="email" autocomplete="email" required toolparamdescription="Email address AI Heroes replies to" />
         </label>
       </div>
       <fieldset data-item style="--i:1">
@@ -108,6 +110,7 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
                 data-intent={o.intent}
                 data-message={o.intent ? t.intents[o.intent].message : undefined}
                 data-placeholder={o.intent ? t.intents[o.intent].placeholder : undefined}
+                toolparamdescription="Optional: what the question is about"
               />
               <span>{o.label}</span>
             </label>
@@ -116,7 +119,7 @@ const people = FOUNDER_ORDER.map((k) => ({ ...FOUNDERS[k], hint: founderText(k, 
       </fieldset>
       <label class="hs-field" data-item style="--i:2">
         <span class="hs-label" data-question>{ask?.message ?? t.message}</span>
-        <textarea class="hs-input" name="message" rows="3" required placeholder={ask?.placeholder ?? t.placeholder}></textarea>
+        <textarea class="hs-input" name="message" rows="3" required placeholder={ask?.placeholder ?? t.placeholder} toolparamdescription="The question: what the user wants to build or change, for whom, and any deadline"></textarea>
       </label>
       <div class="hs-form__foot" data-item style="--i:3">
         <p class="hs-form__status" role="status" aria-live="polite"></p>

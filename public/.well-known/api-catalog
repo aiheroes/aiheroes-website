@@ -30,6 +30,23 @@
           "title": "About AI Heroes — team and contact (info@aiheroes.io)"
         }
       ]
+    },
+    {
+      "anchor": "https://aiheroes.io/mcp",
+      "service-desc": [
+        {
+          "href": "https://aiheroes.io/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card: read-only MCP server (Streamable HTTP) for searching and reading aiheroes.io"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aiheroes.io/.well-known/agent-skills/aiheroes-research/SKILL.md",
+          "type": "text/markdown",
+          "title": "Agent skill: answering questions about AI Heroes with the MCP server and the Markdown pages"
+        }
+      ]
     }
   ]
 }
