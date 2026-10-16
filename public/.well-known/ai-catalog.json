@@ -1,0 +1,49 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "AI Heroes",
+    "identifier": "https://aiheroes.io",
+    "description": "AI Heroes B.V. (Groningen, the Netherlands) builds AI tools teams use every day."
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:aiheroes.io:mcp:aiheroes",
+      "displayName": "AI Heroes MCP server",
+      "type": "application/mcp-server-card+json",
+      "url": "https://aiheroes.io/.well-known/mcp/server-card.json",
+      "description": "Read-only MCP server (Streamable HTTP, no authentication): search aiheroes.io, read a page as Markdown, list the pages, get the company facts.",
+      "capabilities": ["SiteSearch", "PageMarkdown", "CompanyFacts"],
+      "tags": ["ai-tools", "software-development", "netherlands"],
+      "representativeQueries": [
+        "what does an AI Heroes start sprint cost",
+        "find AI Heroes cases about AI customer service",
+        "how does AI Heroes run AI on your own servers",
+        "who are the founders of AI Heroes and how do I book a call"
+      ]
+    },
+    {
+      "identifier": "urn:air:aiheroes.io:skills:index",
+      "displayName": "AI Heroes agent skills",
+      "type": "application/agent-skills+json",
+      "url": "https://aiheroes.io/.well-known/agent-skills/index.json",
+      "description": "Agent skills for answering questions about AI Heroes accurately and for getting in touch on a user's behalf.",
+      "representativeQueries": [
+        "answer questions about AI Heroes with sources",
+        "contact AI Heroes for a user",
+        "book an introduction with AI Heroes"
+      ]
+    },
+    {
+      "identifier": "urn:air:aiheroes.io:docs:llms-txt",
+      "displayName": "AI Heroes llms.txt",
+      "type": "text/markdown",
+      "url": "https://aiheroes.io/llms.txt",
+      "description": "Site overview and resource index for language models, in English and Dutch. Every page is also available as Markdown.",
+      "representativeQueries": [
+        "what does AI Heroes build",
+        "overview of the aiheroes.io pages",
+        "AI Heroes services and prices"
+      ]
+    }
+  ]
+}

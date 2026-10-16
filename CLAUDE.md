@@ -58,7 +58,13 @@ No unit-test framework is configured; `npm run check` is the gate.
 
 ## Search, GEO and agents
 
-- `npm run build` = `astro build` + `scripts/build-markdown.mjs` (every indexable page also as `<path>.md`, the homepage as `/index.md`, plus `/llms-full.txt`; served with `X-Robots-Tag: noindex`, linked from each page's head and from `public/llms.txt`) + the chat index.
+- `npm run build` = `astro build` + `scripts/build-markdown.mjs` (every indexable page also as `<path>.md`, the homepage as `/index.md`, plus `/llms-full.txt`; served with `X-Robots-Tag: noindex`, linked from each page's head and from `public/llms.txt`) + `scripts/build-agent-skills.mjs` + the chat index.
+- Markdown by content negotiation: `middleware.ts` (Vercel Routing Middleware, Node runtime; vercel.json rewrites run after the filesystem, so they cannot do this) answers `Accept: text/markdown` on `/`, `/en`, `/nl/*`, `/en/*` with that page's `.md` (`Content-Type: text/markdown`, `x-markdown-tokens`, `Vary: Accept`); browsers keep getting HTML.
+- MCP server: `api/mcp/index.ts` on `/mcp` (rewrite), stateless Streamable HTTP, read-only tools `search` (the chat index), `get_page`, `list_pages` (the `dist/**/*.md` files, bundled via `includeFiles`) and `get_company_facts` (`src/data/site.ts`, `team.ts`). Server card: `public/.well-known/mcp/server-card.json` (also on `/mcp/server-card`).
+- Agent skills: `public/.well-known/agent-skills/<name>/SKILL.md`; the build writes `index.json` with each file's sha256, so edit a skill freely. Skills point to live facts; keep prices out of them.
+- `public/.well-known/ai-catalog.json` (ARD, also on `/.well-known/ard.json`) lists the MCP server, the skills and llms.txt; `api-catalog` lists the MCP server too. `/.well-known/*` is served with `Access-Control-Allow-Origin: *`.
+- WebMCP: `src/components/hs/webmcp.ts` registers `search_site`, `read_page` and `open_page` in browsers with `document.modelContext`; the contact form is the declarative tool `contact_aiheroes` (`toolname` in `HsContact`, types in `src/webmcp.d.ts`), and `initForm` sends the outcome back to the agent (`respondWith`). The visitor still clicks send.
+- Not published on purpose: OAuth/OIDC metadata and auth.md (no protected APIs), DNS-AID (needs SVCB records and DNSSEC at the DNS host, Namecheap).
 - The sitemap's `<lastmod>` comes from each page's last commit (`scripts/lastmod.mjs`); the deploy job checks out full history for it.
 - IndexNow (Bing, which feeds ChatGPT search and Copilot): the deploy workflow runs `node scripts/indexnow.mjs --since <previous master>` after each production deploy; by hand: `--all`, a list of URLs, or `--dry-run`. The key is `public/<32 hex>.txt`.
 - Organisation schema (`src/data/schema.ts`): `sameAs` holds only verified profiles (LinkedIn, GitHub, the Google Business Profile kgmid); `knowsAbout` lists the specialisms.

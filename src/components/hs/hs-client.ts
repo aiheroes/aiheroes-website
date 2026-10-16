@@ -306,30 +306,41 @@ function initForm(signal: AbortSignal) {
     form.addEventListener('input', (e) => (e.target as Element).removeAttribute('aria-invalid'), { signal });
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      // WebMCP: a form with a toolname is a tool for a browser agent. When the agent submits it
+      // (after the visitor clicked send), the outcome the visitor sees goes back to the agent.
+      const agent = e as SubmitEvent & { agentInvoked?: boolean; respondWith?: (result: Promise<string>) => void };
+      let answer: ((text: string) => void) | undefined;
+      if (agent.agentInvoked && typeof agent.respondWith === 'function') agent.respondWith(new Promise<string>((r) => (answer = r)));
+      const tell = (text: string, state: 'ok' | 'error' | 'busy') => {
+        say(text, state);
+        if (state !== 'busy') answer?.(text);
+      };
       const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+      // An agent fills the form in seconds and may touch the honeypot: the bot checks are for scripts.
+      if (agent.agentInvoked) data.botField = '';
       const empty = [...form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[required]')].filter((f) => !f.value.trim());
       empty.forEach((f) => f.setAttribute('aria-invalid', 'true'));
       const missing = empty[0];
       if (missing) {
-        say(form.dataset.msgMissing ?? 'Vul je naam, e-mailadres en je vraag in.', 'error');
+        tell(form.dataset.msgMissing ?? 'Vul je naam, e-mailadres en je vraag in.', 'error');
         missing.focus();
         return;
       }
       const email = form.querySelector<HTMLInputElement>('input[type="email"]');
       if (email && !email.checkValidity()) {
         email.setAttribute('aria-invalid', 'true');
-        say(form.dataset.msgEmail ?? 'Dat e-mailadres klopt nog niet helemaal.', 'error');
+        tell(form.dataset.msgEmail ?? 'Dat e-mailadres klopt nog niet helemaal.', 'error');
         email.focus();
         return;
       }
       const done = () => {
         form.reset();
-        say(form.dataset.success ?? 'Ontvangen. Binnen 24 uur hoor je van ons.', 'ok');
+        tell(form.dataset.success ?? 'Ontvangen. Binnen 24 uur hoor je van ons.', 'ok');
       };
-      const bot = !!data.botField || Date.now() - opened < 3000 || /<a[\s>]/i.test(data.message ?? '')
-        || (!!data.name?.trim() && data.name.trim() === data.organization?.trim());
+      const bot = !agent.agentInvoked && (!!data.botField || Date.now() - opened < 3000 || /<a[\s>]/i.test(data.message ?? '')
+        || (!!data.name?.trim() && data.name.trim() === data.organization?.trim()));
       if (bot) { done(); return; }
-      say(form.dataset.msgBusy ?? 'Bezig met versturen…', 'busy');
+      tell(form.dataset.msgBusy ?? 'Bezig met versturen…', 'busy');
       if (button) button.disabled = true;
       try {
         const res = await fetch(form.action, {
@@ -338,9 +349,9 @@ function initForm(signal: AbortSignal) {
           body: JSON.stringify({ botField: '', ...data }),
         });
         if (res.ok) done();
-        else say(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+        else tell(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
       } catch {
-        say(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
+        tell(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
       } finally {
         if (button) button.disabled = false;
       }

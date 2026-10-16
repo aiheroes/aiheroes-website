@@ -15,6 +15,10 @@
     "api/chat/*.ts": {
       "maxDuration": 60,
       "supportsCancellation": true
+    },
+    "api/mcp/*.ts": {
+      "maxDuration": 30,
+      "includeFiles": "dist/**/*.md"
     }
   },
   "redirects": [
@@ -946,6 +950,18 @@
   ],
   "rewrites": [
     {
+      "source": "/mcp",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/mcp/server-card",
+      "destination": "/.well-known/mcp/server-card.json"
+    },
+    {
+      "source": "/.well-known/ard.json",
+      "destination": "/.well-known/ai-catalog.json"
+    },
+    {
       "source": "/Brand_Package/_favicon_test",
       "destination": "/api/gone"
     },
@@ -1092,6 +1108,25 @@
           "key": "Content-Type",
           "value": "application/linkset+json"
         }
+      ]
+    },
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/mcp/server-card",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "source": "/.well-known/(ai-catalog|ard).json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" }
       ]
     }
   ],
