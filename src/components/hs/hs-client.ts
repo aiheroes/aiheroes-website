@@ -293,6 +293,13 @@ function initSubnav(signal: AbortSignal) {
  * silent "success". The server adds origin checks and a rate limit.
  */
 function initForm(signal: AbortSignal) {
+  // A link with data-intent ("Eerst gratis kennismaken") picks that chip in the form it points to.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-intent]').forEach((a) => a.addEventListener('click', () => {
+    const chip = document.querySelector(a.hash)?.querySelector<HTMLInputElement>(`input[name="topics"][data-intent="${a.dataset.intent}"]`);
+    if (!chip) return;
+    chip.checked = true;
+    chip.dispatchEvent(new Event('change', { bubbles: true }));
+  }, { signal }));
   document.querySelectorAll<HTMLFormElement>('[data-hs-form]').forEach((form) => {
     const status = form.querySelector<HTMLElement>('.hs-form__status');
     const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
@@ -304,6 +311,18 @@ function initForm(signal: AbortSignal) {
     };
     // A marked field (aria-invalid, red ring) clears as soon as the visitor changes it.
     form.addEventListener('input', (e) => (e.target as Element).removeAttribute('aria-invalid'), { signal });
+    // A chip for another door (a free kennismaking on a build form) asks that door's question; the
+    // other chips keep the page's own.
+    const question = form.querySelector<HTMLElement>('[data-question]');
+    const message = form.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+    const own = { text: question?.textContent ?? '', placeholder: message?.placeholder ?? '' };
+    const syncQuestion = () => {
+      const chip = form.querySelector<HTMLInputElement>('input[name="topics"]:checked');
+      if (question) question.textContent = chip?.dataset.message ?? own.text;
+      if (message) message.placeholder = chip?.dataset.placeholder ?? own.placeholder;
+    };
+    form.addEventListener('change', (e) => { if ((e.target as HTMLInputElement).name === 'topics') syncQuestion(); }, { signal });
+    form.addEventListener('reset', () => setTimeout(syncQuestion), { signal });
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       // WebMCP: a form with a toolname is a tool for a browser agent. When the agent submits it
