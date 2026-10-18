@@ -38,12 +38,31 @@ const abs = (href) => {
 const SKIP = new Set(['nav', 'footer', 'script', 'style', 'noscript', 'form', 'svg', 'button', 'img', 'picture', 'video', 'iframe', 'template']);
 const BLOCK = /^(h[1-6]|p|ul|ol|li|dl|dt|dd|table|blockquote|details|summary|section|article|div|header|aside|figure|figcaption|main)$/i;
 
+/**
+ * The children's inline Markdown, with `sep` between two elements that touch: card parts are
+ * spans laid out by CSS (kicker, title, figure), and joined bare they would run together.
+ */
+function joined(node, sep) {
+  let out = '';
+  let afterElement = false;
+  for (const child of node.childNodes) {
+    const text = inline(child);
+    if (child.nodeType === 1) {
+      if (!text.trim()) continue;
+      if (afterElement && out.trim() && !/\s$/.test(out)) out += sep;
+      afterElement = true;
+    } else if (child.nodeType === 3 && text.trim()) afterElement = false;
+    out += text;
+  }
+  return out;
+}
+
 /** Inline Markdown for an element: text with links. */
 function inline(node) {
   if (node.nodeType === 3) return node.rawText ? decode(node.rawText) : '';
   const tag = (node.tagName || '').toLowerCase();
   if (SKIP.has(tag) || hidden(node)) return '';
-  const inner = node.childNodes.map(inline).join('');
+  const inner = tag === 'a' ? joined(node, ' · ') : tag === 'span' ? joined(node, ' ') : node.childNodes.map(inline).join('');
   if (tag === 'a') {
     const href = abs(node.getAttribute('href'));
     const text = clean(inner);
@@ -61,7 +80,9 @@ function hidden(node) {
   if (!node.getAttribute) return false;
   if (node.getAttribute('aria-hidden') === 'true' || node.hasAttribute?.('hidden')) return true;
   const cls = node.getAttribute('class') || '';
-  return /\b(hs-skip|sr-only|aih-sr|hs-honey)\b/.test(cls);
+  // Also the "Read more" labels on cards (hs-card__more, hs-entry__more, hs-cc-more): the card's
+  // link already carries them.
+  return /\b(hs-skip|sr-only|aih-sr|hs-honey)\b|(__|-)more\b/.test(cls);
 }
 
 const hasBlockChild = (node) => node.childNodes.some((c) => c.nodeType === 1 && BLOCK.test(c.tagName || ''));
@@ -176,7 +197,8 @@ for (const file of walk(DIST)) {
   if (!main) continue;
   const title = clean(decode(root.querySelector('title')?.text ?? ''));
   const desc = clean(decode(root.querySelector('meta[name="description"]')?.getAttribute('content') ?? ''));
-  const body = blocks(main, []).filter((b, i, arr) => b !== arr[i - 1]);
+  // Drop repeats and separators left on their own (the · between two dates in a byline).
+  const body = blocks(main, []).filter((b, i, arr) => b !== arr[i - 1] && !/^[·•|]$/.test(b));
   const url = route === '/' ? SITE : SITE + route;
   const meta = [`Title: ${title}`, `URL: ${url}`, desc ? `Description: ${desc}` : null].filter(Boolean).join('\n');
   const md = `${meta}\n\n${body.join('\n\n')}\n`.replace(/\n{3,}/g, '\n\n');
