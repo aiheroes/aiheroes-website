@@ -255,6 +255,16 @@ interface RpcMessage {
   params?: Record<string, unknown>;
 }
 
+/** One log line per event, to see in Vercel's logs which clients and tools agents use. Never the
+ *  query or other arguments: only the tool, the language and the client's self-reported name. */
+const logLine = (event: string, fields: Record<string, unknown>) =>
+  console.info(
+    JSON.stringify({
+      mcp: event,
+      ...Object.fromEntries(Object.entries(fields).map(([k, v]) => [k, typeof v === 'string' ? v.slice(0, 60) : v])),
+    }),
+  );
+
 const rpcError = (id: RpcMessage['id'], code: number, message: string) => ({ jsonrpc: '2.0', id: id ?? null, error: { code, message } });
 const rpcResult = (id: RpcMessage['id'], result: unknown) => ({ jsonrpc: '2.0', id, result });
 
@@ -267,8 +277,11 @@ async function handle(msg: RpcMessage, request: Request): Promise<unknown | null
   switch (method) {
     case 'initialize': {
       const asked = typeof params.protocolVersion === 'string' ? params.protocolVersion : '';
+      const protocolVersion = PROTOCOL_VERSIONS.includes(asked) ? asked : PROTOCOL_VERSIONS[0];
+      const client = (params.clientInfo ?? {}) as { name?: unknown; version?: unknown };
+      logLine('initialize', { client: String(client.name ?? ''), clientVersion: String(client.version ?? ''), protocolVersion });
       return rpcResult(id, {
-        protocolVersion: PROTOCOL_VERSIONS.includes(asked) ? asked : PROTOCOL_VERSIONS[0],
+        protocolVersion,
         capabilities: { tools: { listChanged: false } },
         serverInfo: SERVER_INFO,
         instructions: INSTRUCTIONS,
@@ -284,6 +297,8 @@ async function handle(msg: RpcMessage, request: Request): Promise<unknown | null
       const perMinute = await increment(`mcp:${hashIp(request)}:minute`, 60);
       if (perMinute > CALLS_PER_MINUTE) return rpcError(id, -32000, 'Rate limit: try again in a minute');
       try {
+        const args = (params.arguments ?? {}) as { language?: unknown };
+        logLine('call', { tool: name, language: args.language === 'nl' || args.language === 'en' ? args.language : undefined });
         return rpcResult(id, await callTool(name as ToolName, params.arguments));
       } catch (err) {
         console.error('mcp tool failed:', name, err);
