@@ -28,9 +28,11 @@ export const config = {
     // answers in about 2 s.
     model: process.env.CHAT_MODEL ?? 'gemini-3.5-flash',
     // Queue guard: when the model has not started its answer within the deadline, the
-    // request is cancelled and the same step goes to the fallback model (other EU region).
-    fallbackModel: process.env.CHAT_FALLBACK_MODEL ?? 'gemini-2.5-flash',
-    fallbackLocation: process.env.CHAT_FALLBACK_LOCATION ?? 'europe-west4',
+    // request is cancelled and the same step goes to the fallback model. 3.8 Flash: GA, own
+    // capacity, about 1.3 s on 'eu', retires 2027-09 at the earliest (2.5 Flash, the first
+    // fallback, retires 2026-10-20; 3.6 Flash on 2026-11-19).
+    fallbackModel: process.env.CHAT_FALLBACK_MODEL ?? 'gemini-3.8-flash',
+    fallbackLocation: process.env.CHAT_FALLBACK_LOCATION ?? 'eu',
     firstResponseMs: int(process.env.CHAT_FIRST_RESPONSE_MS, 10_000),
     frontierModel: process.env.CHAT_FRONTIER_MODEL ?? 'claude-sonnet-5',
     useFrontier: process.env.CHAT_USE_FRONTIER === 'true',
