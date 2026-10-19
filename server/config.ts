@@ -10,7 +10,7 @@ const int = (v: string | undefined, fallback: number) => {
 
 export const config = {
   // --- model routing (D4) ---
-  // 'vertex'    = production: Gemini 3.7 Flash on Vertex AI, EU region.
+  // 'vertex'    = production: Gemini 3.5 Flash on Vertex AI, EU region.
   // 'google'    = dev default: the SAME model via the Gemini API (AI Studio key,
   //               no GCP project needed) — full model parity for dev + evals.
   //               Not EU-guaranteed, so dev only. Use a paid-tier key: the free
@@ -19,11 +19,19 @@ export const config = {
   provider: (process.env.CHAT_MODEL_PROVIDER ?? 'google') as 'google' | 'anthropic' | 'vertex',
   vertex: {
     project: process.env.GOOGLE_VERTEX_PROJECT ?? '',
-    // EU processing is load-bearing (V4) — see SDD D4. Gemini 3.7 Flash serves from
+    // EU processing is load-bearing (V4) — see SDD D4. Gemini 3.x Flash serves from
     // the 'eu' multi-region; embeddings need a specific EU region (probed 2026-08-24).
     location: process.env.GOOGLE_VERTEX_LOCATION ?? 'eu',
     embeddingLocation: process.env.GOOGLE_VERTEX_EMBEDDING_LOCATION ?? 'europe-west4',
-    model: process.env.CHAT_MODEL ?? 'gemini-3.7-flash',
+    // 3.5, not 3.7 (probed 2026-10-15): on 'eu' on-demand capacity, 3.7 Flash queues
+    // requests before answering (4-44 s, once 134 s, for a one-line reply); 3.5 Flash
+    // answers in about 2 s.
+    model: process.env.CHAT_MODEL ?? 'gemini-3.5-flash',
+    // Queue guard: when the model has not started its answer within the deadline, the
+    // request is cancelled and the same step goes to the fallback model (other EU region).
+    fallbackModel: process.env.CHAT_FALLBACK_MODEL ?? 'gemini-2.5-flash',
+    fallbackLocation: process.env.CHAT_FALLBACK_LOCATION ?? 'europe-west4',
+    firstResponseMs: int(process.env.CHAT_FIRST_RESPONSE_MS, 10_000),
     frontierModel: process.env.CHAT_FRONTIER_MODEL ?? 'claude-sonnet-5',
     useFrontier: process.env.CHAT_USE_FRONTIER === 'true',
     thinkingBudget: int(process.env.CHAT_THINKING_BUDGET, 2048),
