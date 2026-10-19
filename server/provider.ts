@@ -1,16 +1,56 @@
 // Model routing (SDD D4): one env var decides the substrate.
 //
-//  CHAT_MODEL_PROVIDER=vertex     -> production: Gemini 3.7 Flash (medium thinking,
-//                                    bounded thinkingBudget) on Vertex AI EU;
-//                                    CHAT_USE_FRONTIER=true flips to Claude Sonnet 5
-//                                    on the same substrate.
+//  CHAT_MODEL_PROVIDER=vertex     -> production: Gemini 3.5 Flash (bounded thinkingBudget)
+//                                    on Vertex AI EU, with a fallback model when it is
+//                                    slow to start; CHAT_USE_FRONTIER=true flips to
+//                                    Claude Sonnet 5 on the same substrate.
 //  CHAT_MODEL_PROVIDER=google     -> dev default: the same Gemini model via the
 //                                    Gemini API (AI Studio key, no GCP project).
 //                                    Not EU-guaranteed -> dev only.
 //  CHAT_MODEL_PROVIDER=anthropic  -> optional dev fallback (Claude, US inference).
 
-import type { LanguageModel } from 'ai';
+import { wrapLanguageModel, type LanguageModel, type LanguageModelMiddleware } from 'ai';
 import { config } from './config.js';
+
+type StreamingModel = Parameters<NonNullable<LanguageModelMiddleware['wrapStream']>>[0]['model'];
+
+/**
+ * Queue guard. Vertex holds an on-demand request until the model starts answering, and
+ * the SDK's firstChunkMs timer only starts once that response is in, so a queued request
+ * used to sit silent until the 50 s total timeout. Here the request gets `deadlineMs` to
+ * start; after that, or on any error, it is cancelled and the same step goes to `fallback`.
+ */
+function withFallback(primary: StreamingModel, fallback: StreamingModel, deadlineMs: number): LanguageModel {
+  return wrapLanguageModel({
+    model: primary,
+    middleware: {
+      wrapStream: async ({ params }) => {
+        const cancel = new AbortController();
+        const abortSignal = params.abortSignal
+          ? AbortSignal.any([params.abortSignal, cancel.signal])
+          : cancel.signal;
+        let timer: ReturnType<typeof setTimeout> | undefined;
+        const deadline = new Promise<never>((_, reject) => {
+          timer = setTimeout(() => reject(new Error(`no response within ${deadlineMs} ms`)), deadlineMs);
+        });
+        try {
+          return await Promise.race([primary.doStream({ ...params, abortSignal }), deadline]);
+        } catch (error) {
+          // The visitor left or the total timeout fired: stop, do not start over.
+          if (params.abortSignal?.aborted) throw error;
+          cancel.abort();
+          console.warn(
+            `chat model ${primary.modelId} -> fallback ${fallback.modelId}:`,
+            error instanceof Error ? error.message : String(error),
+          );
+          return fallback.doStream(params);
+        } finally {
+          clearTimeout(timer);
+        }
+      },
+    },
+  });
+}
 
 /**
  * Service-account credentials for Vertex from env (serverless functions have no key file).
@@ -71,15 +111,25 @@ export async function getModel(): Promise<ModelRoute> {
         maxOutputTokens: config.maxOutputTokens,
       };
     }
+    const fallbackVertex = createVertex({
+      project: config.vertex.project,
+      location: config.vertex.fallbackLocation,
+      ...vertexAuthOptions(),
+    });
     return {
-      model: vertex(config.vertex.model),
+      model: withFallback(
+        vertex(config.vertex.model),
+        fallbackVertex(config.vertex.fallbackModel),
+        config.vertex.firstResponseMs,
+      ),
       providerOptions: {
         google: {
           // D9 layer 3: Gemini bills thinking as output — the budget stays bounded.
           thinkingConfig: { thinkingBudget: config.vertex.thinkingBudget },
         },
       },
-      // Post-promo Gemini 3.7 Flash pricing (promo halves this through 2026-12-31).
+      // Post-promo Gemini 3.7 Flash pricing, kept as the spend-breaker estimate for
+      // 3.5 Flash and the fallback (not re-checked against their own price lists).
       costPerMTokCents: { input: 150, output: 750 },
       maxOutputTokens: config.maxOutputTokens + config.vertex.thinkingBudget,
     };

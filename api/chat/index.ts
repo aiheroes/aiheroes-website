@@ -11,6 +11,8 @@ import {
   toUIMessageStream,
   tool,
   validateUIMessages,
+  type StopCondition,
+  type ToolSet,
   type UIMessage,
 } from 'ai';
 import { z } from 'zod';
@@ -24,6 +26,24 @@ import { getModel, usageToCents } from '../../server/provider.js';
 import { retrieve } from '../../server/search.js';
 
 // Region (fra1), duration and cancellation are configured in vercel.json.
+
+// Tools that only render a card in the widget.
+const CARD_TOOLS = new Set(['show_page', 'book_meeting', 'register_salon', 'escalate_to_human']);
+
+/**
+ * Stop once a step has written the answer and only added cards. Without this the model
+ * gets one more call just to decide to say nothing; meanwhile the widget holds the card
+ * back and the composer stays busy (measured 1 to 20 s).
+ */
+const answeredWithCards: StopCondition<ToolSet> = ({ steps }) => {
+  const last = steps.at(-1);
+  return (
+    !!last &&
+    last.text.trim().length > 0 &&
+    last.toolCalls.length > 0 &&
+    last.toolCalls.every((call) => CARD_TOOLS.has(call.toolName))
+  );
+};
 
 const bodySchema = z.object({
   messages: z.array(z.unknown()).min(1).max(80),
@@ -152,7 +172,7 @@ export async function POST(request: Request): Promise<Response> {
     system: `${buildSystemPrompt(body.locale, body.path)}\n\n${formatSources(sources)}`,
     messages: await convertToModelMessages(windowed, { tools }),
     tools,
-    stopWhen: stepCountIs(4),
+    stopWhen: [stepCountIs(4), answeredWithCards],
     // Buttery streaming cadence (UX audit P1): word-level chunks at a steady pace
     // instead of raw network bursts.
     experimental_transform: smoothStream({ delayInMs: 15, chunking: 'word' }),
@@ -168,6 +188,12 @@ export async function POST(request: Request): Promise<Response> {
     // error part). Without this, model failures are silent — unacceptable ops-wise.
     onError: ({ error }) => {
       console.error('chat model error:', error instanceof Error ? error.message : String(error));
+    },
+    // A timeout ends as an abort, not an error: without this line a stalled model left
+    // no trace in the logs while the visitor stared at the typing squares for 50 s.
+    onAbort: ({ steps }) => {
+      if (request.signal.aborted) return; // the visitor stopped or left
+      console.error(`chat model timeout after ${steps.length} finished step(s)`);
     },
     onFinish: ({ usage, text, steps }) => {
       // `text` is the FINAL step only; with display tools the final step is often
