@@ -61,6 +61,22 @@ function hasVisibleContent(message: UIMessage | undefined, withCards = true): bo
   );
 }
 
+/**
+ * The model sometimes promises the AI Salon card ("je kunt je hieronder aanmelden") without
+ * calling register_salon: 8 of 40 answers on 2026-10-19, and firmer prompt wording made it
+ * worse. An answer about the AI Salon that points below and shows no card gets the sign-up
+ * card from the widget, so the promise always holds.
+ */
+function promisesMissingSalonCard(message: UIMessage): boolean {
+  const text = textOf(message);
+  return (
+    message.role === 'assistant' &&
+    /AI Salon/i.test(text) &&
+    /hieronder|onderstaande|below/i.test(text) &&
+    !message.parts.some((p) => p.type.startsWith('tool-') && p.type !== 'tool-search_knowledge')
+  );
+}
+
 const LINK_RE = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 
 /** A link's path on this site, or null for mail, anchor and external links. */
@@ -521,6 +537,7 @@ export default function ChatPanel({
                   {message.parts.map((part, i) => (part.type === 'text' ? renderPart(part, i) : null))}
                   {message.id !== streamingId &&
                     message.parts.map((part, i) => (part.type === 'text' ? null : renderPart(part, i)))}
+                  {message.id !== streamingId && promisesMissingSalonCard(message) && <SalonCard locale={locale} />}
                   {renderSources(message)}
                 </div>
               ) : null,

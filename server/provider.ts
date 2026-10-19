@@ -128,9 +128,10 @@ export async function getModel(): Promise<ModelRoute> {
           thinkingConfig: { thinkingBudget: config.vertex.thinkingBudget },
         },
       },
-      // Post-promo Gemini 3.7 Flash pricing, kept as the spend-breaker estimate for
-      // 3.5 Flash and the fallback (not re-checked against their own price lists).
-      costPerMTokCents: { input: 150, output: 750 },
+      // Gemini 3.5 Flash on a non-global endpoint ('eu'): $1.65 / $9.90 per 1M tokens
+      // (Vertex price list, 2026-10-19), counted as euro cents. The 3.8 Flash fallback is
+      // cheaper ($0.825 / $4.125 to 2026-12-31, then $1.65 / $8.25), so this errs high.
+      costPerMTokCents: { input: 165, output: 990 },
       maxOutputTokens: config.maxOutputTokens + config.vertex.thinkingBudget,
     };
   }
@@ -145,7 +146,8 @@ export async function getModel(): Promise<ModelRoute> {
       providerOptions: {
         google: { thinkingConfig: { thinkingBudget: config.vertex.thinkingBudget } },
       },
-      costPerMTokCents: { input: 150, output: 750 },
+      // Same model on the Gemini API; the Vertex global price ($1.50 / $9.00) as the estimate.
+      costPerMTokCents: { input: 150, output: 900 },
       maxOutputTokens: config.maxOutputTokens + config.vertex.thinkingBudget,
     };
   }
