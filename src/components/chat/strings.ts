@@ -1,6 +1,8 @@
 // Widget UI copy (SDD D8): chrome follows the site locale; NL follows the house style
 // (informal-professional "je", no em-dashes, no "geen X maar Y").
 
+import type { IconName } from '../hs/hs';
+
 export type ChatLocale = 'nl' | 'en';
 
 export const STRINGS = {
@@ -121,8 +123,20 @@ export const STRINGS = {
 
 type SuggestionKey = keyof (typeof STRINGS)['nl']['suggestions'];
 
-/** Suggestions that fit the page the visitor opened the chat on. */
-export function suggestionsForPath(locale: ChatLocale, path: string): readonly string[] {
+/** One icon per suggestion, in the same order in both languages. */
+const SUGGESTION_ICONS: Record<SuggestionKey, readonly [IconName, IconName, IconName]> = {
+  default: ['tool', 'stopwatch', 'list-checkbox'],
+  build: ['puzzle', 'wallet', 'code'],
+  cases: ['chart-line', 'search', 'rocket'],
+  salon: ['calendar', 'add-user', 'microphone'],
+  compliance: ['protect', 'checklist', 'certificate'],
+  training: ['peoples', 'wallet', 'book'],
+  knowledge: ['map-draw', 'wallet', 'protect'],
+  careers: ['peoples', 'list-checkbox', 'mail'],
+};
+
+/** Suggestions that fit the page the visitor opened the chat on, each with its icon. */
+export function suggestionsForPath(locale: ChatLocale, path: string): { text: string; icon: IconName }[] {
   const s = STRINGS[locale].suggestions;
   const rules: [RegExp, SuggestionKey][] = [
     [/\/(cases)(\/|$)/, 'cases'],
@@ -133,8 +147,8 @@ export function suggestionsForPath(locale: ChatLocale, path: string): readonly s
     [/\/(vacatures|careers)(\/|$)/, 'careers'],
     [/\/(wat-we-bouwen|what-we-build|nieuwe-ai-toepassing|new-ai-tool|software-vervangen|replace-software|eigen-beheer|self-hosted|startsprint|start-sprint|business-case|hoe-we-werken|how-we-work)/, 'build'],
   ];
-  const hit = rules.find(([re]) => re.test(path));
-  return s[hit ? hit[1] : 'default'];
+  const key = rules.find(([re]) => re.test(path))?.[1] ?? 'default';
+  return s[key].map((text, i) => ({ text, icon: SUGGESTION_ICONS[key][i] }));
 }
 
 export const DISCLOSURE_PATH = { nl: '/nl/legal/ai-assistent', en: '/en/legal/ai-assistant' } as const;

@@ -148,7 +148,11 @@ export default function ChatWidget({
           aria-hidden={menuOpen || undefined}
           tabIndex={menuOpen ? -1 : undefined}
         >
-          <ChatIcon name="comments" />
+          {/* The bubble draws itself as the launcher rises; a red square marks a waiting conversation. */}
+          <span className="aih-launcher__icon">
+            <ChatIcon name="comment" draw={isNew} delay={isNew ? 820 : undefined} />
+            {hasThread && <span className="aih-launcher__badge" aria-hidden="true" />}
+          </span>
           <span className="aih-launcher__label">{label}</span>
         </button>
       )}

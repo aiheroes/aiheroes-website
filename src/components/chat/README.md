@@ -3,7 +3,10 @@
 The AI Heroes website assistant (design: internal SDD, not in this repo). Map:
 
 - `src/components/chat/` — widget island (launcher + lazy panel, generative-UI cards,
-  escalation form, localStorage continuity, Art. 50 disclosure).
+  escalation form, localStorage continuity, Art. 50 disclosure). Look and motion are described
+  at the top of `chat.css`; `ChatMark` is the AI Heroes icon whose frame draws itself.
+- `public/team/face/` — 144px greyscale square crops of the founders' portraits
+  (`public/team/*.webp`, ffmpeg `crop=740:740:230:140`) for the handoff and "Liever een mens?".
 - `api/` — Vercel functions: `/api/chat` (streaming), `/api/warmup` (token + prewarm),
   `/api/escalate`, `/api/feedback`. Region `fra1` (see `vercel.json`).
 - `server/` — config, guards (HMAC token, quotas), counters/spend breaker, hybrid

@@ -7,6 +7,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, type UIMessage } from 'ai';
 import { ChatIcon } from './ChatIcon';
+import { ChatMark } from './ChatMark';
 import { ChatMarkdown } from './Markdown';
 import {
   ensureToken,
@@ -21,7 +22,10 @@ import {
   wasEscalated,
 } from './session';
 import { DISCLOSURE_PATH, STRINGS, suggestionsForPath, type ChatLocale } from './strings';
-import { BookingCard, EscalationForm, PageCard, SalonCard, type EscalationPayload } from './ToolCards';
+import { BookingCard, EscalationForm, Faces, PageCard, SalonCard, type EscalationPayload } from './ToolCards';
+
+/** Suggestion tiles take the entries' colours in the homepage order: red, blue, ink. */
+const TILE_TONES = ['is-red', 'is-blue', 'is-ink'] as const;
 
 interface Props {
   locale: ChatLocale;
@@ -48,7 +52,7 @@ function textOf(message: UIMessage): string {
 
 /**
  * Whether an assistant message shows anything ON SCREEN. search_knowledge renders
- * nothing (server-side retrieval), so it must not count, or the typing indicator
+ * nothing (server-side retrieval), so it must not count, or the thinking mark
  * dies during the invisible search step while the visitor stares at a blank gap.
  * `withCards: false` counts the text only: cards of an answer that is still streaming
  * are held back (see `streamingId`), so they are not on screen yet.
@@ -282,7 +286,7 @@ export default function ChatPanel({
   // pushed down by the text reads as if it came before the answer.
   const streamingId = busy && lastMessage?.role === 'assistant' ? lastMessage.id : null;
 
-  // The typing squares must reflect what the visitor SEES, not the stream state:
+  // The thinking mark must reflect what the visitor SEES, not the stream state:
   // metadata, invisible search steps and held-back cards arrive before the text.
   const awaitingContent = busy && !hasVisibleContent(lastMessage, false);
 
@@ -391,11 +395,13 @@ export default function ChatPanel({
     if (!sourceChips) return null;
     const cited = citedSources(message);
     if (cited.length === 0) return null;
+    // The book stands for the label; the word stays for screen readers.
     return (
       <p className="aih-sources">
-        <span className="aih-sources__label">{cited.length === 1 ? t.source : t.sources}</span>
+        <ChatIcon name="book-open" className="aih-sources__icon" />
+        <span className="aih-sr">{cited.length === 1 ? t.source : t.sources}: </span>
         {cited.map((s) => (
-          <a key={s.href} href={s.href}>
+          <a key={s.href} href={s.href} className="aih-chip">
             {s.label}
           </a>
         ))}
@@ -474,17 +480,20 @@ export default function ChatPanel({
           </button>
           <div className="aih-head__bar">
             <h2 className="aih-head__title" id="aih-title">
-              <span className="aih-mark" aria-hidden="true" />
+              {/* Our white logo on the blue; its frame draws itself as the panel opens. */}
+              <span className="aih-head__mark">
+                <ChatMark mode="draw" tone="white" />
+              </span>
               {t.aiBadge}
             </h2>
             <div className="aih-head__actions">
               {messages.length > 0 && (
                 <button type="button" className="aih-iconbtn" onClick={newConversation} aria-label={t.newChat} title={t.newChat}>
-                  <ChatIcon name="refresh" />
+                  <ChatIcon name="edit-two" />
                 </button>
               )}
               <button type="button" className="aih-iconbtn" onClick={onCloseRequest} aria-label={t.close} title={t.close}>
-                <ChatIcon name="arrow-right" className="is-down aih-mob" />
+                <ChatIcon name="down" className="aih-mob" />
                 <ChatIcon name="close" className="aih-desk" />
               </button>
             </div>
@@ -508,11 +517,14 @@ export default function ChatPanel({
               <div>
                 <p className="aih-empty__title">{t.suggestionsTitle}</p>
                 <ul className="aih-suggest">
-                  {suggestions.map((s) => (
-                    <li key={s}>
-                      <button type="button" onClick={() => submit(s)} disabled={offline}>
-                        <span>{s}</span>
-                        <ChatIcon name="arrow-right" />
+                  {suggestions.map((s, i) => (
+                    <li key={s.text} style={{ '--i': i } as React.CSSProperties}>
+                      <button type="button" onClick={() => submit(s.text)} disabled={offline}>
+                        <span className={`aih-tile ${TILE_TONES[i % TILE_TONES.length]}`}>
+                          <ChatIcon name={s.icon} draw delay={260 + i * 90} />
+                        </span>
+                        <span className="aih-suggest__text">{s.text}</span>
+                        <ChatIcon name="arrow-right" className="aih-suggest__go" />
                       </button>
                     </li>
                   ))}
@@ -530,7 +542,7 @@ export default function ChatPanel({
                   </p>
                 </div>
               ) : hasVisibleContent(message, message.id !== streamingId) ? (
-                <div key={message.id} className="aih-msg">
+                <div key={message.id} className={`aih-msg${message.id === streamingId ? ' is-streaming' : ''}`}>
                   {/* Text first, then the action cards: the model often calls a tool before it
                       writes, yet refers to the card as "below". The cards wait until the answer
                       has finished streaming, so they always appear after it. */}
@@ -543,35 +555,37 @@ export default function ChatPanel({
               ) : null,
             )}
 
+            {/* Waiting: the frame of the AI Heroes icon goes round, drawn and erased like a pen. */}
             {awaitingContent && (
-              <div className="aih-msg">
-                <span className="aih-typing" role="img" aria-label={t.thinking}>
-                  <span />
-                  <span />
-                  <span />
+              <div className="aih-msg aih-thinking">
+                <span className="aih-thinking__mark" role="img" aria-label={t.thinking}>
+                  <ChatMark mode="think" />
                 </span>
                 {slow && <p className="aih-note">{t.slow}</p>}
               </div>
             )}
 
             {offline ? (
-              <div className="aih-alert" role="status">
+              <div className="aih-alert is-offline" role="status">
+                <ChatIcon name="close-wifi" className="aih-alert__icon" />
                 <p>{t.offline}</p>
               </div>
             ) : (
               (errorKind || silentFail) && (
                 <div className="aih-alert" role="alert">
+                  <span className="aih-alert__mark" aria-hidden="true" />
                   <div>
                     <p>{errorText}</p>
                     {canRetry && (
                       <button
                         type="button"
-                        className="aih-textbtn"
+                        className="aih-retry"
                         onClick={() => {
                           setSilentFail(false);
                           void regenerate();
                         }}
                       >
+                        <ChatIcon name="refresh" />
                         {t.retry}
                       </button>
                     )}
@@ -605,10 +619,13 @@ export default function ChatPanel({
         {escalated ? (
           <div className="aih-closed">
             <p>
-              <ChatIcon name="check" />
+              <span className="aih-tile is-blue is-small">
+                <ChatIcon name="check" draw />
+              </span>
               {t.escalatedBar}
             </p>
             <button type="button" className="aih-btn" onClick={newConversation}>
+              <ChatIcon name="edit-two" />
               {t.newChat}
             </button>
           </div>
@@ -620,7 +637,8 @@ export default function ChatPanel({
               submit(input);
             }}
           >
-            <div className="aih-composer__row">
+            {/* One field: the text and the send square sit in the same frame. */}
+            <div className={`aih-field${input.trim() ? ' has-text' : ''}`}>
               <textarea
                 ref={inputRef}
                 name="message"
@@ -659,7 +677,7 @@ export default function ChatPanel({
                     onClick={() => submit(t.humanRequestMessage)}
                     disabled={busy || offline}
                   >
-                    <ChatIcon name="headset" />
+                    <Faces className="is-small" />
                     {t.talkToHuman}
                   </button>
                 )}
