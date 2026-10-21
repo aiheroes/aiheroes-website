@@ -20,7 +20,7 @@ const PHASE = { active: 'Full support', security: 'Security updates only', eol: 
 const versions = PHP_BRANCHES.map((b) => ({ name: `PHP ${b.branch}`, phase: PHASE[phpStatus(`${b.branch}.0`).phase], until: day(b.securityUntil) }));
 
 const steps = [
-  { label: 'Step 1', title: 'Have PHP updated', text: 'Ask your hosting company or web developer to install the emergency update as soon as it is out.' },
+  { label: 'Step 1', title: 'Have PHP updated', text: 'Ask your hosting company or web developer to install the emergency update today. That is PHP 8.5.12, 8.4.27, 8.3.36 or 8.2.35, depending on your version.' },
   { label: 'Step 2', title: 'Check your PHP version', text: 'Does your site run on PHP 8.1 or older? No fix is coming for it. Move to PHP 8.3 or newer.' },
   { label: 'Step 3', title: 'Not possible right away?', text: 'CERT-EU, the cybersecurity service of the EU institutions, then advises taking the site offline for the time being.' },
 ];
@@ -34,7 +34,7 @@ const how = [
 const faq = [
   { q: 'How do I see which PHP version my website uses?', a: 'Enter your address at the top of this page. If your server shows the version, it is in the result. If it is not visible, your hosting company knows. The version is often also shown in the control panel of your hosting plan.' },
   { q: 'Is my site safe if the check finds no version?', a: 'You do not know yet. The check only sees what your page shows publicly, and a hidden version can still be old. Ask your hosting company or web developer.' },
-  { q: 'Which PHP versions get the emergency update?', a: 'The versions PHP still supports: 8.2, 8.3, 8.4 and 8.5. According to security firm Sansec, no official fix is coming for PHP 8.1 and older. Those versions no longer get updates.' },
+  { q: 'Which PHP versions have the emergency update?', a: 'The emergency update came out as PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. If your server runs PHP 8.3, for example, you need 8.3.36 or newer. According to security firm Sansec, no official fix is coming for PHP 8.1 and older. Those versions no longer get updates.' },
   { q: 'Which vulnerabilities is this about?', a: 'CVE-2026-109618 and CVE-2026-109619, also known as PHP2Shell. PHP rates both 9.2 out of 10 for severity. More background (in Dutch) at [IO+](https://ioplus.nl/nl/posts/europese-cyberdienst-waarschuwt-voor-php-kwetsbaarheden).' },
   { q: 'What do you do with the address I enter?', a: 'We fetch the page once for the check and do not store the address. If you ask for the free review, our team gets your details and the result of the check.' },
   { q: 'Can AI Heroes replace my website?', a: 'Yes. We build websites that run without a PHP server, with no plugins to keep up to date. You edit the texts yourself, and the site is set up to be found in Google and in AI assistants such as ChatGPT. [Ask for the free review](#contact) and we will look at what your site needs.' },
@@ -48,7 +48,7 @@ const tool = {
   applicationCategory: 'SecurityApplication',
   operatingSystem: 'Any',
   inLanguage: 'en',
-  description: 'Check which PHP version a website uses, whether it runs on WordPress and whether the version gets the emergency update for the PHP vulnerabilities of October 2026.',
+  description: 'Check which PHP version a website uses, whether it runs on WordPress and whether the version has the emergency update for the PHP vulnerabilities of October 2026.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
   provider: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
 };
@@ -73,7 +73,7 @@ const tool = {
     <div class="hs-prose" data-item>
       <p>PHP, the programming language that WordPress and many other websites run on, has two critical vulnerabilities. Through them, an attacker can take over a server remotely without logging in. PHP rates both 9.2 out of 10 for severity.</p>
       <p>The details were meant to stay secret until the update was ready, and leaked anyway. Cloudflare saw the first attacks come in on the morning of 21 October.</p>
-      <p>PHP releases an emergency update on 21 October at 14:00 UTC for the versions it still supports. According to security firm Sansec, no official fix is coming for PHP 8.1 and older.</p>
+      <p>On 21 October PHP released an emergency update for the versions it still supports: PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. According to PHP there is no complete workaround, and updating is the only safe choice. No official fix is coming for PHP 8.1 and older, says security firm Sansec.</p>
       <p>For a WordPress site, an emergency update like this is nothing unusual. The site depends on PHP, on WordPress itself and on every plugin ever installed, and all of those parts need to be kept up to date.</p>
     </div>
   </HsSection>
@@ -82,7 +82,7 @@ const tool = {
     <HsSteps items={steps} />
   </HsSection>
 
-  <HsSection tone="paper" title="Which versions still get *updates*" lede="The emergency update comes for every version PHP still supports. Source: php.net, checked on 21 October 2026.">
+  <HsSection tone="paper" title="Which versions still get *updates*" lede="The emergency update is out for every version PHP still supports. Source: php.net, checked on 21 October 2026.">
     <div class="hs-phptable" data-item>
       <table>
         <thead>

@@ -2,8 +2,9 @@
 // PHP-versie check (21 oktober 2026): the news hook of the PHP2Shell leaks, a free check of what a
 // site shows from outside (server/site-check.ts), what to do today, and the free website analysis
 // for visitors who would rather have a site without PHP. The LinkedIn post of that day points
-// here. Facts as checked on 2026-10-21: php.net (release 21 Oct 14:00 UTC, CVSS v4.0 9.2, supported
-// branches), Sansec (no fix for 8.1 and older), Cloudflare (first attacks), CERT-EU (advice).
+// here. Facts as checked on 2026-10-21: php.net (fix released 21 Oct as 8.5.12, 8.4.27, 8.3.36 and
+// 8.2.35, CVSS v4.0 9.2, supported branches), Sansec (no fix for 8.1 and older), Cloudflare (first
+// attacks), CERT-EU (advice).
 import HsLayout from '../../layouts/HsLayout.astro';
 import HsSiteCheck from '../../components/hs/HsSiteCheck.astro';
 import HsSection from '../../components/hs/HsSection.astro';
@@ -22,7 +23,7 @@ const PHASE = { active: 'Volledige ondersteuning', security: 'Alleen beveiliging
 const versions = PHP_BRANCHES.map((b) => ({ name: `PHP ${b.branch}`, phase: PHASE[phpStatus(`${b.branch}.0`).phase], until: day(b.securityUntil) }));
 
 const steps = [
-  { label: 'Stap 1', title: 'Laat PHP bijwerken', text: 'Vraag je hostingpartij of websitebeheerder om de spoedupdate te installeren zodra die er is.' },
+  { label: 'Stap 1', title: 'Laat PHP bijwerken', text: 'Vraag je hostingpartij of websitebeheerder om de spoedupdate vandaag te installeren. Dat is PHP 8.5.12, 8.4.27, 8.3.36 of 8.2.35, afhankelijk van je versie.' },
   { label: 'Stap 2', title: 'Check je PHP-versie', text: 'Draait je site op PHP 8.1 of ouder? Daar komt geen oplossing voor. Stap dan over naar PHP 8.3 of nieuwer.' },
   { label: 'Stap 3', title: 'Lukt dat niet direct?', text: 'CERT-EU, de cyberdienst van de Europese instellingen, adviseert de site dan tijdelijk offline te halen.' },
 ];
@@ -36,7 +37,7 @@ const how = [
 const faq = [
   { q: 'Hoe zie ik welke PHP-versie mijn website gebruikt?', a: 'Vul je adres in bovenaan deze pagina. Laat je server de versie zien, dan staat hij in het resultaat. Is hij niet zichtbaar, dan weet je hostingpartij het. Vaak staat de versie ook in het beheerpaneel van je hostingpakket.' },
   { q: 'Is mijn site veilig als de check geen versie vindt?', a: 'Dat weet je dan nog niet. De check ziet alleen wat je pagina openbaar laat zien, en een verborgen versie kan nog steeds oud zijn. Vraag het na bij je hostingpartij of websitebeheerder.' },
-  { q: 'Welke PHP-versies krijgen de spoedupdate?', a: 'De versies die PHP nog ondersteunt: 8.2, 8.3, 8.4 en 8.5. Voor PHP 8.1 en ouder komt er volgens beveiligingsbedrijf Sansec geen officiële oplossing. Die versies krijgen al geen updates meer.' },
+  { q: 'Welke PHP-versies hebben de spoedupdate?', a: 'De spoedupdate is uitgekomen als PHP 8.5.12, 8.4.27, 8.3.36 en 8.2.35. Draait je server bijvoorbeeld op PHP 8.3, dan heb je 8.3.36 of nieuwer nodig. Voor PHP 8.1 en ouder komt er volgens beveiligingsbedrijf Sansec geen officiële oplossing. Die versies krijgen al geen updates meer.' },
   { q: 'Om welke lekken gaat het?', a: 'Om CVE-2026-109618 en CVE-2026-109619, ook wel PHP2Shell genoemd. PHP geeft beide een ernstscore van 9,2 op 10. Meer achtergrond lees je bij [IO+](https://ioplus.nl/nl/posts/europese-cyberdienst-waarschuwt-voor-php-kwetsbaarheden).' },
   { q: 'Wat doen jullie met het adres dat ik invul?', a: 'We halen de pagina één keer op voor de check en slaan het adres niet op. Vraag je de gratis analyse aan, dan krijgt ons team je gegevens en het resultaat van de check.' },
   { q: 'Kan AI Heroes mijn website vervangen?', a: 'Ja. We bouwen websites die zonder PHP-server draaien, zonder plugins om bij te houden. De teksten pas je zelf aan, en de site is ingericht om gevonden te worden in Google en in AI-assistenten zoals ChatGPT. [Vraag de gratis analyse aan](#contact), dan kijken we wat er voor jouw site nodig is.' },
@@ -50,7 +51,7 @@ const tool = {
   applicationCategory: 'SecurityApplication',
   operatingSystem: 'Any',
   inLanguage: 'nl',
-  description: 'Check welke PHP-versie een website gebruikt, of hij op WordPress draait en of de versie de spoedupdate voor de PHP-lekken van oktober 2026 krijgt.',
+  description: 'Check welke PHP-versie een website gebruikt, of hij op WordPress draait en of de versie de spoedupdate voor de PHP-lekken van oktober 2026 heeft.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
   provider: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
 };
@@ -74,7 +75,7 @@ const tool = {
     <div class="hs-prose" data-item>
       <p>In PHP, de programmeertaal waar WordPress en veel andere websites op draaien, zitten twee kritieke lekken. Via die lekken kan een aanvaller op afstand een server overnemen, zonder in te loggen. PHP geeft beide lekken een ernstscore van 9,2 op 10.</p>
       <p>De details hoorden geheim te blijven tot de update klaar was, en lekten toch al uit. Cloudflare zag op 21 oktober in de ochtend de eerste aanvallen binnenkomen.</p>
-      <p>PHP brengt op 21 oktober om 16.00 uur Nederlandse tijd een spoedupdate uit voor de versies die nog ondersteund worden. Voor PHP 8.1 en ouder komt er volgens beveiligingsbedrijf Sansec geen officiële oplossing.</p>
+      <p>Op 21 oktober bracht PHP een spoedupdate uit voor de versies die nog ondersteund worden: PHP 8.5.12, 8.4.27, 8.3.36 en 8.2.35. Volgens PHP is er geen volledige tijdelijke oplossing en is bijwerken de enige veilige keuze. Voor PHP 8.1 en ouder komt er geen officiële oplossing, meldt beveiligingsbedrijf Sansec.</p>
       <p>Voor een WordPress-site is zo'n spoedupdate geen uitzondering. De site leunt op PHP, op WordPress zelf en op elke plugin die ooit is geïnstalleerd, en al die onderdelen moeten bijgehouden worden.</p>
     </div>
   </HsSection>
@@ -83,7 +84,7 @@ const tool = {
     <HsSteps items={steps} />
   </HsSection>
 
-  <HsSection tone="paper" title="Welke versies nog *updates* krijgen" lede="De spoedupdate komt voor elke versie die PHP nog ondersteunt. Bron: php.net, gecontroleerd op 21 oktober 2026.">
+  <HsSection tone="paper" title="Welke versies nog *updates* krijgen" lede="De spoedupdate is er voor elke versie die PHP nog ondersteunt. Bron: php.net, gecontroleerd op 21 oktober 2026.">
     <div class="hs-phptable" data-item>
       <table>
         <thead>
