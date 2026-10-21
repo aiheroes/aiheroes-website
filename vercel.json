@@ -43,6 +43,46 @@
       "statusCode": 301
     },
     {
+      "source": "/php-check",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*([Bb]ot|facebookexternalhit|WhatsApp).*"
+        }
+      ],
+      "destination": "/nl/php-versie-check",
+      "statusCode": 307
+    },
+    {
+      "source": "/php-check",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": ".*[nN][lL].*"
+        }
+      ],
+      "destination": "/nl/php-versie-check",
+      "statusCode": 307
+    },
+    {
+      "source": "/php-check",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language"
+        }
+      ],
+      "destination": "/en/php-version-check",
+      "statusCode": 307
+    },
+    {
+      "source": "/php-check",
+      "destination": "/nl/php-versie-check",
+      "statusCode": 307
+    },
+    {
       "source": "/diensten",
       "destination": "/nl/wat-we-bouwen",
       "statusCode": 301
