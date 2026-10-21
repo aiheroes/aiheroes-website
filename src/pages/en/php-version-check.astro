@@ -1,0 +1,117 @@
+---
+// PHP version check (21 October 2026), the English counterpart of /nl/php-versie-check: the
+// PHP2Shell news, a free check of what a site shows from outside (server/site-check.ts), what to
+// do today, and the free website review. Facts as checked on 2026-10-21, see the Dutch page.
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsSiteCheck from '../../components/hs/HsSiteCheck.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsCtaBand from '../../components/hs/HsCtaBand.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { faqSchema } from '../../data/schema';
+import { PHP_BRANCHES, phpStatus } from '../../../server/php-versions';
+
+const crumbs = [{ label: 'Home', href: '/en' }];
+
+const day = (iso: string) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${iso}T12:00:00Z`));
+const PHASE = { active: 'Full support', security: 'Security updates only', eol: 'No more updates', unknown: '' };
+const versions = PHP_BRANCHES.map((b) => ({ name: `PHP ${b.branch}`, phase: PHASE[phpStatus(`${b.branch}.0`).phase], until: day(b.securityUntil) }));
+
+const steps = [
+  { label: 'Step 1', title: 'Have PHP updated', text: 'Ask your hosting company or web developer to install the emergency update as soon as it is out.' },
+  { label: 'Step 2', title: 'Check your PHP version', text: 'Does your site run on PHP 8.1 or older? No fix is coming for it. Move to PHP 8.3 or newer.' },
+  { label: 'Step 3', title: 'Not possible right away?', text: 'CERT-EU, the cybersecurity service of the EU institutions, then advises taking the site offline for the time being.' },
+];
+
+const how = [
+  { icon: 'search' as const, title: 'What the check reads', text: 'The headers and the HTML of the page you enter. If the site runs on WordPress and we cannot see the PHP version, we also request /wp-json/, the public address of the WordPress API.' },
+  { icon: 'preview-open' as const, title: 'Why the version is often missing', text: 'Many hosting companies hide the PHP version, and caches often strip it. That is normal. Only your hosting company or web developer can tell you for certain.' },
+  { icon: 'lock' as const, title: 'What the check does not do', text: 'We do not look for vulnerabilities, do not log in anywhere and do not store the address you enter.' },
+];
+
+const faq = [
+  { q: 'How do I see which PHP version my website uses?', a: 'Enter your address at the top of this page. If your server shows the version, it is in the result. If it is not visible, your hosting company knows. The version is often also shown in the control panel of your hosting plan.' },
+  { q: 'Is my site safe if the check finds no version?', a: 'You do not know yet. The check only sees what your page shows publicly, and a hidden version can still be old. Ask your hosting company or web developer.' },
+  { q: 'Which PHP versions get the emergency update?', a: 'The versions PHP still supports: 8.2, 8.3, 8.4 and 8.5. According to security firm Sansec, no official fix is coming for PHP 8.1 and older. Those versions no longer get updates.' },
+  { q: 'Which vulnerabilities is this about?', a: 'CVE-2026-109618 and CVE-2026-109619, also known as PHP2Shell. PHP rates both 9.2 out of 10 for severity. More background (in Dutch) at [IO+](https://ioplus.nl/nl/posts/europese-cyberdienst-waarschuwt-voor-php-kwetsbaarheden).' },
+  { q: 'What do you do with the address I enter?', a: 'We fetch the page once for the check and do not store the address. If you ask for the free review, our team gets your details and the result of the check.' },
+  { q: 'Can AI Heroes replace my website?', a: 'Yes. We build websites that run without a PHP server, with no plugins to keep up to date. You edit the texts yourself, and the site is set up to be found in Google and in AI assistants such as ChatGPT. [Ask for the free review](#contact) and we will look at what your site needs.' },
+];
+
+const tool = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'PHP version check',
+  url: 'https://aiheroes.io/en/php-version-check',
+  applicationCategory: 'SecurityApplication',
+  operatingSystem: 'Any',
+  inLanguage: 'en',
+  description: 'Check which PHP version a website uses, whether it runs on WordPress and whether the version gets the emergency update for the PHP vulnerabilities of October 2026.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  provider: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+};
+---
+
+<HsLayout
+  lang="en"
+  title="PHP version check"
+  seoTitle="PHP version check: is your website safe from the PHP vulnerability?"
+  description="Check for free which PHP version your website uses and whether it runs on WordPress. With what to do today about the critical PHP vulnerabilities of October 2026."
+  crumbs={crumbs}
+  jsonLd={[tool, faqSchema(faq)]}
+>
+  <HsSiteCheck
+    crumbs={crumbs}
+    current="PHP version check"
+    title="Does your site run on a *safe* PHP version?"
+    lede="PHP, the programming language under WordPress, has two critical vulnerabilities, and the first attacks have already been seen. Enter your address to see which PHP version your site uses, whether it runs on WordPress and what to do today."
+  />
+
+  <HsSection tone="paper" title="What is going *on*?">
+    <div class="hs-prose" data-item>
+      <p>PHP, the programming language that WordPress and many other websites run on, has two critical vulnerabilities. Through them, an attacker can take over a server remotely without logging in. PHP rates both 9.2 out of 10 for severity.</p>
+      <p>The details were meant to stay secret until the update was ready, and leaked anyway. Cloudflare saw the first attacks come in on the morning of 21 October.</p>
+      <p>PHP releases an emergency update on 21 October at 14:00 UTC for the versions it still supports. According to security firm Sansec, no official fix is coming for PHP 8.1 and older.</p>
+      <p>For a WordPress site, an emergency update like this is nothing unusual. The site depends on PHP, on WordPress itself and on every plugin ever installed, and all of those parts need to be kept up to date.</p>
+    </div>
+  </HsSection>
+
+  <HsSection title="What to do *today*">
+    <HsSteps items={steps} />
+  </HsSection>
+
+  <HsSection tone="paper" title="Which versions still get *updates*" lede="The emergency update comes for every version PHP still supports. Source: php.net, checked on 21 October 2026.">
+    <div class="hs-phptable" data-item>
+      <table>
+        <thead>
+          <tr><th scope="col">Version</th><th scope="col">Status</th><th scope="col">Security updates until</th></tr>
+        </thead>
+        <tbody>
+          {versions.map((v) => (
+            <tr><th scope="row">{v.name}</th><td>{v.phase}</td><td>{v.until}</td></tr>
+          ))}
+          <tr class="is-eol"><th scope="row">PHP 8.1 and older</th><td>No more updates</td><td>Expired</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </HsSection>
+
+  <HsSection title="How the check *works*">
+    <HsCards items={how} />
+  </HsSection>
+
+  <HsCtaBand
+    tone="dark"
+    title="Rather have a site *without* PHP?"
+    text="We build websites that run without a PHP server. A vulnerability like this does not affect those sites, there are no plugins to keep up to date and you edit the texts yourself. They are also set up to be found in Google and in AI assistants such as ChatGPT."
+    cta={{ label: 'Ask for the free review', href: '#contact' }}
+  />
+
+  <HsSection title="Frequently asked *questions*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsContact intent="website" />
+</HsLayout>

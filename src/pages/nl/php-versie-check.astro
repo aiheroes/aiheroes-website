@@ -1,0 +1,119 @@
+---
+// PHP-versie check (21 oktober 2026): the news hook of the PHP2Shell leaks, a free check of what a
+// site shows from outside (server/site-check.ts), what to do today, and the free website analysis
+// for visitors who would rather have a site without PHP. The LinkedIn post of that day points
+// here. Facts as checked on 2026-10-21: php.net (release 21 Oct 14:00 UTC, CVSS v4.0 9.2, supported
+// branches), Sansec (no fix for 8.1 and older), Cloudflare (first attacks), CERT-EU (advice).
+import HsLayout from '../../layouts/HsLayout.astro';
+import HsSiteCheck from '../../components/hs/HsSiteCheck.astro';
+import HsSection from '../../components/hs/HsSection.astro';
+import HsSteps from '../../components/hs/HsSteps.astro';
+import HsCards from '../../components/hs/HsCards.astro';
+import HsCtaBand from '../../components/hs/HsCtaBand.astro';
+import HsFaq from '../../components/hs/HsFaq.astro';
+import HsContact from '../../components/hs/HsContact.astro';
+import { faqSchema } from '../../data/schema';
+import { PHP_BRANCHES, phpStatus } from '../../../server/php-versions';
+
+const crumbs = [{ label: 'Home', href: '/' }];
+
+const day = (iso: string) => new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${iso}T12:00:00Z`));
+const PHASE = { active: 'Volledige ondersteuning', security: 'Alleen beveiligingsupdates', eol: 'Geen updates meer', unknown: '' };
+const versions = PHP_BRANCHES.map((b) => ({ name: `PHP ${b.branch}`, phase: PHASE[phpStatus(`${b.branch}.0`).phase], until: day(b.securityUntil) }));
+
+const steps = [
+  { label: 'Stap 1', title: 'Laat PHP bijwerken', text: 'Vraag je hostingpartij of websitebeheerder om de spoedupdate te installeren zodra die er is.' },
+  { label: 'Stap 2', title: 'Check je PHP-versie', text: 'Draait je site op PHP 8.1 of ouder? Daar komt geen oplossing voor. Stap dan over naar PHP 8.3 of nieuwer.' },
+  { label: 'Stap 3', title: 'Lukt dat niet direct?', text: 'CERT-EU, de cyberdienst van de Europese instellingen, adviseert de site dan tijdelijk offline te halen.' },
+];
+
+const how = [
+  { icon: 'search' as const, title: 'Wat de check leest', text: 'De headers en de HTML van de pagina die je invult. Draait de site op WordPress en zien we de PHP-versie niet, dan vragen we ook /wp-json/ op, het openbare adres van de WordPress-API.' },
+  { icon: 'preview-open' as const, title: 'Waarom de versie vaak ontbreekt', text: 'Veel hostingpartijen verbergen de PHP-versie, en caches halen hem vaak weg. Dat is normaal. Zekerheid geeft alleen je hostingpartij of websitebeheerder.' },
+  { icon: 'lock' as const, title: 'Wat de check niet doet', text: 'We zoeken niet naar lekken, loggen nergens in en slaan het adres dat je invult niet op.' },
+];
+
+const faq = [
+  { q: 'Hoe zie ik welke PHP-versie mijn website gebruikt?', a: 'Vul je adres in bovenaan deze pagina. Laat je server de versie zien, dan staat hij in het resultaat. Is hij niet zichtbaar, dan weet je hostingpartij het. Vaak staat de versie ook in het beheerpaneel van je hostingpakket.' },
+  { q: 'Is mijn site veilig als de check geen versie vindt?', a: 'Dat weet je dan nog niet. De check ziet alleen wat je pagina openbaar laat zien, en een verborgen versie kan nog steeds oud zijn. Vraag het na bij je hostingpartij of websitebeheerder.' },
+  { q: 'Welke PHP-versies krijgen de spoedupdate?', a: 'De versies die PHP nog ondersteunt: 8.2, 8.3, 8.4 en 8.5. Voor PHP 8.1 en ouder komt er volgens beveiligingsbedrijf Sansec geen officiële oplossing. Die versies krijgen al geen updates meer.' },
+  { q: 'Om welke lekken gaat het?', a: 'Om CVE-2026-109618 en CVE-2026-109619, ook wel PHP2Shell genoemd. PHP geeft beide een ernstscore van 9,2 op 10. Meer achtergrond lees je bij [IO+](https://ioplus.nl/nl/posts/europese-cyberdienst-waarschuwt-voor-php-kwetsbaarheden).' },
+  { q: 'Wat doen jullie met het adres dat ik invul?', a: 'We halen de pagina één keer op voor de check en slaan het adres niet op. Vraag je de gratis analyse aan, dan krijgt ons team je gegevens en het resultaat van de check.' },
+  { q: 'Kan AI Heroes mijn website vervangen?', a: 'Ja. We bouwen websites die zonder PHP-server draaien, zonder plugins om bij te houden. De teksten pas je zelf aan, en de site is ingericht om gevonden te worden in Google en in AI-assistenten zoals ChatGPT. [Vraag de gratis analyse aan](#contact), dan kijken we wat er voor jouw site nodig is.' },
+];
+
+const tool = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'PHP-versie check',
+  url: 'https://aiheroes.io/nl/php-versie-check',
+  applicationCategory: 'SecurityApplication',
+  operatingSystem: 'Any',
+  inLanguage: 'nl',
+  description: 'Check welke PHP-versie een website gebruikt, of hij op WordPress draait en of de versie de spoedupdate voor de PHP-lekken van oktober 2026 krijgt.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+  provider: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
+};
+---
+
+<HsLayout
+  title="PHP-versie check"
+  seoTitle="PHP-versie check: is je website veilig voor het PHP-lek?"
+  description="Check gratis welke PHP-versie je website gebruikt en of hij op WordPress draait. Met wat je vandaag moet doen tegen de kritieke PHP-lekken van oktober 2026."
+  crumbs={crumbs}
+  jsonLd={[tool, faqSchema(faq)]}
+>
+  <HsSiteCheck
+    crumbs={crumbs}
+    current="PHP-versie check"
+    title="Draait je site op een *veilige* PHP-versie?"
+    lede="In PHP, de programmeertaal onder WordPress, zitten twee kritieke lekken, en de eerste aanvallen zijn al gezien. Vul je adres in: je ziet welke PHP-versie je site gebruikt, of hij op WordPress draait en wat je vandaag moet doen."
+  />
+
+  <HsSection tone="paper" title="Wat is er aan de *hand*?">
+    <div class="hs-prose" data-item>
+      <p>In PHP, de programmeertaal waar WordPress en veel andere websites op draaien, zitten twee kritieke lekken. Via die lekken kan een aanvaller op afstand een server overnemen, zonder in te loggen. PHP geeft beide lekken een ernstscore van 9,2 op 10.</p>
+      <p>De details hoorden geheim te blijven tot de update klaar was, en lekten toch al uit. Cloudflare zag op 21 oktober in de ochtend de eerste aanvallen binnenkomen.</p>
+      <p>PHP brengt op 21 oktober om 16.00 uur Nederlandse tijd een spoedupdate uit voor de versies die nog ondersteund worden. Voor PHP 8.1 en ouder komt er volgens beveiligingsbedrijf Sansec geen officiële oplossing.</p>
+      <p>Voor een WordPress-site is zo'n spoedupdate geen uitzondering. De site leunt op PHP, op WordPress zelf en op elke plugin die ooit is geïnstalleerd, en al die onderdelen moeten bijgehouden worden.</p>
+    </div>
+  </HsSection>
+
+  <HsSection title="Wat je *vandaag* doet">
+    <HsSteps items={steps} />
+  </HsSection>
+
+  <HsSection tone="paper" title="Welke versies nog *updates* krijgen" lede="De spoedupdate komt voor elke versie die PHP nog ondersteunt. Bron: php.net, gecontroleerd op 21 oktober 2026.">
+    <div class="hs-phptable" data-item>
+      <table>
+        <thead>
+          <tr><th scope="col">Versie</th><th scope="col">Status</th><th scope="col">Beveiligingsupdates tot</th></tr>
+        </thead>
+        <tbody>
+          {versions.map((v) => (
+            <tr><th scope="row">{v.name}</th><td>{v.phase}</td><td>{v.until}</td></tr>
+          ))}
+          <tr class="is-eol"><th scope="row">PHP 8.1 en ouder</th><td>Geen updates meer</td><td>Verlopen</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </HsSection>
+
+  <HsSection title="Hoe de check *werkt*">
+    <HsCards items={how} />
+  </HsSection>
+
+  <HsCtaBand
+    tone="dark"
+    title="Liever een site *zonder* PHP?"
+    text="Wij bouwen websites die zonder PHP-server draaien. Een lek als dit raakt die sites niet, er zijn geen plugins om bij te houden en de teksten pas je zelf aan. Ze zijn ook ingericht om gevonden te worden in Google en in AI-assistenten zoals ChatGPT."
+    cta={{ label: 'Vraag de gratis analyse aan', href: '#contact' }}
+  />
+
+  <HsSection title="Veelgestelde *vragen*">
+    <HsFaq items={faq} />
+  </HsSection>
+
+  <HsContact intent="website" />
+</HsLayout>
+

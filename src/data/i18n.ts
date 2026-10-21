@@ -81,6 +81,8 @@ export const PATH_PAIRS: Array<[nl: string, en: string | null]> = [
   ['/nl/incompany-ai-training', '/en/incompany-ai-training'],
   ['/nl/ai-geletterdheid-training', '/en/ai-literacy-training'],
   ['/nl/digitale-soevereiniteit', '/en/digital-sovereignty'],
+  // Tools
+  ['/nl/php-versie-check', '/en/php-version-check'],
   // Knowledge
   ['/nl/kennis/ai-act', '/en/insights/ai-act'],
   ['/nl/kennis/ai-geletterdheid', '/en/insights/ai-literacy'],
