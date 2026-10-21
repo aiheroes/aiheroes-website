@@ -69,8 +69,29 @@ jobs:
       - name: Pull Vercel environment information
         run: vercel pull --yes --environment=${{ env.PRODUCTION == 'true' && 'production' || 'preview' }} --token=${{ secrets.VERCEL_TOKEN }}
 
+      # Sensitive variables cannot be pulled; since 2026-09-08 the CLI writes the text
+      # "[SENSITIVE]" in their place instead of leaving them empty. That text is truthy, so
+      # build-time code took it for a real value (the chat's booking card linked to
+      # /[SENSITIVE] for six weeks). Without the line the variable is unset and the code's
+      # default applies; the functions still get the real values at runtime.
+      - name: Drop placeholder values of sensitive variables
+        run: |
+          for f in .vercel/.env.*.local; do
+            names=$(grep -E '="?\[SENSITIVE\]"?$' "$f" | cut -d= -f1 | tr '\n' ' ')
+            sed -i -E '/="?\[SENSITIVE\]"?$/d' "$f"
+            echo "$f: dropped placeholders for ${names:-nothing}"
+          done
+
       - name: Build project artifacts
         run: vercel build ${{ env.PRODUCTION == 'true' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: No placeholder values in the site
+        run: |
+          test -d .vercel/output/static || { echo "::error::.vercel/output/static not found"; exit 1; }
+          if grep -rIl '\[SENSITIVE\]' .vercel/output/static; then
+            echo "::error::A [SENSITIVE] placeholder from vercel pull ended up in the built site (files above)."
+            exit 1
+          fi
 
       - name: Deploy to Vercel
         id: deploy

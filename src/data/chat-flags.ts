@@ -8,6 +8,16 @@
 // the kill switch and PUBLIC_CHAT_SOURCE_CHIPS=false hides the chips.
 export const CHAT_ENABLED = import.meta.env.PUBLIC_CHAT_ENABLED !== 'false';
 export const CHAT_SOURCE_CHIPS = import.meta.env.PUBLIC_CHAT_SOURCE_CHIPS !== 'false';
-// Public booking link (also printed on the site); env overrides it.
-export const CHAT_BOOKING_URL: string =
-  import.meta.env.PUBLIC_CHAT_BOOKING_URL || 'https://calendar.app.google/GV4mwWWbdzJJJBfW9';
+// Public booking link (also printed on the site); env overrides it, but only with a real https
+// URL: since 2026-09-08 `vercel pull` writes a placeholder text for sensitive variables instead
+// of leaving them empty, and the booking card linked to that placeholder (a 404) until 2026-10-21.
+const DEFAULT_BOOKING_URL = 'https://calendar.app.google/GV4mwWWbdzJJJBfW9';
+function httpsUrl(value: string | undefined): string | null {
+  try {
+    const url = new URL(value ?? '');
+    return url.protocol === 'https:' ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+export const CHAT_BOOKING_URL: string = httpsUrl(import.meta.env.PUBLIC_CHAT_BOOKING_URL) ?? DEFAULT_BOOKING_URL;
