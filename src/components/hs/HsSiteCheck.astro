@@ -1,0 +1,446 @@
+---
+// The PHP version check (PHP2Shell, October 2026). The page cover holds the form, so the field is
+// in view on arrival; the result renders below it. Posts to /api/site-check (server/site-check.ts).
+// A result also fills the analysis request in the contact block (#contact), so the visitor sees
+// exactly what is sent. Text from the checked site (versions, plugin names) only ever goes in
+// through textContent.
+import HsIcon from './HsIcon.astro';
+import { display, plainText, zet } from './hs';
+import type { Crumb } from '../../data/schema';
+import { langOf, ui } from '../../data/ui';
+
+interface Props {
+  title: string;
+  current: string;
+  lede: string;
+  crumbs: Crumb[];
+}
+const { title, current, lede, crumbs } = Astro.props;
+const lang = langOf(Astro.url);
+const en = lang === 'en';
+
+const L = en
+  ? {
+      label: 'Your website address',
+      placeholder: 'yourcompany.com',
+      submit: 'Check your site',
+      fine: 'We only read what your page shows every visitor. We do not store the address.',
+      analyse: 'Ask for the free review',
+      again: 'Check another site',
+    }
+  : {
+      label: 'Adres van je website',
+      placeholder: 'jouwbedrijf.nl',
+      submit: 'Check je site',
+      fine: 'We lezen alleen wat je pagina aan iedere bezoeker laat zien. Het adres slaan we niet op.',
+      analyse: 'Vraag de gratis analyse aan',
+      again: 'Check een andere site',
+    };
+
+// Text for the result, read by the script below. {v} = PHP version, {p} = platform, {s} = status.
+const client = en
+  ? {
+      locale: 'en-GB',
+      busy: 'Checking…',
+      missing: 'Enter the address of your website.',
+      errors: {
+        invalid_url: 'That address is not quite right. Enter something like yourcompany.com.',
+        blocked: 'We cannot check this address. Enter the public address of your website.',
+        not_found: 'This domain does not exist or has no website. Is the spelling right?',
+        unreachable: 'Your site did not respond. Try again in a moment.',
+        timeout: 'Your site did not respond within eight seconds. Try again in a moment.',
+        tls: 'We could not make a secure connection to your site. The certificate does not seem to be in order.',
+        redirects: 'Your site keeps sending us to other addresses. Enter the final address.',
+        rate: 'You have used the check a lot just now. Try again in a minute.',
+        network: 'Something went wrong. Try again.',
+      },
+      verdicts: {
+        'php-eol': { tone: 'red', title: 'PHP {v} gets no fix for this leak', text: 'PHP releases no update for 8.1 and older. Have your hosting company or web developer move to PHP 8.3 or newer today, then test whether your site and plugins still work. Can that not happen quickly? CERT-EU advises taking the site offline for the time being.' },
+        'php-unpatched': { tone: 'red', title: 'PHP {v} does not have the emergency update yet', text: 'Your PHP version gets an emergency update for this leak. Going by the version number, your server does not have it yet. Ask your hosting company or web developer to install it today.' },
+        'php-patched': { tone: 'blue', title: 'PHP {v} has the emergency update', text: 'Your server runs a version with the fix for this leak. Keep installing updates as soon as they come out.' },
+        'php-supported': { tone: 'blue', title: 'PHP {v} gets the emergency update', text: 'Whether the update is on your server yet cannot be seen from outside. Ask your hosting company or web developer to install it today.' },
+        'php-unknown': { tone: 'blue', title: 'Your site runs on PHP {v}', text: 'This version is not in the PHP support table. Ask your hosting company or web developer whether the emergency update is on it.' },
+        'hidden-platform': { tone: 'blue', title: 'Your site runs on {p}', text: '{p} runs on PHP. Your server does not show which version, and that is normal. Ask your hosting company or web developer which version it is and whether the emergency update is on it. On PHP 8.1 or older no fix is coming and you need to upgrade.' },
+        'hidden-php': { tone: 'blue', title: 'Your site runs on PHP', text: 'Your server does not show which version, and that is normal. Ask your hosting company or web developer which version it is and whether the emergency update is on it. On PHP 8.1 or older no fix is coming and you need to upgrade.' },
+        hosted: { tone: 'dark', title: 'Your site runs on {p}', text: '{p} runs the servers itself, so you do not need to do anything about this PHP leak.' },
+        refused: { tone: 'dark', title: 'Your site did not allow the check', text: 'Your server answered with code {s}. Security layers often do that with unknown visitors. Ask your hosting company or web developer which PHP version your site uses.' },
+        'no-signal': { tone: 'dark', title: 'We see no PHP', text: 'Your page shows no trace of PHP or WordPress. We cannot rule it out completely: PHP can sit behind a cache or run on another part of your site. In doubt? Ask your web developer.' },
+      },
+      notes: {
+        distro: 'Your server uses a PHP package from a Linux distribution. Some distributions build security fixes into older versions themselves. Ask your hosting company whether that applies to this leak.',
+        number: 'Some hosting companies build in fixes without changing the version number. They know for certain whether you are safe.',
+      },
+      facts: {
+        php: 'PHP version',
+        hidden: 'Not visible',
+        none: 'No PHP seen',
+        support: 'PHP support',
+        platform: 'Platform',
+        unknownPlatform: 'Not recognised',
+        plugins: 'Plugins in the source code',
+        noPlugins: 'None visible',
+        more: 'and {n} more',
+        theme: 'Theme: {t}',
+        connection: 'Connection',
+        secure: 'Secure (https)',
+        insecure: 'Not secure (http)',
+      },
+      sources: {
+        'x-powered-by': 'From the X-Powered-By header',
+        server: 'From the Server header',
+        'wp-json': 'From the WordPress API (/wp-json/)',
+        cookie: 'A PHP session cookie, without a version',
+        platform: '{p} runs on PHP',
+      },
+      phases: {
+        active: 'Full support until {a}',
+        security: 'Security updates only, until {u}',
+        eol: 'No more updates',
+        unknown: 'Not in the support table',
+      },
+      message: { intro: 'Result of the PHP check:', php: 'PHP version', platform: 'Platform', plugins: 'Plugins in the source code' },
+    }
+  : {
+      locale: 'nl-NL',
+      busy: 'Bezig met checken…',
+      missing: 'Vul het adres van je website in.',
+      errors: {
+        invalid_url: 'Dat adres klopt nog niet helemaal. Vul bijvoorbeeld jouwbedrijf.nl in.',
+        blocked: 'Dit adres kunnen we niet checken. Vul het openbare adres van je website in.',
+        not_found: 'Dit domein bestaat niet of heeft geen website. Klopt de spelling?',
+        unreachable: 'Je site reageerde niet. Probeer het zo nog eens.',
+        timeout: 'Je site reageerde niet binnen acht seconden. Probeer het zo nog eens.',
+        tls: 'We konden geen beveiligde verbinding maken met je site. Het certificaat lijkt niet in orde.',
+        redirects: 'Je site stuurt ons steeds door naar een ander adres. Vul het eindadres in.',
+        rate: 'Je hebt de check net vaak gebruikt. Probeer het over een minuut opnieuw.',
+        network: 'Er ging iets mis. Probeer het opnieuw.',
+      },
+      verdicts: {
+        'php-eol': { tone: 'red', title: 'PHP {v} krijgt geen oplossing voor dit lek', text: 'Voor PHP 8.1 en ouder brengt PHP geen update uit. Laat je hostingpartij of websitebeheerder vandaag overstappen naar PHP 8.3 of nieuwer, en test daarna of je site en plugins nog werken. Lukt dat niet snel? CERT-EU adviseert de site dan tijdelijk offline te halen.' },
+        'php-unpatched': { tone: 'red', title: 'PHP {v} heeft de spoedupdate nog niet', text: 'Je PHP-versie krijgt een spoedupdate voor dit lek. Aan het versienummer te zien heeft je server die nog niet. Vraag je hostingpartij of websitebeheerder om hem vandaag te installeren.' },
+        'php-patched': { tone: 'blue', title: 'PHP {v} heeft de spoedupdate', text: 'Je server draait een versie met de oplossing voor dit lek. Blijf updates installeren zodra ze uitkomen.' },
+        'php-supported': { tone: 'blue', title: 'PHP {v} krijgt de spoedupdate', text: 'Of de update al op je server staat, is van buitenaf niet te zien. Vraag je hostingpartij of websitebeheerder om hem vandaag te installeren.' },
+        'php-unknown': { tone: 'blue', title: 'Je site draait op PHP {v}', text: 'Deze versie staat niet in de ondersteuningstabel van PHP. Vraag je hostingpartij of websitebeheerder of de spoedupdate erop staat.' },
+        'hidden-platform': { tone: 'blue', title: 'Je site draait op {p}', text: '{p} draait op PHP. Welke versie je server gebruikt, laat hij niet zien, en dat is normaal. Vraag je hostingpartij of websitebeheerder welke versie het is en of de spoedupdate erop staat. Bij PHP 8.1 of ouder komt er geen oplossing en moet je overstappen.' },
+        'hidden-php': { tone: 'blue', title: 'Je site draait op PHP', text: 'Welke versie je server gebruikt, laat hij niet zien, en dat is normaal. Vraag je hostingpartij of websitebeheerder welke versie het is en of de spoedupdate erop staat. Bij PHP 8.1 of ouder komt er geen oplossing en moet je overstappen.' },
+        hosted: { tone: 'dark', title: 'Je site draait op {p}', text: '{p} beheert de servers zelf, dus voor dit PHP-lek hoef je zelf niets te doen.' },
+        refused: { tone: 'dark', title: 'Je site liet de check niet toe', text: 'Je server antwoordde met code {s}. Beveiligingen doen dat vaker bij onbekende bezoekers. Vraag je hostingpartij of websitebeheerder welke PHP-versie je site gebruikt.' },
+        'no-signal': { tone: 'dark', title: 'We zien geen PHP', text: 'Je pagina laat geen sporen van PHP of WordPress zien. Helemaal uitsluiten kunnen we het niet: PHP kan achter een cache zitten of op een ander deel van je site draaien. Twijfel je, vraag het dan na bij je websitebeheerder.' },
+      },
+      notes: {
+        distro: 'Je server gebruikt een PHP-pakket van een Linux-distributie. Sommige distributies bouwen beveiligingsoplossingen zelf in oudere versies in. Vraag je hostingpartij of dat voor dit lek geldt.',
+        number: 'Sommige hostingpartijen bouwen oplossingen in zonder het versienummer te veranderen. Zij weten zeker of je al veilig zit.',
+      },
+      facts: {
+        php: 'PHP-versie',
+        hidden: 'Niet zichtbaar',
+        none: 'Geen PHP gezien',
+        support: 'Ondersteuning door PHP',
+        platform: 'Platform',
+        unknownPlatform: 'Niet herkend',
+        plugins: 'Plugins in de broncode',
+        noPlugins: 'Geen zichtbaar',
+        more: 'en {n} meer',
+        theme: 'Thema: {t}',
+        connection: 'Verbinding',
+        secure: 'Beveiligd (https)',
+        insecure: 'Niet beveiligd (http)',
+      },
+      sources: {
+        'x-powered-by': 'Uit de X-Powered-By-header',
+        server: 'Uit de Server-header',
+        'wp-json': 'Uit de WordPress-API (/wp-json/)',
+        cookie: 'Een PHP-sessiecookie, zonder versie',
+        platform: '{p} draait op PHP',
+      },
+      phases: {
+        active: 'Volledige ondersteuning tot {a}',
+        security: 'Alleen beveiligingsupdates, tot {u}',
+        eol: 'Geen updates meer',
+        unknown: 'Niet in de ondersteuningstabel',
+      },
+      message: { intro: 'Resultaat van de PHP-check:', php: 'PHP-versie', platform: 'Platform', plugins: 'Plugins in de broncode' },
+    };
+---
+
+<section class="hs-pcover hs-snap hs-check" id="check" data-check-copy={JSON.stringify(client)}>
+  <div class="hs-pcover__zone on-blue">
+    {crumbs.length > 0 && (
+      <nav class="hs-crumbs" aria-label={ui(Astro.url).crumbs}>
+        <ol>
+          {crumbs.map((c) => <li><a href={c.href}>{c.label}</a></li>)}
+          <li aria-current="page">{current}</li>
+        </ol>
+      </nav>
+    )}
+    <h1 class:list={['hs-pcover__title', { 'is-long': plainText(title).length > 46 }]} set:html={display(title)} />
+  </div>
+  <div class="hs-pcover__band hs-check__band">
+    <p class="hs-pcover__lede">{zet(lede)}</p>
+    <form class="hs-check__form" data-site-check novalidate>
+      <label class="hs-check__field">
+        <span class="hs-label">{L.label}</span>
+        <input
+          class="hs-input"
+          type="text"
+          name="url"
+          inputmode="url"
+          autocomplete="url"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder={L.placeholder}
+          required
+        />
+      </label>
+      <button class="hs-btn hs-btn--light" type="submit">
+        {L.submit}
+        <HsIcon name="arrow-right" />
+      </button>
+      <p class="hs-check__status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="hs-check__fine">{zet(L.fine)}</p>
+  </div>
+</section>
+
+<section class="hs-check-out" id="resultaat" tabindex="-1" aria-labelledby="hs-check-title" hidden>
+  <div class="hs-check-out__grid">
+    <div class="hs-check-verdict" data-verdict>
+      <p class="hs-check-verdict__host" data-host></p>
+      <h2 class="hs-check-verdict__title" id="hs-check-title" data-title></h2>
+      <p class="hs-check-verdict__text" data-text></p>
+      <p class="hs-check-verdict__note" data-note hidden></p>
+    </div>
+    <dl class="hs-check-facts" data-facts></dl>
+    <div class="hs-check-next">
+      <a class="hs-btn hs-btn--dark" href="#contact">
+        {L.analyse}
+        <HsIcon name="arrow-right" />
+      </a>
+      <a class="hs-link" href="#check" data-again>
+        {L.again}
+        <HsIcon name="arrow-right" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  type Copy = {
+    locale: string;
+    busy: string;
+    missing: string;
+    errors: Record<string, string>;
+    verdicts: Record<string, { tone: 'red' | 'blue' | 'dark'; title: string; text: string }>;
+    notes: { distro: string; number: string };
+    facts: Record<string, string>;
+    sources: Record<string, string>;
+    phases: Record<string, string>;
+    message: Record<string, string>;
+  };
+  type Report = {
+    url: string;
+    host: string;
+    status: number;
+    https: boolean;
+    verdict: string;
+    php: {
+      found: boolean;
+      version: string | null;
+      distro: boolean;
+      source: string | null;
+      status: { phase: string; activeUntil: string | null; securityUntil: string | null } | null;
+    };
+    platform: { name: string; version: string | null; php: boolean; hosted: boolean } | null;
+    plugins: string[];
+    theme: string | null;
+  };
+
+  const fill = (text: string, vars: Record<string, string>) => text.replace(/\{(\w)\}/g, (_, k: string) => vars[k] ?? '');
+
+  function initSiteCheck() {
+    const cover = document.getElementById('check');
+    const form = document.querySelector<HTMLFormElement>('[data-site-check]');
+    const out = document.getElementById('resultaat');
+    if (!cover || !form || !out) return;
+    const copy = JSON.parse(cover.dataset.checkCopy ?? '{}') as Copy;
+    const input = form.querySelector<HTMLInputElement>('input[name="url"]')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const status = form.querySelector<HTMLElement>('.hs-check__status')!;
+    const date = new Intl.DateTimeFormat(copy.locale, { day: 'numeric', month: 'long', year: 'numeric' });
+    const day = (iso: string | null) => (iso ? date.format(new Date(`${iso}T12:00:00Z`)) : '');
+    const say = (text: string, state: 'error' | 'busy' | '') => {
+      status.textContent = text;
+      status.dataset.state = state;
+    };
+    input.addEventListener('input', () => input.removeAttribute('aria-invalid'));
+
+    const row = (label: string, value: string, sub?: string) => {
+      const div = document.createElement('div');
+      const dt = document.createElement('dt');
+      dt.textContent = label;
+      const dd = document.createElement('dd');
+      const strong = document.createElement('span');
+      strong.className = 'hs-check-facts__value';
+      strong.textContent = value;
+      dd.append(strong);
+      if (sub) {
+        const small = document.createElement('span');
+        small.className = 'hs-check-facts__sub';
+        small.textContent = sub;
+        dd.append(small);
+      }
+      div.append(dt, dd);
+      return div;
+    };
+
+    const render = (r: Report) => {
+      const f = copy.facts;
+      const platformName = r.platform ? [r.platform.name, r.platform.version].filter(Boolean).join(' ') : '';
+      const vars = { v: r.php.version ?? '', p: r.platform?.name ?? '', s: String(r.status) };
+      const v = copy.verdicts[r.verdict] ?? copy.verdicts['no-signal'];
+      const panel = out.querySelector<HTMLElement>('[data-verdict]')!;
+      panel.className = `hs-check-verdict on-${v.tone}`;
+      out.querySelector('[data-host]')!.textContent = r.host;
+      out.querySelector('[data-title]')!.textContent = fill(v.title, vars);
+      out.querySelector('[data-text]')!.textContent = fill(v.text, vars);
+      const note = out.querySelector<HTMLElement>('[data-note]')!;
+      const noteText = r.php.distro && r.php.version ? copy.notes.distro : r.verdict === 'php-unpatched' ? copy.notes.number : '';
+      note.textContent = noteText;
+      note.hidden = !noteText;
+
+      const facts = out.querySelector<HTMLElement>('[data-facts]')!;
+      facts.replaceChildren();
+      const source = r.php.source ? fill(copy.sources[r.php.source] ?? '', vars) : undefined;
+      facts.append(row(f.php, r.php.version ?? (r.php.found ? f.hidden : f.none), source));
+      if (r.php.status) {
+        const s = r.php.status;
+        facts.append(row(f.support, fill(copy.phases[s.phase] ?? copy.phases.unknown, { a: day(s.activeUntil), u: day(s.securityUntil) })));
+      }
+      facts.append(row(f.platform, platformName || f.unknownPlatform, r.theme ? fill(f.theme, { t: r.theme }) : undefined));
+      if (r.platform?.name === 'WordPress') {
+        const shown = r.plugins.slice(0, 12).join(', ');
+        const rest = r.plugins.length - 12;
+        const list = rest > 0 ? `${shown} ${fill(f.more, { n: String(rest) })}` : shown;
+        facts.append(row(f.plugins, r.plugins.length ? String(r.plugins.length) : f.noPlugins, r.plugins.length ? list : undefined));
+      }
+      facts.append(row(f.connection, r.https ? f.secure : f.insecure, r.url));
+
+      // The analysis request in the contact block gets the site and the result, visibly.
+      const message = document.querySelector<HTMLTextAreaElement>('#contact textarea[name="message"]');
+      if (message && (!message.value.trim() || message.dataset.filled === message.value)) {
+        const m = copy.message;
+        const lines = [
+          r.url,
+          '',
+          m.intro,
+          `- ${m.php}: ${r.php.version ?? (r.php.found ? f.hidden : f.none)}`,
+          `- ${m.platform}: ${platformName || f.unknownPlatform}`,
+          ...(r.platform?.name === 'WordPress' ? [`- ${m.plugins}: ${r.plugins.length}`] : []),
+        ];
+        message.value = lines.join('\n');
+        message.dataset.filled = message.value;
+      }
+
+      out.hidden = false;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      out.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      out.focus({ preventScroll: true });
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = input.value.trim();
+      if (!url) {
+        input.setAttribute('aria-invalid', 'true');
+        say(copy.missing, 'error');
+        input.focus();
+        return;
+      }
+      say(copy.busy, 'busy');
+      button.disabled = true;
+      try {
+        const res = await fetch('/api/site-check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url }),
+        });
+        const data = (await res.json().catch(() => null)) as { ok: boolean; report?: Report; error?: string } | null;
+        if (data?.ok && data.report) {
+          say('', '');
+          render(data.report);
+        } else {
+          say(copy.errors[data?.error ?? ''] ?? copy.errors.network, 'error');
+          if (data?.error === 'invalid_url' || data?.error === 'not_found') input.setAttribute('aria-invalid', 'true');
+        }
+      } catch {
+        say(copy.errors.network, 'error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+    out.querySelector('[data-again]')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      cover.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      input.select();
+      input.focus({ preventScroll: true });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initSiteCheck);
+</script>
+
+<style is:global>
+  /* The form sits in the cover's ink band: one row with the field and the button from 640px. */
+  .hs-check .hs-check__band { grid-template-columns: minmax(0, 1fr); }
+  .hs-check__form { display: grid; gap: .75rem 1rem; max-width: 46rem; }
+  .hs-check__field { display: grid; gap: .5rem; }
+  .hs-check .hs-label { color: var(--light); }
+  .hs-check .hs-input { color: var(--light); font-size: 1.125rem; min-height: 3.5rem; box-shadow: inset 0 0 0 1.5px var(--rule-on-dark); }
+  .hs-check .hs-input::placeholder { color: var(--micro-on-dark); }
+  .hs-check .hs-input:hover { box-shadow: inset 0 0 0 1.5px var(--body-on-dark); }
+  .hs-check .hs-input:focus { box-shadow: inset 0 0 0 2px var(--light); }
+  .hs-check .hs-btn { min-height: 3.5rem; justify-self: start; }
+  .hs-check .hs-btn:disabled { opacity: .6; cursor: progress; }
+  .hs-check__status { font-size: .9375rem; color: var(--body-on-dark); }
+  .hs-check__status:empty { display: none; }
+  .hs-check__status[data-state='error'] { color: var(--light); font-weight: 600; }
+  .hs-check__fine { font-size: .875rem; color: var(--micro-on-dark); max-width: 54ch; }
+  @media (min-width: 640px) {
+    .hs-check__form { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+    .hs-check__status { grid-column: 1 / -1; }
+  }
+
+  /* The result: the verdict on a colour plane, the facts beside it under 1.5px rules. */
+  .hs-check-out { background: var(--light); padding: var(--sec-y) var(--pad-x); scroll-margin-top: 4rem; }
+  .hs-check-out:focus { outline: none; }
+  .hs-check-out__grid { display: grid; gap: 2rem; max-width: 105rem; }
+  .hs-check-verdict { display: grid; align-content: start; gap: 1rem; padding: clamp(1.5rem, 3vw, 3rem); }
+  .hs-check-verdict__host { font-size: .9375rem; font-weight: 600; color: var(--body-on-dark); overflow-wrap: anywhere; }
+  .hs-check-verdict__title { font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; font-size: clamp(1.875rem, 1.1rem + 2.6vw, 3.75rem); max-width: 16ch; overflow-wrap: anywhere; }
+  .hs-check-verdict__text { font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.3125rem); line-height: 1.5; color: var(--body-on-dark); max-width: 52ch; }
+  .hs-check-verdict__note { font-size: .9375rem; line-height: 1.5; color: var(--body-on-dark); max-width: 56ch; padding-top: 1rem; box-shadow: inset 0 1.5px 0 var(--rule-on-dark); }
+  .hs-check-facts { display: grid; align-content: start; }
+  .hs-check-facts > div { display: grid; gap: .25rem; padding: 1rem 0 1.125rem; box-shadow: inset 0 1.5px 0 var(--rule-on-light); }
+  .hs-check-facts dt { font-size: .9375rem; font-weight: 500; color: var(--micro-on-light); }
+  .hs-check-facts dd { display: grid; gap: .25rem; }
+  .hs-check-facts__value { font-weight: 700; letter-spacing: -0.02em; font-size: clamp(1.25rem, 1rem + .7vw, 1.75rem); line-height: 1.15; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .hs-check-facts__sub { font-size: .9375rem; line-height: 1.45; color: var(--body-on-light); overflow-wrap: anywhere; }
+  .hs-check-next { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; }
+  @media (min-width: 1024px) {
+    .hs-check-out__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--module); }
+    .hs-check-next { grid-column: 1 / -1; }
+  }
+
+  /* The version table on the check pages. */
+  .hs-phptable { overflow-x: auto; max-width: 56rem; }
+  .hs-phptable table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hs-phptable :is(th, td) { text-align: left; padding: .875rem 1.5rem .875rem 0; box-shadow: inset 0 -1.5px 0 var(--rule-on-light); vertical-align: top; }
+  .hs-phptable thead th { font-size: .9375rem; font-weight: 500; color: var(--micro-on-light); padding-top: 0; }
+  .hs-phptable tbody th { font-weight: 700; white-space: nowrap; }
+  .hs-phptable td { color: var(--body-on-light); }
+  .hs-phptable .is-eol :is(th, td) { color: var(--dark); font-weight: 700; }
+  @media (max-width: 559px) {
+    .hs-phptable :is(th, td) { padding-right: .875rem; font-size: .9375rem; }
+  }
+</style>
