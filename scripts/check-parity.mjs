@@ -50,8 +50,11 @@ if (bypass) {
 // (:path*, (.*)) are sampled with a fixed path so source and destination line up.
 const vercel = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
 const sample = (p) => p.replace(/:path\*$/, 'sample-page').replace(/\(\.\*\)$/, 'sample');
+// Short links that pick the visitor's language (/php-check) redirect temporarily and per
+// request header, so they stay out of this permanent-redirect matrix.
+const negotiated = new Set(vercel.redirects.filter((r) => r.has || r.missing).map((r) => r.source));
 const rules = [
-  ...vercel.redirects.map((r) => ({ from: sample(r.source), to: sample(r.destination), status: r.statusCode ?? 308 })),
+  ...vercel.redirects.filter((r) => !negotiated.has(r.source)).map((r) => ({ from: sample(r.source), to: sample(r.destination), status: r.statusCode ?? 308 })),
   ...vercel.rewrites
     .filter((r) => r.destination === '/api/gone')
     .map((r) => ({ from: sample(r.source), to: '', status: 410 })),

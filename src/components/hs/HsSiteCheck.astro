@@ -37,7 +37,8 @@ const L = en
       again: 'Check een andere site',
     };
 
-// Text for the result, read by the script below. {v} = PHP version, {p} = platform, {s} = status.
+// Text for the result, read by the script below. {v} = PHP version, {f} = first version with the
+// fix, {p} = platform, {s} = status.
 const client = en
   ? {
       locale: 'en-GB',
@@ -56,9 +57,9 @@ const client = en
       },
       verdicts: {
         'php-eol': { tone: 'red', title: 'PHP {v} gets no fix for this leak', text: 'PHP releases no update for 8.1 and older. Have your hosting company or web developer move to PHP 8.3 or newer today, then test whether your site and plugins still work. Can that not happen quickly? CERT-EU advises taking the site offline for the time being.' },
-        'php-unpatched': { tone: 'red', title: 'PHP {v} does not have the emergency update yet', text: 'Your PHP version gets an emergency update for this leak. Going by the version number, your server does not have it yet. Ask your hosting company or web developer to install it today.' },
+        'php-unpatched': { tone: 'red', title: 'PHP {v} does not have the emergency update yet', text: 'The fix for this leak is in PHP {f} and newer. Going by the version number, your server does not have that update yet. Ask your hosting company or web developer to install it today.' },
         'php-patched': { tone: 'blue', title: 'PHP {v} has the emergency update', text: 'Your server runs a version with the fix for this leak. Keep installing updates as soon as they come out.' },
-        'php-supported': { tone: 'blue', title: 'PHP {v} gets the emergency update', text: 'Whether the update is on your server yet cannot be seen from outside. Ask your hosting company or web developer to install it today.' },
+        'php-supported': { tone: 'blue', title: 'The emergency update for PHP {v} is out', text: 'PHP released the fix in version {f}. Whether it is on your server yet cannot be seen from outside. Ask your hosting company or web developer to install it today.' },
         'php-unknown': { tone: 'blue', title: 'Your site runs on PHP {v}', text: 'This version is not in the PHP support table. Ask your hosting company or web developer whether the emergency update is on it.' },
         'hidden-platform': { tone: 'blue', title: 'Your site runs on {p}', text: '{p} runs on PHP. Your server does not show which version, and that is normal. Ask your hosting company or web developer which version it is and whether the emergency update is on it. On PHP 8.1 or older no fix is coming and you need to upgrade.' },
         'hidden-php': { tone: 'blue', title: 'Your site runs on PHP', text: 'Your server does not show which version, and that is normal. Ask your hosting company or web developer which version it is and whether the emergency update is on it. On PHP 8.1 or older no fix is coming and you need to upgrade.' },
@@ -117,9 +118,9 @@ const client = en
       },
       verdicts: {
         'php-eol': { tone: 'red', title: 'PHP {v} krijgt geen oplossing voor dit lek', text: 'Voor PHP 8.1 en ouder brengt PHP geen update uit. Laat je hostingpartij of websitebeheerder vandaag overstappen naar PHP 8.3 of nieuwer, en test daarna of je site en plugins nog werken. Lukt dat niet snel? CERT-EU adviseert de site dan tijdelijk offline te halen.' },
-        'php-unpatched': { tone: 'red', title: 'PHP {v} heeft de spoedupdate nog niet', text: 'Je PHP-versie krijgt een spoedupdate voor dit lek. Aan het versienummer te zien heeft je server die nog niet. Vraag je hostingpartij of websitebeheerder om hem vandaag te installeren.' },
+        'php-unpatched': { tone: 'red', title: 'PHP {v} heeft de spoedupdate nog niet', text: 'De oplossing voor dit lek zit in PHP {f} en nieuwer. Aan het versienummer te zien heeft je server die update nog niet. Vraag je hostingpartij of websitebeheerder om hem vandaag te installeren.' },
         'php-patched': { tone: 'blue', title: 'PHP {v} heeft de spoedupdate', text: 'Je server draait een versie met de oplossing voor dit lek. Blijf updates installeren zodra ze uitkomen.' },
-        'php-supported': { tone: 'blue', title: 'PHP {v} krijgt de spoedupdate', text: 'Of de update al op je server staat, is van buitenaf niet te zien. Vraag je hostingpartij of websitebeheerder om hem vandaag te installeren.' },
+        'php-supported': { tone: 'blue', title: 'De spoedupdate voor PHP {v} is verschenen', text: 'PHP bracht de oplossing uit in versie {f}. Of die al op je server staat, is van buitenaf niet te zien. Vraag je hostingpartij of websitebeheerder om hem vandaag te installeren.' },
         'php-unknown': { tone: 'blue', title: 'Je site draait op PHP {v}', text: 'Deze versie staat niet in de ondersteuningstabel van PHP. Vraag je hostingpartij of websitebeheerder of de spoedupdate erop staat.' },
         'hidden-platform': { tone: 'blue', title: 'Je site draait op {p}', text: '{p} draait op PHP. Welke versie je server gebruikt, laat hij niet zien, en dat is normaal. Vraag je hostingpartij of websitebeheerder welke versie het is en of de spoedupdate erop staat. Bij PHP 8.1 of ouder komt er geen oplossing en moet je overstappen.' },
         'hidden-php': { tone: 'blue', title: 'Je site draait op PHP', text: 'Welke versie je server gebruikt, laat hij niet zien, en dat is normaal. Vraag je hostingpartij of websitebeheerder welke versie het is en of de spoedupdate erop staat. Bij PHP 8.1 of ouder komt er geen oplossing en moet je overstappen.' },
@@ -248,7 +249,7 @@ const client = en
       version: string | null;
       distro: boolean;
       source: string | null;
-      status: { phase: string; activeUntil: string | null; securityUntil: string | null } | null;
+      status: { phase: string; activeUntil: string | null; securityUntil: string | null; fixedIn: string | null } | null;
     };
     platform: { name: string; version: string | null; php: boolean; hosted: boolean } | null;
     plugins: string[];
@@ -296,7 +297,7 @@ const client = en
     const render = (r: Report) => {
       const f = copy.facts;
       const platformName = r.platform ? [r.platform.name, r.platform.version].filter(Boolean).join(' ') : '';
-      const vars = { v: r.php.version ?? '', p: r.platform?.name ?? '', s: String(r.status) };
+      const vars = { v: r.php.version ?? '', f: r.php.status?.fixedIn ?? '', p: r.platform?.name ?? '', s: String(r.status) };
       const v = copy.verdicts[r.verdict] ?? copy.verdicts['no-signal'];
       const panel = out.querySelector<HTMLElement>('[data-verdict]')!;
       panel.className = `hs-check-verdict on-${v.tone}`;

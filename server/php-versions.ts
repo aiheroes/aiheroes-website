@@ -1,9 +1,7 @@
 // PHP branches and their support (php.net/supported-versions.php, checked 2026-10-21), plus the
-// state of the PHP2Shell fix (CVE-2026-109618 and CVE-2026-109619) for the website check. The
-// fix is a security release for the supported branches, due 2026-10-21 at 14:00 UTC; PHP 8.1 and
-// older get none (Sansec). Until php.net publishes the fixed versions, FIXED stays empty: a
-// version at or below the last release before the fix is certainly unpatched, anything newer
-// is left open instead of guessed.
+// state of the PHP2Shell fix (CVE-2026-109618 and CVE-2026-109619) for the website check. PHP
+// released the fix on 2026-10-21 as 8.5.12, 8.4.27, 8.3.36 and 8.2.35 (php.net); PHP 8.1 and
+// older get none (Sansec).
 
 export interface PhpBranch {
   branch: string;
@@ -18,11 +16,8 @@ export const PHP_BRANCHES: PhpBranch[] = [
   { branch: '8.2', activeUntil: '2024-12-31', securityUntil: '2026-12-31' },
 ];
 
-/** The releases of 2026-09-24, the last ones before the fix. */
-const LAST_BEFORE_FIX: Record<string, number> = { '8.5': 11, '8.4': 26, '8.3': 35, '8.2': 34 };
-
-/** First fixed patch number per branch, filled in once php.net publishes the release. */
-const FIXED: Record<string, number> = {};
+/** First patch release with the fix per branch (php.net, 2026-10-21). */
+const FIXED: Record<string, number> = { '8.5': 12, '8.4': 27, '8.3': 36, '8.2': 35 };
 
 export type PhpPhase = 'active' | 'security' | 'eol' | 'unknown';
 
@@ -33,6 +28,8 @@ export interface PhpStatus {
   securityUntil: string | null;
   /** The branch gets the PHP2Shell fix. */
   fix: boolean;
+  /** The first version of the branch with the fix, such as "8.3.36". */
+  fixedIn: string | null;
   /** The visible version has the fix: true, false, or null when it cannot be told from outside. */
   patched: boolean | null;
 }
@@ -53,11 +50,15 @@ export function phpStatus(version: string, distro = false, now = new Date()): Ph
   else if (major < 8 || (major === 8 && minor <= 1)) phase = 'eol';
   else phase = 'unknown';
 
-  const fix = branch in LAST_BEFORE_FIX;
-  let patched: boolean | null = null;
-  if (fix && Number.isFinite(patch) && !distro) {
-    if (branch in FIXED) patched = patch >= FIXED[branch];
-    else if (patch <= LAST_BEFORE_FIX[branch]) patched = false;
-  }
-  return { branch, phase, activeUntil: row?.activeUntil ?? null, securityUntil: row?.securityUntil ?? null, fix, patched };
+  const fix = branch in FIXED;
+  const patched = fix && Number.isFinite(patch) && !distro ? patch >= FIXED[branch] : null;
+  return {
+    branch,
+    phase,
+    activeUntil: row?.activeUntil ?? null,
+    securityUntil: row?.securityUntil ?? null,
+    fix,
+    fixedIn: fix ? `${branch}.${FIXED[branch]}` : null,
+    patched,
+  };
 }
