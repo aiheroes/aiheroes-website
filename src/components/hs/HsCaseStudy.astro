@@ -112,7 +112,7 @@ const more = (await getCases(lang)).filter((c) => c.data.slug !== d.slug && c.da
   <HsSplit tone="paper" title={t.live} photo={{ src: shot.src, alt: shot.alt, w: shot.w, h: shot.h, shot: true }}>
     <p class="hs-body hs-muted" data-item>{zet(t.liveText(name))}</p>
     <a class="hs-btn hs-btn--dark hs-cs-livebtn" href={d.liveUrl} rel="noopener" target="_blank" data-item>
-      {d.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+      {d.liveUrl.replace(/^https?:\/\//, '').replace(/[?#].*$/, '').replace(/\/$/, '')}
       <HsIcon name="arrow-up-right" />
     </a>
   </HsSplit>
