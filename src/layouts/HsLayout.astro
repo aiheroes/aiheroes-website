@@ -39,9 +39,12 @@ const canonical = `${DOMAIN}${path}`;
 // The same page as Markdown for agents (scripts/build-markdown.mjs); the homepage is /index.md.
 const markdownHref = path === '/' ? '/index.md' : `${path}.md`;
 const fullTitle = `${seoTitle ?? title} | AI Heroes`;
-// GA4 (marketing-automation SDD §8.7): only in production builds, where PUBLIC_GA4_ID is set.
-// Consent Mode v2 advanced: gtag always loads, analytics_storage stays denied until "Ja".
-const gaId = import.meta.env.PUBLIC_GA4_ID as string | undefined;
+// GA4 (marketing-automation SDD §8.7). The measurement ID is public (it is in every page's
+// source), so it lives here and not in an env var: the team makes new production variables
+// sensitive, and the build only sees a placeholder for those. The snippet runs on aiheroes.io
+// only, so previews and local builds never send data. Consent Mode v2 advanced: gtag always
+// loads there, analytics_storage stays denied until "Ja".
+const gaId = 'G-VV2ST2KL26';
 const other = counterpart(path, lang);
 const nlPath = lang === 'nl' ? path : other;
 const enPath = lang === 'nl' ? other : path;
@@ -100,7 +103,7 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
     <script is:inline>document.documentElement.classList.add('hs-js');</script>
     {gaId && (
       <script is:inline define:vars={{ gaId }}>
-        if (!window.__aihGa) {
+        if (!window.__aihGa && location.hostname === 'aiheroes.io') {
           window.__aihGa = true;
           window.dataLayer = window.dataLayer || [];
           window.gtag = function () { window.dataLayer.push(arguments); };
