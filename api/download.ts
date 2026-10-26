@@ -3,9 +3,11 @@
 // switched off in server/downloads.ts answers 404, so the form can never promise a file that
 // does not exist. Honest failure: if mail is not configured, the visitor sees an error.
 
+import { waitUntil } from '@vercel/functions';
 import { z } from 'zod';
 import { increment } from '../server/counters.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
+import { recordIntake } from '../server/intake.js';
 import { sendMail } from '../server/mail.js';
 import { DOWNLOADS, type DownloadId } from '../server/downloads.js';
 
@@ -71,5 +73,16 @@ export async function POST(request: Request): Promise<Response> {
       .join('\n'),
   });
 
+  // Also to the hub's CRM as a contact (a soft conversion, no lead), after the response.
+  waitUntil(
+    recordIntake(request, {
+      kind: 'download',
+      name: body.name,
+      email: body.email,
+      company: body.organization,
+      message: `Download: ${template.title}`,
+      payload: { template: body.template },
+    }),
+  );
   return json(200, { ok: true });
 }

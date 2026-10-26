@@ -3,8 +3,10 @@
 // per-IP rate limit. Honest failure: if mail isn't configured or fails, the visitor
 // sees the error state instead of a fake success.
 
+import { waitUntil } from '@vercel/functions';
 import { z } from 'zod';
 import { increment } from '../server/counters.js';
+import { recordIntake } from '../server/intake.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
 import { sendMail } from '../server/mail.js';
 
@@ -67,5 +69,18 @@ export async function POST(request: Request): Promise<Response> {
     console.error('contact mail failed:', result.error);
     return json(503, { error: 'mail_failed' });
   }
+  // Also to the hub's CRM (contact + lead), after the response.
+  waitUntil(
+    recordIntake(request, {
+      kind: 'contact',
+      name: body.name,
+      email: body.email,
+      company: body.organization,
+      message: [body.topics && `Ingang: ${body.topics}`, body.budget && `Budget: ${body.budget}`, body.owner && `Beslist: ${body.owner}`, body.message]
+        .filter(Boolean)
+        .join('\n'),
+      payload: { topics: body.topics || null, budget: body.budget || null, decides: body.owner || null },
+    }),
+  );
   return json(200, { ok: true });
 }
