@@ -24,7 +24,7 @@ const L = en
       label: 'Your website address',
       placeholder: 'yourcompany.com',
       submit: 'Check your site',
-      fine: 'We only read what your page shows every visitor. We do not store the address.',
+      fine: 'We only read what your page shows every visitor.',
       analyse: 'Ask for the free review',
       again: 'Check another site',
     }
@@ -32,7 +32,7 @@ const L = en
       label: 'Adres van je website',
       placeholder: 'jouwbedrijf.nl',
       submit: 'Check je site',
-      fine: 'We lezen alleen wat je pagina aan iedere bezoeker laat zien. Het adres slaan we niet op.',
+      fine: 'We lezen alleen wat je pagina aan iedere bezoeker laat zien.',
       analyse: 'Vraag de gratis analyse aan',
       again: 'Check een andere site',
     };
@@ -359,6 +359,7 @@ const client = en
       }
       say(copy.busy, 'busy');
       button.disabled = true;
+      window.aihTrack?.('tool_start', { tool: 'php' });
       try {
         const res = await fetch('/api/site-check', {
           method: 'POST',
@@ -367,6 +368,7 @@ const client = en
         });
         const data = (await res.json().catch(() => null)) as { ok: boolean; report?: Report; error?: string } | null;
         if (data?.ok && data.report) {
+          window.aihTrack?.('tool_result', { tool: 'php', verdict: data.report.verdict });
           say('', '');
           render(data.report);
         } else {

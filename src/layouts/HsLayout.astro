@@ -12,6 +12,7 @@ import { PROFESSIONAL_SERVICE_SCHEMA, breadcrumbSchema, type Crumb } from '../da
 import HsDuotone from '../components/hs/HsDuotone.astro';
 import HsNav from '../components/hs/HsNav.astro';
 import HsFooter from '../components/hs/HsFooter.astro';
+import HsConsent from '../components/tracking/HsConsent.astro';
 import ChatWidget from '../components/chat/ChatWidget';
 import { CHAT_ENABLED, CHAT_BOOKING_URL, CHAT_SOURCE_CHIPS } from '../data/chat-flags';
 import { UI } from '../data/ui';
@@ -38,6 +39,9 @@ const canonical = `${DOMAIN}${path}`;
 // The same page as Markdown for agents (scripts/build-markdown.mjs); the homepage is /index.md.
 const markdownHref = path === '/' ? '/index.md' : `${path}.md`;
 const fullTitle = `${seoTitle ?? title} | AI Heroes`;
+// GA4 (marketing-automation SDD §8.7): only in production builds, where PUBLIC_GA4_ID is set.
+// Consent Mode v2 advanced: gtag always loads, analytics_storage stays denied until "Ja".
+const gaId = import.meta.env.PUBLIC_GA4_ID as string | undefined;
 const other = counterpart(path, lang);
 const nlPath = lang === 'nl' ? path : other;
 const enPath = lang === 'nl' ? other : path;
@@ -94,6 +98,24 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
 
     <ClientRouter />
     <script is:inline>document.documentElement.classList.add('hs-js');</script>
+    {gaId && (
+      <script is:inline define:vars={{ gaId }}>
+        if (!window.__aihGa) {
+          window.__aihGa = true;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          var granted = /(?:^|;\s*)aih_consent=yes/.test(document.cookie);
+          window.gtag('consent', 'default', { analytics_storage: granted ? 'granted' : 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+          try { if (localStorage.getItem('aih_intern') === '1') window.gtag('set', { traffic_type: 'internal' }); } catch (e) {}
+          window.gtag('js', new Date());
+          window.gtag('config', gaId, { cookie_expires: 34128000 }); // 13 months, as the privacy statement says
+          var tag = document.createElement('script');
+          tag.async = true;
+          tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(tag);
+        }
+      </script>
+    )}
   </head>
   <body class="hs-body-root">
     <div class="hs">
@@ -104,6 +126,7 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
         <slot />
       </main>
       <HsFooter lang={lang} />
+      <HsConsent lang={lang} />
     </div>
 
     <ChatWidget
@@ -119,6 +142,7 @@ const schemas = [...(hasOwnOrgSchema ? [] : [PROFESSIONAL_SERVICE_SCHEMA]), ...p
     <script>
       import '../components/hs/hs-client';
       import '../components/hs/webmcp';
+      import '../components/tracking/track';
     </script>
   </body>
 </html>

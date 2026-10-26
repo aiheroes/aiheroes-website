@@ -28,7 +28,7 @@ const steps = [
 const how = [
   { icon: 'search' as const, title: 'What the check reads', text: 'The headers and the HTML of the page you enter. If the site runs on WordPress and we cannot see the PHP version, we also request /wp-json/, the public address of the WordPress API.' },
   { icon: 'preview-open' as const, title: 'Why the version is often missing', text: 'Many hosting companies hide the PHP version, and caches often strip it. That is normal. Only your hosting company or web developer can tell you for certain.' },
-  { icon: 'lock' as const, title: 'What the check does not do', text: 'We do not look for vulnerabilities, do not log in anywhere and do not store the address you enter.' },
+  { icon: 'lock' as const, title: 'What the check does not do', text: 'We do not look for vulnerabilities and do not log in anywhere.' },
 ];
 
 const faq = [
@@ -36,7 +36,6 @@ const faq = [
   { q: 'Is my site safe if the check finds no version?', a: 'You do not know yet. The check only sees what your page shows publicly, and a hidden version can still be old. Ask your hosting company or web developer.' },
   { q: 'Which PHP versions have the emergency update?', a: 'The emergency update came out as PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. If your server runs PHP 8.3, for example, you need 8.3.36 or newer. According to security firm Sansec, no official fix is coming for PHP 8.1 and older. Those versions no longer get updates.' },
   { q: 'Which vulnerabilities is this about?', a: 'CVE-2026-109618 and CVE-2026-109619, also known as PHP2Shell. PHP rates both 9.2 out of 10 for severity. More background (in Dutch) at [IO+](https://ioplus.nl/nl/posts/europese-cyberdienst-waarschuwt-voor-php-kwetsbaarheden).' },
-  { q: 'What do you do with the address I enter?', a: 'We fetch the page once for the check and do not store the address. If you ask for the free review, our team gets your details and the result of the check.' },
   { q: 'Can AI Heroes replace my website?', a: 'Yes. We build websites that run without a PHP server, with no plugins to keep up to date. You edit the texts yourself, and the site is set up to be found in Google and in AI assistants such as ChatGPT. [Ask for the free review](#contact) and we will look at what your site needs.' },
 ];
 

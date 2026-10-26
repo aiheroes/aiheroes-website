@@ -36,7 +36,10 @@ const a = SITE.address;
         <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
         <a href={SITE.phoneHref}>{lang === 'en' ? SITE_EN.phone : SITE.phone}</a>
       </span>
-      <span class="hs-footer__set">{footer.legal.map((l) => <a href={l.href}>{l.label}</a>)}</span>
+      <span class="hs-footer__set">
+        {footer.legal.map((l) => <a href={l.href}>{l.label}</a>)}
+        <button type="button" class="hs-footer__consent" data-consent-open>{lang === 'en' ? 'Privacy choice' : 'Privacykeuze'}</button>
+      </span>
       <span>{zet(footer.madeIn)}</span>
     </div>
   </div>

@@ -2,6 +2,8 @@
 // H1 Privacy (docs/relaunch/pages/H1-privacy.md), in the hulp-template. Form and facts updated for
 // the relaunch: no newsletter (01-besluiten §11), processors described in general terms (§15), a new
 // row for the AI-policy template download (K3). Approved by Frans on 2026-10-12 (01-besluiten §17).
+// 2026-10: website visits, the consent bar, Google Analytics and the PHP check added
+// (marketing-automation SDD §8 and §11, phase 1).
 import HsLayout from '../../../layouts/HsLayout.astro';
 import HsHelp from '../../../components/hs/HsHelp.astro';
 import { SITE } from '../../../data/site';
@@ -14,7 +16,10 @@ const rows = [
   { what: 'Contact via de assistent', data: 'Naam en e-mailadres, alleen als je zelf om contact vraagt', why: 'Je vraag aan het team doorgeven en reageren', where: 'In de EU', how: 'Maximaal 90 dagen' },
   { what: 'Kennismaking plannen', data: 'Naam, e-mailadres en het tijdstip dat je kiest', why: 'De afspraak maken en houden', where: 'Onze agendadienst', how: 'Tot twee jaar na het laatste contact' },
   { what: 'Download AI-beleidsjabloon', data: 'E-mailadres', why: 'Je het sjabloon sturen en, als je dat wilt, contact opnemen over je AI-beleid', where: 'Onze e-maildienst en mailbox', how: 'Tot twee jaar na het laatste contact' },
-  { what: 'Websitebezoek', data: 'Geanonimiseerde en samengevoegde gebruiksgegevens', why: 'Begrijpen hoe de site gebruikt wordt', where: 'Onze hostingpartij in de EU', how: 'Geanonimiseerd bewaard' },
+  { what: 'Websitebezoek', data: "Welke pagina's je bekijkt en hoe lang, waar je vandaan komt (zoals een zoekmachine of LinkedIn), je land en het soort apparaat. Zonder cookie en zonder IP-adres: je bezoek krijgt een code die elke dag verandert.", why: 'Begrijpen hoe de site gebruikt wordt', where: 'In de EU', how: 'Losse bezoeken 90 dagen, daarna alleen tellingen per dag' },
+  { what: 'Websitebezoek met je toestemming', data: 'Een willekeurige code in een cookie, zodat we je bij een volgend bezoek herkennen. Laat je later je gegevens achter, dan koppelen we je eerdere bezoeken daaraan.', why: 'Zien welke onderwerpen je interesseren, zodat we je gerichter kunnen helpen', where: 'In de EU', how: '13 maanden, of tot je je keuze intrekt. Gekoppeld aan je gegevens: tot twee jaar na het laatste contact' },
+  { what: 'Google Analytics', data: 'Meetgegevens zonder cookie. Met je toestemming zet Google ook een cookie, zodat terugkerende bezoeken als één bezoeker tellen.', why: 'Statistieken over bezoek en campagnes', where: 'Google, ook in de VS (onder het EU-VS Data Privacy Framework)', how: '14 maanden' },
+  { what: 'PHP-versiecheck', data: 'Het adres dat je invult en de uitslag van de check', why: 'Zien hoe de check gebruikt wordt. Is je organisatie al bij ons bekend, dan zien we dat je de check hebt gedaan', where: 'In de EU', how: '13 maanden' },
 ];
 ---
 
@@ -38,6 +43,7 @@ const rows = [
     ]}
     toc={[
       { id: 'verwerkingen', label: 'Wat we verwerken' },
+      { id: 'cookies', label: 'Cookies en je keuze' },
       { id: 'verwerkers', label: 'Wie ons helpt' },
       { id: 'assistent', label: 'De AI-assistent' },
       { id: 'rechten', label: 'Je rechten' },
@@ -63,8 +69,11 @@ const rows = [
     <div class="hs-prose">
       <p>We gebruiken geen cookies van derden voor advertenties en volgen je niet over andere sites.</p>
 
+      <h2 id="cookies">Cookies en je keuze</h2>
+      <p>Bij je eerste bezoek vragen we of we je bezoek mogen onthouden. Je keuze bewaren we in de cookie <code>aih_consent</code>, zodat we het niet op elke pagina opnieuw vragen. Zeg je ja, dan zetten we ook de cookie <code>aih_vid</code> met een willekeurige code, en zet Google Analytics zijn cookies (<code>_ga</code>). Zeg je nee, dan zetten we geen andere cookies en meten we je bezoek zonder je te herkennen. Google Analytics krijgt dan alleen meetgegevens zonder cookie. Al deze cookies verlopen na uiterlijk 13 maanden. Je keuze wijzig je met de knop Privacykeuze onderaan elke pagina.</p>
+
       <h2 id="verwerkers">Wie ons helpt</h2>
-      <p>Voor een deel van het werk gebruiken we dienstverleners: onze hostingpartij, onze e-maildienst, de dienst achter de AI-assistent, onze agendadienst en de partij waarmee we de aanmeldingen voor de AI Salon regelen. Met hen maken we afspraken over de verwerking van je gegevens. Waar het kan, gebeurt de verwerking binnen de EU. Onze e-maildienst verstuurt vanuit de EU, maar kan verzendgegevens buiten de EU bewaren.</p>
+      <p>Voor een deel van het werk gebruiken we dienstverleners: onze hostingpartij, onze e-maildienst, de dienst achter de AI-assistent, onze agendadienst, de partij waarmee we de aanmeldingen voor de AI Salon regelen en Google Analytics voor statistieken over het websitebezoek. Met hen maken we afspraken over de verwerking van je gegevens. Waar het kan, gebeurt de verwerking binnen de EU. Onze e-maildienst verstuurt vanuit de EU, maar kan verzendgegevens buiten de EU bewaren. Google kan meetgegevens in de VS verwerken; dat valt onder het EU-VS Data Privacy Framework.</p>
 
       <h2 id="assistent">De AI-assistent op deze site</h2>
       <p>Op aiheroes.io kun je chatten met onze AI-assistent. Je chatgeschiedenis staat in je eigen browser. Op onze servers bewaren we gesprekken pseudoniem, zonder naam, IP-adres of profiel, om de assistent te verbeteren, maximaal 30 dagen. Alleen als je zelf om contact met het team vraagt en daarvoor je naam en e-mailadres achterlaat, verwerken we persoonsgegevens. Die gebruiken we uitsluitend om te reageren en bewaren we maximaal 90 dagen. Meer over de assistent lees je op <a href="/nl/legal/ai-assistent">deze pagina</a>.</p>
