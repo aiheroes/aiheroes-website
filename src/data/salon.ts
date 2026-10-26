@@ -72,9 +72,9 @@ export const SALON_NEXT: SalonEdition = {
     // management, ISO 50001); both companies on request (2026-10-15). Portrait from energiso.nl.
     { name: 'Ilse Gosliga', org: 'AIMZ · Energiso', topic: 'Buildings that learn: 26% less energy, no renovation', photo: '/speakers/ilse-gosliga.jpg' },
     // Business coach in Groningen since 2016, 150+ entrepreneurs; runs the workshop 'Ondernemen met AI'.
-    // Portrait cropped from alexvanginneken.com. His title is not known yet (2026-10-12): the page shows
-    // "Onderwerp volgt" until it is.
-    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: null, photo: '/speakers/alex-van-ginneken.jpg' },
+    // Title and portrait sent by Alex himself (2026-10-26); the portrait is a 4:5 crop of the photo on
+    // alexvanginneken.com he pointed to.
+    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: 'Leading AI Bots That Work', photo: '/speakers/alex-van-ginneken.jpg' },
   ],
   // Kadans hosts the evening in Plus Ultra Groningen (confirmed 2026-10-15; always use the full name). Researchable, which
   // made the introduction, follows once Frans has mailed them.
