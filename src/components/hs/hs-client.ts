@@ -367,7 +367,10 @@ function initForm(signal: AbortSignal) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ botField: '', ...data }),
         });
-        if (res.ok) done();
+        if (res.ok) {
+          done();
+          window.aihTrack?.('contact_submit', { form: form.getAttribute('action') ?? '' });
+        }
         else tell(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');
       } catch {
         tell(form.dataset.msgError ?? 'Er ging iets mis. Probeer het opnieuw of mail ons via info@aiheroes.io.', 'error');

@@ -52,6 +52,11 @@ export default function ChatWidget({
     setHasThread(loadMessages().length > 0);
   }, [enabled]);
 
+  // Site tracking (src/components/tracking/track.ts): count how often the chat is opened.
+  useEffect(() => {
+    if (open) window.aihTrack?.('chat_open');
+  }, [open]);
+
   // The 404 page and the AI-assistant page open the chat from their own buttons.
   useEffect(() => {
     const openChat = () => {

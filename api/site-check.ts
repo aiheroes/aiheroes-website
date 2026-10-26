@@ -1,12 +1,15 @@
 // The PHP version check on /nl/php-versie-check and /en/php-version-check. Vercel function.
 // server/site-check.ts does the work and guards every outgoing request; this adds the origin
-// check and a per-IP rate limit. The address a visitor enters is never logged or stored: the log
-// line holds only the outcome, to see how the check is used.
+// check and a per-IP rate limit. Every run is stored in tool_runs (domain, outcome, the daily
+// visitor key, and the visitor id only with consent) for the hub's dashboard; the privacy
+// statement says so. Errors are logged as a line only, without the address.
 
+import { waitUntil } from '@vercel/functions';
 import { z } from 'zod';
 import { increment } from '../server/counters.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
 import { checkSite, CheckError } from '../server/site-check.js';
+import { consentedVid, insertRows, visitorKey } from '../server/tracking.js';
 
 const bodySchema = z.object({ url: z.string().trim().min(1).max(300) });
 
@@ -36,6 +39,28 @@ export async function POST(request: Request): Promise<Response> {
   try {
     const report = await checkSite(body.url);
     console.log(JSON.stringify({ sitecheck: report.verdict, platform: report.platform?.name ?? null }));
+    waitUntil(
+      (async () => {
+        await insertRows('tool_runs', [
+          {
+            tool: 'php',
+            input_domain: report.host.replace(/^www\./, ''),
+            input: { url: report.url },
+            result: {
+              verdict: report.verdict,
+              php: report.php.version,
+              phpStatus: report.php.status,
+              platform: report.platform?.name ?? null,
+              platformVersion: report.platform?.version ?? null,
+              https: report.https,
+              plugins: report.plugins.length,
+            },
+            visitor_key: await visitorKey(request),
+            vid: consentedVid(request),
+          },
+        ]);
+      })(),
+    );
     return json(200, { ok: true, report });
   } catch (e) {
     const error = e instanceof CheckError ? e.code : 'unreachable';

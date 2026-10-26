@@ -31,7 +31,7 @@ const steps = [
 const how = [
   { icon: 'search' as const, title: 'Wat de check leest', text: 'De headers en de HTML van de pagina die je invult. Draait de site op WordPress en zien we de PHP-versie niet, dan vragen we ook /wp-json/ op, het openbare adres van de WordPress-API.' },
   { icon: 'preview-open' as const, title: 'Waarom de versie vaak ontbreekt', text: 'Veel hostingpartijen verbergen de PHP-versie, en caches halen hem vaak weg. Dat is normaal. Zekerheid geeft alleen je hostingpartij of websitebeheerder.' },
-  { icon: 'lock' as const, title: 'Wat de check niet doet', text: 'We zoeken niet naar lekken, loggen nergens in en slaan het adres dat je invult niet op.' },
+  { icon: 'lock' as const, title: 'Wat de check niet doet', text: 'We zoeken niet naar lekken en loggen nergens in.' },
 ];
 
 const faq = [
@@ -39,7 +39,6 @@ const faq = [
   { q: 'Is mijn site veilig als de check geen versie vindt?', a: 'Dat weet je dan nog niet. De check ziet alleen wat je pagina openbaar laat zien, en een verborgen versie kan nog steeds oud zijn. Vraag het na bij je hostingpartij of websitebeheerder.' },
   { q: 'Welke PHP-versies hebben de spoedupdate?', a: 'De spoedupdate is uitgekomen als PHP 8.5.12, 8.4.27, 8.3.36 en 8.2.35. Draait je server bijvoorbeeld op PHP 8.3, dan heb je 8.3.36 of nieuwer nodig. Voor PHP 8.1 en ouder komt er volgens beveiligingsbedrijf Sansec geen officiële oplossing. Die versies krijgen al geen updates meer.' },
   { q: 'Om welke lekken gaat het?', a: 'Om CVE-2026-109618 en CVE-2026-109619, ook wel PHP2Shell genoemd. PHP geeft beide een ernstscore van 9,2 op 10. Meer achtergrond lees je bij [IO+](https://ioplus.nl/nl/posts/europese-cyberdienst-waarschuwt-voor-php-kwetsbaarheden).' },
-  { q: 'Wat doen jullie met het adres dat ik invul?', a: 'We halen de pagina één keer op voor de check en slaan het adres niet op. Vraag je de gratis analyse aan, dan krijgt ons team je gegevens en het resultaat van de check.' },
   { q: 'Kan AI Heroes mijn website vervangen?', a: 'Ja. We bouwen websites die zonder PHP-server draaien, zonder plugins om bij te houden. De teksten pas je zelf aan, en de site is ingericht om gevonden te worden in Google en in AI-assistenten zoals ChatGPT. [Vraag de gratis analyse aan](#contact), dan kijken we wat er voor jouw site nodig is.' },
 ];
 
