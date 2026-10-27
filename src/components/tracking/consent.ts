@@ -3,7 +3,8 @@
 // random id for layer 1 of the tracking, and grants GA4's analytics_storage; "Liever niet"
 // removes aih_vid and the GA cookies. track.ts sends the choice as a consent event.
 
-const CONSENT_VERSION = '2026-10b';
+import { CONSENT_VERSION } from './version';
+
 const MAX_AGE = 60 * 60 * 24 * 395;
 
 declare global {
