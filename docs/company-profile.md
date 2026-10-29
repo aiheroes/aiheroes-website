@@ -126,7 +126,7 @@ Operating principles visible in how the company actually runs:
 
 Internal role logic follows the path of one build: Frans owns the business case and scoping, David the build and compliance, Jan the adoption and training. The former mapping to client maturity (Jan for beginners, Frans for intermediates, David for builders) is retired.
 
-**Organisation model:** deliberately small core, flexible shell. No employees yet; scaling happens through a ZZP trainer network (so training can be dispatched nationally) and an at-cost dev-pool for software capacity, with the office at Aarhusweg shared in a cost-sharing partnership (kostenmaatschap) with an Odoo ERP firm and the dev-pool. Open vacancies (2026): AI Engineer/Developer, AI Trainer/Workshop Lead, Sales & BD intern, AI-enabled Marketing intern.
+**Organisation model:** deliberately small core, flexible shell. No employees yet; scaling happens through a ZZP trainer network (so training can be dispatched nationally) and an at-cost dev-pool for software capacity, with the office at Aarhusweg shared in a cost-sharing partnership (kostenmaatschap) with an Odoo ERP firm and the dev-pool. Open vacancies (October 2026): AI Builder (takes client projects from brief to delivery, built with Claude Code), Sales & BD intern, AI-enabled marketing intern; candidates from Groningen and the region only.
 
 ## 9. Brand voice and channels
 

@@ -443,6 +443,26 @@
       "statusCode": 301
     },
     {
+      "source": "/nl/vacatures/ai-engineer",
+      "destination": "/nl/vacatures/ai-builder",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/careers/ai-engineer",
+      "destination": "/en/careers/ai-builder",
+      "statusCode": 301
+    },
+    {
+      "source": "/nl/vacatures/ai-trainer",
+      "destination": "/nl/vacatures",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/careers/ai-trainer",
+      "destination": "/en/careers",
+      "statusCode": 301
+    },
+    {
       "source": "/pers",
       "destination": "/nl/pers",
       "statusCode": 301

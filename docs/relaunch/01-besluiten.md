@@ -279,3 +279,16 @@ Aanleiding: de dagindeling van de startsprint, de bouwzin "sprints van twee weke
 | Structured data | Prijzen als **minPrice per aanbod** (`OFFERS` in `src/data/schema.ts`). Pijler- en landingsdiensten noemen startsprint en bouw als twee aanbiedingen; €8.000 is nooit de prijs van een hele dienst. Training met `unitText` per dagdeel | schema |
 | Voorwaarden | Art. 5 en 6 volgen het echte verloop: intake vooraf, aanleveren, prototype niet gekoppeld, verrekening met de bouw, mijlpalen. **De jurist toetst vóór publicatie**; open punt: een termijn voor de verrekening | H2 |
 | Naam van de derde ingang (opnieuw) | **Lokaal AI draaien** (NL) en **Run AI locally** (EN), in plaats van "Lokale AI" / "Self-hosted AI": zegt wat je doet, en loopt gelijk met "Oude software vervangen". Covertabs "Lokaal draaien" / "Run locally"; in lopende tekst "Lokaal AI draaien" / "running AI locally". URL's, de landing "AI op eigen servers" en de SEO-titels blijven; "Self-hosted AI" blijft als zoekterm in de structured data | menu, footer, ingangskaarten, formulierchips, P5, landings, kennis, llms.txt, assistent-prompt |
+
+## 24. Vacatures aangescherpt (2026-10-29)
+
+Aanleiding: er kwamen sollicitaties binnen die niet bij de rollen pasten. De vacatures stonden sinds juni zonder einddatum in Google for Jobs, de AI Engineer-tekst paste op elk AI-cv en nergens stond dat je in Groningen moet wonen.
+
+| Vraag | Besluit | Raakt |
+|---|---|---|
+| Open vacatures | **Drie**: AI Builder, stagiair sales en business development, stagiair marketing met AI. **De AI Trainer vervalt.** Vervangt §13 | P13, H4, teampagina's |
+| AI Engineer wordt AI Builder | De rol doet wat de oprichters nu doen: een projectbriefing krijgen en die met Claude Code en andere tools bouwen en opleveren, en het project leiden (startsprint, mijlpalen, demo's, aanspreekpunt van de klant). **Geen senior-rol** (te duur, en in tech van een paar jaar oud bestaat senioriteit nauwelijks): eisen op wat iemand kan, zonder jaren ervaring. Dagelijks Claude Code, gebouwde AI-oplossingen met links of voorbeelden (werk, studie of eigen project), kennis van generatieve AI, nieuwe modellen meteen uitproberen, een project zelf kunnen trekken. Aanspreekpunt Frans. URL `/nl/vacatures/ai-builder` (`/en/careers/ai-builder`) | H4, `jobs.ts` |
+| Woonplaats | **Alleen kandidaten uit Groningen en de regio.** Elke vacature noemt het als eis; het sollicitatieformulier heeft een verplicht vinkje ("Ik woon in Groningen of in de regio"), ook gecontroleerd in `/api/apply` | HsApplyForm, `api/apply.ts`, P13 |
+| Stages | Je loopt de stage voor je opleiding; de sales-stagiair spreekt vloeiend Nederlands; bij marketing gaan links naar eigen content mee | H4 |
+| Open sollicitatie | **Blijft, maar niet meer voorgeselecteerd.** Wie solliciteert, kiest zelf een vacature of open sollicitatie (verplicht); op een vacaturepagina staat die vacature al gekozen | HsApplyForm |
+| Oude URL's | `ai-engineer` 301 naar `ai-builder`; `ai-trainer` 301 naar het vacature-overzicht | `vercel.json` |

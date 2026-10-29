@@ -1,6 +1,7 @@
 // Job application form → Resend with the CV attached (replaces Netlify Forms with file
 // upload, cutover plan F1). Vercel function. Multipart in, one email out — no file
-// storage, so no retention question: the CV lives in the team's inbox only.
+// storage, so no retention question: the CV lives in the team's inbox only. The form's
+// "I live in or near Groningen" box is required here as well (01-besluiten §24).
 
 import { z } from 'zod';
 import { increment } from '../server/counters.js';
@@ -20,6 +21,7 @@ const fieldsSchema = z.object({
   phone: z.string().trim().max(60).default(''),
   position: z.string().trim().max(200).default(''),
   motivation: z.string().trim().min(1).max(8000),
+  local: z.literal('on'),
   botField: z.string().max(200).default(''),
 });
 
@@ -52,6 +54,7 @@ export async function POST(request: Request): Promise<Response> {
       phone: text('phone'),
       position: text('position'),
       motivation: text('motivation'),
+      local: text('local'),
       botField: text('bot-field'),
     });
   } catch {
@@ -83,6 +86,7 @@ export async function POST(request: Request): Promise<Response> {
       `E-mail: ${fields.email}`,
       fields.phone ? `Telefoon: ${fields.phone}` : null,
       fields.position ? `Functie: ${fields.position}` : null,
+      'Woont in Groningen of de regio: ja',
       attachments.length ? `CV: ${attachments[0].filename} (bijgevoegd)` : 'CV: geen bijlage',
       '',
       fields.motivation,
