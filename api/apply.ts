@@ -1,12 +1,16 @@
-// Job application form → Resend with the CV attached (replaces Netlify Forms with file
-// upload, cutover plan F1). Vercel function. Multipart in, one email out — no file
-// storage, so no retention question: the CV lives in the team's inbox only. The form's
-// "I live in or near Groningen" box is required here as well (01-besluiten §24).
+// Job application form (replaces Netlify Forms with file upload, cutover plan F1). Vercel
+// function, multipart in. The application and CV go to the AI Heroes Hub (sollicitanten), which
+// confirms receipt to the candidate and keeps the procedure's status; the hub deletes the data
+// four weeks after the procedure ends (privacy statement). When the hub is unreachable, the
+// application is mailed to the team with the CV attached, as before. The form's "I live in or
+// near Groningen" box is required here as well (01-besluiten §24).
 
 import { z } from 'zod';
 import { increment } from '../server/counters.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
+import { sendApplicationToHub } from '../server/intake.js';
 import { sendMail } from '../server/mail.js';
+import { JOBS, jobText } from '../src/data/jobs.js';
 
 const MAX_CV_BYTES = 8 * 1024 * 1024;
 const ALLOWED_CV_TYPES = new Set([
@@ -14,6 +18,12 @@ const ALLOWED_CV_TYPES = new Set([
   'application/msword',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 ]);
+// Some browsers send no type for a .docx; the hub needs one.
+const TYPE_BY_EXTENSION: Record<string, string> = {
+  pdf: 'application/pdf',
+  doc: 'application/msword',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
 
 const fieldsSchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -76,6 +86,32 @@ export async function POST(request: Request): Promise<Response> {
       contentType: cv.type || undefined,
     });
   }
+
+  let page: string | null = null;
+  try {
+    page = new URL(request.headers.get('referer') ?? '').pathname;
+  } catch {
+    // no referer
+  }
+  const locale = page?.startsWith('/en') ? 'en' : 'nl';
+  const job = JOBS.find((j) => j.title === fields.position || j.en.title === fields.position) ?? null;
+  const file = attachments[0];
+  const contentType = file ? file.contentType || TYPE_BY_EXTENSION[file.filename.split('.').pop()?.toLowerCase() ?? ''] : undefined;
+  const stored = await sendApplicationToHub(
+    {
+      name: fields.name,
+      email: fields.email,
+      phone: fields.phone,
+      positionId: job?.id ?? null,
+      positionTitle: job ? jobText(job, locale).title : null,
+      contact: job?.contact ?? null,
+      motivation: fields.motivation,
+      locale,
+      page,
+    },
+    file && contentType ? { filename: file.filename, contentType, content: file.content } : null,
+  );
+  if (stored) return json(200, { ok: true });
 
   const result = await sendMail({
     subject: `Sollicitatie: ${fields.name}${fields.position ? ` — ${fields.position}` : ''}`,
