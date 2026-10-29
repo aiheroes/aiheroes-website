@@ -7,6 +7,7 @@ import { config as appConfig, isOfficeHours } from '../server/config.js';
 import { increment, notifySlack } from '../server/counters.js';
 import { checkOrigin, hashIp, verifyToken } from '../server/guards.js';
 import { sendMail } from '../server/mail.js';
+import { looksEnglish, teamMail } from '../server/mail-layout.js';
 import { persistEscalation } from '../server/persist.js';
 
 const bodySchema = z.object({
@@ -22,6 +23,12 @@ const bodySchema = z.object({
     .default([]),
   consent: z.literal(true),
 });
+
+const REASONS: Record<string, string> = {
+  visitor_request: 'Vroeg zelf om contact',
+  no_answer: 'De assistent had geen antwoord',
+  frustration: 'De bezoeker liep vast',
+};
 
 const json = (status: number, body: unknown) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
@@ -68,16 +75,24 @@ export async function POST(request: Request): Promise<Response> {
         .join('\n'),
     ),
     sendMail({
-      subject: `Chat-escalatie van ${body.name || body.email}`,
+      subject: `Chat: ${body.name || body.email} · ${(REASONS[body.reason] ?? body.reason).toLowerCase()}`,
       replyTo: body.email,
-      text: [
-        `Reden: ${body.reason}`,
-        `Van: ${who}`,
-        `Gesprek: ${body.conversationId}`,
-        body.summary ? `\nSamenvatting:\n${body.summary}` : '',
-        transcript ? `\nTranscript:\n${transcript}` : '',
-        '\nReageer op deze mail om de bezoeker direct te antwoorden (reply-to staat goed).',
-      ].join('\n'),
+      ...teamMail({
+        kind: 'Chat',
+        accent: 'blue',
+        title: body.name || body.email,
+        subtitle: REASONS[body.reason] ?? body.reason,
+        facts: [{ label: 'E-mail', value: body.email, href: `mailto:${body.email}` }],
+        blocks: [{ label: 'Samenvatting', text: body.summary }],
+        transcript: body.transcript,
+        reply: {
+          email: body.email,
+          subject: looksEnglish(body.transcript.filter((m) => m.role === 'user').map((m) => m.text).join(' '))
+            ? 'Your question in our chat'
+            : 'Je vraag in onze chat',
+        },
+        notes: [`Beantwoorden gaat rechtstreeks naar ${body.email}.`, `Gesprek ${body.conversationId}`],
+      }),
     }),
   ]);
 
