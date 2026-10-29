@@ -9,6 +9,7 @@ import { increment } from '../server/counters.js';
 import { recordIntake } from '../server/intake.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
 import { sendMail } from '../server/mail.js';
+import { pageOf, teamMail } from '../server/mail-layout.js';
 
 const bodySchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -46,23 +47,27 @@ export async function POST(request: Request): Promise<Response> {
   const perMinute = await increment(`contact:${hashIp(request)}:minute`, 60);
   if (perMinute > 5) return json(429, { error: 'rate' });
 
+  const page = pageOf(request);
+  const mail = teamMail({
+    kind: 'Contactformulier',
+    accent: 'blue',
+    title: body.name,
+    subtitle: body.organization || undefined,
+    facts: [
+      { label: 'E-mail', value: body.email, href: `mailto:${body.email}` },
+      { label: 'Ingang', value: body.topics },
+      { label: 'Budget', value: body.budget },
+      { label: 'Beslist', value: body.owner },
+      { label: 'Pagina', value: page ?? '', href: page ? `https://aiheroes.io${page}` : undefined },
+    ],
+    blocks: [{ label: 'Bericht', text: body.message }],
+    reply: { email: body.email, subject: page?.startsWith('/en') ? 'Your question to AI Heroes' : 'Je vraag aan AI Heroes' },
+    notes: [`Beantwoorden gaat rechtstreeks naar ${body.email}.`],
+  });
   const result = await sendMail({
     subject: `Aanvraag: ${body.name}${body.organization ? ` (${body.organization})` : ''}${body.topics ? ` · ${body.topics}` : ''}`,
     replyTo: body.email,
-    text: [
-      `Naam: ${body.name}`,
-      `E-mail: ${body.email}`,
-      body.organization ? `Organisatie: ${body.organization}` : null,
-      body.topics ? `Ingang: ${body.topics}` : null,
-      body.budget ? `Budget: ${body.budget}` : null,
-      body.owner ? `Beslist: ${body.owner}` : null,
-      '',
-      body.message,
-      '',
-      'Reageer op deze mail om direct te antwoorden (reply-to staat goed).',
-    ]
-      .filter((line) => line !== null)
-      .join('\n'),
+    ...mail,
   });
 
   if (!result.sent) {

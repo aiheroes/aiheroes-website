@@ -9,6 +9,7 @@ import { increment } from '../server/counters.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
 import { recordIntake } from '../server/intake.js';
 import { sendMail } from '../server/mail.js';
+import { letterMail, teamMail } from '../server/mail-layout.js';
 import { DOWNLOADS, type DownloadId } from '../server/downloads.js';
 
 const bodySchema = z.object({
@@ -42,22 +43,16 @@ export async function POST(request: Request): Promise<Response> {
   const perMinute = await increment(`download:${hashIp(request)}:minute`, 60);
   if (perMinute > 5) return json(429, { error: 'rate' });
 
-  const links = template.files.map((f) => `${f.label}: ${f.url}`).join('\n');
   const toVisitor = await sendMail({
     to: body.email,
     subject: `${template.title} van AI Heroes`,
-    text: [
-      `Hoi ${body.name},`,
-      '',
-      `Hier is het ${template.title.toLowerCase()} dat je bij ons opvroeg:`,
-      '',
-      links,
-      '',
-      'Vragen over je eigen AI-beleid of de AI Act? Antwoord op deze mail, dan reageren we binnen 24 uur.',
-      '',
-      'AI Heroes',
-      'Aarhusweg 4-16, 9723 JJ Groningen',
-    ].join('\n'),
+    ...letterMail({
+      greeting: `Hoi ${body.name},`,
+      paragraphs: [`Hier is het ${template.title[0].toLowerCase()}${template.title.slice(1)} dat je bij ons opvroeg.`],
+      links: template.files,
+      closing: ['Vragen over je eigen AI-beleid of de AI Act? Antwoord op deze mail, dan reageren we binnen 24 uur.'],
+      signature: ['AI Heroes'],
+    }),
   });
   if (!toVisitor.sent) {
     console.error('download mail failed:', toVisitor.error);
@@ -68,9 +63,18 @@ export async function POST(request: Request): Promise<Response> {
   await sendMail({
     subject: `Download: ${template.title} · ${body.name}${body.organization ? ` (${body.organization})` : ''}`,
     replyTo: body.email,
-    text: [`Naam: ${body.name}`, `E-mail: ${body.email}`, body.organization ? `Organisatie: ${body.organization}` : null, `Sjabloon: ${template.title}`]
-      .filter((line) => line !== null)
-      .join('\n'),
+    ...teamMail({
+      kind: 'Download',
+      accent: 'dark',
+      title: body.name,
+      subtitle: body.organization || undefined,
+      facts: [
+        { label: 'E-mail', value: body.email, href: `mailto:${body.email}` },
+        { label: 'Sjabloon', value: template.title },
+      ],
+      reply: { email: body.email, subject: template.title },
+      notes: ['De bezoeker kreeg de downloadlinks al per mail.'],
+    }),
   });
 
   // Also to the hub's CRM as a contact (a soft conversion, no lead), after the response.

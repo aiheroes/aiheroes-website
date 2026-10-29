@@ -1,5 +1,5 @@
 // Transactional mail via Resend (cutover plan F1): contact form, job applications
-// (CV attached), and the email copy of chat escalations. No API key -> honest
+// (CV attached), and the email copy of chat escalations. Layout in mail-layout.ts. No API key -> honest
 // {sent:false} so callers can surface a real error instead of a fake success.
 
 import { config } from './config.js';
@@ -30,7 +30,9 @@ export async function sendMail(input: MailInput): Promise<{ sent: boolean; id?: 
       to: input.to ?? config.mail.to,
       subject: input.subject,
       text: input.text,
-      html: input.html ?? `<pre style="font-family:ui-monospace,monospace;white-space:pre-wrap">${escapeHtml(input.text)}</pre>`,
+      html:
+        input.html ??
+        `<div style="font-family:Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#292524">${escapeHtml(input.text).replace(/\r?\n/g, '<br>')}</div>`,
       replyTo: input.replyTo,
       attachments: input.attachments?.map((a) => ({
         filename: a.filename,

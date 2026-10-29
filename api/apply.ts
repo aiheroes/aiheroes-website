@@ -10,6 +10,7 @@ import { increment } from '../server/counters.js';
 import { checkOrigin, hashIp } from '../server/guards.js';
 import { sendApplicationToHub } from '../server/intake.js';
 import { sendMail } from '../server/mail.js';
+import { teamMail } from '../server/mail-layout.js';
 import { JOBS, jobText } from '../src/data/jobs.js';
 
 const MAX_CV_BYTES = 8 * 1024 * 1024;
@@ -114,21 +115,24 @@ export async function POST(request: Request): Promise<Response> {
   if (stored) return json(200, { ok: true });
 
   const result = await sendMail({
-    subject: `Sollicitatie: ${fields.name}${fields.position ? ` — ${fields.position}` : ''}`,
+    subject: `Sollicitatie: ${fields.name}${fields.position ? ` · ${fields.position}` : ''}`,
     replyTo: fields.email,
     attachments,
-    text: [
-      `Naam: ${fields.name}`,
-      `E-mail: ${fields.email}`,
-      fields.phone ? `Telefoon: ${fields.phone}` : null,
-      fields.position ? `Functie: ${fields.position}` : null,
-      'Woont in Groningen of de regio: ja',
-      attachments.length ? `CV: ${attachments[0].filename} (bijgevoegd)` : 'CV: geen bijlage',
-      '',
-      fields.motivation,
-    ]
-      .filter((line) => line !== null)
-      .join('\n'),
+    ...teamMail({
+      kind: 'Sollicitatie',
+      accent: 'red',
+      title: fields.name,
+      subtitle: fields.position || undefined,
+      facts: [
+        { label: 'E-mail', value: fields.email, href: `mailto:${fields.email}` },
+        { label: 'Telefoon', value: fields.phone, href: fields.phone ? `tel:${fields.phone.replace(/\s/g, '')}` : undefined },
+        { label: 'Woont in de regio', value: 'Ja' },
+        { label: 'Cv', value: attachments.length ? `${attachments[0].filename} (bijlage)` : 'Geen' },
+      ],
+      blocks: [{ label: 'Motivatie', text: fields.motivation }],
+      reply: { email: fields.email, subject: job ? `Je sollicitatie als ${jobText(job, locale).title}` : 'Je sollicitatie bij AI Heroes' },
+      notes: ['De hub was niet bereikbaar, daarom komt deze sollicitatie per mail. Zet hem met Toevoegen in Sollicitanten in de hub.'],
+    }),
   });
 
   if (!result.sent) {
