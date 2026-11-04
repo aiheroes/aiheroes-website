@@ -54,8 +54,8 @@ export const STRINGS = {
     you: 'Jij',
     suggestions: {
       default: ['Wat kunnen jullie voor ons bouwen?', 'Wat is een startsprint?', 'Wat zit er bij elke bouw inbegrepen?'],
-      build: ['Welke ingang past bij ons?', 'Wat kost een startsprint?', 'Bouwen jullie ook software zonder AI?'],
-      cases: ['Welke resultaten halen jullie klanten?', 'Hebben jullie cases in mijn sector?', 'Hoe begon zo’n project?'],
+      build: ['Welke aanpak past bij ons?', 'Wat kost een startsprint?', 'Bouwen jullie ook software zonder AI?'],
+      cases: ['Welke resultaten halen jullie klanten?', 'Hebben jullie cases in mijn sector?', 'Hoe begint een project bij jullie?'],
       salon: ['Wanneer is de volgende AI Salon?', 'Hoe meld ik me aan?', 'Kan ik spreker worden?'],
       compliance: ['Wat moet ik regelen voor de AI Act?', 'Wat is de AI Act-check?', 'Helpen jullie met ISO 42001?'],
       training: ['Welke training past bij ons team?', 'Wat kost een training?', 'Telt dit voor AI-geletterdheid?'],
@@ -110,8 +110,8 @@ export const STRINGS = {
     you: 'You',
     suggestions: {
       default: ['What can you build for us?', 'What is a start sprint?', 'What is included in every build?'],
-      build: ['Which way in fits us?', 'What does a start sprint cost?', 'Do you also build software without AI?'],
-      cases: ['What results do your clients get?', 'Do you have cases in my sector?', 'How did such a project start?'],
+      build: ['Which approach fits us?', 'What does a start sprint cost?', 'Do you also build software without AI?'],
+      cases: ['What results do your clients get?', 'Do you have cases in my sector?', 'How do you start a project?'],
       salon: ['When is the next AI Salon?', 'How do I register?', 'Can I become a speaker?'],
       compliance: ['What do I need to arrange for the AI Act?', 'What is the AI Act check?', 'Do you help with ISO 42001?'],
       training: ['Which training fits our team?', 'What does a training cost?', 'Does this count for AI literacy?'],
