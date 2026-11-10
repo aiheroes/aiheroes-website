@@ -1,7 +1,7 @@
 ---
 // L09 photo slide. Groningen is a real place, so the photo stays in colour (deck §10).
 import HsIcon from './HsIcon.astro';
-import { zet } from './hs';
+import { photoSrcset, zet } from './hs';
 import type { Content } from '../../data/types';
 
 interface Props {
@@ -12,7 +12,7 @@ const { team } = Astro.props;
 
 <section class="hs-place hs-snap" id="groningen" data-reveal>
   <div class="hs-place__photo">
-    <img src={team.image.src} alt={team.image.alt} width="1200" height="1500" loading="lazy" decoding="async" />
+    <img src={team.image.src} srcset={photoSrcset(team.image.src)} sizes="(min-width: 900px) 45vw, 100vw" alt={team.image.alt} width="1200" height="1500" loading="lazy" decoding="async" />
   </div>
   <div class="hs-place__text">
     <h2 class="hs-d-m" data-item>{zet(team.title, { display: true })}</h2>

@@ -38,11 +38,10 @@ function initCover(signal: AbortSignal) {
   let current = 0;
   let pendingAccent = root.dataset.accent ?? 'red';
   let held = false;      // paused by the visitor with the button
-  let hovering = false;
   let focused = false;
 
   const syncPause = () => {
-    root.classList.toggle('is-paused', held || hovering || focused || document.hidden);
+    root.classList.toggle('is-paused', held || focused || document.hidden);
     root.classList.toggle('is-held', held);
     pauseBtn?.setAttribute('aria-label', held ? pauseBtn.dataset.labelPlay ?? 'Speel de wisseling af' : pauseBtn.dataset.labelPause ?? 'Pauzeer de wisseling');
   };
@@ -96,16 +95,30 @@ function initCover(signal: AbortSignal) {
   }, { signal });
 
   pauseBtn?.addEventListener('click', () => { held = !held; syncPause(); }, { signal });
-  // Hover and focus hold the rotation for a mouse and a keyboard only. On a phone a tap fakes a
-  // mouseenter that never gets its mouseleave, and the tapped tab keeps focus: the cover froze
-  // after the first tap. A clicked tab keeps focus too, so focus counts only when it is visible.
-  root.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'mouse') return; hovering = true; syncPause(); }, { signal });
-  root.addEventListener('pointerleave', (e) => { if (e.pointerType !== 'mouse') return; hovering = false; syncPause(); }, { signal });
+  // Keyboard focus holds the rotation so the slide stays put while its controls are in use.
+  // A resting mouse or a tapped tab must not stop it.
   const keyboardFocus = () => !!root.querySelector(':focus-visible');
   root.addEventListener('focusin', () => { focused = keyboardFocus(); syncPause(); }, { signal });
   root.addEventListener('focusout', () => { focused = root.contains(document.activeElement) && keyboardFocus(); syncPause(); }, { signal });
   document.addEventListener('visibilitychange', syncPause, { signal });
   syncPause();
+  // Start the CSS clock only after its animationend listener is ready.
+  root.classList.add('is-ready');
+}
+
+/** Fetch nearby photos before their section's reveal removes its clipping mask. */
+function initPhotos(observers: IntersectionObserver[]) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll<HTMLImageElement>('img[loading="lazy"]').forEach((img) => {
+        img.loading = 'eager';
+      });
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: `${window.innerHeight}px 0px` });
+  document.querySelectorAll('.hs [data-reveal]').forEach((el) => io.observe(el));
+  observers.push(io);
 }
 
 /** Numbers count up from zero in 800ms (deck §9). The server-rendered value is the final one. */
@@ -140,7 +153,7 @@ function initReveal(observers: IntersectionObserver[]) {
       block.querySelectorAll<HTMLElement>('[data-count]').forEach((n) => setTimeout(() => countUp(n), 180));
       io.unobserve(e.target);
     });
-  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
   document.querySelectorAll<HTMLElement>('.hs [data-reveal]').forEach((el) => {
     const watch = el.dataset.reveal === 'content' ? el.querySelector('[data-item]') ?? el : el;
     blockOf.set(watch, el);
@@ -159,7 +172,7 @@ function initAI(observers: IntersectionObserver[]) {
     if (!e.isIntersecting) return;
     sec.classList.add('is-played');
     io.disconnect();
-  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0, rootMargin: '0px 0px 8% 0px' });
   io.observe(sec.querySelector('.hs-ai') ?? sec);
   observers.push(io);
 }
@@ -433,6 +446,7 @@ function init() {
   initNav(signal);
   initSubnav(signal);
   initCover(signal);
+  initPhotos(observers);
   initReveal(observers);
   initAI(observers);
   initForm(signal);

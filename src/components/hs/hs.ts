@@ -302,6 +302,10 @@ const PHOTO_WIDTHS: Record<string, number> = {
 
 /** The srcset for a photo with extra widths, or undefined for any other image. */
 export function photoSrcset(src: string): string | undefined {
+  // This portrait's source is 1200px wide; offer smaller files without upscaling it.
+  if (src === '/groningen.webp') {
+    return '/groningen-480.webp 480w, /groningen-900.webp 900w, /groningen.webp 1200w';
+  }
   const main = PHOTO_WIDTHS[src];
   if (!main) return undefined;
   const base = src.replace(/\.webp$/, '');

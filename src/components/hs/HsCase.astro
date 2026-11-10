@@ -46,7 +46,7 @@ const nf = (s: Stat) => new Intl.NumberFormat(locale, { minimumFractionDigits: s
 <section class:list={['hs-case on-dark', { 'hs-snap': snap, 'is-text': !photo }]} id={id} data-reveal>
   {photo && (
     <div class="hs-case__photo">
-      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 900px) 95vw, 100vw" alt={photo.alt ?? ''} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="lazy" decoding="async" />
+      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 900px) 42vw, 100vw" alt={photo.alt ?? ''} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="lazy" decoding="async" />
     </div>
   )}
   <div class="hs-case__text">

@@ -452,7 +452,7 @@ html:has(.hs) { scrollbar-color: #1C1917 #FDFCF8; }
 .hs-cover__label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hs-cover__track { position: relative; height: .1875rem; background: var(--rule-on-dark); overflow: hidden; }
 .hs-cover__fill { position: absolute; inset: 0; background: var(--light); transform: scaleX(0); transform-origin: left; }
-.hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards; }
+.hs-cover.is-ready .hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards; }
 .hs-cover.is-paused .hs-cover__fill { animation-play-state: paused; }
 @keyframes hs-fill { to { transform: scaleX(1); } }
 .hs-cover__pause {
@@ -1047,7 +1047,7 @@ textarea.hs-input { min-height: 8.75rem; resize: vertical; }
 .hs-js .hs-place:not(.is-in) .hs-place__photo img,
 .hs-js .hs-case:not(.is-in) .hs-case__photo img { clip-path: inset(100% 0 0 0); }
 .hs-js .hs-place .hs-place__photo img,
-.hs-js .hs-case .hs-case__photo img { clip-path: inset(0 0 0 0); transition: clip-path .9s var(--ease); }
+.hs-js .hs-case .hs-case__photo img { clip-path: inset(0 0 0 0); transition: clip-path .45s var(--ease); }
 /* Statement: the punch turns red once the line has landed. */
 /* Statement: once the slide is in view (hs-client initAI) the letters after A, then after I,
    rise into focus one by one. Time-based and played once; the scroll is never held. */
@@ -1074,7 +1074,7 @@ textarea.hs-input { min-height: 8.75rem; resize: vertical; }
      cover on. Switched off, the bar stood full and a visitor only ever saw the first of four slides.
      The slides fade in place without the rise, the colour switches without the wipe (hs-client),
      and the pause button stays. */
-  .hs .hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards !important; }
+  .hs .hs-cover.is-ready .hs-cover__tab[aria-selected="true"] .hs-cover__fill { animation: hs-fill 7s linear forwards !important; }
   .hs .hs-cover.is-paused .hs-cover__tab .hs-cover__fill { animation-play-state: paused !important; }
   .hs .hs-cover [data-head], .hs .hs-cover [data-sub] { transform: none; transition: opacity .2s linear !important; }
   .hs .hs-cover .is-active[data-head], .hs .hs-cover .is-active[data-sub] { transition: opacity .4s linear .2s !important; }

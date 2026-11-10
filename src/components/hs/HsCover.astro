@@ -79,7 +79,7 @@ const slides = sources.map((s, i) => {
       <img
         src={s.photo.src}
         srcset={photoSrcset(s.photo.src)}
-        sizes="(min-width: 1024px) 75vw, 100vw"
+        sizes="(min-width: 1200px) 40vw, (min-width: 900px) 42vw, 100vw"
         alt={i === 0 ? s.photo.alt : ''}
         data-photo
         class:list={{ 'is-active': i === 0 }}
