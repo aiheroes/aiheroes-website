@@ -39,6 +39,16 @@ export interface SalonEdition {
   en?: { title: string; dateLabel: string; shortDate: string; note?: string };
 }
 
+/** Resolve expired registrations at build time, using the event's local calendar date. */
+export function salonStatus(edition: SalonEdition, now = new Date()): SalonEdition['status'] {
+  const parts = new Intl.DateTimeFormat('en', {
+    timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(now);
+  const part = (type: string) => parts.find((p) => p.type === type)!.value;
+  const today = `${part('year')}-${part('month')}-${part('day')}`;
+  return edition.date < today ? 'past' : edition.status;
+}
+
 export const SALON_EMAIL = 'salon@aiheroes.io';
 
 /** The global network and the other Dutch chapters (the Brabant link is still to be confirmed). */
@@ -70,11 +80,11 @@ export const SALON_NEXT: SalonEdition = {
   speakers: [
     // AIMZ (AI on existing building management systems) and founder/director of Energiso (energy
     // management, ISO 50001); both companies on request (2026-10-15). Portrait from energiso.nl.
-    { name: 'Ilse Gosliga', org: 'AIMZ · Energiso', topic: 'Buildings that learn: 26% less energy, no renovation', photo: '/speakers/ilse-gosliga.jpg' },
+    { name: 'Ilse Gosliga', org: 'AIMZ · Energiso', topic: 'Buildings that learn: 26% less energy, no renovation', photo: '/speakers/ilse-gosliga.webp' },
     // Business coach in Groningen since 2016, 150+ entrepreneurs; runs the workshop 'Ondernemen met AI'.
     // Title and portrait sent by Alex himself (2026-10-26); the portrait is a 4:5 crop of the photo on
     // alexvanginneken.com he pointed to.
-    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: 'Leading AI Bots That Work', photo: '/speakers/alex-van-ginneken.jpg' },
+    { name: 'Alex van Ginneken', org: 'Ondernemer en businesscoach', orgEn: 'Entrepreneur and business coach', topic: 'Leading AI Bots That Work', photo: '/speakers/alex-van-ginneken.webp' },
   ],
   // Kadans hosts the evening in Plus Ultra Groningen (confirmed 2026-10-15; always use the full name). Researchable, which
   // made the introduction, follows once Frans has mailed them.
@@ -110,8 +120,8 @@ export const SALON_EDITIONS: SalonEdition[] = [
     city: 'Groningen',
     status: 'soldout',
     speakers: [
-      { name: 'Ruben Molenaars', org: 'YourMindr', topic: 'Keeping our minds sharp in the age of AI', photo: '/speakers/ruben-molenaars.jpg' },
-      { name: 'Lilian Peters', org: 'UMCG, FemHealthData', topic: 'FemHealthData: using AI to improve women’s health', photo: '/speakers/lilian-peters.jpg' },
+      { name: 'Ruben Molenaars', org: 'YourMindr', topic: 'Keeping our minds sharp in the age of AI', photo: '/speakers/ruben-molenaars.webp' },
+      { name: 'Lilian Peters', org: 'UMCG, FemHealthData', topic: 'FemHealthData: using AI to improve women’s health', photo: '/speakers/lilian-peters.webp' },
     ],
     sponsors: [
       { name: 'DryDock', src: '/sponsors/drydock.svg' },

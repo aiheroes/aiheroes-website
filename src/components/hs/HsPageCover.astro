@@ -54,7 +54,7 @@ const figW = facts.length ? Math.max(...facts.map((f) => f.value.length)) + 0.6 
   </div>
   {photo && (
     <div class:list={['hs-pcover__photo', { 'is-duo': photo.duo === 'red', 'is-duo-blue': photo.duo === 'blue', 'is-bw': photo.duo === 'bw' }]}>
-      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 1024px) 75vw, 100vw" alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
+      <img src={photo.src} srcset={photoSrcset(photo.src)} sizes="(min-width: 900px) 40vw, 100vw" alt={photo.alt} width={photo.w} height={photo.h} style={photo.pos ? `object-position:${photo.pos}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
     </div>
   )}
   {(lede || cta || facts.length > 0) && (

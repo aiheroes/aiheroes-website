@@ -100,7 +100,8 @@ export const PATH_PAIRS: Array<[nl: string, en: string | null]> = [
 export function counterpart(path: string, lang: Lang): string | null {
   const pair = lang === 'nl' ? PATH_PAIRS.find(([nl]) => nl === path) : PATH_PAIRS.find(([, en]) => en === path);
   if (pair) return lang === 'nl' ? pair[1] : pair[0];
-  return alternatePath(path, lang);
+  const translated = alternatePath(path, lang);
+  return translated === path ? null : translated;
 }
 
 /**

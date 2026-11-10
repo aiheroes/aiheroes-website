@@ -313,7 +313,7 @@ a.hs-card:hover .hs-card__plane .hs-card__title { text-decoration: none; }
   .hs-split.is-reverse .hs-split__text { padding: var(--sec-y) var(--pad-x) var(--sec-y) var(--module); }
 }
 .hs-js .hs-split:not(.is-in) .hs-split__photo img { clip-path: inset(100% 0 0 0); }
-.hs-js .hs-split .hs-split__photo img { clip-path: inset(0 0 0 0); transition: clip-path .9s var(--ease); }
+.hs-js .hs-split .hs-split__photo img { clip-path: inset(0 0 0 0); transition: clip-path .45s var(--ease); }
 
 /* ---------- For whom: two lists, yes and not yet ---------- */
 

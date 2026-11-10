@@ -12,15 +12,17 @@ import HsLuma from '../../components/hs/HsLuma.astro';
 import { zet } from '../../components/hs/hs';
 import {
   SALON_NEXT, SALON_EDITIONS, SALON_AGENDA, SALON_TIMES, SALON_NETWORK, SALON_FOLLOW, SALON_CALENDAR,
-  SALON_EMAIL, SALON_SPEAKER_SLOTS, SALON_SPONSOR_SLOTS, editionText,
+  SALON_EMAIL, SALON_SPEAKER_SLOTS, SALON_SPONSOR_SLOTS, salonStatus, editionText,
 } from '../../data/salon';
 
-const next = SALON_NEXT;
+const next = { ...SALON_NEXT, status: salonStatus(SALON_NEXT) };
+const registrationOpen = next.status === 'open';
+const editions = SALON_EDITIONS.map((e) => ({ ...e, status: salonStatus(e) }));
 const nt = editionText(next, 'en');
 const speakers = next.speakers ?? [];
 const sponsors = next.sponsors ?? [];
-const openSpeakers = Math.max(0, SALON_SPEAKER_SLOTS - speakers.length);
-const openSponsors = Math.max(0, SALON_SPONSOR_SLOTS - sponsors.length);
+const openSpeakers = registrationOpen ? Math.max(0, SALON_SPEAKER_SLOTS - speakers.length) : 0;
+const openSponsors = registrationOpen ? Math.max(0, SALON_SPONSOR_SLOTS - sponsors.length) : 0;
 const mail = (subject: string) => `mailto:${SALON_EMAIL}?subject=${encodeURIComponent(`AI Salon Groningen ${nt.title} · ${subject}`)}`;
 const crumbs = [{ label: 'Home', href: '/en' }, { label: 'About', href: '/en/about' }];
 const [amsterdam, brabant] = SALON_NETWORK.chapters;
@@ -44,7 +46,7 @@ const eventSchema = {
   description: `${nt.title} of AI Salon Groningen, ${nt.dateLabel}. A free community evening for AI founders, builders, investors, researchers and partners.`,
   performer: speakers.map((s) => ({ '@type': 'Person', name: s.name })),
   organizer: { '@type': 'Organization', name: 'AI Heroes', url: 'https://aiheroes.io' },
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: next.lumaUrl },
+  ...(registrationOpen ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: next.lumaUrl } } : {}),
 };
 
 const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open: 'Registration open' };
@@ -53,8 +55,8 @@ const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open
 <HsLayout
   lang="en"
   title="AI Salon Groningen"
-  seoTitle={`AI Salon Groningen: ${nt.title.toLowerCase()}, ${shortDay}`}
-  description={`AI Salon Groningen ${nt.title.toLowerCase()}, ${nt.dateLabel}. A free, bimonthly evening for AI founders, builders, investors, researchers and partners. Register on Luma.`}
+  seoTitle={registrationOpen ? `AI Salon Groningen: ${nt.title.toLowerCase()}, ${shortDay}` : 'AI Salon Groningen: evenings for founders and builders'}
+  description={registrationOpen ? `AI Salon Groningen ${nt.title.toLowerCase()}, ${nt.dateLabel}. A free, bimonthly evening for AI founders, builders, investors, researchers and partners. Register on Luma.` : 'Free AI evenings in Groningen for founders, builders, investors, researchers and partners. Explore the last edition and follow the Luma calendar for future events.'}
   crumbs={crumbs}
   jsonLd={eventSchema}
 >
@@ -63,12 +65,12 @@ const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open
     crumbs={crumbs}
     current="AI Salon"
     title="The #1 AI networking event, | now in *Groningen*."
-    lede={`${nt.title} of AI Salon Groningen is on ${nt.dateLabel}, doors open at ${SALON_TIMES.doors}. Free and in English, for AI founders, builders, investors, researchers and partners.`}
-    cta={{ label: `Register for ${nt.title.toLowerCase()}`, href: '#register' }}
+    lede={next.status !== 'past' ? `${nt.title} of AI Salon Groningen is on ${nt.dateLabel}, doors open at ${SALON_TIMES.doors}. Free and in English, for AI founders, builders, investors, researchers and partners.` : `${nt.title} was on ${nt.dateLabel}. Below you can find the programme, speakers and sponsors from that evening. Follow the Luma calendar for future editions.`}
+    cta={registrationOpen ? { label: `Register for ${nt.title.toLowerCase()}`, href: '#register' } : { label: 'Follow the Luma calendar', href: SALON_CALENDAR.url }}
     secondary={{ label: 'The programme', href: '#programme' }}
     photo={{ src: '/groningen.webp', alt: 'A street in the centre of Groningen with a church tower', w: 1200, h: 1500, pos: '50% 40%' }}
     facts={[
-      { value: shortDay, label: `${nt.title.toLowerCase()}, from ${SALON_TIMES.doors}` },
+      { value: shortDay, label: next.status !== 'past' ? `${nt.title.toLowerCase()}, from ${SALON_TIMES.doors}` : `${nt.title.toLowerCase()}, past` },
       { value: 'Free', label: 'and in English' },
       { value: '70+', label: 'guests at the sold-out kick-off' },
     ]}
@@ -157,23 +159,25 @@ const STATUS: Record<string, string> = { soldout: 'Sold out', past: 'Past', open
     )}
   </HsSection>
 
-  <HsSection id="register" tone="blue" title={`Register for ${nt.title.toLowerCase()}`} lede={`${nt.dateLabel}, doors open at ${SALON_TIMES.doors}, ${next.venue ?? 'venue to be announced'}, ${next.city}. Registration runs through Luma.`}>
+  <HsSection id="register" tone="blue" title={registrationOpen ? `Register for ${nt.title.toLowerCase()}` : 'The next *evening*'} lede={registrationOpen ? `${nt.dateLabel}, doors open at ${SALON_TIMES.doors}, ${next.venue ?? 'venue to be announced'}, ${next.city}. Registration runs through Luma.` : 'Follow the Luma calendar for future editions of AI Salon Groningen.'}>
     <div class="salon-register" data-item>
+      {registrationOpen && (
       <HsLuma eventId={next.lumaEventId!} href={next.lumaUrl} class="hs-btn hs-btn--light">
         Register on Luma
         <HsIcon name="arrow-right" />
       </HsLuma>
+      )}
       <a class="hs-link" href={SALON_CALENDAR.url} rel="noopener" target="_blank">{SALON_CALENDAR.labelEn}<HsIcon name="arrow-up-right" /></a>
       <a class="hs-link" href={SALON_FOLLOW.url} rel="noopener" target="_blank">{SALON_FOLLOW.labelEn}<HsIcon name="arrow-up-right" /></a>
     </div>
-    <div class="salon-embed" data-item>
+    {registrationOpen && <div class="salon-embed" data-item>
       <iframe src={`https://lu.ma/embed/event/${next.lumaEventId}/simple`} title={`AI Salon Groningen ${nt.title}: register`} loading="lazy"></iframe>
-    </div>
+    </div>}
   </HsSection>
 
   <HsSection title="The *editions*">
     <ol class="salon-editions">
-      {[...SALON_EDITIONS].reverse().map((e) => {
+      {[...editions].reverse().map((e) => {
         const et = editionText(e, 'en');
         return (
           <li data-item>
