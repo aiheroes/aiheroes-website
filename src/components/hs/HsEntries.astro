@@ -49,13 +49,13 @@ const lines = (k: Entry) => {
 };
 ---
 
-<section class:list={['hs-entries', { 'hs-snap': snap }]} id={id} data-reveal>
-  <div class="hs-wrap hs-entries__head">
+<section class:list={['hs-entries', { 'hs-snap': snap }]} id={id}>
+  <div class="hs-wrap hs-entries__head" data-reveal="visible">
     <h2 class="hs-d-m" data-item>{zet(title, { display: true })}</h2>
   </div>
   <div class="hs-wrap hs-entries__row">
     {keys.map((k, i) => (
-      <a class="hs-entry" href={ENTRIES[k].href} style={`--i:${i}`}>
+      <a class="hs-entry" href={ENTRIES[k].href} style={`--i:${i}`} data-reveal="visible">
         <div class={`hs-entry__plane on-${ENTRIES[k].accent}`}>
           <h3 class="hs-entry__title">
             {lines(k) ? <>{lines(k)![0]}<br />{lines(k)![1]}</> : zet(ENTRIES[k].title, { display: true, cap: 12 })}

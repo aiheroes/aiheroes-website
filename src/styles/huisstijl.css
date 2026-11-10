@@ -1025,9 +1025,9 @@ textarea.hs-input { min-height: 8.75rem; resize: vertical; }
   transition-delay: min(calc(var(--i, 0) * 60ms), 480ms);
 }
 /* Entries: the colour planes grow like the deck's bars (600ms), then the text arrives. */
-.hs-js .hs-entries:not(.is-in) .hs-entry__plane { transform: scaleY(0); }
+.hs-js .hs-entry:not(.is-in) .hs-entry__plane { transform: scaleY(0); }
 .hs-js .hs-entries .hs-entry__plane { transition: transform .6s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
-.hs-js .hs-entries:not(.is-in) .hs-entry__plane > * { opacity: 0; }
+.hs-js .hs-entry:not(.is-in) .hs-entry__plane > * { opacity: 0; }
 .hs-js .hs-entries .hs-entry__plane > * { transition: opacity .4s var(--ease) calc(var(--i, 0) * 90ms + 380ms), transform .3s var(--ease); }
 /* Standard: the labels wipe in from the left one after the other, like a marker stroke (plane and
    text together), and each icon then draws itself. Time-based on entry, never tied to the scroll. */
@@ -1063,8 +1063,8 @@ textarea.hs-input { min-height: 8.75rem; resize: vertical; }
 @media (prefers-reduced-motion: reduce) {
   .hs *, .hs *::before, .hs *::after { transition: none !important; animation: none !important; }
   .hs-js .hs [data-reveal] [data-item] { opacity: 1; transform: none; }
-  .hs-js .hs-entries:not(.is-in) .hs-entry__plane { transform: none; }
-  .hs-js .hs-entries:not(.is-in) .hs-entry__plane > * { opacity: 1; }
+  .hs-js .hs-entry:not(.is-in) .hs-entry__plane { transform: none; }
+  .hs-js .hs-entry:not(.is-in) .hs-entry__plane > * { opacity: 1; }
   .hs-js .hs-standard:not(.is-in) .hs-standard__label { clip-path: none; }
   .hs-js .hs-standard:not(.is-in) .hs-icon * { stroke-dashoffset: 0; }
   .hs-js .hs-place:not(.is-in) .hs-place__photo img,

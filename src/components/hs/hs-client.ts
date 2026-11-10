@@ -145,21 +145,25 @@ function initReveal(observers: IntersectionObserver[]) {
   // data-reveal="content": the block is taller than its content (the statement on phones), so the
   // reveal waits for its first item to come into view instead of the block's top edge.
   const blockOf = new Map<Element, Element>();
-  const io = new IntersectionObserver((entries) => {
+  const reveal: IntersectionObserverCallback = (entries, observer) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       const block = blockOf.get(e.target) ?? e.target;
       block.classList.add('is-in');
       block.querySelectorAll<HTMLElement>('[data-count]').forEach((n) => setTimeout(() => countUp(n), 180));
-      io.unobserve(e.target);
+      observer.unobserve(e.target);
     });
-  }, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
+  };
+  const io = new IntersectionObserver(reveal, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
+  // Entries wait until each heading/card is inside the viewport. Observing each card also
+  // prevents the lower cards from finishing their animation off-screen on phones.
+  const visible = new IntersectionObserver(reveal, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
   document.querySelectorAll<HTMLElement>('.hs [data-reveal]').forEach((el) => {
     const watch = el.dataset.reveal === 'content' ? el.querySelector('[data-item]') ?? el : el;
     blockOf.set(watch, el);
-    io.observe(watch);
+    (el.dataset.reveal === 'visible' ? visible : io).observe(watch);
   });
-  observers.push(io);
+  observers.push(io, visible);
 }
 
 /** Statement: write out "mbitie" and "mplementatie" once the slide is mostly in view. Plays once. */
